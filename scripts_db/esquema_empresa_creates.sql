@@ -1,8 +1,8 @@
 drop table if exists dependente cascade;
 drop table if exists alocacao cascade;
 drop table if exists projeto cascade;
-drop table if exists departamento cascade;
 drop table if exists empregado cascade;
+drop table if exists departamento cascade;
 
 CREATE TABLE `empregado` (
   `nome` varchar(15) NOT NULL,

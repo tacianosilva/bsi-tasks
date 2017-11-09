@@ -1,20 +1,106 @@
-insert into empregado
-(matricula, nome)
-values (9491, 'Ana');
-
-insert into empregado
-(matricula, nome)
-values (9491, 'Taciano');
+insert into departamento 
+(codDep, nomeDep, gerente)
+values (3, 'RH', 9491);
 
 insert into departamento 
 (codDep, nomeDep, gerente)
-values (1, 'Vendas', 9491);
+values (4, 'Administrativo', 9492);
 
-insert into departamento 
-(codDep, nomeDep, gerente)
-values (2, 'Compras', 9492);
+insert into empregado
+(matricula, nome, depto)
+values (9493, 'Xuxa', 2);
 
-update empregado set depto = 1 where matricula = '9491';
-update empregado set depto = 1 where matricula = '9492';
+insert into empregado
+(matricula, nome, depto)
+values (9494, 'Sasha', 3);
 
-update empregado set dataNasc = '2000-12-11' where matricula = '9491';
+insert into empregado
+(matricula, nome, depto)
+values (9495, 'José', 3);
+
+insert into empregado
+(matricula, nome, depto)
+values (9496, 'Marcos', 3);
+
+insert into empregado
+(matricula, nome, depto)
+values (9497, 'Maria', 3);
+
+INSERT INTO `exercicio_bd`.`projeto`
+(`codproj`,
+`nome`,
+`local`,
+`depart`)
+VALUES
+(1,
+'Projeto X',
+'Caicó',
+1
+);
+
+INSERT INTO `exercicio_bd`.`projeto`
+(`codproj`,
+`nome`,
+`local`,
+`depart`)
+VALUES
+(2,
+'Projeto H',
+'Caicó',
+1
+);
+
+INSERT INTO `exercicio_bd`.`projeto`
+(`codproj`,
+`nome`,
+`local`,
+`depart`)
+VALUES
+(3,
+'Projeto U',
+'Caicó',
+2
+);
+
+INSERT INTO `exercicio_bd`.`dependente`
+(`coddepend`,
+`matricula`,
+`nome`,
+`sexo`)
+VALUES
+(1,
+9492,
+'José Filho',
+'M');
+
+INSERT INTO `exercicio_bd`.`dependente`
+(`coddepend`,
+`matricula`,
+`nome`,
+`sexo`)
+VALUES
+(2,
+9493,
+'Umberto',
+'M');
+
+INSERT INTO `exercicio_bd`.`dependente`
+(`coddepend`,
+`matricula`,
+`nome`,
+`sexo`)
+VALUES
+(1,
+9495,
+'Doisberto',
+'M');
+
+INSERT INTO `exercicio_bd`.`alocacao`
+(`matric`,
+`codigop`,
+`horas`)
+VALUES
+(9495,
+ 1,
+ 4.00
+);
