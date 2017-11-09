@@ -32,14 +32,17 @@ CREATE TABLE `projeto` (
   `local` varchar(45) DEFAULT NULL,
   `depart` varchar(45) DEFAULT NULL,
   `projetocol` int(11) DEFAULT NULL,
-  PRIMARY KEY (`codproj`)
+  PRIMARY KEY (`codproj`),
+  foreign key (depart) references departamento(codDep)
 );
 
 CREATE TABLE `alocacao` (
   `matric` int(11) NOT NULL,
   `codigop` int(11) NOT NULL,
   `horas` decimal(4,2) DEFAULT NULL,
-  PRIMARY KEY (`matric`,`codigop`)
+  PRIMARY KEY (`matric`,`codigop`),
+  foreign key (matric) references empregado(matricula),
+  foreign key (codigop) references projeto(codproj)
 );
 
 CREATE TABLE `dependente` (
@@ -47,8 +50,30 @@ CREATE TABLE `dependente` (
   `matricula` int(11) NOT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `sexo` varchar(1) DEFAULT NULL,
-  PRIMARY KEY (`coddepend`,`matricula`)
+  PRIMARY KEY (`coddepend`,`matricula`),
+  foreign key (matricula) references empregado(matricula)
 );
+
+# Carga inicial
+
+insert into empregado
+(matricula, nome)
+values (9491, 'Ana');
+
+insert into empregado
+(matricula, nome)
+values (9491, 'Taciano');
+
+insert into departamento 
+(codDep, nomeDep, gerente)
+values (1, 'Vendas', 9491);
+
+insert into departamento 
+(codDep, nomeDep, gerente)
+values (2, 'Compras', 9492);
+
+update empregado set depto = 1 where matricula = '9491';
+update empregado set depto = 1 where matricula = '9492';
 
 alter table empregado add constraint empDepFK
 foreign key (depto) references departamento(codDep);
