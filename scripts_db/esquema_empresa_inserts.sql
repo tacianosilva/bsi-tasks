@@ -1,10 +1,10 @@
 insert into departamento 
-(codDep, nomeDep, gerente)
-values (3, 'RH', 9491);
+(nomeDep, gerente)
+values ('RH', 9491);
 
 insert into departamento 
-(codDep, nomeDep, gerente)
-values (4, 'Administrativo', 9492);
+(nomeDep, gerente)
+values ('Administrativo', 9492);
 
 insert into empregado
 (matricula, nome, depto)
@@ -27,77 +27,65 @@ insert into empregado
 values (9497, 'Maria', 3);
 
 INSERT INTO `projeto`
-(`codproj`,
-`nome`,
-`local`,
+(`nome`,
+`localizacao`,
 `depart`)
 VALUES
-(1,
-'Projeto X',
+('Projeto X',
 'Caicó',
 1
 );
 
 INSERT INTO `projeto`
-(`codproj`,
-`nome`,
-`local`,
+(`nome`,
+`localizacao`,
 `depart`)
 VALUES
-(2,
-'Projeto H',
+('Projeto H',
 'Caicó',
 1
 );
 
 INSERT INTO `projeto`
-(`codproj`,
-`nome`,
-`local`,
+(`nome`,
+`localizacao`,
 `depart`)
 VALUES
-(3,
-'Projeto U',
+('Projeto U',
 'Caicó',
 2
 );
 
 INSERT INTO `dependente`
-(`coddepend`,
-`matricula`,
+(`matricula`,
 `nome`,
 `sexo`)
 VALUES
-(1,
-9492,
+(9492,
 'José Filho',
 'M');
 
 INSERT INTO `dependente`
-(`coddepend`,
-`matricula`,
+(`matricula`,
 `nome`,
 `sexo`)
 VALUES
-(2,
-9493,
+(9493,
 'Umberto',
 'M');
 
 INSERT INTO `dependente`
-(`coddepend`,
-`matricula`,
+(`matricula`,
 `nome`,
 `sexo`)
 VALUES
-(1,
-9495,
+(9495,
 'Doisberto',
 'M');
 
 INSERT INTO `alocacao`
 (`matric`,
-`codigop`,
+`codProj`,
 `horas`)
 VALUES
 (9495,

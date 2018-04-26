@@ -5,8 +5,8 @@ drop table if exists empregado cascade;
 drop table if exists departamento cascade;
 
 CREATE TABLE `empregado` (
+  `matricula` int(11) NOT NULL,  
   `nome` varchar(15) NOT NULL,
-  `matricula` int(11) NOT NULL,
   `dataNasc` date DEFAULT NULL,
   `endereco` varchar(30) DEFAULT NULL,
   `sexo` char(1) DEFAULT NULL,
@@ -18,41 +18,44 @@ CREATE TABLE `empregado` (
 );
 
 CREATE TABLE `departamento` (
+  `codDep` int(11) NOT NULL AUTO_INCREMENT,
   `nomeDep` varchar(15) NOT NULL,
-  `codDep` int(11) NOT NULL,
   `gerente` int(11) NOT NULL,
-  `dataInicioGer` date DEFAULT NULL,
+  `dataInicioGerencia` date DEFAULT NULL,
   PRIMARY KEY (`codDep`),
   UNIQUE KEY `nomeDep` (`nomeDep`)
 );
 
 CREATE TABLE `projeto` (
-  `codproj` int(11) NOT NULL,
+  `codproj` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) DEFAULT NULL,
-  `local` varchar(45) DEFAULT NULL,
+  `localizacao` varchar(45) DEFAULT NULL,
   `depart` int(11) DEFAULT NULL,
-  `projetocol` int(11) DEFAULT NULL,
+  `lider` int(11) DEFAULT NULL,
   PRIMARY KEY (`codproj`),
-  foreign key (depart) references departamento(codDep) on delete set null
+  foreign key (depart) references departamento(codDep) on delete set null,
+  foreign key (lider) references empregado(matricula) on delete set null
 );
 
 CREATE TABLE `alocacao` (
+  `codAloc` int(11) NOT NULL AUTO_INCREMENT,
   `matric` int(11) NOT NULL,
-  `codigop` int(11) NOT NULL,
+  `codProj` int(11) NOT NULL,
   `horas` decimal(4,2) DEFAULT NULL,
-  PRIMARY KEY (`matric`,`codigop`)
+  PRIMARY KEY (`codAloc`)
 );
 
 CREATE TABLE `dependente` (
-  `coddepend` int(11) NOT NULL,
+  `codDepend` int(11) NOT NULL AUTO_INCREMENT,
   `matricula` int(11) NOT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `sexo` varchar(1) DEFAULT NULL,
-  PRIMARY KEY (`coddepend`,`matricula`)
+  PRIMARY KEY (`codDepend`)
 );
 
 alter table alocacao add foreign key (`matric`) references empregado(matricula) on delete restrict;
-alter table alocacao add foreign key (`codigop`) references projeto(codproj) on delete restrict;
+alter table alocacao add foreign key (`codProj`) references projeto(codproj) on delete restrict;
+
 alter table dependente add foreign key (matricula) references empregado(matricula) on delete restrict;
 
 # Carga inicial
@@ -66,12 +69,12 @@ insert into empregado
 values (9492, 'Taciano');
 
 insert into departamento 
-(codDep, nomeDep, gerente)
-values (1, 'Vendas', 9491);
+(nomeDep, gerente)
+values ('Vendas', 9491);
 
 insert into departamento 
-(codDep, nomeDep, gerente)
-values (2, 'Compras', 9492);
+(nomeDep, gerente)
+values ('Compras', 9492);
 
 update empregado set depto = 1 where matricula = '9491';
 update empregado set depto = 1 where matricula = '9492';
