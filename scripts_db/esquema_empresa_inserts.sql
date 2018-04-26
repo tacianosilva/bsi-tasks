@@ -26,7 +26,7 @@ insert into empregado
 (matricula, nome, depto)
 values (9497, 'Maria', 3);
 
-INSERT INTO `exercicio_bd`.`projeto`
+INSERT INTO `projeto`
 (`codproj`,
 `nome`,
 `local`,
@@ -38,7 +38,7 @@ VALUES
 1
 );
 
-INSERT INTO `exercicio_bd`.`projeto`
+INSERT INTO `projeto`
 (`codproj`,
 `nome`,
 `local`,
@@ -50,7 +50,7 @@ VALUES
 1
 );
 
-INSERT INTO `exercicio_bd`.`projeto`
+INSERT INTO `projeto`
 (`codproj`,
 `nome`,
 `local`,
@@ -62,7 +62,7 @@ VALUES
 2
 );
 
-INSERT INTO `exercicio_bd`.`dependente`
+INSERT INTO `dependente`
 (`coddepend`,
 `matricula`,
 `nome`,
@@ -73,7 +73,7 @@ VALUES
 'José Filho',
 'M');
 
-INSERT INTO `exercicio_bd`.`dependente`
+INSERT INTO `dependente`
 (`coddepend`,
 `matricula`,
 `nome`,
@@ -84,7 +84,7 @@ VALUES
 'Umberto',
 'M');
 
-INSERT INTO `exercicio_bd`.`dependente`
+INSERT INTO `dependente`
 (`coddepend`,
 `matricula`,
 `nome`,
@@ -95,7 +95,7 @@ VALUES
 'Doisberto',
 'M');
 
-INSERT INTO `exercicio_bd`.`alocacao`
+INSERT INTO `alocacao`
 (`matric`,
 `codigop`,
 `horas`)
