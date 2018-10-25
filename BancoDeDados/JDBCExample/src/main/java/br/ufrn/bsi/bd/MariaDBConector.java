@@ -3,6 +3,7 @@ package br.ufrn.bsi.bd;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -20,8 +21,7 @@ public class MariaDBConector {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/meubanco", "root", "admin");
 
-            System.out.println("Banco de Dados: " + con.getCatalog());
-            System.out.println();
+            PrintInfo(con);
 
             Statement stmt = con.createStatement();
             
@@ -38,5 +38,19 @@ public class MariaDBConector {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    private static void PrintInfo(Connection con) throws SQLException {
+        System.out.println("Banco de Dados: " + con.getCatalog());
+        System.out.println();
+        String queryString = "select version()";
+        Statement v = con.createStatement();
+        ResultSet rset = v.executeQuery(queryString);
+
+        while ( rset.next()) {
+          System.out.println("SGBD Version: " + rset.getString(1));
+        }
+
+        System.out.println();
     }
 }
