@@ -74,7 +74,7 @@ values ('DGC', 'Dep Geografia', null);
 
 insert into departamento
 (sigla, descricao, codGerente)
-values ('DCT', null, null);
+values ('DXT', null, null);
 
 # Adicionando Gerentes
 
