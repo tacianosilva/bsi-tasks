@@ -86,8 +86,8 @@ insert into funcionario
 (nome, sexo, dtNasc, salario, codSupervisor, codDepto)
 values ('Taciano', 'M', '1980-01-25', 2500.00, null, 2);
 
-update departamento set gerente = 1 where sigla = 'DHC';
-update departamento set gerente = 2 where sigla = 'DCT';
+update departamento set codGerente = 1 where sigla = 'DHC';
+update departamento set codGerente = 2 where sigla = 'DCT';
 
 # Adicionando Funcionários
 
