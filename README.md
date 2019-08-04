@@ -1,8 +1,16 @@
-# bsi-engenharia-software
-Repositório para Auxilio no Ensino de Engenharia de Software do BSI/CERES/UFRN - Caicó RN
+# BSI Tasks
+Repositório para Auxílio no Ensino de Programação Web, Banco de Dados e Engenharia de Software do BSI/CERES/UFRN - Caicó RN
 
-## Licença
+## Banco de Dados
 
-## Gerenciador de Tarefas
+Exemplos de código SQL encontrados na pasta *bd*.
 
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/tacianosilva/bsi-engenharia-software.svg?columns=all)](http://waffle.io/tacianosilva/bsi-engenharia-software)
+## Java
+
+Exemplos de código Java encontrados na pasta *java*.
+
+## C#
+
+Exemplos de código C# encontrados na pasta *csharp*.
+
+# Licença
