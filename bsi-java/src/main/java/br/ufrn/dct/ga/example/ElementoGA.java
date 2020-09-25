@@ -1,22 +1,22 @@
 package br.ufrn.dct.ga.example;
 
-public class ElementoGA implements Comparable {
+public class ElementoGA implements Comparable<ElementoGA> {
 
     protected String valor;
 
     protected double avaliacao;
 
-    public boolean equals(ElementoGA outro) {
+    public boolean equals(final ElementoGA outro) {
         // Usada para testar se dois indivíduos são iguais - importante
         // quando formos ver os módulos de população mais avançados
         return (valor.equals(outro.getValor()));
     }
 
-    public int compareTo(Object outro) {
+    public int compareTo(final ElementoGA outro) {
         // Será usada na hora de inserir os elementos em ordem em uma população
         // para o GA com steady state (capítulo 7)
         int retorno = -1;
-        ElementoGA aux = (ElementoGA) outro;
+        final ElementoGA aux = (ElementoGA) outro;
         if (avaliacao > aux.getAvaliacao()) {
             retorno = 1;
         }
@@ -43,11 +43,11 @@ public class ElementoGA implements Comparable {
         return (this.valor);
     }
 
-    public void setValor(String aux) {
+    public void setValor(final String aux) {
         this.valor = aux;
     }
 
-    protected void inicializaElemento(int tamanho) {
+    protected void inicializaElemento(final int tamanho) {
         int i;
         this.valor = "";
         for (i = 0; i < tamanho; ++i) {
@@ -63,11 +63,11 @@ public class ElementoGA implements Comparable {
     /* Construtores */
     /****************/
 
-    public ElementoGA(String novoValor) {
+    public ElementoGA(final String novoValor) {
         this.valor = novoValor;
     }
 
-    public ElementoGA(int tamanho) {
+    public ElementoGA(final int tamanho) {
         inicializaElemento(tamanho);
     }
 
@@ -79,9 +79,9 @@ public class ElementoGA implements Comparable {
     /* Operadores Geneticos */
     /************************/
 
-    public void mutacao(double chance) {
+    public void mutacao(final double chance) {
         int i;
-        int tamanho = this.valor.length();
+        final int tamanho = this.valor.length();
         String aux, inicio, fim;
         for (i = 0; i < tamanho; i++) {
             if (java.lang.Math.random() < chance) {
@@ -102,10 +102,10 @@ public class ElementoGA implements Comparable {
         this.mutacao(0.005);
     }
 
-    public ElementoGA crossoverUmPonto(ElementoGA outroPai) {
+    public ElementoGA crossoverUmPonto(final ElementoGA outroPai) {
         String aux1;
         ElementoGA retorno = null;
-        int pontoCorte = (new Double(java.lang.Math.random() * this.valor.length())).intValue();
+        final int pontoCorte = (Double.valueOf(java.lang.Math.random() * this.valor.length())).intValue();
         ;
         if (java.lang.Math.random() < 0.5) {
             aux1 = this.valor.substring(0, pontoCorte)
@@ -114,9 +114,9 @@ public class ElementoGA implements Comparable {
             aux1 = outroPai.getValor().substring(0, pontoCorte) + this.valor.substring(pontoCorte, this.valor.length());
         }
         try {
-            retorno = (ElementoGA) outroPai.getClass().newInstance();
+            retorno = (ElementoGA) outroPai;
             retorno.setValor(aux1);
-        } catch (Exception e) {
+        } catch (final Exception e) {
         }
         return (retorno);
     }

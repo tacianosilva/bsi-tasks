@@ -6,7 +6,7 @@ public class GA1 extends GA {
 
     public void inicializaPopulacao() {
         int i;
-        this.populacao = new Vector();
+        this.populacao = new Vector<ElementoGA>();
         for (i = 0; i < this.tamanho_populacao; ++i) {
             System.out.println("Aqui!!!");
             this.populacao.add(new ElementoGA1());

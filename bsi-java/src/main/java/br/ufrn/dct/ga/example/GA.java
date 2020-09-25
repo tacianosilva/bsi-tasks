@@ -42,14 +42,14 @@ public class GA {
          * subclasse apropriada de elementoGA
          */
         int i;
-        this.populacao = new Vector();
+        this.populacao = new Vector<ElementoGA>();
         for (i = 0; i < this.tamanho_populacao; ++i) {
             this.populacao.add(new ElementoGA());
         }
     }
 
     public void geracao() {
-        nova_populacao = new Vector();
+        nova_populacao = new Vector<ElementoGA>();
         ElementoGA pai1, pai2, filho;
         int i;
         System.out.println("Calculando nova geracao...\n");
