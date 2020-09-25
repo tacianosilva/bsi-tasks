@@ -15,20 +15,23 @@ public class MyClassTest {
     
     @Test
     public void multiplicationOfZeroIntegersShouldReturnZero() {
-        MyClass calc = new MyClass(); // MyClass is tested
+        Calculadora calc = new Calculadora(); // MyClass is tested
 
+        assertNotNull(calc, "Testa se não é nulo!");
         // assert statements
         assertEquals(0, calc.multiply(10, 0), "10 x 0 must be 0");
         assertEquals(0, calc.multiply(0, 10), "0 x 10 must be 0");
         assertEquals(0, calc.multiply(0, 0), "0 x 0 must be 0");
+        assertEquals(6, calc.multiply(2, 3), "2 x 3 must be 6");
+        assertEquals(8, calc.multiply(1, 8), "1 x 8 must be 8");
+        assertEquals(8, calc.multiply(8, 1), "8 x 1 must be 8");
         
         assertNotEquals(1, calc.multiply(1, 0), "Testa multiplicação!");
-        assertNotNull(calc, "Testa se não é nulo!");
     }
     
     @Test
     public void condicionaltTest() {
-        MyClass calc = new MyClass();
+        Calculadora calc = new Calculadora();
         
         assertEquals(Integer.MAX_VALUE-1, calc.condicional(Integer.MAX_VALUE, 1));
         assertEquals(Integer.MAX_VALUE+1, calc.condicional(1, Integer.MAX_VALUE));

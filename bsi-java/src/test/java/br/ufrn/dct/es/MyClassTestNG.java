@@ -15,7 +15,7 @@ public class MyClassTestNG {
 
     @Test
     public void multiplicationOfZeroIntegersShouldReturnZero() {
-        MyClass tester = new MyClass(); // MyClass is tested
+        Calculadora tester = new Calculadora(); // MyClass is tested
 
         // assert statements
         Integer zero = 0;

@@ -1,6 +1,6 @@
 package br.ufrn.dct.es;
 
-public class MyClass {
+public class Calculadora {
     
     public Integer multiply(final int i, final int j) {
         return i * j;
