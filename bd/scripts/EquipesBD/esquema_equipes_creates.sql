@@ -5,7 +5,7 @@ drop table if exists atividade_projeto cascade;
 drop table if exists atividade cascade;
 drop table if exists membro cascade;
 drop table if exists projeto cascade;
-drop table if exists equipe cascade;
+drop table if exists equipe cascade; 
 drop table if exists departamento cascade;
 drop table if exists funcionario cascade;
 
@@ -194,5 +194,49 @@ values ('Monitoria', 1, 2, '2018-02-26', '2018-06-30', 'Planejado', 1);
 insert into projeto(descricao, depto, responsavel, DataInicio, DataFim, situacao, equipe)
 values ('BD', 2, 1, '2018-02-26', '2018-06-30', 'Em andamento', 1);
 
-insert into projeto(descricao, depto, responsavel, DataInicio, DataFim, situacao, equipe)
-values ('ES', 1, 1, '2018-02-26', '2018-06-30', 'Concluído', 1);
+insert into projeto(descricao, depto, responsavel, DataInicio, DataFim, dataConclusao, situacao, equipe)
+values ('ES', 1, 1, '2018-02-26', '2018-06-30', '2018-05-29', 'Concluído', 1);
+
+
+INSERT INTO atividade(descricao, dataInicio, dataFim, situacao, dataConclusao) 
+	VALUES ('Preparar calendário', '2018-02-26', '2020-11-01', 'Concluído', '2020-10-01');
+INSERT INTO atividade(descricao, dataInicio, dataFim, situacao, dataConclusao) 
+	VALUES ('Preparar calendário', '2018-02-26', '2020-11-10', 'Concluído', '2020-10-02');
+INSERT INTO atividade(descricao, dataInicio, dataFim, situacao, dataConclusao) 
+	VALUES ('Consultar direção', '2018-02-26', '2020-11-02', 'Planejado', CURDATE());
+INSERT INTO atividade(descricao, dataInicio, dataFim, situacao, dataConclusao) 
+	VALUES ('Consultar direção', '2018-02-26', '2020-11-03', 'Em andamento', CURDATE());
+INSERT INTO atividade(descricao, dataInicio, dataFim, situacao, dataConclusao) 
+	VALUES ('Consultar direção', '2018-02-26', '2020-11-04', 'Planejado', CURDATE());
+INSERT INTO atividade(descricao, dataInicio, dataFim, situacao, dataConclusao) 
+	VALUES ('Emitir prestação de contas', '2018-02-26', '2020-11-10', 'Em andamento', CURDATE());
+    
+INSERT INTO atividade_membro(codAtividade, codMembro)
+	VALUES (1, 1);
+INSERT INTO atividade_membro(codAtividade, codMembro)
+	VALUES (2, 2);
+INSERT INTO atividade_membro(codAtividade, codMembro)
+	VALUES (3, 3);
+INSERT INTO atividade_membro(codAtividade, codMembro)
+	VALUES (4, 4);
+INSERT INTO atividade_membro(codAtividade, codMembro)
+	VALUES (5, 5);
+INSERT INTO atividade_membro(codAtividade, codMembro)
+	VALUES (1, 6);
+INSERT INTO atividade_membro(codAtividade, codMembro)
+	VALUES (1, 7);
+INSERT INTO atividade_membro(codAtividade, codMembro)
+	VALUES (2, 8);
+    
+INSERT INTO atividade_projeto(codAtividade, codProjeto)
+	VALUES (1, 1);
+INSERT INTO atividade_projeto(codAtividade, codProjeto)
+	VALUES (2, 2);
+INSERT INTO atividade_projeto(codAtividade, codProjeto)
+	VALUES (3, 2);
+INSERT INTO atividade_projeto(codAtividade, codProjeto)
+	VALUES (4, 3);
+INSERT INTO atividade_projeto(codAtividade, codProjeto)
+	VALUES (5, 4);
+INSERT INTO atividade_projeto(codAtividade, codProjeto)
+	VALUES (6, 2);
