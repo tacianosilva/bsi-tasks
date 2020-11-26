@@ -17,4 +17,14 @@ Exemplos de código Java encontrados na pasta *java*.
 
 Exemplos de código C# encontrados na pasta *csharp*.
 
+# Ferramentas Interessantes
+
+## ngrok - secure introspectable tunnels to localhost
+
+* ngrok [Download](https://ngrok.com/download)
+
+```bash
+  ./ngrok http -region=sa 8000
+```
+
 # Licença
