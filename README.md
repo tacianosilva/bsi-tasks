@@ -5,6 +5,10 @@ Repositório para Auxílio no Ensino de Programação Web, Banco de Dados e Enge
 
 Exemplos de código SQL encontrados na pasta *bd*.
 
+### Clientes SQL
+
+* SQuirreL SQL Client - Universal SQL Client [Download](http://squirrel-sql.sourceforge.net/)
+
 ## Java
 
 Exemplos de código Java encontrados na pasta *java*.
