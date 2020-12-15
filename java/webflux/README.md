@@ -1,6 +1,9 @@
 # Evento DoWhile da Rocketseat
 
-Criando um crud com spring webflux - programação reativa com Java.
+Workshop Criando um crud com spring webflux - programação reativa com Java.
+Ministado por [Kamila Santos](https://github.com/Kamilahsantos)
+
+Projeto [dowhile-reactive-api](https://github.com/Kamilahsantos/dowhile-reactive-api)
 
 ## Spring WebFlux
 
