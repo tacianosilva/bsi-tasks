@@ -15,21 +15,21 @@ Projeto [dowhile-reactive-api](https://github.com/Kamilahsantos/dowhile-reactive
 
 baixar a imagem do mongodb:
 
-    ```bash
-        docker pull mongo
-    ```
+```bash
+    docker pull mongo
+```
 
 rodar o container do mongodb
 
-    ```bash
-        docker run --name mongodb -p 27017:27017 -d mongo
-    ```
+```bash
+    docker run --name mongodb -p 27017:27017 -d mongo
+```
 
 verificar os processos em execução
 
-    ```bash
-        docker ps
-    ```
+```bash
+    docker ps
+```
 
 Outras fontes de informação sobre MongoDB com Docker:
 
@@ -38,12 +38,12 @@ Outras fontes de informação sobre MongoDB com Docker:
 
 ### Acessanado via Terminal
 
-    ```bash
-        sudo docker exec -it mongodb bash
-    ```
+```bash
+    sudo docker exec -it mongodb bash
+```
 
 Depois digite mongo para entrar no cliente:
 
-    ```bash
-        mongo
-    ```
+```bash
+    mongo
+```
