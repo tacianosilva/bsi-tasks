@@ -4,8 +4,6 @@ class TestClass {
     }
 }
 
-
-
 fun main() {
     println("Hello, World!")
     var obj = TestClass()
