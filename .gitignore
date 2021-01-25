@@ -4,3 +4,10 @@
 bsi-java/.vscode/settings.json
 .vscode/
 *.jar
+java/webflux/.mvn/
+java/webflux/mvnw
+java/webflux/mvnw.cmd
+kotlin/.gradle/
+kotlin/.settings/
+kotlin/.project
+kotlin/.classpath
