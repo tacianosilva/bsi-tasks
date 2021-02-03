@@ -11,3 +11,5 @@ kotlin/.gradle/
 kotlin/.settings/
 kotlin/.project
 kotlin/.classpath
+java/testes/target/
+java/testes/.settings/
