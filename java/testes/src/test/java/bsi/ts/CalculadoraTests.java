@@ -45,4 +45,11 @@ public class CalculadoraTests {
         assertNotNull(calc);
         assertEquals("Teste 4", calc.getNome());
     }
+
+    @Test
+    void testaMutiplicar() {
+        Calculadora calc = new Calculadora("Teste 5");
+
+        assertEquals(25, calc.multiply(5, 5), "5 * 5 deve resultar 25");        
+    }
 }
