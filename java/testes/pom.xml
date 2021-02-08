@@ -13,6 +13,21 @@
         <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
     </properties>
 
+    <developers>
+        <developer>
+            <id>tacianosilva</id>
+            <name>Taciano Morais Silva</name>
+            <email>tacianosilva@gmail.com</email>
+            <url>https://github.com/tacianosilva</url>
+            <organization>LABENS/UFRN</organization>
+            <organizationUrl>https://github.com/labens-ufrn</organizationUrl>
+            <roles>
+               <role>architect</role>
+               <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -43,7 +58,28 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- attached to Maven test phase -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -61,6 +97,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>3.1.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6</version>
             </plugin>
         </plugins>
     </reporting>
