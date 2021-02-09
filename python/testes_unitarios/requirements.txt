@@ -1,2 +1,6 @@
+# Cobertura dos Testes
+coverage
+
+# Checagem estática de documentação e erros
 pep8
 pylint
