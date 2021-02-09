@@ -10,11 +10,18 @@ Requisitos necessários:
     pip install coverage
 ```
 
-Executando o *coverage* e gerando relatórios em xml e html:
+Executando o *coverage* e exibindo o relatório:
 
 ```bash
     coverage run -m unittest discover
+    coverage report -m
+```
+
+Para gerar o relatórios em xml e html:
+
+```bash
     coverage xml
+    coverage html
 ```
 
 ## Usando o PyDoc e o PyLint
