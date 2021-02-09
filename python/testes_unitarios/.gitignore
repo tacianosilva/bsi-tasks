@@ -1,3 +1,4 @@
 test.env/
 __pycache__/
 *.pyc
+docs/
