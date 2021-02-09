@@ -1,0 +1,42 @@
+# Teste de Unidade em Python com unittest
+
+O arquivo `test_calculadora.py` implementa o testes de unidade para as funções no arquivo `calculadora.py`.
+
+## Cobertura dos Testes
+
+Requisitos necessários:
+
+```bash
+    pip install coverage
+```
+
+Executando o *coverage* e gerando relatórios em xml e html:
+
+```bash
+    coverage run -m unittest discover
+    coverage xml
+```
+
+## Usando o PyDoc e o PyLint
+
+Também temos a documentação com o *pydoc* e a checagem com o *pylint*.
+
+Requisitos necessários:
+
+```bash
+    pip install pep8
+    pip install pylint
+```
+
+Ver documentação e gerar documentação em html.
+
+```bash
+    pydoc calculadora.py
+    pydoc -w calculadora
+```
+
+Verificação com o *pylint*:
+
+```bash
+    pylint calculadora.py
+```
