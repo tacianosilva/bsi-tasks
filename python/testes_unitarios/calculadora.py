@@ -10,7 +10,7 @@ Para gerar documentação HTML para este módulo, comando:
 
 """
 
-def soma(x, y):
+def somar(x, y):
     """
         Soma dois números.
 
@@ -20,6 +20,19 @@ def soma(x, y):
 
     Returns:
         [int]: [retorna a soma dos dois números]
+    """
+    return x + y
+
+def multiplicar(x, y):
+    """
+        Multiplica dois números.
+
+    Args:
+        x ([int]): [valor inteiro]
+        y ([int]): [valor inteiro]
+
+    Returns:
+        [int]: [retorna o produto dos dois números]
     """
     return x + y
 

@@ -17,7 +17,7 @@ class CalculadoraTest(unittest.TestCase):
         """
             Testa a função de soma para dois números.
         """
-        self.assertEqual(calculadora.soma(3, 5), 8)
+        self.assertEqual(calculadora.somar(3, 5), 8)
 
 if __name__ == '__main__':
     unittest.main()
