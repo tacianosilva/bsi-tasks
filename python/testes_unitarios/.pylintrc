@@ -1,4 +1,10 @@
 [MASTER]
+# Exampole: https://github.com/kubeflow/examples/blob/master/.pylintrc
+
 init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
+
 # Good variable names which should always be accepted, separated by a comma
 good-names=i,j,k,ex,Run,_,pk,x,y
+
+# Bad variable names which should always be refused, separated by a comma
+bad-names=foo,bar,baz,toto,tutu,tata
