@@ -13,3 +13,4 @@ kotlin/.project
 kotlin/.classpath
 java/testes/target/
 java/testes/.settings/
+erlang/hello_world/hello_world.beam
