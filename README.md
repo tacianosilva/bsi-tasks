@@ -3,7 +3,7 @@ Repositório para Auxílio no Ensino de Programação Web, Banco de Dados e Enge
 
 ## Banco de Dados
 
-Na página [Dicas BD](bd/DICAS_DB.md) você encontra informações de como executar o **SGBD** utilizando docker e outros exemplos.
+Na página [Dicas BD](bd/README.md) você encontra informações de como executar o **SGBD** utilizando docker e outros exemplos.
 
 Exemplos de código SQL encontrados na pasta [*bd*](bd/).
 
