@@ -101,6 +101,9 @@ services:
     restart: always
     ports:
       - "5400:5432"
+    networks:
+      - postgres-compose-network
+  
   pgadmin:
     container_name: pgadmin4-compose
     image: dpage/pgadmin4
@@ -110,6 +113,10 @@ services:
       PGADMIN_DEFAULT_PASSWORD: pgadmin
     ports:
       - "16543:80"
+    depends_on:
+      - postgres
+    networks:
+      - postgres-compose-network
 
 networks: 
   postgres-compose-network:
