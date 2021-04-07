@@ -122,3 +122,13 @@ networks:
   postgres-compose-network:
     driver: bridge
 ```
+
+## Links
+
+* https://techexpert.tips/pt-br/mariadb-pt-br/mariadb-instalacao-docker/
+* https://renatogroffe.medium.com/postgresql-pgadmin-4-docker-compose-montando-rapidamente-um-ambiente-para-uso-55a2ab230b89
+* https://hashinteractive.com/blog/docker-compose-up-with-postgres-quick-tips/
+* https://mariadb.com/kb/en/installing-and-using-mariadb-via-docker/
+* https://mariadb.com/resources/blog/try-mariadb-server-10-3-in-docker/
+* https://www.pgadmin.org/
+* https://www.postgresql.org
