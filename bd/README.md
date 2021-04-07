@@ -2,6 +2,14 @@
 
 Dicas e exemplos para as disciplinas relacionadas com Banco de Dados.
 
+## Exemplos de uso de JDBC
+
+No diretório [JDBC](jdbc/) temos um projeto java com exemplos de conexões JDBC, usando drivers para o MariaDB e para o MySql.
+
+## Scripts SQL
+
+No diretório [SCRIPTS](scripts/) temos vários scripts de criação e povoamento para Base de Dados usadas nas aulas da disciplina Banco de Dados.
+
 ## Usando servidor MariaDB com Docker
 
 ### Instalação do Docker
@@ -48,10 +56,62 @@ Acesse usando o `host 127.0.0.1` e o usuário `root`:
     $ mysql -h 127.0.0.1 -u root -p
 ```
 
-## Exemplos de uso de JDBC
+## Usando servidor PostgreSQL + pgAdmin com Docker
 
-No diretório [JDBC](jdbc/) temos um projeto java com exemplos de conexões JDBC, usando drivers para o MariaDB e para o MySql.
+Para usar o SGBD do PostgreSQL usando Docker, vamos fazer de duas maneiras:
+* A primeira usando dois containers independentes e criando uma rede (network) do docker;
+* A segunda usando o docker compose para criar os dois servições numa mesma rede.
 
-## Scripts SQL
+## Maneira 1
 
-No diretório [SCRIPTS](scripts/) temos vários scripts de criação e povoamento para Base de Dados usadas nas aulas da disciplina Banco de Dados.
+Criar a rede postgres-network
+```bash
+    $ docker network create -d bridge postgres-network
+```
+
+Criar container postgres-server
+
+```bash
+docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -v $HOME/dev/docker/volumes/postgres:/var/lib/postgresql/data --network=postgres-network -d postgres
+```
+
+Criar container pgadmin-server
+
+```bash
+docker run --name pgadmin-server  -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=tacianosilva@gmail.com" -e "PGADMIN_DEFAULT_PASSWORD=pgadmin" --network=postgres-network -d dpage/pgadmin4
+```
+
+### Manaira 2
+
+A maneira 2 consiste em criarmos um arquivo `docker-compose.yml`.
+
+```yaml
+version: "3.8"
+
+services:
+  postgres:
+    container_name: postgres-compose
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=empresa_db
+      - POSTGRES_USER=taciano
+      - POSTGRES_PASSWORD=password
+    restart: always
+    ports:
+      - "5400:5432"
+  pgadmin:
+    container_name: pgadmin4-compose
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin
+    ports:
+      - "16543:80"
+
+networks: 
+  postgres-compose-network:
+    driver: bridge
+```
