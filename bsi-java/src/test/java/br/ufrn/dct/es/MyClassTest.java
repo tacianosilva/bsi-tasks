@@ -2,6 +2,7 @@ package br.ufrn.dct.es;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import org.junit.jupiter.api.Test;
@@ -36,13 +37,16 @@ public class MyClassTest {
         assertEquals(Integer.MAX_VALUE-1, calc.condicional(Integer.MAX_VALUE, 1));
         assertEquals(Integer.MAX_VALUE+1, calc.condicional(1, Integer.MAX_VALUE));
         
-        System.out.println(Integer.MAX_VALUE);
+        System.out.println("Máximo: " + Integer.MAX_VALUE);
         System.out.println(Integer.MAX_VALUE-1);
         System.out.println(Integer.MAX_VALUE+1);
+        System.out.println("Mínimo:" + Integer.MIN_VALUE);
         
         BigInteger big = new BigInteger(Integer.toString(Integer.MAX_VALUE));
         System.out.println(big);
         System.out.println(big.add(new BigInteger("1000000000")));
+        BigDecimal decimal = new BigDecimal("1.0");
+        System.out.println(decimal);
         
         assertEquals(13, calc.condicional(5, 8));
         assertEquals(1, calc.condicional(0, 1));
