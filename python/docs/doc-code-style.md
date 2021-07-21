@@ -29,7 +29,7 @@ To install it: `pip install hacking`.
 
 [flake8-docstrings](https://pypi.org/project/flake8-docstrings/) is a simple module that adds an extension for the fantastic [pydocstyle](https://github.com/pycqa/pydocstyle) tool to [flake8](https://gitlab.com/pycqa/flake8).
 
-To install it: pip install flake8-docstrings
+To install it: `pip install flake8-docstrings`
 
 ### Links consultados
 
