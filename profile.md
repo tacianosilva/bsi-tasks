@@ -10,3 +10,9 @@ I'm graduate at Licenciatura Plena em Matemática from Universidade Estadual da 
 | email      | taciano.silva@ufrn.br  |
 | skype      | tacianomorais          |
 | twitter    | @tacianosilva          |
+
+## Languages
+
+## Areas of expertise
+
+## Areas of special interest
