@@ -10,6 +10,10 @@ No diretório [JDBC](jdbc/) temos um projeto java com exemplos de conexões JDBC
 
 No diretório [SCRIPTS](scripts/) temos vários scripts de criação e povoamento para Base de Dados usadas nas aulas da disciplina Banco de Dados.
 
+## Links Interessantes
+
+* [Limitando acessos no PostgreSQL](https://ubiq.co/database-blog/how-to-limit-access-to-database-in-postgresql/)
+
 ## Usando servidor MariaDB com Docker
 
 ### Instalação do Docker
