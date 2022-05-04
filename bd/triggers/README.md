@@ -2,8 +2,26 @@
 
 ## PostgreSQL
 
-Pessoal, tivemos nosso encontro de reposição hoje e falamos sobre **trigger** no **postgresql**. 
-Que é dividido em duas partes:
+A criação de **trigger** no **postgresql**, tem uma sintaxe diferente da utilizada no _MySQL_ e _MariaDB_. Considere o seguinte esquema relacional:
+
+```plpgsql
+CREATE TABLE usuario ( 
+	id SERIAL,
+	nome VARCHAR(500) NOT NULL, 
+	email VARCHAR(100) NOT NULL,
+	PRIMARY KEY (id) 
+);
+
+CREATE TABLE finalidade ( 
+	id SERIAL,
+	user_id SERIAL NOT NULL, 
+	pontos INT NOT NULL DEFAULT '0',
+	PRIMARY KEY (id),
+	FOREIGN KEY (user_id) REFERENCES usuarios(id) 
+);
+```
+
+A criação é dividida em duas partes:
 
 1) Criação de uma função do tipo **trigger**;
 ```PLpgSQL
