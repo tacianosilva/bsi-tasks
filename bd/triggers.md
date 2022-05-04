@@ -6,7 +6,7 @@ Pessoal, tivemos nosso encontro de reposição hoje e falamos sobre **trigger** 
 Que é dividido em duas partes:
 
 1) Criação de uma função do tipo **trigger**;
-```postgresql
+```PLpgSQL
 CREATE FUNCTION inserir_cartao() 
 RETURNS trigger AS $$
 BEGIN
@@ -18,7 +18,7 @@ $$ LANGUAGE plpgsql;
 ```
 
 2) Criação do **trigger** no evento do banco de dados;
-```postgresql
+```PLpgSQL
 CREATE TRIGGER criar_cartao 
 AFTER INSERT ON usuarios
     FOR EACH ROW 
