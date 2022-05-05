@@ -47,7 +47,7 @@ $$ LANGUAGE plpgsql;
 2) Criação do **trigger** no evento do banco de dados;
 ```PLpgSQL
 CREATE TRIGGER criar_cartao 
-AFTER INSERT ON usuarios
+AFTER INSERT ON usuario
     FOR EACH ROW 
     EXECUTE FUNCTION inserir_cartao();
 ```
