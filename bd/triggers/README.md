@@ -17,7 +17,7 @@ CREATE TABLE finalidade (
 	user_id SERIAL NOT NULL, 
 	pontos INT NOT NULL DEFAULT '0',
 	PRIMARY KEY (id),
-	FOREIGN KEY (user_id) REFERENCES usuarios(id) 
+	FOREIGN KEY (user_id) REFERENCES usuario(id) 
 );
 
 CREATE TABLE venda ( 
@@ -26,7 +26,7 @@ CREATE TABLE venda (
 	valor MONEY NOT NULL,
 	user_id SERIAL NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (user_id) REFERENCES usuarios(id)
+	FOREIGN KEY (user_id) REFERENCES usuario(id)
 );
 ```
 
