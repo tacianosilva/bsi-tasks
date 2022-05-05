@@ -12,7 +12,7 @@ CREATE TABLE usuario (
 	PRIMARY KEY (id) 
 );
 
-CREATE TABLE finalidade ( 
+CREATE TABLE fidelidade ( 
 	id SERIAL,
 	user_id SERIAL NOT NULL, 
 	pontos INT NOT NULL DEFAULT '0',
