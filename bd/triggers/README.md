@@ -19,6 +19,15 @@ CREATE TABLE finalidade (
 	PRIMARY KEY (id),
 	FOREIGN KEY (user_id) REFERENCES usuarios(id) 
 );
+
+CREATE TABLE venda ( 
+	id SERIAL,
+	produto VARCHAR(250) NOT NULL, 
+	valor MONEY NOT NULL,
+	user_id SERIAL NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (user_id) REFERENCES usuarios(id)
+);
 ```
 
 A criação é dividida em duas partes:
