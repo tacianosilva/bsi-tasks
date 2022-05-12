@@ -76,7 +76,7 @@ Criar a rede postgres-network
 Criar container postgres-server
 
 ```bash
-docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -v $HOME/dev/docker/volumes/postgres:/var/lib/postgresql/data --network=postgres-network -d postgres
+docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -v $HOME/dev/docker/volumes/postgres/conf:/var/lib/postgresql -v $HOME/dev/docker/volumes/postgres/data:/var/lib/postgresql/data --network=postgres-network -d postgres
 ```
 
 Criar container pgadmin-server
