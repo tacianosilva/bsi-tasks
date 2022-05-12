@@ -82,7 +82,7 @@ docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -
 Criar container pgadmin-server
 
 ```bash
-docker run --name pgadmin-server  -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=tacianosilva@gmail.com" -e "PGADMIN_DEFAULT_PASSWORD=pgadmin" --network=postgres-network -d dpage/pgadmin4
+docker run --name pgadmin-server  -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=admin@pgamin.com" -e "PGADMIN_DEFAULT_PASSWORD=pgadmin" --network=postgres-network -d dpage/pgadmin4
 ```
 
 ### Manaira 2
