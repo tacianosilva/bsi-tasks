@@ -60,6 +60,14 @@ Acesse usando o `host 127.0.0.1` e o usuário `root`:
     $ mysql -h 127.0.0.1 -u root -p
 ```
 
+### Acessando MariaDB via CloudBeaver (dbeaver)
+
+```shell script
+sudo docker pull dbeaver/cloudbeaver:latest
+sudo docker run --name cloudbeaver --rm -ti -d -p 8080:8978 -v /var/cloudbeaver/workspace:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:latest
+```
+Informações aqui: [CloudBeaver - Run Docker Container](https://cloudbeaver.io/docs/Run-Docker-Container/)!
+
 ## Usando servidor PostgreSQL + pgAdmin com Docker
 
 Para usar o SGBD do PostgreSQL usando Docker, vamos fazer de duas maneiras:
