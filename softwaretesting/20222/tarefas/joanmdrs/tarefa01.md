@@ -3,4 +3,17 @@
 ### @joanmdrs
 ### joan.medeiros.130@ufrn.edu.br
 
+## Teste de Software - Testes de Unidade 
 
+Teste de Software é um processo que faz parte do #desenvolvimento de software, e tem como principal objetivo revelar falhas/bugs para que sejam corrigidas até que o produto final atinja a qualidade desejada / acordada.
+
+
+Profissionais que trabalham com testes (denominados analistas de testes, técnicos de testes, homologador, ou simplesmente testes) estão habituados a realizar uma bateria de testes de diferentes naturezas e propósitos, envolvendo não apenas os testes funcionais da aplicação, mas diversas outras atividades como:
+
+- avaliação da especificação de requisitos,
+- avaliação de projeto técnico,
+- verificações em outros documentos,
+- testes de performance e capacidade,
+- avaliação de interface,
+
+Existem vários tipos de teste, e um deles é o teste de unidade que se trata de testar funções simples e de resultado constante. A Unidade é a menor parte testável de um sistema. Como exemplo uma função de soma entre dois números, o resultado da soma de 1 e 2 deve sempre ser 3. Esse teste é muito importante para assegurar que a “base” do sistema, que será utilizado nas requisições, está em perfeito funcionamento.
