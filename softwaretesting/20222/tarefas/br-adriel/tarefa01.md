@@ -64,3 +64,9 @@ resultados diferentes a cada execução, de forma que uma método simples, como 
 getNome de uma classe Pessoa não receba nenhum teste de unidade, enquanto um
 método de validarCPF receba múltiplos, para que a testagem sob diferentes
 contextos seja possível.
+
+## Liguagem de programação escolhida
+
+Para a realização dessa atividade foi escolhido o uso do framework Django,
+que é escrito em Python, e possuí uma suíte de testes própria, que é baseada
+na biblioteca unittest.
