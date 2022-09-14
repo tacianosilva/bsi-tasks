@@ -29,6 +29,10 @@ Links:
 - https://github.com/rspec/rspec-rails
 
 
+# Letra D
+
+Visual studio code é uma IDE bem famosa por causa da sua facilidade de desenvolvimento, e extesões que podem ser adicionadas para melhorar o processo de desenvolvimento, ainda existe diversas integrações com diferentes ferramentas como o github. Ela tem um ferramenta de debug que auxilia o desenvolvimento e a resolução de erros encontrados.
+
 
 # Letra E
 
