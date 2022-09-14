@@ -20,3 +20,9 @@ de recursos no início de uma execução de teste.
 * Linguagem: JAVA.
 * Spring Framework.
 * JUnit.
+
+### JUnit
+JUnit é um framework que facilita o desenvolvimento e execução de testes em código Java.<br>
+Ele Fornece uma completa API (conjunto de classes) para construir os testes e Aplicações gráficas e em<br>
+modo console para executar os testes criados.
+* [Veja mais sobre o JUnit](https://junit.org/junit5/)
