@@ -31,3 +31,13 @@ modo console para executar os testes criados.
 O Spring Tool Suite é uma IDE baseada em Eclipse que dá algumas facilidades para trabalhos com o Spring no geral.<br>
 Por ser uma IDE com base no Eclipse, apenas com o adicional dos plugins do Spring Framework, a ferramenta de debug<br>
 é a mesma utilizado pelo Eclipse em sua configução padrão
+
+### Tutorial - Implementação CRUD com Spring Boot, JUnit e Mockito
+* [Spring Boot Unit Testing CRUD REST API with JUnit and Mockito](https://www.javaguides.net/2022/03/spring-boot-unit-testing-crud-rest-api-with-junit-and-mockito.html)
+
+No tutorial referenciado acima, é implementada um CRUD de funcionários.<br>
+O objetivo do tutorial é demostrar como realizar teste unitário em uma<br>
+API RESTful utilizando JUnit e Mockito.
+
+De maneira bem objetiva, são mostradas as estapas de implementação das classes<br>
+e interfaces da API, assim como os teste unitários.
