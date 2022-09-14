@@ -106,3 +106,32 @@ Com a instalação de plugins de suporte a Python o VSCode viabiliza a depuraç�
 de diferentes tipos de aplicações python, entre elas as aplicações Django,
 permitindo visualizar variáveis, executar linha a linha, e definir pontos de
 parada conforme desejado pelo usuário.
+
+## Tutoriais de CRUD e Testes em Django
+
+Os tutoriais a seguir mostram uma visão geral de como funciona uma apliacação
+Django, seua estrutura de arquivo, e dão o passo a passo de como implementar as
+funcionalidades de criação, adição, leitura e exclusão de dados salvos em uma
+base de dados.
+
+Além disso, os tutoriais também explicam a implementação dos testes,
+e as particularidades para o seu funcionamento correto, como a criação de um arquivo
+\_\_init\_\_.py e a nomeclatura dos métodos de teste.
+
+### Tutoriais de desenvolvimento de CRUD Django
+
+[Build a Django CRUD App by Using Class-Based Views :page_facing_up: :us:](https://towardsdatascience.com/build-a-django-crud-app-by-using-class-based-views-12bc69d36ab6)
+
+[Django 4 CRUD completo em \~30minutos\~ :clapper: :brazil:](https://www.youtube.com/watch?v=GGBzMpIAgz4)
+
+[Django CRUD (Create, Retrieve, Update, Delete) Function Based Views :page_facing_up: :us:](https://www.geeksforgeeks.org/django-crud-create-retrieve-update-delete-function-based-views/)
+
+### Tutoriais sobre Testes de Software em Django
+
+[Como adicionar o teste de unidade ao seu projeto Django :page_facing_up: :brazil:](https://www.digitalocean.com/community/tutorials/how-to-add-unit-testing-to-your-django-project-pt)
+
+[Introdução a testes unitários com Python e Django :clapper: :brazil:](https://www.youtube.com/watch?v=cEXt8hDyKQw)
+
+[Tutorial Django Parte 10: Testando uma aplicação web Django :page_facing_up: :brazil:](https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Django/Testing)
+
+[Writing your first Django app, part 5 :page_facing_up: :us:](https://docs.djangoproject.com/en/4.1/intro/tutorial05/)
