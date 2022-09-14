@@ -70,3 +70,26 @@ contextos seja possível.
 Para a realização dessa atividade foi escolhido o uso do framework Django,
 que é escrito em Python, e possuí uma suíte de testes própria, que é baseada
 na biblioteca unittest.
+
+## O framework de testes do Django
+
+O Django traz consigo um framework de testes muito parecido com a biblioteca
+padrão de testagem do python, a unittest, que apesar de ter um nome que remete
+apenas à testes de unidade, também funciona muito bem para testes de integração.
+
+A principal diferença entre a biblioteca padrão do python e a oferecida pelo Django
+é que a segunda adiciona ferramentas a primeira que nos permite testar aspectos
+próprios do framework de desenvolvimento, como a simulação de requisições.
+
+Por padrão, para o framework entender que um arquivo é uma suíte de testes, ele
+deverá ser nomeado começando com `test`, dessa forma, ao executar o comando de
+testagem, todos os arquivos que seguem esse padrão serão encontrados e executados
+automaticamente.
+
+#### Para mais informações...
+
+[MDN web docs](https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Django/Testing)
+
+[Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-add-unit-testing-to-your-django-project-pt)
+
+[Documentação do Django](https://docs.djangoproject.com/en/4.1/topics/testing/overview/)
