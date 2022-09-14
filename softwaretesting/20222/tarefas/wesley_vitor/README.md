@@ -1,1 +1,1 @@
-* [Tarefa 01 ]([https://docs.google.com/document/d/1rw75DlJoi22tJj3KBOfvtz0A-fXT1Q-aRXVWnkcA620/edit?usp=sharing](https://github.com/WesleyVitor/bsi-tasks/blob/master/softwaretesting/20222/tarefas/wesley_vitor/tarefa01.md))
+* [Tarefa 01 ](https://docs.google.com/document/d/1rw75DlJoi22tJj3KBOfvtz0A-fXT1Q-aRXVWnkcA620/edit?usp=sharing](https://github.com/WesleyVitor/bsi-tasks/blob/master/softwaretesting/20222/tarefas/wesley_vitor/tarefa01.md)
