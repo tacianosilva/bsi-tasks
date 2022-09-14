@@ -93,3 +93,16 @@ automaticamente.
 [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-add-unit-testing-to-your-django-project-pt)
 
 [Documentação do Django](https://docs.djangoproject.com/en/4.1/topics/testing/overview/)
+
+## Visual Studio Code
+
+O Visual Studio Code, ou VSCode, é um editor de código que oferece suporte a
+integração com repositórios git, realce de sintax para várias linguagens de
+programação, e uma variedade de plugins instaláveis que englobam desde a customização
+com temas personalizados e pacotes de ícones, até uma maior integração com
+as linguagens.
+
+Com a instalação de plugins de suporte a Python o VSCode viabiliza a depuração
+de diferentes tipos de aplicações python, entre elas as aplicações Django,
+permitindo visualizar variáveis, executar linha a linha, e definir pontos de
+parada conforme desejado pelo usuário.
