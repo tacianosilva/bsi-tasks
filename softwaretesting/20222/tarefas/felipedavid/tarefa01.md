@@ -11,3 +11,6 @@ A linguagem de testes será Go e o framework de testes que já vem com o ambient
 
 ## C. Testes
 A linguagem já vem com sistema para testes. Para criar um teste unitário para um procedimento chamado "fazerCoisa" do arquivo x.go, basta criar um arquivo x_test.go, e dentro do arquivo de testes criar um procedimento com a assinatura TestfazerCoisa(t \*testing.T). E para rodar os testes, basta digitar "go test".
+
+## D. IDE
+Eu não utilizo ambientes de desenvolvimento integrado más sim uma ferramenta pra cada tipo de tarefa. Vim para edição de código e [Delve](https://github.com/go-delve/delve)/[GDB](https://github.com/bminor/binutils-gdb) com algum fron tend completinho como [Gdlv](https://github.com/aarzilli/gdlv)/[gf2](https://github.com/nakst/gf) para debugging (muito melhor que a itegração de baixa qualidade feita por TODAS as IDEs que suportam Go que e oferecem suporte para debugging).
