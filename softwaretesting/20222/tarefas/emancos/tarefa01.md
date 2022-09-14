@@ -26,3 +26,8 @@ JUnit é um framework que facilita o desenvolvimento e execução de testes em c
 Ele Fornece uma completa API (conjunto de classes) para construir os testes e Aplicações gráficas e em<br>
 modo console para executar os testes criados.
 * [Veja mais sobre o JUnit](https://junit.org/junit5/)
+
+### IDE - Spring Tools 4 for Eclipse
+O Spring Tool Suite é uma IDE baseada em Eclipse que dá algumas facilidades para trabalhos com o Spring no geral.<br>
+Por ser uma IDE com base no Eclipse, apenas com o adicional dos plugins do Spring Framework, a ferramenta de debug<br>
+é a mesma utilizado pelo Eclipse em sua configução padrão
