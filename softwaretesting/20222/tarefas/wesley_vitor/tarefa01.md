@@ -8,6 +8,12 @@
 - wesleydemorais@gmail.com.br
 
 
+# Letra A
+
+Os testes representam uma etapa de extrema importância no processo de desenvolvimento de software, pois visam validar se a aplicação está funcionando corretamente e se atende aos requisitos especificados.
+Nesse contexto existem diversas técnicas que podem ser aplicadas em diferentes momentos e de diferentes formas para validar os aspectos principais do software. Um dos tipos de testes muito utilizados são os chamados testes de unidade no qual tentam validar a funcionalidade da menor unidade do software.
+
+
 # Letra E
 
 * [CRUD Vídeo ](https://www.youtube.com/watch?v=0k8ZguAJ82A)
