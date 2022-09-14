@@ -47,7 +47,7 @@ são os mais baratos de se construir e rápidos de executar.
 É devido a isso que essa mesma classificação sugere que os testes de unidade
 atuem como base da "pirâmide" dos testes, sendo assim os mais ambundantes no
 desenvolvimento de software, seguido dos testes de integração, que deveriam
-ser implementados em menor quantidade formando o meio da pirâmide, e dos 
+ser implementados em menor quantidade formando o meio da pirâmide, e dos
 testes de sistemas, que deveriam ser os menos numerosos, representando o topo
 da pirâmide.
 
