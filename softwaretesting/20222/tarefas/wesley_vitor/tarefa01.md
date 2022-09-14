@@ -19,6 +19,15 @@ Nesse contexto existem diversas técnicas que podem ser aplicadas em diferentes 
 
 - Framework de teste de unidade: Rspec-Rails
 
+# Letra C
+
+RSpec é uma ferramenta de desenvolvimento orientado a comportamento para programadores Ruby. BDD é uma abordagem ao desenvolvimento de software que combina Desenvolvimento Orientado a Testes, Design Orientado a Domínio, e Planejamento Orientado a Testes de Aceitação. RSpec ajuda você a fazer a parte TDD dessa equação,com foco nos aspectos de documentação e design do TDD.
+
+Links:
+
+- https://relishapp.com/rspec/rspec-rails/v/5-1/docs/gettingstarted
+- https://github.com/rspec/rspec-rails
+
 
 
 # Letra E
