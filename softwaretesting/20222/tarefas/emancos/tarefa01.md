@@ -15,3 +15,8 @@ processo ou sistema externo.<br>
 Nenhuma operação de E/S (input/output) de qualquer tipo (banco de dados, arquivo, console, rede)<br>
 exceto o registro de falhas nos testes e talvez a leitura da configuração padrão de alternância<br>
 de recursos no início de uma execução de teste.
+
+## Linguagem de programação, Framework e Testes.
+* Linguagem: JAVA.
+* Spring Framework.
+* JUnit.
