@@ -2,7 +2,7 @@
 
 :man_technologist: Adriel Faria dos Santos
 
-:octocat: br-adriel
+:octocat: [br-adriel](https://github.com/br-adriel)
 
 :envelope: adriel.fsantos@outlook.com
 
