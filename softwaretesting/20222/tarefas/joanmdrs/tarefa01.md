@@ -42,14 +42,19 @@ Além dessas duas ferramentas, também existe o Locals Window que exibe automati
 
 Estas são apenas algumas das ferramentas de debug do Visual Studio Code, pois existem muitas outras que trazem outros tipos de funcionalidades.
 
-## Tutoriais 
+## Tutorial
 
 O link abaixo mostra a criação de uma API REST em TypeScript com NodeJs, Postgres e TypeORM. No entanto, para a criação do CRUD eu não segui os passos descritos nos vídeos da playlist, eu criei minha aplicação por conta própria a partir dos meus conhecimentos e da consulta a documentação das tecnologias utilizadas. 
 
-Eu desenvolvi uma aplicação Express em TypeScript com NodeJS, MongoDB utilizando Docker e Mongoose que se trata de de uma biblioteca de Modelagem de Dados de Objeto (ODM) para MongoDB e Node.js. Para a criação dos testes, utilizei o Jest como framework de testes de unidade em conjunto com a biblioteca Supertest que permite criar simulações de requisições HTTP. 
+Eu desenvolvi uma aplicação Express em TypeScript com NodeJS, MongoDB utilizando Docker e Mongoose que se trata de uma biblioteca de Modelagem de Dados de Objeto (ODM) para MongoDB e NodeJS. Para a criação dos testes, utilizei o Jest como framework de testes de unidade em conjunto com a biblioteca Supertest que permite criar simulações de requisições HTTP. 
 
 Dessa forma, eu segui os passos do último vídeo da playlist abaixo para fazer a configuração do Jest e criação dos testes de unidade. 
 
-[Building a REST API, TypeScript, TypeORM & Postgres](https://youtube.com/playlist?list=PLdk2EmelRVLpIdCFolrwdLhCTHyeefU6W)
+* [Building a REST API, TypeScript, TypeORM & Postgres](https://youtube.com/playlist?list=PLdk2EmelRVLpIdCFolrwdLhCTHyeefU6W)
 
+## Implementação
+
+Implementar os testes foi uma boa experiência, a criação do CRUD envolveu alguns conhecimentos que eu ainda não possuía e portanto encarei isso como um desafio e coloquei à prova minhas habilidades de programador. Esta experiência me proporcionou adquirir novos conhecimentos e subir mais um degrau na minha jornada enquanto programador. Além disso, pude passar por várias etapas do desenvolvimento de software, indo desde a concepção do projeto até a implementação de testes. 
+
+* [Repositório](https://github.com/joanmdrs/crud-unid-test)
 
