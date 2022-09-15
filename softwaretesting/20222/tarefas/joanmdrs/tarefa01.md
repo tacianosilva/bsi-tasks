@@ -17,3 +17,7 @@ Profissionais que trabalham com testes (denominados analistas de testes, técnic
 - avaliação de interface,
 
 Existem vários tipos de teste, e um deles é o teste de unidade que se trata de testar funções simples e de resultado constante. A Unidade é a menor parte testável de um sistema. Como exemplo uma função de soma entre dois números, o resultado da soma de 1 e 2 deve sempre ser 3. Esse teste é muito importante para assegurar que a “base” do sistema, que será utilizado nas requisições, está em perfeito funcionamento.
+
+## Linguagem escolhida - TypeScript
+
+TypeScript é uma linguagem de programação fortemente tipada que se baseia em JavaScript, oferecendo melhores ferramentas em qualquer escala. O TypeScript adiciona sintaxe adicional ao JavaScript para oferecer suporte a uma integração mais estreita com seu editor. O código TypeScript é convertido em JavaScript, que é executado em qualquer lugar que o JavaScript;
