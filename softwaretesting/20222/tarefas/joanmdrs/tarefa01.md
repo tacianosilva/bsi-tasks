@@ -29,3 +29,15 @@ Jest é um framework de teste unitário de código aberto em JavaScript criado p
 * [Site oficial](https://jestjs.io/pt-BR/)
 * [Introdução ao Jest](https://jestjs.io/pt-BR/docs/getting-started)
 * [Configurando o Jest](https://jestjs.io/docs/configuration)
+
+## IDE utilizada - Visual Studio Code
+
+A IDE utilizada para o desenvolvimento do projeto será o Visual Studio Code, muito usada em todo o mundo e com bastantes extensões. Dentro do VSCode, existe uma guia para testes na qual é possível depurar o código, adicionar breakpoints e verificar se as funções estão corretas.
+
+Além disso, o VSCode possui integração com o GitHub, ou seja, é possível fazer commits, dar push, pull, merge, criar pull requests de dentro do software. É uma plataforma que oferece diversas vantagens e acelera o processo de desenvolvimento.
+
+Com relação a ferramentas de Debug, o VsCode possui diversas ferramentas que auxiliam este processo, como por exemplo, o DataTip que permite adicionar breakpoints nas linhas de código. Também há o QuickWatch dialog que permite inspecionar os detalhes das variaveis, facilitando a navegação, permitindo a alteração de variáveis entre outros.
+
+Além dessas duas ferramentas, também existe o Locals Window que exibe automaticamente uma lista de variáveis e seus valores, que estejam dentro do escopo de um método. Ao parar em um breakpoint a janela Locals vai exibir o nome da variável juntamente com seu valor entre outras funcionalidades. 
+
+Estas são apenas algumas das ferramentas de debug do Visual Studio Code, pois existem muitas outras que trazem outros tipos de funcionalidades.
