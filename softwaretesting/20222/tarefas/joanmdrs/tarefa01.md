@@ -21,3 +21,11 @@ Existem vários tipos de teste, e um deles é o teste de unidade que se trata de
 ## Linguagem escolhida - TypeScript
 
 TypeScript é uma linguagem de programação fortemente tipada que se baseia em JavaScript, oferecendo melhores ferramentas em qualquer escala. O TypeScript adiciona sintaxe adicional ao JavaScript para oferecer suporte a uma integração mais estreita com seu editor. O código TypeScript é convertido em JavaScript, que é executado em qualquer lugar que o JavaScript;
+
+## Framework de teste escolhido - Jest
+
+Jest é um framework de teste unitário de código aberto em JavaScript criado pelo Facebook a partir do framework Jasmine. Jest é uma das ferramentas de teste unitário mais difundidas dentro da comunidade de JavaScript. Funciona com projetos usando: Babel, TypeScript, Node, React, Angular, Vue entre outros.
+
+* [Site oficial](https://jestjs.io/pt-BR/)
+* [Introdução ao Jest](https://jestjs.io/pt-BR/docs/getting-started)
+* [Configurando o Jest](https://jestjs.io/docs/configuration)
