@@ -41,3 +41,15 @@ Com relação a ferramentas de Debug, o VsCode possui diversas ferramentas que a
 Além dessas duas ferramentas, também existe o Locals Window que exibe automaticamente uma lista de variáveis e seus valores, que estejam dentro do escopo de um método. Ao parar em um breakpoint a janela Locals vai exibir o nome da variável juntamente com seu valor entre outras funcionalidades. 
 
 Estas são apenas algumas das ferramentas de debug do Visual Studio Code, pois existem muitas outras que trazem outros tipos de funcionalidades.
+
+## Tutoriais 
+
+O link abaixo mostra a criação de uma API REST em TypeScript com NodeJs, Postgres e TypeORM. No entanto, para a criação do CRUD eu não segui os passos descritos nos vídeos da playlist, eu criei minha aplicação por conta própria a partir dos meus conhecimentos e da consulta a documentação das tecnologias utilizadas. 
+
+Eu desenvolvi uma aplicação Express em TypeScript com NodeJS, MongoDB utilizando Docker e Mongoose que se trata de de uma biblioteca de Modelagem de Dados de Objeto (ODM) para MongoDB e Node.js. Para a criação dos testes, utilizei o Jest como framework de testes de unidade em conjunto com a biblioteca Supertest que permite criar simulações de requisições HTTP. 
+
+Dessa forma, eu segui os passos do último vídeo da playlist abaixo para fazer a configuração do Jest e criação dos testes de unidade. 
+
+[Building a REST API, TypeScript, TypeORM & Postgres](https://youtube.com/playlist?list=PLdk2EmelRVLpIdCFolrwdLhCTHyeefU6W)
+
+
