@@ -42,3 +42,8 @@ Resumo:
 
 O vídeo mostra a construção de um crud de contatos para uma aplicação agenda feita em ruby on rails, na qual ele apresenta como criar uma aplicação usando a arquitetura MVC, além disso, ele mostra a construção de alguns testes usando o framework de teste rspec.
 
+# Letra F
+
+* [CRUD Repositório ](https://github.com/WesleyVitor/Agenda_rails)
+
+
