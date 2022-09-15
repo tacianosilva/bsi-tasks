@@ -46,4 +46,6 @@ O vídeo mostra a construção de um crud de contatos para uma aplicação agend
 
 * [CRUD Repositório ](https://github.com/WesleyVitor/Agenda_rails)
 
+# Letra G
 
+Mock Object são formas de criar um objeto de um modelo do seu banco de dado real dentro do seu banco de test, assim permite o programador testar métodos ou outras features que esteja relacionada o objeto em questão.
