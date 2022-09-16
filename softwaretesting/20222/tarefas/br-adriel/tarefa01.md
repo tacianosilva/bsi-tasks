@@ -135,3 +135,31 @@ e as particularidades para o seu funcionamento correto, como a criação de um a
 [Tutorial Django Parte 10: Testando uma aplicação web Django :page_facing_up: :brazil:](https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Django/Testing)
 
 [Writing your first Django app, part 5 :page_facing_up: :us:](https://docs.djangoproject.com/en/4.1/intro/tutorial05/)
+
+## Minha experiência implementando um CRUD e os testes
+
+Para praticar o desenvolvimento de testes de unidade eu criei uma aplicação
+Django com apenas um model de Tarefa e seu CRUD.
+
+Buscando maior praticidade e velocidade no desenvolvimento, eu optei por
+utilizar as Class Based Views que o Django disponibiliza, entretanto o precesso
+acabou não sendo tão rápido devido a documentação escassa que essas views
+tem, tendo inclusive uma abrodagem bastante superficial na documentação
+oficial do Django.
+
+A implementação dos testes me deixou bastante perdido a príncipio,
+porém após alguns testes implementados o processo se tornou natural.
+
+Entretanto é relevante ressaltar que a interface de execução de testes
+oferecida pelo VS Code não se integrou bem com os testes Django: apesar
+de serem listados na interface e poderem ser executados, sua execução
+aponta para testes reprovados mesmo com eles passando sem problemas
+no terminal ao executar `python manage.py test`.
+
+De acordo com minha pesquisa acerca desse problema, a causa seria que
+o VS Code se integra apenas com unittest e pytest, apesar os testes do
+Django serem baseados na biblioteca unittest, as funções adicionais
+agregadas a essa biblioteca de base faz com que esse comportamento
+estranho no VS Code ocorra.
+
+[Link para o repositorio com o CRUD desenvolvido](https://github.com/br-adriel/django-atarefado)
