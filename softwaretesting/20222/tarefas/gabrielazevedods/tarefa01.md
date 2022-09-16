@@ -12,3 +12,8 @@ O teste de unidade é realizado na menor unidade testável do código, afim de v
 ## **Linguagem de programação e Framework de Testes de Unidade**
 A linguagem de programação escolhida foi [Python](https://www.python.org/).  
 Python possui uma ferramenta nativa para teste unitário, o [Unittest](https://docs.python.org/pt-br/dev/library/unittest.html).
+
+## **Framework de Teste escolhido**
+O [Unittest](https://docs.python.org/pt-br/dev/library/unittest.html) é uma ferramenta nativa para testes da linguagem Python, por fazer parte da biblioteca padrão não é necessário instalar nenhum módulo adicional. O Unittest foi inspirado no JUnit. Suporta a automação de testes, compartilhamento de configuração e código de desligamento para testes, agregação de testes em coleções e independência dos testes do framework de relatórios. 
+
+Para criar um teste de unidade usando o Unittest temos que criar um novo arquivo de teste preferencialmente iniciando com *test_* antes do nome da unidade que vamos testar, assim reconhece automático que trata-se de um arquivo de teste. Em seguida, importar o Unittest e criar uma classe que estende a classe base *TestCase*. O ponto de cada teste é a invocação de um método **assertEqual()** para verificar se há um resultado esperado; **assertTrue()** ou **assertFalse()** para verificar uma condição; ou **assertRaises()** para verificar se uma exceção específica será levantada. Para rodar o teste na linha de comando chamamos **python -m unittest [test_name]**.
