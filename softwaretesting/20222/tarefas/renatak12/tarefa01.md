@@ -26,6 +26,7 @@ Existem vários tipos de teste, e um dos principais e mais comum é o teste de u
 
 Trata-se de uma ferramenta leve e multiplataforma que esta disponível para Windows, Mac OS e Linux, sendo executado nativamente em cada plataforma. O VSCode atende uma quantidade enorme de projetos (ASP .NET, Node.js) e oferece suporte a mais de 30 linguagens de programação como JavaScript, C#, C++, PHP, Java, HTML, R, CSS, SQL, Markdown, TypeScript, JSON, XML e Python assim como muitos outros formatos de arquivos comuns. 
 Ele é gratuito e open source, com seu código disponibilizado no GitHub, e isso permite que você contribua com seu desenvolvimento, alem de ser integrado com o mesmo, possibilitando fazer commits, dar push, pull, merge, criar pull requests, ets. Você pode baixar a versão correspondente do VSCode para a sua plataforma neste link : [download](https://code.visualstudio.com/download).
+
 Algumas das ferramentas de debug do Visual Studio Code:
 
 * DataTip: É de longe o mais utilizado, pela natureza da sua facilidade. Basta parar em um breakpoint, passar o mouse sobre alguma variável e ele estará lá para ajudar o programador.
