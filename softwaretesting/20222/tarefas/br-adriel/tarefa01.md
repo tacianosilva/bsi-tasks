@@ -163,3 +163,31 @@ agregadas a essa biblioteca de base faz com que esse comportamento
 estranho no VS Code ocorra.
 
 [Link para o repositorio com o CRUD desenvolvido](https://github.com/br-adriel/django-atarefado)
+
+## Mock objects
+
+Enquanto os testes unitários, focam em apenas uma pequena parte
+isolada do código geral, os softwares em que eles estão inseridos
+interagem e necessitam de muitos outros recursos para seu pleno
+funcionamento, como banco de dados, uma api, ou uma unidade de
+código diferente daquela em que o teste atua.
+
+Por causa dessa dependência de outras partes, alguns testes de
+unidades precisam implementar de alguma forma esse aspecto para
+que a testagem opere sobre os métodos conforme eles foram pensados.
+
+Porém, se fossem utilizados recursos reais, como a realização de
+consultas a uma api externa durante o teste, o aspecto unitário
+do teste, seu isolamento, seria perdido, o tornando um teste de
+integração.
+
+Para contornar essa problemática há adocão de Mock objects, que
+são uma espécie de imitação de um recurso real, utilizado apenas
+para a finalidade de testes.
+
+Por exemplo, para testar um método que tem como entrada uma
+chamada na api, ao invés de se realizar a chamada de fato, o que
+necessitaria o uso de recursos externos, é feita criação de
+objetos que simulam o dado que aquele método precisa para ser
+executado, ou seja, é criado uma imitação do objeto que viria
+daquela api em questão.
