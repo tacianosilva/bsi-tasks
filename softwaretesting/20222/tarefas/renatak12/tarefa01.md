@@ -51,3 +51,6 @@ Entre muitas outras.
 
 ## Mocks Objects
 
+O termo "Mock Objects" é utilizado para descrever um caso especial de objetos que imitam objetos reais para teste. Esses Mock Objects atualmente podem ser criados através de frameworks que facilitam bastante a sua criação. Praticamente todas as principais linguagens possuem frameworks disponíveis para a criação de Mock Objects. Os Mock Objects são mais uma forma de objeto de teste.
+
+Existem diversas razões para utilizarmos Mock Objects em nossos sistemas. Nos testes unitários podemos simular o comportamento de objetos reais complexos, principalmente quando estes objetos são difíceis de serem incorporados nos testes de unidade. Um exemplo disso é uma chamada remota que pode ser simulada com Mock Objects.
