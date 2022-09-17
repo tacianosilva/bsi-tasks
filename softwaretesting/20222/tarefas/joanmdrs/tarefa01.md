@@ -58,3 +58,6 @@ Implementar os testes foi uma boa experiência, a criação do CRUD envolveu alg
 
 * [Repositório](https://github.com/joanmdrs/crud-unid-test)
 
+## Mock objects
+
+Um mock object é um objeto falso no sistema que decide se o teste de unidade passou ou falhou. Ele faz isso verificando se o objeto em teste chamou o objeto falso conforme o esperado. Geralmente não há mais de uma simulação por teste.O uso de Mock Objects para testes de unidade melhora tanto código de domínio quanto suítes de teste. Eles permitem que testes de unidade sejam escritos para tudo, simplificam o teste estrutural e evita poluir o código de domínio com infraestrutura de teste.
