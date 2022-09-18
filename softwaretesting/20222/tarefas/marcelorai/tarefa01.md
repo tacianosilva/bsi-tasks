@@ -17,3 +17,9 @@ Teste de unidade é toda a aplicação de teste nas assinaturas de entrada e sa�
 ### Linguagem de programação
 
 A linguagem de programação utilizada será o *Java* e o  framework de Testes de Unidade utilizado será o *JUnit*.
+
+### JUnit
+
+O JUnit nada mais é que um framework que facilita o desenvolvimento e execução de testes de unidade em código Java. Atualmente o core deste framework está dividido em sete classes e interfaces, são elas: Assert, TestResult, Test, TestListener, TestCase, TestSuite e BaseTestRunner.
+
+[Para mais informações, clique aqui!](https://www.devmedia.com.br/testes-de-unidade-com-junit/4637#:~:text=O%20JUnit%20nada%20mais%20%C3%A9,%2C%20TestCase%2C%20TestSuite%20e%20BaseTestRunner.)
