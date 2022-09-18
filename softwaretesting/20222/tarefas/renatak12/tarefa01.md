@@ -15,14 +15,15 @@ Existem vários tipos de teste, e um dos principais e mais comum é o teste de u
 ## Linguagem de programação escolhida
 
 * Go
-
 Go é uma linguagem de programação criada pela Google e lançada em código livre em novembro de 2009. É uma linguagem compilada e focada em produtividade e programação concorrente, baseada em trabalhos feitos no sistema operacional chamado Inferno.
 
 ## Framework de testes de unidade 
 
-*
-[Descrição] 
-[link]
+* Gin
+Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance -- up to 40 times faster. If you need smashing performance, get yourself some Gin.
+
+* https://github.com/gin-gonic/gin
+* [Playlist tutorial](https://www.youtube.com/watch?v=qR0WnWL2o1Q&list=PL3eAkoh7fypr8zrkiygiY1e9osoqjoV9w)
 
 ## IDE - Visual Studio Code
 
