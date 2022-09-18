@@ -65,3 +65,15 @@ O QUnit deve ser universalmente aplicável para testar o código JavaScript e of
 O QUnit deve ser opinativo com uma API enxuta para oferecer suporte a ser fácil de usar, mas altamente extensível. Existem muitas abordagens diferentes para testes e muitos tipos diferentes de testes que os usuários podem querer escrever e, embora não possamos oferecer suporte a todos eles, podemos oferecer suporte a APIs para permitir que a comunidade estenda o QUnit para atender às suas necessidades.
 
 [link](https://qunitjs.com/)
+
+<br>
+
+## IDE e ferramenta de debug: VS Code
+
+O Visual Studio Code é um editor de código-fonte leve, mas poderoso, que é executado em sua área de trabalho e está disponível para Windows, macOS e Linux. Ele vem com suporte integrado para JavaScript, TypeScript e Node.js e possui um rico ecossistema de extensões para outras linguagens e ambientes de execução (como C++, C#, Java, Python, PHP, Go, .NET).
+
+### A depuração da instrução de impressão é coisa do passado.
+
+Código de depuração direto do editor. Inicie ou anexe seus aplicativos em execução e depure com pontos de interrupção, pilhas de chamadas e um console interativo.
+
+[link](https://code.visualstudio.com/docs)
