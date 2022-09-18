@@ -20,11 +20,12 @@ Go é uma linguagem de programação criada pela Google e lançada em código li
 
 ## Framework de testes de unidade 
 
-- Gin
+- Gin Web Framework
 
 Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance -- up to 40 times faster. If you need smashing performance, get yourself some Gin.
 
 * https://github.com/gin-gonic/gin
+* https://gin-gonic.com/
 * [Playlist tutorial](https://www.youtube.com/watch?v=qR0WnWL2o1Q&list=PL3eAkoh7fypr8zrkiygiY1e9osoqjoV9w)
 
 #
