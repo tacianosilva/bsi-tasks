@@ -14,10 +14,19 @@
     
 ## Linguagem de programação
 
-#### A tarefa foi realiza usando o Django. Django é um framework escrito em python para desenvolvimento web. O teste serão realizados no próprio Django, pois o mesmo fornece um framework de teste com uma baixa hierarquia de classes construida na biblioteca padrão unittest de Python. 
+#### A tarefa foi realiza usando o Django. O Django é um framework escrito em python para desenvolvimento web. O teste serão realizados no próprio Django, pois o mesmo fornece um framework de teste com uma baixa hierarquia de classes construida na biblioteca padrão unittest de Python. 
 
 ##### ![Python](https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png)
 
 ## Framework de teste
+
+##### Como foi citado anteriormente, Usaremos o as prórias ferramentas de de testes já integradas ao Django. Apesar do nome, o framework oferece métodos capazes de realizar teste de unidade e integração. Permitindo a simulação de entrada de dados, inspeções e saidas da sua aplicação. Além disso, ele oferece uma API e ferramentas para usar em diferentes frameworks de testes
+
+### Links
+
+#### <https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Django/Testing>
+#### <https://docs.djangoproject.com/pt-br/1.11/internals/contributing/writing-code/unit-tests/>
+#### <https://imasters.com.br/back-end/realizando-testes-em-seus-aplicativos-django>
+#### <http://waltercruz.github.io/django-l10n-portuguese/topics/testing.html>
 
 ## Ferramentas de debug
