@@ -63,3 +63,5 @@ O QUnit deve ser universalmente aplicável para testar o código JavaScript e of
 ### Extensível
 
 O QUnit deve ser opinativo com uma API enxuta para oferecer suporte a ser fácil de usar, mas altamente extensível. Existem muitas abordagens diferentes para testes e muitos tipos diferentes de testes que os usuários podem querer escrever e, embora não possamos oferecer suporte a todos eles, podemos oferecer suporte a APIs para permitir que a comunidade estenda o QUnit para atender às suas necessidades.
+
+[link](https://qunitjs.com/)
