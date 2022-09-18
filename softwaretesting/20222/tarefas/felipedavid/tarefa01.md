@@ -17,3 +17,6 @@ Eu não utilizo ambientes de desenvolvimento integrado más sim uma ferramenta p
 
 ## E. Tutorial
 [Add a test](https://go.dev/doc/tutorial/add-a-test)
+
+## F. [CRUD e testes](https://github.com/felipedavid/go_crud)
+A experiência foi O.K. :)
