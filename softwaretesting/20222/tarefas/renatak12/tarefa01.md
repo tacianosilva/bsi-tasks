@@ -46,8 +46,9 @@ Entre muitas outras.
 
 ## Tutorial CRUD
 
-[Descrição] 
-[link]
+Iniciando banco de dados com Docker e Postgres [CRUD] - Backend com Golang, Postgres e Docker.
+
+* [CRUD Videos](https://www.youtube.com/watch?v=EYgnlMWhrnM&list=PLcE-9cucnhqW7g8Uw6j1-QAgSbPpeZ6p8&index=1)
 
 ## Repositório e implementação
 
