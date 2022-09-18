@@ -14,7 +14,9 @@ Existem vários tipos de teste, e um dos principais e mais comum é o teste de u
 
 ## Linguagem de programação escolhida
 
-*
+* Go
+
+Go é uma linguagem de programação criada pela Google e lançada em código livre em novembro de 2009. É uma linguagem compilada e focada em produtividade e programação concorrente, baseada em trabalhos feitos no sistema operacional chamado Inferno.
 
 ## Framework de testes de unidade 
 
