@@ -52,8 +52,10 @@ Iniciando banco de dados com Docker e Postgres [CRUD] - Backend com Golang, Post
 
 ## Repositório e implementação
 
-[Descrição] 
-[link]
+OBS: Tentando algo diferente. Não deu muito certo!
+
+* [Repositório](https://github.com/renatak12/go-products)
+* [testes](https://github.com/renatak12/go-products/tree/main/bd/sqlc)
 
 ## Mocks Objects
 
