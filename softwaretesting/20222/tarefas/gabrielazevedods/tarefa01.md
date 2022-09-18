@@ -20,3 +20,6 @@ Para criar um teste de unidade usando o Unittest temos que criar um novo arquivo
 
 ## **IDE utilizada**
 A IDE utilizada é o [Visual Studio Code](https://code.visualstudio.com/). O Visual Studio Code é um editor de código de código aberto desenvolvido pela Microsoft, disponível para Windows, Mac e Linux. Possui um depurador de código integrado que dá suporte a depuração de algumas aplicações de maneira nativa, e permite a instalação de extensões para depuração de outras linguagens. Para debug do código, o Visual Studio Code permite adicionar Breakpoints em pontos específicos do código, basta clicar na margem esquerda do editor e eles são listados na barra de debug, com a indicação do arquivo e da linha onde está localizado, além de permitir que habilitar, desabilitar ou remover os pontos de parada do código na barra de debug.
+
+## **Testes na tecnologia escolhida**
+Aqui está o [link](https://youtu.be/WKD1hU7CNfw?list=PLbIBj8vQhvm2OT4MpkrsKDDVuZ_RlNzli) de um tutorial que mostra a construção de testes de unidade em Python. O tutorial mostra como realizar teste de unidade em funções de em um gerador de senhas aleatórias, usando TDD. Cada teste de unidade verifica se as senhas geradas estão de acordo com o que a função deve retornar, como por exemplo: se uma função que deve gerar apenas números, está retornando apenas números.
