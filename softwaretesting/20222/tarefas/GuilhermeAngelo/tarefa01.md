@@ -35,3 +35,17 @@
 #### A IDE que utilizo é o VISUAL STUDIO CODE. Ela é uma ótima interface de desenvolvimento, pois fornece multiplos recursos que auxiliam o desenvilvedor a produzir de forma mais dinâmica e fácil. Além disso, esse editor de código tem suporte para as principais plataforma ou sistemas operacionais, e oferece ferramentas de depuração, controle de versionamento git, complementação de código, entre outras funcionalidades.
 
 #### O VS Code oferece ótimas ferramentas de debug, entre elas o DataTip, QuickWatch dialog,Parallel Watch Window, entre outras funcionalidades. O DataTip serve para inspecionar variáveis, entretanto, pode deixar a desejar nos casos que a mesmas possuem muitas propriedades. Para esses cenários o QuickWatch é recomendado. Uma janela é aberta com todos os detalhes das variaveis. O da Parallel Watch Window objetivo é auxiliar o debug de processos que estão em paralelo. Ela identifica e monitora uma variável através de várias Threads. O visual studio code oferece outras ferramentas que não foram citadas.
+
+## Links Crud e Testes
+
+### Link para o tutorial - crud: 
+
+#### Webdesign em Foco: <https://www.youtube.com/watch?v=-vrXnewHrwA&list=PLbnAsJ6zlidvszSXnxplfYgtB6KQ-fZ-N>
+
+#### Esse link nos direciona para um playlist do canal Webdesign em Foco. Ela é composta por um conjunto de videos que nos ensina desde de como iniciar nosso projeto e app usando o Django e de como criarmos um Crud de um sistema de automóveis, usando o sqlite ou o mySql para realizarmos o armazenamento dos dados, e de como interagir com os respectivos banco de dados. O tutorial também ensina um pouco de funciona o Django, por exemplo de como criar templates, views e urls nas nossas aplicações web. Além de como usar um pouco o bootstrap para estilização das nossas páginas do crud. Também nos ensina como passar e utilizar parâmetros vindos de requisições.
+
+### Links para o tutorial - testes no Django: 
+
+#### pythonando: <https://www.youtube.com/watch?v=cEXt8hDyKQw>
+#### Cryce Truly: <https://www.youtube.com/watch?v=Ob8_UAgEK5w>
+#### The Dumbfounds: <https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM>
