@@ -49,3 +49,9 @@
 #### pythonando: <https://www.youtube.com/watch?v=cEXt8hDyKQw>
 #### Cryce Truly: <https://www.youtube.com/watch?v=Ob8_UAgEK5w>
 #### The Dumbfounds: <https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM>
+
+## Experiência na implementação do crud e testes:
+
+#### Foi uma experiência desafiadora, porem bem satisfatória. Nunca havia possuido nenhum contado com o Django, mas gostei bastante por sua simplicidade e funcionalidade. O Django apresenta uma abordagem diferente para o desenvolvimento das aplicações web, e pela falta de experiêcia o processo acabou sendo um pouco demorado, tanto no desenvolvimento do crud, quanto dos testes. Em relação aos teste, inicialmente, não sabia o que e como testar as funcionalidades, mas com os tutoriais e textos na internet as coisas se esclareceram um pouco. Um ponto positivo do Django em relação aos teste é que nativamente ele já possui uma "ferramenta de testes" baseada na biblioteca padrão unittest, o que para facilita para realização de alguns testes, sem necessitar de outro framework para realizar os mesmos.
+
+### LinK para o repositório: <https://github.com/GuilhermeAngelo/Crud_Django>
