@@ -23,3 +23,6 @@ A IDE utilizada é o [Visual Studio Code](https://code.visualstudio.com/). O Vis
 
 ## **Testes na tecnologia escolhida**
 Aqui está o [link](https://youtu.be/WKD1hU7CNfw?list=PLbIBj8vQhvm2OT4MpkrsKDDVuZ_RlNzli) de um tutorial que mostra a construção de testes de unidade em Python. O tutorial mostra como realizar teste de unidade em funções de em um gerador de senhas aleatórias, usando TDD. Cada teste de unidade verifica se as senhas geradas estão de acordo com o que a função deve retornar, como por exemplo: se uma função que deve gerar apenas números, está retornando apenas números.
+
+## **Implementação de Teste de Unidade**
+Aqui está o [link](https://github.com/gabrielazevedods/python-unit-test) do repositório com a implementação do teste de unidade na tecnologia escolhida. A experiência de implementar os testes de unidade em Python foi bem tranquila, pois como a linguagem fornece uma ferramenta super simples de se utilizar, com poucas linhas de código já foi possível realizar os testes. Seguindo o tutorial encontrado, fui capaz de entender como funciona o processo de teste de unidade na prática, o que foi muito bom para o aprendizado sobre testes de software.
