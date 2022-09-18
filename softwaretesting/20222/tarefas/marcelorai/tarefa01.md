@@ -1,6 +1,6 @@
 # Tarefa 01 - Teste de Unidade
 
-**Nome:** Marcelo raí Araújo
+**Nome:** Marcelo Raí Araújo
 
 **User GitHub:** marcelorai
 
