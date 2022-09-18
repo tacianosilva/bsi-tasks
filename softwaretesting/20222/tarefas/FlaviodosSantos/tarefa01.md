@@ -5,5 +5,3 @@
 - e-mail: flaviovorthrox@yahoo.com.br
 
 ---
-
-.
