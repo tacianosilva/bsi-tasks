@@ -14,13 +14,13 @@ Existem vários tipos de teste, e um dos principais e mais comum é o teste de u
 
 ## Linguagem de programação escolhida
 
-* Go
+- Go
 
 Go é uma linguagem de programação criada pela Google e lançada em código livre em novembro de 2009. É uma linguagem compilada e focada em produtividade e programação concorrente, baseada em trabalhos feitos no sistema operacional chamado Inferno.
 
 ## Framework de testes de unidade 
 
-* Gin
+- Gin
 
 Gin is a HTTP web framework written in Go (Golang). It features a Martini-like API with much better performance -- up to 40 times faster. If you need smashing performance, get yourself some Gin.
 
@@ -28,7 +28,7 @@ Gin is a HTTP web framework written in Go (Golang). It features a Martini-like A
 * [Playlist tutorial](https://www.youtube.com/watch?v=qR0WnWL2o1Q&list=PL3eAkoh7fypr8zrkiygiY1e9osoqjoV9w)
 
 
-* Insomnia
+- Insomnia
 
 Insomnia é um framework Open Source para desenvolvimento/teste de API Clients. Ele pode ser usado para envio de requisições REST, SOAP, GraphQ e GRPC. Com esta ferramenta torna-se possível realizar a documentação, automação e com a sua versão CLI tools é possível implementar testes em pipeline.
 
