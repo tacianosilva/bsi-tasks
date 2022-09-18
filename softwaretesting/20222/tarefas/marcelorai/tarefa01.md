@@ -35,3 +35,9 @@ O Visual Studio Code é um editor de código-fonte desenvolvido pela Microsoft p
 Um dos principais recursos do Visual Studio Code é seu excelente suporte à depuração. O depurador integrado do VS Code ajuda a acelerar seu loop de edição, compilação e depuração. O VS Code tem suporte de depuração integrado para o runtime do Node.js e pode depurar JavaScript, TypeScript ou qualquer outra linguagem que seja transpilada para JavaScript.
 
 [Para mais informações, clique aqui!](https://code.visualstudio.com/docs/editor/debugging)
+
+### Mocks Objects
+
+O termo *Mock Objects* é utilizado para descrever um caso especial de objetos que imitam objetos reais para teste. Esses Mock Objects atualmente podem ser criados através de frameworks que facilitam bastante a sua criação. Praticamente todas as principais linguagens possuem frameworks disponíveis para a criação de Mock Objects. Os Mock Objects são mais uma forma de objeto de teste.
+
+[Para mais informações, clique aqui!](https://www.devmedia.com.br/mocks-introducao-a-automatizacao-de-testes-com-mock-object/30641)
