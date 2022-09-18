@@ -20,3 +20,6 @@ Eu não utilizo ambientes de desenvolvimento integrado más sim uma ferramenta p
 
 ## F. [CRUD e testes](https://github.com/felipedavid/go_crud)
 A experiência foi O.K. :)
+
+## G. Mocks Objects
+Mocks objects são objetos que contém dados semelhantes aqueles que serão processados por nossa aplicação em produção, e o seu único intuito é serem processados pelos testes para garantir que as funções de CRUD se comportem de maneira esperada quando forem receber os dados reais em produção.
