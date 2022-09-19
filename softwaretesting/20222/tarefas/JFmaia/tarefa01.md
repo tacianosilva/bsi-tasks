@@ -37,3 +37,8 @@ Link para o crud feito em django com testes[Django Crud](https://github.com/JFma
 
 > "Quando fiz pela primeira vez, achei confuso, pq muita coisa é automatizada pelo Django, de tão facil que é acaba sendo complicado kkk."
 
+## Mock Objects
+
+O termo "Mock Objects" é utilizado para descrever um caso especial de objetos que imitam objetos reais para teste. Esses Mock Objects atualmente podem ser criados através de frameworks que facilitam bastante a sua criação. Praticamente todas as principais linguagens possuem frameworks disponíveis para a criação de Mock Objects. Os Mock Objects são mais uma forma de objeto de teste.
+
+As ideias e conceitos por trás dos Mock Objects surgiram através de muita experimentação, discussão e colaboração entre diversos desenvolvedores que tinham uma ideia e a evoluíram para algo mais profundo resultando em algo extremamente útil para os desenvolvedores de software.
