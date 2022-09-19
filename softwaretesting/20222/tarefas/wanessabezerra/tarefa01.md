@@ -2,7 +2,7 @@
 
 👩🏻‍💻 Wanessa da Silva Bezerra  
 :email: wanessaparelhas68@gmail.com  
-:octocat: [wanessabezerra](https://github.com/wanessabezerra)  
+:octocat:  [wanessabezerra](https://github.com/wanessabezerra)  
 
 ## Testes de Unidade  
 
@@ -27,9 +27,11 @@ Algumas caracterísicas destes testes:
 * Absolutamente necessário ter testes de unidade, principalmente se fizer refactoring de código
 * Testar as classes da menos acoplada para a mais acoplada.
 
-## Tecnologias utilizadas
+## Tecnologias Utilizadas
 
 A tecnologia escolhida foi o Django, um framework de web server-side extremamente popular e repleto de características, escrito em Python.
+
+## Framework de Teste
 
 ## Ambiente de Desenvolvimento  
 
@@ -43,10 +45,15 @@ O VS Code tem suporte de depuração integrado para o runtime do Node.js e pode 
 
 Para depurar linguagens e tempos de execução adicionais (incluindo PHP, Ruby, Go, C#, Python, C++, PowerShell etc.), procure a extensão Debuggers no VS Code Marketplace ou selecione Instalar Depuradores Adicionais no menu de tempo de execução de nível superior.  
 
-## Framework de Teste
+## Tutorial
+
+[Django](https://medium.com/djangotube/django-rest-api-curd-example-61c3a29b22ed)  
+
+[Testes automatizados](https://www.youtube.com/watch?v=B-zcHhcTtH4)
 
 ## Mocks Objects em Testes de Unidade
 
 ## Referências  
 
-[Testes de Unidade](http://www.dsc.ufcg.edu.br/~jacques/cursos/apoo/html/impl/impl3.htm)
+[Testes de Unidade](http://www.dsc.ufcg.edu.br/~jacques/cursos/apoo/html/impl/impl3.htm)  
+[Debugging](https://code.visualstudio.com/docs/editor/debugging)
