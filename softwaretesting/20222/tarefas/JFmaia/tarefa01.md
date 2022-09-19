@@ -30,3 +30,10 @@ Código de depuração direto do editor. Inicie ou anexe seus aplicativos em exe
 No tutorial abaixo você encontrar um guia completo sobre o basico do django, aprendendo de forma pratica cada passo a passo do desenvolvimento com o mesmo, no capitulo 10 você irá encontrar um capítilo recheado de tests.
 
 Acesse o tutorial agora aqui![Django tutorial](https://docs.djangoproject.com/en/4.1/intro/tutorial01/)
+
+## Crud Django
+
+Link para o crud feito em django com testes[Django Crud](https://github.com/JFmaia/locallibrary)
+
+> "Quando fiz pela primeira vez, achei confuso, pq muita coisa é automatizada pelo Django, de tão facil que é acaba sendo complicado kkk."
+
