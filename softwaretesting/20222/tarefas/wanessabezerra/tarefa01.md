@@ -53,6 +53,15 @@ Para depurar linguagens e tempos de execução adicionais (incluindo PHP, Ruby, 
 
 ## Mocks Objects em Testes de Unidade
 
+As ideias e conceitos por trás dos Mock Objects surgiram através de muita experimentação, discussão e colaboração entre diversos desenvolvedores que tinham uma ideia e a evoluíram para algo mais profundo resultando em algo extremamente útil para os desenvolvedores de software.  
+
+Mocks Objects são bastante difundidos na comunidade e na literatura de métodos ágeis Extremme Programming (XP), visto que, utilizando o XP se faz uso constante de testes através da técnica Test-Driven Development (TDD) que prega teste antes da implementação.
+
+Ainda assim, os Mock Objects possuem pouca literatura de forma geral e muitas vezes são confundidos com outras coisas como stubs que são objetos que auxiliam testes de ambientes.
+Nos testes unitários podemos simular o comportamento de objetos reais complexos, principalmente quando estes objetos são difíceis de serem incorporados nos testes de unidade.  
+
+Os Mock Objects também são muito utilizados quando temos objetos que geram resultados variáveis (por exemplo: tempo), objetos com estados difíceis de serem criados ou reproduzidos, objetos lentos como banco de dados que precisam ser inicializados antes do teste, objetos que ainda não existem ou podem ter comportamentos alterados, objetos que necessitem de informações e métodos adicionais exclusivos para os testes, entre outros.
+
 ## Referências  
 
 [Testes de Unidade](http://www.dsc.ufcg.edu.br/~jacques/cursos/apoo/html/impl/impl3.htm)  
