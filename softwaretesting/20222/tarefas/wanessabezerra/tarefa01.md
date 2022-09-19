@@ -51,6 +51,7 @@ Para depurar linguagens e tempos de execução adicionais (incluindo PHP, Ruby, 
 
 [Testes automatizados](https://www.youtube.com/watch?v=B-zcHhcTtH4)
 
+[Link do Repositório](https://github.com/wanessabezerra/Django-Tests)
 ## Mocks Objects em Testes de Unidade
 
 As ideias e conceitos por trás dos Mock Objects surgiram através de muita experimentação, discussão e colaboração entre diversos desenvolvedores que tinham uma ideia e a evoluíram para algo mais profundo resultando em algo extremamente útil para os desenvolvedores de software.  
