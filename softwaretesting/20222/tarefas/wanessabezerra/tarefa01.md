@@ -2,18 +2,18 @@
 
 👩🏻‍💻 Wanessa da Silva Bezerra  
 :email: wanessaparelhas68@gmail.com  
-:octocat: [wanessabezerra](https://github.com/wanessabezerra) |
+:octocat: [wanessabezerra](https://github.com/wanessabezerra)  
 
 ## Testes de Unidade  
-
- <img src="D:\JS\Teste\bsi-tasks\softwaretesting\20222\tarefas\wanessabezerra\testes.gif"/>  
-
- Figure 1. Testes de Unidade
 
 Os testes de software, segundo Harrold, consistem na execução do produto de
 software visando verificar a presença de erros e
 aumentar a confiança de que tal produto esteja correto.  
-Testes de unidade são a menor parte testável de um programa de computador.  
+
+<h1 align="center"><img src="softwaretesting/20222/tarefas/wanessabezerra/testes.gif"/></h1>  
+
+Figure 1. Testes de Unidade  
+Testes de unidade são a menor parte testável de um programa de computador. Na figura 1 podemos observar como funciona os testes de unidade  
 Algumas caracterísicas destes testes:  
 
 * Testar classes individuais;  
