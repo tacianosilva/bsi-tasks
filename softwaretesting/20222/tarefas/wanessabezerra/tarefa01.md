@@ -31,6 +31,22 @@ Algumas caracterísicas destes testes:
 
 A tecnologia escolhida foi o Django, um framework de web server-side extremamente popular e repleto de características, escrito em Python.
 
+## Ambiente de Desenvolvimento  
+
+O Visual Studio Code é um editor de código-fonte desenvolvido pela Microsoft. Funciona em diversos sistemas operacionais, como o Windows e Linux. Possui diversas funções interessantes para os desenvolvedores como realce de sintaxe, complementação inteligente do código, snippets, git incorporado e refatoração de código. Além disso, o VS Code ainda conta com suporte à plugins criados pela comunidade, fazendo com que se torne ainda mais completo.  
+
+Uma das principais características do Visual Studio Code é o seu grande suporte à depuração. O depurador embutido do VS Code ajuda a acelerar seu loop de edição, compilação e depuração.  
+
+### Extensões do depurador
+
+O VS Code tem suporte de depuração integrado para o runtime do Node.js e pode depurar JavaScript, TypeScript ou qualquer outra linguagem traduzida para JavaScript.  
+
+Para depurar linguagens e tempos de execução adicionais (incluindo PHP, Ruby, Go, C#, Python, C++, PowerShell etc.), procure a extensão Debuggers no VS Code Marketplace ou selecione Instalar Depuradores Adicionais no menu de tempo de execução de nível superior.  
+
 ## Framework de Teste
 
 ## Mocks Objects em Testes de Unidade
+
+## Referências  
+
+[Testes de Unidade](http://www.dsc.ufcg.edu.br/~jacques/cursos/apoo/html/impl/impl3.htm)
