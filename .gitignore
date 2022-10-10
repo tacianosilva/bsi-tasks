@@ -16,3 +16,5 @@ java/testes/.settings/
 erlang/hello_world/hello_world.beam
 bd/odbc/python_postgres/.venv/
 bd/mongodb/.venv/
+bd/python/peewee_postgres/.venv/
+bd/python/peewee_postgres/__pycache__/

@@ -1,0 +1,8 @@
+# Peewee is a simple and small ORM
+peewee==3.15.3
+
+# Postgresql database connection
+psycopg2-binary==2.9.3
+
+# Variáveis de ambiente arquivo .env
+python-decouple==3.6
