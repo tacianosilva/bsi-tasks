@@ -26,8 +26,14 @@ class Funcionario(BaseModel):
     sexo = peewee.CharField(max_length=1)
     dtnasc = peewee.DateTimeField()
     salario = peewee.DecimalField()
-    codsupervisor = peewee.IntegerField()
-    coddepto = peewee.IntegerField()
+    supervisor = peewee.ForeignKeyField('Funcionario', backref='supervisiona', column_name='codsupervisor')
+    coddepto = peewee.ForeignKeyField('Departamento', backref='funcionarios')
+
+class Departamento(BaseModel):
+    codigo = peewee.AutoField(primary_key=True)
+    sigla = peewee.CharField(max_length=10)
+    descricao = peewee.CharField(max_length=40)
+    gerente = peewee.ForeignKeyField(Funcionario, backref='gerencia', column_name='codgerente')
 
 db.connect()
 
