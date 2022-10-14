@@ -1,15 +1,14 @@
 from decouple import config
-from peewee import PostgresqlDatabase
-from peewee import Model
 import peewee
 
-db = PostgresqlDatabase(config('DATABASE_NAME'),
+# create the database connection (environment variables in .env file)
+db = peewee.PostgresqlDatabase(config('DATABASE_NAME'),
                         host=config('DATABASE_HOST'),
                         port=config('DATABASE_PORT'),
                         user=config('DATABASE_USER'),
                         password=config('DATABASE_PASS'))
 
-class BaseModel(Model):
+class BaseModel(peewee.Model):
     """Classe model base"""
 
     class Meta:
@@ -26,8 +25,9 @@ class Funcionario(BaseModel):
     sexo = peewee.CharField(max_length=1)
     dtnasc = peewee.DateTimeField()
     salario = peewee.DecimalField()
-    supervisor = peewee.ForeignKeyField('Funcionario', backref='supervisiona', column_name='codsupervisor')
-    coddepto = peewee.ForeignKeyField('Departamento', backref='funcionarios')
+    supervisor = peewee.ForeignKeyField('self', backref='supervisiona', column_name='codsupervisor')
+    depto = peewee.DeferredForeignKey('Departamento', backref='funcionarios')
+
 
 class Departamento(BaseModel):
     codigo = peewee.AutoField(primary_key=True)
@@ -35,6 +35,11 @@ class Departamento(BaseModel):
     descricao = peewee.CharField(max_length=40)
     gerente = peewee.ForeignKeyField(Funcionario, backref='gerencia', column_name='codgerente')
 
-db.connect()
 
-# db.create_tables([Funcionario])
+def initialize():
+    """Connect and create tables if they don't exist"""
+    db.connect()
+    # the database must be created in the DBMS
+    db.create_tables([Funcionario, Departamento], safe=True)
+    # creates the dereferenced foreign key (circular key), same as "ALTER TABLE ADD CONSTRAINT"
+    Funcionario._schema.create_foreign_key(Funcionario.depto)
