@@ -25,7 +25,7 @@ class Funcionario(BaseModel):
     sexo = peewee.CharField(max_length=1)
     dtnasc = peewee.DateTimeField()
     salario = peewee.DecimalField()
-    supervisor = peewee.ForeignKeyField('self', backref='supervisiona', column_name='codsupervisor')
+    supervisor = peewee.ForeignKeyField('self', backref='supervisiona', column_name='codsupervisor', null=True)
     depto = peewee.DeferredForeignKey('Departamento', backref='funcionarios')
 
 
@@ -33,13 +33,23 @@ class Departamento(BaseModel):
     codigo = peewee.AutoField(primary_key=True)
     sigla = peewee.CharField(max_length=10)
     descricao = peewee.CharField(max_length=40)
-    gerente = peewee.ForeignKeyField(Funcionario, backref='gerencia', column_name='codgerente')
+    gerente = peewee.ForeignKeyField(Funcionario, backref='gerencia', column_name='codgerente', null=True)
 
 
 def initialize():
     """Connect and create tables if they don't exist"""
     db.connect()
-    # the database must be created in the DBMS
-    db.create_tables([Funcionario, Departamento], safe=True)
-    # creates the dereferenced foreign key (circular key), same as "ALTER TABLE ADD CONSTRAINT"
-    Funcionario._schema.create_foreign_key(Funcionario.depto)
+
+    try:
+        # the database must be created in the DBMS
+        db.create_tables([Funcionario, Departamento], safe=True)
+        # creates the dereferenced foreign key (circular key), same as "ALTER TABLE ADD CONSTRAINT"
+        Funcionario._schema.create_foreign_key(Funcionario.depto)
+        print("Tabelas criadas com sucesso!")
+    except peewee.OperationalError as oe:
+        print(oe.message)
+        print("Tabelas já existem!")
+    except peewee.ProgrammingError as pe:
+        print(pe)
+    db.close()
+    db.connect()
