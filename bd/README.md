@@ -14,9 +14,7 @@ No diretório [SCRIPTS](scripts/) temos vários scripts de criação e povoament
 
 * [Limitando acessos no PostgreSQL](https://ubiq.co/database-blog/how-to-limit-access-to-database-in-postgresql/)
 
-## Usando servidor MariaDB com Docker
-
-### Instalação do Docker
+## Instalação do Docker
 
 O tutorial [how-to-install-and-use-docker-on-ubuntu-20-04-pt](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt) da digitalocean traz detalhes para a instalação do docker na sua máquina. Você também pode acessar o [Site Oficial do Docker](https://docs.docker.com/engine/install/ubuntu/).
 
@@ -26,7 +24,7 @@ Siga os passos 1 e 2 do tutorial e verifique se o daemon foi iniciado e o proces
    $ sudo systemctl status docker
 ```
 
-### Executando container do Servidor MariaDB
+## Executando container do Servidor MariaDB
 
 Antes de executar o container, baixe a imagem do `mariadb`:
 
@@ -67,6 +65,51 @@ sudo docker pull dbeaver/cloudbeaver:latest
 sudo docker run --name cloudbeaver --rm -ti -d -p 8080:8978 -v /var/cloudbeaver/workspace:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:latest
 ```
 Informações aqui: [CloudBeaver - Run Docker Container](https://cloudbeaver.io/docs/Run-Docker-Container/)!
+
+## Executando container do Servidor MySql
+
+Antes de executar o container, baixe a imagem do `mysql`:
+
+```bash
+    $ docker pull mysql
+```
+
+Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
+
+```bash
+    $ mkdir $HOME/docker/volumes/mysqldb
+```
+
+Agora inicie o container:
+
+```bash
+   $ docker run -d --name mysqlserver-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=docker" -v $HOME/docker/volumes/mysqldb:/var/lib/mysql mysql
+```
+
+### Acessando via MySql Client
+
+Se não tiver, instale o cliente de acesso ao SGBD:
+
+```bash
+    $ sudo apt install mysql-client
+```
+
+Acesse usando o `host 127.0.0.1` e o usuário `root`:
+
+```bash
+    $ mysql -h 127.0.0.1 -u root -p
+```
+
+Se você estiver utilizando o **MySql Server**, precisará descobrir o IP do container para poder acessar usando o cliente de linha de comando. Como o servidor mysql está sendo executado em um container o acesso pelo localhost (127.0.0.1) não vai funcionar e apresentará a mensagem de erro: `ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'`. Fonte: https://www.baeldung.com/docker-cant-connect-local-mysql
+
+```bash
+$ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql-server
+```
+Retornará um ou mais IPs de acesso como o IP: 172.17.0.3. Desta forma, a chamada para o cliente será:
+
+```bash
+    $ mysql -h 172.17.0.3 -u root -p
+```
 
 ## Usando servidor PostgreSQL + pgAdmin com Docker
 
