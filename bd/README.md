@@ -21,48 +21,48 @@ O tutorial [how-to-install-and-use-docker-on-ubuntu-20-04-pt](https://www.digita
 Siga os passos 1 e 2 do tutorial e verifique se o daemon foi iniciado e o processo habilitado a iniciar no boot. Verifique se ele está funcionando:
 
 ```bash
-   $ sudo systemctl status docker
+$ sudo systemctl status docker
 ```
 
 ## Executando container do Servidor MariaDB
 
 Antes de executar o container, baixe a imagem do `mariadb`:
 
-```bash
-    $ docker pull mariadb
+```console
+$ docker pull mariadb
 ```
 
 Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
 
-```bash
-    $ mkdir $HOME/docker/volumes/mariadb
+```console
+$ mkdir $HOME/docker/volumes/mariadb
 ```
 
 Agora inicie o container:
 
-```bash
-   $ docker run -d --name mariadb-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=docker" -v $HOME/docker/volumes/mariadb:/var/lib/mysql mariadb
+```console
+$ docker run -d --name mariadb-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=password" -v $HOME/docker/volumes/mariadb:/var/lib/mysql mariadb
 ```
 
 ### Acessando via MariaDB Cli (MySql Cli)
 
 Se não tiver, instale o cliente de acesso ao SGBD:
 
-```bash
-    $ sudo apt install mysql-client
+```console
+$ sudo apt install mysql-client
 ```
 
 Acesse usando o `host 127.0.0.1` e o usuário `root`:
 
-```bash
-    $ mysql -h 127.0.0.1 -u root -p
+```console
+$ mysql -h 127.0.0.1 -u root -p
 ```
 
 ### Acessando MariaDB via CloudBeaver (dbeaver)
 
-```shell script
-sudo docker pull dbeaver/cloudbeaver:latest
-sudo docker run --name cloudbeaver --rm -ti -d -p 8080:8978 -v /var/cloudbeaver/workspace:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:latest
+```console
+$ sudo docker pull dbeaver/cloudbeaver:latest
+$ sudo docker run --name cloudbeaver --rm -ti -d -p 8080:8978 -v /var/cloudbeaver/workspace:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:latest
 ```
 Informações aqui: [CloudBeaver - Run Docker Container](https://cloudbeaver.io/docs/Run-Docker-Container/)!
 
@@ -70,45 +70,60 @@ Informações aqui: [CloudBeaver - Run Docker Container](https://cloudbeaver.io/
 
 Antes de executar o container, baixe a imagem do `mysql`:
 
-```bash
-    $ docker pull mysql
+```console
+$ docker pull mysql
 ```
 
 Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
 
-```bash
-    $ mkdir $HOME/docker/volumes/mysqldb
+```console
+$ mkdir $HOME/docker/volumes/mysqldb
 ```
 
 Agora inicie o container:
 
-```bash
-   $ docker run -d --name mysqlserver-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=docker" -v $HOME/docker/volumes/mysqldb:/var/lib/mysql mysql
+```console
+$ docker run -d --name mysqlserver-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=password" -v $HOME/docker/volumes/mysqldb:/var/lib/mysql mysql
 ```
 
 ### Acessando via MySql Client
 
-Se não tiver, instale o cliente de acesso ao SGBD:
+Para utilizar o **MySql Client** podemos instalar diretamente no sistema ou utilizar o docker para executá-lo.
 
-```bash
-    $ sudo apt install mysql-client
+Instalando o **MySQL Client** no sistema para acesso ao SGBD:
+
+```console
+$ sudo apt install mysql-client
 ```
 
 Acesse usando o `host 127.0.0.1` e o usuário `root`:
 
-```bash
-    $ mysql -h 127.0.0.1 -u root -p
+```console
+$ mysql -h 127.0.0.1 -u root -p
 ```
 
-Se você estiver utilizando o **MySql Server**, precisará descobrir o IP do container para poder acessar usando o cliente de linha de comando. Como o servidor mysql está sendo executado em um container o acesso pelo localhost (127.0.0.1) não vai funcionar e apresentará a mensagem de erro: `ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'`. Fonte: https://www.baeldung.com/docker-cant-connect-local-mysql
+:warning: Ao executar o comando acima de acesso pode surgir a mensagem de erro: <span style="color:red">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'`</span>. Como o servidor mysql está sendo executado em um container ele não está habilitado para o acesso via localhost (127.0.0.1).
 
-```bash
+:pushpin: Se você estiver utilizando o **MySql Server**, precisará descobrir o IP do container para poder acessar usando o cliente de linha de comando. Fonte: https://www.baeldung.com/docker-cant-connect-local-mysql
+
+```console
 $ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql-server
+172.17.0.3
 ```
 Retornará um ou mais IPs de acesso como o IP: 172.17.0.3. Desta forma, a chamada para o cliente será:
 
-```bash
-    $ mysql -h 172.17.0.3 -u root -p
+```console
+$ mysql -h 172.17.0.3 -u root -p
+```
+
+:pushpin: Outra solução é executar o cliente via o container docker e configurar o servidor MySQL para permitir acesso via localhost. Fonte: https://sidroniolima.com.br/blog/2020/08/12/instalacao-mysql-via-docker-com-acesso-pelo-workbench/
+
+```console
+$ docker exec -it mysql-server mysql -u root -p
+```
+Execute o seguinte comando `SQL`:
+```sql
+grant all privileges on *.* to 'root'@'%' identified by 'password' with grant option;
 ```
 
 ## Usando servidor PostgreSQL + pgAdmin com Docker
@@ -120,19 +135,19 @@ Para usar o SGBD do PostgreSQL usando Docker, vamos fazer de duas maneiras:
 ## Maneira 1
 
 Criar a rede postgres-network
-```bash
-    $ docker network create -d bridge postgres-network
+```console
+$ docker network create -d bridge postgres-network
 ```
 
 Criar container postgres-server
 
-```bash
-docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -v $HOME/dev/docker/volumes/postgres/conf:/var/lib/postgresql -v $HOME/dev/docker/volumes/postgres/data:/var/lib/postgresql/data --network=postgres-network -d postgres
+```console
+$ docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -v $HOME/dev/docker/volumes/postgres/conf:/var/lib/postgresql -v $HOME/dev/docker/volumes/postgres/data:/var/lib/postgresql/data --network=postgres-network -d postgres
 ```
 
 Criar container pgadmin-server
 
-```bash
+```console
 docker run --name pgadmin-server  -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=admin@pgamin.com" -e "PGADMIN_DEFAULT_PASSWORD=pgadmin" --network=postgres-network -d dpage/pgadmin4
 ```
 
