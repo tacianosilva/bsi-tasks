@@ -123,7 +123,8 @@ $ docker exec -it mysql-server mysql -u root -p
 ```
 Execute o seguinte comando `SQL`:
 ```sql
-grant all privileges on *.* to 'root'@'%' identified by 'password' with grant option;
+grant all privileges on *.* to 'root'@'%' with grant option;
+flush privileges;
 ```
 
 ## Usando servidor PostgreSQL + pgAdmin com Docker
