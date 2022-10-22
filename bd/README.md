@@ -13,6 +13,7 @@ No diretório [SCRIPTS](scripts/) temos vários scripts de criação e povoament
 ## Links Interessantes
 
 * [Limitando acessos no PostgreSQL](https://ubiq.co/database-blog/how-to-limit-access-to-database-in-postgresql/)
+* [Start a Remote MySQL Server with Docker quickly](https://medium.com/@backslash112/start-a-remote-mysql-server-with-docker-quickly-9fdff22d23fd)
 
 ## Instalação do Docker
 
@@ -20,7 +21,7 @@ O tutorial [how-to-install-and-use-docker-on-ubuntu-20-04-pt](https://www.digita
 
 Siga os passos 1 e 2 do tutorial e verifique se o daemon foi iniciado e o processo habilitado a iniciar no boot. Verifique se ele está funcionando:
 
-```bash
+```console
 $ sudo systemctl status docker
 ```
 
