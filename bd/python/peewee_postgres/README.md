@@ -6,7 +6,7 @@ Peewee is a simple and small ORM.
 ## Requisitos
 
 Criar ambiente virtual chamando `.venv`:
-```bash
+```console
 python3 -m venv .venv
 ```
 
@@ -28,7 +28,7 @@ DATABASE_PORT=5432
 ```
 
 Ativar ambiente virtual, carregar variáveis de ambiente do arquivo `.env` e instalar dependências definidas no arquivo `requirements.txt`.
-```bash
+```console
 source .venv/bin/activate
 source .env
 pip install -r requirements.txt
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 ## Execução
 
-```bash
+```console
 python main.py
 ```
 
@@ -44,3 +44,5 @@ python main.py
 
 * http://docs.peewee-orm.com/en/latest/peewee/models.html
 * https://docs.peewee-orm.com/en/latest/peewee/example.html
+* http://docs.peewee-orm.com/en/latest/peewee/api.html
+* https://zetcode.com/python/peewee/
