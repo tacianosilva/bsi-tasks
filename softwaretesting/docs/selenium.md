@@ -40,3 +40,6 @@ class PlayerFormTest(LiveServerTestCase):
 
 ### Links
 * https://ordinarycoders.com/blog/article/testing-django-selenium
+* https://oasis-living.com/blog/django-selenium
+* https://www.selenium.dev/pt-br/documentation/webdriver/getting_started/install_drivers/#quick-reference
+* https://github.com/SergeyPirogov/webdriver_manager#use-with-chrome
