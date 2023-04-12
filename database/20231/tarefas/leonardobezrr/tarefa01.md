@@ -2,10 +2,20 @@
 </h1>
 ° Leonardo Alves </br>
 ° leonardobezrr </br>
-° leonardobezerra05@gmail.com</br>
+° leonardobezerra05@gmail.com</br></br>
 a) Descreva o que é um Banco de Dados e o que é um Sistema Gerenciador de Banco de Dados. Cite exemplos de Bancos de Dados e seus SGBDs.
-</br></br>
-b)Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados.</br></br>
+</br><strong>
+    Um banco de dados pode ser considerado um conjunto de dados organizados, com o intuito de promover facilidade para o usuário na hora de buscar por algum dado.</br>
+    Um SGBD é um software desenvolvido para manipular, gerenciar e criar bancos de dados. Ele é utilizado para garantir que o acesso aos dados sejam seguros, eficientes e precisos. O SGBD permite que o usuário altere, pesquise ou até mesmo recupere infomações do banco de dados.</br>
+    Ex.:</br>
+    ° MySQL</br>
+    ° Oracle</br>
+    ° Microsoft, Microsoft SQL server
+</strong></br>
+
+b)Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados.</br><strong>
+    
+</strong></br>
 c)O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).</br>
 </br>
 d)Pesquise sobre as várias notações possíveis para Diagramas ER, cite alguns exemplos de notações diferentes para o mesmo conceito (ex: Cardinalidade, Entidade Subordinada, etc).</br>
