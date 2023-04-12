@@ -14,7 +14,7 @@ a) Descreva o que é um Banco de Dados e o que é um Sistema Gerenciador de Banc
 </strong></br>
 
 b)Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados.</br><strong>
-    
+    Um dos principais problemas em usar os de Sistemas de Arquivos para armazenagem de dados é a redundância dos mesmos, pois cada arquivo é tratado separadamente, implicando em uma grande possibilidade dos dados serem replicados. Além disso, qualquer pessoa que possua acesso ao sistema de arquivos pode visualizar, editar e excluir os mesmos, ou seja, há um falta de segurança. Ademais, eles possuem uma escalabilidade limitada.
 </strong></br>
 c)O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).</br>
 </br>
