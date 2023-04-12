@@ -24,5 +24,9 @@ Três elementos básicos de um Modelo Entidade Relacionamento:</br>
 </strong>
 </br></br>
 d)Pesquise sobre as várias notações possíveis para Diagramas ER, cite alguns exemplos de notações diferentes para o mesmo conceito (ex: Cardinalidade, Entidade Subordinada, etc).</br>
+<strong>
+° Notação de Peter Chen -> Utiliza de retângulos para representar entidades, diamantes para representar relacionamentos e setas para indicar a direção do relacionamento, sejam eles de grau binário (envolva duas entidades) ou de grau "n" (envolva várias entidades)</br>
+° Notação de Bachman -> Utiliza de uma representação gráfica semelhante à um fluxograma. Enquanto as entidades são representadas com caixas retangulares, os relacionamentos são representados por linhas conectando as caixas. Essa noção também inclui símbolos para representar os tipos de relacionamentos.</br>
+</strong>
 </br>
 e)Construa um Diagrama ER para projetar uma base de dados de um Sistema de Controle de Freqüência de Empregados de uma organização. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras 
