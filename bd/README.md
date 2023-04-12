@@ -17,7 +17,7 @@ No diretório [SCRIPTS](scripts/) temos vários scripts de criação e povoament
 
 ## Instalação do Docker
 
-O tutorial [how-to-install-and-use-docker-on-ubuntu-20-04-pt](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt) da digitalocean traz detalhes para a instalação do docker na sua máquina. Você também pode acessar o [Site Oficial do Docker](https://docs.docker.com/engine/install/ubuntu/).
+O tutorial [how-to-install-and-use-docker-on-ubuntu-22-04-pt](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)) da digitalocean traz detalhes para a instalação do docker na sua máquina. Você também pode acessar o [Site Oficial do Docker](https://docs.docker.com/engine/install/ubuntu/).
 
 Siga os passos 1 e 2 do tutorial e verifique se o daemon foi iniciado e o processo habilitado a iniciar no boot. Verifique se ele está funcionando:
 
