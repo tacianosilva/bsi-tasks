@@ -8,7 +8,9 @@ andersonsilva14.2017@gmail.com </p>
 </h3>
 
 #
-a. Descreva o que é um Banco de Dados e o que é um Sistema Gerenciador de Banco de Dados. Cite exemplos de Bancos de Dados e seus SGBDs. 
+A. Banco de Dados, é o armazenamento e organização de informações relacionais, de forma eletronicamente, para que aja uma recuperação e modificação eficiente e segura desses dados. Exemplos: Relacional e Não-Relacional.
+
+Já SGBDs, são softwares que tem o objetivo de gerir bases de dados, possibilitando criar, modificar e eliminar essas bases e inserir e eliminar dados. Exemplos: PostgreSQL, MySQL, SQL-Server.
 
     
 #
