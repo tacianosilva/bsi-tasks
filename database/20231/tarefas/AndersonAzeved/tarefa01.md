@@ -32,6 +32,14 @@ B. Os principais problemas de utilizar Sistemas de Arquivos para armazenar dados
 #
 #
 C. 
+- Entidades: São um objeto do mundo real ou conceitos e que possuem existência independente, como exemplos: carro, casa, empresa, entre outras. No diagrama ER, são representadas por um triângulo.  
+
+- Relacionamentos: São as associações entre duas ou mais entidades que possuem significado e importância para o domínio do problema. Existem três tipos de relacionamentos: 
+    - UM PARA UM (1:1)
+    - UM PARA MUITOS (1:N)
+    - MUITOS PARA MUITOS (N:N) </p>
+
+- Atributos: São as características ou propriedades das entidades, onde essas podem ter um ou mais atributos. Como exemplo, a entidade pessoa possue os atributos nomes, idade, endereço e data de nascimento. 
 
 
 #
