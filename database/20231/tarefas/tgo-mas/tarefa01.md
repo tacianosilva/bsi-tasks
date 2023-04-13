@@ -8,3 +8,4 @@ Email: talmeidasf@gmail.com
 
 a. Banco de Dados são estruturas organizadas estrategicamente para armazenar dados de um ou mais sistemas de forma eficiente e em esquemas, por exemplo o MySql, mongoDB, ou um gerenciamento em arquivo, que não é o ideal mas não deixa de ser um Banco. Já os SGBDs são sistemas complexos para possibilitar a criação e manutenção dos Bancos de Dados. Exemplos de SGBDs são o PostgreSQL, Oracle, MySql Workbench, etc.
 
+b. Os sistemas de arquivos dificultam muitos processos utilizados nos BDs, como a busca, necessitando de algoritmos complexos para realizar buscas eficientes. Além disso, a separação e integridade dos dados é comprometida, estando geralmente armazenados de forma aleatória. Além disso, os riscos aumentam, como por exemplo o de perder os dados em algum prejuízo físico do armazenamento utilizado.
