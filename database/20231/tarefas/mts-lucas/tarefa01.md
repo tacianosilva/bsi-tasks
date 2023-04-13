@@ -1,3 +1,5 @@
+# Tarefa 01
+
 ## Descreva o que é um Banco de Dados e o que é um Sistema Gerenciador de Banco de Dados. Cite exemplos de Bancos de Dados e seus SGBDs.
 
 Bancos de dados são agrupamentos de informações que se co-relacionam, que são estruturados de e armazenados de forma que possam ser acessadas, gerenciadas e modificadas. Um sistema Gerenciador de Banco de dados (SGBD) é um software que permite a criação e administração de bancos de dados, oferecendo recursos de criação, modificação e consulta dos dados.
@@ -28,3 +30,21 @@ O modelo Entidade Relacionamento representa dados em forma de objetos que podem 
 
 3 - Relacionamentos: Como o nome diz, os relacionamentos são as conexões que diferentes entidades podem ter entre si, seguindo o exemplo do cliente, pode existir uma entidade COMPRA, que tem de estar relacionada a um cliente, e tambem está relacionada a um produto.
 
+## Pesquise sobre as várias notações possíveis para Diagramas ER, cite alguns exemplos de notações diferentes para o mesmo conceito (ex: Cardinalidade, Entidade Subordinada, etc).
+
+### Modelos de dados conceitual
+
+Citarei algumas dos diferentes tipo de Notações para diagramas ER:
+
+- Notação de Peter Chen: é a notação mais antiga e mais utilizada. Nesse modelo, as entidades são representadas por retângulos, os relacionamentos por losangos e os atributos por circulos(elipses).
+
+- Notação de Martin: é uma notação que utiliza símbolos mais simples. Nessa notação, as entidades são representadas por retângulos, os relacionamentos por linhas e os atributos por elipses. 
+
+- Notação de Barker: é uma notação que foi desenvolvida a partir da notação de Chen. Nessa notação, as entidades são representadas por retângulos, os relacionamentos por losangos e os atributos por elipses. Essa notação utiliza diferentes tipos de linhas para representar a cardinalidade dos relacionamentos.
+
+- Notação de Merise: Nessa notação, as entidades são representadas por retângulos, os relacionamentos por losangos e os atributos por elipses. Além disso, essa notação utiliza diferentes tipos de linhas para representar a cardinalidade dos relacionamentos.
+
+Tratando de representações diferentes para o mesmo conceito irei citar o conceito de cardinalidade:
+
+
+- Cardinalidade: na notação de Chen, a cardinalidade é representada por uma linha com um número de cada lado do losango que representa o relacionamento. Na notação de Barker, a cardinalidade é representada por diferentes tipos de linhas. Na notação de Merise, a cardinalidade é representada por uma linha com uma seta apontando para a entidade com a cardinalidade máxima.
