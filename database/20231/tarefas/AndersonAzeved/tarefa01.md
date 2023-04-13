@@ -1,18 +1,26 @@
 <h1>Tarefa 01 - Conceitos BD e MER</h1>
-
-
 <h3>
-Anderson Azevedo da Silva </p>
-AndersonAzeved </p>
-andersonsilva14.2017@gmail.com </p>
+Anderson Azevedo da Silva </br>
+AndersonAzeved </br>
+andersonsilva14.2017@gmail.com </br>
 </h3>
 
-#
-A. Banco de Dados, é o armazenamento e organização de informações relacionais, de forma eletronicamente, para que aja uma recuperação e modificação eficiente e segura desses dados. Exemplos: Relacional e Não-Relacional.
 
-Já SGBDs, são softwares que tem o objetivo de gerir bases de dados, possibilitando criar, modificar e eliminar essas bases e inserir e eliminar dados. Exemplos: PostgreSQL, MySQL, SQL-Server.
+#
+#
+A. Banco de Dados, é o armazenamento e organização de informações relacionais, de forma eletronicamente, para que aja uma recuperação e modificação eficiente e segura desses dados. 
+</br>Exemplos: 
+- Relacional 
+- Não-Relacional.
+
+</br>Já SGBDs, são softwares que tem o objetivo de gerir bases de dados, possibilitando criar, modificar e eliminar essas bases e inserir e eliminar dados. </br>
+Exemplos:
+- PostgreSQL
+- MySQL
+- SQL-Server.
 
     
+#
 #
 b. Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados.
 
