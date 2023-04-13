@@ -22,8 +22,12 @@ Exemplos:
     
 #
 #
-b. Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados.
-
+B. Os principais problemas de utilizar Sistemas de Arquivos para armazenar dados são: </br>
+- Fragilidade: hardware ou software são sujeitos a falhas, deixando os sistemas de arquivos vulneráveis, possibilitando uma possível perda de dados.</p>
+- Dificuldade de gerenciamento: contando com vários diretórios, pastas e arquivos, gerenciar o armazenamento de dados, pode tornar difícil.</p>
+- Escalabilidade limitada: esses tipos de sistemas, podem apresentar dificuldades em lidar com enormes quantidades de dados ou muitos arquivos em uma única pasta, levando o tempo de resposta e processamento serem lentos.</p>
+- Falta de recursos de backup: podem não possuir um avançado método de backup, tornando difícil e demorado realizar backups regulares e proteger os dados contra uma possível perda.</p>
+- Compartilhamento de arquivos limitado: para que um arquivo seja compartilhado, requer configurações adicionais, como compartilhamento de rede e permissões de acesso, tornando a colaboração e o compartilhamento de dados mais difíceis.
 
 #
 c. O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).
