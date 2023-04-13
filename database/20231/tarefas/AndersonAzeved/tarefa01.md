@@ -42,6 +42,7 @@ C.
 - Atributos: São as características ou propriedades das entidades, onde essas podem ter um ou mais atributos. Como exemplo, a entidade pessoa possue os atributos nomes, idade, endereço e data de nascimento. 
 
 
+
 #
 #
 D. 
