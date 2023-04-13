@@ -44,7 +44,10 @@ C.
 
 #
 #
-d. Pesquise sobre as várias notações possíveis para Diagramas ER, cite alguns exemplos de notações diferentes para o mesmo conceito (ex: Cardinalidade, Entidade Subordinada, etc).
+D. 
+- Cardinalidade: a cardinalidade indica a relação entre duas entidades e quantos objetos de uma entidade estão relacionados a quantos objetos da outra.
+- Entidade Subordinada: é uma entidade em que é dependente de outra entidade e representa uma parte ou um aspecto desta última. Esta não pode existir sem a entidade principal.
+- Exemplos de notações são Crow’s foot, Chen e UML.
 
 
 #
