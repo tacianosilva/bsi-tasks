@@ -38,7 +38,7 @@ Citarei algumas dos diferentes tipo de Notações para diagramas ER:
 
 - Notação de Peter Chen: é a notação mais antiga e mais utilizada. Nesse modelo, as entidades são representadas por retângulos, os relacionamentos por losangos e os atributos por circulos(elipses).
 
-- Notação de Martin: é uma notação que utiliza símbolos mais simples. Nessa notação, as entidades são representadas por retângulos, os relacionamentos por linhas e os atributos por elipses. 
+- Notação de Martin: é uma notação que utiliza símbolos mais simples. Nessa notação, as entidades são representadas por retângulos, os relacionamentos por linhas e os atributos por elipses.
 
 - Notação de Barker: é uma notação que foi desenvolvida a partir da notação de Chen. Nessa notação, as entidades são representadas por retângulos, os relacionamentos por losangos e os atributos por elipses. Essa notação utiliza diferentes tipos de linhas para representar a cardinalidade dos relacionamentos.
 
@@ -46,5 +46,55 @@ Citarei algumas dos diferentes tipo de Notações para diagramas ER:
 
 Tratando de representações diferentes para o mesmo conceito irei citar o conceito de cardinalidade:
 
-
 - Cardinalidade: na notação de Chen, a cardinalidade é representada por uma linha com um número de cada lado do losango que representa o relacionamento. Na notação de Barker, a cardinalidade é representada por diferentes tipos de linhas. Na notação de Merise, a cardinalidade é representada por uma linha com uma seta apontando para a entidade com a cardinalidade máxima.
+
+## Construa um Diagrama ER para projetar uma base de dados de um Sistema de Controle de Freqüência de Empregados de uma organização. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras.
+
+
+```mermaid
+erDiagram
+
+
+    TRABALHADOR-HL {
+
+        int id PK
+        string nome
+        string email
+        datetime HorasMes
+        datetime HorasMinDia
+    }
+    TRABALHADOR-HF {
+
+        int id PK
+        string nome
+        string email
+    }
+
+    TURNO {
+
+        int id PK
+        datetime horaInicial
+        datetime horaEncerramento
+    }
+
+    DIA {
+
+        string cod PK
+        string nome
+    }
+
+
+    CHECK-IN {
+
+        int id PK
+        datetime HoraEntrada
+        datetime HoraSaida
+
+    }
+
+    DIA ||--o{ TURNO : tem
+    TRABALHADOR-HF ||--o{ CHECK-IN : Ponto
+    TRABALHADOR-HL ||--o{ CHECK-IN : Ponto
+    CHECK-IN }o--|| TURNO : Ponto
+
+```
