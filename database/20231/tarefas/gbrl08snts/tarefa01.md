@@ -32,4 +32,21 @@ permanentemente, a menos que haja um backup adequado.
 * __Dificuldade de Integridade dos Dados:__ Os sistemas de arquivos não oferecem recursos avançados de verificação de integridade dos dados, como checksums ou 
 assinaturas digitais, o que torna difícil garantir que os dados armazenados permaneçam íntegros ao longo do tempo.
 
+## __Questão C__
+
+* __Entidades:__ As entidades representam objetos ou conceitos do mundo real que são relevantes para o domínio do problema que está sendo modelado. Por exemplo, se 
+estivermos modelando um sistema de gerenciamento de biblioteca, as entidades podem incluir "Livros", "Autores", "Usuários" e "Empréstimos". Cada entidade é 
+representada por um retângulo contendo o nome da entidade.
+
+* __Atributos:__ Os atributos são as características das entidades que descrevem suas propriedades. Por exemplo, o atributo "Título" pode ser um atributo da entidade 
+"Livros", enquanto o atributo "Nome" pode ser um atributo da entidade "Autores". Cada atributo é representado por um oval que é conectado à entidade correspondente.
+
+* __Relacionamentos:__ Os relacionamentos representam as associações entre as entidades. Eles descrevem como as entidades estão relacionadas umas com as outras. Por 
+exemplo, pode haver um relacionamento "Empréstimo" que conecte as entidades "Livros" e "Usuários". Cada relacionamento é representado por um losango que é conectado às 
+entidades correspondentes.
+
+
+
+
+
 
