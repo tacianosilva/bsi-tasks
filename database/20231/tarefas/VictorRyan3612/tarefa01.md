@@ -9,3 +9,5 @@ Um banco de dados é uma forma de armazenagem de dados, diferentemente de um sis
 E para gerenciar esses dados se faz necessário um e com um Sistema Gerenciador de Banco de Dados (SGBD), um software que permite a criação, administração e manutensão de um banco de dados
 
 
+Em um sistema de arquivo, por ser gerenciado pelo proprio programa que o usa, resulta em falta de funções feitas exclusivamente para sua administração, por exemplo, nos SGBDs o controle centralizado garante a integridade dos dados, segurança e prevem a redundancia de dados.
+Então, por faltar tantas funções, os sistemas de arquivos não são recomendados para usos em larga escala.
