@@ -49,14 +49,47 @@ d. Pesquise sobre as várias notações possíveis para Diagramas ER, cite algun
 
 #
 #
-e. Construa um Diagrama ER para projetar uma base de dados de um Sistema de Controle de Freqüência de Empregados de uma organização. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras.
+E. 
+```mermaid
+---
+title: Frequência Empregados
+---
 
-i. A base de dados deve manter dados sobre empregados. Cada empregado é identificado por um código, um nome e um e-mail. Para fins de controle de frequência, há dois tipos de empregados.
+erDiagram
+    EmpregadoLivre{
+        int codigo PK
+        string nome
+        string email
+        datatime horasDias
+        datatime horasMes
+    }
 
-ii. Um tipo de empregado é o que tem horário livre. Empregados deste tipo podem trabalhar em qualquer horário do dia. Para estes empregados queremos saber quantas horas devem trabalhar ao longo do mês, bem como, qual é o menor período em horas que devem trabalhar. Exemplificando, há alguns empregados que não devem trabalhar menos que duas horas por dia.
+    EmpregadoFixo{
+        int codigo PK
+        string nome
+        string email        
+    }
 
-iii. Empregados de segundo tipo devem trabalhar em horários fixos. A semana de trabalho do empregado deste tipo está organizada em turnos. Um turno tem horário de início e horário de fim. O empregado pode trabalhar dois turnos no mesmo dia da semana. Cada dia da semana é identificado por um código (algo como “dom” "seg", "ter", . . . ) e tem um nome (algo como "domingo", "segunda-feira", . . . ).
+    Turno{
+        int id PK
+        datatime horarioInicio
+        datatime horarioFim
+    }
 
+    Dia{
+        string codigo PK
+        string nome
+    }
+    
+    BaterPonto{
+        int id PK
+        datatime horarioEntrada
+        datatime horarioSaida
+    }
 
-iv. Todos os empregados devem bater o ponto, ou seja, informar o horário de entrada e saída do trabalho, em cada turno de cada dia da semana.
+    EmpregadoLivre }o -- |{ BaterPonto: BaterPonto
+    Dia }| -- || Turno: Organizada
+    EmpregadoFixo }| -- |{ BaterPonto: BaterPonto
+    Turno }| -- |{ EmpregadoFixo: Tem
+```
 
