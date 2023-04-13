@@ -20,3 +20,6 @@ Para projetar um banco de dados e entender seu funcionamento no sistema, pode-se
 + Entidade: que são representações de objetos ou conceitos abstratos do mundo real, sendo visualmente representadas como retângulos no MER.
 + Atributos: características intrínsecas das entidades, que são visualmente representadas como pequenas elipses dentro das entidades.
 + Relacionamento: descritos como verbos ou ações do sistema, ligando duas entidades ou se auto ligando.
+
+
+Se aprofundando mais sobre o Modelo ER, existe diferentes notações para usar nos relaciomantos, como a Notação de Crow's Foot que usa 0, 1 e N para Cardinalidade entre duas entidades, enquanto a Notação Chen usa circulos e traços, sobre a entidade suboordinada a notação Chen usa linhas duplas e a outra losangos.
