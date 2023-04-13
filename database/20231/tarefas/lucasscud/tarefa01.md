@@ -4,4 +4,4 @@ lucasscud <br />
 luucaas007@gmail.com<br />
 
 Questões:<br />
-a)
+a) Banco de dados é uma coleção organizada de informações ou dados que são armazenados eletronicamente no computador. Esses são controlados geralmente por um sistema de gerenciamento(SGBD) que acessam e exercem controle sobre os dados.
