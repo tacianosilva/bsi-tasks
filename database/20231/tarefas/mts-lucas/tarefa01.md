@@ -92,9 +92,9 @@ erDiagram
 
     }
 
-    DIA ||--o{ TURNO : tem
+    DIA ||--o{ TURNO : Possui
     TRABALHADOR-HF ||--o{ CHECK-IN : Ponto
     TRABALHADOR-HL ||--o{ CHECK-IN : Ponto
-    CHECK-IN }o--|| TURNO : Ponto
+    CHECK-IN }o--|| TURNO : horario-de-trabalho
 
 ```
