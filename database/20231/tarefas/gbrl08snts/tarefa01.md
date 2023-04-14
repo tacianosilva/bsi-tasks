@@ -101,11 +101,16 @@ erDiagram
         hora_de_entrada datetime
         hora_de_saida datetime
     }
-    Employee ||--o{ EmployeeType
-    EmployeeType ||--|{ Shift
-    Shift ||--|{ TimeClock
-    Employee ||--o{ TimeClock
-    EmployeeType ||--|{ EmployeeWork
+    EmployeeWork {
+        id int
+        horas_trabalhadas int
+        horas_extras int
+    }
+    Employee ||--o{ EmployeeType : pertence a
+    EmployeeType ||--|{ Shift : trabalha em
+    Shift ||--|{ TimeClock : tem batidas de ponto em
+    Employee ||--o{ TimeClock : bate ponto
+    EmployeeType ||--|{ EmployeeWork : tem trabalho registrado em
 ```
 
 
