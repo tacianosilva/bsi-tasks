@@ -67,7 +67,7 @@ dupla.
 
 * __Notação Bachman:__ Usa um "S" para indicar a entidade subordinada. O "S" é colocado ao lado da linha que conecta a entidade subordinada à entidade principal.
 
-3. __Atributo composto:__ um atributo que é composto de vários sub-atributos.
+3. __Atributo Composto:__ um atributo que é composto de vários sub-atributos.
 
 * __Notação Chen:__ Usa uma caixa retangular para indicar o atributo composto. Os sub-atributos são listados dentro da caixa.
 
