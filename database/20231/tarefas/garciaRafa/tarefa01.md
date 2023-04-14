@@ -15,7 +15,10 @@
 erDiagram
     Empregado }|--|{ HorarioLivre : EmpregadoTipo1
     Empregado }|--|{ HorarioFixo : EmpregadoTipo2
-    
+    HorarioFixo }|--|{ Turno : Turno
+    HorarioFixo }|--|{ DiaSemana : DiaSemana
+    DiaSemana }|--|{ Turno : DiaTrabalhado
+
     Empregado{
         int matr
         string nome
@@ -25,4 +28,25 @@ erDiagram
     HorarioLivre{
         int horasTotais
         int horasMinimas
+    }
+
+    HorarioFixo{
+        String turno1
+        String turno2
+    }
+
+    Turno{
+        String manha
+        String tarde
+        String noite
+    }
+
+    DiaSemana{
+        String dom "Domingo" 
+        String seg "Segunda-feira"
+        String ter "Terça-feira"
+        String qua "Quarta-feira"
+        String qui "Quinta-feira"
+        String sex "Sexta-feira"
+        String sab "Sábado"
     }
