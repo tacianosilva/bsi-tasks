@@ -106,11 +106,11 @@ erDiagram
         horas_trabalhadas int
         horas_extras int
     }
-    Employee ||--o{ EmployeeType : pertence a
-    EmployeeType ||--|{ Shift : trabalha em
-    Shift ||--|{ TimeClock : tem batidas de ponto em
-    Employee ||--o{ TimeClock : bate ponto
-    EmployeeType ||--|{ EmployeeWork : tem trabalho registrado em
+    Employee ||--o{ EmployeeType
+    EmployeeType ||--|{ Shift
+    Shift ||--|{ TimeClock
+    Employee ||--o{ TimeClock
+    EmployeeType ||--|{ EmployeeWork
 ```
 
 
