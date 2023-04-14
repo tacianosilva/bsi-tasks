@@ -15,9 +15,12 @@
 erDiagram
     Empregado }|--|{ HorarioLivre : EmpregadoTipo1
     Empregado }|--|{ HorarioFixo : EmpregadoTipo2
+    Empregado }|--|{ BaterPonto : BaterPonto
     HorarioFixo }|--|{ Turno : Turno
     HorarioFixo }|--|{ DiaSemana : DiaSemana
     DiaSemana }|--|{ Turno : DiaTrabalhado
+    BaterPonto }|--|{ Turno: Turno
+    BaterPonto }|--|{ DiaSemana: DiaSemana
 
     Empregado{
         int matr
@@ -49,4 +52,9 @@ erDiagram
         String qui "Quinta-feira"
         String sex "Sexta-feira"
         String sab "Sábado"
+    }
+
+    BaterPonto{
+        int baterEntrada
+        int baterSaida
     }
