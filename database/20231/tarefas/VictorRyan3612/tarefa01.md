@@ -69,3 +69,4 @@ Se aprofundando mais sobre o Modelo ER, existe diferentes notações para usar n
     EMPREGADO_H_FIXO }o--|{ TURNO: Trabalhar
     EMPREGADO_H_LIVRE }o --|| REGISTRO_PONTO: Dever
 ```
+Legenda: PK = chave primária
