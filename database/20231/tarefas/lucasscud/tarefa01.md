@@ -8,6 +8,8 @@ a) Banco de dados é uma coleção organizada de informações ou dados que são
 
 b)Inconsistência e redundância dos dados; Dificuldade de acesso; Isolamento e problemas de integridade e atomicidade. <br />
 
-c) Entidade; Atributo; Relacionamento.<br />
+c) Entidade - Objeto existente que é extinguível de outros objetos (Ex:Fulano, CPF, RG,etc.);<br />
+   Atributo - Conjunto de elementos que representam uma entidade;<br />
+   Relacionamento - São as associações entre as entidades.<br />
 
 d)
