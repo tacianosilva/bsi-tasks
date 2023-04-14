@@ -75,5 +75,42 @@ dupla.
 
 * __Notação Bachman:__ Usa um "C" para indicar o atributo composto. O "C" é colocado ao lado da linha que conecta o atributo composto à entidade.
 
+## __Questão E__
+
+* ```mermaid erDiagram
+    Employee {
+        id int
+        nome string
+        email string
+    }
+    EmployeeType {
+        id int
+        nome string
+        horas_minimas int
+        tipo string
+    }
+    Shift {
+        id int
+        dia_da_semana string
+        horario_de_inicio datetime
+        horario_de_fim datetime
+    }
+    TimeClock {
+        id int
+        data datetime
+        hora_de_entrada datetime
+        hora_de_saida datetime
+    }
+    EmployeeWork {
+        id int
+        horas_trabalhadas int
+        horas_extras int
+    }
+    Employee ||--o{ EmployeeType : pertence a
+    EmployeeType ||--|{ Shift : trabalha em
+    Shift ||--|{ TimeClock : tem batidas de ponto em
+    Employee ||--o{ TimeClock : bate ponto
+    EmployeeType ||--|{ EmployeeWork : tem trabalho registrado em
+ ```
 
 
