@@ -101,16 +101,15 @@ erDiagram
         hora_de_entrada datetime
         hora_de_saida datetime
     }
-    EmployeeWork {
-        id int
-        horas_trabalhadas int
-        horas_extras int
-    }
     Employee ||--o{ EmployeeType
     EmployeeType ||--|{ Shift
     Shift ||--|{ TimeClock
     Employee ||--o{ TimeClock
     EmployeeType ||--|{ EmployeeWork
+    style Employee fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5,5
+    style EmployeeType fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5,5
+    style Shift fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5,5
+    style TimeClock fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5,5
 ```
 
 
