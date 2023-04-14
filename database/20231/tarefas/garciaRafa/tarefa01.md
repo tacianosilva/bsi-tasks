@@ -10,3 +10,13 @@
 **Relacionamentos**:  Um relacionamento é uma conexão entre duas ou mais entidades. Por exemplo, em um banco de dados de uma loja, um relacionamento pode existir entre um cliente e um pedido, indicando que o cliente fez o pedido. Os relacionamentos são representados graficamente como linhas que conectam as entidades envolvidas, e podem ter rótulos para indicar a natureza do relacionamento (como "fez um pedido").
 4. **Notação Chen**: Usa retângulos para representar entidades, diamantes para representar relacionamentos e linhas para representar cardinalidades. Por exemplo, uma cardinalidade 1:N é representada por uma linha que liga uma extremidade do diamante a um retângulo, e outra linha que liga a outra extremidade do diamante a um número "N" próximo ao retângulo.<p/>
 **Notação Crow's Foot**: É uma notação popular para diagramas ER, amplamente usada em bancos de dados relacionais. Ela usa símbolos semelhantes a patas de corvo para representar cardinalidades. Por exemplo, uma cardinalidade 1:N é representada por um símbolo de pé-de-galinha que aponta para a entidade "1" e uma linha que liga a outra extremidade do símbolo ao retângulo "N".
+
+```mermaid
+erDiagram
+    Empregado }|--|{ HorarioLivre : EmpregadoTipo1
+    Empregado }|--|{ HorarioFixo : EmpregadoTipo2
+    Empregado{
+        int matr
+        string nome
+        string email
+    }
