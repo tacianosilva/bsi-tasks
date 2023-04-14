@@ -45,8 +45,35 @@ representada por um retângulo contendo o nome da entidade.
 exemplo, pode haver um relacionamento "Empréstimo" que conecte as entidades "Livros" e "Usuários". Cada relacionamento é representado por um losango que é conectado às 
 entidades correspondentes.
 
+## __Questão D__
 
+1. __Cardinalidade:__ Representa o número de instâncias de uma entidade que podem estar relacionadas a uma instância de outra entidade.
 
+* __Notação Chen:__ Usa um símbolo numérico dentro de um círculo, colocado próximo ao relacionamento. Por exemplo, um círculo com um "1" indica que apenas uma 
+instância da entidade pode estar relacionada com uma instância da outra entidade.
+
+* __Notação Crow's Foot:__ Usa símbolos em forma de "pés de galinha". Por exemplo, um pé de galinha simples indica que apenas uma instância da entidade pode estar 
+relacionada com uma instância da outra entidade.
+
+* __Notação Bachman:__ Usa um "X" para indicar a cardinalidade de "um para um", um "M" para indicar a cardinalidade de "muitos para um", e um "N" para indicar a 
+cardinalidade de "muitos para muitos".
+
+2. __Entidade Subordinada:__ uma entidade que depende de outra entidade para existir.
+
+* __Notação Chen:__ Usa um triângulo para indicar a entidade subordinada. O triângulo é conectado à entidade principal por meio de uma linha dupla.
+
+* __Notação Crow's Foot:__ Usa um símbolo em forma de "d" para indicar a entidade subordinada. O símbolo "d" é conectado à entidade principal por meio de uma linha 
+dupla.
+
+* __Notação Bachman:__ Usa um "S" para indicar a entidade subordinada. O "S" é colocado ao lado da linha que conecta a entidade subordinada à entidade principal.
+
+3. __Atributo composto:__ um atributo que é composto de vários sub-atributos.
+
+* __Notação Chen:__ Usa uma caixa retangular para indicar o atributo composto. Os sub-atributos são listados dentro da caixa.
+
+* __Notação Crow's Foot:__ Usa uma linha dupla para indicar o atributo composto. Os sub-atributos são listados abaixo da linha.
+
+* __Notação Bachman:__ Usa um "C" para indicar o atributo composto. O "C" é colocado ao lado da linha que conecta o atributo composto à entidade.
 
 
 
