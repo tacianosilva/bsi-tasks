@@ -15,8 +15,14 @@
 erDiagram
     Empregado }|--|{ HorarioLivre : EmpregadoTipo1
     Empregado }|--|{ HorarioFixo : EmpregadoTipo2
+    
     Empregado{
         int matr
         string nome
         string email
+    }
+
+    HorarioLivre{
+        int horasTotais
+        int horasMinimas
     }
