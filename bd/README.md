@@ -60,11 +60,18 @@ $ mysql -h 127.0.0.1 -u root -p
 ```
 
 ### Acessando MariaDB via CloudBeaver (dbeaver)
+```console
+mkdir -p $HOME/docker/volumes/cloudbeaver
+```
 
 ```console
-$ sudo docker pull dbeaver/cloudbeaver:latest
-$ sudo docker run --name cloudbeaver --rm -ti -d -p 8080:8978 -v /var/cloudbeaver/workspace:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:latest
+docker pull dbeaver/cloudbeaver:23.0.2
 ```
+
+```console
+docker run --name cloudbeaver -d -p 8978:8978 -v $HOME/docker/volumes/cloudbeaver:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:23.0.2
+```
+
 Informações aqui: [CloudBeaver - Run Docker Container](https://cloudbeaver.io/docs/Run-Docker-Container/)!
 
 ## Executando container do Servidor MySql
