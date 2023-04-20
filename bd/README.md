@@ -28,21 +28,18 @@ sudo systemctl status docker
 ## Executando container do Servidor MariaDB
 
 Antes de executar o container, baixe a imagem do `mariadb`:
-
 ```console
 docker pull mariadb
 ```
 
 Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
-
 ```console
 mkdir -p $HOME/docker/volumes/mariadb
 ```
 
 Agora inicie o container:
-
 ```console
-$ docker run -d --name mariadb-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=password" -v $HOME/docker/volumes/mariadb:/var/lib/mysql mariadb
+docker run -d --name mariadb-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=password" -v $HOME/docker/volumes/mariadb:/var/lib/mysql mariadb
 ```
 
 ### Acessando via MariaDB Cli (MySql Cli)
@@ -50,24 +47,28 @@ $ docker run -d --name mariadb-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=passw
 Se não tiver, instale o cliente de acesso ao SGBD:
 
 ```console
-$ sudo apt install mysql-client
+sudo apt install mysql-client
 ```
 
 Acesse usando o `host 127.0.0.1` e o usuário `root`:
 
 ```console
-$ mysql -h 127.0.0.1 -u root -p
+mysql -h 127.0.0.1 -u root -p
 ```
 
 ### Acessando MariaDB via CloudBeaver (dbeaver)
+
+Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
 ```console
 mkdir -p $HOME/docker/volumes/cloudbeaver
 ```
 
+Antes de executar o container, baixe a imagem do `dbeaver/cloudbeaver`:
 ```console
 docker pull dbeaver/cloudbeaver:23.0.2
 ```
 
+Agora inicie o container:
 ```console
 docker run --name cloudbeaver -d -p 8978:8978 -v $HOME/docker/volumes/cloudbeaver:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:23.0.2
 ```
@@ -79,19 +80,17 @@ Informações aqui: [CloudBeaver - Run Docker Container](https://cloudbeaver.io/
 Antes de executar o container, baixe a imagem do `mysql`:
 
 ```console
-$ docker pull mysql
+docker pull mysql
 ```
 
 Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
-
 ```console
-$ mkdir $HOME/docker/volumes/mysqldb
+mkdir -p $HOME/docker/volumes/mysqldb
 ```
 
 Agora inicie o container:
-
 ```console
-$ docker run -d --name mysqlserver-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=password" -v $HOME/docker/volumes/mysqldb:/var/lib/mysql mysql
+docker run --name mysqlserver-server -d -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=password" -v $HOME/docker/volumes/mysqldb:/var/lib/mysql mysql
 ```
 
 ### Acessando via MySql Client
@@ -101,13 +100,13 @@ Para utilizar o **MySql Client** podemos instalar diretamente no sistema ou util
 Instalando o **MySQL Client** no sistema para acesso ao SGBD:
 
 ```console
-$ sudo apt install mysql-client
+sudo apt install mysql-client
 ```
 
 Acesse usando o `host 127.0.0.1` e o usuário `root`:
 
 ```console
-$ mysql -h 127.0.0.1 -u root -p
+mysql -h 127.0.0.1 -u root -p
 ```
 
 :warning: Ao executar o comando acima de acesso pode surgir a mensagem de erro: <span style="color:red">ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'`</span>. Como o servidor mysql está sendo executado em um container ele não está habilitado para o acesso via localhost (127.0.0.1).
@@ -115,20 +114,20 @@ $ mysql -h 127.0.0.1 -u root -p
 :pushpin: Se você estiver utilizando o **MySql Server**, precisará descobrir o IP do container para poder acessar usando o cliente de linha de comando. Fonte: https://www.baeldung.com/docker-cant-connect-local-mysql
 
 ```console
-$ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql-server
-172.17.0.3
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql-server
 ```
-Retornará um ou mais IPs de acesso como o IP: 172.17.0.3. Desta forma, a chamada para o cliente será:
+Retornará um ou mais IPs de acesso como, por exemplo, o IP: 172.17.0.3. Desta forma, a chamada para o cliente será:
 
 ```console
-$ mysql -h 172.17.0.3 -u root -p
+mysql -h 172.17.0.3 -u root -p
 ```
 
 :pushpin: Outra solução é executar o cliente via o container docker e configurar o servidor MySQL para permitir acesso via localhost. Fonte: https://sidroniolima.com.br/blog/2020/08/12/instalacao-mysql-via-docker-com-acesso-pelo-workbench/
 
 ```console
-$ docker exec -it mysql-server mysql -u root -p
+docker exec -it mysql-server mysql -u root -p
 ```
+
 Execute o seguinte comando `SQL`:
 ```sql
 grant all privileges on *.* to 'root'@'%' with grant option;
@@ -145,13 +144,13 @@ Para usar o SGBD do PostgreSQL usando Docker, vamos fazer de duas maneiras:
 
 Criar a rede postgres-network
 ```console
-$ docker network create -d bridge postgres-network
+docker network create -d bridge postgres-network
 ```
 
 Criar container postgres-server
 
 ```console
-$ docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -v $HOME/dev/docker/volumes/postgres/conf:/var/lib/postgresql -v $HOME/dev/docker/volumes/postgres/data:/var/lib/postgresql/data --network=postgres-network -d postgres
+docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -v $HOME/dev/docker/volumes/postgres/conf:/var/lib/postgresql -v $HOME/dev/docker/volumes/postgres/data:/var/lib/postgresql/data --network=postgres-network -d postgres
 ```
 
 Criar container pgadmin-server
