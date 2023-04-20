@@ -22,7 +22,7 @@ O tutorial [how-to-install-and-use-docker-on-ubuntu-22-04-pt](https://www.digita
 Siga os passos 1 e 2 do tutorial e verifique se o daemon foi iniciado e o processo habilitado a iniciar no boot. Verifique se ele está funcionando:
 
 ```console
-$ sudo systemctl status docker
+sudo systemctl status docker
 ```
 
 ## Executando container do Servidor MariaDB
@@ -30,13 +30,13 @@ $ sudo systemctl status docker
 Antes de executar o container, baixe a imagem do `mariadb`:
 
 ```console
-$ docker pull mariadb
+docker pull mariadb
 ```
 
 Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
 
 ```console
-$ mkdir $HOME/docker/volumes/mariadb
+mkdir -p $HOME/docker/volumes/mariadb
 ```
 
 Agora inicie o container:
