@@ -2,20 +2,24 @@
 
 Conteúdos, tutorias e exemplos para as disciplinas relacionadas com Banco de Dados (DCT2201 - Banco de Dados e DCT2202 - Projeto e Administração de Banco de Dados).
 
-## Scripts
-
-No diretório [Scripts](scripts/) temos vários scripts de criação e povoamento para Base de Dados usadas nas aulas da disciplina Banco de Dados.
-
-## Conexões
-
-No diretório [Connections](connections/) temos vários exemplos de conexões de várias linguagens (java, python), usando vários SGBDs (MariaDB, MySql, Postgres, Mongo, etc).
-
 ## Tarefas
 
 ### Semestre 2023.1
 
 * [Tarefas Individuais](20231/tarefas/README.md)
 * [Tarefas em Equipe - Projeto](20231/projetos/README.md)
+
+## Scripts SQL dos exemplos
+
+No diretório [Scripts](scripts/) temos vários scripts de criação e povoamento para Base de Dados usadas nas aulas da disciplina Banco de Dados.
+
+## Executando SGBDs com Containers Docker
+
+No diretório [Docker](docker/) temos vários tutorias para a execução dos SGBDs MariaDB, MySQL e Postgres utilizando containers docker.
+
+## Conexões
+
+No diretório [Connections](connections/) temos vários exemplos de conexões de várias linguagens (java, python), usando vários SGBDs (MariaDB, MySql, Postgres, Mongo, etc).
 
 ## Links Interessantes
 
