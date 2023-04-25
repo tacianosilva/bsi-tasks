@@ -13,7 +13,10 @@ Você também pode usar a criação de volumes do próprio *docker* (https://doc
 
 Agora inicie o container:
 ```console
-docker run --name mariadb-server -p 3306:3306 -d -e "MYSQL_ROOT_PASSWORD=password" -v $HOME/docker/volumes/mariadb:/var/lib/mysql mariadb:10
+docker run --name mariadb-server -p 3306:3306 -d \
+           -e "MYSQL_ROOT_PASSWORD=password" \
+           -v $HOME/docker/volumes/mariadb:/var/lib/mysql \
+           mariadb:10
 ```
 
 ## Acessando via MariaDB Cli (MySql Cli)
