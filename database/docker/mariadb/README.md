@@ -44,7 +44,9 @@ docker pull dbeaver/cloudbeaver:23.0.2
 
 Agora inicie o container:
 ```console
-docker run --name cloudbeaver-client -d -p 8978:8978 -v $HOME/docker/volumes/cloudbeaver:/opt/cloudbeaver/workspace dbeaver/cloudbeaver:23.0.2
+docker run --name cloudbeaver-client -d -p 8978:8978 \
+           -v $HOME/docker/volumes/cloudbeaver:/opt/cloudbeaver/workspace \
+           dbeaver/cloudbeaver:23.0.2
 ```
 
 Abra o link http://localhost:8978 no navegador e configure a conexão com o servidor do mariadb.
