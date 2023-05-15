@@ -21,6 +21,14 @@ As relações são interconectadas por meio de chaves estrangeiras, que permitem
 
 **Integridade Referencial:** Essas restrições garantem que as referências entre tabelas sejam mantidas quando ocorrerem atualizações ou exclusões de registros. Por exemplo, se um registro em uma tabela referenciada for excluído, todos os registros em outras tabelas que fazem referência a ele também devem ser excluídos ou atualizados para refletir essa exclusão.
 
+## c) Descreva as Regras de Conversão entre o Modelo Entidade-Relacionamento e o Modelo Relacional.
 
+**Regra 1: Entidades Regulares**
+
+1.1. Para cada entidade regular E no esquema E-R, criamos uma relação R que inclui os atributos simples de E
+
+1.2. Para cada atributo composto de E incluímos somente os seus atributos simples
+
+1.3. Escolhemos uma das chaves candidatas de E para ser a chave primária de R
 
 
