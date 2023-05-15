@@ -103,6 +103,12 @@ erDiagram
         string email
         date dataDeContratacao
     }
+    COORDENADOR {
+
+    }
+    VICE_COORDENADOR {
+
+    }
     AREA_DE_ATUACAO {
 
         int id PK
@@ -119,7 +125,9 @@ erDiagram
         int matricula
         string nome
         string email
-        string curso
+    }
+    CURSO {
+        string nome
     }
     MEMBRO {
         int id PK
@@ -137,10 +145,30 @@ erDiagram
         date data_encerramento
     }
 
+    MEMBRO_PROJETO {
+        datetime carga_horaria_semanal
+    }
+
     LABORATORIO }|--|| DEPARTAMENTO : tem
     DOCENTE }o--|{ AREA_DE_ATUACAO : tem
     DOCENTE }o--|{ FORMACAO : tem
-    LABORATORIO |o--|| DOCENTE : coordenador
-    LABORATORIO }|--|{ DOCENTE : vice-coordenador
+
+    DOCENTE ||--o| COORDENADOR : eh
+    COORDENADOR ||--|| LABORATORIO : coordena
+
+    DOCENTE ||--o{ VICE_COORDENADOR : eh
+    VICE_COORDENADOR ||--|{ LABORATORIO : vice_coordena
+
+    DISCENTE }o--|| CURSO : pertence
+    DEPARTAMENTO ||--|{ CURSO : tem
+
+    MEMBRO }o--|{ LABORATORIO : pertence
+    DISCENTE ||--o{ MEMBRO : eh
+    DOCENTE ||--o{ MEMBRO : eh
+
+    LABORATORIO ||--o{ PROJETO : tem
+    MEMBRO ||--o{ MEMBRO_PROJETO : tem
+    MEMBRO_PROJETO }o--|| PROJETO : tem
+    
 
 ```
