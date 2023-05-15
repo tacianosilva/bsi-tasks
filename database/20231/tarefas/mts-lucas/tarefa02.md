@@ -31,7 +31,7 @@ As relações são interconectadas por meio de chaves estrangeiras, que permitem
 
 **Regra 2: Entidades Fracas**
 
-- 2.1. Para cada entidade fraca W,  com entidade forte E, no esquema E-R, criamos  uma relação R e incluímos todos os atributos simples de W como atributos de R
+- 2.1. Para cada entidade fraca W, com entidade forte E, no esquema E-R, criamos uma relação R e incluímos todos os atributos simples de W como atributos de R
 - 2.2. Incluímos como atributos da chave estrangeira de R os atributos que compõem a chave primária da entidade forte E
 - 2.3. A chave primária de R é a combinação da chave primária da entidade forte E e a chave da entidade fraca W
 
@@ -52,7 +52,7 @@ As relações são interconectadas por meio de chaves estrangeiras, que permitem
 - 5.1. Criamos uma nova relação S para representar o relacionamento
 - 5.2. Incluímos como chave estrangeira em S as chaves primárias das relações que participam do relacionamento. A combinação destas chaves formará a chave primária da relação S
 - 5.3. Incluímos qualquer atributo do relacionamento N:M em S
-Nota: Podemos mapear um relacionamento 1:1 ou 1:N de maneira similar ao M:N. Isto é usado quando existem poucas instâncias do relacionamento, evitando valores nulos nas chaves estrangeiras
+  Nota: Podemos mapear um relacionamento 1:1 ou 1:N de maneira similar ao M:N. Isto é usado quando existem poucas instâncias do relacionamento, evitando valores nulos nas chaves estrangeiras
 
 **Regra 6: Atributos Multivalorados**
 
@@ -64,14 +64,83 @@ Nota: Podemos mapear um relacionamento 1:1 ou 1:N de maneira similar ao M:N. Ist
 
 - 7.1. Converta cada especialização com m subclasses {S1,S2,...,Sm} e superclasse C, cujos atributos são {k, a1,..., an} onde k é a chave primária, em esquemas de relações usando uma das seguintes opções:
 
-- A) Criar uma relação L para C com os atributos Atrib(L) = {k,a1, ... , an} e chave primária k. Criar também uma relação Li para cada subclasse Si, 1 ≤ i ≤ m, com os seguintes atributos: Atrib(Li) = {k}  { atributos de Si}, k será a chave primária
-- B) Criar uma relação Li para cada subclasse Si, 1 ≤ i ≤ m, com os atributos  Atrib(Li) = {atributos de Si}  {k,a1, ... ,an} e chave primária (Li) = k
-- C) Criar uma única relação L com atributos Atrib(L) = {k,a1,...,an}  { atributos de S1}   ...  {atributos de Sm}  {t} e chave primária k
-t é um atributo de tipo que indica a subclasse a qual a tupla pertence (opção usada para especialização cujas subclasses são disjuntas)
-- D) Criar uma única relação L com atributos Atrib(L) = {k,a1,...,an}   { atributos de S1 }   ...  { atributos de Sm }   {t1,t2,...,tm} e chave primária k
-Cada ti , 1 ≤ i ≤ m, é um atributo booleano que indica se uma tupla pertence a uma subclasse Si (opção usada para especialização cujas subclasses são sobrepostas)
+- A) Criar uma relação L para C com os atributos Atrib(L) = {k,a1, ... , an} e chave primária k. Criar também uma relação Li para cada subclasse Si, 1 ≤ i ≤ m, com os seguintes atributos: Atrib(Li) = {k} { atributos de Si}, k será a chave primária
+- B) Criar uma relação Li para cada subclasse Si, 1 ≤ i ≤ m, com os atributos Atrib(Li) = {atributos de Si} {k,a1, ... ,an} e chave primária (Li) = k
+- C) Criar uma única relação L com atributos Atrib(L) = {k,a1,...,an} { atributos de S1} ... {atributos de Sm} {t} e chave primária k
+  t é um atributo de tipo que indica a subclasse a qual a tupla pertence (opção usada para especialização cujas subclasses são disjuntas)
+- D) Criar uma única relação L com atributos Atrib(L) = {k,a1,...,an} { atributos de S1 } ... { atributos de Sm } {t1,t2,...,tm} e chave primária k
+  Cada ti , 1 ≤ i ≤ m, é um atributo booleano que indica se uma tupla pertence a uma subclasse Si (opção usada para especialização cujas subclasses são sobrepostas)
 
+## Crie um Diagrama Entidade Relacionamento e depois crie um Esquema Relacional...
 
+```mermaid
+erDiagram
 
+    LABORATORIO {
 
+        int code PK
+        string sigla
+        string nome
+        date dataDeCriacao
+        string descricao
+        string endereco
+        slug email
+        string email
 
+    }
+    DEPARTAMENTO {
+
+        int code PK
+        string sigla
+        string nome
+        string endereco
+        slug site
+    }
+    DOCENTE {
+
+        int matricula
+        string nome
+        string email
+        date dataDeContratacao
+    }
+    AREA_DE_ATUACAO {
+
+        int id PK
+        string nome
+    }
+    FORMACAO {
+
+        int id PK
+        string nome
+
+    }
+    DISCENTE {
+
+        int matricula
+        string nome
+        string email
+        string curso
+    }
+    MEMBRO {
+        int id PK
+        string horario_semanal
+        datetime carga_horaria_semanal
+    }
+    PROJETO {
+
+        int code PK
+        string nome
+        string sigla
+        string descricao
+        string resumo
+        date data_inicial
+        date data_encerramento
+    }
+
+    LABORATORIO }|--|| DEPARTAMENTO : tem
+    DOCENTE }o--|{ AREA_DE_ATUACAO : tem
+    DOCENTE }o--|{ FORMACAO : tem
+    LABORATORIO |o--|| DOCENTE : coordenador
+    LABORATORIO }|--|{ DOCENTE : vice-coordenador
+
+```
