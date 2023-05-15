@@ -25,10 +25,53 @@ As relações são interconectadas por meio de chaves estrangeiras, que permitem
 
 **Regra 1: Entidades Regulares**
 
-1.1. Para cada entidade regular E no esquema E-R, criamos uma relação R que inclui os atributos simples de E
+- 1.1. Para cada entidade regular E no esquema E-R, criamos uma relação R que inclui os atributos simples de E
+- 1.2. Para cada atributo composto de E incluímos somente os seus atributos simples
+- 1.3. Escolhemos uma das chaves candidatas de E para ser a chave primária de R
 
-1.2. Para cada atributo composto de E incluímos somente os seus atributos simples
+**Regra 2: Entidades Fracas**
 
-1.3. Escolhemos uma das chaves candidatas de E para ser a chave primária de R
+- 2.1. Para cada entidade fraca W,  com entidade forte E, no esquema E-R, criamos  uma relação R e incluímos todos os atributos simples de W como atributos de R
+- 2.2. Incluímos como atributos da chave estrangeira de R os atributos que compõem a chave primária da entidade forte E
+- 2.3. A chave primária de R é a combinação da chave primária da entidade forte E e a chave da entidade fraca W
+
+**Regra 3: Relacionamentos 1:1 == (1,1) : (1,1)**
+
+- 3.1. Identificamos as relações S e T que correspondem às entidades que participam do relacionamento
+- 3.2. Escolhemos uma das relações, digamos S, e incluímos como chave estrangeira em S a chave primária de T. É melhor escolher para desempenhar o papel de S, a entidade que tenha participação total no relacionamento
+- 3.3. Incluímos todos os atributos simples do relacionamento 1:1 como atributos de S
+
+**Regra 4: Relacionamentos 1:N que não envolvem entidades fracas**
+
+- 4.1. Identificamos a relação S que representa a entidade que participa do lado N do relacionamento
+- 4.2. Incluímos como chave estrangeira em S, a chave primária da relação T que representa a outra entidade (lado 1) que participa do relacionamento
+- 4.3. Incluímos qualquer atributo simples do relacionamento 1:N em S
+
+**Regra 5: Relacionamento N:M**
+
+- 5.1. Criamos uma nova relação S para representar o relacionamento
+- 5.2. Incluímos como chave estrangeira em S as chaves primárias das relações que participam do relacionamento. A combinação destas chaves formará a chave primária da relação S
+- 5.3. Incluímos qualquer atributo do relacionamento N:M em S
+Nota: Podemos mapear um relacionamento 1:1 ou 1:N de maneira similar ao M:N. Isto é usado quando existem poucas instâncias do relacionamento, evitando valores nulos nas chaves estrangeiras
+
+**Regra 6: Atributos Multivalorados**
+
+- 6.1. Criamos uma nova relação R que inclui o atributo multivalorado A mais a chave primária K da relação que representa a entidade (ou relacionamento) que tem A como atributo
+- 6.2. A chave primária de R é a combinação de A e K
+- 6.3. Se o atributo multivalorado é composto => incluir seus componentes atômicos
+
+**Regra 7: Especialização / Generalização**
+
+- 7.1. Converta cada especialização com m subclasses {S1,S2,...,Sm} e superclasse C, cujos atributos são {k, a1,..., an} onde k é a chave primária, em esquemas de relações usando uma das seguintes opções:
+
+- A) Criar uma relação L para C com os atributos Atrib(L) = {k,a1, ... , an} e chave primária k. Criar também uma relação Li para cada subclasse Si, 1 ≤ i ≤ m, com os seguintes atributos: Atrib(Li) = {k}  { atributos de Si}, k será a chave primária
+- B) Criar uma relação Li para cada subclasse Si, 1 ≤ i ≤ m, com os atributos  Atrib(Li) = {atributos de Si}  {k,a1, ... ,an} e chave primária (Li) = k
+- C) Criar uma única relação L com atributos Atrib(L) = {k,a1,...,an}  { atributos de S1}   ...  {atributos de Sm}  {t} e chave primária k
+t é um atributo de tipo que indica a subclasse a qual a tupla pertence (opção usada para especialização cujas subclasses são disjuntas)
+- D) Criar uma única relação L com atributos Atrib(L) = {k,a1,...,an}   { atributos de S1 }   ...  { atributos de Sm }   {t1,t2,...,tm} e chave primária k
+Cada ti , 1 ≤ i ≤ m, é um atributo booleano que indica se uma tupla pertence a uma subclasse Si (opção usada para especialização cujas subclasses são sobrepostas)
+
+
+
 
 
