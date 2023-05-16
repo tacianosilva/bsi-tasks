@@ -2,7 +2,7 @@
 
 **Nome:** Lucas Mateus da Silva
 
-**Github:** git clone https://github.com/mts-lucas
+**Github:** https://github.com/mts-lucas
 
 **Email:** lmateus1067@outlook.com
 
@@ -78,19 +78,19 @@ erDiagram
 
     LABORATORIO {
 
-        int code PK
+        int cod_lab PK
         string sigla
         string nome
-        date dataDeCriacao
+        date data_criacao
         string descricao
         string endereco
-        slug email
+        slug site
         string email
 
     }
     DEPARTAMENTO {
 
-        int code PK
+        int cod_dep PK
         string sigla
         string nome
         string endereco
@@ -98,16 +98,23 @@ erDiagram
     }
     DOCENTE {
 
-        int matricula
+        int matricula PK
         string nome
         string email
-        date dataDeContratacao
+        date data_contratacao
     }
     COORDENADOR {
+
+        date inicio_vigencia
+        date fim_vigencia
+        date termino_vigencia
 
     }
     VICE_COORDENADOR {
 
+        date inicio_vigencia
+        date fim_vigencia
+        date termino_vigencia
     }
     AREA_DE_ATUACAO {
 
@@ -122,12 +129,12 @@ erDiagram
     }
     DISCENTE {
 
-        int matricula
+        int matricula PK
         string nome
         string email
     }
     CURSO {
-        string nome
+        string nome PK
     }
     MEMBRO {
         int id PK
@@ -136,7 +143,7 @@ erDiagram
     }
     PROJETO {
 
-        int code PK
+        int cod_proj PK
         string nome
         string sigla
         string descricao
@@ -145,11 +152,13 @@ erDiagram
         date data_encerramento
     }
 
-    MEMBRO_PROJETO {
+    PARTICIPACAO_EM_PROJETO {
+
         datetime carga_horaria_semanal
     }
 
-    LABORATORIO }|--|| DEPARTAMENTO : tem
+    LABORATORIO }o--|| DEPARTAMENTO : tem
+    DEPARTAMENTO ||--|{ CURSO : tem
     DOCENTE }o--|{ AREA_DE_ATUACAO : tem
     DOCENTE }o--|{ FORMACAO : tem
 
@@ -157,18 +166,20 @@ erDiagram
     COORDENADOR ||--|| LABORATORIO : coordena
 
     DOCENTE ||--o{ VICE_COORDENADOR : eh
-    VICE_COORDENADOR ||--|{ LABORATORIO : vice_coordena
+    VICE_COORDENADOR ||--|| LABORATORIO : vice_coordena
 
     DISCENTE }o--|| CURSO : pertence
-    DEPARTAMENTO ||--|{ CURSO : tem
 
-    MEMBRO }o--|{ LABORATORIO : pertence
-    DISCENTE ||--o{ MEMBRO : eh
+    MEMBRO }|--|| LABORATORIO : pertence
     DOCENTE ||--o{ MEMBRO : eh
+    DISCENTE ||--o{ MEMBRO : eh
 
     LABORATORIO ||--o{ PROJETO : tem
-    MEMBRO ||--o{ MEMBRO_PROJETO : tem
-    MEMBRO_PROJETO }o--|| PROJETO : tem
-    
+    MEMBRO ||--o{ PARTICIPACAO_EM_PROJETO : tem
+    PARTICIPACAO_EM_PROJETO }o--|| PROJETO : tem
+
+
 
 ```
+
+
