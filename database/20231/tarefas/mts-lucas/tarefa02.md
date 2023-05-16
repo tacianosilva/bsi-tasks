@@ -73,6 +73,8 @@ As relações são interconectadas por meio de chaves estrangeiras, que permitem
 
 ## Crie um Diagrama Entidade Relacionamento e depois crie um Esquema Relacional...
 
+apesar de Membro e Projeto terem uma relaçaõ N:M coloquei logo a entidade que faz o intermédio, pois não há como colocar atributos em relacionamentos usando o mermaid. Então interprete essa entidade como um relacionamento N:M tanto que no modelo relacional a tratei como tal.
+
 ```mermaid
 erDiagram
 
@@ -156,7 +158,7 @@ erDiagram
         date data_encerramento
     }
 
-    PARTICIPACAO_EM_PROJETO {
+    MEMBRO_PROJETO {
 
         datetime carga_horaria_semanal
     }
@@ -182,8 +184,8 @@ erDiagram
 
     LABORATORIO ||--o{ PROJETO : tem
     LABORATORIO }o--|| DEPARTAMENTO : pertence
-    MEMBRO ||--o{ PARTICIPACAO_EM_PROJETO : tem
-    PARTICIPACAO_EM_PROJETO }o--|| PROJETO : eh_de_um
+    MEMBRO ||--o{ MEMBRO_PROJETO : tem
+    MEMBRO_PROJETO }o--|| PROJETO : eh_de_um
 
 
 
@@ -213,7 +215,11 @@ erDiagram
 
 **PROJETO**(<u>cod_proj</u>, nome, sigla, descricao, resumo, data_inicial, data_encerramento, **cod_lab**)
 
-**PARTICIPACAO_EM_PROJETO**(<u>**id_memb**, **cod_prok**</u>, carga_horaria_semanal, **id_memb**, **cod_proj**)
+**MEMBRO_PROJETO**(<u>**id_memb**, **cod_prok**</u>, carga_horaria_semanal)
+
+**DOCENTE_FORMACAO**(<u>**id_form**, **mat_doc**</u>)
+
+**DOCENTE_AREA_DE_ATUACAO**(<u>**id_area_at**, **mat_doc**</u>)
 
 ### Referências
 
@@ -245,6 +251,15 @@ MEMBRO(mat_dic) → DISCENTE(matricula)
 
 PROJETO(cod_lab) → LABORATORIO(cod_lab)
 
-PARTICIPACAO_EM_PROJETO(cod_proj) → PROJETO(cod_proj)
+MEMBRO_PROJETO(cod_proj) → PROJETO(cod_proj)
 
-PARTICIPACAO_EM_PROJETO(cod_proj) → MEMBRO(cod_proj)
+MEMBRO_PROJETO(cod_proj) → MEMBRO(cod_proj)
+
+DOCENTE_AREA_DE_ATUACAO(id_area_at) → AREA_DE_ATUACAO(id)
+
+DOCENTE_AREA_DE_ATUACAO(mat_doc) → DOCENTE(matricula)
+
+DOCENTE_FORMACAO(id_form) → FORMACAO(id)
+
+DOCENTE_FORMACAO(mat_doc) → DOCENTE(matricula)
+
