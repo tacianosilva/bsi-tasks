@@ -10,10 +10,11 @@ b. <ul>
     <li>Restrição de <b>chave entrangeira</b>, garante que as relações entre as tabelas sejam mantidas;</li>
     <li>Restrição de <b>unicidade</b>, garantem que nenhum valor em uma determinada coluna de uma tabela seja duplicado;</li>
     <li>Restrição de <b>verificação</b>, usadas para impor limites aos valores que podem ser inseridos em uma coluna de uma tabela;</li>
-    <li>Restrição de <b>nulidade</b>, usados para garantir que os valores em uma coluna não possam ser nulos, a não ser que a tabela permita valores nulos;</li>
-    
+    <li>Restrição de <b>nulidade</b>, usados para garantir que os valores em uma coluna não possam ser nulos, a não ser que a tabela permita valores nulos;</li>    
+</ul>
+c.
+<ul>
     
 </ul>
-<br>c.
 
 
