@@ -134,6 +134,8 @@ erDiagram
         string email
     }
     CURSO {
+        
+        int id PK
         string nome PK
     }
     MEMBRO {
@@ -157,7 +159,7 @@ erDiagram
         datetime carga_horaria_semanal
     }
 
-    LABORATORIO }o--|| DEPARTAMENTO : tem
+    DEPARTAMENTO ||--|{ DOCENTE : tem
     DEPARTAMENTO ||--|{ CURSO : tem
     DOCENTE }o--|{ AREA_DE_ATUACAO : tem
     DOCENTE }o--|{ FORMACAO : tem
@@ -166,20 +168,81 @@ erDiagram
     COORDENADOR ||--|| LABORATORIO : coordena
 
     DOCENTE ||--o{ VICE_COORDENADOR : eh
-    VICE_COORDENADOR ||--|| LABORATORIO : vice_coordena
+    VICE_COORDENADOR ||--|| LABORATORIO : coordena
 
     DISCENTE }o--|| CURSO : pertence
 
+
+    
     MEMBRO }|--|| LABORATORIO : pertence
     DOCENTE ||--o{ MEMBRO : eh
     DISCENTE ||--o{ MEMBRO : eh
 
     LABORATORIO ||--o{ PROJETO : tem
+    LABORATORIO }o--|| DEPARTAMENTO : pertence
     MEMBRO ||--o{ PARTICIPACAO_EM_PROJETO : tem
-    PARTICIPACAO_EM_PROJETO }o--|| PROJETO : tem
+    PARTICIPACAO_EM_PROJETO }o--|| PROJETO : eh_de_um
 
 
 
 ```
 
+### Modelo Relacional (MR):
 
+**LABORATORIO**(<u>cod_lab</u> , sigla, nome, data_criacao, descricao, endereco, email, site, **id_cod**, **id_vice_cod**, **cod_dep**)
+
+**DEPARTAMENTO**(<u>cod_dep</u>, sigla, nome, endereco, site)
+
+**DOCENTE**(<u>matricula</u>, nome, email, data_contratacao, **cod_dep**)
+
+**COORDENADOR**(<u>id</u>, inicio_vigencia, termino_vigencia, fim_vigencia, **mat_doc**, **cod_lab**)
+
+**VICE_COORDENADOR**(<u>id</u>, inicio_vigencia, termino_vigencia, fim_vigencia, **mat_doc**, **cod_lab**)
+
+**AREA_DE_ATUACAO**(<u>id</u>, nome)
+
+**FORMACAO**(<u>id</u>, nome)
+
+**DISCENTE**(<u>matricula</u>, nome, email, **id_curso**)
+
+**CURSO**(<u>id</u>, nome, **cod_dep**)
+
+**MEMBRO**(<u>id</u>, horario_semanal, carga_horaria_semanal, **cod_lab**, **mat_doc**, **mat_dic**)
+
+**PROJETO**(<u>cod_proj</u>, nome, sigla, descricao, resumo, data_inicial, data_encerramento, **cod_lab**)
+
+**PARTICIPACAO_EM_PROJETO**(<u>id_memb</u>, carga_horaria_semanal, **id_memb**, **cod_proj**)
+
+### Referências
+
+LABORATORIO(id_cod) → COORDENADOR(id)
+
+LABORATORIO(id_vice_cod) → VICE_COORDENADOR(id)
+
+LABORATORIO(cod_dep) → DEPARTAMENTO(cod_dep)
+
+DEPARTAMENTO(cod_dep) → DEPARTAMENTO(cod_dep)
+
+COORDENADOR(mat_doc) → DOCENTE(matricula)
+
+COORDENADOR(cod_lab) → LABORATORIO(cod_lab)
+
+VICE_COORDENADOR(mat_doc) → DOCENTE(matricula)
+
+VICE_COORDENADOR(cod_lab) → LABORATORIO(cod_lab)
+
+DISCENTE(id_curso) → CURSO(id)
+
+CURSO(cod_dep) → DEPARTAMENTO(cod_dep)
+
+MEMBRO(cod_lab) → LABORATORIO(cod_lab)
+
+MEMBRO(mat_doc) → DOCENTE(matricula)
+
+MEMBRO(mat_dic) → DISCENTE(matricula)
+
+PROJETO(cod_lab) → LABORATORIO(cod_lab)
+
+PARTICIPACAO_EM_PROJETO(cod_proj) → PROJETO(cod_proj)
+
+PARTICIPACAO_EM_PROJETO(cod_proj) → MEMBRO(cod_proj)
