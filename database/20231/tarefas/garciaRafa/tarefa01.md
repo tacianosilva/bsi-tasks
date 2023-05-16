@@ -13,14 +13,11 @@
 
 ```mermaid
 erDiagram
-    Empregado }|--|{ HorarioLivre : EmpregadoTipo1
-    Empregado }|--|{ HorarioFixo : EmpregadoTipo2
+    Empregado }|--|{ EmpregadoLivre : Horario
+    Empregado }|--|{ EmpregadoFixo : Horario
     Empregado }|--|{ BaterPonto : BaterPonto
-    HorarioFixo }|--|{ Turno : Turno
-    HorarioFixo }|--|{ DiaSemana : DiaSemana
     DiaSemana }|--|{ Turno : DiaTrabalhado
     BaterPonto }|--|{ Turno: Turno
-    BaterPonto }|--|{ DiaSemana: DiaSemana
 
     Empregado{
         int matr
@@ -28,12 +25,12 @@ erDiagram
         string email
     }
 
-    HorarioLivre{
+    EmpregadoLivre{
         int horasTotais
         int horasMinimas
     }
 
-    HorarioFixo{
+    EmpregadoFixo{
         String turno1
         String turno2
     }
