@@ -55,7 +55,66 @@
 
     **Regra 7: Especialização/Generalização**
 
-        
+4. 
+```mermaid
+
+    erDiagram
+    
+    laboratorio{
+        int cod PK
+        string sigla
+        string descricao
+        string endereco
+        string site
+        string email
+        string codDocenteCoor FK
+        string codViceDocenteCoor FK
+    }
+
+    departamento{
+        int cod PK
+        string sigla
+        string nome
+        string endereco
+        string site
+        string codDocente FK
+    }
+
+    docente{
+        int matr PK
+        string nome
+        string email
+        string areaAtuacao
+        string dataContrato
+        string formAcademica
+    }
+
+    discente{
+        int matr PK
+        string nome
+        string email
+        string curso
+    }
+
+    projeto{
+        int cod PK
+        string sigla
+        string nome
+        string docenteLider FK
+        string descricao
+        string resumo
+        string dataInicio
+        string dataFim
+    }
+
+
+
+
+
+
+
+
+       
 
 
 
