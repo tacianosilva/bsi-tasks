@@ -105,6 +105,7 @@ erDiagram
     }
     COORDENADOR {
 
+        int id PK
         date inicio_vigencia
         date fim_vigencia
         date termino_vigencia
@@ -112,6 +113,7 @@ erDiagram
     }
     VICE_COORDENADOR {
 
+        int id PK
         date inicio_vigencia
         date fim_vigencia
         date termino_vigencia
@@ -136,7 +138,7 @@ erDiagram
     CURSO {
         
         int id PK
-        string nome PK
+        string nome
     }
     MEMBRO {
         int id PK
@@ -211,7 +213,7 @@ erDiagram
 
 **PROJETO**(<u>cod_proj</u>, nome, sigla, descricao, resumo, data_inicial, data_encerramento, **cod_lab**)
 
-**PARTICIPACAO_EM_PROJETO**(<u>id_memb</u>, carga_horaria_semanal, **id_memb**, **cod_proj**)
+**PARTICIPACAO_EM_PROJETO**(<u>**id_memb**, **cod_prok**</u>, carga_horaria_semanal, **id_memb**, **cod_proj**)
 
 ### Referências
 
