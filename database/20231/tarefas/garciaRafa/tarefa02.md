@@ -107,6 +107,10 @@
         string dataFim
     }
 
+    laboratorio ||--|{ departamento: pertence
+    laboratorio ||--o{ discente: tem
+    laboratorio ||--0{ docente: tem
+
 
 
 
