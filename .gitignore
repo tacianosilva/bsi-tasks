@@ -18,3 +18,5 @@ bd/odbc/python_postgres/.venv/
 bd/mongodb/.venv/
 bd/python/peewee_postgres/.venv/
 bd/python/peewee_postgres/__pycache__/
+languages/java/testes/target/
+languages/kotlin/.gradle/

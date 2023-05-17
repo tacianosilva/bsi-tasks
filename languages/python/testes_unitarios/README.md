@@ -2,6 +2,11 @@
 
 O arquivo `test_calculadora.py` implementa o testes de unidade para as funções no arquivo `calculadora.py`.
 
+Executando os testes com `unittest`:
+```console
+python3 -m unittest test_calculadora.py
+```
+
 ## Cobertura dos Testes
 
 Requisitos necessários:
