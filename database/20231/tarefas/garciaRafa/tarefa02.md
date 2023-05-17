@@ -57,47 +57,47 @@
 
 4. 
 ```mermaid
-
     erDiagram
     
     laboratorio{
-        int cod PK
+        string codigo PK
         string sigla
+        string nome
+        string dataCriacao
+        string portariaCriacao
         string descricao
         string endereco
         string site
         string email
-        string codDocenteCoor FK
-        string codViceDocenteCoor FK
     }
 
     departamento{
-        int cod PK
+        string codigo PK
         string sigla
         string nome
         string endereco
         string site
-        string codDocente FK
     }
 
     docente{
-        int matr PK
+        string matricula PK
         string nome
         string email
         string areaAtuacao
         string dataContrato
         string formAcademica
+        string departamentoCodigo FK
     }
 
     discente{
-        int matr PK
+        string matricula PK 
         string nome
         string email
         string curso
     }
 
     projeto{
-        int cod PK
+        string codigo PK
         string sigla
         string nome
         string docenteLider FK
@@ -107,12 +107,38 @@
         string dataFim
     }
 
-    laboratorio ||--|{ departamento: pertence
-    laboratorio ||--o{ discente: tem
-    laboratorio ||--0{ docente: tem
 
+    laboratorioProjeto{
+        string laboratorioCodigo PK
+        string projetoCodigo PK
+    }
 
+    membroLaboratorio{
+        string laboratorioCodigo PK
+        string membroMatricula PK
+        string horarioTrabalho
+        string cargaHorariaSemanal
+    }
 
+    laboratorioDocente{
+        string docenteCoordenador PK
+        string docenteViceCoordenador PK
+    }
+
+    laboratorioProjeto{
+        string laboratorioCodigo PK 
+        string docenteMatricula PK
+    }
+
+    participanteProjeto{
+        string projetoCodigo PK
+        string participanteMatricula PK
+        string cargaHorariaSemanal
+    }
+
+    laboratorio}|--|{departamento: tem
+    laboratorio}o--|{discente: membro
+    laboratorio}o--|{docente: membro
 
 
 
