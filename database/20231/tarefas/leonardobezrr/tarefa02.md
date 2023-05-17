@@ -14,7 +14,19 @@ b. <ul>
 </ul>
 c.
 <ul>
-    
+    As regras de conversão entre o modelo entidade-relacionamento e o modelo relacional são as seguintes:
+    <ul>
+        <li>
+        As entidades se tornam tabelas e seus atributos colunas, o nome da entidade é o nome da tabela
+        </li>
+        <li>
+            Cada tabela no modelo relacional deve ter uma chave primária que identifica aquela tabela
+        </li>
+        <li>
+            Os relacionamentos no modelo ER se tornam chaves estrangeiras no modelo relacional e a cardinalidade é representada por elas
+        </li>
+    </ul>
 </ul>
+d.
 
 
