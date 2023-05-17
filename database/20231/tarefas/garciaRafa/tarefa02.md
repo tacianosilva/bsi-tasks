@@ -137,8 +137,16 @@
     }
 
     laboratorio}|--|{departamento: tem
-    laboratorio}o--|{discente: membro
-    laboratorio}o--|{docente: membro
+    laboratorio||--||laboratorioProjeto : membro
+    docente}|--||departamento : participa
+    docente||--|{laboratorioDocente : membro
+    docente||--||laboratorioDocente : "coordenador"
+    docente||--||laboratorioDocente : "vice-coordenador"
+    docente}|--|{participanteProjeto : participa
+    discente}|--|{participanteProjeto : participa
+    discente}o--{|laboratorio : membro
+    projeto||--||laboratorioProjeto : contem
+    projeto}|--|{participanteProjeto : contem
 
 
 
