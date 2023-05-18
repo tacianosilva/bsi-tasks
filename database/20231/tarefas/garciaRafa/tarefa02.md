@@ -55,6 +55,10 @@
 
     **Regra 7: Especialização/Generalização**
 
+        Criar uma única tabela para toda hierarquia de generalização/especialização.
+        Criar uma tabela para a entidade genérica e uma tabela para cada entidade especializada.
+        Criar uma tabela para cada entidade especializada.
+
 4. 
 ```mermaid
     erDiagram
@@ -69,6 +73,11 @@
         string endereco
         string site
         string email
+    }
+
+    laboratorioDocente{
+        string laboratorioCodigo PK 
+        string docenteMatricula PK
     }
 
     departamento{
@@ -98,19 +107,19 @@
 
     projeto{
         string codigo PK
-        string sigla
         string nome
-        string docenteLider FK
+        string sigla
         string descricao
         string resumo
         string dataInicio
         string dataFim
+        string docenteLider FK
     }
 
-
-    laboratorioProjeto{
-        string laboratorioCodigo PK
+    participanteProjeto{
         string projetoCodigo PK
+        string participanteMatricula PK
+        string cargaHorariaSemanal
     }
 
     membroLaboratorio{
@@ -120,33 +129,39 @@
         string cargaHorariaSemanal
     }
 
-    laboratorioDocente{
-        string docenteCoordenador PK
-        string docenteViceCoordenador PK
-    }
-
-    laboratorioProjeto{
-        string laboratorioCodigo PK 
-        string docenteMatricula PK
-    }
-
-    participanteProjeto{
-        string projetoCodigo PK
-        string participanteMatricula PK
-        string cargaHorariaSemanal
-    }
-
     laboratorio}|--|{departamento: tem
-    laboratorio||--||laboratorioProjeto : membro
+    laboratorio}|--o{projeto: tem
     docente}|--||departamento : participa
     docente||--|{laboratorioDocente : membro
     docente||--||laboratorioDocente : "coordenador"
-    docente||--||laboratorioDocente : "vice-coordenador"
+    docente}|--||laboratorioDocente : "vice-coordenador"
     docente}|--|{participanteProjeto : participa
     discente}|--|{participanteProjeto : participa
-    discente}o--{|laboratorio : membro
-    projeto||--||laboratorioProjeto : contem
+    discente}o--|{laboratorio : membro
     projeto}|--|{participanteProjeto : contem
+    membroLaboratorio}|--o{discente : participa
+    membroLaboratorio}|--o{docente : participa
+    
+```
+
+**Modelo Relacional**
+
+
+laboratorio(<u>codigo</u>, sigla, nome, dataCriacao, portariaCriacao, descricao, email, site)
+
+departamento(<u>codigo</u>, sigla, nome, site)
+
+docente(<u>matricula</u>, nome, email, dataContratacao, **departamentoCodigo**)
+
+discente(<u>matricula</u>, nome, email, curso)
+
+projeto(<u>matricula</u>, nome, sigla, descricao, dataInicio, dataConclusao, resumo, **liderProjeto**)
+
+laboratorioDocente(<u>**laboratorioCodigo, docenteMatricula**</u>)
+
+participanteProjeto(<u>**docenteMatricula, discenteMatricula, projetoCodigo**</u>)
+
+
 
 
 
