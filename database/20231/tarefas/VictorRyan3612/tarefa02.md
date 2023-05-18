@@ -44,3 +44,28 @@ De preferencia e se possível [S] deve ser a entidade de participação total no
 
 A Entidade [S] recebe chave estrangeira de [T]
 Atributos: atributos de [S] e Atributos do relacionamento entre ambas.
+
+
+## Regra 4 1:n sem entidades fracas
+
+Tabela com a entidade n chama-se [S], recebe chave estrangeira da entidade com cardinalidade 1 [T].
+
+Tabela [S] recebe atributos do relacionamento
+
+
+## Regra 5 n:m
+
+Cria-se uma nova tabela para representar esse relacionamento, Vira uma tabela nova [S] com atributos: 
+
+As chaves primárias das duas entidades que participam do relacionamento, viram chaves estrangeiras em [S], em seguida a junção dessas duas chaves vira a chave primária de [S].
+
+
+## Regra 6 Atributos multivalorados 
+Cria-se uma nova tabela [R]
+Identifica a entidade ou relacionamento [S] que contém o atributo multivalorado [A] e chave primária [K]
+
+Nova tabela [R] terá os atributos:
+
+Chave primária composta [A_K], Chave primária da tabela [S]([K]), atributo multivalorado [A]
+
+Se o atributo multivalorado é composto => incluir seus componentes atômicos.
