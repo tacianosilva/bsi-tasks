@@ -48,9 +48,18 @@ Regra 6: Atributos Multivalorados
     A chave primária de R é a combinação de A e K
     Se o atributo multivalorado é composto => incluir seus componentes atômicos
 
+Regra 7: Em relações de especialização existem diversas técnicas de conversão para o M.R. Os casos dependem, o recomendado é a criação de múltiplas relações, uma para cada tipo específico da entidade especificada.
+
 ===========================================================================================
 
+
++ DIAGRAMA E.R: 
 [![](https://mermaid.ink/img/pako:eNqdlFuP0zAQhf-K5eemanpLNm-ofQAJRMVKPKC8zCazWUPiqWxHYknz35ncuvFeENC-1MfTc74ZO2lkRjnKRKI5KigMVKn-CHdkwJFRJC6XILhcxBHPYBxUqB0l4kTW1sovbCkIqBEnQ9_RkUjEwShI9bRuB58Tu6hMnSED9jmQdsiBc1UMpY04KptxHLLVdT_VV7XL46o5QiLmlR7cYPkJqztDvMGlX7BQ1pnOctZb36_o0mkKnyAnpa-gxg-eE4517UUMVl53Xmn3nfk0qRb8UdoJPhRV0LBmSqULYVVRgqdoqlB4Sg4Ourlzkq-jzYx6rlrl0BOwAlV6CnMciEyOGjy4ryrDp412aGU-yP_pxWfRORrMXiPu48aL5ef8a0g3rw-aT4NejpF0VtaebNDWFT2fz2ejuGHIyXgos3OdiGf3wMcer8yTVgHbZ3XpD31s2Qd4uOVT01COIdPz0bxp9ubAXx5-bewEPyL-gfvvfcEgvHOvTdzT7slUw03uCa4PLzNMgGAKeM9j7l81ozisu3_JhayQPVTO77eePJXuAZlPJvwzB_MjlUMd1I5uH3Umk3soLS5kfWYkHF-JV_UMWiaN_CmTMNwvw32028WraB_H-4V8lEmwiZZxdLO7icLtdhOvo7hdyF9EbBAuN-ttuOKteBWuV_E26t2-9ZvO1Nj-BrKq7IQ?type=png)](https://mermaid.live/edit#pako:eNqdlFuP0zAQhf-K5eemanpLNm-ofQAJRMVKPKC8zCazWUPiqWxHYknz35ncuvFeENC-1MfTc74ZO2lkRjnKRKI5KigMVKn-CHdkwJFRJC6XILhcxBHPYBxUqB0l4kTW1sovbCkIqBEnQ9_RkUjEwShI9bRuB58Tu6hMnSED9jmQdsiBc1UMpY04KptxHLLVdT_VV7XL46o5QiLmlR7cYPkJqztDvMGlX7BQ1pnOctZb36_o0mkKnyAnpa-gxg-eE4517UUMVl53Xmn3nfk0qRb8UdoJPhRV0LBmSqULYVVRgqdoqlB4Sg4Ourlzkq-jzYx6rlrl0BOwAlV6CnMciEyOGjy4ryrDp412aGU-yP_pxWfRORrMXiPu48aL5ef8a0g3rw-aT4NejpF0VtaebNDWFT2fz2ejuGHIyXgos3OdiGf3wMcer8yTVgHbZ3XpD31s2Qd4uOVT01COIdPz0bxp9ubAXx5-bewEPyL-gfvvfcEgvHOvTdzT7slUw03uCa4PLzNMgGAKeM9j7l81ozisu3_JhayQPVTO77eePJXuAZlPJvwzB_MjlUMd1I5uH3Umk3soLS5kfWYkHF-JV_UMWiaN_CmTMNwvw32028WraB_H-4V8lEmwiZZxdLO7icLtdhOvo7hdyF9EbBAuN-ttuOKteBWuV_E26t2-9ZvO1Nj-BrKq7IQ)
+
+
++ Modelo Relacional: <img src="Diagrama Relacional.png">
+
+
 
 
 
