@@ -101,3 +101,11 @@ há o caso excepcional das subclasses serem disjuntas, nesse caso, terá um atri
 atributos: chave, todos os atributos de C, todos os atributos das subclasses e um atributo boolean para cada subclasse
 
 Essa opção é usada para especialização cujas subclasses são sobrepostas.
+
+
+
+
+# Questão 7D i
+
+![upload ](https://uploaddeimagens.com.br/images/004/473/103/full/Chen_Erd.jpg?1684449850)
+
