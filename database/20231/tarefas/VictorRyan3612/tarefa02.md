@@ -137,3 +137,9 @@ Essa opção é usada para especialização cujas subclasses são sobrepostas.
 
 ![upload ](https://uploaddeimagens.com.br/images/004/473/187/full/Chen_Erd.jpg?1684453139)
 
+
+
+### vii
+
+![upload ](https://uploaddeimagens.com.br/images/004/473/190/full/Chen_Erd.jpg?1684453438)
+
