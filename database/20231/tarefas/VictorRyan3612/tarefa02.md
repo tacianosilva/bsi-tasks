@@ -7,10 +7,10 @@
 
 
 
-### 7a
+### Questão 7a
 A aparencia do modelo relacional é parecida com tabelas e planhilhas do excel, porem a sua diferença está nas relações entre colunas linhas e outras tabelas.
 
-### 7b
+### Questão 7b
 Integridade de Chave:
 Cada linha, ou tupla, da tebela, ou relação, tem um conjunto único de atributos que a identifica, não podendo ter outra tupla com o mesmo conjunto de atributos.
 
@@ -22,7 +22,7 @@ Uma certa Chave primária de uma certa relação, pode ser chamada de chave estr
 
 
 
-## 7c
+## Questão 7c
 As regras de conversões para Modelo Entidade-Relacionamento (MER) para Modelo Relacional (MR).
 
 ### Regra 1 Entidade Regulares:
