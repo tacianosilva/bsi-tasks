@@ -139,8 +139,8 @@
     discente}|--|{participanteProjeto : participa
     discente}o--|{laboratorio : membro
     projeto}|--|{participanteProjeto : contem
-    membroLaboratorio}|--o{discente : participa
-    membroLaboratorio}|--o{docente : participa
+    membroLaboratorio}|--|{discente : participa
+    membroLaboratorio}|--|{docente : participa
     
 ```
 
