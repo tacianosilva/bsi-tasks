@@ -105,7 +105,10 @@ Essa opção é usada para especialização cujas subclasses são sobrepostas.
 
 
 
-# Questão 7D i
+# Questão 7D
 
-![upload ](https://uploaddeimagens.com.br/images/004/473/103/full/Chen_Erd.jpg?1684449850)
+### i
+
+![upload ](https://uploaddeimagens.com.br/images/004/473/112/full/Chen_Erd.jpg?1684450370)
+
 
