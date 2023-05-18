@@ -1,7 +1,9 @@
 # Tarefa 02 - Modelo Relacional e Regras de Conversão
 
 **Nome:** Victor Ryan
+
 **Github:** https://github.com/VictorRyan3612
+
 **Email:** vitorsilva3612@gmail.com
 ##
 
@@ -50,7 +52,7 @@ Atributos: atributos de [S] e Atributos do relacionamento entre ambas.
 
 Tabela com a entidade n chama-se [S], recebe chave estrangeira da entidade com cardinalidade 1 [T].
 
-Tabela [S] recebe atributos do relacionamento
+Tabela [S] recebe atributos do relacionamento.
 
 
 ## Regra 5 n:m
@@ -69,3 +71,33 @@ Nova tabela [R] terá os atributos:
 Chave primária composta [A_K], Chave primária da tabela [S]([K]), atributo multivalorado [A]
 
 Se o atributo multivalorado é composto => incluir seus componentes atômicos.
+
+## Regra 7 Herença
+
+o primeiro passo é converter cada especialização com m
+subclasses {S1,S2,...,Sm} e superclasse C, cujos
+atributos são {k, a1,..., an} onde k é a chave
+primária, em esquemas de relações usando uma
+das seguintes opções:
+
+### A: 
+Fazer tabela C usando a regra 1, tendo seus atributos
+Fazer uma tabela para cada subclasse usando a regra 1, tendo seus atributos 
+a chave primária da tabela C e demais será a chave primária da entidade C.
+
+### B:
+Não terá a relação C
+Tabela para cada subclasse [Si]
+Atributos: chave primária de C, atributos de C, atributos de Si.
+
+### C:
+Uma única tabela com todos os campos de C e Si, com tais atributos podendo serem vazios
+
+Atributos: chave, todos os atributos de C, todos os atributos das subclasses
+há o caso excepcional das subclasses serem disjuntas, nesse caso, terá um atributo que indica o tipo da subclasse.
+
+### D:
+Única tabela com todos os atributos das subclasses
+atributos: chave, todos os atributos de C, todos os atributos das subclasses e um atributo boolean para cada subclasse
+
+Essa opção é usada para especialização cujas subclasses são sobrepostas.
