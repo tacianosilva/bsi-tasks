@@ -160,18 +160,25 @@ Essa opção é usada para especialização cujas subclasses são sobrepostas.
 
 
 ## Questão 7d parte 2
+* Como o markdawn do github e vscode não tem sublinhado, tomei a liberdade de substituir por italico
 
-LABORATORIO(codigo, silga, nome, 
+
+LABORATORIO(*codigo*, silga, nome, 
 dataCriacao, portaria de criacao, descricao,
 endereco, site, email, departamento)
 
-DEPARTAMENTO(codigo, sigla, nome, enredeco, site)
-COORDENADOR(ID, dataInicio, dataFim)
-VICE_COORDENADOR(ID, dataInicio, dataFim)
+DEPARTAMENTO(*codigo*, sigla, nome, enredeco, site)
 
-MEMBROS(ID, horarioSemanal, cargaHoraria)
-DOCENTES(matricula, nome, areaAtuacao, dataContratacao, formacao)
-ALUNOS(matricula, nome, email, curso)
+COORDENADOR(*ID*, dataInicio, dataFim)
 
-PARTICIPACAO_PROJETO(ID, cargaHoraria)
-PROJETO(codigo, sigla, nome, docenteLider, descricao, dataInicio, dataConclusao, resumo)
+VICE_COORDENADOR(*ID*, dataInicio, dataFim)
+
+MEMBROS(*ID*, horarioSemanal, cargaHoraria)
+
+DOCENTES(*matricula*, nome, areaAtuacao, dataContratacao, formacao)
+
+ALUNOS(*matricula*, nome, email, curso)
+
+PARTICIPACAO_PROJETO(*ID*, cargaHoraria)
+
+PROJETO(*codigo*, sigla, nome, docenteLider, descricao, dataInicio, dataConclusao, resumo)
