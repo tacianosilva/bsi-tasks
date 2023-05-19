@@ -187,3 +187,30 @@ DOCENTES(*matricula*, nome, areaAtuacao, dataContratacao, formacao, **cod_dep**)
 PARTICIPACAO_PROJETO(*ID*, cargaHoraria, **cod_proj**, **matri_alun**, **matri_doc**)
 
 PROJETO(*codigo*, sigla, nome, docenteLider, descricao, dataInicio, dataConclusao, resumo, **cod_lab**)
+
+##
+### Conexões entre relações
+LABORATORIO(ID_cordenador) → COORDENADOR(ID)
+LABORATORIO(ID_vice) → VICE_COORDENADOR(ID)
+LABORATORIO(cod_dep) → DEPARTAMENTO(codigo)
+
+COORDENADOR (matri_docente) → DOCENTES(matricula)
+VICE_COORDENADOR(ID) → DOCENTES(matricula)
+
+
+MEMBRO_ALUN(matri_alun) → ALUNOS(matricula)
+MEMBRO_ALUN(ID_membro) → MEMBROS(ID)
+
+MEMBRO_LAB(ID_membro) → MEMBROS(ID)
+MEMBRO_LAB(ID_membro) → LABORATORIO(codigo)
+
+MEMBRO_DOC(ID_membro) → MEMBROS(ID)
+MEMBRO_DOC(ID_membro) → DOCENTES(matricula)
+
+
+DOCENTES(cod_dep) → DEPARTAMENTO(codigo)
+PARTICIPACAO_PROJETO(cod_proj) → PROJETO(codigo)
+PARTICIPACAO_PROJETO(matri_alun) → ALUNOS(matricula)
+PARTICIPACAO_PROJETO(matri_doc) → DOCENTES(matricula)
+
+PROJETO(cod_lab) → LABORATORIO(codigo)
