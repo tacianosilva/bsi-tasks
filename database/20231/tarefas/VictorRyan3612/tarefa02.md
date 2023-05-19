@@ -158,7 +158,6 @@ Essa opção é usada para especialização cujas subclasses são sobrepostas.
 
 
 
-
 ## Questão 7d parte 2
 * Como o markdawn do github e vscode não tem sublinhado, tomei a liberdade de substituir por italico
 
@@ -175,9 +174,15 @@ VICE_COORDENADOR(*ID*, dataInicio, dataFim, **matri_docente**)
 
 MEMBROS(*ID*, horarioSemanal, cargaHoraria)
 
-DOCENTES(*matricula*, nome, areaAtuacao, dataContratacao, formacao, **cod_dep**)
+MEMBRO_ALUN (*matriAlun_IdMembro* ,**matri_alun**, **ID_membro** )
+
+MEMBRO_LAB(*IdMem_codLab*, **ID_membro**, **cod_lab**)
+
+MEMBRO_DOC (*IdMem_matriDoc*, **ID_membro**, **matri_doc**)
 
 ALUNOS(*matricula*, nome, email, curso)
+
+DOCENTES(*matricula*, nome, areaAtuacao, dataContratacao, formacao, **cod_dep**)
 
 PARTICIPACAO_PROJETO(*ID*, cargaHoraria, **cod_proj**, **matri_alun**, **matri_doc**)
 
