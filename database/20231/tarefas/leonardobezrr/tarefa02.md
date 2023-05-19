@@ -54,7 +54,7 @@ d.
             laboratorio_docente(<b>codigoLab,matriculaDoc</b>)
         </li>
         <li>
-            docente(<u> matriculaDoc </u>,nome,email,area,data,formacao)
+            docente(<u> matriculaDoc </u>,nome,email,area,data,formacao) 
         </li>
     </ul>
 </p>
