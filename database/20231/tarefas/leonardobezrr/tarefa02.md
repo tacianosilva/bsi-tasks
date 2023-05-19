@@ -28,5 +28,14 @@ c.
     </ul>
 </ul>
 d.
+<p>Diagrama de Entidade Relacionamento</p>
+    <p>
+        <img src="DiagramaEntidadeRelacionamento.png" alt="Diagrama Entidade Relacionamento">
+    </p>
+<p>
+    Esquema Relacional
+</p>
+    
+
 
 
