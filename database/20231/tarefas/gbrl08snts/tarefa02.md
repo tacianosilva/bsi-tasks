@@ -30,24 +30,20 @@ informações.
 * __Entidades:__ Toda entidade do Modelo Entidade Relacional (MER) será transformada em uma tabela no MR. Os nomes das tabelas serão os 
 nomes de cada entidade e os atributos do MER serão as colunas de uma tabela no MR.
 
-* __Atributos:__
+* __Atributos:__ Todos os atributos de uma entidade no MER será traduzida em coluna na tabela do MR. Os tipos de dados de cada uma das 
+colunas será definido através do domínio do atributo do Modelo Entidade Relacional (texto, número inteiro, data, etc.)
 
-* __Chave Primária:__
+* __Chave Primária:__ A primary key da entidade MER será transformada em uma coluna da tabela MR. Essa nova coluna vai ser a primary key 
+da nossa tabela MR, garantindo assim q os dados serão únicos.
 
-* __Relacionamentos Um_Para_Muitos:__
+* __Relacionamentos Um_Para_Muitos:__ Relacionamentos um-para-muitos do MER serão transformados nas chaves estrangeiras MR. Uma primary 
+key de uma entidade "um" virá uma chave estrangeira da tabela da entidade "muitos", criando assim a relação entre tabelas.
 
-* __Relacionamento Muitos_Para_Muitos:__
+* __Relacionamento Muitos_Para_Muitos:__ Relacionamentos muitos-para-muitos do MER serão transformados nas tabelas adicionais, chamadas 
+também de tabelas de junção ou associativas do MR. Estas tabelas terão as primary keys das entidades relacionadas e podem armazenar 
+outros atributos relacionados.
 
-* __Atributos Multivalorados:__
-
-* __Atributos Compostos:__
-
-
-
-
-
-
-
-
+* __Atributos Multivalorados:__ Uma entidade MER possui atributos multivalorados, eles serão transformados em tabelas 
+separadas do MR. Essas tabelas vão possuir uma chave estrangeira ques estará relacionada à chave primária da entidade principal.
 
 
