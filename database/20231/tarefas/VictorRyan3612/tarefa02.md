@@ -165,7 +165,7 @@ Essa opção é usada para especialização cujas subclasses são sobrepostas.
 
 LABORATORIO(*codigo*, silga, nome, 
 dataCriacao, portaria de criacao, descricao,
-endereco, site, email, departamento, **ID_cordenador**)
+endereco, site, email, departamento, **ID_cordenador**, **ID_vice**,**cod_dep**,)
 
 DEPARTAMENTO(*codigo*, sigla, nome, enredeco, site)
 
@@ -175,10 +175,10 @@ VICE_COORDENADOR(*ID*, dataInicio, dataFim, **matri_docente**)
 
 MEMBROS(*ID*, horarioSemanal, cargaHoraria)
 
-DOCENTES(*matricula*, nome, areaAtuacao, dataContratacao, formacao)
+DOCENTES(*matricula*, nome, areaAtuacao, dataContratacao, formacao, **cod_dep**)
 
 ALUNOS(*matricula*, nome, email, curso)
 
-PARTICIPACAO_PROJETO(*ID*, cargaHoraria)
+PARTICIPACAO_PROJETO(*ID*, cargaHoraria, **cod_proj**, **matri_alun**, **matri_doc**)
 
-PROJETO(*codigo*, sigla, nome, docenteLider, descricao, dataInicio, dataConclusao, resumo)
+PROJETO(*codigo*, sigla, nome, docenteLider, descricao, dataInicio, dataConclusao, resumo, **cod_lab**)
