@@ -165,13 +165,13 @@ Essa opção é usada para especialização cujas subclasses são sobrepostas.
 
 LABORATORIO(*codigo*, silga, nome, 
 dataCriacao, portaria de criacao, descricao,
-endereco, site, email, departamento)
+endereco, site, email, departamento, **ID_cordenador**)
 
 DEPARTAMENTO(*codigo*, sigla, nome, enredeco, site)
 
-COORDENADOR(*ID*, dataInicio, dataFim)
+COORDENADOR(*ID*, dataInicio, dataFim, **matri_docente**)
 
-VICE_COORDENADOR(*ID*, dataInicio, dataFim)
+VICE_COORDENADOR(*ID*, dataInicio, dataFim, **matri_docente**)
 
 MEMBROS(*ID*, horarioSemanal, cargaHoraria)
 
