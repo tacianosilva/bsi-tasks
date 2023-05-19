@@ -153,7 +153,7 @@ Essa opção é usada para especialização cujas subclasses são sobrepostas.
 
 ## Final
 
-![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/249/full/Chen_Erd.jpg?1684456040)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/294/full/Chen_Erd.jpg?1684459210)
 
 
 
