@@ -109,46 +109,50 @@ Essa opção é usada para especialização cujas subclasses são sobrepostas.
 
 ### i
 
-![upload ](https://uploaddeimagens.com.br/images/004/473/112/full/Chen_Erd.jpg?1684450370)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/112/full/Chen_Erd.jpg?1684450370)
 
 
 
 ### ii
 
-![upload ](https://uploaddeimagens.com.br/images/004/473/118/full/Chen_Erd.jpg?1684450653)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/118/full/Chen_Erd.jpg?1684450653)
 
 
 
 ### iii
-![upload ](https://uploaddeimagens.com.br/images/004/473/128/full/Chen_Erd.jpg?1684451277)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/128/full/Chen_Erd.jpg?1684451277)
 
 
 ### iv
 
-![upload ](https://uploaddeimagens.com.br/images/004/473/151/full/Chen_Erd.jpg?1684452142)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/151/full/Chen_Erd.jpg?1684452142)
 
 
 
 ### v
-![upload ](https://uploaddeimagens.com.br/images/004/473/180/full/Chen_Erd_v.jpg?1684452939)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/180/full/Chen_Erd_v.jpg?1684452939)
 
 
 ### vi
 
-![upload ](https://uploaddeimagens.com.br/images/004/473/187/full/Chen_Erd.jpg?1684453139)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/187/full/Chen_Erd.jpg?1684453139)
 
 
 
 ### vii
 
-![upload ](https://uploaddeimagens.com.br/images/004/473/190/full/Chen_Erd.jpg?1684453438)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/190/full/Chen_Erd.jpg?1684453438)
 
 
 
 ### viii
 
-![upload ](https://uploaddeimagens.com.br/images/004/473/211/full/Chen_Erd.jpg?1684454261)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/211/full/Chen_Erd.jpg?1684454261)
+
+
 
 ## Final
 
-![upload ](https://uploaddeimagens.com.br/images/004/473/249/full/Chen_Erd.jpg?1684456040)
+![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/249/full/Chen_Erd.jpg?1684456040)
+
+
