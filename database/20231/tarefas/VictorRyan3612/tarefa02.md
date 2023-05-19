@@ -156,3 +156,22 @@ Essa opção é usada para especialização cujas subclasses são sobrepostas.
 ![Diagram_MER](https://uploaddeimagens.com.br/images/004/473/249/full/Chen_Erd.jpg?1684456040)
 
 
+
+
+
+## Questão 7d parte 2
+
+LABORATORIO(codigo, silga, nome, 
+dataCriacao, portaria de criacao, descricao,
+endereco, site, email, departamento)
+
+DEPARTAMENTO(codigo, sigla, nome, enredeco, site)
+COORDENADOR(ID, dataInicio, dataFim)
+VICE_COORDENADOR(ID, dataInicio, dataFim)
+
+MEMBROS(ID, horarioSemanal, cargaHoraria)
+DOCENTES(matricula, nome, areaAtuacao, dataContratacao, formacao)
+ALUNOS(matricula, nome, email, curso)
+
+PARTICIPACAO_PROJETO(ID, cargaHoraria)
+PROJETO(codigo, sigla, nome, docenteLider, descricao, dataInicio, dataConclusao, resumo)
