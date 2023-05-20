@@ -12,3 +12,18 @@ b. <ul>
     <li>Restrição de <b>verificação</b>, usadas para impor limites aos valores que podem ser inseridos em uma coluna de uma tabela;</li>
     <li>Restrição de <b>nulidade</b>, usados para garantir que os valores em uma coluna não possam ser nulos, a não ser que a tabela permita valores nulos;</li>    
 </ul>
+c.
+<ul>
+    As regras de conversão entre o modelo entidade-relacionamento e o modelo relacional são as seguintes:
+    <ul>
+        <li>
+        As entidades se tornam tabelas e seus atributos colunas, o nome da entidade é o nome da tabela
+        </li>
+        <li>
+            Cada tabela no modelo relacional deve ter uma chave primária que identifica aquela tabela
+        </li>
+        <li>
+            Os relacionamentos no modelo ER se tornam chaves estrangeiras no modelo relacional e a cardinalidade é representada por elas
+        </li>
+    </ul>
+</ul>
