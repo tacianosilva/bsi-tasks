@@ -27,3 +27,34 @@ c.
         </li>
     </ul>
 </ul>
+d.
+<p>Diagrama de Entidade Relacionamento</p>
+    <p>
+        <img src="DiagramaEntidadeRelacionamento.png" alt="Diagrama Entidade Relacionamento">
+    </p>
+<p>
+    Esquema Relacional
+    <ul>
+        <li>
+            projetos(<u> codigoPro </u>,sigla,nome,<b>matriculaDoc</b>,descricao,dataFim,resumo)
+        </li>
+        <li>
+            laboratorio(<u> codigoLab </u>,listaProjetos,<b>matricula</b>)
+        </li>
+        <li>
+            departamento(<u> codigoDep </u>,sigla,nome,endereco,site)
+        </li>
+        <li>
+            discente(<u> matriculaDis </u>,nome,email,curso)
+        </li>
+        <li>
+            laboratorio_discente(<b>codigoLab,matriculaDis</b>)
+        </li>
+        <li>
+            laboratorio_docente(<b>codigoLab,matriculaDoc</b>)
+        </li>
+        <li>
+            docente(<u> matriculaDoc </u>,nome,email,area,data,formacao) 
+        </li>
+    </ul>
+</p>
