@@ -44,3 +44,51 @@ D.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 E. 
+  
+  ```mermaid
+erDiagram
+
+
+    TRABALHADOR-HL {
+
+        int id PK
+        string nome
+        string email
+        datetime HorasMes
+        datetime HorasMinDia
+    }
+    TRABALHADOR-HF {
+
+        int id PK
+        string nome
+        string email
+    }
+
+    TURNO {
+
+        int id PK
+        datetime horaInicial
+        datetime horaEncerramento
+    }
+
+    DIA {
+
+        string cod PK
+        string nome
+    }
+
+
+    CHECK-IN {
+
+        int id PK
+        datetime HoraEntrada
+        datetime HoraSaida
+
+    }
+
+    DIA ||--o{ TURNO : Possui
+    TRABALHADOR-HF ||--o{ CHECK-IN : Ponto
+    TRABALHADOR-HL ||--o{ CHECK-IN : Ponto
+    CHECK-IN }o--|| TURNO : horario-de-trabalho
+
+```
