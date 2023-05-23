@@ -46,11 +46,191 @@ Atributos derivados não são representados como colunas nas tabelas, pois podem
 
 
 
-mermaid
-    erDiagram
+```mermaid
+erDiagram
 
-    Empregado{
-        int codigo_empregado PK
+    LABORATORIO {
+
+        int cod_lab PK
+        string sigla
         string nome
-        string Email
+        date data_criacao
+        string descricao
+        string endereco
+        slug site
+        string email
+
     }
+    DEPARTAMENTO {
+
+        int cod_dep PK
+        string sigla
+        string nome
+        string endereco
+        slug site
+    }
+    DOCENTE {
+
+        int matricula PK
+        string nome
+        string email
+        date data_contratacao
+    }
+    COORDENADOR {
+
+        int id PK
+        date inicio_vigencia
+        date fim_vigencia
+        date termino_vigencia
+
+    }
+    VICE_COORDENADOR {
+
+        int id PK
+        date inicio_vigencia
+        date fim_vigencia
+        date termino_vigencia
+    }
+    AREA_DE_ATUACAO {
+
+        int id PK
+        string nome
+    }
+    FORMACAO {
+
+        int id PK
+        string nome
+
+    }
+    DISCENTE {
+
+        int matricula PK
+        string nome
+        string email
+    }
+    CURSO {
+        
+        int id PK
+        string nome
+    }
+    MEMBRO {
+        int id PK
+        string horario_semanal
+        datetime carga_horaria_semanal
+    }
+    PROJETO {
+
+        int cod_proj PK
+        string nome
+        string sigla
+        string descricao
+        string resumo
+        date data_inicial
+        date data_encerramento
+    }
+
+    MEMBRO_PROJETO {
+
+        datetime carga_horaria_semanal
+    }
+
+    DEPARTAMENTO ||--|{ DOCENTE : tem
+    DEPARTAMENTO ||--|{ CURSO : tem
+    DOCENTE }o--|{ AREA_DE_ATUACAO : tem
+    DOCENTE }o--|{ FORMACAO : tem
+
+    DOCENTE ||--o| COORDENADOR : eh
+    COORDENADOR ||--|| LABORATORIO : coordena
+
+    DOCENTE ||--o{ VICE_COORDENADOR : eh
+    VICE_COORDENADOR ||--|| LABORATORIO : coordena
+
+    DISCENTE }o--|| CURSO : pertence
+
+
+    
+    MEMBRO }|--|| LABORATORIO : pertence
+    DOCENTE ||--o{ MEMBRO : eh
+    DISCENTE ||--o{ MEMBRO : eh
+
+    LABORATORIO ||--o{ PROJETO : tem
+    LABORATORIO }o--|| DEPARTAMENTO : pertence
+    MEMBRO ||--o{ MEMBRO_PROJETO : tem
+    MEMBRO_PROJETO }o--|| PROJETO : eh_de_um
+
+
+
+```
+
+### Modelo Relacional (MR):
+
+**LABORATORIO**(<u>cod_lab</u> , sigla, nome, data_criacao, descricao, endereco, email, site, **id_cod**, **id_vice_cod**, **cod_dep**)
+
+**DEPARTAMENTO**(<u>cod_dep</u>, sigla, nome, endereco, site)
+
+**DOCENTE**(<u>matricula</u>, nome, email, data_contratacao, **cod_dep**)
+
+**COORDENADOR**(<u>id</u>, inicio_vigencia, termino_vigencia, fim_vigencia, **mat_doc**, **cod_lab**)
+
+**VICE_COORDENADOR**(<u>id</u>, inicio_vigencia, termino_vigencia, fim_vigencia, **mat_doc**, **cod_lab**)
+
+**AREA_DE_ATUACAO**(<u>id</u>, nome)
+
+**FORMACAO**(<u>id</u>, nome)
+
+**DISCENTE**(<u>matricula</u>, nome, email, **id_curso**)
+
+**CURSO**(<u>id</u>, nome, **cod_dep**)
+
+**MEMBRO**(<u>id</u>, horario_semanal, carga_horaria_semanal, **cod_lab**, **mat_doc**, **mat_dic**)
+
+**PROJETO**(<u>cod_proj</u>, nome, sigla, descricao, resumo, data_inicial, data_encerramento, **cod_lab**)
+
+**MEMBRO_PROJETO**(<u>**id_memb**, **cod_prok**</u>, carga_horaria_semanal)
+
+**DOCENTE_FORMACAO**(<u>**id_form**, **mat_doc**</u>)
+
+**DOCENTE_AREA_DE_ATUACAO**(<u>**id_area_at**, **mat_doc**</u>)
+
+### Referências
+
+LABORATORIO(id_cod) → COORDENADOR(id)
+
+LABORATORIO(id_vice_cod) → VICE_COORDENADOR(id)
+
+LABORATORIO(cod_dep) → DEPARTAMENTO(cod_dep)
+
+DEPARTAMENTO(cod_dep) → DEPARTAMENTO(cod_dep)
+
+COORDENADOR(mat_doc) → DOCENTE(matricula)
+
+COORDENADOR(cod_lab) → LABORATORIO(cod_lab)
+
+VICE_COORDENADOR(mat_doc) → DOCENTE(matricula)
+
+VICE_COORDENADOR(cod_lab) → LABORATORIO(cod_lab)
+
+DISCENTE(id_curso) → CURSO(id)
+
+CURSO(cod_dep) → DEPARTAMENTO(cod_dep)
+
+MEMBRO(cod_lab) → LABORATORIO(cod_lab)
+
+MEMBRO(mat_doc) → DOCENTE(matricula)
+
+MEMBRO(mat_dic) → DISCENTE(matricula)
+
+PROJETO(cod_lab) → LABORATORIO(cod_lab)
+
+MEMBRO_PROJETO(cod_proj) → PROJETO(cod_proj)
+
+MEMBRO_PROJETO(cod_proj) → MEMBRO(cod_proj)
+
+DOCENTE_AREA_DE_ATUACAO(id_area_at) → AREA_DE_ATUACAO(id)
+
+DOCENTE_AREA_DE_ATUACAO(mat_doc) → DOCENTE(matricula)
+
+DOCENTE_FORMACAO(id_form) → FORMACAO(id)
+
+DOCENTE_FORMACAO(mat_doc) → DOCENTE(matricula)
+
