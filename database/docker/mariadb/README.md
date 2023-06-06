@@ -21,7 +21,13 @@ docker run --name mariadb-server -p 3306:3306 -d \
 
 ## Acessando via MariaDB Cli (MySql Cli)
 
-Se não tiver, instale o cliente de acesso ao SGBD:
+:pushpin: É possível executar **MariaDB Cli** via o container docker, usando o comando `docker exec`.
+
+```console
+docker exec -it mysql-server mysql -u root -p
+```
+
+Caso deseje pode instalar o cliente de acesso ao SGBD diretamente no SO:
 
 ```console
 sudo apt install mysql-client
