@@ -18,7 +18,7 @@ docker run --name mongodb-server -p 27017:27017 \
        -e MONGO_INITDB_ROOT_USERNAME=user \
        -e MONGO_INITDB_ROOT_PASSWORD=pass \
        --network mongodb-network \
-       -v "$HOME/docker/volumes/mongodb:/data/db"
+       -v "$HOME/docker/volumes/mongodb:/data/db" \
        -d mongo:latest
 ```
 
