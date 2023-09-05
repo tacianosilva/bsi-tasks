@@ -18,3 +18,6 @@ A IDE preferida para realizar o projeto é o Visual Studio Code, devido à sua f
 
 ## Questão 'e'
 [Neste vídeo](https://www.youtube.com/watch?v=GGBzMpIAgz4) é ensinado como fazer um CRUD completo em uma versão recente do Django.
+
+## Questão 'f'
+Mocks Objects são objetos simulados ou fictícios que substituem componentes reais em um teste unidade. Eles são projetos para imitar o comportamento de um componente real, mas de uma forma controlada e previsível.
