@@ -53,3 +53,12 @@ Aqui estão algumas das principais ferramentas de teste para Dart:
         </li>
     </ul>
 </details>
+
+
+# IDE que será utilizada
+
+A IDE utilizada será o VISUAL STUDIO CODE. O Visual Studio Code, ou simplesmente VS Code é um editor de código-fonte desenvolvido pela Microsoft para Windows, Linux e macOS. Ele inclui suporte para depuração, controle de versionamento Git incorporado, realce de sintaxe, complementação inteligente de código, snippets e refatoração de código.
+
+# Ferramentas de debug
+
+Debug é o processo que envolve identificar, isolar e corrigir os erros ou anormalidades de um software. A priore a ferramenta de debug utilizada será uma extensão do prórrio vscode o DataTip pela natureza da sua facilidade. Basta parar em um breakpoint, passar o mouse sobre alguma variável e ele mostrará.
