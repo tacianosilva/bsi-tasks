@@ -62,3 +62,10 @@ A IDE utilizada será o VISUAL STUDIO CODE. O Visual Studio Code, ou simplesment
 # Ferramentas de debug
 
 Debug é o processo que envolve identificar, isolar e corrigir os erros ou anormalidades de um software. A priore a ferramenta de debug utilizada será uma extensão do prórrio vscode o DataTip pela natureza da sua facilidade. Basta parar em um breakpoint, passar o mouse sobre alguma variável e ele mostrará.
+
+# Link de tutorial CRUD na tecnologia escolhida
+
+https://www.youtube.com/watch?v=ViahqKZzZ7Y  
+https://www.alura.com.br/conteudo/testes-widgets-flutter  
+
+Os tutoriais mostram como implementar um CRUD básico utilizando a linguagem Dart/flutter bem como, o passo a passo da implementação de testes de unidade e outros complementos.
