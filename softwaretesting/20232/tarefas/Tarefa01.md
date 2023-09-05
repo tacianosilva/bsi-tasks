@@ -45,3 +45,6 @@ Repositório: https://github.com/ZASOUROUNIJ/PDV-py-django
 - Introdução ao TDD com Django (Test Driven Development)
 - Testes funcionais com Selenium e chromedriver
 - Desempenho e Django Debug Toolbar
+
+## 6 - Mock Objects
+ Os Mocks são objetos simulados e isolados de suas dependências externas para testar apenas a unidade de forma a acelerar os testes ter um controle melhor do ambiente e tornar mais simples testes de complexa reprodução que dependem das dependências externas.
