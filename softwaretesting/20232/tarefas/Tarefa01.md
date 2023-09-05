@@ -14,3 +14,6 @@ Repositório: https://github.com/ZASOUROUNIJ/PDV-py-django
 [Pytest](https://docs.pytest.org/en/7.4.x/) - Ferramenta de teste de unidade para Python contendo possibilidade de plugis e integração com outras estruturas como o unittest sendo assim uma ferramenta de grande versatilidade cobrindo diversos cenários 
 
 [pytest-django](https://pytest-django.readthedocs.io/en/latest/) - plugin do pytest especifico para o django
+
+## 4 - IDE
+	Utilizo o vsCode por sua versatilidade de linguagens conseguinto ser totalmente configurável através de plugins e alterando seus "settings" a ferramenta de debug dele eu acho muito boa principalmente pela facilidade de analisar os parâmetros durante o percurso através dos breakPoints. Além disso também tem uma separação muito eficiente entre classes do projeto em si e classes de teste.
