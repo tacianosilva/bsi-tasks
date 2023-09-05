@@ -12,3 +12,6 @@ A stack escolhida será o framework Django, baseado em Python.
 
 ## Questão 'c'
 O Django possui seu próprio framework de testes de unidade integrado. Os módulos que são normalmente usados para fazer isso são o unittest e o TestCase.
+
+## Questão 'd'
+A IDE preferida para realizar o projeto é o Visual Studio Code, devido à sua facilidade de uso, extensibilidade, integração com o Git. Na questão de debug, o próprio VS Code tem uma ferramenta de depuração integrada, oferecendo suportes em várias linguagens e possibilitando a depuração em contêineres Docker.
