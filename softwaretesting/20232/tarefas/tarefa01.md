@@ -15,3 +15,6 @@ O Django possui seu próprio framework de testes de unidade integrado. Os módul
 
 ## Questão 'd'
 A IDE preferida para realizar o projeto é o Visual Studio Code, devido à sua facilidade de uso, extensibilidade, integração com o Git. Na questão de debug, o próprio VS Code tem uma ferramenta de depuração integrada, oferecendo suportes em várias linguagens e possibilitando a depuração em contêineres Docker.
+
+## Questão 'e'
+[Neste vídeo](https://www.youtube.com/watch?v=GGBzMpIAgz4) é ensinado como fazer um CRUD completo em uma versão recente do Django.
