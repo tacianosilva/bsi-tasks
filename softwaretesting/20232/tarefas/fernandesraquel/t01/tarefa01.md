@@ -30,4 +30,26 @@ A característica distintiva do Flutter é a sua arquitetura de widgets personal
 
 Além disso, o Flutter oferece ferramentas de teste robustas e um ecossistema em crescimento de pacotes e plugins, que facilitam tarefas como a integração de APIs, gerenciamento de estado e muito mais. Sua capacidade de compilação Just-in-Time (JIT) para desenvolvimento rápido e Ahead-of-Time (AOT) para desempenho otimizado também fazem dele uma escolha poderosa para criar aplicativos de alta qualidade.
 
+Aqui estão algumas das principais ferramentas de teste para Dart:
+    </p>
+    <ul dir="auto">
+        <li>
+             Test: A própria biblioteca de testes "test" é fornecida com o Dart SDK. Ela oferece suporte para testes unitários e de integração, permitindo que você escreva e execute testes para verificar a funcionalidade das partes individuais do seu código.
+        </li>
+        <li>
+            Flutter Test: Se você estiver desenvolvendo com o Flutter, a biblioteca de teste "flutter_test" é a escolha natural. Ela estende a biblioteca "test" e oferece recursos específicos para testar widgets e interações do Flutter.
+        </li>
+        <li>
+            Mockito: O "mockito" é uma biblioteca de mocks para Dart que ajuda a criar objetos simulados (mocks) de dependências externas durante os testes. Isso é útil para isolar o comportamento da unidade sendo testada.
+        </li>
+        <li>
+        Integration_test: Para testes de integração mais complexos e de ponta a ponta, você pode usar a biblioteca "integration_test". Ela permite simular interações do usuário e testar o fluxo completo do aplicativo.
+        </li>
+        <li>
+        BLoC Test: Se você estiver usando o padrão BLoC para gerenciamento de estado em seu aplicativo Flutter, a biblioteca "bloc_test" oferece utilitários específicos para testar BLoCs.
+        </li>
+        <li>
+        Golden Toolkit: O "golden_toolkit" é uma ferramenta que ajuda a fazer testes de regressão visual em widgets Flutter. Isso é útil para garantir que as alterações no layout não causem problemas visuais indesejados.
+        </li>
+    </ul>
 </details>
