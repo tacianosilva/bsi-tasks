@@ -66,6 +66,11 @@ Debug é o processo que envolve identificar, isolar e corrigir os erros ou anorm
 # Link de tutorial CRUD na tecnologia escolhida
 
 https://www.youtube.com/watch?v=ViahqKZzZ7Y  
-https://www.alura.com.br/conteudo/testes-widgets-flutter  
+https://www.alura.com.br/conteudo/testes-widgets-flutter    
 
-Os tutoriais mostram como implementar um CRUD básico utilizando a linguagem Dart/flutter bem como, o passo a passo da implementação de testes de unidade e outros complementos.
+Os tutoriais mostram como implementar um CRUD básico utilizando a linguagem Dart/flutter bem como, o passo a passo da implementação de testes de unidade e outros complementos.  
+
+
+# Mocks Objects 
+
+Mock Objects, também conhecidos como mocks ou simulacros, são componentes de teste usados em testes de unidade para simular o comportamento de partes do sistema que ainda não foram implementadas ou são difíceis de testar devido a dependências externas, como serviços de rede, bancos de dados ou recursos de hardware. Eles são usados para isolar a unidade de código que está sendo testada e permitir que os testes se concentrem em partes específicas sem a necessidade de executar código real.
