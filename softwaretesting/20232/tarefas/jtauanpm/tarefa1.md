@@ -4,6 +4,7 @@
 **Usuário GitHub:** jtauanpm <br>
 **E-mail:** jonathan.maia.133@ufrn.edu.br <br>
 **Repositório do Projeto:** [Repositório](https://github.com/jtauanpm/crud-litedb) <br>
+**Link da Issue no Projeto dos Testes:** [Issue de testes](https://github.com/jtauanpm/crud-litedb/issues/3) <br>
 
 ## Testes de Software com Foco em Testes de Unidade
 
