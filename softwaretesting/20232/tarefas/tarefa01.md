@@ -9,3 +9,6 @@ Sabemos que testar um software é fundamental para garantir uma boa qualidade do
 
 ## Questão 'b'
 A stack escolhida será o framework Django, baseado em Python.
+
+## Questão 'c'
+O Django possui seu próprio framework de testes de unidade integrado. Os módulos que são normalmente usados para fazer isso são o unittest e o TestCase.
