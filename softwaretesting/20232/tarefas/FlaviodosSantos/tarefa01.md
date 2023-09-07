@@ -101,4 +101,17 @@ Para conseguir isso, o módulo unittest suporta alguns conceitos importantes de 
 
 [doc django test](https://docs.djangoproject.com/en/4.2/topics/testing/overview/)
 
+
+<br>
+
+## IDE e ferramenta de debug: VS Code
+
+O Visual Studio Code é um editor de código-fonte leve, mas poderoso, que é executado em sua área de trabalho e está disponível para Windows, macOS e Linux. Ele vem com suporte integrado para JavaScript, TypeScript e Node.js e possui um rico ecossistema de extensões para outras linguagens e ambientes de execução (como C++, C#, Java, Python, PHP, Go, .NET).
+
+### A depuração da instrução de impressão é coisa do passado.
+
+Código de depuração direto do editor. Inicie ou anexe seus aplicativos em execução e depure com pontos de interrupção, pilhas de chamadas e um console interativo.
+
+[link](https://code.visualstudio.com/docs)
+
 ---
