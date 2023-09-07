@@ -52,7 +52,7 @@ O site oficial do Django diz que ele é uma estrutura da web Python de alto nív
 
 Ademais, muitos desenvolvedores Django concordam que o framework cuida da parte “chata” de desenvolvimento da web, para que o programador possa ter foco total na escrita do aplicativo sem ter que pensar em grandes invenções.
 
-[link] (https://www.djangoproject.com/)
+[link](https://www.djangoproject.com/)
 
 ### Django Rest Framework
 
@@ -68,5 +68,37 @@ Alguns motivos pelos quais você pode querer usar a estrutura REST:
 - Usado e confiável por empresas reconhecidas internacionalmente, incluindo Mozilla , Red Hat , Heroku e Eventbrite .
 
 [link](https://www.django-rest-framework.org/)
+
+
+## Framework de testes: Unitest
+
+Os testes unitários do Django usam um módulo de biblioteca padrão do Python: [unittest](https://docs.python.org/pt-br/3/library/unittest.html). Este módulo define testes usando uma abordagem baseada em classes.
+
+Quando você executa seus testes , o comportamento padrão do utilitário de teste é encontrar todos os casos de teste (ou seja, subclasses de unittest.TestCase) em qualquer arquivo cujo nome comece com test, construir automaticamente um conjunto de testes a partir desses casos de teste e executar esse conjunto .
+
+O framework de testes unitários unittest foi originalmente inspirado no JUnit e tem um sabor semelhante contendo as principais estruturas de teste de unidades existentes em outras linguagens. Ele suporta a automação de testes, compartilhamento de configuração e código de desligamento para testes, agregação de testes em coleções e independência dos testes do framework de relatórios.
+
+Para conseguir isso, o módulo unittest suporta alguns conceitos importantes de forma orientada a objetos:
+
+- definição de contexto de teste
+
+    Uma definição de contexto de teste representa a preparação necessária pra performar um ou mais testes, além de quaisquer ações de limpeza relacionadas. Isso pode envolver, por exemplo, criar bancos de dados proxy ou temporários, diretórios ou iniciar um processo de servidor.
+
+- caso de teste
+
+    Um test case é uma unidade de teste individual. O mesmo verifica uma resposta específica a um determinado conjunto de entradas. O unittest fornece uma classe base, TestCase, que pode ser usada para criar novos casos de teste.
+
+- Suíte de Testes
+
+    Uma test suite é uma coleção de casos de teste, conjuntos de teste ou ambos. O mesmo é usado para agregar testes que devem ser executados juntos.
+
+- executor de testes
+
+    Um test runner é um componente que orquestra a execução de testes e fornece o resultado para o usuário. O runner pode usar uma interface gráfica, uma interface textual ou retornar um valor especial para indicar os resultados da execução dos testes.
+
+
+[unittest](https://docs.python.org/pt-br/3/library/unittest.html)
+
+[doc django test](https://docs.djangoproject.com/en/4.2/topics/testing/overview/)
 
 ---
