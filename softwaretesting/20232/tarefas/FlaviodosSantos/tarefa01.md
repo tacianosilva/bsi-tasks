@@ -114,4 +114,11 @@ Código de depuração direto do editor. Inicie ou anexe seus aplicativos em exe
 
 [link](https://code.visualstudio.com/docs)
 
+
+## Tutorial de CRUD
+
+Django REST Framework (DRF): Crea una REST API (GET, POST, PUT, DELETE) | Tutorial desde Cero
+
+[link](https://youtu.be/Xts8NmyAc8c?si=uwGFCOCnBnnouonx)
+
 ---
