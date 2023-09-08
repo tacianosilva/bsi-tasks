@@ -14,17 +14,15 @@ para testar faça um clone desta pasta e instale o requirements.txt depois de cr
 
 - criar e ativar a venv do windows: 
 
-~~~~
-$ python -m venv venv
 
-$ .\venv\Scripts\activate
+``` python -m venv venv ```
 
-~~~~
+``` .\venv\Scripts\activate ```
 
 
 - instalar o requirements:
 
-``` $ pip install -r requirements.txt ```
+``` pip install -r requirements.txt ```
 
 
 
