@@ -13,10 +13,18 @@ http://127.0.0.1:8000/docs/
 para testar faça um clone desta pasta e instale o requirements.txt depois de criar e ativar a venv:
 
 - criar e ativar a venv do windows: 
+
+~~~~
 $ python -m venv venv
+
 $ .\venv\Scripts\activate
 
+~~~~
+
+
 - instalar o requirements:
-$ pip install -r requirements.txt
+
+``` $ pip install -r requirements.txt ```
+
 
 
