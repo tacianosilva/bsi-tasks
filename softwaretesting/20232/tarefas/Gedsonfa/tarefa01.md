@@ -12,3 +12,7 @@
 
 #### A tarefa foi realiza usando o Django. O Django é um framework escrito em python para desenvolvimento web. O teste serão realizados no próprio Django, pois o mesmo fornece um framework de teste com uma baixa hierarquia de classes construida na biblioteca padrão unittest de Python. 
 
+## Framework de teste
+
+##### Usarei as prórias ferramentas de de testes já integradas ao Django. Apesar do nome, o framework oferece métodos capazes de realizar teste de unidade e integração. Permitindo a simulação de entrada de dados, inspeções e saidas da sua aplicação. Além disso, ele oferece uma API e ferramentas para usar em diferentes frameworks de testes.
+
