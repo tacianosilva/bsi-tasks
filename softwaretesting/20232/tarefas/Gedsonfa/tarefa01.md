@@ -50,3 +50,7 @@
 #### Como meu primeiro contato com Django, espera uma criatura de 7 cabeças, mas é semelhante a Flutter sendo assim, foi uma boa experiência.
 
 ### LinK para o repositório: <https://github.com/Gedsonfa/Teste_Software>
+
+## Moks Objects:
+
+### O moks objects são objetos que imitam objetos reais para testes, e eles podem ser criados através de frameworks. Em relação aos testes unitários, eles podem simular o comportamento de objetos reais com maior complexidade, principalmente quando os objetos são difíceis de serem incorporados dentro dos testes de unidade. Também são usados em objetos para gerar resultados variados, com estado difíceis de serem produzidos ou reproduzidos, que necessitam de uma inicialização previa, entre outros tipos de objetos que podem ter seus comportamentos alterados. Uma das limitações dos Mocks é quando se tem excesso de objetos sendo parte de um conjuto testes, pois quando há modificações no código é preciso fazer um grande número de modificações nos testes, além disso, manutenções incorretas podem gerar erros que podem passar dispercebidos. Isso ocorre pois os Moks não respeitam muito um dos princípios GRASP, chamado baixo acoplamento, aumentando o número de dependências com a implementação atual do objeto e isso pode ocasionar com uma futura modificação do mesmo a quebra do teste já implementado.
