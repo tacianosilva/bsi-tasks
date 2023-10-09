@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
+#from ace_api.views import AceListAll
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('ace_api.urls')),
+    path('api/', include('ace_api.urls')),
+    #path('api/v1/ace_api/list', AceListAll.as_view(), name='listar'),
     path('docs/', include_docs_urls(title='Ace_api Documentation'))
 ]
