@@ -1,5 +1,5 @@
 **Modelo Conceitual UML - Employee**
-
+```mermaid
 classDiagram
     class Funcionário {
         + ID: int
@@ -7,3 +7,4 @@ classDiagram
         + Last Name: string
         + Email: string
     }
+```
