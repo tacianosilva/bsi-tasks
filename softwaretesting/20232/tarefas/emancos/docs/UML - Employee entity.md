@@ -1,10 +1,16 @@
 **Modelo Conceitual UML - Employee**
 ```mermaid
-classDiagram
-    class Funcionário {
-        + ID: int
-        + First Name: string
-        + Last Name: string
-        + Email: string
+erDiagram
+    Funcionario ||--|{ Departamento : contains
+    Funcionario {
+        int id
+        string First Name
+        string Last Name
+        string Email
+    }
+
+    Departamento {
+        int ID
+        string Name
     }
 ```
