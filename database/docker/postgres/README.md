@@ -6,21 +6,37 @@ Para usar o SGBD do PostgreSQL usando Docker, vamos fazer de duas maneiras:
 
 ## Maneira 1
 
-Criar a rede postgres-network
+Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
+```
+mkdir -p $HOME/docker/volumes/postgres/conf
+mkdir -p $HOME/docker/volumes/postgres/data
+```
+
+Criar a rede **postgres-network** para colocar dos dois container na rede, e assim eles se comunicarem pelo nome.
 ```console
 docker network create -d bridge postgres-network
 ```
 
-Criar container postgres-server
-
-```console
-docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 -v $HOME/dev/docker/volumes/postgres/conf:/var/lib/postgresql -v $HOME/dev/docker/volumes/postgres/data:/var/lib/postgresql/data --network=postgres-network -d postgres
+Antes de executar o container, você pode baixar a imagem do postgres:
+```
+docker pull postgres:16.2
 ```
 
-Criar container pgadmin-server
+Criar e inicie o container **postgres-server**:
+```console
+docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 \
+           -v $HOME/dev/docker/volumes/postgres/conf:/var/lib/postgresql \
+           -v $HOME/dev/docker/volumes/postgres/data:/var/lib/postgresql/data \
+           --network=postgres-network -d postgres:16.2
+```
+
+Criar e iniciar o container **pgadmin-server**:
 
 ```console
-docker run --name pgadmin-server  -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=admin@pgamin.com" -e "PGADMIN_DEFAULT_PASSWORD=pgadmin" --network=postgres-network -d dpage/pgadmin4
+docker run --name pgadmin-server  -p 15432:80 \
+           -e "PGADMIN_DEFAULT_EMAIL=admin@pgadmin.com" \
+           -e "PGADMIN_DEFAULT_PASSWORD=pgadmin" \
+           --network=postgres-network -d dpage/pgadmin4:8.4
 ```
 
 ### Manaira 2
