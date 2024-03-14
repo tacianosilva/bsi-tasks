@@ -25,8 +25,8 @@ docker pull postgres:16.2
 Criar e inicie o container **postgres-server**:
 ```console
 docker run --name postgres-server -e "POSTGRES_PASSWORD=postgres" -p 5432:5432 \
-           -v $HOME/dev/docker/volumes/postgres/conf:/var/lib/postgresql \
-           -v $HOME/dev/docker/volumes/postgres/data:/var/lib/postgresql/data \
+           -v $HOME/docker/volumes/postgres/conf:/var/lib/postgresql \
+           -v $HOME/docker/volumes/postgres/data:/var/lib/postgresql/data \
            --network=postgres-network -d postgres:16.2
 ```
 
