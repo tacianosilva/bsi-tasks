@@ -1,4 +1,5 @@
 import psycopg2
+from psycopg2 import extras
 from decouple import config
 """
 Foi necessário dar permissões ao usuário para acessar os dados.
@@ -31,11 +32,23 @@ def connect():
         # Execute a query
         cur.execute("SELECT * FROM empregado")
 
-        # Retrieve query results
+        # Recuperando os resultados da query em uma Tupla
         records = cur.fetchall()
         print("Total number of rows:", cur.rowcount)
         for row in records:
             print(row)
+            print(row[0], row[1])
+
+        # Criar um cursor do tipo DictCursor
+        cur = conn.cursor(cursor_factory=extras.DictCursor)
+        # Execute a query - Cursor do tipo DictCursor
+        cur.execute("SELECT matricula, nome, salario FROM empregado")
+
+        # Recuperando os resultados da query em um DictCursor
+        dicts = cur.fetchall()
+        print("Total number of rows:", cur.rowcount)
+        for row in dicts:
+            print(row['matricula'], row['nome'], row['salario'])
 
 	# close the communication with the PostgreSQL
         cur.close()
