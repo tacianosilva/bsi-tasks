@@ -27,10 +27,8 @@ Ele Fornece uma completa API (conjunto de classes) para construir os testes e Ap
 modo console para executar os testes criados.
 * [Veja mais sobre o JUnit](https://junit.org/junit5/)
 
-### IDE - Spring Tools 4 for Eclipse
-O Spring Tool Suite é uma IDE baseada em Eclipse que dá algumas facilidades para trabalhos com o Spring no geral.<br>
-Por ser uma IDE com base no Eclipse, apenas com o adicional dos plugins do Spring Framework, a ferramenta de debug<br>
-é a mesma utilizado pelo Eclipse em sua configução padrão
+### IDE - IntelliJ IDEA
+IntelliJ IDEA é um ambiente de desenvolvimento integrado (IDE) escrito em Java para o desenvolvimento de software de computador escrito em Java, Kotlin, Groovy e outras linguagens baseadas em JVM. Ele é desenvolvido pela JetBrains (anteriormente conhecido como IntelliJ) e está disponível como uma edição da comunidade com licença Apache 2 e em uma edição comercial proprietária. Ambos podem ser usados ​​para desenvolvimento comercial.
 
 ### Tutorial - Implementação CRUD com Spring Boot, JUnit e Mockito
 * [Spring Boot Unit Testing CRUD REST API with JUnit and Mockito](https://www.javaguides.net/2022/03/spring-boot-unit-testing-crud-rest-api-with-junit-and-mockito.html)
