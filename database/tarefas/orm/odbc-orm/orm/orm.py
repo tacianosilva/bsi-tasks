@@ -3,7 +3,6 @@ import dotenv
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Date
 from sqlalchemy.orm import sessionmaker
 
-
 dotenv.load_dotenv()
 url = os.getenv('URLDB')
 
