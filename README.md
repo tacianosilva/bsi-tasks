@@ -10,7 +10,7 @@ Na página da Disciplina [Teste de Software](softwaretesting/README.md) você en
 
 Na página [Dicas BD](database/README.md) você encontra informações de como executar o **SGBD** utilizando docker e outros exemplos.
 
-Exemplos de código SQL encontrados na pasta [*bd*](bd/).
+Exemplos de código SQL encontrados na pasta [*bd*](database/scripts).
 
 ### Clientes SQL
 
