@@ -1,7 +1,0 @@
-test.env/
-__pycache__/
-*.pyc
-docs/
-/.coverage
-htmlcov/
-/coverage.xml

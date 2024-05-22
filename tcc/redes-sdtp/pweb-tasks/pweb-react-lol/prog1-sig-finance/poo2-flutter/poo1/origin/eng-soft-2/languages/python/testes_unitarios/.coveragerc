@@ -1,5 +1,0 @@
-[run]
-source=
-    .
-omit=
-    ./test.env/*, */test_*, */tests/*, __init__.py
