@@ -47,14 +47,14 @@ docker run --name pgadmin-server  -p 15432:80 \
 docker exec -it postgres-server psql -U postgres
 ```
 
-Abrirá o prompt de comando do postgres.
+Abrirá o prompt de comando do postgres:
 ```output
 psql (15.2 (Debian 15.2-1.pgdg110+1))
 Type "help" for help.
 
 postgres=#
 ```
-Comandos para listar bancos de dados e tabelas.
+Comandos para listar bancos de dados e tabelas:
 
 | Comando | Descrição | Exemplo |
 |---|---|---|
