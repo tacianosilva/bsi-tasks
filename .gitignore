@@ -21,3 +21,4 @@ bd/python/peewee_postgres/__pycache__/
 languages/java/testes/target/
 languages/kotlin/.gradle/
 database/connections/python/mongodb/.venv/
+/.venv/
