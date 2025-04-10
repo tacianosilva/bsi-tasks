@@ -22,3 +22,5 @@ languages/java/testes/target/
 languages/kotlin/.gradle/
 database/connections/python/mongodb/.venv/
 languages/scala/hello-maven/.mvn/
+**/.venv/
+**/__pycache__/
