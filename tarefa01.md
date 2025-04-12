@@ -130,4 +130,41 @@ Garante o **ACID** _(Atomicidade, Consistência, Isolação, Durabilidade)_.
 
 ## Diagrama MER Básico em Mermaid
 
+Figura 01 - Diagrama MER
 ![alt text](image.png)
+
+# Notações para Diagramas Entidade-Relacionamento (ER)
+
+## 1. Notação de Peter Chen (Original)
+
+- **Entidades**: Retângulos
+- **Atributos**: Elipses
+- **Relacionamentos**: Losangos
+- **Cardinalidade**: Números (1, N, M)
+
+## 2. Notação Crow's Foot
+
+- **||** = Um (One)
+- **|{** = Muitos (Many)
+- **}o** = Zero ou um
+
+Utilizado na codificação dos diagramas em `Mermaid` *Figura 01*.
+
+## 3. Notação UML (Classe)
+
+* **Entidade:** Classes
+* **Atributos:** Listados na classe
+* **Cardinalidades:** 1, 1.., 0..
+
+## 4. Entidade Fraca / Subordinada
+
+Tem caído em desuso na prática moderna de modelagem de dados. Normalmente essa aplicação é feita nas regras de negócio da aplicação.
+
+| Notação | Representação |
+| - | - |
+| Chen | Retângulo duplo |
+| Crow's Foot | Retângulo com borda dupla |
+| UML | Classe com estereótipo *weak*|
+
+***
+`Apesar das diferenças visuais, todas representam os mesmos conceitos fundamentais de modelagem ER. A escolha depende geralmente da ferramenta utilizada ou do padrão da organização.`
