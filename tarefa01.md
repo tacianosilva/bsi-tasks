@@ -94,3 +94,40 @@ Garante o **ACID** _(Atomicidade, Consistência, Isolação, Durabilidade)_.
 | Acesso concorrente     | Problemático        | Gerenciado       |
 | Segurança              | Básica              | Granular         |
 | Independência de dados | Baixa               | Alta             |
+
+# Elementos Básicos do Modelo Entidade-Relacionamento (MER)
+
+## 1. Entidades
+
+- **Definição**: Objetos do mundo real representados no banco de dados
+- **Características**:
+  - Correspondem a "coisas" que precisamos armazenar dados (ex: cliente, produto)
+  - São representadas por **retângulos** no diagrama
+- **Exemplos**:
+  - `MÉDICO`, `PACIENTE`, em um sistema médico.
+
+## 2. Atributos
+
+- **Definição**: Propriedades ou características das entidades
+- **Tipos**:
+  - **Simples**: Não divisíveis (ex: CPF, data_nascimento)
+  - **Compostos**: Podem ser divididos (ex: endereço → rua, cidade, CEP)
+  - **Multivalorados**: Podem ter vários valores (ex: telefones de um paciente)
+  - **Derivados**: Calculados a partir de outros (ex: idade a partir da data de nascimento)
+- **Representação**:
+  - Mostrados como **elipses** conectadas à entidade
+  - Atributos-chave sublinhados
+
+## 3. Relacionamentos
+
+- **Definição**: Associações significativas entre entidades
+- **Características**:
+  - Representados por **losangos** no diagrama
+  - Podem ter **cardinalidade** (1:1, 1:N, N:N)
+- **Exemplos**:
+  - `MÉDICO` **realiza** `CONSULTA` (1:N)
+  - `PACIENTE` **participa** `CONSULT` (1:N)
+
+## Diagrama MER Básico em Mermaid
+
+![alt text](image.png)
