@@ -168,3 +168,79 @@ Tem caído em desuso na prática moderna de modelagem de dados. Normalmente essa
 
 ***
 `Apesar das diferenças visuais, todas representam os mesmos conceitos fundamentais de modelagem ER. A escolha depende geralmente da ferramenta utilizada ou do padrão da organização.`
+
+# Resumo do Diagrama ER para Controle de Frequência
+
+## **Estrutura Principal**
+1. **EMPREGADO**
+   - Atributos: `cod` (PK), `nome`, `email`, `tipo` (L/F)
+   - Especialização exclusiva:
+     - **EMPREGADO_LIVRE**: Horas mensais e período mínimo diário
+     - **EMPREGADO_FIXO**: Relacionado a turnos específicos
+
+2. **Controle de Tempo**
+   - **TURNO**: Horários fixos (início/fim) vinculados a dias da **SEMANA**
+   - **PONTO**: Registros individuais de entrada/saída (com data e dia_semana)
+
+## **Relacionamentos Chave**
+| Relação | Cardinalidade | Descrição |
+|---------|--------------|-----------|
+| Empregado → Livre/Fixo | 1:1 (exclusivo) | Cada empregado é de apenas um tipo |
+| Empregado Fixo → Turnos | 1:N | Um funcionário pode ter múltiplos turnos |
+| Turno → Semana | N:1 | Cada turno pertence a um dia específico |
+| Todos → Pontos | 1:N | Ambos os tipos registram frequência |
+
+## **Regras de Negócio Implementadas**
+- ✔️ Restrição de tipo exclusivo (Livre OU Fixo)
+- ✔️ Turnos organizados por dia da semana
+- ✔️ Registros de ponto unificados para todos os empregados
+- ✔️ Atributos específicos para cada tipo de contrato
+
+**Diagrama completo e normalizado**, pronto para implementação em SGBD relacional.
+
+```mermaid
+erDiagram
+    EMPREGADO {
+        string cod PK
+        string nome
+        string e-mail
+        char tipo "L (livre) | F (fixo)"
+    }
+
+    EMPREGADO_LIVRE {
+        int horas_mensais
+        int periodo_minimo
+
+    }
+
+    TURNO {
+        int cod PK
+        string dia_semana
+        string hora_inicio
+        string hora_final
+    }
+
+    SEMANA {
+        string cod_dia PK
+        string nome_dia
+    }
+
+    PONTO {
+        int cod PK
+        date data
+        time hora_entrada
+        time hora_saida
+        string dia_semana
+    }
+
+
+    EMPREGADO }|--|| EMPREGADO_LIVRE : "pode ser"
+    EMPREGADO }|--|| EMPREGADO_FIXO : "pode ser"
+
+    EMPREGADO_FIXO ||--|{ TURNO : "possui"
+    EMPREGADO_FIXO ||--|{ PONTO : "registra"
+    EMPREGADO_LIVRE ||--|{ PONTO : "registra"
+
+    TURNO }o--|| SEMANA : "pertence "
+
+```
