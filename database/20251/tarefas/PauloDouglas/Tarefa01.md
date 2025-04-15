@@ -68,3 +68,58 @@ Ele atua como **interface entre o usuário e o banco de dados**.
 
 > **Resumo:** Banco de Dados guarda os dados, e o SGBD é o programa que faz toda a mágica acontecer com esses dados!
 
+# Problemas ao Utilizar Sistemas de Arquivos para Armazenagem de Dados
+
+## O que é um Sistema de Arquivos?
+
+É a forma tradicional de armazenar dados em arquivos como `.txt`, `.csv`, etc., geralmente organizados em pastas. O acesso e manipulação desses dados são feitos diretamente pelo sistema operacional ou por programas específicos.
+
+---
+
+## Principais Problemas
+
+### 1. Redundância e Inconsistência de Dados
+- O mesmo dado pode ser armazenado em vários arquivos diferentes.
+- Dificuldade em manter a consistência das informações.
+
+### 2. Falta de Integração entre os Dados
+- Os dados ficam espalhados e sem conexão entre si.
+- Consultas e análises que exigem cruzamento de dados se tornam complexas.
+
+### 3. Falta de Segurança e Controle de Acesso
+- Poucos mecanismos para definir permissões de acesso e edição.
+- Dificuldade em proteger dados sensíveis.
+
+### 4. Ausência de Mecanismos de Backup e Recuperação
+- Não há um sistema integrado de backup.
+- Restauração de dados perdidos ou corrompidos é difícil e manual.
+
+### 5. Baixa Eficiência em Consultas
+- A busca por informações é lenta e ineficiente, especialmente com grandes volumes de dados.
+- Não há suporte para indexação e otimização de consultas.
+
+### 6. Dificuldade na Atualização dos Dados
+- As atualizações são feitas manualmente ou por meio de scripts personalizados.
+- Maior risco de erros e inconsistências.
+
+### 7. Falta de Padronização
+- Não há uma estrutura uniforme para os arquivos.
+- Cada sistema pode usar formatos diferentes, dificultando a interoperabilidade.
+
+---
+
+## Comparação: Sistema de Arquivos vs Banco de Dados
+
+| Característica               | Sistema de Arquivos    | Banco de Dados (SGBD)    |
+|-----------------------------|------------------------|--------------------------|
+| Redundância de dados        | Alta                   | Baixa                    |
+| Segurança                   | Baixa                  | Alta                     |
+| Consultas                   | Limitadas              | Complexas e otimizadas   |
+| Recuperação de falhas       | Manual                 | Automatizada             |
+| Controle de concorrência    | Inexistente            | Presente                 |
+
+---
+
+## Conclusão
+
+O uso de sistemas de arquivos pode ser suficiente para aplicações simples, mas apresenta sérias limitações em termos de segurança, integridade, desempenho e escalabilidade. Para aplicações mais complexas, o uso de um Sistema Gerenciador de Banco de Dados é a solução mais adequada.
