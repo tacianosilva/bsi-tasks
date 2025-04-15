@@ -8,4 +8,8 @@ E-mail: mariana.medeiros.017@ufrn.edu.br
 O SGBD Oracle é um sistema para banco de dados relacional, o SGBD MongoDB é um dos líderes do mercado de banco de dados não relacional, SQL Server, MySQL.
 
  B) Principais as desvantagnens do uso de arquivos como amazenamento de dados, temos: Falta de Segurança, inconsistência nos dados, problema com a integridade dos arquivos, a redundância de dados, dificuldade de beckup e recuperação dos dados, isolamento de dados, problema de atomicidade. Seu uso para armazenamento de dados pode apresentar diversas falhas, principalmente com grandes volumes de dados.
+
+  C) Entidade: Representam um objeto do mundo real e que possuem uma existência independente
+   Atribiuto: São as características das entidades que descrevem suas propriedades.
+   Relacionamento: Representam as associações entre duas ou mais entidades.
  
