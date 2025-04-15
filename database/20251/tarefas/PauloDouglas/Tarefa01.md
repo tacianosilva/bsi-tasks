@@ -166,3 +166,41 @@ Os relacionamentos são representados por **losangos** no diagrama ER, com as en
 ## Conclusão
 O modelo **Entidade-Relacionamento (ER)** é uma ferramenta essencial para o projeto de bancos de dados, pois permite a representação clara e visual das entidades, atributos e relacionamentos. Essa abordagem facilita o entendimento e o desenvolvimento de sistemas de gerenciamento de dados.
 
+# Notações para Diagramas ER
+
+Existem várias notações para representar Diagramas Entidade-Relacionamento (ER). Cada uma tem suas convenções para conceitos como cardinalidade, entidades subordinadas, etc.
+
+---
+
+## 1. **Notação de Chen**
+- **Cardinalidade**: Representada por números próximos às extremidades das linhas de relacionamento (ex: 1..*, 0..1).
+- **Entidade Subordinada**: Usada um círculo (ou elipse) conectando a entidade subordinada à principal.
+
+---
+
+## 2. **Notação de Crow's Foot**
+- **Cardinalidade**: Usam símbolos como "pé de galinha" para "muitos", linha reta para "um", e círculo para "zero ou um".
+- **Entidade Subordinada**: Representada por uma linha simples, conectando a entidade subordinada à principal.
+
+---
+
+## 3. **Notação UML**
+- **Cardinalidade**: Usam multiplicidade nas associações (ex: 1, 0..1, 1..*, 0..*).
+- **Entidade Subordinada**: Representada por herança, onde a classe subordinada herda os atributos da classe principal.
+
+---
+
+## 4. **Notação de Barker**
+- **Cardinalidade**: Representada por números ao longo das linhas de relacionamento (semelhante à notação de Chen).
+- **Entidade Subordinada**: Representada por um triângulo conectando a entidade subordinada à principal.
+
+---
+
+## Exemplos de Cardinalidade e Entidades Subordinadas
+- **Cardinalidade**:
+  - **Chen**: 1..*, 0..1
+  - **Crow's Foot**: 1, ∞
+  
+- **Entidades Subordinadas**:
+  - **Chen**: Círculo conectando entidades
+  - **Crow's Foot**: Linha simples conectando entidades
