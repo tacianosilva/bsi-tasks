@@ -16,4 +16,3 @@ C) Entidade: Representam um objeto do mundo real e que possuem uma existência i
 D) Cardinalidade: Na notação de Chen, usa um símbolo numérico próximo ao relacionamento. Na notação de Bachman, um "X" indicar a cardinalidade de "um para um", um "M" para indicar a cardinalidade de "muitos para um", e um "N" para indicar a cardinalidade de "muitos para muitos".
 
 Atributo Composto: Na notação de Chen, usa uma caixa retangular para indicar o atributo composto. Os sub-atributos são listados dentro da caixa. Notação Crow's Foot: Usa uma linha dupla para indicar o atributo composto. Os sub-atributos são listados abaixo da linha. Notação Bachman: Usa um "C" para indicar o atributo composto. 
- 
