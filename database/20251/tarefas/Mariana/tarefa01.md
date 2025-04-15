@@ -16,3 +16,50 @@ C) Entidade: Representam um objeto do mundo real e que possuem uma existência i
 D) Cardinalidade: Na notação de Chen, usa um símbolo numérico próximo ao relacionamento. Na notação de Bachman, um "X" indicar a cardinalidade de "um para um", um "M" para indicar a cardinalidade de "muitos para um", e um "N" para indicar a cardinalidade de "muitos para muitos".
 
 Atributo Composto: Na notação de Chen, usa uma caixa retangular para indicar o atributo composto. Os sub-atributos são listados dentro da caixa. Notação Crow's Foot: Usa uma linha dupla para indicar o atributo composto. Os sub-atributos são listados abaixo da linha. Notação Bachman: Usa um "C" para indicar o atributo composto. 
+
+E) 
+```mermaid
+erDiagram
+
+    EMPREGADO {
+        string codigo PK
+        string nome
+        string email
+        string tipo
+    }
+
+    HORARIO_LIVRE {
+        string codigo_empregado PK
+        int horas_mensais
+        int horas_minimas_dia
+    }
+
+    HORARIO_FIXO {
+        string codigo_empregado PK
+    }
+
+    DIA_SEMANA {
+        string codigo PK
+        string nome
+    }
+
+    TURNO {
+        string id PK
+        time horario_inicio
+        time horario_fim
+    }
+
+    PONTO {
+        string empregado_id
+        string dia_id
+        string turno_id
+        time entrada
+        time saida
+    }
+
+    EMPREGADO ||--|| HORARIO_LIVRE : possui
+    EMPREGADO ||--|| HORARIO_FIXO : possui
+
+    EMPREGADO ||--o{ PONTO : registra
+    DIA_SEMANA ||--o{ PONTO : ocorre_em
+    TURNO ||--o{ PONTO : no_turno
