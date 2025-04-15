@@ -123,3 +123,46 @@ Ele atua como **interface entre o usuário e o banco de dados**.
 ## Conclusão
 
 O uso de sistemas de arquivos pode ser suficiente para aplicações simples, mas apresenta sérias limitações em termos de segurança, integridade, desempenho e escalabilidade. Para aplicações mais complexas, o uso de um Sistema Gerenciador de Banco de Dados é a solução mais adequada.
+
+# Modelo Entidade-Relacionamento (ER)
+
+O **Modelo Entidade-Relacionamento (ER)** foi desenvolvido para facilitar o projeto de bancos de dados, permitindo a especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Ele descreve as **entidades**, os **atributos** dessas entidades e os **relacionamentos** entre elas.
+
+---
+
+## 1. **Entidades**
+As **entidades** são objetos ou conceitos do mundo real que têm significado e que precisam ser armazenados em um banco de dados. Elas representam coisas ou objetos que podem ser identificados de maneira única.
+
+### Exemplos:
+- **Cliente**: Uma pessoa que realiza compras.
+- **Produto**: Um item que está à venda no estoque.
+
+As entidades geralmente são representadas como **retângulos** no diagrama ER.
+
+---
+
+## 2. **Atributos**
+Os **atributos** são as propriedades ou características das entidades que fornecem informações adicionais sobre elas. Cada atributo possui um valor específico.
+
+### Exemplos:
+- **Cliente** pode ter atributos como **Nome**, **Idade**, **Endereço**.
+- **Produto** pode ter atributos como **Preço**, **Quantidade em estoque**, **Descrição**.
+
+Os atributos são representados por **elipses** conectadas à entidade no diagrama ER.
+
+---
+
+## 3. **Relacionamentos**
+Os **relacionamentos** descrevem como as entidades se conectam entre si. Eles representam a interação entre duas ou mais entidades.
+
+### Exemplos:
+- **Compra**: Um **Cliente** pode realizar uma **Compra** de vários **Produtos**.
+- **Fornecimento**: Um **Produto** pode ser fornecido por vários **Fornecedores**.
+
+Os relacionamentos são representados por **losangos** no diagrama ER, com as entidades conectadas a eles.
+
+---
+
+## Conclusão
+O modelo **Entidade-Relacionamento (ER)** é uma ferramenta essencial para o projeto de bancos de dados, pois permite a representação clara e visual das entidades, atributos e relacionamentos. Essa abordagem facilita o entendimento e o desenvolvimento de sistemas de gerenciamento de dados.
+
