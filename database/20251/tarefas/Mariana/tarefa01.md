@@ -12,3 +12,5 @@ B) Principais as desvantagnens do uso de arquivos como amazenamento de dados, te
 C) Entidade: Representam um objeto do mundo real e que possuem uma existência independente
    Atribiuto: São as características das entidades que descrevem suas propriedades.
    Relacionamento: Representam as associações entre duas ou mais entidades.
+
+D) Cardinalidade: Na notação de Chen, usa um símbolo numérico próximo ao relacionamento. Na notação de Bachman, um "X" indicar a cardinalidade de "um para um", um "M" para indicar a cardinalidade de "muitos para um", e um "N" para indicar a cardinalidade de "muitos para muitos".   
