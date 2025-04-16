@@ -166,5 +166,40 @@ SQLite				SQLite
 - iv.
 
 ```mermaid
+	erDiagram
+    EMPREGADO ||--|{ REGISTRO_PONTO : registra
+    EMPREGADO ||--|| EMPREGADO_HORARIO_LIVRE : "é um"
+    EMPREGADO ||--|| EMPREGADO_HORARIO_FIXO : "é um"
+    EMPREGADO_HORARIO_FIXO }|--|{ TURNO : "trabalha em"
+    TURNO }|--|| DIA_SEMANA : "ocorre em"
+    REGISTRO_PONTO }|--|| TURNO : "referente a"
 
+    EMPREGADO {
+        int cod
+        string nome 
+        string email
+    }
+    
+    EMPREGADO_HORARIO_LIVRE {
+        date horas_mensais
+        date periodo_minimo
+    }
+    
+    EMPREGADO_HORARIO_FIXO {
+    }
+    
+    DIA_SEMANA {
+        int cod
+        string nome
+    }
+    
+    TURNO {
+        date hora_inicio
+        date hora_fim
+    }
+    
+    REGISTRO_PONTO {
+        date hora_entrada
+        date hora_saida
+    }
 ```
