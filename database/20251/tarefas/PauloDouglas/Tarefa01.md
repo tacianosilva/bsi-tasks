@@ -205,60 +205,109 @@ Existem várias notações para representar Diagramas Entidade-Relacionamento (E
   - **Chen**: Círculo conectando entidades
   - **Crow's Foot**: Linha simples conectando entidades
 
-# Diagrama ER - Sistema de Controle de Frequência de Empregados
+# Modelo Conceitual - Sistema de Controle de Frequência de Empregados
+
+## Objetivo
+
+Representar de forma conceitual os dados necessários para um sistema de controle de ponto de empregados com diferentes tipos de horários (livre e fixo), evitando redundância.
+
+---
+
+## Diagrama ER com Mermaid.js
+
+```mermaid
+erDiagram
+    EMPREGADO ||--o{ PONTO : registra
+    EMPREGADO }|--|| TIPO_LIVRE : eh
+    EMPREGADO }|--|| TIPO_FIXO : eh
+    TIPO_FIXO ||--|{ TRABALHA_EM : trabalha
+    TRABALHA_EM }|--|| TURNO : em
+    TRABALHA_EM }|--|| DIA_SEMANA : no
+
+    EMPREGADO {
+        int codigo
+        string nome
+        string email
+    }
+
+    TIPO_LIVRE {
+        int codigo
+        float horas_mensais
+        float min_horas_dia
+    }
+
+    TIPO_FIXO {
+        int codigo
+    }
+
+    DIA_SEMANA {
+        string cod_dia
+        string nome_dia
+    }
+
+    TURNO {
+        int codigo
+        time hora_inicio
+        time hora_fim
+    }
+
+    PONTO {
+        int id_ponto
+        datetime entrada
+        datetime saida
+    }
+
+    TRABALHA_EM {
+        int id_trabalho
+    }
 
 ## Entidades
 
-### 1. **EMPREGADO**
-- **CPF**: Identificador único do empregado (Chave Primária).
-- **Nome**: Nome completo do empregado.
-- **Cargo**: Cargo do empregado na organização.
-- **Data de Admissão**: Data de contratação do empregado.
+- **EMPREGADO**
+  - `codigo` (Identificador)
+  - `nome`
+  - `email`
 
-### 2. **FREQUENCIA**
-- **Data**: Data do registro de entrada e saída do empregado.
-- **Hora de Entrada**: Hora em que o empregado entrou no trabalho.
-- **Hora de Saída**: Hora em que o empregado saiu do trabalho.
+- **TIPO_LIVRE**
+  - `codigo` (Herda do empregado)
+  - `horas_mensais`
+  - `min_horas_dia`
 
-### 3. **DEPARTAMENTO**
-- **ID do Departamento**: Identificador único do departamento (Chave Primária).
-- **Nome**: Nome do departamento na organização.
+- **TIPO_FIXO**
+  - `codigo` (Herda do empregado)
+
+- **DIA_SEMANA**
+  - `cod_dia` (Identificador - ex: "seg", "ter")
+  - `nome_dia`
+
+- **TURNO**
+  - `codigo` (Identificador)
+  - `hora_inicio`
+  - `hora_fim`
+
+- **PONTO**
+  - `id_ponto` (Identificador)
+  - `entrada`
+  - `saida`
+
+- **TRABALHA_EM**
+  - Entidade associativa entre `TIPO_FIXO`, `TURNO` e `DIA_SEMANA`
 
 ---
 
 ## Relacionamentos
 
-### 1. **EMPREGADO pertence_a DEPARTAMENTO**
-- Um **EMPREGADO** pertence a um único **DEPARTAMENTO**.
-- Cardinalidade: **1:N** (Um empregado pertence a um único departamento, mas um departamento pode ter vários empregados).
-
-### 2. **EMPREGADO registra FREQUENCIA**
-- Um **EMPREGADO** registra várias entradas de **FREQUENCIA** (uma para cada dia de trabalho).
-- Cardinalidade: **1:N** (Um empregado pode registrar múltiplos registros de frequência, mas cada entrada de frequência pertence a apenas um empregado).
+- `EMPREGADO` **registra** `PONTO` — cardinalidade 1:N
+- `EMPREGADO` **é** `TIPO_LIVRE` ou `TIPO_FIXO` — relação 1:1 (especialização)
+- `TIPO_FIXO` **trabalha** em `TURNO`, em um `DIA_SEMANA` — via entidade associativa `TRABALHA_EM`
+- `TRABALHA_EM` relaciona `TIPO_FIXO`, `TURNO` e `DIA_SEMANA`
 
 ---
 
-## Diagrama ER
+## Restrições de Cardinalidade
 
-```mermaid
-erDiagram
-    EMPREGADO {
-        string CPF "Identificador único"
-        string nome
-        string cargo
-        date data_admissao
-    }
-    
-    FREQUENCIA {
-        date data
-        string hora_entrada
-        string hora_saida
-    }
-    
-    DEPARTAMENTO {
-        string id_departamento "Identificador único"
-        string nome
-    }
-    
-    EMPREGADO ||--o| DEPARTAMENTO : pertence_a
-    EMPREGADO ||--o| FREQUENCIA : registra
+- Um `EMPREGADO` tem **um ou mais** `PONTO`s
+- Um `EMPREGADO` é de **um único tipo** (`LIVRE` ou `FIXO`)
+- Um `TIPO_FIXO` pode ter **vários** turnos e dias (via `TRABALHA_EM`)
+- Um `TURNO` pode ser usado por **vários empregados**
+- Um `DIA_SEMANA` pode ser associado a **vários turnos de trabalho**
