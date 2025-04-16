@@ -113,3 +113,31 @@ SQLite				SQLite
     }    
 ```
 
+- ii.
+```mermaid
+    EMPREGADO
+    EMPREGADO_HORARIO_LIVRE
+
+    EMPREGADO {
+        int cod
+        string nome 
+        string email
+    }
+    
+    EMPREGADO_HORARIO_LIVRE {
+        date horas_mensais
+        date periodo_minimo
+    }
+```
+
+- iii.
+
+```mermaid
+
+```
+
+- iv.
+
+```mermaid
+
+```
