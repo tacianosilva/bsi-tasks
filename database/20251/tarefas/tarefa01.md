@@ -97,5 +97,19 @@ SQLite				SQLite
 	- **Notação Crow's Foot:** Retângulo com _linha pontilhada_
 	- **Notação IDEF1X:** Retângulo com _linha pontilhada_
 	- **Notação UML:** Classe com _estereótipo «weak entity»_
+	
+## Letra E
 
+#### Código Mermaid
+
+- i. 
+```mermaid
+    EMPREGADO
+
+    EMPREGADO {
+        int cod
+        string nome 
+        string email
+    }    
+```
 
