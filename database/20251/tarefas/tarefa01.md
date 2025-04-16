@@ -129,11 +129,38 @@ SQLite				SQLite
         date periodo_minimo
     }
 ```
-
 - iii.
 
 ```mermaid
+	EMPREGADO ||--|{ REGISTRO_PONTO : registra
+    EMPREGADO ||--|| EMPREGADO_HORARIO_LIVRE : "é um"
+    EMPREGADO ||--|| EMPREGADO_HORARIO_FIXO : "é um"
+    EMPREGADO_HORARIO_FIXO }|--|{ TURNO : "trabalha em"
+    TURNO }|--|| DIA_SEMANA : "ocorre em"
 
+    EMPREGADO {
+        int emp_cod
+        string nome 
+        string email
+    }
+    
+    EMPREGADO_HORARIO_LIVRE {
+        date horas_mensais
+        date periodo_minimo
+    }
+    
+    EMPREGADO_HORARIO_FIXO {
+    }
+    
+    DIA_SEMANA {
+        string dia_cod
+        string nome
+    }
+    
+    TURNO {
+        date hora_inicio
+        date hora_fim
+    }
 ```
 
 - iv.
