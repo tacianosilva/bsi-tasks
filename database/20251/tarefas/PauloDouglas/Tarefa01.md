@@ -204,3 +204,61 @@ Existem várias notações para representar Diagramas Entidade-Relacionamento (E
 - **Entidades Subordinadas**:
   - **Chen**: Círculo conectando entidades
   - **Crow's Foot**: Linha simples conectando entidades
+
+# Diagrama ER - Sistema de Controle de Frequência de Empregados
+
+## Entidades
+
+### 1. **EMPREGADO**
+- **CPF**: Identificador único do empregado (Chave Primária).
+- **Nome**: Nome completo do empregado.
+- **Cargo**: Cargo do empregado na organização.
+- **Data de Admissão**: Data de contratação do empregado.
+
+### 2. **FREQUENCIA**
+- **Data**: Data do registro de entrada e saída do empregado.
+- **Hora de Entrada**: Hora em que o empregado entrou no trabalho.
+- **Hora de Saída**: Hora em que o empregado saiu do trabalho.
+
+### 3. **DEPARTAMENTO**
+- **ID do Departamento**: Identificador único do departamento (Chave Primária).
+- **Nome**: Nome do departamento na organização.
+
+---
+
+## Relacionamentos
+
+### 1. **EMPREGADO pertence_a DEPARTAMENTO**
+- Um **EMPREGADO** pertence a um único **DEPARTAMENTO**.
+- Cardinalidade: **1:N** (Um empregado pertence a um único departamento, mas um departamento pode ter vários empregados).
+
+### 2. **EMPREGADO registra FREQUENCIA**
+- Um **EMPREGADO** registra várias entradas de **FREQUENCIA** (uma para cada dia de trabalho).
+- Cardinalidade: **1:N** (Um empregado pode registrar múltiplos registros de frequência, mas cada entrada de frequência pertence a apenas um empregado).
+
+---
+
+## Diagrama ER
+
+```mermaid
+erDiagram
+    EMPREGADO {
+        string CPF "Identificador único"
+        string nome
+        string cargo
+        date data_admissao
+    }
+    
+    FREQUENCIA {
+        date data
+        string hora_entrada
+        string hora_saida
+    }
+    
+    DEPARTAMENTO {
+        string id_departamento "Identificador único"
+        string nome
+    }
+    
+    EMPREGADO ||--o| DEPARTAMENTO : pertence_a
+    EMPREGADO ||--o| FREQUENCIA : registra
