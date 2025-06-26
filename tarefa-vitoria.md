@@ -22,3 +22,4 @@ d)	Pesquise sobre as várias notações possíveis para Diagramas ER, cite algun
 
 
 e)	Construa um Diagrama ER para projetar uma base de dados de um Sistema  de uma organização. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras.
+![DiagramaER](DiagramaER.png)
