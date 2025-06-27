@@ -5,14 +5,17 @@ Ex:
 ●	Oracle Database
 ●	MYSQL
 ●	Microsoft Azure - Servidor da Nuvem da Microsoft
+
 b)	Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados.
 Um dos principais fatores de utilizar os sistemas de arquivos para armazenagem de dados é devido à redundância dos mesmos, visto que cada arquivo é tratado separadamente, incluindo em uma grande chance dos dados serem armazenados replicados.
+
 c)	O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER). 
 Um modelo de entidade e relacionamento possui três componentes básicos que são:
 ●	Entidade: pode ser representado como uma abstração de um objeto do mundo real.
 ●	Atribuído: pode ser representado como uma característica ou
 particularidade de uma entidade que descreve as informações sobre ela mesma.
 ●	Relacionamento: pode ser representado como uma junção entre mais de uma entidade que revela a forma de como elas estão se relacionando entre elas mesmas.
+
 d)	Pesquise sobre as várias notações possíveis para Diagramas ER, cite alguns exemplos de notações diferentes para o mesmo conceito (ex: Cardinalidade, Entidade Subordinada,etc.).
 ●	Notação de Peter Chen: pode ser utilizada com retângulos para representar as entidades, diamentes para representar os relacionamentos e setas para representar a direção do relacionamento, sejam eles binários ou do grau n.
 ●	Notação de Bachmande Bachman: pode ser utilizada para representar como um gráfico que é igual a um fluxograma. Enquanto isso as entidades podem ser representadas como umas caixas retangulares, os relacionamentos são representados por linhas ligando com as caixas. 
