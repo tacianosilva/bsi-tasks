@@ -1,4 +1,4 @@
-## Usando servidor PostgreSQL + pgAdmin com Docker
+# Usando servidor PostgreSQL + pgAdmin com Docker
 
 Para usar o SGBD do PostgreSQL usando Docker, vamos fazer de duas maneiras:
 * A primeira usando dois containers independentes e criando uma rede (network) do docker;
@@ -38,6 +38,31 @@ docker run --name pgadmin-server  -p 15432:80 \
            -e "PGADMIN_DEFAULT_PASSWORD=pgadmin" \
            --network=postgres-network -d dpage/pgadmin4:8.4
 ```
+
+### Acessando via cliente psql
+
+:pushpin: É possível executar **psql** via o container docker, usando o comando `docker exec`.
+
+```console
+docker exec -it postgres-server psql -U postgres
+```
+
+Abrirá o prompt de comando do postgres:
+```output
+psql (15.2 (Debian 15.2-1.pgdg110+1))
+Type "help" for help.
+
+postgres=#
+```
+Comandos para listar bancos de dados e tabelas:
+
+| Comando | Descrição | Exemplo |
+|---|---|---|
+| `\l` ou `\list` | Lista todos os bancos de dados disponíveis. | `\l` |
+| `\c` ou `\connect` | Conecta a um banco de dados específico. | `\c nome_do_banco_de_dados` |
+| `\dt` ou `\d` | Lista todas as tabelas no banco de dados atual. | `\dt` |
+| `\q` ou `exit` ou `quit` | Sai do psql. | `\q` |
+| `\h` ou `\help` | Obter mais informações. | `\h` |
 
 ### Manaira 2
 

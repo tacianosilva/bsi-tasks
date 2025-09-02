@@ -2,7 +2,7 @@
 
 Antes de executar o container, você pode baixar do **Docker Hub** a imagem oficial do `mariadb` e indicar sua versão mais atual `mariadb:latest` ou outra versão, por exemplo a versão `mariadb:10`:
 ```console
-docker pull mariadb:10
+docker pull mariadb:11.4.2
 ```
 
 Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
@@ -16,7 +16,7 @@ Agora inicie o container:
 docker run --name mariadb-server -p 3306:3306 -d \
            -e "MYSQL_ROOT_PASSWORD=password" \
            -v $HOME/docker/volumes/mariadb:/var/lib/mysql \
-           mariadb:10
+           mariadb:11.4.2
 ```
 
 ## Acessando via MariaDB Cli (MySql Cli)
@@ -24,19 +24,19 @@ docker run --name mariadb-server -p 3306:3306 -d \
 :pushpin: É possível executar **MariaDB Cli** via o container docker, usando o comando `docker exec`.
 
 ```console
-docker exec -it mysql-server mysql -u root -p
+docker exec -it mariadb-server mariadb -u root -p
 ```
 
 Caso deseje pode instalar o cliente de acesso ao SGBD diretamente no SO:
 
 ```console
-sudo apt install mysql-client
+sudo apt install mariadb-client
 ```
 
 Acesse usando o host `127.0.0.1` ou `localhost`, com o usuário `root` e a senha passada em `MYSQL_ROOT_PASSWORD`:
 
 ```console
-mysql -h 127.0.0.1 -u root -p
+mariadb -h 127.0.0.1 -u root -p
 ```
 
 ## Acessando MariaDB via CloudBeaver (dbeaver)
@@ -53,12 +53,18 @@ docker pull dbeaver/cloudbeaver:23.0.2
 
 Agora inicie o container:
 ```console
-docker run --name cloudbeaver-client -d -p 8978:8978 \
+docker run --name cloudbeaver-client -d -p 8978:8978 --network host \
            -v $HOME/docker/volumes/cloudbeaver:/opt/cloudbeaver/workspace \
            dbeaver/cloudbeaver:23.0.2
 ```
 
 Abra o link http://localhost:8978 no navegador e configure a conexão com o servidor do mariadb.
+
+Se você precisar acessar o servidor de banco de dados na máquina host, adicione o seguinte parâmetro em docker run: (somente no Linux)
+
+```
+--network host
+```
 
 Para acessar seu servidor mariadb, você precisa descobrir o IP do container que está executando o mariadb. Use o comando informando ao final o nome do conainer, neste exemplo é: `mariadb-server`.
 ```console
