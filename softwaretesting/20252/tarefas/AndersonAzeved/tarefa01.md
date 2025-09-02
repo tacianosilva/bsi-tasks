@@ -36,3 +36,17 @@ Principais características:
 Links
 - [Site oficial do Jest](https://jestjs.io/)
 - [Guia Jest + Next.js](https://nextjs.org/docs/app/guides/testing/jest)
+
+
+d) Fale um pouco da IDE que você utiliza. Fale sobre as ferramentas de debug que ela tem integrada.
+* IDE: Visual Studio Code (VS Code): é uma IDE leve, gratuita e altamente customizável, muito utilizada no desenvolvimento de aplicações **JavaScript**, **TypeScript** e **Next.js**. Ela oferece suporte a extensões, integração com Git e diversas linguagens de programação.
+
+**Ferramentas de Debug Integradas**
+- **Depuração passo a passo**: permite executar o código linha a linha para identificar erros.
+- **Breakpoints**: possibilita pausar a execução em pontos específicos do código.
+- **Watch**: monitora variáveis ou expressões durante a execução do programa.
+- **Console de depuração**: exibe logs, valores de variáveis e mensagens de erro.
+- **Integração com Node.js e browsers**: facilita o debug de aplicações server-side e client-side.
+- **Extensões adicionais**: como Debugger for Chrome e React Developer Tools, que aumentam a capacidade de depuração.
+
+
