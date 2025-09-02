@@ -58,3 +58,7 @@ e) Busque pelo menos um Tutorial para fazer um CRUD na tecnologia escolhida e qu
 
 * **Resumo:**
 Este tutorial ensina a criar uma aplicação **Next.js com TypeScript** com um **CRUD básico**. Além disso, mostra como configurar o **Jest** e a **React Testing Library** para escrever **testes de unidade**, incluindo a instalação de dependências, configuração do ambiente e testes de componentes e funções.
+
+
+f) Pesquise sobre Mocks Objects em Testes de Unidade e faça um pequeno resumo.
+* Mocks são objetos simulados que imitam o comportamento de objetos reais de forma controlada, permitindo testar unidades de código de maneira isolada. Eles são especialmente úteis quando dependemos de componentes externos, como APIs, bancos de dados ou serviços de terceiros, que podem ser difíceis de configurar ou lentos para uso em testes.
