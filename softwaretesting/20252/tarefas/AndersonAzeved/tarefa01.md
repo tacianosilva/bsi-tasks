@@ -21,3 +21,18 @@ b) Defina uma linguagem de programação, uma stack para desenvolver o projeto d
 | **Autenticação**     | NextAuth.js                     |
 | **Testes de Unidade**| Jest + React Testing Library (testes de componentes e funções)           |
 
+
+c) Busque um framework de Testes de Unidade para a linguagem escolhida  e fale um pouco sobre um framework escolhido. Coloque um pequeno resumo sobre o framework de testes e links para ele.
+
+**Jest** é um framework de testes para **JavaScript/TypeScript**, muito usado em projetos **React** e **Next.js**. Ele permite testar funções, componentes e lógica da aplicação de forma simples e eficiente.
+
+Principais características:
+- Fácil de configurar e usar.
+- Suporte a testes assíncronos.
+- Geração de relatórios de cobertura de código.
+- Permite criar mocks de funções e módulos.
+- Integração perfeita com **React Testing Library**.
+
+Links
+- [Site oficial do Jest](https://jestjs.io/)
+- [Guia Jest + Next.js](https://nextjs.org/docs/app/guides/testing/jest)
