@@ -50,3 +50,11 @@ d) Fale um pouco da IDE que você utiliza. Fale sobre as ferramentas de debug qu
 - **Extensões adicionais**: como Debugger for Chrome e React Developer Tools, que aumentam a capacidade de depuração.
 
 
+e) Busque pelo menos um Tutorial para fazer um CRUD na tecnologia escolhida e que mostre a construção de Testes de Software. Apresente o link e descreva em poucas palavras o conteúdo do tutorial.
+
+**Tutorial CRUD com Next.js e Testes de Software**
+
+* **Link:** [Step-by-Step: How to Unit Test your Next.js App with Jest and TypeScript](https://medium.com/@maishaChow/step-by-step-how-to-unit-test-your-next-js-app-with-jest-and-typescript-24c610ef06a0)
+
+* **Resumo:**
+Este tutorial ensina a criar uma aplicação **Next.js com TypeScript** com um **CRUD básico**. Além disso, mostra como configurar o **Jest** e a **React Testing Library** para escrever **testes de unidade**, incluindo a instalação de dependências, configuração do ambiente e testes de componentes e funções.
