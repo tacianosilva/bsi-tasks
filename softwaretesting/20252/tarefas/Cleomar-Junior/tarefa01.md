@@ -28,6 +28,7 @@ A IDE escolhida foi o VS Code, devido à minha familiaridade e facilidade de uso
 
 ## Tutorial CRUD
 [Link do tutorial](https://www.youtube.com/watch?v=Z4Lw7oViMk4) – Tutorial rápido sobre como criar um CRUD com Django + DRF
+[Documentação do Rest Framework](https://www.django-rest-framework.org/tutorial/quickstart/)
 
 ## Mock Objects
 Mock Objects são objetos simulados que imitam o comportamento de dependências externas ou componentes que ainda não foram implementados, permitindo testar funções ou métodos isoladamente. Eles ajudam a focar apenas na lógica da unidade que está sendo testada, sem depender de bancos de dados, APIs ou outros serviços, tornando os testes mais rápidos, confiáveis e previsíveis.
