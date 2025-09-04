@@ -4,7 +4,7 @@
 **Usuário GitHub:** @Cleomar-Junior  
 **E-mail:** cl_jr@outlook.com  
 
-[Repositório do Projeto](link-do-seu-repo)
+[Repositório do Projeto](https://github.com/Cleomar-Junior/Projeto-Testes)
 
 ---
 
@@ -28,10 +28,10 @@ A IDE escolhida foi o VS Code, devido à minha familiaridade e facilidade de uso
 
 ## Tutorial CRUD
 [Link do tutorial](https://www.youtube.com/watch?v=Z4Lw7oViMk4) – Tutorial rápido sobre como criar um CRUD com Django + DRF
-[Documentação do Rest Framework](https://www.django-rest-framework.org/tutorial/quickstart/)
+[Documentação do Django Rest Framework](https://www.django-rest-framework.org/tutorial/quickstart/) 
 
 ## Mock Objects
 Mock Objects são objetos simulados que imitam o comportamento de dependências externas ou componentes que ainda não foram implementados, permitindo testar funções ou métodos isoladamente. Eles ajudam a focar apenas na lógica da unidade que está sendo testada, sem depender de bancos de dados, APIs ou outros serviços, tornando os testes mais rápidos, confiáveis e previsíveis.
 
 ## Experiência com Testes
-(O que achou implementando)
+Implementar os testes foi interessante porque me fez olhar meu código com mais atenção, achar uns bugs que eu nem tinha percebido e pensar nos casos que poderiam dar problema. No começo é meio chato e dá umas frustrações quando a função não tá bem feita, mas no final deixa você mais seguro nas mudanças e ainda funciona como um jeito de mostrar como o código tem que se comportar.
