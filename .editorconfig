@@ -48,4 +48,4 @@ indent_style = tab
 max_line_length = 79
 
 [*.yml]
-indent_size = 
+indent_size = 2
