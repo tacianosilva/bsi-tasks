@@ -20,3 +20,15 @@ Este documento contém as respostas da Tarefa 01 — Conceitos de Banco de Dados
 - BD NoSQL: MongoDB (documento), Cassandra (colunar), Redis (chave-valor).
 
 ---
+
+---
+
+## 3. (7b) Principais problemas de utilizar sistemas de arquivos para armazenar dados
+- **Redundância e inconsistência:** dados duplicados em vários arquivos podem divergir.  
+- **Dificuldade em consultas complexas:** sem linguagem padronizada (SQL) as consultas e junções são mais difíceis.  
+- **Falta de integridade e regras de negócio:** não há mecanismos automáticos para constraints (uniqueness, foreign keys, etc.).  
+- **Controle de concorrência** e bloqueios: difícil de gerenciar acessos simultâneos.  
+- **Segurança e auditoria limitadas.**  
+- **Recuperação de falhas e backup** menos robustos que em SGBDs.
+
+---
