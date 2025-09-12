@@ -32,3 +32,13 @@ Este documento contém as respostas da Tarefa 01 — Conceitos de Banco de Dados
 - **Recuperação de falhas e backup** menos robustos que em SGBDs.
 
 ---
+
+---
+
+## 4. (7c) Três elementos básicos de um Modelo Entidade-Relacionamento (MER)
+1. **Entidades:** objetos do mundo real que têm existência independente (ex.: EMPREGADO, TURNO).  
+2. **Atributos:** propriedades que descrevem entidades (ex.: nome, e-mail, código).  
+3. **Relacionamentos:** associações entre entidades, que podem ter cardinalidades e eventual atributos próprios (ex.: EMPREGADO — bate — PONTO).
+
+---
+
