@@ -10,3 +10,19 @@
 * c. Os três elementos principais de um MER consistem em: uma **entidade**, que descreve um objeto ou uma instância desse objeto no sistema, e pode ser tanto concreta (pessoa, livro, alimento) ou abstrata (compra, transação); os **atributos** da entidade, que descrevem as propriedades dela e podem ser herdadas e por fim os **relacionamentos** que conectam as entidades entre si.
 ---
 * d. Em projetos ER existem diversas notações que podem diferenciar a depender do método utilizado, como Chen, UML e Crow's foot, dentre outros. Em um relacionamento M:N entre alunos e disciplinas, por exemplo, o método de **Chen** descreve as duas entidades em retângulos e estabelece o relacionamento "matricula-se" em um losango; com o método **Crow's Foot** é criado uma tabela associativa que contém atributos relacionados ao relacionamento, como a data da matrícula, por exemplo; e em UML, é criado uma classe associativa chamada "Matrícula" com a data da matrícula.
+---
+* e. 
+```mermaid
+---
+title: Frequência de Empregados
+---
+erDiagram
+    EMPREGADO ||--o{ ORDER : places
+    EMPREGADO {
+        string codigo PK
+        string nome
+        string email
+    }
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+```
