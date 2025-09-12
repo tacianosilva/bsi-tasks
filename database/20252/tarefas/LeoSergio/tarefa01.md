@@ -42,3 +42,15 @@ Este documento contém as respostas da Tarefa 01 — Conceitos de Banco de Dados
 
 ---
 
+---
+
+## 5. (7d) Notações para Diagramas ER (exemplos)
+Existem várias notações para representar conceitos ER:
+- **Chen (1976):** entidades como retângulos, relacionamentos como losangos; cardinalidade por 1:N, M:N etc.  
+- **Crow's Foot (IE / Barker):** usa “pés-de-corvo” para indicar “muitos” e barras para “um”. Muito popular em modelagem prática.  
+- **UML (classe/objeto):** pode ser usada para modelar banco de dados com estereótipos.  
+- **IDEF1X:** notação formal, com símbolos próprios para chaves e cardinalidade.  
+Exemplo de variação para cardinalidade: Chen usa (0,1), (1, n) como texto; Crow's Foot desenha graficamente.
+
+---
+
