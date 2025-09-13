@@ -57,5 +57,54 @@ Entre outros... Mas em resumo, sistemas de arquivos não oferecem mecanismos rob
     - Exemplos:
         - Um ```CLIENTE``` faz um ```PEDIDO```. (Relacionamento entre as entidades ```CLIENTE``` e ```PEDIDO```).
         - Um ```ALUNO``` se matricula em uma ```TURMA```. (Relacionamento entre ```ALUNO``` e ```TURMA```).
-        
+
+---
+
+## Letra D: Pesquise sobre as várias notações possíveis para Diagramas ER, cite alguns exemplos de notações diferentes para o mesmo conceito (ex: Cardinalidade, Entidade Subordinada,etc.).
+
+As mais populares são:
+
+1. **Notação de Chen**: Criada por Peter Chen em 1976, é a notação original e mais clássica. É muito usada em ambientes acadêmicos por ser detalhada, mas pode ser visualmente mais complexa.
+
+2. **Notação "Pé de Galinha" (Crow's Foot)**: É a notação mais popular no mercado e em ferramentas CASE (ferramentas de engenharia de software). É considerada mais intuitiva e limpa para diagramas grandes. Variações dela incluem as notações de Information Engineering (IE) e Barker.
+
+3. **Notação UML (Unified Modeling Language)**: Usada em engenharia de software para modelar sistemas orientados a objetos, a UML também possui uma representação para diagramas de classes que pode ser usada para modelagem de dados, sendo conceitualmente similar.
+
+Abaixo estão alguns exemplos de como essas notações representam os mesmos conceitos de formas diferentes.
+
+### 1. Cardinalidade do Relacionamento
+
+A cardinalidade define o número de instâncias de uma entidade que podem se relacionar com instâncias de outra entidade. Vamos usar o exemplo: "Um ```CLIENTE``` pode fazer um ou muitos ```PEDIDOS```".
+
+#### **Notação de Chen**
+
+Usa números e letras (```1```, ```N```, ```M```) próximos à linha que conecta a entidade ao relacionamento (que é representado por um losango).
+
+      (1)             (N)
++---------+      +-----------+      +---------+
+| CLIENTE |------|   FAZ     |------| PEDIDO  |
++---------+      +-----------+      +---------+
+
+* **Leitura:** Um ```CLIENTE``` para ```N``` ```PEDIDOS```.
+
+#### **Notação Pé de Galinha (Crow's Foot)**
+
+Usa símbolos gráficos diretamente na linha de relacionamento para representar a cardinalidade e a opcionalidade.
+
+* ```|``` representa "um"
+* ```O``` representa "zero"
+* ```<``` (o "pé de galinha") representa "muitos"
+
++---------+         +---------+
+| CLIENTE | |<------| PEDIDO  |
++---------+         +---------+
+
+### 2. Entidade Associativa (ou Agregada)
+
+Este conceito é usado para resolver relacionamentos "muitos-para-muitos" (N:N). Por exemplo, um ```ALUNO``` pode se inscrever em muitas ```DISCIPLINAS```, e uma ```DISCIPLINA``` pode ter muitos ```ALUNOS``` inscritos. A entidade associativa seria ```INSCRICAO```.
+
+### 3. Entidade Fraca (ou Subordinada)
+
+Uma entidade fraca é aquela cuja existência depende de outra entidade (chamada de entidade forte ou proprietária). Por exemplo, um ```ITEM_PEDIDO``` só existe se o ```PEDIDO``` ao qual ele pertence existir.
+
 ---
