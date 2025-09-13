@@ -28,3 +28,19 @@ Em resumo: O **BD** é o conjunto de dados, e o **SGDB** é a ferramente que ger
 | 4  | Pacote de Arroz | 35         |
 
 ---
+
+## Letra  🅱️: Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados.
+
+Utilizar **sistemas de arquivos** (como pastas e arquivos .txt, .csv, ou .json) para armazenar dados em vez de um SGBD causa problemas sérios de:
+
+1. Dificuldade de Acesso aos Dados.
+
+2. Falta de Integridade.
+
+3. Segurança e Controle de Acesso.
+
+4. Problemas de Atomicidade.
+
+Entre outros... Mas em resumo, sistemas de arquivos não oferecem mecanismos robustos para garantir que os dados sejam consistentes, seguros, íntegros e fáceis de acessar, especialmente em ambientes com múltiplos usuários e regras complexas.
+
+---
