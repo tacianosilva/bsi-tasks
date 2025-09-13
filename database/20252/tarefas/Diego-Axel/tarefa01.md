@@ -44,3 +44,18 @@ Utilizar **sistemas de arquivos** (como pastas e arquivos .txt, .csv, ou .json) 
 Entre outros... Mas em resumo, sistemas de arquivos não oferecem mecanismos robustos para garantir que os dados sejam consistentes, seguros, íntegros e fáceis de acessar, especialmente em ambientes com múltiplos usuários e regras complexas.
 
 ---
+
+## Letra C: O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER)
+
+1. **Entidades**: São os objetos ou conceitos do mundo real sobre os quais se deseja guardar informações. Pense nelas como os substantivos do sistema.
+    - Exemplos: ```CLIENTE```, ```PRODUTO```, ```ALUNO```, ```PEDIDO```, ```MÉDICO```
+
+2. **Atributos**: São as propriedades ou características que descrevem uma entidade. Pense neles como os adjetivos ou os dados específicos de uma entidade.
+    - Exemplos: Para a entidade ```CLIENTE```, os atributos poderiam ser ```Nome```, ```CPF```, ```Endereço``` e ```Telefone```.
+
+3. **Relacionamentos**: Representam a associação ou a interação que existe entre duas ou mais entidades. Pense neles como os verbos que conectam as entidades.
+    - Exemplos:
+        - Um ```CLIENTE``` faz um ```PEDIDO```. (Relacionamento entre as entidades ```CLIENTE``` e ```PEDIDO```).
+        - Um ```ALUNO``` se matricula em uma ```TURMA```. (Relacionamento entre ```ALUNO``` e ```TURMA```).
+        
+---
