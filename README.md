@@ -1,37 +1,27 @@
-# BSI Tasks
+# 📊 Sistema de Gestão de Projetos e Atividades - Tarefa 02
 
-Repositório para Auxílio no Ensino de Banco de Dados Engenharia de Software, Teste de Software e Programação Web do curso de Bacharelado em Sistemas de Informação CERES/UFRN - Caicó RN
+Repositório destinado à implementação da segunda tarefa da disciplina de Projeto e Administração de Banco de Dados.
 
-## Teste de Software
+## 👤 Identificação
+* **Nome:** Kaique Vieira Soares
+* **Matrícula:** 20240019677
+* **Email:** kaique.vieira.168@ufrn.edu.br
 
-Na página da Disciplina [Teste de Software](softwaretesting/README.md) você encontra informações, materiais, exemplos e descrição das tarefas.
+---
 
-## Banco de Dados
+## 🏗️ Estrutura do Projeto
+O projeto foi desenvolvido utilizando uma arquitetura **Multi-module Maven**, garantindo o isolamento das dependências entre as abordagens JDBC e ORM:
 
-Na página [Dicas BD](database/README.md) você encontra informações de como executar o **SGBD** utilizando docker e outros exemplos.
+* **Módulo `jdbc/`**: Persistência nativa de baixo nível.
+* **Módulo `orm/`**: Persistência de alto nível com Spring Data JPA.
 
-Exemplos de código SQL encontrados na pasta [*bd*](database/scripts).
+## 📄 Documentação da Atividade
+Todas as questões, resumos teóricos (ODBC/ORM) e links para os códigos-fonte estão documentados no link abaixo:
 
-### Clientes SQL
+👉 **[RELATÓRIO TÉCNICO E RESPOSTAS (tarefa-orm.md)](./database/20252/tarefas/kaiquevieirasoares/tarefa-orm.md)**
 
-* SQuirreL SQL Client - Universal SQL Client [Download](http://squirrel-sql.sourceforge.net/)
+---
 
-## Java
-
-Exemplos de código Java encontrados na pasta *java*.
-
-## C#
-
-Exemplos de código C# encontrados na pasta *csharp*.
-
-# Ferramentas Interessantes
-
-## ngrok - secure introspectable tunnels to localhost
-
-* ngrok [Download](https://ngrok.com/download)
-
-```bash
-  ./ngrok http -region=sa 8000
-```
-
-# Licença
+## ⚙️ Inicialização Rápida
+1. Suba o banco de dados: `docker compose up -d`
+2. O script de inicialização (`01-init.sql`) será executado automaticamente.
