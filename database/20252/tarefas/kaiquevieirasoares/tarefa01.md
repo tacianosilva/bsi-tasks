@@ -61,3 +61,49 @@ Existem várias **notações** gráficas para modelar Diagramas ER, e cada uma p
   - Notação UML: listados diretamente dentro da caixa da entidade.  
 
 Essas variações de notação permitem representar os mesmos conceitos de maneiras diferentes, dependendo da ferramenta ou da preferência metodológica.  
+
+## Seção E: Diagrama ER – Sistema de Controle de Frequência de Empregados
+
+A seguir está o **Modelo Entidade-Relacionamento** (nível conceitual) para uma base de dados de um **Sistema de Controle de Frequência de Empregados**.  
+O modelo evita redundância, diferencia empregados por tipo (horário livre e horário fixo) e controla pontos e turnos semanais.
+
+```mermaid
+erDiagram
+    EMPREGADO {
+        int idEmpregado PK "Código Identificador"
+        string nome "Nome do Empregado"
+        string email "E-mail"
+    }
+
+    EMPREGADO_HORARIO_LIVRE {
+        int horasMensais "Total de horas/mês"
+        int periodoMinimoHoras "Período mínimo de trabalho por dia"
+    }
+
+    EMPREGADO_HORARIO_FIXO {
+        string observacoes "Observações da escala"
+    }
+
+    DIA_SEMANA {
+        string idDiaSemana PK "Código (seg, ter, ...)"
+        string nome "Nome do Dia (Segunda-feira, ...)"
+    }
+
+    TURNO_FIXO {
+        time horarioInicio "Horário de Início"
+        time horarioFim "Horário de Fim"
+    }
+
+    PONTO {
+        int idRegistro PK "Identificador do Registro"
+        datetime dataHoraEntrada "Data e Hora de Entrada"
+        datetime dataHoraSaida "Data e Hora de Saída"
+    }
+
+    EMPREGADO ||--|| EMPREGADO_HORARIO_LIVRE : "É do tipo"
+    EMPREGADO ||--|| EMPREGADO_HORARIO_FIXO : "É do tipo"
+
+    EMPREGADO ||--o{ PONTO : "registra"
+    EMPREGADO_HORARIO_FIXO ||--|{ TURNO_FIXO : "possui escala com"
+    DIA_SEMANA ||--o{ TURNO_FIXO : "ocorre em"
+
