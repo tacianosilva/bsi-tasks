@@ -30,3 +30,13 @@ Um **Sistema Gerenciador de Banco de Dados (SGBD)** é um software responsável 
 6. **Falta de Segurança** – não existem controles de autenticação, autorização e auditoria robustos.  
 
 ---
+
+## Seção C: Modelo Entidade-Relacionamento (MER)
+
+O **MER** é um modelo conceitual criado para facilitar o projeto de banco de dados, permitindo representar a **estrutura lógica geral** de forma independente de implementação. Seus três elementos básicos são:  
+
+1. **Entidades** – representam objetos ou conceitos do mundo real que possuem existência independente. Exemplo: *Cliente*, *Produto*.  
+2. **Atributos** – características ou propriedades que descrevem uma entidade ou relacionamento. Exemplo: *nome*, *CPF*, *preço*.  
+3. **Relacionamentos** – associações entre entidades. Exemplo: *Cliente compra Produto*.  
+
+---
