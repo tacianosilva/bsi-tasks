@@ -40,3 +40,24 @@ O **MER** é um modelo conceitual criado para facilitar o projeto de banco de da
 3. **Relacionamentos** – associações entre entidades. Exemplo: *Cliente compra Produto*.  
 
 ---
+
+## Seção D: Notações em Diagramas ER
+
+Existem várias **notações** gráficas para modelar Diagramas ER, e cada uma pode representar os mesmos conceitos de forma diferente.  
+
+**Exemplos:**  
+
+- **Cardinalidade:**  
+  - Notação de Pé de Galinha (Crow’s Foot): usa “pés” para indicar 1:1, 1:N, N:M.  
+  - Notação de Chen: indica cardinalidade por meio de números (1, N, M) próximos às entidades.  
+  - Notação UML: usa intervalos como (0..1), (1..*).  
+
+- **Entidade Subordinada (Herança / Especialização):**  
+  - Notação de Chen: triângulo representando a especialização.  
+  - Notação UML: generalização com seta vazada apontando para a superclasse.  
+
+- **Atributos:**  
+  - Notação de Chen: elipses conectadas à entidade.  
+  - Notação UML: listados diretamente dentro da caixa da entidade.  
+
+Essas variações de notação permitem representar os mesmos conceitos de maneiras diferentes, dependendo da ferramenta ou da preferência metodológica.  
