@@ -23,3 +23,14 @@
 
     - Exemplos: Oracle Database, MySQL, SQL Server, PostgreSQL, IBM DB2 e
 Microsoft Access.
+
+## Questão B
+- Os principais problemas de utilizar **sistemas de arquivos** para armazenar dados envolvem:
+
+    - Consulta lenta;
+    - Falta de segurança e controle de acesso;
+    - Dificuldade de Acesso aos Dados;
+    - Dificuldade de Manutenção;
+    - Problemas de Atomicidade.
+
+    Entre outros... Em resumo, é como usar um bloquinho de notas para gerir uma empresa grande. Para dados importantes, um banco de dados é sempre melhor.
