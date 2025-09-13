@@ -19,3 +19,14 @@ Um **Sistema Gerenciador de Banco de Dados (SGBD)** é um software responsável 
 - SGBDs correspondentes: MySQL, PostgreSQL, Oracle DBMS, MongoDB.  
 
 ---
+
+## Seção B: Problemas ao utilizar Sistemas de Arquivos para armazenar dados
+
+1. **Redundância e Inconsistência de Dados** – o mesmo dado pode estar duplicado em vários arquivos, dificultando a manutenção.  
+2. **Dificuldade de Acesso** – para realizar consultas complexas é necessário programar manualmente, sem padronização.  
+3. **Isolamento de Dados** – dados ficam espalhados em múltiplos arquivos sem integração.  
+4. **Problemas de Integridade** – ausência de mecanismos para garantir regras de negócio (ex: restrições).  
+5. **Dificuldade de Compartilhamento e Confiabilidade** – acesso simultâneo não é controlado adequadamente.  
+6. **Falta de Segurança** – não existem controles de autenticação, autorização e auditoria robustos.  
+
+---
