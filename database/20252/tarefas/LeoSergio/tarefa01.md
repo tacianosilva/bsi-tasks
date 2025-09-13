@@ -54,3 +54,44 @@ Exemplo de variação para cardinalidade: Chen usa (0,1), (1, n) como texto; Cro
 
 ---
 
+
+## 7e) Construa um diagrama Entidade-Relacionamento (nível conceitual) para o Sistema de Controle de Frequência de Empregados.
+Abaixo segue o diagrama ER em **Mermaid.js**:
+
+```mermaid
+erDiagram
+    EMPREGADO {
+        string codigo PK
+        string nome
+        string email
+    }
+    EMPREGADO_LIVRE {
+        int horas_mes
+        int min_horas_dia
+    }
+    EMPREGADO_FIXO {
+        string observacao
+    }
+    DIA_SEMANA {
+        string codigo PK
+        string nome
+    }
+    TURNO {
+        string id PK
+        string inicio
+        string fim
+    }
+    PONTO {
+        string id PK
+        date data
+        string hora_entrada
+        string hora_saida
+    }
+
+    EMPREGADO ||--o{ PONTO : "registra"
+    EMPREGADO ||--|| EMPREGADO_LIVRE : "pode_ser"
+    EMPREGADO ||--|| EMPREGADO_FIXO : "pode_ser"
+    DIA_SEMANA ||--o{ TURNO : "possui"
+    TURNO }o--o{ EMPREGADO_FIXO : "atribui" 
+    TURNO ||--o{ PONTO : "referencia"
+
