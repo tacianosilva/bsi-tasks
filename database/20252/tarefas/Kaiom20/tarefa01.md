@@ -46,3 +46,31 @@ Os três elementos básicos de um Modelo de **Entidade-Relacionamento (MER)** s�
 - **Relacionamentos:**
 
     - As associações ou ligações entre duas ou mais entidades, indicando como elas se interagem no sistema. 
+
+## Questão D
+### Principais Notações para Diagramas ER
+
+### 1. Notação de Chen (1976)
+- **Entidade:** Retângulo
+- **Atributo:** Elipse, conectada à entidade por uma linha. O identificador (PK) é sublinhado
+- **Relacionamento:** Losango
+- **Cardinalidade:** Números (1, N) escritos diretamente nas linhas entre entidades e relacionamentos
+
+### 2. Notação Crow's Foot (Pé de Galinha)
+- **Entidade:** Retângulo com atributos listados internamente. A PK é destacada com "(PK)" ou sublinhada
+- **Atributo:** Listado dentro do retângulo da entidade
+- **Relacionamento:** Linha conectando duas entidades, com o nome do relacionamento escrito ao lado da linha
+- **Cardinalidade:** Símbolos gráficos nas extremidades das linhas:
+  - `|` (uma linha): Um (obrigatório)
+  - `0>` (círculo + linha): Zero ou um
+  - `<` (pé de galinha): Muitos
+
+### 3. Notação UML (Diagrama de Classe)
+- **Entidade:** Classe (retângulo com três divisões: Nome, Atributos, Métodos)
+- **Atributo:** Listado na seção de atributos com o tipo (ex: `nome : String`). A PK é marcada com `{PK}`
+- **Relacionamento:** Associação (linha reta conectando classes), com o nome escrito junto à linha
+- **Cardinalidade:** Multiplicidades escritas nas extremidades da linha:
+  - `1`: Um
+  - `0..1`: Zero ou um
+  - `*`: Muitos (zero ou mais)
+  - `1..*`: Um ou muitos
