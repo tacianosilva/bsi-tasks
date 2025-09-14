@@ -74,3 +74,54 @@ Os três elementos básicos de um Modelo de **Entidade-Relacionamento (MER)** s�
   - `0..1`: Zero ou um
   - `*`: Muitos (zero ou mais)
   - `1..*`: Um ou muitos
+
+  ## Questão E
+```mermaid
+  erDiagram
+    EMPREGADO {
+        string codigo PK "Código identificador único"
+        string nome "Nome do empregado"
+        string email "E-mail do empregado"
+        string tipo "HORARIO_LIVRE ou HORARIO_FIXO"
+    }
+    
+    EMPREGADO_HORARIO_LIVRE {
+        string codigo PK "Código do empregado (herda de EMPREGADO)"
+        int horas_mensais "Horas que deve trabalhar por mês"
+        int periodo_minimo_horas "Menor período em horas que deve trabalhar"
+    }
+    
+    EMPREGADO_HORARIO_FIXO {
+        string codigo PK "Código do empregado (herda de EMPREGADO)"
+    }
+    
+    DIA_SEMANA {
+        string codigo PK "Código do dia (dom, seg, ter, etc.)"
+        string nome "Nome completo do dia da semana"
+    }
+    
+    TURNO {
+        int id PK "Identificador único do turno"
+        time horario_inicio "Horário de início do turno"
+        time horario_fim "Horário de fim do turno"
+    }
+    
+    REGISTRO_PONTO {
+        int id PK "Identificador único do registro"
+        datetime horario_entrada "Horário de entrada registrado"
+        datetime horario_saida "Horário de saída registrado"
+        date data_registro "Data do registro de ponto"
+    }
+    
+    %% Relacionamentos de Herança/Especialização
+    EMPREGADO ||--o| EMPREGADO_HORARIO_LIVRE : "é_um"
+    EMPREGADO ||--o| EMPREGADO_HORARIO_FIXO : "é_um"
+    
+    %% Relacionamento: Empregado Horário Fixo trabalha em Turnos nos Dias da Semana
+    EMPREGADO_HORARIO_FIXO }o--o{ TURNO : "trabalha_em"
+    TURNO }o--|| DIA_SEMANA : "ocorre_em"
+    
+    %% Relacionamento: Empregados batem ponto
+    EMPREGADO ||--o{ REGISTRO_PONTO : "registra"
+    REGISTRO_PONTO }o--|| TURNO : "referente_ao"
+    REGISTRO_PONTO }o--|| DIA_SEMANA : "no_dia"
