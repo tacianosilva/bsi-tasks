@@ -34,3 +34,15 @@ Microsoft Access.
     - Problemas de Atomicidade.
 
     Entre outros... Em resumo, é como usar um bloquinho de notas para gerir uma empresa grande. Para dados importantes, um banco de dados é sempre melhor.
+
+## Questão C
+Os três elementos básicos de um Modelo de **Entidade-Relacionamento (MER)** são:
+- **Entidades:**
+    
+    - Os objetos, conceitos ou coisas do mundo real sobre os quais se deseja armazenar dados. 
+- **Atributos:** 
+
+    - As propriedades ou características que descrevem uma entidade. 
+- **Relacionamentos:**
+
+    - As associações ou ligações entre duas ou mais entidades, indicando como elas se interagem no sistema. 
