@@ -61,3 +61,85 @@ Várias notações gráficas existem para representar os mesmos conceitos em dia
   - UML: listados dentro da caixa da entidade.  
 
 ---
+## Seção E: Diagrama ER – Sistema de Controle de Frequência de Empregados (com Cardinalidade)
+
+Abaixo está o **Modelo Entidade-Relacionamento (conceitual)** para o Sistema de Controle de Frequência de Empregados.  
+O modelo diferencia os tipos de empregados (livre e fixo), organiza turnos semanais e registra os pontos batidos.  
+
+### Entidades principais
+- **EMPREGADO** (idEmpregado, nome, email)  
+- **EMPREGADO_LIVRE** (horasMensais, minimoHorasDia)  
+- **EMPREGADO_FIXO** (regime)  
+- **DIA** (idDia, nome)  
+- **TURNO** (idTurno, inicio, fim)  
+- **REGISTRO_PONTO** (idRegistro, entrada, saída)  
+
+### Relacionamentos e Cardinalidades
+1. **EMPREGADO – EMPREGADO_LIVRE**  
+   - Um empregado pode ser do tipo livre, e cada registro de EMPREGADO_LIVRE está ligado a exatamente um empregado.  
+   - **Cardinalidade:** 1:1  
+
+2. **EMPREGADO – EMPREGADO_FIXO**  
+   - Um empregado pode ser do tipo fixo, e cada registro de EMPREGADO_FIXO está ligado a exatamente um empregado.  
+   - **Cardinalidade:** 1:1  
+
+3. **EMPREGADO – REGISTRO_PONTO**  
+   - Um empregado pode registrar vários pontos ao longo do tempo.  
+   - Cada REGISTRO_PONTO pertence a apenas um empregado.  
+   - **Cardinalidade:** 1:N  
+
+4. **EMPREGADO_FIXO – TURNO**  
+   - Um empregado fixo pode ter vários turnos atribuídos na sua escala.  
+   - Um turno pode estar associado a vários empregados fixos diferentes.  
+   - **Cardinalidade:** N:M  
+
+5. **DIA – TURNO**  
+   - Um dia pode conter vários turnos.  
+   - Cada turno está vinculado a exatamente um dia.  
+   - **Cardinalidade:** 1:N  
+
+---
+
+### Diagrama em Mermaid.js
+
+```mermaid
+erDiagrama
+    EMPREGADO {
+        int idEmpregado PK "Código"
+        string nome "Nome"
+        string email "E-mail"
+    }
+
+    EMPREGADO_LIVRE {
+        int horasMensais "Horas previstas por mês"
+        int minimoHorasDia "Horas mínimas por dia"
+    }
+
+    EMPREGADO_FIXO {
+        string regime "Tipo de regime fixo"
+    }
+
+    DIA {
+        string idDia PK "Código do Dia (dom, seg, ...)"
+        string nome "Nome do Dia"
+    }
+
+    TURNO {
+        int idTurno PK "Identificador do Turno"
+        time inicio "Horário de Início"
+        time fim "Horário de Fim"
+    }
+
+    REGISTRO_PONTO {
+        int idRegistro PK "Código do Registro"
+        datetime entrada "Horário de Entrada"
+        datetime saida "Horário de Saída"
+    }
+
+    EMPREGADO ||--|| EMPREGADO_LIVRE : "1:1"
+    EMPREGADO ||--|| EMPREGADO_FIXO : "1:1"
+
+    EMPREGADO ||--o{ REGISTRO_PONTO : "1:N"
+    EMPREGADO_FIXO }o--o{ TURNO : "N:M"
+    DIA ||--o{ TURNO : "1:N"
+```
