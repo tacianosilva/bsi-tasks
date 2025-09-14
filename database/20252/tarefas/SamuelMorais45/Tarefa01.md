@@ -22,3 +22,9 @@ Um Sistema Gerenciador de Banco de Dados (SGBD) é um software que possibilita a
 - Falta de integridade e segurança: não existem mecanismos robustos de restrição e autenticação.  
 - Problemas de concorrência: múltiplos acessos simultâneos podem corromper os dados.  
 - Manutenção complexa: difícil escalabilidade e adaptação para novos requisitos.  
+
+## 3. O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).
+
+1. Entidades: representações de objetos do mundo real que possuem relevância no sistema (ex.: Empregado, Turno, Dia da Semana).  
+2. Relacionamentos: associações entre entidades (ex.: Empregado trabalha em Turno).  
+3. Atributos: características que descrevem entidades e relacionamentos (ex.: nome, e-mail, horário início).  
