@@ -14,3 +14,11 @@ Um Sistema Gerenciador de Banco de Dados (SGBD) é um software que possibilita a
 **Exemplos:**  
 - Banco de Dados: MySQL Database, Oracle Database, PostgreSQL Database, MongoDB.  
 - SGBD: MySQL, Oracle, PostgreSQL, MongoDB Server.  
+
+## 2. Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados.
+
+- Redundância e inconsistência de dados: informações duplicadas podem gerar conflitos.  
+- Dificuldade de acesso aos dados: não há uma linguagem padronizada como o SQL.  
+- Falta de integridade e segurança: não existem mecanismos robustos de restrição e autenticação.  
+- Problemas de concorrência: múltiplos acessos simultâneos podem corromper os dados.  
+- Manutenção complexa: difícil escalabilidade e adaptação para novos requisitos.  
