@@ -103,7 +103,7 @@ O modelo diferencia os tipos de empregados (livre e fixo), organiza turnos seman
 ### Diagrama em Mermaid.js
 
 ```mermaid
-erDiagrama
+erDiagram
     EMPREGADO {
         int idEmpregado PK "Código"
         string nome "Nome"
