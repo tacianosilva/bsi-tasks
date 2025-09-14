@@ -13,3 +13,19 @@ atualização e exclusão de informações.
 ### Exemplos:
 **Relacional:** 	Oracle Database, MySQL, PostgreSQL  
 **Não Relacional (NoSQL):** MongoDB, Couchbase, Redis, Amazon DynamoDB
+
+## Principais problemas ao utilizar sistemas de arquivo para armazenar dados
+* **Redundância e Inconsistência:** Dados duplicados em vários arquivos causam inconsistências.
+
+* **Dificuldade de Acesso:** Exige a criação de programas específicos para cada nova consulta, tornando o acesso
+ineficiente.
+
+* **Isolamento de Dados:** Informações espalhadas em diferentes formatos dificultam a criação de uma visão integrada.
+
+* **Falta de Integridade:** É difícil impor regras para garantir a validade e a consistência dos dados.
+
+* **Falhas de Atomicidade:** Operações com múltiplos passos podem falhar no meio, corrompendo os dados.
+
+* **Erros de Concorrência:** Acesso simultâneo por vários usuários pode levar a resultados incorretos.
+
+* **Falta de segurança:** É complexo controlar as permissões de acesso e alteração dos dados.
