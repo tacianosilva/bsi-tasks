@@ -40,3 +40,24 @@ O **MER** é usado no projeto de banco de dados para representar, de forma conce
 3. **Relacionamentos** – ligações entre entidades, representando interações. Exemplo: *Aluno matricula-se em Curso*.  
 
 ---
+
+## Seção D: Notações em Diagramas ER  
+
+Várias notações gráficas existem para representar os mesmos conceitos em diagramas ER.  
+
+**Exemplos:**  
+
+- **Cardinalidade:**  
+  - Notação de Pé de Galinha: usa “pés” para representar 1:N, N:M.  
+  - Notação de Chen: indica cardinalidade com números próximos às entidades.  
+  - UML: utiliza intervalos (ex.: `0..*`, `1..1`).  
+
+- **Especialização/Generalização:**  
+  - Chen: usa triângulo para indicar herança.  
+  - UML: seta vazada apontando para a superclasse.  
+
+- **Atributos:**  
+  - Chen: elipses conectadas à entidade.  
+  - UML: listados dentro da caixa da entidade.  
+
+---
