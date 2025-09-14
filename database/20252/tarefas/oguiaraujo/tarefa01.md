@@ -71,3 +71,49 @@ em uma área separada no topo da caixa da entidade.
 * **Bachman:** A notação original não possui uma representação gráfica padrão para atributos ou chaves primárias; o
 foco do diagrama é puramente nas estruturas de dados e seus relacionamentos.
 * **IDEF1X:** Os atributos chave são listados acima de uma linha horizontal dentro da caixa da entidade.
+
+```mermaid
+erDiagram
+
+    EMPREGADO {
+        string id_empregado PK
+        string nome
+        string email
+        string tipo_empregado
+    }
+
+    EMPREGADO_LIVRE {
+        string id_empregado PK
+        int horas_mes
+        int min_horas_dia
+    }
+
+    EMPREGADO_FIXO {
+        string id_empregado PK
+    }
+
+    DIA_SEMANA {
+        string id_dia PK
+        string nome
+    }
+
+    TURNO {
+        string id_turno PK
+        time hora_inicio
+        time hora_fim
+    }
+
+    FREQUENCIA {
+        string id_frequencia PK
+        datetime hora_entrada
+        datetime hora_saida
+    }
+    
+    EMPREGADO ||--o| EMPREGADO_LIVRE : "é"
+    EMPREGADO ||--o| EMPREGADO_FIXO : "é"
+    
+    EMPREGADO_FIXO ||--o{ TURNO : "possui"
+    TURNO }|--|| DIA_SEMANA : "ocorre_em"
+    
+    EMPREGADO ||--|{ FREQUENCIA : "registra"
+    FREQUENCIA }|--|| TURNO : "referente_a"
