@@ -72,5 +72,47 @@ Os Diagramas Entidade-Relacionamento (ER) podem ser representados de diferentes 
   - Crow’s Foot: relacionamento com linha hierárquica.  
   - UML: herança (seta com triângulo aberto apontando para a superclasse).  
 
+## 5. Construa um Diagrama ER para projetar uma base de dados de um Sistema de Controle de Freqüência de Empregados de uma organização. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras.
 
+```mermaid
+erDiagram
+    EMPREGADO {
+        int codigo PK
+        string nome
+        string email
+        string tipo
+    }
 
+    EMPREGADO_LIVRE {
+        int horas_mes
+        int horas_min_dia
+    }
+
+    EMPREGADO_FIXO {
+        string descricao
+    }
+
+    TURNO {
+        int id_turno PK
+        string hora_inicio
+        string hora_fim
+    }
+
+    DIA_SEMANA {
+        string codigo PK
+        string nome
+    }
+
+    PONTO {
+        int id_ponto PK
+        string hora_entrada
+        string hora_saida
+    }
+
+    EMPREGADO ||--o{ EMPREGADO_LIVRE : "especialização"
+    EMPREGADO ||--o{ EMPREGADO_FIXO : "especialização"
+    EMPREGADO_FIXO }o--o{ TURNO : "atua_em"
+    TURNO }o--|| DIA_SEMANA : "ocorre_em"
+    EMPREGADO ||--o{ PONTO : "registra"
+    TURNO ||--o{ PONTO : "referencia"
+    DIA_SEMANA ||--o{ PONTO : "referencia"
