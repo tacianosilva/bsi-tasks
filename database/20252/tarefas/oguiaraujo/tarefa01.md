@@ -29,3 +29,16 @@ ineficiente.
 * **Erros de Concorrência:** Acesso simultâneo por vários usuários pode levar a resultados incorretos.
 
 * **Falta de segurança:** É complexo controlar as permissões de acesso e alteração dos dados.
+
+## Três elementos básicos de um Modelo Entidade Relacionamento (MER)
+
+**1. Entidade:** Representa um objeto do mundo real sobre o qual se deseja armazenar informações. Uma entidade pode ser
+algo concreto (como Aluno, Carro, Produto) ou abstrato (como Venda, Matrícula, Conta). Em um diagrama, é geralmente
+representada por um retângulo.
+
+**2. Atributo:** Descreve uma propriedade ou característica de uma entidade. Por exemplo, a entidade Aluno pode ter os
+atributos Matricula, Nome e CPF. Em um diagrama, são geralmente representados por elipses ligadas à sua entidade.
+
+**3. Relacionamento:** Representa uma associação ou interação entre duas ou mais entidades. Por exemplo, um Aluno se
+matricula em um Curso. O nome do relacionamento (no caso, "se matricula em") descreve a associação entre as entidades
+Aluno e Curso. Em um diagrama, é geralmente representado por um losango.
