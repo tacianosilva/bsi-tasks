@@ -30,3 +30,13 @@ Um **Sistema Gerenciador de Banco de Dados (SGBD)** é o software responsável p
 6. **Controle de concorrência inexistente** – múltiplos usuários acessando ao mesmo tempo podem causar conflitos.  
 
 ---
+
+## Seção C: Modelo Entidade-Relacionamento (MER)  
+
+O **MER** é usado no projeto de banco de dados para representar, de forma conceitual, os elementos de um sistema. Seus três elementos básicos são:  
+
+1. **Entidades** – objetos ou conceitos que podem ser identificados no mundo real. Exemplo: *Aluno*, *Curso*.  
+2. **Atributos** – informações que descrevem as entidades ou relacionamentos. Exemplo: *nome*, *data de nascimento*, *carga horária*.  
+3. **Relacionamentos** – ligações entre entidades, representando interações. Exemplo: *Aluno matricula-se em Curso*.  
+
+---
