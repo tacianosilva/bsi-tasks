@@ -28,3 +28,49 @@ Um Sistema Gerenciador de Banco de Dados (SGBD) é um software que possibilita a
 1. Entidades: representações de objetos do mundo real que possuem relevância no sistema (ex.: Empregado, Turno, Dia da Semana).  
 2. Relacionamentos: associações entre entidades (ex.: Empregado trabalha em Turno).  
 3. Atributos: características que descrevem entidades e relacionamentos (ex.: nome, e-mail, horário início).  
+
+## 4. Pesquise sobre as várias notações possíveis para Diagramas ER, cite alguns exemplos de notações diferentes para o mesmo conceito (ex: Cardinalidade, Entidade Subordinada,etc.).
+
+Os Diagramas Entidade-Relacionamento (ER) podem ser representados de diferentes formas, de acordo com a notação escolhida. Cada notação define um conjunto de símbolos gráficos para entidades, relacionamentos, atributos e cardinalidades.  
+
+ Principais Notações  
+
+1. Notação de Chen 
+   - Entidades → retângulos.  
+   - Relacionamentos → losangos.  
+   - Atributos → elipses conectadas às entidades ou relacionamentos.  
+   - Cardinalidade → indicada com números ou símbolos próximos às entidades.  
+   - Exemplo: Empregado (retângulo) — Trabalha_em (losango) — Projeto (retângulo).  
+
+2. Notação Crow’s Foot (pé de galinha) 
+   - Entidades → retângulos.  
+   - Relacionamentos → linhas conectando entidades.  
+   - Cardinalidade → representada por símbolos nas extremidades da linha:  
+     - Pé de galinha (três tracinhos) = muitos (N).  
+     - Traço simples = um (1).  
+     - Bolinha = zero (0).  
+   - Exemplo: Um Departamento (1) possui (pé de galinha) vários Empregados (N).  
+
+3. Notação UML (Unified Modeling Language)  
+   - Muito usada em projetos de software orientado a objetos.  
+   - Entidades → classes (retângulos divididos em seções).  
+   - Relacionamentos → associações (linhas).  
+   - Cardinalidade → escrita como *multiplicidade* próxima à associação (ex.: 0..1, 1..*, 1..1).  
+   - Exemplo: Um Empregado (1..1) pode estar associado a vários Projetos (0..*).  
+
+---
+
+ Comparação de um mesmo conceito em diferentes notações  
+
+- Cardinalidade (1 para N):  
+  - Chen: (1, N).  
+  - Crow’s Foot: │───< (pé de galinha).  
+  - UML: 1..1 ↔ 0..*.  
+
+- Entidade Subordinada (Especialização):  
+  - Chen: entidade geral ligada a entidades específicas com um triângulo.  
+  - Crow’s Foot: relacionamento com linha hierárquica.  
+  - UML: herança (seta com triângulo aberto apontando para a superclasse).  
+
+
+
