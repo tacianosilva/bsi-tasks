@@ -27,3 +27,13 @@ Exemplos
 5. Segurança e integridade limitada — validação e regras de integridade (ex.: constraints, foreign keys) precisam ser implementadas na aplicação.  
 6.Escalabilidade e desempenho — conforme o volume cresce, gerenciamento fica ineficiente; SGBDs têm índices e otimizações que sistemas de arquivos não têm.  
 7. Independência de dados — mudança na estrutura dos arquivos exige alteração na aplicação; SGBDs oferecem camadas de abstração.
+
+## seção C 
+
+
+1.Entidade — representa um objeto do mundo real que possui existência distinta e cujas informações serão armazenadas. Ex.: *Empregado*, *Departamento*.  
+   - Entidades têm atributos (ex.: nome, código, e-mail).  
+2.Relacionamento — representa associação entre duas ou mais entidades. Ex.: *Empregado* trabalha_em Departamento. Relacionamentos têm grau (binário, ternário), opcionalidade e cardinalidade.  
+3. Atributo — propriedade que descreve uma entidade ou relacionamento. Atributos podem ser simples, compostos, multivalorados ou derivados. Além disso, existem identificadores (chave/PK) que distinguem instâncias de uma entidade.
+
+---
