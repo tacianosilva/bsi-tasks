@@ -36,4 +36,19 @@ Exemplos
 2.Relacionamento — representa associação entre duas ou mais entidades. Ex.: *Empregado* trabalha_em Departamento. Relacionamentos têm grau (binário, ternário), opcionalidade e cardinalidade.  
 3. Atributo — propriedade que descreve uma entidade ou relacionamento. Atributos podem ser simples, compostos, multivalorados ou derivados. Além disso, existem identificadores (chave/PK) que distinguem instâncias de uma entidade.
 
----
+## Seção D 
+Várias notações e variantes são usadas para desenhar Diagramas ER. Exemplos de diferentes notações para conceitos comuns:
+
+- **Cardinalidade**
+  - **Chen (1976)**: usa rombos para relacionamentos, retângulos para entidades e expressões como 1:N, M:N escritas ao lado.  
+  - **Notação (Crow’s Foot)**: usa "pé-de-coruja" (crow’s foot) para representar “muitos”, linha simples para “um”, círculo para “zero/um” (opcional), barra para “um obrigatório”.  
+  - **Bachman / UK**: usa símbolos distintos (setas, barras) para indicar (1,0..1,1..N).
+- **Identificador (chave)**
+  - Sublinhado do atributo (Chen).  
+  - Sufixo `PK` ou `*` junto ao atributo (algumas notações orientadas a modelos lógicos).  
+- **Entidade subordinada / entidade fraca**
+  - **Chen**: entidade fraca desenhada como retângulo com borda dupla; relacionamento identificador com rombo de borda dupla.  
+  - **Crow’s Foot**: usa notação onde a dependência é indicada e a chave parcial é mostrada com sublinhado ou anotação.
+- **Atributos compostos / multivalorados**
+  - **Chen**: atributos compostos desenhados com ramificações; multivalorado com elipse duplo.  
+  - **Outras notações**: listam atributos entre parênteses ou com marcador `[]` para multivalorados.
