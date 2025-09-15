@@ -22,4 +22,28 @@
 
 - **Entidades**: Uma entidade é uma "coisa" ou objeto do mundo real ou conceitual sobre o qual armazenam dados (pessoas, lugares, objetos, etc). É representada por uma tabela no modelo de banco de dados, e cada linha da tabela é uma instância.
 - **Atributos**: Atributos são as características que descrevem uma entidade. Os atributos correspondem, em um modelo lógico de banco de dados, às colunas de uma tabela.
-- **Relacionamentos**: Indicam as associações e interações entre as diferentes entidades. A cardinalidade descreve quantos instâncias de uma entidade podem ser relacionadas a instâncias de outra entidade. Os tipos comuns de cardinalidade são 1:1, 1:N (um-para-muitos), e N:M (muitos-para-muitos). 
+- **Relacionamentos**: Indicam as associações e interações entre as diferentes entidades. A cardinalidade descreve quantos instâncias de uma entidade podem ser relacionadas a instâncias de outra entidade. Os tipos comuns de cardinalidade são 1:1, 1:N (um-para-muitos), e N:M (muitos-para-muitos).
+
+### d. Diversidades das notações para Diagramas ER
+
+- **Chen**: Entidades em retângulos, atributos em elipses, relacionamentos em losangos.
+- **Crow's Foot/IE: Entidades em retângulos, cardinalidade mostrada por fork + anéis/traços para opcionalidade/obrigatoriedade.
+- **UML**: Classes/atributos em retângulos divididos e multiplicidade (0..*, 1..1, etc.) para cardinalidade. Usada quando deseja alinhar modelo de dados com OO.
+- **Barker / Arrow / outras variantes**: Pequenas diferenças gráficas (setas, traços, símbolos) usadas em ambientes corporativos ou por ferramenta.
+
+  **Mesmos conceitos diferentes notações**
+  **Cardinalidade**
+  - **Chen**: normalmente indica (min,max) ou anota texto ao lado da linha; menos visual que pé-de-corvo.
+  - **Crow's foot**: Crow’s Foot: usa o pé-de-corvo para “many”, um traço para “one”; um círculo (“o”) indica 0 (opcional), traço indica 1 (obrigatório)
+  - **UML**: usa multiplicidade numérica ao lado das associações: 0..* (zero ou muitos), 1 (um só), 1..* (um ou muitos).
+
+  **Entidade Fraca/Subordinada**
+  - **Chen**: representa entidade fraca com retângulo duplo; relacionamento identificador em losango duplo.
+  - **Crow's foot/Barker**: representam entid. fraca com símbolo ou rótulo e relacionamento identificador (linha com traço especial); às vezes usam chave parcial indicada       dentro da entidade.
+  - IDEF1X: marca claramente entidades dependentes e relacionamentos identificadores (chaves explícitas e linhas de identificação).
+
+  **Atributos**
+  - **Chen (clássico)**: atributos em elipses; elipse dupla = multivalorado; elipse ramificada = atributo composto. Ex.: Endereço com sub-elipses Rua, Cidade.
+  - **Crow’s Foot / UML**: geralmente colocam atributos dentro do retângulo da entidade (lista); multivalorados / compostos são anotados textualmente ou com notação específica da ferramenta (menos diagramática que Chen).
+
+ 
