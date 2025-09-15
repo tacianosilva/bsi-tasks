@@ -12,5 +12,6 @@ Um SGBD (Sistema Gerenciador de Banco de Dados) é um software que permite aos u
 
 ex:MySQL, PostgreSQL, Oracle, MongoDB e MariaDB.
 
-
+### Problemas em sistemas de arquivos
+Os principais problemas de utilizar sistemas de arquivos para armazenagem de dados são: dificuldade de acesso e consulta, já que não há uma linguagem estruturada; redundância e inconsistência, pois os mesmos dados podem se repetir em arquivos diferentes; falta de integridade e segurança, com ausência de mecanismos robustos de controle; e, por fim, dificuldade de escalabilidade e manutenção conforme o volume de dados cresce.
 
