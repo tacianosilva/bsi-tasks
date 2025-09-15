@@ -51,19 +51,19 @@ erDiagram
     }
 
     HORARIO_LIVRE_EMPREGADO {
-        int codigo PK  
+        int codigo PK
         int horas_por_mes
         int menor_periodo_horas
     }
 
     HORARIO_FIXO_EMPREGADO {
-        int codigo PK  
+        int codigo PK
     }
 
     TURNO {
         int turno_id PK
-        string dia_codigo  
-        string dia_nome    
+        string dia_codigo
+        string dia_nome
         time horario_inicio
         time horario_fim
     }
@@ -77,12 +77,11 @@ erDiagram
 
     %% Relações entre entidades
 
-    EMPREGADO ||--|{ HORARIO_LIVRE_EMPREGADO : "é tipo"
-    EMPREGADO ||--|{ HORARIO_FIXO_EMPREGADO : "é tipo"
+    EMPREGADO ||--|| HORARIO_LIVRE_EMPREGADO : "pode ser"
+    EMPREGADO ||--|| HORARIO_FIXO_EMPREGADO : "pode ser"
 
-    EMPREGADO ||--o{ PONTO : "bater ponto"
-    EMPREGADO ||--o{ TURNO : "tem turno" fixo
+    HORARIO_FIXO_EMPREGADO ||--o{ TURNO : "tem até 2 por dia"
 
-    TURNO ||--o{ PONTO : "ponto em turno"
+    EMPREGADO ||--o{ PONTO : "bate"
+    TURNO ||--o{ PONTO : "referente a"
 ```
-
