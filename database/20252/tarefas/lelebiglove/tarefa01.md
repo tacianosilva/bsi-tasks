@@ -52,3 +52,53 @@ Várias notações e variantes são usadas para desenhar Diagramas ER. Exemplos 
 - **Atributos compostos / multivalorados**
   - **Chen**: atributos compostos desenhados com ramificações; multivalorado com elipse duplo.  
   - **Outras notações**: listam atributos entre parênteses ou com marcador `[]` para multivalorados.
+
+  ## Seção E 
+
+  ```mermaid
+erDiagram
+    EMPREGADO {
+        string codigo PK "código único do empregado"
+        string nome
+        string email
+    }
+
+    TIPO_EMPREGADO {
+        string tipo_id PK "id do tipo (ex: livre, fixo)"
+        string descricao
+        boolean horario_livre "true = horário livre, false = horário fixo"
+        integer horas_mes "aplica-se se horario_livre = true"
+        integer min_horas_dia "aplica-se se horario_livre = true"
+    }
+
+    DIA_SEMANA {
+        string codigo PK "ex: dom, seg, ter, ..."
+        string nome "ex: domingo, segunda-feira, ..."
+    }
+
+    TURNO {
+        string turno_id PK
+        time inicio
+        time fim
+        string descricao "turno associado a um dia da semana"
+    }
+
+    PONTO {
+        string ponto_id PK
+        date data
+        time entrada
+        time saida
+        string observacao
+    }
+
+    %% Relacionamentos (cardinalidades conceituais)
+    TIPO_EMPREGADO ||--o{ EMPREGADO : "classifica"
+    DIA_SEMANA ||--o{ TURNO : "possui"
+    EMPREGADO ||--o{ PONTO : "registra"
+    TURNO ||--o{ PONTO : "tem"
+    EMPREGADO ||--o{ TURNO : "possui_agendamento" 
+
+    %% Observações e restrições (não implementadas como chaves, são regras conceituais)
+    %% - Empregados com horario_livre armazenam horas_mes e min_horas_dia em TIPO_EMPREGADO.
+    %% - Empregados com horario fixo têm agendamento de TURNO por DIA_SEMANA; podem ter até 2 TURNOs no mesmo dia.
+    %% - Cada PONTO refere-se a um EMPREGADO e a um TURNO (registro de entrada/saída).
