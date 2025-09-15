@@ -29,3 +29,13 @@
 | **Entidade** | Algo do mundo real que possui existência independente (ex: Aluno, Curso, Departamento). Representa objetos que queremos modelar. |
 | **Atributo** | Características ou propriedades de uma entidade (por exemplo: nome, idade, endereço). Podem ser simples, compostos, multivalorados, derivados, chave, etc. |
 | **Relacionamento** | Associação entre duas ou mais entidades, expressando como elas interagem. Envolve cardinalidade (ex: 1:1, 1:N, N:M), participação (total ou parcial), etc. |
+
+
+## d. Exemplos de Notações Diferentes em Diagramas ER
+
+| Conceito | Notações possíveis / variações |
+|---|---|
+| **Cardinalidade** | Notação “pé-de-galinha” (crow’s foot) para 1:N, N:M; ou uso de pares (min, max), ex: (0,1), (1,N) ao lado da linha de relacionamento. |
+| **Entidade forte / entidade fraca** | Entidade forte representada normalmente por retângulo simples; entidade fraca por retângulo duplo ou com bordas duplas. |
+| **Atributos especiais** | Atributo chave pode estar sublinhado; multivalorado pode ser representado com elipse dupla; atributo derivado com traço ou anotação especial. |
+| **Participação** | Participação total vs parcial: pode usar linhas contínuas vs tracejadas, ou indicar mínimo (0 ou 1) e máximo (N) nas cardinalidades. |
