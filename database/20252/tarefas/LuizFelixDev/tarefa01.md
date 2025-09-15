@@ -21,3 +21,33 @@ O Modelo Entidade-Relacionamento (MER) é uma ferramenta de design que simplific
 
 ### Notações de Diagramas Entidade-Relacionamento
 Os Diagramas Entidade-Relacionamento (ER) são essenciais para projetar bancos de dados, mas a forma como são desenhados pode mudar bastante dependendo da notação utilizada. As três notações mais comuns são a de Chen, a de Pé de Galinha (Crow's Foot) e a UML, cada uma com sua própria simbologia. A notação Chen é a clássica e acadêmica, usando retângulos para entidades, losangos para relacionamentos e elipses para atributos. Já a notação Pé de Galinha é a mais popular no mercado de desenvolvimento de software por ser concisa e visualmente clara, especialmente para mostrar a cardinalidade. Por fim, a UML (Linguagem de Modelagem Unificada) utiliza diagramas de classes que podem ser adaptados para o ER, representando entidades como classes e os relacionamentos como associações. Para a cardinalidade, por exemplo, a notação de Chen utiliza números (1, N), a de Pé de Galinha usa símbolos gráficos como o "pé de galinha" para o lado "muitos" do relacionamento, e a UML emprega anotações como 1 e *. Essa variedade de notações permite que os projetistas escolham a mais adequada para o contexto, seja para um projeto conceitual, uma implementação prática ou uma integração com o desenvolvimento orientado a objetos.
+
+### Diagrama ER:
+    erDiagram
+    EMPREGADO {
+        string nome
+        string cpf
+        string cargo
+        string departamento
+    }
+
+    DEPARTAMENTO {
+        string nome
+        string localizacao
+    }
+
+    CARGO {
+        string titulo
+        string descricao
+    }
+
+    REGISTRO_FREQUENCIA {
+        date data
+        time hora_entrada
+        time hora_saida
+        string status
+    }
+
+    DEPARTAMENTO ||--o{ EMPREGADO : "possui"
+    CARGO ||--o{ EMPREGADO : "ocupado_por"
+    EMPREGADO ||--o{ REGISTRO_FREQUENCIA : "tem"
