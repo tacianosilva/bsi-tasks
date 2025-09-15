@@ -18,7 +18,7 @@
 - **Dificuldade com grande volume de dados**: Gerenciar grandes números de dados em arquivos é lento e ineficinete.
 - **Segurança inadequada**: Arquivos comuns não possuem os mecanismos de controle de um SGBD, deixando os dados vulneráveis.
 
-### c. Estrutura lógica geral de um banco de dados
+### c. Estrutura lógica geral de um MER (Modelo Entidade Relacionamento)
 
 - **Entidades**: Uma entidade é uma "coisa" ou objeto do mundo real ou conceitual sobre o qual armazenam dados (pessoas, lugares, objetos, etc). É representada por uma tabela no modelo de banco de dados, e cada linha da tabela é uma instância.
 - **Atributos**: Atributos são as características que descrevem uma entidade. Os atributos correspondem, em um modelo lógico de banco de dados, às colunas de uma tabela.
