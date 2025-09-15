@@ -39,3 +39,50 @@
 | **Entidade forte / entidade fraca** | Entidade forte representada normalmente por retângulo simples; entidade fraca por retângulo duplo ou com bordas duplas. |
 | **Atributos especiais** | Atributo chave pode estar sublinhado; multivalorado pode ser representado com elipse dupla; atributo derivado com traço ou anotação especial. |
 | **Participação** | Participação total vs parcial: pode usar linhas contínuas vs tracejadas, ou indicar mínimo (0 ou 1) e máximo (N) nas cardinalidades. |
+
+## e. Diagrama mermaid
+
+```mermaid
+erDiagram
+    EMPREGADO {
+        int codigo PK
+        string nome
+        string email
+    }
+
+    HORARIO_LIVRE_EMPREGADO {
+        int codigo PK  
+        int horas_por_mes
+        int menor_periodo_horas
+    }
+
+    HORARIO_FIXO_EMPREGADO {
+        int codigo PK  
+    }
+
+    TURNO {
+        int turno_id PK
+        string dia_codigo  
+        string dia_nome    
+        time horario_inicio
+        time horario_fim
+    }
+
+    PONTO {
+        int ponto_id PK
+        date data
+        time horario_entrada
+        time horario_saida
+    }
+
+    %% Relações entre entidades
+
+    EMPREGADO ||--|{ HORARIO_LIVRE_EMPREGADO : "é tipo"
+    EMPREGADO ||--|{ HORARIO_FIXO_EMPREGADO : "é tipo"
+
+    EMPREGADO ||--o{ PONTO : "bater ponto"
+    EMPREGADO ||--o{ TURNO : "tem turno" fixo
+
+    TURNO ||--o{ PONTO : "ponto em turno"
+```
+
