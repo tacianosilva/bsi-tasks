@@ -14,3 +14,10 @@
 - Banco de Dados Relacional: MySQL, PostgreSQL, Oracle, SQL Server.
 - Banco de Dados Não-Relacional (NoSQL): MongoDB, Cassandra, etc.
 
+## 2. Problemas de Usar Sistemas de Arquivos para Armazenamento de Dados
+
+- Redundância de dados (mesmo dado armazenado em vários arquivos) → desperdício de espaço e possibilidade de inconsistência. :contentReference[oaicite:4]{index=4}  
+- Integridade comprometida: ausência de mecanismos automáticos para garantir que os dados estejam coerentes entre diferentes arquivos. :contentReference[oaicite:5]{index=5}  
+- Dificuldade de acesso concorrente: ao mesmo tempo vários processos gravando/lendo em arquivos pode causar corrupção ou conflitos.  
+- Consultas complexas lentas ou impossíveis de implementar eficientemente.  
+- Pouca ou nenhuma segurança, controle de acesso, auditoria, recuperação de falhas.
