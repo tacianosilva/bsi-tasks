@@ -17,12 +17,47 @@
 title: Frequência de Empregados
 ---
 erDiagram
-    EMPREGADO ||--o{ ORDER : places
     EMPREGADO {
         string codigo PK
         string nome
         string email
     }
-    ORDER ||--|{ LINE-ITEM : contains
-    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+    
+    EMP_HR_LIVRE {
+        string codigo PK
+        string nome
+        string email
+        datetime hr_min
+        datetime hr_total
+    }
+    
+    EMP_HR_FIXA {
+        string codigo PK
+        string nome
+        string email
+        datetime hr_inicio_turno
+        datetime hr_fim_turno
+    }
+
+    PONTO {
+
+    }
+
+    TURNO {
+        string codigo PK
+        datetime hr_inicio
+        datetime hr_fim
+    }
+
+    DIA_SEMANA {
+        string codigo PK
+        string nome
+    }
+
+    EMPREGADO ||--o{ PONTO : bate
+    EMP_HR_LIVRE }o--|| EMPREGADO : é
+    EMP_HR_FIXA }o--|| EMPREGADO : é
+    EMP_HR_FIXA }o--|{ TURNO : possui
+    PONTO }o--|| DIA_SEMANA : ocorre
+    DIA_SEMANA }|--|{ TURNO : possui
 ```
