@@ -70,3 +70,64 @@ Existem diversas notações gráficas para representar um Modelo Entidade-Relaci
 
 * **Notação de Chen:** Representa a entidade fraca com um retângulo de linha dupla e o relacionamento de identificação com um losango de linha dupla.
 * **Notação Crow's Foot:** A chave primária da entidade fraca é parcialmente ou totalmente composta pela chave da entidade forte, e o relacionamento que as une é chamado de "relacionamento de identificação".
+
+---
+### Diagrama ER para o Sistema de Controle de Freqüência
+
+Abaixo está o diagrama Entidade-Relacionamento para o sistema proposto, modelado em nível conceitual e utilizando a sintaxe do Mermaid.js. O modelo lida com a especialização dos tipos de empregados e os diferentes regimes de trabalho.
+
+```mermaid
+erDiagram
+    %% Entidades Principais
+    EMPREGADO {
+        int cod_empregado PK "Código Identificador"
+        string nome "Nome do empregado"
+        string email "E-mail do empregado"
+    }
+
+    REGISTRO_PONTO {
+        int id_registro PK "ID do Registro"
+        datetime data_hora_entrada "Data e Hora de Entrada"
+        datetime data_hora_saida "Data e Hora de Saída"
+    }
+
+    %% Especialização/Generalização: Tipos de Empregados
+    EMPREGADO_HORARIO_LIVRE {
+        float horas_mensais "Total de horas/mês"
+        float minimo_horas_diarias "Mínimo de horas/dia"
+    }
+
+    EMPREGADO_HORARIO_FIXO {
+        %% Esta entidade serve para conectar o empregado à sua escala fixa
+    }
+
+    %% Entidades para o Horário Fixo
+    DIA_SEMANA {
+        string cod_dia PK "Cód. ('seg', 'ter', etc.)"
+        string nome_dia "Nome ('Segunda-feira', etc.)"
+    }
+
+    TURNO {
+        int cod_turno PK "ID do Turno"
+        time horario_inicio "Horário de Início"
+        time horario_fim "Horário de Fim"
+    }
+
+    %% Entidade Associativa para a Escala
+    ESCALA {
+        %% Esta entidade conecta um empregado fixo a um turno em um dia da semana
+    }
+
+    %% Relacionamentos
+    %% Um empregado pode ser de um tipo OU de outro (Herança/Especialização)
+    EMPREGADO ||--|{ EMPREGADO_HORARIO_LIVRE : "é do tipo"
+    EMPREGADO ||--|{ EMPREGADO_HORARIO_FIXO : "é do tipo"
+
+    %% Todos os empregados (da entidade-mãe) realizam registros de ponto
+    EMPREGADO ||--|{ REGISTRO_PONTO : "realiza"
+
+    %% A escala conecta o empregado de horário fixo aos seus turnos e dias
+    EMPREGADO_HORARIO_FIXO ||--|{ ESCALA : "possui"
+    TURNO ||--|{ ESCALA : "compõe"
+    DIA_SEMANA ||--|{ ESCALA : "ocorre em"
+```
