@@ -26,3 +26,15 @@
 * É o **software** que funciona como uma interface entre o usuário (ou uma aplicação) e o banco de dados. Ele é responsável por criar, ler, atualizar e apagar os dados (operações de CRUD), além de garantir a segurança, integridade e o controle de acesso concorrente.
 * **Exemplos de SGBDs:** PostgreSQL, MySQL, SQL Server, Oracle.
 * **Analogia:** Se o Banco de Dados é uma biblioteca cheia de livros organizados (os dados), o SGBD é todo o sistema de bibliotecários e fichários que permite que você encontre, pegue emprestado e devolva um livro de forma segura e eficiente.
+
+---
+### Quais os principais problemas de utilizar Sistemas de Arquivos?
+
+Utilizar sistemas de arquivos tradicionais (como pastas e arquivos .txt ou .csv) para armazenar dados de uma aplicação gera diversos problemas que os SGBDs vieram para resolver:
+
+* **Redundância e Inconsistência:** A mesma informação pode ser duplicada em vários arquivos. Alterar em um local e não em outro cria inconsistência nos dados.
+* **Dificuldade de Acesso:** É preciso desenvolver programas específicos para cada nova consulta ou relatório que se deseja extrair. Não há uma linguagem padrão como o SQL para buscar dados de forma flexível.
+* **Isolamento de Dados:** Os dados frequentemente ficam espalhados em múltiplos arquivos com formatos diferentes, o que torna muito difícil a tarefa de relacioná-los e obter informações consolidadas.
+* **Problemas de Integridade:** É complexo garantir que os dados obedeçam a certas regras de negócio (ex: "o CPF de um cliente deve ser único" ou "o estoque de um produto não pode ser negativo"). Essas regras precisariam ser implementadas em todos os programas que acessam os arquivos.
+* **Problemas de Concorrência:** O acesso simultâneo de múltiplos usuários ao mesmo arquivo pode levar à sobreposição de alterações e corrupção dos dados. Os SGBDs possuem mecanismos robustos para controlar a concorrência.
+* **Problemas de Segurança:** É difícil definir permissões de acesso específicas e granulares (ex: um usuário pode ver os dados de um produto, mas não pode alterar seu preço).
