@@ -11,3 +11,12 @@ Exemplos:
 - Banco de dados: MySQL Database, Oracle Database, PostgreSQL, MongoDB.
 - SGBDs correspondentes: MySQL Server, Oracle DBMS, PostgreSQL DBMS, MongoDB Server.
 
+<h3> Problemas ao usar Sistemas de Arquivos para armazenar dados</h3>
+
+Antes dos SGBDs, muitas empresas utilizavam arquivos convencionais (como planilhas ou textos) para guardar informações. Esse modelo trazia diversos problemas, como:
+- Redundância de dados: a mesma informação ficava repetida em vários arquivos.
+- Dificuldade de acesso: era complicado buscar e cruzar dados entre diferentes arquivos.
+- Baixa segurança: qualquer um com acesso poderia alterar informações sem controle.
+- Inconsistência: quando um dado era alterado em um arquivo, muitas vezes não era atualizado em outros.
+- Manutenção complexa: mudar a estrutura ou corrigir erros exigia retrabalho enorme.
+
