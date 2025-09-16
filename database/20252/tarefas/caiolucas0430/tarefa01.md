@@ -29,3 +29,10 @@ Usar apenas sistemas de arquivos para armazenar dados apresenta problemas, como:
 
 ---
 
+## 3. Modelo Entidade-Relacionamento (MER)
+Os três elementos básicos de um MER são:
+- **Entidades:** objetos ou conceitos do mundo real que queremos representar (ex: Empregado, Turno).  
+- **Relacionamentos:** associações entre entidades (ex: Empregado → TrabalhaEm → Turno).  
+- **Atributos:** propriedades que descrevem entidades ou relacionamentos (ex: nome, e-mail, horário de início).  
+
+---
