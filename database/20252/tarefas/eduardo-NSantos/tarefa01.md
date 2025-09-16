@@ -32,3 +32,9 @@ Representados por elipses. <br>
 *Relacionamentos:*
 Indicam associações entre duas ou mais entidades (ex: Aluno “matricula-se em” Disciplina). <br>
 Representados por losangos. <br>
+
+## Notações Diferentes em Diagramas ER
+Existem várias notações para representar Diagramas ER, sendo as mais comuns: <br>
+*Notação de Chen:* Clássica, com retângulos (entidades), losangos (relacionamentos), e elipses (atributos). <br>
+*Notação de Crow's Foot (Pé de Galinha):* Popular em ferramentas modernas. Usa símbolos específicos para indicar cardinalidade. <br>
+*Notação UML (Unified Modeling Language):* Usa classes e associações para representar entidades e relacionamentos. <br>
