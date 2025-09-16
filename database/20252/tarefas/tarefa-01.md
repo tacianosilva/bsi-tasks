@@ -31,3 +31,64 @@
     * Cada pessoa só deve ter acesso aos dados de sua função, é difícil garantir isso em um sistema de arquivos.
   
 *** c) *** Entidade, atributo e relacionamentos.
+*** d) Notações possíveis para Diagramas ER. *** 
+  1. *** Notação Chen. *** É uma das notações mais tradicionais e detalhadas, popularizada em ambientes acadêmicos.
+    * *** Entidade: *** Retângulo.
+    * *** Atributo: *** Oval, conectado à entidade.
+    * *** Relacionamento: *** Losango, conectando entidades.
+    * *** Cardinalidade: *** A cardinalidade é escrita com números e letras (1, N, M) ao lado do losango de relacionamento.
+    * *** Entidade fraca: *** Retângulo com borda dupla.
+    * *** Atributo multivalorado: *** Oval com borda dupla.
+    * *** Atribudo derivado: *** Oval com linha pontilhada.
+  2. *** Notação Pé de Galinha (Crow's Foot). *** É a notação mais popular em projetos de banco de dados por ser mais intuitiva e concisa. Em vez de usar losangos para relacionamentos, ela usa a linha de conexão e símbolos nas extremidades para indicar a cardinalidade. Símbolos para cardinalidade nas extremidades da linha de relacionamento:
+    * *** Um: *** traço vertical (|)
+    * *** Zero ou mais: *** Círcuito seguido de um pé de galinha (O<).
+    * *** Um ou mais: *** Traço vertical seguido de um pé de galinha (|<).
+    * *** Zero ou um: *** Círculo e um traço vertical (O|). 
+  3. *** Notação UML (Unified Modeling Language) *** A notação de Diagramas de Classe da UML pode ser adaptada para modelar conceitos de ER. 
+    * *** Entidade: *** Classe, representada por um retângulo dividido.
+    * *** Atributo: *** Listado na seção central da classe.
+    * *** Relacionamento: *** Linhas que conectam as classes.
+    * *** Multiplicidade (Cardinalidade): *** É indicada por números e asteriscos nas extremidades das linhas de relacionamento.
+      - 1: Um.
+      - *: Zero ou muitos.
+      - 1..*: Um ou muitos.
+      - 0..1: Zero ou um. 
+*** e) Diagrama ER para projetar uma base de dados de um Sistema de Controle de Freqüência de Empregados de uma organização ***
+``` mermaid
+---
+config:
+  theme: dark
+---
+erDiagram
+    Empregado {
+        string codigo PK
+        string nome
+        string email
+    }
+    Empregado_Hora_Livre {
+        string horas_a_trabalhar_no_mes
+        string menor_perio_de_trabalho
+    }
+    Empregado_Hora_Fixa {
+    }
+    Turno {
+        string cod PK
+        string inicio
+        string fim
+    }
+    Dia_Da_Semana {
+        string cod PK
+        string nome
+    }
+    Ponto {
+        string cod PK
+        string entrada
+        string saida
+    }
+    
+    Empregado ||--|| Empregado_Hora_Fixa : "é um"
+    Empregado ||--|| Empregado_Hora_Livre : "é um"
+    Empregado_Hora_Fixa ||--o{ Turno : "trabalha em"
+    Turno ||--|| Dia_Da_Semana : "tem"
+    Empregado ||--o{ Ponto : "tem"
