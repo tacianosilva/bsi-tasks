@@ -6,19 +6,47 @@ E-mail:
 
 ---
 
-4. Notações para Diagramas ER
-Existem várias notações. Alguns exemplos de como representar o mesmo conceito:
+5. Diagrama ER - Sistema de Controle de Frequência (nível conceitual)
+Requisitos resumidos (implementados no ER):
+- Empregados: identificados por código, nome, e-mail. Existem 2 tipos: *livre* e *fixo*.  
+- Empregados do tipo *livre*: horas por mês e mínimo de horas por dia.  
+- Empregados do tipo *fixo*: têm turnos (início, fim) e a semana é organizada por dias (código/nome). Podem ter até 2 turnos por dia.  
+- Todos os empregados registram ponto (entrada/saída) em cada turno/dia.
 
-- Cardinalidade (um-para-muitos):
-  - Chen: usa pares (1,N).  
-  - Crow's Foot: usa o pé de galinha no lado "muitos".  
-  - UML: usa multiplicidade `1..*`.
+Diagrama em Mermaid.js:
 
-- Entidade Subordinada / Especialização:
-  - Chen: herança entre retângulos/losangos.  
-  - IE (Information Engineering / Crow’s Foot): usa linha com triângulo de generalização.  
-  - UML: classes com seta de generalização.
+```mermaid
+erDiagram
+    EMPREGADO {
+        int codigo PK
+        string nome
+        string email
+        string tipo
+    }
 
-- Atributos e chaves:
-  - Chen: elipses (sublinhado para chave primária).  
-  - Crow's Foot/UML: lista de atributos na caixa da entidade (chave sublinhada ou `PK`).
+    EMPREGADO ||--o{ BATE_PONTO : "registra"
+    BATE_PONTO {
+        int id_ponto PK
+        datetime hora_entrada
+        datetime hora_saida
+    }
+
+    EMPREGADO ||--|{ EMPREGADO_LIVRE : "é"
+    EMPREGADO_LIVRE {
+        int horas_mes
+        int minimo_horas_dia
+    }
+
+    EMPREGADO ||--|{ EMPREGADO_FIXO : "é"
+    EMPREGADO_FIXO ||--o{ TURNO : "tem"
+    TURNO {
+        int id_turno PK
+        time hora_inicio
+        time hora_fim
+    }
+
+    TURNO }o--|| DIA_SEMANA : "ocorre_em"
+    DIA_SEMANA {
+        string codigo PK
+        string nome
+    }
