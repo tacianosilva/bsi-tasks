@@ -27,7 +27,7 @@
 ### d. Diversidades das notações para Diagramas ER
 
 - **Chen**: Entidades em retângulos, atributos em elipses, relacionamentos em losangos.
-- **Crow's Foot/IE: Entidades em retângulos, cardinalidade mostrada por fork + anéis/traços para opcionalidade/obrigatoriedade.
+- **Crow's Foot/IE**: Entidades em retângulos, cardinalidade mostrada por fork + anéis/traços para opcionalidade/obrigatoriedade.
 - **UML**: Classes/atributos em retângulos divididos e multiplicidade (0..*, 1..1, etc.) para cardinalidade. Usada quando deseja alinhar modelo de dados com OO.
 - **Barker / Arrow / outras variantes**: Pequenas diferenças gráficas (setas, traços, símbolos) usadas em ambientes corporativos ou por ferramenta.
 
