@@ -49,3 +49,24 @@ Os três componentes fundamentais do MER são:
 * **Atributo:** É uma propriedade ou característica que descreve uma entidade. Por exemplo, a entidade `ALUNO` pode ter os atributos: `cpf`, `nome`, `data_nascimento` e `email`. Os atributos ajudam a detalhar e a identificar as ocorrências de uma entidade.
 
 * **Relacionamento:** Representa uma associação ou interação que existe entre duas ou mais entidades. Descreve como as entidades se conectam. Por exemplo, um `ALUNO` **se inscreve em** uma `TURMA`. A expressão "se inscreve em" define o relacionamento entre essas duas entidades. Em diagramas (na notação de Chen), é representado por um losango.
+
+---
+### Pesquise sobre as várias notações possíveis para Diagramas ER.
+
+Existem diversas notações gráficas para representar um Modelo Entidade-Relacionamento. Embora representem os mesmos conceitos, elas utilizam símbolos diferentes. As mais conhecidas são a notação de Chen, a de Crow's Foot (Pé de Galinha) e a UML.
+
+**Conceito: Cardinalidade (Um para Muitos)**
+*Exemplo: Uma entidade `MÃE` pode ter `MUITOS` `FILHOS`.*
+
+* **Notação de Chen:** Utiliza um losango para o relacionamento e números (`1`, `N` ou `M`) nas linhas de conexão para indicar a cardinalidade.
+    `[MÃE] --(1)-- <tem> --(N)-- [FILHO]`
+* **Notação Crow's Foot (Pé de Galinha):** É muito popular em ferramentas de modelagem. O lado "um" é representado por uma barra vertical (`|`) e o lado "muitos" por um símbolo que parece um pé de galinha (`<`).
+    `MÃE |< FILHO`
+* **Notação UML:** Usada em diagramas de classes, representa a multiplicidade nas pontas da linha de associação. `1` significa "um" e `*` significa "muitos".
+    `MÃE 1 -- * FILHO`
+
+**Conceito: Entidade Subordinada (Entidade Fraca)**
+*Exemplo: A entidade `ITEM_DE_PEDIDO` só existe e só é identificada se estiver vinculada a um `PEDIDO`.*
+
+* **Notação de Chen:** Representa a entidade fraca com um retângulo de linha dupla e o relacionamento de identificação com um losango de linha dupla.
+* **Notação Crow's Foot:** A chave primária da entidade fraca é parcialmente ou totalmente composta pela chave da entidade forte, e o relacionamento que as une é chamado de "relacionamento de identificação".
