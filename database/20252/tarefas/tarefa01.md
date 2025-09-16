@@ -28,3 +28,20 @@ O MER é uma forma de representar visualmente como os dados de um sistema se org
 2- Relacionamentos – mostram como as entidades se conectam entre si (ex.: um Cliente “realiza” um Pedido).
 3- Atributos – características ou propriedades de uma entidade ou relacionamento (ex.: nome do cliente, preço do produto).
 
+<h3>Notações em Diagramas ER</h3>
+
+Existem diferentes formas gráficas de representar MER, chamadas de notações. Cada uma usa símbolos ou estilos próprios, mas todas têm a mesma função: mostrar entidades, atributos e relacionamentos.
+Alguns exemplos:
+
+<h4>Cardinalidade:</h4>
+
+ - Notação de pé de galinha (Crow’s Foot) → usa símbolos como “pé de galinha” para representar 1:1, 1:N, N:M.
+
+ - Notação de Chen → utiliza números ou descrições ao lado das linhas (1, N).
+
+<h4>Entidade subordinada (ou entidade fraca):</h4>
+
+- Em Chen → desenhada com um retângulo duplo.
+
+- Em Crow’s Foot → diferenciada por estilos de linhas ou identificadores próprios.
+Essas variações existem porque diferentes autores e ferramentas adotam convenções distintas, mas no fim todas transmitem as mesmas ideias.
