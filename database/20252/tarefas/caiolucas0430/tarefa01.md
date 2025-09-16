@@ -36,3 +36,15 @@ Os três elementos básicos de um MER são:
 - **Atributos:** propriedades que descrevem entidades ou relacionamentos (ex: nome, e-mail, horário de início).  
 
 ---
+
+## 4. Notações para Diagramas ER
+Existem várias notações para representar Diagramas ER. Algumas delas:  
+- **Notação de Chen:** entidades como retângulos, relacionamentos como losangos, atributos como elipses.  
+- **Notação de Crow’s Foot (pés de galinha):** muito usada em engenharia de software, mostra claramente a cardinalidade (1:1, 1:N, N:M).  
+- **Notação UML:** utiliza diagramas de classes para representar entidades e relacionamentos.  
+
+Exemplo de variação para **cardinalidade**:  
+- Chen: `1:N` escrito próximo às entidades.  
+- Crow’s Foot: símbolos de pé de galinha para "muitos" e uma linha simples para "um".  
+
+---
