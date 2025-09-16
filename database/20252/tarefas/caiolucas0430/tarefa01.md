@@ -48,3 +48,47 @@ Exemplo de variação para **cardinalidade**:
 - Crow’s Foot: símbolos de pé de galinha para "muitos" e uma linha simples para "um".  
 
 ---
+
+## 5. Diagrama ER
+erDiagram
+    EMPREGADO {
+        int codigo PK
+        string nome
+        string email
+    }
+
+    TIPO_EMPREGADO {
+        string tipo PK
+    }
+    
+    HORARIO_LIVRE {
+        int horas_mensais
+        int periodo_minimo_diario
+    }
+    
+    TURNO_FIXO {
+        string hora_inicio
+        string hora_fim
+    }
+
+    DIA_DA_SEMANA {
+        string codigo PK
+        string nome
+    }
+    
+    PONTO {
+        datetime hora_entrada PK
+        datetime hora_saida
+    }
+
+    EMPREGADO }o--|| TIPO_EMPREGADO : tem
+    EMPREGADO ||--|{ HORARIO_LIVRE : tem
+    EMPREGADO ||--|{ TURNO_FIXO : tem
+
+    EMPREGADO ||--|{ PONTO : registra
+    TURNO_FIXO }o--|| PONTO : pertence_a
+    DIA_DA_SEMANA }o--|| PONTO : registrado_em
+    
+    TURNO_FIXO }o--|| DIA_DA_SEMANA : ocorre_em
+
+    ---
