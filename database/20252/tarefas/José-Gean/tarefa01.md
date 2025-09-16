@@ -45,3 +45,23 @@ Utilizar sistemas de arquivos (como pastas e arquivos no Windows ou Linux) para 
 logo o sistemas de arquivos funcionam para armazenar dados simples, mas se tornam inviáveis quando a aplicação cresce e exige segurança, integridade e múltiplos acessos simultâneos.
 
 ---
+
+### Questão 7.C : O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER). 
+
+#### Resposta
+Um **Modelo Entidade-Relacionamento (MER)** é usado para representar de forma conceitual como os dados estão organizados em um banco.  
+Seus três elementos básicos são:
+
+- **Entidades**: representam objetos do mundo real ou conceitos que precisam ser armazenados no banco de dados.  
+  Exemplos: `Aluno`, `Curso`, `Produto`.  
+  Cada entidade possui atributos que a descrevem.
+
+- **Relacionamentos**: representam as associações entre entidades.  
+  Exemplos: um `Aluno` **está matriculado em** um `Curso`; um `Cliente` **faz** um `Pedido`.
+
+- **Atributos**: são as propriedades ou características que descrevem as entidades e os relacionamentos.  
+  Exemplos: `nome`, `data_nascimento`, `preço`, `quantidade`.
+
+Logo  **Entidades** são os objetos principais, **Relacionamentos** mostram como eles se conectam, e **Atributos** guardam suas características.
+
+---
