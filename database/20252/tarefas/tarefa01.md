@@ -45,3 +45,76 @@ Alguns exemplos:
 
 - Em Crow’s Foot → diferenciada por estilos de linhas ou identificadores próprios.
 Essas variações existem porque diferentes autores e ferramentas adotam convenções distintas, mas no fim todas transmitem as mesmas ideias.
+
+<h3>Sistema de Controle de Frequência de Empregados</h3>
+
+<h4>i.</h4>
+A base de dados deve armazenar informações sobre os empregados.  
+Cada empregado é identificado por um **código** (atributo chave), além de ter **nome** e **e-mail**.  
+Para o controle de frequência, distinguem-se **dois tipos de empregados**: os de horário livre e os de horário fixo.
+
+
+<h4>ii.</h4>
+Os **empregados de horário livre** não seguem um calendário fixo, podendo trabalhar em qualquer horário.  
+Entretanto, é necessário registrar:  
+- **quantas horas no total** o empregado deve cumprir no mês;  
+- **qual o número mínimo de horas por dia** que o empregado deve cumprir.  
+
+Exemplo: um empregado pode ter a obrigação de 40 horas mensais, com no mínimo 2 horas por dia trabalhado.
+
+
+<h4>iii.</h4>
+Os **empregados de horário fixo** têm sua jornada organizada em **turnos** associados a dias da semana.  
+- Um turno é definido por um **horário de início** e um **horário de fim**.  
+- Um mesmo empregado pode trabalhar em **mais de um turno no mesmo dia**.  
+- Cada dia da semana deve ser identificado por um **código** e um **nome** (ex.: "seg", "ter", "quarta-feira").  
+
+Assim, o sistema relaciona empregados fixos → turnos → dias da semana.
+
+
+<h4>iv.</h4> 
+Todos os empregados devem registrar **ponto**, independentemente de serem de horário livre ou fixo.  
+O ponto consiste em informar o **horário de entrada** e o **horário de saída** em cada dia de trabalho.  
+Esse registro permite verificar se a carga horária estabelecida está sendo cumprida.
+
+
+<h3>Diagrama ER (nível conceitual)</h3> 
+
+```mermaid
+erDiagram
+    EMPREGADO {
+        int codigo PK
+        string nome
+        string email
+        string tipo_empregado
+    }
+
+    HORARIO_LIVRE {
+        int horas_mes
+        int minimo_horas_dia
+    }
+
+    HORARIO_FIXO {
+        int id PK
+    }
+
+    TURNO {
+        int id PK
+        time hora_inicio
+        time hora_fim
+    }
+
+    DIA_SEMANA {
+        int codigo PK
+        string nome
+    }
+
+    PONTO {
+        int id PK
+        datetime entrada
+        datetime saida
+    }
+
+    %% Relacionamentos
+    EMPREGADO ||--o| HORARIO_LIVRE : "possui"
+    EMPR
