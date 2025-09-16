@@ -20,3 +20,10 @@ Antes dos SGBDs, muitas empresas utilizavam arquivos convencionais (como planilh
 - Inconsistência: quando um dado era alterado em um arquivo, muitas vezes não era atualizado em outros.
 - Manutenção complexa: mudar a estrutura ou corrigir erros exigia retrabalho enorme.
 
+<h3>Modelo Entidade-Relacionamento (MER)</h3>
+
+O MER é uma forma de representar visualmente como os dados de um sistema se organizam e se relacionam. Ele ajuda a planejar a estrutura lógica de um banco de dados antes da implementação. Os três elementos básicos do MER são:
+
+1- Entidades – representam objetos do mundo real ou conceitos importantes, que possuem atributos (ex.: Cliente, Produto).
+2- Relacionamentos – mostram como as entidades se conectam entre si (ex.: um Cliente “realiza” um Pedido).
+3- Atributos – características ou propriedades de uma entidade ou relacionamento (ex.: nome do cliente, preço do produto).
