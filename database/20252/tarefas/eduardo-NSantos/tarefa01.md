@@ -15,3 +15,6 @@ Um Sistema Gerenciador de Banco de Dados (SGBD) é um software que permite a cri
 *Não Relacional (NoSQL):*	MongoDB, Cassandra, Redis, CouchDB <br>
 *Orientado a Grafos:*	Neo4j, Amazon Neptune <br>
 *Em memória*	Redis, Memcached <br>
+
+## Problemas de Utilizar Sistemas de Arquivos para Armazenamento de Dados
+Antes dos SGBDs, os dados eram armazenados em sistemas de arquivos simples (como arquivos .txt, .csv, etc.). Isso trazia diversos problemas, como redundância de Dados, informações repetidas em vários arquivos, inconsistência de Dados, dificuldade de Acesso, isolamento de Dados, problemas de Segurança, concorrência Limitada, backup e Recuperação Difíceis.
