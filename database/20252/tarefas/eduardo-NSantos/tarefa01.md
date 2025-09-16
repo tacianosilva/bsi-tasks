@@ -38,3 +38,53 @@ Existem várias notações para representar Diagramas ER, sendo as mais comuns: 
 *Notação de Chen:* Clássica, com retângulos (entidades), losangos (relacionamentos), e elipses (atributos). <br>
 *Notação de Crow's Foot (Pé de Galinha):* Popular em ferramentas modernas. Usa símbolos específicos para indicar cardinalidade. <br>
 *Notação UML (Unified Modeling Language):* Usa classes e associações para representar entidades e relacionamentos. <br>
+
+## ER
+    erDiagram
+    EMPREGADO {
+        string codigo PK
+        string nome
+        string email
+        string tipo_empregado
+    }
+
+    EMPREGADOHORARIOLIVRE {
+        string codigo PK
+        float horas_mes
+        float horas_minimas_dia
+    }
+
+    EMPREGADOHORARIOFIXO {
+        string codigo PK
+    }
+
+    TURNO {
+        string id_turno PK
+        time hora_inicio
+        time hora_fim
+    }
+
+    DIASEMANA {
+        string cod_dia PK
+        string nome_dia
+    }
+
+    PONTO {
+        string id_ponto PK
+        datetime hora_entrada
+        datetime hora_saida
+    }
+
+    %% Relacionamentos
+
+    EMPREGADO ||--|| EMPREGADOHORARIOLIVRE : "é"
+    EMPREGADO ||--|| EMPREGADOHORARIOFIXO : "é"
+
+    EMPREGADOHORARIOFIXO ||--|{ TRABALHAEM : "trabalha_em"
+    TRABALHAEM }|--|| DIASEMANA : ""
+    TRABALHAEM }|--|| TURNO : ""
+
+    EMPREGADO ||--|{ REGISTRAPONTO : "registra"
+    REGISTRAPONTO }|--|| PONTO : ""
+    REGISTRAPONTO }|--|| TURNO : ""
+    REGISTRAPONTO }|--|| DIASEMANA : ""
