@@ -38,3 +38,14 @@ Utilizar sistemas de arquivos tradicionais (como pastas e arquivos .txt ou .csv)
 * **Problemas de Integridade:** É complexo garantir que os dados obedeçam a certas regras de negócio (ex: "o CPF de um cliente deve ser único" ou "o estoque de um produto não pode ser negativo"). Essas regras precisariam ser implementadas em todos os programas que acessam os arquivos.
 * **Problemas de Concorrência:** O acesso simultâneo de múltiplos usuários ao mesmo arquivo pode levar à sobreposição de alterações e corrupção dos dados. Os SGBDs possuem mecanismos robustos para controlar a concorrência.
 * **Problemas de Segurança:** É difícil definir permissões de acesso específicas e granulares (ex: um usuário pode ver os dados de um produto, mas não pode alterar seu preço).
+
+---
+### Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).
+
+Os três componentes fundamentais do MER são:
+
+* **Entidade:** Representa um objeto do mundo real sobre o qual se deseja armazenar informações. Uma entidade pode ser algo concreto (como `ALUNO`, `CARRO`, `PRODUTO`) ou algo abstrato (como `MATRÍCULA`, `EMPRÉSTIMO`, `VENDA`). Em diagramas, é comumente representada por um retângulo. Cada ocorrência de uma entidade é única (ex: o aluno João da Silva é uma ocorrência da entidade `ALUNO`).
+
+* **Atributo:** É uma propriedade ou característica que descreve uma entidade. Por exemplo, a entidade `ALUNO` pode ter os atributos: `cpf`, `nome`, `data_nascimento` e `email`. Os atributos ajudam a detalhar e a identificar as ocorrências de uma entidade.
+
+* **Relacionamento:** Representa uma associação ou interação que existe entre duas ou mais entidades. Descreve como as entidades se conectam. Por exemplo, um `ALUNO` **se inscreve em** uma `TURMA`. A expressão "se inscreve em" define o relacionamento entre essas duas entidades. Em diagramas (na notação de Chen), é representado por um losango.
