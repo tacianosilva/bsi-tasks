@@ -65,3 +65,50 @@ Seus três elementos básicos são:
 Logo  **Entidades** são os objetos principais, **Relacionamentos** mostram como eles se conectam, e **Atributos** guardam suas características.
 
 ---
+
+### Questão 7.D: Pesquise sobre as várias notações possíveis para Diagramas ER, citando exemplos de notações diferentes para o mesmo conceito (ex: Cardinalidade, Entidade Subordinada, etc.)
+
+As mais populares são:
+
+- **Notação de Chen**: Criada por Peter Chen em 1976, é a notação original e mais clássica. Muito usada em ambientes acadêmicos por ser detalhada, mas visualmente pode ser mais complexa.
+- **Notação "Pé de Galinha" (Crow's Foot)**: A mais popular no mercado e em ferramentas CASE. É considerada mais intuitiva e limpa para diagramas grandes. Variações incluem as notações de Information Engineering (IE) e Barker.
+- **Notação UML (Unified Modeling Language)**: Usada em engenharia de software para modelar sistemas orientados a objetos. Diagramas de classes podem representar conceitos de dados, de forma similar aos ER tradicionais.
+
+Abaixo, alguns exemplos de como essas notações representam os mesmos conceitos de formas diferentes:
+
+1. **Cardinalidade do Relacionamento**  
+A cardinalidade define o número de instâncias de uma entidade que podem se relacionar com instâncias de outra entidade. Exemplo: *“Um CLIENTE pode fazer um ou muitos PEDIDOS”*.
+
+- **Notação de Chen**:  
+Usa números ou letras (1, N, M) próximos à linha que conecta a entidade ao relacionamento (losango).  
+
+(1) (N)
++---------+ +-----------+ +---------+
+| CLIENTE |------| FAZ |------| PEDIDO |
++---------+ +-----------+ +---------+
+
+Leitura: Um CLIENTE pode ter N PEDIDOS.
+
+- **Notação Pé de Galinha (Crow's Foot)**:  
+Usa símbolos gráficos na linha de relacionamento para representar cardinalidade e opcionalidade.  
+
+| representa "um"
+O representa "zero"
+< (pé de galinha) representa "muitos"
+
++---------+ +---------+
+| CLIENTE | | PEDIDO |
+| |<-----| |
++---------+ +---------+
+
+
+2. **Entidade Fraca (ou Subordinada)**  
+Uma entidade fraca depende da existência de outra entidade (entidade forte). Exemplo: *“ITEM_PEDIDO só existe se o PEDIDO ao qual ele pertence existir”*.
+
+- **Notação de Chen**: Entidade fraca desenhada com retângulo duplo, conectada à entidade forte via relacionamento identificador.
+- **Crow's Foot / Barker**: Entidade subordinada representada com linhas duplas ou símbolos de dependência para indicar que não existe sem a entidade forte.
+
+Logo, **Entidades** representam os elementos principais do sistema, **Relacionamentos** mostram como eles se conectam, e **Atributos** guardam suas características.
+
+---
+
