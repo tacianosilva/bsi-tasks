@@ -30,3 +30,4 @@
     * Nem todos os usuários estão autorizados a acessar todos os dados.
     * Cada pessoa só deve ter acesso aos dados de sua função, é difícil garantir isso em um sistema de arquivos.
   
+*** c) *** Entidade, atributo e relacionamentos.
