@@ -46,4 +46,46 @@
   - **Chen (clássico)**: atributos em elipses; elipse dupla = multivalorado; elipse ramificada = atributo composto. Ex.: Endereço com sub-elipses Rua, Cidade.
   - **Crow’s Foot / UML**: geralmente colocam atributos dentro do retângulo da entidade (lista); multivalorados / compostos são anotados textualmente ou com notação específica da ferramenta (menos diagramática que Chen).
 
+** e. Código do mermaid.js para o ER**
+```mermaid
+erDiagram
+    EMPREGADO {
+        string codigo
+        string nome
+        string email
+    }
+
+    EMPREGADO_HORARIO_LIVRE {
+        int horas_mensais
+        int horas_min_diarias
+    }
+
+    EMPREGADO_HORARIO_FIXO {
+    }
+
+    DIA_SEMANA {
+        string codigo
+        string nome
+    }
+
+    TURNO {
+        time hora_inicio
+        time hora_fim
+    }
+
+    PONTO {
+        datetime hora_entrada
+        datetime hora_saida
+    }
+
+    %% Relacionamentos e Cardinalidades
+    EMPREGADO ||--o{ EMPREGADO_HORARIO_LIVRE : "especialização"
+    EMPREGADO ||--o{ EMPREGADO_HORARIO_FIXO : "especialização"
+
+    EMPREGADO_HORARIO_FIXO ||--o{ TURNO : "trabalha_em"
+    TURNO }o--|| DIA_SEMANA : "ocorre_em"
+
+    EMPREGADO ||--o{ PONTO : "bate"
+    PONTO }o--|| TURNO : "refere_a"
+
  
