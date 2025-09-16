@@ -6,12 +6,11 @@ E-mail:
 
 ---
 
-1. Banco de Dados e SGBD
-Um Banco de Dados (BD) é uma coleção organizada de informações estruturadas para permitir armazenamento, recuperação e manipulação eficientes.  
-Um Sistema Gerenciador de Banco de Dados (SGBD)** é o software que cria, mantém e controla o acesso ao BD, fornecendo mecanismos de consulta, segurança, integridade, concorrência e recuperação.
-
-Exemplos:
-- Bancos de Dados relacionais: MySQL, PostgreSQL, Oracle Database.  
-- Bancos de Dados NoSQL: MongoDB, Redis, Cassandra.  
-- SGBDs correspondentes: MySQL Server, PostgreSQL Server, Oracle DBMS, MongoDB Server.
-
+2. Problemas de usar Sistemas de Arquivos
+O uso de sistemas de arquivos simples para armazenar dados apresenta diversos problemas, como:
+- Redundância e inconsistência de dados: informações podem ser duplicadas e desatualizadas em locais diferentes.  
+- Dificuldade de acesso: consultas complexas são difíceis e lentas.  
+- Falta de segurança**: controle de permissões limitado.  
+- Problemas de integridade: sem regras claras para manter a consistência.  
+- Concorrência: vários usuários acessando ao mesmo tempo podem corromper os dados.  
+- Backup e recuperação complicados: difícil restaurar dados em caso de falha
