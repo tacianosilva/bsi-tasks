@@ -36,7 +36,7 @@ Email: jose.salustiano.166@ufrn.edu.br
 
 ***  Alternativa "d" ***
 
-    Existem várias notações para diagramas ER, cada uma com seus próprios símbolos e convenções. As três mais comuns são a Notação de Chen, a Notação "Pé de Galinha" (Crow's Foot) e a Notação UML.
+    As três notações mais comuns para diagrama ER são: a Notação de Chen, a Notação "Pé de Galinha" (Crow's Foot) e a Notação UML. Cada uma delas conta com seus próprios símbolos e convenções. 
 
     - Notação de Chen: É a notação original. Entidades são representadas por retângulos, atributos por elipses e relacionamentos por losangos. A cardinalidade é expressa com números sobre as linhas de conexão (por exemplo, 1, N, M).
     - Notação "Pé de Galinha" (Crow's Foot): É muito popular por sua simplicidade visual. Entidades são retângulos e relacionamentos são representados por linhas. As extremidades das linhas de conexão usam símbolos para indicar a cardinalidade: um círculo significa zero, uma linha significa um e um "pé de galinha" significa muitos.
@@ -48,3 +48,48 @@ Email: jose.salustiano.166@ufrn.edu.br
     - Notação UML: A cardinalidade é expressa por uma notação de intervalo ao lado da entidade. Por exemplo, a cardinalidade de "Empregado trabalha_em Departamento" seria mostrada como 1..1 ao lado da entidade Departamento (um empregado trabalha em um e apenas um departamento) e 1..* (um ou mais) ao lado da entidade Empregado (um departamento tem um ou mais empregados).
 
 ***  Alternativa "e" ***
+
+```mermaid
+erDiagram
+    EMPREGADO {
+        int cod_emp PK
+        string nome
+        string email
+    }
+
+    EMPREGADO_HORARIO_LIVRE {
+        int cod_emp PK
+        int horas_mensais
+        int periodo_min_diario
+    }
+
+    EMPREGADO_HORARIO_FIXO {
+        int cod_emp PK
+    }
+
+    TURNO {
+        int cod_turno PK
+        time hora_inicio
+        time hora_fim
+    }
+
+    DIA_SEMANA {
+        string cod_dia PK
+        string nome_dia
+    }
+
+    PONTO {
+        int cod_ponto PK
+        datetime hora_entrada
+        datetime hora_saida
+    }
+
+    %% Relacionamentos
+    EMPREGADO ||--o| EMPREGADO_HORARIO_LIVRE : "é"
+    EMPREGADO ||--o| EMPREGADO_HORARIO_FIXO : "é"
+
+    EMPREGADO_HORARIO_FIXO }o--o{ TURNO : "trabalha_em"
+    TURNO }o--|| DIA_SEMANA : "ocorre_em"
+
+    EMPREGADO ||--o{ PONTO : "bate"
+```
