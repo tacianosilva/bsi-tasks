@@ -51,3 +51,24 @@ O Modelo Entidade-Relacionamento (MER) é uma abordagem de modelagem de dados qu
 
 ---
 
+### d. Pesquise sobre as várias notações possíveis para Diagramas ER, cite alguns exemplos de notações diferentes para o mesmo conceito.
+
+Existem várias notações para desenhar Diagramas Entidade-Relacionamento (Diagramas ER). As mais conhecidas são a notação de **Chen** (a original), a de **Pé de Galinha (Crow's Foot)** e a **UML**. Cada uma representa os mesmos conceitos (como cardinalidade e entidades fracas) de maneiras visualmente distintas.
+
+#### Cardinalidade
+
+A cardinalidade define a quantidade de instâncias de uma entidade que podem se relacionar com instâncias de outra. Vamos ver as representações de "um para muitos" ($1:N$).
+
+**Exemplo:** Um `CLIENTE` pode fazer um ou muitos `PEDIDOS`.
+
+**Notação de Chen:**
+Usa números e letras (`1`, `N`, `M`) para indicar a cardinalidade nos "braços" do losango que representa o relacionamento.
+
+* `CLIENTE` -- (1) -- < faz > -- (N) -- `PEDIDO`
+
+**Notação de Pé de Galinha (Crow's Foot):**
+É a mais comum em ferramentas CASE e a mais utilizada em Mermaid. Usa símbolos gráficos nas extremidades da linha de relacionamento.
+
+---
+
+
