@@ -10,5 +10,9 @@
 # Um exemplo bastante comum de banco de dados são os relacionais, que organizam dados inter-relacionados em tabelas estruturadas. Outro exemplo são os bancos de dados não-relacionais, que não armazenam os dados em tabelas, mas em outras estruturas, como grafos, pares de chave-valor, documentos etc.
 # Como exemplos de SGBD, existem os relacionais, como o Oracle, muito utilizado em empresas de grande porte; MySQL, ideal para aplicações web; PostgresSQL, que possui código aberto; e existem não-relacionais, como o MongoDB, utilizado para armazenar dados em documentos; ou o Redis, para armazenar pares de chave-valor.
 
+#### Item b. <h4>
+# Existem problemas significativos na utilização de sistemas de arquivos para armazenar dados: permissão de acesso simultâneo de usuários aos dados bastante limitado, o que pode gerar o bloqueio do arquivo; a carência de propriedades importantes para a integridade das transações dos dados, como a atomicidade, a consistência, o isolamento e a durabilidade, ocasionando a perda ou inconsistência de dados; dificuldade para gerenciamento de backups em casos de grandes volumes de dados, podendo haver riscos de corrupção dos dados durante o processo, o que não o torna vantajoso para o aumento da escalabilidade dos dados; dificuldades na recuperação dos dados, por não estarem estruturados ou semiestruturados dentro dos arquivos; menor segurança, com maior risco de corrupções nos dados e de acesso não autorizado a dados sensíveis.
+
+
 
 
