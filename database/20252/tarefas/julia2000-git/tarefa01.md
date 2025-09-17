@@ -13,6 +13,8 @@
 #### Item b. <h4>
 # Existem problemas significativos na utilização de sistemas de arquivos para armazenar dados: permissão de acesso simultâneo de usuários aos dados bastante limitado, o que pode gerar o bloqueio do arquivo; a carência de propriedades importantes para a integridade das transações dos dados, como a atomicidade, a consistência, o isolamento e a durabilidade, ocasionando a perda ou inconsistência de dados; dificuldade para gerenciamento de backups em casos de grandes volumes de dados, podendo haver riscos de corrupção dos dados durante o processo, o que não o torna vantajoso para o aumento da escalabilidade dos dados; dificuldades na recuperação dos dados, por não estarem estruturados ou semiestruturados dentro dos arquivos; menor segurança, com maior risco de corrupções nos dados e de acesso não autorizado a dados sensíveis.
 
+#### Item c. <h4>
+# Os 3 elementos básicos de um MER são: Entidades, Atributos e Relacionamentos. As entidades são representações de objetos ou de conceitos do mundo real, sobre as quais se deseja guardar dados ou informações. Já os atributos são as características ou propriedades de uma entidade. Os relacionamentos, por sua vez, são as interações, relações ou associações existentes entre duas ou mais entidades.
 
 
 
