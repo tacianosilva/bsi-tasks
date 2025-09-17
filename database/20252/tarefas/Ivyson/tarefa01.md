@@ -53,3 +53,29 @@ várias unidades da outra entidade.
    - Um para muitos (1:N): uma unidade se relaciona com várias da outra entidade.
    - Muitos para muitos (N:M): cada unidade pode se relacionar com várias unidades
      da outra entidade e vice-versa.
+
+---
+# Questão 7d: Notações diferentes para conceitos de Diagramas ER
+
+1. Entidade forte
+   - Chen: retângulo simples
+   - IDEF1X: entidade independente
+
+2. Entidade fraca
+   - Chen: retângulo duplo
+   - IDEF1X: entidade dependente
+
+3. Relacionamento um para muitos (1:N)
+   - Chen: losango com linha conectando "1" e "N"
+   - Martin / Pé de galinha: linha com "pé de galinha" indicando "muitos"
+   - IDEF1X: linha com indicação "um ou muitos"
+
+4. Relacionamento um para um (1:1)
+   - Chen: losango com linha conectando "1" e "1"
+   - Martin / Pé de galinha: linha com "1" em ambas as pontas
+   - IDEF1X: linha com "1 para 1"
+
+5. Cardinalidade / Multiplicidade
+   - Chen: números próximos às linhas (0..1, 1..N)
+   - Martin / Pé de galinha: símbolos de "pé de galinha" ou notação textual (1, N)
+   - IDEF1X: indica restrições dentro da entidade ou da linha do relacionamento
