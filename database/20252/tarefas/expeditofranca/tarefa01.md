@@ -21,3 +21,10 @@ Bancos de Dados relacionais: MySQL, PostgreSQL, Microsoft SQL Server, Oracle Dat
 Inconsistência e redundância: os dados podem aparecer diferentes e repetidos ao longo do tempo.
 Acesso concorrente: atualizações simultâneas podem gerar inconsistências e isso é difícil de supervisionar udsando sistemas de arquivos.
 Restrição de acesso: Os dados não devem estar abertos a todos os usuários, difícil garatir isso em um sistema de arquivos
+
+### Questão 7
+#### Item c
+
+Entidades: São objetos/coisas/ideias do mundo real concretas ou abstratas que queremos representar no banco.
+Relacionamentos: São as ligações entre entidades, explicam como elas se relacionam e suas cardinalidades(quantas entidades A se relacionam com quantas entidades B)
+Atributos: São as características da entidade ou relacionamento, pode ser simples, composto(endereço: número, rua, bairro), multivalorado(um indivíduo com mais de um e-mail)
