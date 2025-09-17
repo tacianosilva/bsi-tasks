@@ -79,3 +79,53 @@ várias unidades da outra entidade.
    - Chen: números próximos às linhas (0..1, 1..N)
    - Martin / Pé de galinha: símbolos de "pé de galinha" ou notação textual (1, N)
    - IDEF1X: indica restrições dentro da entidade ou da linha do relacionamento
+
+---
+# Questão 7e: Diagrama ER de um sistema de frequência
+
+Diagrama criado utilizando a ferramenta online gratuita: Mermaid Live Editor
+
+```mermaid
+---
+title: Tarefa 01 (Banco de Dados)
+---
+
+erDiagram
+    EMPREGADO {
+        int codigoEmpregado
+        string nome
+        string email
+    }
+
+    HORARIOLIVRE {
+        int cargaMensal
+        int menorPeriodo
+    }
+
+    HORARIOFIXO {
+        time horaInicio
+        time horaFim
+        int numeroTurno
+    }
+
+    DIASEMANA {
+        string codigoDia
+        string nomeDia
+    }
+
+    ESCALA {
+        date dataInicio
+        date dataFim
+    }
+
+    REGISTROPONTO {
+        date dataPonto
+        time horaEntrada
+        time horaSaida
+    }
+
+    EMPREGADO ||--|| HORARIOLIVRE : "1:1"
+    EMPREGADO ||--o{ ESCALA : "1:N"
+    ESCALA }o--|| HORARIOFIXO : "N:1"
+    HORARIOFIXO }o--|| DIASEMANA : "N:1"
+    EMPREGADO ||--o{ REGISTROPONTO : "1:N"
