@@ -38,3 +38,16 @@ Utilizar sistemas de arquivos tradicionais (como planilhas ou arquivos de texto)
 * **Problemas de Segurança:** É difícil aplicar políticas de segurança complexas, como permitir que certos usuários vejam apenas parte dos dados em um arquivo.
 
 ---
+
+### c. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).
+
+O Modelo Entidade-Relacionamento (MER) é uma abordagem de modelagem de dados que representa a estrutura lógica de um banco de dados. Seus três elementos básicos são:
+
+1.  **Entidade:** É um objeto do mundo real que é distinguível de outros objetos. Uma entidade pode ser uma pessoa, um lugar, um objeto, um evento ou um conceito sobre o qual armazenamos informações. Por exemplo: `ALUNO`, `CURSO`, `CARRO`. No diagrama, é geralmente representada por um retângulo.
+
+2.  **Atributo:** É uma propriedade ou característica que descreve uma entidade. Cada entidade possui atributos que a definem. Por exemplo, a entidade `ALUNO` pode ter os atributos `Matricula`, `Nome` e `DataNascimento`. Atributos podem ser de vários tipos: simples, compostos, monovalorados, multivalorados e derivados.
+
+3.  **Relacionamento:** Representa uma associação entre duas ou mais entidades. Ele descreve como as entidades interagem umas com as outras. Por exemplo, um `ALUNO` pode estar **matriculado em** um `CURSO`. O relacionamento "matriculado em" conecta as entidades `ALUNO` e `CURSO`. Relacionamentos são caracterizados pela sua **cardinalidade**, que define o número de instâncias de uma entidade que podem se associar a instâncias de outra entidade.
+
+---
+
