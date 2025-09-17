@@ -71,4 +71,58 @@ Usa números e letras (`1`, `N`, `M`) para indicar a cardinalidade nos "braços"
 
 ---
 
+#### e. Construção do Diagrama ER
+
+```mermaid
+title: Sistema de Controle de Freqüência de Empregados
+---
+erDiagram
+    direction TB
+     ||--o{ ORDER : places
+    EMPREGADO {
+        int codigo PK 
+        string nome
+        string email
+    }
+    ORDER ||--|{ LINE-ITEM : contains
+    EMPREGADO_HORARIO_LIVRE {
+        int empregado_codigo PK,FK
+        int horas_mensais 
+        int periodo_minimo_horas 
+    }
+
+    EMPREGADO_HORARIO_FIXO {
+        int empregado_codigo PK,FK
+    }
+
+    REGISTRO_PONTO {
+        int empregado_codigo FK
+        datetime data_hora_entrada PK 
+        datetime data_hora_saida
+    }
+
+    ALOCACAO {
+        int empregado_fixo_codigo FK
+        string dia_semana_codigo FK
+        int turno_id FK
+    }
+
+    DIA_SEMANA {
+        string codigo PK
+        string nome
+    }
+
+    TURNO {
+        int id PK 
+        time horario_inicio
+        time horario_fim
+    }
+    
+    EMPREGADO ||--|| EMPREGADO_HORARIO_LIVRE : "é do tipo"
+    EMPREGADO ||--|| EMPREGADO_HORARIO_FIXO : "é do tipo"
+    EMPREGADO ||--|{ REGISTRO_PONTO : "realiza"
+    EMPREGADO_HORARIO_FIXO ||--|{ ALOCACAO : "possui"
+    DIA_SEMANA ||--|{ ALOCACAO : "compõe"
+    TURNO ||--|{ ALOCACAO : "compõe"
+
 
