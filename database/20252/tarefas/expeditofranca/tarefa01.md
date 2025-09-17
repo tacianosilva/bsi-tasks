@@ -14,3 +14,10 @@ Orientados a colunas: Cassandra e HBase
 Chave-valor e memória: Redis e Memcached
 
 Bancos de Dados relacionais: MySQL, PostgreSQL, Microsoft SQL Server, Oracle Database, IBM Db2
+
+### Questão 7
+#### Item b
+
+Inconsistência e redundância: os dados podem aparecer diferentes e repetidos ao longo do tempo.
+Acesso concorrente: atualizações simultâneas podem gerar inconsistências e isso é difícil de supervisionar udsando sistemas de arquivos.
+Restrição de acesso: Os dados não devem estar abertos a todos os usuários, difícil garatir isso em um sistema de arquivos
