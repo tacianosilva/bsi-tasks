@@ -25,3 +25,16 @@ Um Sistema Gerenciador de Banco de Dados (SGBD), ou *DBMS (Database Management S
 
 ---
 
+### b. Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados.
+
+Utilizar sistemas de arquivos tradicionais (como planilhas ou arquivos de texto) para gerenciar dados apresenta várias desvantagens em comparação com um SGBD:
+
+* **Redundância e Inconsistência de Dados:** A mesma informação pode ser duplicada em vários arquivos. Alterar um dado em um local e não nos outros gera inconsistência.
+* **Dificuldade no Acesso aos Dados:** É necessário criar um novo programa para cada nova tarefa ou consulta de dados. Não há uma linguagem de consulta padrão.
+* **Isolamento de Dados:** Os dados estão espalhados em vários arquivos e formatos diferentes, tornando difícil a criação de aplicações que acessem dados de mais de um arquivo.
+* **Problemas de Integridade:** As restrições de integridade (por exemplo, garantir que o valor de um campo seja positivo) são difíceis de implementar e precisam ser codificadas em cada aplicação que acessa os dados.
+* **Problemas de Atomicidade:** Se ocorrer uma falha durante uma operação (por exemplo, uma transferência bancária que debita de uma conta, mas falha antes de creditar na outra), o sistema de arquivos não garante que os dados permaneçam em um estado consistente.
+* **Anomalias de Acesso Concorrente:** O acesso simultâneo por vários usuários pode levar a inconsistências se não for gerenciado adequadamente, algo que sistemas de arquivos não fazem nativamente.
+* **Problemas de Segurança:** É difícil aplicar políticas de segurança complexas, como permitir que certos usuários vejam apenas parte dos dados em um arquivo.
+
+---
