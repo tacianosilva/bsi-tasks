@@ -35,3 +35,22 @@ Com seu gerenciador de pacotes npm, é possível instalar facilmente bibliotecas
 npm install
 npm run dev
 ```
+
+### ODBC
+> ODBC (Open Database Connectivity) é uma interface padrão para conectar aplicações a bancos de dados, independente da linguagem ou SGBD.
+---
+**Drive Postgresql:**
+
+psqlODBC é o driver oficial do PostgreSQL para ODBC, permitindo que aplicações usem a API ODBC para se comunicar com PostgreSQL.
+
+O ODBC traduz comandos da aplicação em SQL compreensível pelo PostgreSQL.
+
+**Drives**
+---
+Driver → software que conhece o protocolo do PostgreSQL (psqlodbcw.so para Unicode, psqlodbca.so para ANSI).
+
+Driver Manager → gerencia a conexão entre a aplicação e o driver (no Linux: unixODBC).
+
+DSN (Data Source Name) → configuração de conexão (nome, host, porta, usuário, senha, banco).
+
+---
