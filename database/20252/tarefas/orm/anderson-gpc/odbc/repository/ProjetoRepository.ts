@@ -27,6 +27,8 @@ class ProjetoRepository {
             await this.conexao.rollback();
             console.error("Erro ao mudar líder:", error.message);
             return { success: false, message: error.message };
+        } finally {
+            if (this.conexao) this.conexao.close();
         }
     }
 
