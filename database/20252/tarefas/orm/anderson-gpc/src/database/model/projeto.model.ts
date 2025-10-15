@@ -1,6 +1,7 @@
 // projeto.model.ts
 import { DataTypes } from "sequelize";
 import { sequelize } from "../sequelize";
+import { Funcionario } from "./funcionario.model";
 
 export const Projeto = sequelize.define(
     "projeto",
@@ -22,3 +23,8 @@ export const Projeto = sequelize.define(
         timestamps: false,
     }
 );
+
+Projeto.belongsTo(Funcionario, {
+    foreignKey: 'responsavel',
+    as: 'funcionarioAssociado'
+})
