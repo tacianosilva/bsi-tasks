@@ -32,7 +32,7 @@ class ProjetoRepository {
         }
     }
 
-    private async projetoExiste(codigo: number): Promise<any> {
+    async projetoExiste(codigo: number): Promise<any> {
         const [projeto] = await this.conexao.query(
             "SELECT 1 FROM projeto WHERE codigo = ?",
             [codigo]
