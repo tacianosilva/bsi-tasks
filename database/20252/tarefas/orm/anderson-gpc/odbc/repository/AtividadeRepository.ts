@@ -1,12 +1,12 @@
 import conexaoODBC from "../service/server";
-import odbc from "odbc";
 
 class AtividadeRepository {
+    private conexao: any | null;
+
     async pegarTodasAtividades() {
-        let conexao: odbc.Connection | null = null;
+        this.conexao = await conexaoODBC();
         try {
-            conexao = await conexaoODBC();
-            const resultado = await conexao.query(`SELECT 
+            const resultado = await this.conexao.query(`SELECT 
                 a.codigo,
                 a.descricao AS atividade_descricao,
                 a.projeto AS projeto_codigo,
@@ -17,13 +17,17 @@ class AtividadeRepository {
                 FROM atividade a
                 JOIN projeto p ON p.codigo = a.projeto;`
             );
-            return resultado.filter((key) => key != 'columns');
+            return resultado.filter((key: any) => key != 'columns');
         } catch (error) {
             console.error("Erro de conexão ou query:", error);
             return [];
         } finally {
-            if (conexao) await conexao.close();
+            if (this.conexao) await this.conexao.close();
         }
+    }
+
+    async criarAtividade() {
+
     }
 }
 
