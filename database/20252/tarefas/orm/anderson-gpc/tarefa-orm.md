@@ -16,6 +16,14 @@ Facilita CRUD, relações entre tabelas, validações e migrações de forma pro
 | **Sequelize Methods** | Métodos para manipular dados: `findAll`, `findByPk`, `create`, `update`, `destroy`.   |
 
 
+### Node
+[Acessar documentação](https://nodejs.org/pt)
+
+O Node.js é um ambiente de execução de código JavaScript fora do navegador, baseado no motor V8 do Google Chrome.
+Ele permite criar aplicações do lado do servidor usando JavaScript, o que antes era restrito apenas ao front-end.
+O Node é conhecido por seu modelo assíncrono e orientado a eventos, que oferece alta performance e escalabilidade — ideal para aplicações web, APIs e serviços em tempo real.
+Com seu gerenciador de pacotes npm, é possível instalar facilmente bibliotecas e frameworks, como o Sequelize para ORM e o Express para criação de servidores HTTP.
+
 ### Rodando a aplicação
 
 ```bash
