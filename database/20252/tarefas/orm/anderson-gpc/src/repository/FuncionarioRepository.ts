@@ -1,8 +1,9 @@
 import { Funcionario } from "../database/model/funcionario.model";
 
 export class FuncionarioRepository {
-    async getUnique(codigo: number) {
+    async funcinarioExiste(codigo: number) {
         const funcionario = await Funcionario.findByPk(codigo);
-        return funcionario?.dataValues;
+        if (funcionario?.dataValues) return true;
+        return false;
     } 
 }
