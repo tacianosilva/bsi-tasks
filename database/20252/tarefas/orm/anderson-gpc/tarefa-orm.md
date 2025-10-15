@@ -1,3 +1,8 @@
+### Criação do container Postgresql
+```bash
+docker run -d   --name bd_postgres   -e POSTGRES_USER=admin   -e POSTGRES_PASSWORD=senha   -e POSTGRES_DB=atividade_db   -p 5432:5432   postgres:17
+```
+
 ### ORM
 [Acessar documentação](https://sequelize.org/)
 
