@@ -1,7 +1,7 @@
 import conexaoODBC from "../service/server";
 import odbc from "odbc";
 
-export class AtividadeRepository {
+class AtividadeRepository {
     async pegarTodasAtividades() {
         let conexao: odbc.Connection | null = null;
         try {
@@ -26,3 +26,5 @@ export class AtividadeRepository {
         }
     }
 }
+
+export default new AtividadeRepository();
