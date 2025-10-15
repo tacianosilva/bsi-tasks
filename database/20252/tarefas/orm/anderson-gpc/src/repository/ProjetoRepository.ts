@@ -5,7 +5,7 @@ import { FuncionarioRepository } from "./FuncionarioRepository";
 const funcionarioRepo = new FuncionarioRepository();
 
 export class ProjetoRepository {
-    async getUnique(codigo: number): Promise<boolean> {
+    async projetoExiste(codigo: number): Promise<boolean> {
         const projeto = await Projeto.findOne({
             where: { codigo: codigo },
         });
@@ -24,7 +24,7 @@ export class ProjetoRepository {
         );
         if (!funcionarioExiste) throw new Error("Funcionário não encontrado.");
 
-        const projetoExixts = await this.getUnique(codigo);
+        const projetoExixts = await this.projetoExiste(codigo);
         if (!projetoExixts) throw new Error("Projeto não encontrado.");
 
         try {
