@@ -17,7 +17,7 @@ class AtividadeRepository {
                 p.nome AS projeto_nome,
                 p.descricao AS projeto_descricao
                 FROM atividade a
-                JOIN projeto p ON p.codigo = a.projeto;`);
+                LEFT JOIN projeto p ON p.codigo = a.projeto;`);
             return resultado.filter((key: any) => key != "columns");
         } catch (error) {
             console.error("Erro de conexão ou query:", error);
