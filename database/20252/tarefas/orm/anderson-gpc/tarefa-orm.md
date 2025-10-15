@@ -29,13 +29,6 @@ Ele permite criar aplicações do lado do servidor usando JavaScript, o que ante
 O Node é conhecido por seu modelo assíncrono e orientado a eventos, que oferece alta performance e escalabilidade — ideal para aplicações web, APIs e serviços em tempo real.
 Com seu gerenciador de pacotes npm, é possível instalar facilmente bibliotecas e frameworks, como o Sequelize para ORM e o Express para criação de servidores HTTP.
 
-### Rodando a aplicação
-
-```bash
-npm install
-npm run dev
-```
-
 ### ODBC
 > ODBC (Open Database Connectivity) é uma interface padrão para conectar aplicações a bancos de dados, independente da linguagem ou SGBD.
 ---
@@ -54,3 +47,21 @@ Driver Manager → gerencia a conexão entre a aplicação e o driver (no Linux:
 DSN (Data Source Name) → configuração de conexão (nome, host, porta, usuário, senha, banco).
 
 ---
+
+### Rodando a aplicação
+
+```bash
+docker run -d   --name bd_postgres   -e POSTGRES_USER=admin   -e POSTGRES_PASSWORD=senha   -e POSTGRES_DB=atividade_db   -p 5432:5432   postgres:17
+docker pull postgresql:17
+npm install
+```
+
+> COM ORM
+```bash
+npm run orm
+```
+
+> COM ODBC
+```bash
+npm run odbc
+```
