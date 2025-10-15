@@ -65,3 +65,36 @@ npm run orm
 ```bash
 npm run odbc
 ```
+
+### SCRIPS - SQL
+
+**Pegar todas as atividades e projetos**
+```sql
+SELECT 
+    a.codigo,
+    a.descricao AS atividade_descricao,
+    a.projeto AS projeto_codigo,
+    a.data_inicio,
+    a.data_fim,
+    p.nome AS projeto_nome,
+    p.descricao AS projeto_descricao
+    FROM atividade a
+    LEFT JOIN projeto p ON p.codigo = a.projeto;
+```
+
+**Criar atividade**
+```sql
+INSERT INTO atividade (descricao, projeto, data_fim, data_inicio)
+VALUES (
+    defina_sua_descricao,
+    defina_codigo__projeto,
+    defina_sua_data_fim,
+    defina_sua_data_inicio
+)
+```
+
+**Mudar responsável do projeto**
+```sql
+UPDATE projeto SET responsavel = defina_codigo_responsavel
+WHERE codigo = defina_codigo_projeto
+```
