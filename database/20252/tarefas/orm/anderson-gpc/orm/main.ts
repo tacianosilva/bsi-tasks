@@ -7,6 +7,15 @@ const atividadeRepo = new AtividadeRepository();
 const projetoRepo = new ProjetoRepository();
 const funcionarioRepo = new FuncionarioRepository();
 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+function perguntar(query: string): Promise<string> {
+    return new Promise(resolve => rl.question(query, resolve));
+}
+
 async function pegarTodasAtividade() {
     const todas = await atividadeRepo.pegarTodas();
     console.log("\n📋 Todas as atividades:");
@@ -14,37 +23,38 @@ async function pegarTodasAtividade() {
 }
 
 async function criarUmaAtividade() {
-    const data = {
-        descricao: "Atividade 1",
-        data_inicio: "2025-10-15",
-        data_fim: "2025-10-20",
-    };
+    const descricao = await perguntar("Digite a descrição da atividade: ");
+    const data_inicio = await perguntar("Digite a data de início (YYYY-MM-DD): ");
+    const data_fim = await perguntar("Digite a data de fim (YYYY-MM-DD): ");
+    const data = { descricao, data_inicio, data_fim };
+
     await atividadeRepo.criarAtividade(data);
     console.log("✅ Atividade criada com sucesso!");
 }
 
 async function verificarCodigoProjeto() {
-    const codigo = 10;
+    const codigoStr = await perguntar("Digite o código do projeto: ");
+    const codigo = parseInt(codigoStr);
     const existe = await projetoRepo.projetoExiste(codigo);
     console.log(`🔎 Projeto com código ${codigo}:`, existe ? "Existe" : "Não existe");
 }
 
 async function verificarCodigoFuncionario() {
-    const codigo = 1;
+    const codigoStr = await perguntar("Digite o código do funcionário: ");
+    const codigo = parseInt(codigoStr);
     const existe = await funcionarioRepo.funcinarioExiste(codigo);
     console.log(`👤 Funcionário com código ${codigo}:`, existe ? "Existe" : "Não existe");
 }
 
 async function mudarLiderDoProjeto() {
-    const data = { codigo: 3, responsavel: 1 };
-    const projeto = await projetoRepo.mudarLiderDoProjeto(data);
+    const codigoStr = await perguntar("Digite o código do projeto: ");
+    const codigo = parseInt(codigoStr);
+    const responsavelStr = await perguntar("Digite o código do novo líder: ");
+    const responsavel = parseInt(responsavelStr);
+
+    const projeto = await projetoRepo.mudarLiderDoProjeto({ codigo, responsavel });
     console.log("👑 Novo líder do projeto definido:", projeto);
 }
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
 
 function mostrarMenu() {
     console.log(`
@@ -92,7 +102,6 @@ function exibirMenu() {
     rl.question("Escolha uma opção: ", (opcao) => executarOpcao(opcao));
 }
 
-// Inicialização
 console.clear();
 console.log("🚀 Mini Sistema de Gestão de Projetos");
 exibirMenu();
