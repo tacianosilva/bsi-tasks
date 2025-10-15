@@ -11,6 +11,7 @@ export class AtividadeRepository {
             include: {
                 model: Projeto,
                 as: "projetoAssociado",
+                attributes: ["nome", "descricao"],
             },
         });
         return atividades.map((a) => a.toJSON());
