@@ -27,4 +27,13 @@ from projeto pr
 	left join atividade a on pr.codigo = a.projeto
 	order by pr.nome;
 ```
+## ODBC (Open Database Connectivity)
+É uma interface padrão para conectar aplicações a diferentes bancos de dados
+independente da linguagem ou do sistema gerenciador. Usa chamadas de API procedurais
+Embora tenha origem no Windows, hoje pode ser usada em outros sistemas também.
 
+## JDBC (Java Database Connectivity)
+É o equivalente do ODBC para Java. Fornece uma interface orientada a objetos que
+permite conectar, enviar consultas e manipular resultados em bancos de dados. Além
+disso, possibilita controlar como o usuário acessa o banco, integrando-se naturalmente
+com o ecossistema Java.
