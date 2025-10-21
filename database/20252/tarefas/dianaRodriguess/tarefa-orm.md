@@ -37,3 +37,11 @@ Embora tenha origem no Windows, hoje pode ser usada em outros sistemas também.
 permite conectar, enviar consultas e manipular resultados em bancos de dados. Além
 disso, possibilita controlar como o usuário acessa o banco, integrando-se naturalmente
 com o ecossistema Java.
+
+## ORM
+
+Em Java, o ORM (Object-Relational Mapping) é uma técnica que permite trabalhar com dados do
+banco usando objetos, sem precisar escrever comandos SQL diretamente. O framework mais usado
+é o Hibernate, que implementa a especificação JPA (Java Persistence API) e faz o mapeamento
+entre classes e tabelas, facilitando operações como inserir, atualizar e consultar dados de
+forma automatizada.
