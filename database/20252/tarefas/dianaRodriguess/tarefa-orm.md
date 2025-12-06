@@ -57,3 +57,8 @@ Para a criação do usuário e senha do PostgreSQL e PgAdmin foi seguido o [tuto
 **Linguagem escolhida:** `Java21` + `JDBC`
 
 [Código de conexão com o banco de dados.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/jdbc/ConexaoJDBC.java)
+
+## Tarefas de inserir, atualizar e listar usando JDBC
+[Programa Principal.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/jdbc/ProgramaJDBC.java)
+
+[a. Inserir uma atividade em algum projeto.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/jdbc/Inserir.java)
