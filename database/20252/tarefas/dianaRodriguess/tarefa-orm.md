@@ -62,3 +62,5 @@ Para a criação do usuário e senha do PostgreSQL e PgAdmin foi seguido o [tuto
 [Programa Principal.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/jdbc/ProgramaJDBC.java)
 
 [a. Inserir uma atividade em algum projeto.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/jdbc/Inserir.java)
+
+[b. Atualizar o líder de algum projeto.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/jdbc/Atualizar.java)
