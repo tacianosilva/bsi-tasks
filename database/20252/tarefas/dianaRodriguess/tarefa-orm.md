@@ -66,3 +66,10 @@ Para a criação do usuário e senha do PostgreSQL e PgAdmin foi seguido o [tuto
 [b. Atualizar o líder de algum projeto.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/jdbc/Atualizar.java)
 
 [c. Listar todos os projetos e suas atividades.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/jdbc/Listar.java)
+
+
+## Framework ORM java - Hibernate
+
+[Programa Principal.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/orm/ProgramaORM.java)
+
+[a. Inserir uma atividade em algum projeto.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/orm/Inserir.java)
