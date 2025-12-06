@@ -51,3 +51,9 @@ forma automatizada.
 Foi usado os scripts de [criação](https://github.com/tacianosilva/bsi-tasks/blob/main/database/scripts/AtividadesBD/postgres/esquema_atividades_creates_tables.sql) e [inserção](https://github.com/tacianosilva/bsi-tasks/blob/main/database/scripts/AtividadesBD/postgres/esquema_atividades_inserts.sql) disponibilizados no repositório da disciplina
 
 Para a criação do usuário e senha do PostgreSQL e PgAdmin foi seguido o [tutorial](https://github.com/tacianosilva/bsi-tasks/tree/main/database/docker/postgres), também disponibilizado no repositório da disciplina, com a exessão da versão do PostgreSQL que foi usado o `postgres:13.22-trixie`
+
+## Conexão com o Banco de Dados AtividadeDB
+
+**Linguagem escolhida:** `Java21` + `JDBC`
+
+[Código de conexão com o banco de dados.](https://github.com/dianaRodriguess/tarefaorm/blob/main/src/main/java/com/exemplo/jdbc/ConexaoJDBC.java)
