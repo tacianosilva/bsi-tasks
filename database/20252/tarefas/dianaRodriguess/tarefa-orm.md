@@ -45,3 +45,9 @@ banco usando objetos, sem precisar escrever comandos SQL diretamente. O framewor
 é o Hibernate, que implementa a especificação JPA (Java Persistence API) e faz o mapeamento
 entre classes e tabelas, facilitando operações como inserir, atualizar e consultar dados de
 forma automatizada.
+
+## Criação do Banco de Dados AtividadeDB
+
+Foi usado os scripts de [criação](https://github.com/tacianosilva/bsi-tasks/blob/main/database/scripts/AtividadesBD/postgres/esquema_atividades_creates_tables.sql) e [inserção](https://github.com/tacianosilva/bsi-tasks/blob/main/database/scripts/AtividadesBD/postgres/esquema_atividades_inserts.sql) disponibilizados no repositório da disciplina
+
+Para a criação do usuário e senha do PostgreSQL e PgAdmin foi seguido o [tutorial](https://github.com/tacianosilva/bsi-tasks/tree/main/database/docker/postgres), também disponibilizado no repositório da disciplina, com a exessão da versão do PostgreSQL que foi usado o `postgres:13.22-trixie`
