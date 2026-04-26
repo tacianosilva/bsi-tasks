@@ -1,15 +1,43 @@
-# Projeto e Administração de Banco de Dados
+Nome: Anderson Azevedo da Silva<br>
+Matrícula: 20220026825<br>
+Email: andersonsilva14.2017@gmail.com
 
-**Aluno:** Mariana Araujo de Medeiros  
-**Matrícula:** 20200139394   
-**Email:** araujodemedeirosmariana@gmail.com
 
-## Links
-**Link para o repositório utilizado na disciplina:**
-https://github.com/araujodemedeirosmariana-jpg/Tarefa02_mariana
+# BSI Tasks
 
-**Link para a issue da tarefa criada:**
-https://github.com/araujodemedeirosmariana-jpg/Tarefa02_mariana/issues/2
+Repositório para Auxílio no Ensino de Banco de Dados Engenharia de Software, Teste de Software e Programação Web do curso de Bacharelado em Sistemas de Informação CERES/UFRN - Caicó RN
 
-**Link para a resposta da tarefa:**
-https://github.com/araujodemedeirosmariana-jpg/Tarefa02_mariana/blob/main/database/20252/tarefas/araujodemedeirosmariana-jpg/tarefa-orm.md
+## Teste de Software
+
+Na página da Disciplina [Teste de Software](softwaretesting/README.md) você encontra informações, materiais, exemplos e descrição das tarefas.
+
+## Banco de Dados
+
+Na página [Dicas BD](database/README.md) você encontra informações de como executar o **SGBD** utilizando docker e outros exemplos.
+
+Exemplos de código SQL encontrados na pasta [*bd*](database/scripts).
+
+### Clientes SQL
+
+* SQuirreL SQL Client - Universal SQL Client [Download](http://squirrel-sql.sourceforge.net/)
+
+## Java
+
+Exemplos de código Java encontrados na pasta *java*.
+
+## C#
+
+Exemplos de código C# encontrados na pasta *csharp*.
+
+# Ferramentas Interessantes
+
+## ngrok - secure introspectable tunnels to localhost
+
+* ngrok [Download](https://ngrok.com/download)
+
+```bash
+  ./ngrok http -region=sa 8000
+```
+
+# Licença
+
