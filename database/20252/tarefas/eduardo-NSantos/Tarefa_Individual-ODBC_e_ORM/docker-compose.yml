@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: atividades_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  init-db:
+    image: postgres:15
+    depends_on:
+      - postgres
+    volumes:
+      - ../../../../scripts/AtividadesBD/postgres:/scripts
+    entrypoint: >
+      bash -c "
+      echo 'Aguardando banco subir...';
+      sleep 5;
+
+      echo 'Criando banco...';
+      PGPASSWORD=postgres psql -h postgres -U postgres -f /scripts/esquema_atividade_create_database.sql;
+
+      echo 'Criando tabelas...';
+      PGPASSWORD=postgres psql -h postgres -U postgres -d atividade_db -f /scripts/esquema_atividades_creates_tables.sql;
+
+      echo 'Inserindo dados...';
+      PGPASSWORD=postgres psql -h postgres -U postgres -d atividade_db -f /scripts/esquema_atividades_inserts.sql;
+
+      echo 'Finalizado!';
+      "
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: atividades_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@email.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
