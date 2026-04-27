@@ -7,4 +7,7 @@
 [Link para scripts da atividade](../../../scripts/AtividadesBD/postgres)
 
 ## Resumo sobre ODBC na linguagem Python
-O ODBC (Open Database Connectivity) é um padrão que permite que aplicações em diversas linguagens (como Python, por exemplo) possam ter acesso a bancos de dados (como o PostgreSQL). Baciamente, trata-se de uma API (Application Programming Interface) para acessar SGBDs. Para a conexão, é necessário um driver que faça a intermediação, que consege permitir que o código Python envie comandos SQL.
+O ODBC (_Open Database Connectivity_) é um padrão que permite que aplicações em diversas linguagens (como Python, por exemplo) possam ter acesso a bancos de dados (como o PostgreSQL). Baciamente, trata-se de uma API (_Application Programming Interface_) para acessar SGBDs. Para a conexão, é necessário um _driver_ que faça a intermediação, que consege permitir que o código Python envie comandos SQL.
+
+## Resumo sobre ORM (SQLAlchemy)
+ORM (_Object-Relational Mapping_) é uma técnica que mapeia tabelas de bancos de dados relacionais, como o PostgreSQL, para classes e objetos em linguagens de programação, como Python. O SQLAlchemy é uma biblioteca Python que age justamente como uma "ponte" entre Python e PostgreSQL, implementando a técnica ORM, permitindo criação de classes e objetos, consultas e manipulação de dados usando código Python sem utilizar necessariament o SQL puro.
