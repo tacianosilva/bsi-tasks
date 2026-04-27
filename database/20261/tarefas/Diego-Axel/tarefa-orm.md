@@ -89,3 +89,121 @@ conn.close()
 - Requer instalação de drivers ODBC
 - psycopg2 é mais nativo e geralmente mais eficiente para PostgreSQL
 - Mais uma camada de abstração
+
+### 2.c
+
+ORM (Object-Relational Mapping) é uma técnica que mapeia objetos da aplicação para tabelas do banco de dados, eliminando a necessidade de escrever SQL manualmente. As principais ORMs para Python são **SQLAlchemy** e **Peewee**.
+
+**Características principais:**
+
+- **Abstração SQL:** Escreve consultas usando objetos Python em vez de SQL
+- **Relacionamentos automáticos:** Gerencia relacionamentos entre tabelas (1:N, N:N)
+- **Migrations:** Facilitam versionamento e mudanças no schema
+- **Type safety:** Validação de tipos e constraints no nível da aplicação
+- **Query builder:** Construção dinâmica de queries complexas
+
+**SQLAlchemy (mais popular e robusto):**
+
+```python
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+# Configurar conexão com PostgreSQL
+DATABASE_URL = "postgresql://usuario:senha@localhost:5432/meubd"
+engine = create_engine(DATABASE_URL)
+Session = sessionmaker(bind=engine)
+
+Base = declarative_base()
+
+# Definir modelo
+class Cliente(Base):
+    __tablename__ = "clientes"
+    
+    id = Column(Integer, primary_key=True)
+    nome = Column(String(100), nullable=False)
+    email = Column(String(100), unique=True)
+
+# Criar tabelas
+Base.metadata.create_all(engine)
+
+# Usar a ORM
+session = Session()
+
+# Inserir
+novo_cliente = Cliente(nome="João Silva", email="joao@email.com")
+session.add(novo_cliente)
+session.commit()
+
+# Consultar
+clientes = session.query(Cliente).filter(Cliente.nome.like("%Silva%")).all()
+
+# Atualizar
+cliente = session.query(Cliente).filter_by(id=1).first()
+cliente.email = "novo@email.com"
+session.commit()
+
+# Deletar
+session.delete(cliente)
+session.commit()
+
+session.close()
+```
+
+**Peewee (mais simples e leve):**
+
+```python
+from peewee import *
+
+# Configurar conexão com PostgreSQL
+db = PostgresqlDatabase('meubd', user='usuario', password='senha', host='localhost')
+
+# Definir modelo
+class Cliente(Model):
+    nome = CharField()
+    email = CharField(unique=True)
+    
+    class Meta:
+        database = db
+
+# Criar tabelas
+db.create_tables([Cliente])
+
+# Inserir
+Cliente.create(nome="João Silva", email="joao@email.com")
+
+# Consultar
+clientes = Cliente.select().where(Cliente.nome.contains("Silva"))
+for cliente in clientes:
+    print(cliente.nome, cliente.email)
+
+# Atualizar
+cliente = Cliente.get_by_id(1)
+cliente.email = "novo@email.com"
+cliente.save()
+
+# Deletar
+cliente.delete_instance()
+```
+
+**Comparação: SQLAlchemy vs Peewee**
+
+| Aspecto | SQLAlchemy | Peewee |
+|--------|-----------|--------|
+| **Complexidade** | Mais robusto, curva de aprendizado maior | Mais simples, intuitivo |
+| **Features** | Muito completo (migrations, async, etc) | Essencial e direto |
+| **Performance** | Excelente | Muito bom |
+| **Comunidade** | Gigante, muita documentação | Menor, mas ativa |
+| **Projetos** | Grandes aplicações, startups | Projetos pequenos/médios |
+
+**Vantagens de usar ORM:**
+- Código mais legível e manutenível
+- Menos vulnerável a SQL injection
+- Relacionamentos entre tabelas automáticos
+- Migrations facilitam versionamento
+- Abstração do banco específico
+
+**Desvantagens:**
+- Queries complexas podem ser mais lentas
+- Curva de aprendizado (especialmente SQLAlchemy)
+- Menos controle fino sobre o SQL gerado
