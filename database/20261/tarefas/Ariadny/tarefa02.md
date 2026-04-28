@@ -48,8 +48,8 @@ O código-fonte completo da aplicação desenvolvida para esta tarefa, utilizand
 
 Os arquivos de testes específicos solicitados na atividade podem ser visualizados diretamente pelos links abaixo:
 
-* [Script de execução via Driver/SQL (`teste_driver.py`)](https://github.com/ariadnyD/BD.git/tarefa02/teste_driver.py)
-* [Script de execução via Django ORM (`teste_orm.py`)](https://github.com/ariadnyD/BD.git/tarefa02/teste_orm.py)
+* [Script de execução via Driver/SQL (`teste_driver.py`)](https://github.com/ariadnyD/BD/blob/main/tarefa02/teste_driver.py)
+* [Script de execução via Django ORM (`teste_orm.py`)](https://github.com/ariadnyD/BD/blob/main/tarefa02/teste_orm.py)
 
 ### 4.3 Resultados
 
