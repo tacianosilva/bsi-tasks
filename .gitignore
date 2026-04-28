@@ -24,3 +24,5 @@ database/connections/python/mongodb/.venv/
 languages/scala/hello-maven/.mvn/
 **/.venv/
 **/__pycache__/
+lessons/django-oauth/.env
+lessons/django-oauth/db.sqlite3
