@@ -16,8 +16,6 @@ Na linguagem **Python**, a utilização de ODBC permite que a aplicação se con
 
 ---
 
-## 2. ORM (Object-Relational Mapping) em Python
-
 O **ORM** é uma técnica que permite mapear objetos de uma linguagem de programação (como Python) para tabelas de um banco de dados relacional. Isso permite que o desenvolvedor manipule os dados utilizando a sintaxe da linguagem em vez de escrever SQL puro diretamente.
 
 **Vantagens do ORM:**
@@ -57,7 +55,8 @@ Os arquivos de testes específicos solicitados na atividade podem ser visualizad
 
 Abaixo estão os resultados das execuções dos scripts realizados dentro do ambiente virtual (`venv`), utilizando o banco de dados SQLite.
 
-* Execução via Driver SQL (`teste_driver.py`).
+* **Execução via Driver SQL (`teste_driver.py`)**
+
 Nesta etapa, o script realizou a conexão direta, inseriu uma nova atividade e atualizou o líder do projeto utilizando comandos SQL puros.
 
 ```text
@@ -65,7 +64,8 @@ Nesta etapa, o script realizou a conexão direta, inseriu uma nova atividade e a
 Projeto: APF | Atividade: Nova Atividade Driver
 ```
 
-* Execução via Django ORM (`teste_orm.py`)
+* **Execução via Django ORM (`teste_orm.py`)**
+
 Nesta etapa, o framework Django foi utilizado para manipular os objetos. O resultado abaixo confirma que a listagem está funcionando corretamente, exibindo tanto a atividade criada anteriormente pelo Driver quanto a nova atividade criada via ORM.
 
 ```text
