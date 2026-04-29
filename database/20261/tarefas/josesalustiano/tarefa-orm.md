@@ -42,7 +42,7 @@ Além disso, a sintaxe de consultas do Django permite percorrer relações entre
 
 ---
 
-## 4. Artefatos e Código-Fonte
+## 4. Código-Fonte
 
 Todos os códigos solicitados para a execução desta atividade encontram-se no repositório abaixo:
 
