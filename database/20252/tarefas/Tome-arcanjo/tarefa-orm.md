@@ -40,3 +40,10 @@ O Prisma é o ORM moderno escolhido para Node.js, com foco em produtividade e se
 
 - **Prisma Client:**  
   Gera uma interface de consulta que facilita operações de CRUD e o gerenciamento de relações complexas (como chaves estrangeiras entre `projeto`, `atividade` e `funcionario`).
+
+# Docker Compose
+
+## 📌 Arquivo
+https://github.com/Tome-arcanjo/bdwork/blob/main/docker-compose.yml
+
+  
