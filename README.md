@@ -1,42 +1,17 @@
-Nome: Anderson Azevedo da Silva<br>
-Matrícula: 20220026825<br>
-Email: andersonsilva14.2017@gmail.com
+**Aluno:** Tomé Galileu Oliveira Arcanjo  
+**Matrícula:** 20240046173  
+**Email:** tome.arcanjo.112@ufrn.edu.br  
 
+**Toda a questão 2 se encontra no link abaixo**
 
-# BSI Tasks
+**Link para diretório da tarefa:**  
+https://github.com/Tome-arcanjo/bsi-tasks/blob/Tarefa-ODBC-ORM%23221/database/20252/tarefas/Tome-arcanjo/tarefa-orm.md  
 
-Repositório para Auxílio no Ensino de Banco de Dados Engenharia de Software, Teste de Software e Programação Web do curso de Bacharelado em Sistemas de Informação CERES/UFRN - Caicó RN
+**Questão 3:**  
+https://github.com/Tome-arcanjo/bdwork/blob/main/docker-compose.yml  
 
-## Teste de Software
+**Questões 4, 5 e 6 se encontram no repositório do programa que criei para rodar os scripts e fazer as operações com banco de dados.**  
 
-Na página da Disciplina [Teste de Software](softwaretesting/README.md) você encontra informações, materiais, exemplos e descrição das tarefas.
-
-## Banco de Dados
-
-Na página [Dicas BD](database/README.md) você encontra informações de como executar o **SGBD** utilizando docker e outros exemplos.
-
-Exemplos de código SQL encontrados na pasta [*bd*](database/scripts).
-
-### Clientes SQL
-
-* SQuirreL SQL Client - Universal SQL Client [Download](http://squirrel-sql.sourceforge.net/)
-
-## Java
-
-Exemplos de código Java encontrados na pasta *java*.
-
-## C#
-
-Exemplos de código C# encontrados na pasta *csharp*.
-
-# Ferramentas Interessantes
-
-## ngrok - secure introspectable tunnels to localhost
-
-* ngrok [Download](https://ngrok.com/download)
-
-```bash
-  ./ngrok http -region=sa 8000
-```
-
-# Licença
+**Links abaixo:**  
+4 - https://github.com/Tome-arcanjo/bdwork/blob/main/crud.js  
+5 e 6 - https://github.com/Tome-arcanjo/bdwork/blob/main/conexao.js  
