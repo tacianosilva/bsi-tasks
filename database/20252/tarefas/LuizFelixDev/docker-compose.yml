@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_bsi
+    restart: always
+    environment:
+      POSTGRES_DB: AtividadesBD
+      POSTGRES_USER: luiz_admin
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_bsi
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
