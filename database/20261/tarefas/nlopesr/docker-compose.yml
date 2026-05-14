@@ -1,4 +1,8 @@
-﻿version: "3.9"
+version: "3.9"
+
+volumes:
+  postgres_data:
+  mongo_data:
 
 services:
   postgres:
@@ -34,5 +38,16 @@ services:
       postgres:
         condition: service_healthy
 
-volumes:
-  postgres_data:
+  mongodb:
+    image: mongo:6.0
+    container_name: atividades_mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin_mongo
+      MONGO_INITDB_ROOT_PASSWORD: senha_mongo
+      MONGO_INITDB_DATABASE: AtividadesProj
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./python_mongo/init_mongo.js:/docker-entrypoint-initdb.d/init_mongo.js:ro
