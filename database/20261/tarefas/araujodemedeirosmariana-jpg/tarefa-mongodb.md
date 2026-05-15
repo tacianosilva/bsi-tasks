@@ -28,10 +28,12 @@ No contexto de gerenciamento de atividades em projetos, o MongoDB permite modela
 ### Comando básico (para teste único):
 ```bash
 docker run -d --name mongodb -p 27017:27017 mongo:latest
+```
 
 ### Acessar o MongoDB Shell:
 ```bash
 docker exec -it mongodb mongosh
+```
 
 ### Criar banco e usuário:
 ```javascript
@@ -41,10 +43,8 @@ db.createUser({
   pwd: "senhaSegura123",
   roles: [{ role: "readWrite", db: "AtividadesProj" }]
 })
-
----
-
-##🧩 4. Esquema das coleções
+```
+## 🧩 4. Esquema das coleções
 
 ### Coleção projetos
 ```json
@@ -55,6 +55,7 @@ db.createUser({
   "dataInicio": "ISODate(2025-01-15)",
   "status": "ativo"
 }
+```
 
 ### Coleção atividades
 ```json
@@ -66,6 +67,7 @@ db.createUser({
   "prazo": "ISODate(2025-02-15)",
   "concluida": false
 }
+```
 
 ### Coleção empregados
 ```json
@@ -75,6 +77,7 @@ db.createUser({
   "email": "mariana@empresa.com",
   "cargo": "Gerente"
 }
+```
 
 ---
 
@@ -110,11 +113,12 @@ db.empregados.insertMany([
 ])
 
 print("✅ Banco de dados inicializado com sucesso!")
+```
 
 ### Como executar o script:
 ```bash
 docker exec -i mongodb mongosh < init.js
-
+```
 ---
 
 ## 💻 6. Programa CRUD (Python)
@@ -134,6 +138,7 @@ pip install pymongo
 
 # Executar o programa
 python3 crud_mongodb.py
+```
 
 ### Exemplo de uso:
 
@@ -165,6 +170,7 @@ python3 crud_mongodb.py
       2. Desenvolver API
          - Responsável: Carlos
          - Status: ⏳ EM ANDAMENTO
+```
 
 ---         
 
@@ -237,6 +243,7 @@ volumes:
 networks:
   mongodb_net:
     driver: bridge
+```
 
 ### Etapas para configurar o Replica Set:
 
@@ -249,6 +256,7 @@ Acessar um dos membros:
 
 ```bash
 docker exec -it mongo1 mongosh
+```
 
 Inicializar o Replica Set:
 
@@ -261,25 +269,31 @@ rs.initiate({
     { _id: 2, host: "mongo3:27017" }
   ]
 })
+```
 
 Verificar o status:
 
 ```javascript
 rs.status()
+```
 
 Verificar quem é o primário:
 
 ```javascript
 rs.isMaster()
+```
 
 ### Conexão com Replica Set no Python:
 
 ```python
 from pymongo import MongoClient
+```
 
 # String de conexão para Replica Set
+```
 client = MongoClient(
     "mongodb://localhost:27017,localhost:27018,localhost:27019/?replicaSet=rs0"
 )
 
 db = client.AtividadesProj
+```
