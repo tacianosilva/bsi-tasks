@@ -1,8 +1,8 @@
 # Tarefa - MongoDB
 
 ## 🔗 Links
-- **Programa CRUD:** [./scripts/crud_app.py](./scripts/crud_app.py)
-- **Script de inicialização:** [./scripts/init.js](./scripts/init.js)
+- **Programa CRUD:** [./crud_mongodb.py](./crud_mongodb.py)
+- **Script de inicialização:** [./init.js](./init.js)
 - **Docker Compose (Replica Set):** [./docker-compose-replicaset.yml](./docker-compose-replicaset.yml)
 
 ---
