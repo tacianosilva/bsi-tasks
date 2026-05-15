@@ -7,7 +7,7 @@
 
 ---
 
-## 📌 Resumo sobre MongoDB
+## 📌 2. Resumo sobre MongoDB
 
 O **MongoDB** é um SGBD **NoSQL orientado a documentos** (document database), que armazena dados em formato BSON (JSON binário). Diferente dos bancos relacionais, ele não utiliza tabelas com esquemas fixos, mas sim **coleções** de documentos flexíveis.
 
@@ -81,7 +81,7 @@ db.createUser({
 
 ---
 
-## 📜 5. Script de inicialização (init.js)
+## 📜 Script de inicialização (init.js)
 
 ```javascript
 use AtividadesProj
@@ -121,7 +121,7 @@ docker exec -i mongodb mongosh < init.js
 ```
 ---
 
-## 💻 6. Programa CRUD (Python)
+## 💻 5. Programa CRUD (Python)
 
 ### Operações implementadas:
 Operação | Função |	Descrição
@@ -174,9 +174,9 @@ python3 crud_mongodb.py
 
 ---         
 
-## 🔁 7. Replica Set - Alta Disponibilidade
+## 🔁 6. Replica Set - Alta Disponibilidade
 
-### O que é um Replica Set?
+### a) O que é um Replica Set?
 Um Replica Set é um conjunto de servidores MongoDB que mantêm cópias idênticas dos dados, garantindo alta disponibilidade e tolerância a falhas. Se o membro primário falha, um secundário é automaticamente eleito primário.
 
 ### Papéis dos membros:
@@ -196,7 +196,7 @@ Leituras distribuídas: pode-se configurar leituras nos secundários
 
 ---
 
-## ⚙️ 8. Configuração do Replica Set com Docker Compose
+## ⚙️ b) Configuração do Replica Set com Docker Compose
 
 ### Arquivo docker-compose-replicaset.yml:
 ```yaml
@@ -258,8 +258,7 @@ Acessar um dos membros:
 docker exec -it mongo1 mongosh
 ```
 
-Inicializar o Replica Set:
-
+### Inicializar o Replica Set:
 ```javascript
 rs.initiate({
   _id: "rs0",
@@ -271,20 +270,17 @@ rs.initiate({
 })
 ```
 
-Verificar o status:
-
+### Verificar o status:
 ```javascript
 rs.status()
 ```
 
-Verificar quem é o primário:
-
+### Verificar quem é o primário:
 ```javascript
 rs.isMaster()
 ```
 
 ### Conexão com Replica Set no Python:
-
 ```python
 from pymongo import MongoClient
 ```
