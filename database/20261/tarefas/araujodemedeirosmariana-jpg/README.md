@@ -1,4 +1,8 @@
-Repositório de tarefas do curso BSI.
+
+Nome: Mariana Araujo de Medeiros</br>
+Matricula: 	20200139394</br>
+Usuário github: araujodemedeirosmariana-jpg</br>
+E-mail: araujodemedeirosmariana@gmail.com
 
 ## 📚 Tarefa MongoDB
 
