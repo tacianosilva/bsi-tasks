@@ -1,4 +1,10 @@
 # Links para os códigos
+# ODBC
+https://github.com/expeditofranca/Banco-de-Dados-II/tree/fa748933f084827e987a0db2837310c422df96fe/AtividadeBD
+
+# ORM
+https://github.com/expeditofranca/Banco-de-Dados-II/blob/fa748933f084827e987a0db2837310c422df96fe/AtividadeBD/app_orm/app/models.py
+https://github.com/expeditofranca/Banco-de-Dados-II/blob/fa748933f084827e987a0db2837310c422df96fe/AtividadeBD/app_orm/app/scripts.py
 
 # Resumo sobre ODBC
 ODBC (Open Database Connectivity) é um padrão que permite que programas se conectem a diferentes bancos de dados usando uma interface comum agindo como uma ponte entre a aplicação e o banco de dados. Em Python, ele é usado para acessar bancos como MySQL, SQL Server, PostgreSQL,  entre outros, sem precisar mudar muito o código.
