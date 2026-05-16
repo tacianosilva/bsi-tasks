@@ -1,1 +1,1 @@
-- [Tarefa MongoDB](database/20261/tarefas/THUR165/tarefa-mongodb.md)
+- [Tarefa MongoDB](/database/20261/tarefas/THUR165/tarefa-mongodb.md)
