@@ -2,13 +2,49 @@
 
 ## Programa
 
-**Programa:**[Main.java](implementacaoJava/src/main/java/Main.java)
+**Programa:** [Main.java](implementacaoJava/src/main/java/Main.java)
 
 ---
 
 ## Script de Inicialização do Banco
+
 **Script de inicialização:** [init.js](init.js)
-Obs: O init.js inicia automaticamente ao iniciar o docker-compose (docker compose up -d)
+
+O script `init.js` é executado automaticamente ao iniciar os containers com o comando:
+
+```bash
+docker compose up -d
+```
+
+Após a inicialização, é possível acessar o MongoDB utilizando:
+
+```bash
+docker exec -it mongodb_atividades mongosh -u admin -p admin123 --authenticationDatabase admin
+```
+
+Selecionar o banco de dados:
+
+```javascript
+use AtividadesProj
+```
+
+Listar as coleções existentes:
+
+```javascript
+show collections
+```
+
+Consultar os dados armazenados na coleção de projetos:
+
+```javascript
+db.projetos.find().pretty()
+```
+```javascript
+db.empregados.find().pretty()
+```
+```javascript
+db.atividades.find().pretty()
+```
 
 ---
 
@@ -30,3 +66,43 @@ O MongoDB possui como principais características:
 - Suporte a consultas avançadas e indexação.
 
 No contexto desta atividade, o MongoDB será utilizado para desenvolver um sistema de gerenciamento de atividades em projetos com empregados, permitindo armazenar projetos, atividades e informações dos funcionários de forma flexível e eficiente.
+
+---
+
+# Alta Disponibilidade e Replica Sets
+
+O MongoDB possui suporte a alta disponibilidade através do mecanismo chamado **Replica Set**. Um Replica Set é um conjunto de servidores MongoDB que mantêm cópias sincronizadas dos mesmos dados, garantindo tolerância a falhas e maior disponibilidade da aplicação.
+
+Em um Replica Set, os membros possuem diferentes papéis:
+
+- **Primário (Primary):** responsável por receber operações de escrita e atualização dos dados;
+- **Secundário (Secondary):** mantém uma cópia sincronizada dos dados do servidor primário e pode assumir automaticamente o papel principal em caso de falha;
+- **Arbiter:** não armazena dados, mas participa do processo de votação para eleição de um novo servidor primário.
+
+Para transformar o MongoDB em um Replica Set com três membros utilizando Docker, seria necessário:
+
+1. Criar múltiplos containers MongoDB no `docker-compose.yml`;
+2. Configurar todos os containers com o parâmetro `--replSet`;
+3. Inicializar o Replica Set utilizando o comando `rs.initiate()` no Mongo Shell;
+4. Adicionar os membros ao conjunto utilizando `rs.add()`.
+
+Exemplo de configuração no `docker-compose.yml`:
+
+```yaml
+command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+```
+
+Exemplo de inicialização no Mongo Shell:
+
+```javascript
+rs.initiate({
+  _id: "rs0",
+  members: [
+    { _id: 0, host: "mongo1:27017" },
+    { _id: 1, host: "mongo2:27017" },
+    { _id: 2, host: "mongo3:27017" }
+  ]
+})
+```
+
+Após a configuração, o MongoDB passa a possuir maior tolerância a falhas e disponibilidade dos dados.
