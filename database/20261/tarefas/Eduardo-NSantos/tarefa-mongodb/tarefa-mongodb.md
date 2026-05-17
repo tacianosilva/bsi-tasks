@@ -4,6 +4,20 @@
 
 **Programa:** [Main.java](implementacaoJava/src/main/java/Main.java)
 
+Para executar o programa Java, acesse a pasta `implementacaoJava`:
+
+```bash
+cd implementacaoJava
+```
+
+Compile e execute o projeto utilizando Maven:
+
+```bash
+mvn exec:java -Dexec.mainClass="Main"
+```
+
+O programa irá conectar ao MongoDB e executar as operações de inserção, consulta, atualização e remoção de dados.
+
 ---
 
 ## Script de Inicialização do Banco
