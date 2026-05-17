@@ -84,5 +84,71 @@ Sua principal função é participar das votações para eleição de um novo pr
 
 Ele é utilizado principalmente para desempatar votações em conjuntos com número par de membros.
 
+# Configuração de um Replica Set no Mongo Shell
+
+Para transformar o servidor MongoDB em um Replica Set de três membros utilizando Mongo Shell, seria necessário iniciar as instâncias MongoDB com suporte a replicação habilitado e, em seguida, configurar o conjunto através do shell.
+
+## Etapas Essenciais
+
+1. Iniciar as três instâncias MongoDB com o parâmetro `--replSet`;
+2. Acessar uma das instâncias utilizando o Mongo Shell;
+3. Inicializar o Replica Set;
+4. Adicionar os três membros ao conjunto;
+5. Verificar o status da replicação.
+
+---
+
+# Inicialização do Replica Set
+
+Após iniciar as instâncias MongoDB, acessar o shell:
+
+```bash
+mongosh
+```
+
+Em seguida, executar:
+
+```javascript
+rs.initiate({
+  _id: "rs0",
+  members: [
+    { _id: 0, host: "mongo1:27017" },
+    { _id: 1, host: "mongo2:27017" },
+    { _id: 2, host: "mongo3:27017" }
+  ]
+})
+```
+
+---
+
+# Verificação do Status
+
+Para verificar se o Replica Set foi configurado corretamente:
+
+```javascript
+rs.status()
+```
+
+O comando exibirá:
+- o membro primário (PRIMARY);
+- os membros secundários (SECONDARY);
+- informações sobre sincronização e replicação.
+
+---
+
+# Banco de Dados
+
+Após a configuração do Replica Set, o banco de dados `AtividadesProj` poderá ser utilizado normalmente, com replicação automática dos dados entre os três membros do conjunto.
+
+---
+
+# Benefícios da Configuração
+
+A utilização de Replica Set fornece:
+- alta disponibilidade;
+- redundância de dados;
+- tolerância a falhas;
+- eleição automática de um novo primário em caso de falha.
+
 
 
