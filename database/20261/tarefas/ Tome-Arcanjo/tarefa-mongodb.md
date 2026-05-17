@@ -36,3 +36,23 @@ O MongoDB é bastante utilizado no desenvolvimento de aplicações modernas devi
 ## Conclusão
 
 O MongoDB é um dos bancos de dados NoSQL mais populares da atualidade. Sua estrutura orientada a documentos oferece maior flexibilidade no armazenamento de dados, tornando-o uma excelente escolha para aplicações modernas, escaláveis e integradas ao ecossistema JavaScript.
+
+# Foi utilizado o Railway para provisionamento do servidor MongoDB em nuvem, como alternativa ao uso local via Docker.
+
+## Banco utilizado:
+**- AtividadesProj**
+
+**Usuário criado automaticamente pelo Railway.**
+
+**A conexão foi realizada utilizando a string fornecida pela plataforma.**
+
+# Script de inicialização em js
+
+## Link: https://github.com/Tome-arcanjo/bdwork2/blob/main/init.js
+
+# Crud integrado ao bd
+
+## Link: https://github.com/Tome-arcanjo/bdwork2/blob/main/app.js
+
+
+
