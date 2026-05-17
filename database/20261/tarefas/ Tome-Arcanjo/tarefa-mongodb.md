@@ -1,8 +1,8 @@
 # Tarefa mongodb
 
-**Link para programa: https://github.com/Tome-arcanjo/bdwork**
+**Link para programa: https://github.com/Tome-arcanjo/bdwork2**
 
-**Link para scripts: https://github.com/Tome-arcanjo/bsi-tasks/tree/main/database/scripts**
+**Link para scripts: https://github.com/Tome-arcanjo/bdwork2/blob/main/init.js**
 
 
 # Tarefa - MongoDB
