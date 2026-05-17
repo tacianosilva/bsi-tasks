@@ -54,5 +54,35 @@ O MongoDB é um dos bancos de dados NoSQL mais populares da atualidade. Sua estr
 
 ## Link: https://github.com/Tome-arcanjo/bdwork2/blob/main/app.js
 
+# Replica Set no MongoDB
+
+Um Replica Set no MongoDB é um conjunto de servidores MongoDB que mantêm cópias sincronizadas do mesmo banco de dados. Esse mecanismo é utilizado para garantir alta disponibilidade, redundância e tolerância a falhas no sistema.
+
+Os membros de um Replica Set trabalham juntos para garantir que os dados permaneçam acessíveis mesmo em caso de falha de algum servidor.
+
+## Papéis dos membros do Replica Set
+
+### Primário (Primary)
+
+O membro primário é o servidor principal do Replica Set. Todas as operações de escrita, como inserções, atualizações e remoções de dados, são realizadas nele.
+
+Os demais membros replicam automaticamente os dados armazenados no primário.
+
+Caso o servidor primário falhe, um novo primário é eleito automaticamente entre os secundários.
+
+### Secundário (Secondary)
+
+Os membros secundários mantêm cópias atualizadas dos dados do servidor primário através do processo de replicação.
+
+Eles podem assumir o papel de primário em caso de falha do atual primário. Além disso, podem ser utilizados para operações de leitura, ajudando na distribuição de carga do sistema.
+
+### Arbiter
+
+O arbiter é um membro especial do Replica Set que não armazena dados.
+
+Sua principal função é participar das votações para eleição de um novo primário quando ocorre alguma falha no Replica Set.
+
+Ele é utilizado principalmente para desempatar votações em conjuntos com número par de membros.
+
 
 
