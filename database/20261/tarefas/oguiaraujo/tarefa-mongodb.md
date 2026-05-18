@@ -2,7 +2,6 @@
 
 [Implementação do MongoDB](https://github.com/oguiaraujo/BD2.git)
 
-
 ## Resumo sobre MongoDB
 
 O **MongoDB** é um SGBD NoSQL orientado a documentos (*document database*), lançado em 2009 pela MongoDB, Inc. Em vez de armazenar dados em tabelas e linhas como os bancos relacionais, o MongoDB armazena dados em **documentos BSON** (*Binary JSON*) — estruturas flexíveis e auto-descritivas que suportam tipos aninhados, arrays e subdocumentos.
