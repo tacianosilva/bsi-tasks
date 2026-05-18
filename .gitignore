@@ -24,3 +24,6 @@ database/connections/python/mongodb/.venv/
 languages/scala/hello-maven/.mvn/
 **/.venv/
 **/__pycache__/
+
+node_modules/
+.env
