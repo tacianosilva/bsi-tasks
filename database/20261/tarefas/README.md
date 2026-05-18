@@ -2,6 +2,8 @@
 
 ## Conexões ODBC e ORM
 
-Exercício prático de conexão com base de dados usando ODBC e ORM. Siga as instruções e responda às perguntas no documento:
+[Tarefa ORM](oguiaraujo/tarefa-orm.md)
 
-https://docs.google.com/document/d/12fPbuvpM5zs9B56L8nOtBIcx-GqkhMOLzuXrnkfPQ-I/edit?usp=sharing
+## Mongo DB
+
+[Tarefa Mongo DB](oguiaraujo/tarefa-mongodb.md)
