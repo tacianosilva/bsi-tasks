@@ -4,7 +4,7 @@ Para usar o SGBD do PostgreSQL usando Docker, vamos fazer de duas maneiras:
 * A primeira usando dois containers independentes e criando uma rede (network) do docker;
 * A segunda usando o docker compose para criar os dois servições numa mesma rede.
 
-## Maneira 1
+## Executando containers separadamente
 
 Para que os dados fiquem persistidos, crie um diretório para ser o volume de dados compartilhado com o container:
 ```
@@ -36,7 +36,7 @@ Criar e iniciar o container **pgadmin-server**:
 docker run --name pgadmin-server  -p 15432:80 \
            -e "PGADMIN_DEFAULT_EMAIL=admin@pgadmin.com" \
            -e "PGADMIN_DEFAULT_PASSWORD=pgadmin" \
-           --network=postgres-network -d dpage/pgadmin4:8.4
+           --network=postgres-network -d dpage/pgadmin4:9.15
 ```
 
 ### Acessando via cliente psql
