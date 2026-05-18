@@ -1,0 +1,64 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: atividades_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: atividade_db
+      POSTGRES_USER: admin_atividades
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d
+    networks:
+      - atividades_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin_atividades -d atividade_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: atividades_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@atividades.com
+      PGADMIN_DEFAULT_PASSWORD: senha123
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - atividades_net
+
+  app:
+    build: .
+    container_name: atividades_app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: atividade_db
+      DB_USER: admin_atividades
+      DB_PASSWORD: senha123
+    volumes:
+      - ./scripts:/app/scripts
+      - ./orm:/app/orm
+    networks:
+      - atividades_net
+    # Mantém o container rodando para execução manual dos scripts
+    command: tail -f /dev/null
+
+networks:
+  atividades_net:
+    driver: bridge
+
+volumes:
+  postgres_data:
