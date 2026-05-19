@@ -12,6 +12,33 @@ No Python, o acesso ao MongoDB costuma ser feito com a biblioteca PyMongo, que p
 
 ## Replica Set no MongoDB
 
-Um Replica Set é um conjunto de instâncias do MongoDB que mantém os mesmos dados sincronizados entre si. Ele é usado principalmente para aumentar a disponibilidade e dar mais segurança aos dados, já que, se o servidor principal falhar, outro membro pode assumir o controle.
+Um Replica Set é um grupo de servidores MongoDB que mantém os mesmos dados sincronizados. Ele serve para dar mais disponibilidade ao banco.
 
-O membro primário é o responsável por receber as escritas e centralizar as alterações feitas na base. Os membros secundários copiam esses dados a partir do primário e servem como redundância; em alguns casos, também podem ser usados para leituras, dependendo da configuração da aplicação. Já o arbiter não armazena dados, mas participa apenas da votação em caso de eleição de um novo primário.
+O primário recebe as escritas. Os secundários copiam os dados e podem assumir o papel principal se houver falha. O arbiter não guarda dados, só participa da votação para eleger um novo primário se necessário.
+
+## Como configurar um Replica Set de três membros
+
+No projeto, deve-se subir três instâncias do MongoDB com o mesmo nome de replica set e usar o Python para iniciar e acessar o conjunto.
+
+Com PyMongo, a inicialização pode ser feita assim:
+
+```python
+from pymongo import MongoClient
+
+client = MongoClient("mongodb://mongo1:27017")
+
+client.admin.command("replSetInitiate", {
+    "_id": "rs0",
+    "members": [
+        {"_id": 0, "host": "mongo1:27017"},
+        {"_id": 1, "host": "mongo2:27017"},
+        {"_id": 2, "host": "mongo3:27017"}
+    ]
+})
+```
+
+Na aplicação Python, a conexão ficaria assim:
+
+```python
+client = pymongo.MongoClient("mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rs0")
+```
