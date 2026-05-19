@@ -1,8 +1,8 @@
 # Tarefa 03 - MongoDB
 
 ## 1. Scripts e Códigos Desenvolvidos
-* **Script de inicialização do Banco de Dados:** [Link para o script de carga inicial]
-* **Programa de Operações CRUD (Python):** [Link para o programa CRUD]
+* **Script de inicialização do Banco de Dados:** [./app.py]
+* **Programa de Operações CRUD (Python):** [./app.py]
 
 ---
 
