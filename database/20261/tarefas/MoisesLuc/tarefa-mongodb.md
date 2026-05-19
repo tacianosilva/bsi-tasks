@@ -1,3 +1,7 @@
+# Link de acesso
+
+O link para o projeto encontra-se em: https://github.com/MoisesLuc/bsi-tasks/blob/main/database/20261/tarefas/MoisesLuc/proj_mongodb.py
+
 # Resumo: MongoDB com Python
 
 O MongoDB é um banco NoSQL orientado a documentos. Ele não usa tabelas como os bancos relacionais, mas coleções de documentos em formato parecido com JSON, o que deixa o armazenamento mais flexível.
