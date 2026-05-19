@@ -1,8 +1,9 @@
 # Tarefa 03 - MongoDB
 
 ## 1. Scripts e Códigos Desenvolvidos
-* **Script de inicialização do Banco de Dados:** [app.py](./app.py)
-* **Programa de Operações CRUD (Python):** [app.py](./app.py)
+## 1. Scripts e Códigos Desenvolvidos
+* **Configuração do Servidor (Docker):** [docker-compose.yml](./docker-compose.yml)
+* **Script de Inicialização e CRUD (Python):** [app.py](./app.py)
 ---
 
 ## 2. Resumo: O MongoDB como SGBD NoSQL Orientado a Documentos
