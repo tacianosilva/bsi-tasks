@@ -32,8 +32,3 @@ database/
             └── docker-compose.yml
 
 ```
-
-## Configuração do MongoDB com Docker
-```bash
-docker compose up -d
-```
