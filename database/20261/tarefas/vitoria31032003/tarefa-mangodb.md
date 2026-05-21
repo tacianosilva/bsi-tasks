@@ -33,7 +33,7 @@ database/
 
 ```
 
-## Comfiguração do MongoDB com Docker
-´´´bash
+## Configuração do MongoDB com Docker
+```bash
 docker compose up -d
 ```
