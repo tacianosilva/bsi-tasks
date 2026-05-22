@@ -12,7 +12,6 @@ O mongodb é um banco NoSQL que armazena dados no formato orientado a documentos
 # Recursos utilizados
 - MongoDB Compass
 - Docker Compose
-- Docker
 - Node.js
 - VScod
 
