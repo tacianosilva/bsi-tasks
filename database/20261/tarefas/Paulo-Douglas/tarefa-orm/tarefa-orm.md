@@ -1,5 +1,11 @@
 # Tarefa ORM — AtividadesBD
 
+## Link do projeto
+
+- Repositório da atividade: https://github.com/Paulo-Douglas/DB2/tree/main/task/orm_task
+
+---
+
 Trabalho de acesso a banco de dados em **Python**, usando duas abordagens contra o mesmo banco PostgreSQL:
 
 1. Acesso por **driver direto** (psycopg2 — equivalente ao papel do ODBC/JDBC).
