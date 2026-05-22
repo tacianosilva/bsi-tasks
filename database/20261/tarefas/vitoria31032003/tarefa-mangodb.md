@@ -7,7 +7,7 @@
 **Email:** vitoria.assis.067@ufrn.edu.br
 
 # O que é MongoDB
-O mongodb é um banco NoSQL que armazena dados no formato orientado a documentos, lançado em fevereiro de 2009 e desenvolvido em C++. Ele foi projetado para ter uma escalabilidade e suportar grandes volumes de dados não estruturados. Sendo o banco de dados semiestruturado que permite aos usuários acessar dados facilmente a partir de uma infinidade de linguagens de programação e outras ferramentas de dados. 
+O mongodb é um banco NoSQL que armazena dados no formato orientado a documentos, lançado em fevereiro de 2009 e desenvolvido em C++. Ele foi projetado para ter uma escalabilidade e suportar grandes volumes de dados não estruturados. Sendo o banco de dados que permite aos usuários acessar dados facilmente a partir de uma infinidade de linguagens de programação e outras ferramentas de dados. 
 
 # Recursos utilizados
 - MongoDB Compass
