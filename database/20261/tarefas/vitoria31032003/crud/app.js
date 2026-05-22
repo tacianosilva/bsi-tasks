@@ -5,7 +5,7 @@ const url = "mongodb://admin:admin123@localhost:27017";
 const client = new MongoClient(url);
 
 async function main() {
-    
+
     try {
 
         await client.connect();
@@ -70,7 +70,7 @@ async function main() {
 
         await client.close();
 
-        console.log("\nConexão encerrada!");
+        console.log("\nConexão encerrada!x");
 
     }
 
