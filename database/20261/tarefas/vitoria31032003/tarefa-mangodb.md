@@ -13,6 +13,7 @@ O mongodb é um banco NoSQL que armazena dados no formato orientado a documentos
 - MongoDB Compass
 - Docker Compose
 - JavaScript
+- Node.js
 - VScod
 
 # Estrutura das pastas e arquivos
