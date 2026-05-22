@@ -39,4 +39,5 @@ database/
 4. Depois disso, de se conectar ao banco, a aplicação de CRUD foi realizada com operação de inserir, consultar, atualizar e deletar dados no banco.
 
 # Links dos arquivos
-Script de inicialização: 
+Script de inicialização: (https://github.com/vitoria31032003/bsi-tasks/blob/master/database/20261/tarefas/vitoria31032003/mongodb/init.js)
+Aplicação do CRUD: (https://github.com/vitoria31032003/bsi-tasks/blob/master/database/20261/tarefas/vitoria31032003/crud/app.js)
