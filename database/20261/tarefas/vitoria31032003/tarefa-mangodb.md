@@ -34,7 +34,7 @@ database/
 
 # Foi utilizado um processo para acessar o servidor do MongoDB
 1. O mongodb foi inicializado usando Docker com o comando: **docker compose up --d**.
-2. Após isso, o servidor permaneceu executando na porta 2707.
+2. Após isso, o servidor permaneceu executando na porta 27017.
 3. Foi utilizada uma aplicação de CRUD em JavaScript com Node.js e biblioteca **mongodb** para se conectar ao banco.
 4. Depois disso, de se conectar ao banco, a aplicação de CRUD foi realizada com operação de inserir, consultar, atualizar e deletar dados no banco.
 
