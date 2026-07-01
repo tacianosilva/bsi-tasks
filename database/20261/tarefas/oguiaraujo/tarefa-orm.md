@@ -6,7 +6,7 @@ https://github.com/oguiaraujo/BD2.git
 
 O ODBC atua como uma camada de tradução (middleware). Em vez de o Python falar diretamente a "língua" específica do SQL Server ou do Oracle, ele fala com o Driver ODBC, que então traduz os comandos para o banco de dados.
 
-# ORM (Object-Relational Mapping)
+# ORM (Object-Relational Mapping)   
 É uma técnica que permite mapear as tabelas de um banco de dados para classes em Python. Isso significa que, em vez de escrever SQL manualmente, você manipula dados como se fossem objetos comuns da linguagem.
 
 O ORM funciona como uma ponte: ele traduz as linhas e colunas de uma tabela para objetos e atributos.
