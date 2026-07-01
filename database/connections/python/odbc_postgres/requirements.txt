@@ -1,5 +1,5 @@
 # Postgresql database connection
-psycopg2-binary==2.9.3
+psycopg2-binary==2.9.10
 
 # Variáveis de ambiente arquivo .env
 python-decouple==3.6
