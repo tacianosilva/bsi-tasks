@@ -4,7 +4,7 @@
 
 - Código Python:https://github.com/THUR165/bsi-tasks/blob/tarefa-do-mongodb---issue271/database/20261/tarefas/THUR165/crud_mongodb.py
 
-- Docker:https://github.com/THUR165/bsi-tasks/blob/tarefa-do-mongodb---issue271/database/20261/tarefas/THUR165/docker-compose.yml
+- Docker:https://github.com/THUR165/bsi-tasks/blob/tarefa-do-mongodb---issue271/database/20261/tarefas/THUR165/docker-compose-t3.yml
 
 - Script de inicialização:https://github.com/THUR165/bsi-tasks/blob/tarefa-do-mongodb---issue271/database/20261/tarefas/THUR165/init_db.py
 
