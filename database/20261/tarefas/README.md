@@ -1,6 +1,6 @@
 # Tarefas 2026.1
 
-## Conexões ODBC e ORM
+## Conexão ODBC e ORM
 
 Exercício prático de conexão com base de dados usando ODBC e ORM. Siga as instruções e responda às perguntas no documento:
 
