@@ -1,3 +1,9 @@
+# BSI Tasks
+
+Repositório para Auxílio no Ensino de Banco de Dados Engenharia de Software, Teste de Software e Programação Web do curso de Bacharelado em Sistemas de Informação CERES/UFRN - Caicó RN
+
+## Teste de Software
+
 Na página da Disciplina [Teste de Software](softwaretesting/README.md) você encontra informações, materiais, exemplos e descrição das tarefas.
 
 ## Banco de Dados
@@ -29,4 +35,3 @@ Exemplos de código C# encontrados na pasta *csharp*.
 ```
 
 # Licença
-
