@@ -2,4 +2,6 @@
 
 ## MongoDB com Python
 
-Link para o repositório https://github.com/MoisesLuc/bsi-tasks/tree/main/database/20261/tarefas/MoisesLuc
+Exercício prático de conexão com base de dados usando ODBC e ORM. Siga as instruções e responda às perguntas no documento:
+
+https://docs.google.com/document/d/12fPbuvpM5zs9B56L8nOtBIcx-GqkhMOLzuXrnkfPQ-I/edit?usp=sharing

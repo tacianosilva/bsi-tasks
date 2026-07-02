@@ -1,0 +1,283 @@
+
+#!/usr/bin/env python3
+"""
+Programa CRUD para MongoDB - Gerenciamento de Atividades em Projetos
+Disciplina: Banco de Dados NoSQL
+Autor: Mariana Araújo de Medeiros
+"""
+
+from pymongo import MongoClient
+from bson import ObjectId
+from datetime import datetime
+import sys
+
+# Configurações de conexão
+MONGO_HOST = "localhost"
+MONGO_PORT = 27017
+MONGO_USER = "adminUser"
+MONGO_PASS = "senhaSegura123"
+MONGO_DB = "AtividadesProj"
+
+class GerenciadorAtividades:
+    def __init__(self):
+        """Conecta ao MongoDB e prepara as coleções"""
+        try:
+            # String de conexão com autenticação
+            self.client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/")
+            self.db = self.client[MONGO_DB]
+            
+            # Testar conexão
+            self.client.admin.command('ping')
+self.client = MongoClient(f"mongodb://{MONGO_HOST}:{MONGO_PORT}/")           print("✅ Conectado ao MongoDB com sucesso!\n")
+            0
+            self.projetos = self.db.projetos
+            self.atividades = self.db.atividades
+            self.empregados = self.db.empregados
+            
+        except Exception as e:
+            print(f"❌ Erro ao conectar ao MongoDB: {e}")
+            sys.exit(1)
+    
+    # ==================== CREATE ====================
+    def criar_atividade(self, projeto_nome, titulo, responsavel, prazo_str, horas_estimadas):
+        """
+        CREATE: Inserir uma nova atividade em um projeto existente
+        
+        Args:
+            projeto_nome: Nome do projeto
+            titulo: Título da atividade
+            responsavel: Nome do responsável
+            prazo_str: Data do prazo (formato YYYY-MM-DD)
+            horas_estimadas: Horas estimadas para conclusão
+        """
+        # Buscar o projeto
+        projeto = self.projetos.find_one({"nome": projeto_nome})
+        
+        if not projeto:
+            print(f"❌ Projeto '{projeto_nome}' não encontrado!")
+            print("Projetos disponíveis:")
+            for p in self.projetos.find({}, {"nome": 1}):
+                print(f"   - {p['nome']}")
+            return
+        
+        # Converter data
+        try:
+            prazo = datetime.strptime(prazo_str, "%Y-%m-%d")
+        except:
+            print(f"❌ Formato de data inválido! Use YYYY-MM-DD")
+            return
+        
+        # Criar nova atividade
+        nova_atividade = {
+            "projetoId": projeto["_id"],
+            "titulo": titulo,
+            "responsavel": responsavel,
+            "prazo": prazo,
+            "horasEstimadas": horas_estimadas,
+            "horasRealizadas": 0,
+            "concluida": False,
+            "dataCriacao": datetime.now()
+        }
+        
+        try:
+            result = self.atividades.insert_one(nova_atividade)
+            print(f"\n✅ Atividade criada com sucesso!")
+            print(f"   ID: {result.inserted_id}")
+            print(f"   Projeto: {projeto['nome']}")
+            print(f"   Título: {titulo}")
+            print(f"   Responsável: {responsavel}")
+            print(f"   Prazo: {prazo.strftime('%d/%m/%Y')}")
+        except Exception as e:
+            print(f"❌ Erro ao criar atividade: {e}")
+    
+    # ==================== READ ====================
+    def listar_projetos_com_atividades(self):
+        """
+        READ: Listar todos os projetos e, para cada projeto, listar suas atividades
+        """
+        print("\n" + "="*60)
+        print("📊 RELATÓRIO DE PROJETOS E ATIVIDADES")
+        print("="*60)
+        
+        # Buscar todos os projetos
+        todos_projetos = list(self.projetos.find())
+        
+        if not todos_projetos:
+            print("📭 Nenhum projeto encontrado!")
+            return
+        
+        for projeto in todos_projetos:
+            # Buscar atividades deste projeto
+            atividades_projeto = list(self.atividades.find({"projetoId": projeto["_id"]}))
+            
+            print(f"\n📁 PROJETO: {projeto['nome']}")
+            print(f"   Líder: {projeto.get('lider', 'Não definido')}")
+            print(f"   Status: {projeto.get('status', 'Não definido')}")
+            print(f"   Total de atividades: {len(atividades_projeto)}")
+            
+            if atividades_projeto:
+                print("   📋 Atividades:")
+                for i, atv in enumerate(atividades_projeto, 1):
+                    status = "✅ CONCLUÍDA" if atv.get("concluida") else "⏳ EM ANDAMENTO"
+                    print(f"      {i}. {atv['titulo']}")
+                    print(f"         - Responsável: {atv.get('responsavel', 'N/A')}")
+                    print(f"         - Prazo: {atv.get('prazo', 'N/A')}")
+                    print(f"         - Status: {status}")
+                    if atv.get('horasEstimadas'):
+                        print(f"         - Horas: {atv.get('horasRealizadas', 0)}/{atv['horasEstimadas']}")
+            else:
+                print("   📭 Nenhuma atividade cadastrada")
+        
+        print("\n" + "="*60)
+    
+    # ==================== UPDATE ====================
+    def atualizar_lider_projeto(self, projeto_nome, novo_lider):
+        """
+        UPDATE: Atualizar o líder de um projeto específico
+        
+        Args:
+            projeto_nome: Nome do projeto
+            novo_lider: Novo líder do projeto
+        """
+        # Verificar se o projeto existe
+        projeto = self.projetos.find_one({"nome": projeto_nome})
+        
+        if not projeto:
+            print(f"❌ Projeto '{projeto_nome}' não encontrado!")
+            return
+        
+        # Atualizar o líder
+        try:
+            result = self.projetos.update_one(
+                {"nome": projeto_nome},
+                {"$set": {"lider": novo_lider, "dataAtualizacao": datetime.now()}}
+            )
+            
+            if result.modified_count > 0:
+                print(f"\n✅ Líder do projeto '{projeto_nome}' atualizado com sucesso!")
+                print(f"   Antigo líder: {projeto.get('lider', 'Não definido')}")
+                print(f"   Novo líder: {novo_lider}")
+            else:
+                print(f"ℹ️ O projeto já tem '{novo_lider}' como líder!")
+                
+        except Exception as e:
+            print(f"❌ Erro ao atualizar líder: {e}")
+    
+    # ==================== DELETE ====================
+    def remover_atividade(self, titulo_atividade):
+        """
+        DELETE: Remover uma atividade de um projeto
+        
+        Args:
+            titulo_atividade: Título da atividade a ser removida
+        """
+        # Buscar a atividade
+        atividade = self.atividades.find_one({"titulo": titulo_atividade})
+        
+        if not atividade:
+            print(f"❌ Atividade '{titulo_atividade}' não encontrada!")
+            print("\nAtividades disponíveis:")
+            for a in self.atividades.find({}, {"titulo": 1}):
+                print(f"   - {a['titulo']}")
+            return
+        
+        # Confirmar exclusão
+        print(f"\n⚠️  ATENÇÃO: Você está prestes a remover a atividade:")
+        print(f"   Título: {atividade['titulo']}")
+        print(f"   Responsável: {atividade.get('responsavel', 'N/A')}")
+        
+        confirmacao = input("\nDigite 'SIM' para confirmar a exclusão: ")
+        
+        if confirmacao.upper() == "SIM":
+            try:
+                result = self.atividades.delete_one({"titulo": titulo_atividade})
+                if result.deleted_count > 0:
+                    print(f"\n🗑️ Atividade '{titulo_atividade}' removida com sucesso!")
+            except Exception as e:
+                print(f"❌ Erro ao remover atividade: {e}")
+        else:
+            print("\n❌ Exclusão cancelada!")
+    
+    # ==================== MENU INTERATIVO ====================
+    def menu(self):
+        """Exibe menu interativo para o usuário"""
+        while True:
+            print("\n" + "="*50)
+            print("📌 SISTEMA DE GERENCIAMENTO DE ATIVIDADES - CRUD MongoDB")
+            print("="*50)
+            print("1️⃣  Criar nova atividade (CREATE)")
+            print("2️⃣  Listar projetos e atividades (READ)")
+            print("3️⃣  Atualizar líder de projeto (UPDATE)")
+            print("4️⃣  Remover atividade (DELETE)")
+            print("5️⃣  Mostrar estatísticas")
+            print("0️⃣  Sair")
+            print("="*50)
+            
+            opcao = input("\n👉 Escolha uma opção: ")
+            
+            if opcao == "1":
+                print("\n--- CRIAR NOVA ATIVIDADE ---")
+                projeto_nome = input("Nome do projeto: ")
+                titulo = input("Título da atividade: ")
+                responsavel = input("Responsável: ")
+                prazo = input("Prazo (AAAA-MM-DD): ")
+                horas = int(input("Horas estimadas: "))
+                self.criar_atividade(projeto_nome, titulo, responsavel, prazo, horas)
+                
+            elif opcao == "2":
+                self.listar_projetos_com_atividades()
+                
+            elif opcao == "3":
+                print("\n--- ATUALIZAR LÍDER DO PROJETO ---")
+                projeto_nome = input("Nome do projeto: ")
+                novo_lider = input("Novo líder: ")
+                self.atualizar_lider_projeto(projeto_nome, novo_lider)
+                
+            elif opcao == "4":
+                print("\n--- REMOVER ATIVIDADE ---")
+                titulo = input("Título da atividade a remover: ")
+                self.remover_atividade(titulo)
+                
+            elif opcao == "5":
+                self.mostrar_estatisticas()
+                
+            elif opcao == "0":
+                print("\n👋 Saindo... Até logo!")
+                self.client.close()
+                break
+            else:
+                print("\n❌ Opção inválida! Tente novamente.")
+    
+    def mostrar_estatisticas(self):
+        """Mostra estatísticas do banco de dados"""
+        print("\n" + "="*50)
+        print("📊 ESTATÍSTICAS DO BANCO DE DADOS")
+        print("="*50)
+        
+        total_projetos = self.projetos.count_documents({})
+        total_atividades = self.atividades.count_documents({})
+        total_empregados = self.empregados.count_documents({})
+        
+        atividades_concluidas = self.atividades.count_documents({"concluida": True})
+        atividades_andamento = self.atividades.count_documents({"concluida": False})
+        
+        print(f"\n📁 Projetos: {total_projetos}")
+        print(f"📋 Atividades: {total_atividades}")
+        print(f"👥 Empregados: {total_empregados}")
+        print(f"\n✅ Atividades concluídas: {atividades_concluidas}")
+        print(f"⏳ Atividades em andamento: {atividades_andamento}")
+        
+        if total_atividades > 0:
+            taxa_conclusao = (atividades_concluidas / total_atividades) * 100
+            print(f"📈 Taxa de conclusão: {taxa_conclusao:.1f}%")
+
+# ==================== MAIN ====================
+if __name__ == "__main__":
+    print("\n🚀 Iniciando programa CRUD MongoDB...")
+    print("="*50)
+    
+    # Criar instância do gerenciador
+    app = GerenciadorAtividades()
+    
+    # Iniciar menu interativo
+    app.menu()
