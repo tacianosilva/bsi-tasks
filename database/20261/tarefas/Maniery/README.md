@@ -10,3 +10,4 @@ Repositório das tarefas da disciplina de Projeto e Administração de Banco de 
 ## Tarefas
 
 - [Tarefa Individual - ODBC e ORM](tarefa-orm.md)
+- [Tarefa Individual - Mongodb](tarefa-mongodb.md)
