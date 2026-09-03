@@ -7,12 +7,11 @@ Este diretório reúne os **enunciados das tarefas** da disciplina de Banco de D
 | Tarefa | Arquivo | Link |
 |--------|---------|------|
 | Tarefa 01 — Conceitos de BD, ACID e SGBD | [tarefa-conceitos-bd.md](tarefa-conceitos-bd.md) | [Abrir](tarefa-conceitos-bd.md) |
-
-> As demais tarefas serão adicionadas nesta lista conforme forem publicadas durante o semestre.
+| Tarefa 02 — MER e Projeto de Banco de Dados Relacional | [tarefa-mer-bdr.md](tarefa-mer-bdr.md) | [Abrir](tarefa-mer-bdr.md) |
 
 ## Como entregar
 
-Cada tarefa deve ser respondida em Markdown seguindo as instruções do enunciado. As respostas devem ser colocadas na pasta de respostas do semestre correspondente (`database/<semestre>/<username>/`) e entregues por meio de um **pull request** (PR) do seu fork para o repositório original.
+Cada tarefa deve ser respondida em Markdown seguindo as instruções do enunciado. As respostas devem ser colocadas na pasta de respostas do semestre correspondente (`database/<semestre>/<username>/`) e entregues por meio de um **pull request** da sua **feature branch (fork)** para a **branch main (bsi-tasks)**.
 
 Para mais detalhes sobre onde colocar as respostas, veja o [README de respostas](../20262/README.md).
 

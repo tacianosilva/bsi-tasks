@@ -17,4 +17,4 @@ Dentro dela, são colocados os arquivos **Markdown** de resposta de cada tarefa,
 
 Este diretório contém, em geral, **apenas arquivos Markdown de resposta** das tarefas. Os enunciados das tarefas, materiais, links e tutoriais ficam na pasta `database/tarefas/` deste repositório.
 
-Cada resposta deve ser entregue por meio de um **pull request** (PR) do seu fork para o repositório original, conforme instruções de cada tarefa.
+Cada resposta deve ser entregue por meio de um **pull request** da sua **feature branch (fork)** para a **branch main (bsi-tasks)**, conforme instruções de cada tarefa.
