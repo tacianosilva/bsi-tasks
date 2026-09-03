@@ -9,6 +9,30 @@ Conteúdos, tutorias e exemplos para as disciplinas relacionadas com Banco de Da
 * [Tarefas Individuais](20231/tarefas/README.md)
 * [Tarefas em Equipe - Projeto](20231/projetos/README.md)
 
+### Semestre 2023.2
+
+* [Tarefas](20232/tarefas/README.md)
+
+### Semestre 2024.1
+
+* [Tarefas](20241/tarefas/README.md)
+
+### Semestre 2025.1
+
+* [Tarefas](20251/tarefas/README.md)
+
+### Semestre 2025.2
+
+* [Tarefas](20252/tarefas/README.md)
+
+### Semestre 2026.1
+
+* [Tarefas](20261/tarefas/README.md)
+
+### Semestre 2026.2
+
+* [Tarefas](20262/README.md)
+
 ## Scripts SQL dos exemplos
 
 No diretório [Scripts](scripts/) temos vários scripts de criação e povoamento para Base de Dados usadas nas aulas da disciplina Banco de Dados.

@@ -27,3 +27,11 @@ languages/scala/hello-maven/.mvn/
 lessons/django-oauth/.env
 lessons/django-oauth/db.sqlite3
 database/connections/java/spring-data-jpa/.env
+
+# Build and IDE artifacts (global)
+**/.idea/
+**/target/
+**/*.class
+**/*.save
+**/node_modules/
+**/package-lock.json

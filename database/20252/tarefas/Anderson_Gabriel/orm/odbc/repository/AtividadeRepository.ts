@@ -1,4 +1,4 @@
-import { atividadeSchema } from "../schema/atividade.shcema";
+import { atividadeSchema } from "../schema/atividade.schema";
 import conexaoODBC from "../service/server";
 import ProjetoRepository from "./ProjetoRepository";
 
