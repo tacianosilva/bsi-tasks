@@ -9,9 +9,10 @@ Acesse o Guia Básico de Markdown:
 * [https://docs.pipz.com/central-de-ajuda/learning-center/guia-basico-de-markdown](https://docs.pipz.com/central-de-ajuda/learning-center/guia-basico-de-markdown)
 
 Fluxo de entrega sugerido:
-1. Crie uma **branch** específica para a tarefa (ex.: `tarefa01/<username>` ou `feature/tarefa01`).
-2. Desenvolva as respostas nessa branch, com commits pequenos e mensagens relevantes.
-3. No final, envie (push) a branch para o seu fork e abra um **pull request** do seu fork para o repositório original.
+1. **Crie uma issue** no repositório original **bsi-tasks** com o título **"Tarefa 01 - Conceitos de BD - \<username\>"** (onde `<username>` é o seu nome de usuário do github). Você precisará do **ID dessa issue** para identificar os seus commits.
+2. Crie uma **branch** específica para a tarefa no seu fork (ex.: `tarefa01/<username>` ou `feature/tarefa01`).
+3. Desenvolva as respostas nessa branch, com commits pequenos e mensagens relevantes.
+4. No final, envie (push) a branch para o seu fork e abra um **pull request** do seu fork para o repositório original.
 
 Responda às questões abaixo no arquivo **`database/20262/<username>/tarefa01.md`** do seu fork, onde `<username>` é o seu nome de usuário do github:
 
@@ -39,14 +40,15 @@ Sem utilizar SQL, elabore um **mini-projeto conceitual** do banco de dados dessa
 
 **Instrução de commits (obrigatória):**
 
-Para cada questão que você resolver (Q1 a Q6), faça um **commit pequeno** com uma mensagem relevante e, ao final dela, acrescente o **ID da issue** criada no formato `#<id_issue>`. Ao final da atividade, envie sua branch para o seu **fork** e depois crie um **pull request** do seu fork para o repositório da disciplina.
+Antes de começar, crie a issue no repositório original com o título **"Tarefa 01 - Conceitos de BD - \<username\>"** e guarde o **ID** dela. Para cada questão que você resolver (Q1 a Q6), faça um **commit pequeno** com uma mensagem relevante e, ao final dela, acrescente o **ID da issue** no formato `#<id_issue>`. Ao final da atividade, envie sua branch para o seu **fork** e depois crie um **pull request** do seu fork para o repositório da disciplina.
 
 Lembre-se das boas práticas do Git:
 
-1. **atualizar seu fork** a partir do original (fetch/pull) antes de começar a desenvolver
-2. faça **um clone do seu fork**: **git clone** *https://github.com/USERNAME/bsi-tasks.git*
-3. crie uma **branch** para a tarefa e trabalhe nela
-4. fazer git pull para atualizar sua pasta de trabalho: **git pull**
-5. fazer commits pequenos e sempre colocar uma mensagem relevante e ao final da mensagem identifique a issue com **\#\<id\_issue\>**
-6. enviar suas modificações para seu repositório remoto: **git push origin \<branch\>**
-7. enviar um **pull request** com suas contribuições
+1. **criar a issue** no repositório original **bsi-tasks** com o título **"Tarefa 01 - Conceitos de BD - \<username\>"** e anotar o **ID da issue**
+2. **atualizar seu fork** a partir do original (fetch/pull) antes de começar a desenvolver
+3. faça **um clone do seu fork**: **git clone** *https://github.com/USERNAME/bsi-tasks.git*
+4. crie uma **branch** para a tarefa e trabalhe nela
+5. fazer git pull para atualizar sua pasta de trabalho: **git pull**
+6. fazer commits pequenos e sempre colocar uma mensagem relevante e ao final da mensagem identifique a issue com **\#\<id\_issue\>**
+7. enviar suas modificações para seu repositório remoto: **git push origin \<branch\>**
+8. enviar um **pull request** com suas contribuições
