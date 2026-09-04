@@ -30,3 +30,14 @@ Antes dos SGBDs, os dados eram frequentemente armazenados em sistemas de arquivo
 | **Consistência** | A transação deve levar o banco de um estado válido para outro estado válido, respeitando todas as regras e restrições. | A soma total dos saldos do banco antes e depois da transferência deve ser a mesma. O saldo de A não pode ficar negativo se a regra impedir. | A transferência é concluída, mas deixa a conta A com saldo negativo não permitido, violando as regras do negócio. |
 | **Isolamento** | Transações simultâneas não devem interferir umas nas outras. Cada uma deve ocorrer como se fosse a única no sistema. | O usuário A tenta transferir para B, e simultaneamente para C, usando seu saldo de R$ 100. | Ambas as transferências leem o saldo inicial de R$ 100 ao mesmo tempo e ambas são aprovadas. O usuário gasta o mesmo dinheiro duas vezes (anomalia de concorrência). |
 | **Durabilidade** | Uma vez que a transação é concluída (commit), seus efeitos são permanentes, mesmo em caso de falha de sistema. | O sistema confirma a transferência na tela do usuário. O dado já está salvo em disco de forma definitiva. | O sistema confirma a transferência, mas cai logo em seguida antes de escrever no disco físico. Ao reiniciar, a transferência sumiu como se nunca tivesse ocorrido. |
+
+## Q4. Para cada cenário abaixo, indique qual(is) propriedade(s) ACID está(ão) em jogo e justifique sua resposta:
+
+*   **a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.**
+    *   **Propriedade violada:** **Atomicidade**. A transação foi dividida ao meio, contrariando a regra de que ela deve ser executada por completo ou totalmente desfeita (rollback).
+*   **b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.**
+    *   **Propriedade violada:** **Isolamento**. As transações concorrentes enxergaram estados intermediários umas das outras (ou o mesmo estado inicial simultaneamente), gerando uma condição de corrida (*race condition*).
+*   **c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.**
+    *   **Propriedade violada:** **Durabilidade**. A garantia de que uma transação comutada (*committed*) sobrevive a falhas de hardware ou software falhou.
+*   **d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**
+    *   **Propriedade em ação:** **Consistência**. O SGBD impediu que a transação fosse concluída porque ela violaria uma regra de integridade do sistema (saldo >= limite).
