@@ -48,3 +48,78 @@ Antes dos SGBDs, os dados eram frequentemente armazenados em sistemas de arquivo
 2.  **Integridade (Integrity):** É a garantia da correção e validade dos dados. O SGBD gerencia isso através da aplicação de *constraints* (restrições), como Chaves Primárias, Chaves Estrangeiras e regras de domínio.
 3.  **Redundância (Redundancy):** É o armazenamento repetido da mesma informação. O SGBD (em conjunto com um bom design relacional) ajuda a minimizar a redundância centralizando as tabelas e usando chaves estrangeiras.
 4.  **Inconsistência (Inconsistency):** É uma consequência direta da redundância descontrolada. O SGBD evita isso mantendo uma única fonte de verdade.
+
+## Q6. Considere o cenário de uma empresa de desenvolvimento de software que atende outras empresas como clientes. A empresa organiza seu trabalho em squads (equipes) compostas por desenvolvedores, testadores, líder técnico, supervisor e gerente de produto. Cada squad resolve tarefas (issues) e planeja releases, testes e o cronograma de sprints (iterações) dos projetos de cada cliente. 
+**Sem utilizar SQL, elabore um mini-projeto conceitual do banco de dados dessa empresa, deixando claro:**
+- **A) As principais entidades envolvidas (clientes, squads, membros, tarefas, projetos, sprints, releases).**
+- **B) Os principais atributos de cada entidade.** 
+- **C) Os relacionamentos entre as entidades (com a cardinalidade, ex.: "um cliente pode ter vários projetos").**
+- **D) Em linguagem natural, as regras de integridade (restrições) que o banco de dados deveria garantir, ex.: "apenas um líder por squad", "toda tarefa precisa estar vinculada a um projeto".**
+
+
+
+### A) Entidades e B) Principais Atributos
+
+*   **Cliente:** 
+    * `id_cliente` (PK), 
+    * `nome_empresa`, 
+    * `cnpj`, 
+    * `setor`, 
+    * `contato_principal`.
+
+*   **Squad:** 
+    * `id_squad` (PK), 
+    * `nome_squad`, 
+    * `especialidade`.
+
+*   **Membro:** 
+    * `id_membro` (PK), 
+    * `nome_membro`, 
+    * `email`, 
+    * `cargo`.
+
+*   **Projeto:** 
+    * `id_projeto` (PK), 
+    * `nome_projeto`, 
+    * `descricao`, 
+    * `data_inicio`, 
+    * `data_fim_prevista`, 
+    * `status`.
+
+*   **Sprint:** `id_sprint` (PK),
+    * `nome_sprint`, 
+    * `data_inicio`, 
+    * `data_fim`, 
+    * `objetivo`.
+
+*   **Release:** `id_release` (PK), 
+    * `versao`, 
+    * `data_lancamento`, 
+    * `notas_release`.
+
+*   **Tarefa (Issue):** `id_tarefa` (PK), 
+    * `titulo`, 
+    * `descricao`, 
+    * `status`, 
+    * `prioridade`, 
+    * `estimativa_horas`.
+
+### C) Relacionamentos e Cardinalidade
+
+*   **Cliente e Projeto (1 : N):** Um *Cliente* pode possuir vários *Projetos*, mas um *Projeto* pertence a exatamente um *Cliente*.
+*   **Squad e Projeto (1 : N):** Uma *Squad* pode gerenciar vários *Projetos*, mas um *Projeto* é atribuído a exatamente uma *Squad*.
+*   **Squad e Membro (1 : N):** Uma *Squad* é composta por vários *Membros*, mas um *Membro* pertence a apenas uma *Squad*.
+*   **Projeto e Sprint (1 : N):** Um *Projeto* possui várias *Sprints*, mas uma *Sprint* pertence a apenas um *Projeto*.
+*   **Projeto e Release (1 : N):** Um *Projeto* possui várias *Releases*, mas uma *Release* pertence a apenas um *Projeto*.
+*   **Sprint e Tarefa (1 : N):** Uma *Sprint* contém várias *Tarefas*, mas uma *Tarefa* pertence a, no máximo, uma *Sprint*.
+*   **Release e Tarefa (1 : N):** Uma *Release* engloba várias *Tarefas*, mas uma *Tarefa* está associada a, no máximo, uma *Release*.
+*   **Membro e Tarefa (1 : N):** Um *Membro* pode ser o responsável por várias *Tarefas*, mas uma *Tarefa* é alocada a apenas um *Membro*.
+
+### D) Regras de Integridade (Restrições)
+
+1.  **Restrição de Liderança:** Cada Squad deve possuir exatamente um (e não mais que um) membro com o cargo de "Líder Técnico" ativo.
+2.  **Dependência Existencial da Tarefa:** Toda Tarefa deve, obrigatoriamente, estar vinculada a um Projeto válido.
+3.  **Consistência Temporal da Sprint:** A `data_fim` de uma Sprint deve ser obrigatoriamente maior ou igual à sua `data_inicio`. Sprints do mesmo Projeto não podem ter sobreposição de datas.
+4.  **Consistência Temporal da Release:** A `data_lancamento` de uma Release não pode ser anterior à `data_inicio` do Projeto ao qual ela pertence.
+5.  **Regra de Atribuição:** Uma Tarefa só pode ser atribuída a um Membro que pertença à mesma Squad responsável pelo Projeto dessa Tarefa.
+6.  **Integridade de Identificação:** Não podem existir dois Clientes com o mesmo `cnpj` cadastrado.
