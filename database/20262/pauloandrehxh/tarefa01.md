@@ -41,3 +41,10 @@ Antes dos SGBDs, os dados eram frequentemente armazenados em sistemas de arquivo
     *   **Propriedade violada:** **Durabilidade**. A garantia de que uma transação comutada (*committed*) sobrevive a falhas de hardware ou software falhou.
 *   **d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**
     *   **Propriedade em ação:** **Consistência**. O SGBD impediu que a transação fosse concluída porque ela violaria uma regra de integridade do sistema (saldo >= limite).
+
+## Q5. Um SGBD trata dos seguintes aspectos: recuperação, integridade, redundância e inconsistência. Explique cada um deles e descreva como o SGBD os gerencia.
+
+1.  **Recuperação (Recovery):** É a capacidade de restaurar o banco de dados para um estado consistente após uma falha. O SGBD gerencia isso através de *logs de transações* que registram todas as mudanças antes que elas sejam efetivadas no disco, permitindo refazer ou desfazer operações.
+2.  **Integridade (Integrity):** É a garantia da correção e validade dos dados. O SGBD gerencia isso através da aplicação de *constraints* (restrições), como Chaves Primárias, Chaves Estrangeiras e regras de domínio.
+3.  **Redundância (Redundancy):** É o armazenamento repetido da mesma informação. O SGBD (em conjunto com um bom design relacional) ajuda a minimizar a redundância centralizando as tabelas e usando chaves estrangeiras.
+4.  **Inconsistência (Inconsistency):** É uma consequência direta da redundância descontrolada. O SGBD evita isso mantendo uma única fonte de verdade.
