@@ -128,3 +128,135 @@ A inconsistencia acontece quando existem informações diferentes para o mesmo d
 Por exemplo, se o telefone de um cliente aparece como 9999-1111 em um lugar e 8888-2222 em outro.
 
 O SGBD ajuda a evitar esse problema mantendo os dados organizados e controlando as alterações feitas nas informações.
+
+Q6. Mini-projeto conceitual
+
+A empresa de desenvolvimento de software possui clientes, projetos, squads, membros, tarefas, sprints e releases.
+
+Entidades e atributos
+
+Cliente
+
+id
+
+nome
+
+CNPJ
+
+email
+
+telefone
+
+Projeto
+
+id
+
+nome
+
+descricao
+
+data de inicio
+
+data de fim
+
+status
+
+Squad
+
+id
+
+nome
+
+Membro
+
+id
+
+nome
+
+email
+
+cargo
+
+Tarefa
+
+id
+
+titulo
+
+descricao
+
+status
+
+prioridade
+
+data de criacao
+
+Sprint
+
+id
+
+nome
+
+objetivo
+
+data de inicio
+
+data de fim
+
+Release
+
+id
+
+versao
+
+data
+
+status
+
+Relacionamentos
+
+Um cliente pode possuir varios projetos.
+
+Um projeto pertence a um cliente.
+
+Um projeto pode possuir varias tarefas.
+
+Uma tarefa deve estar vinculada a um projeto.
+
+Um projeto pode possuir varias sprints.
+
+Uma sprint pertence a um projeto.
+
+Um projeto pode possuir varias releases.
+
+Uma release pertence a um projeto.
+
+Uma squad pode possuir varios membros.
+
+Um membro pertence a uma squad.
+
+Uma squad deve possuir apenas um lider tecnico.
+
+Uma squad pode possuir varios desenvolvedores e testadores.
+
+Uma squad pode possuir um supervisor e um gerente de produto.
+
+Regras de integridade
+
+Todo projeto deve estar vinculado a um cliente.
+
+Toda tarefa deve estar vinculada a um projeto.
+
+Toda sprint deve estar vinculada a um projeto.
+
+Toda release deve estar vinculada a um projeto.
+
+Cada membro deve estar vinculado a uma squad.
+
+Uma squad deve possuir apenas um lider tecnico.
+
+Os identificadores das entidades devem ser unicos.
+
+Uma sprint deve possuir uma data de inicio anterior a data de fim.
+
+Uma release deve estar vinculada a um projeto existente.
