@@ -260,3 +260,36 @@ Os identificadores das entidades devem ser unicos.
 Uma sprint deve possuir uma data de inicio anterior a data de fim.
 
 Uma release deve estar vinculada a um projeto existente.
+
+
+## Git e GitHub
+
+### Branch
+
+Uma branch e uma ramificacao do projeto que permite desenvolver ou fazer alterações sem modificar diretamente a branch principal.
+
+Por exemplo, podemos criar uma branch chamada `tarefa01/leonardobreno` para desenvolver uma tarefa e depois juntar essas alterações na branch principal.
+
+### Pull Request
+
+Um Pull Request e uma solicitação para que as alterações feitas em uma branch sejam analisadas e adicionadas a outra branch.
+
+No GitHub, podemos criar um Pull Request da nossa branch de trabalho para a branch `main` do repositorio original.
+
+### Merge
+
+O merge e a operação de juntar as alterações de uma branch com outra.
+
+Por exemplo, depois que uma tarefa e revisada, a branch da tarefa pode ser integrada na branch `main` por meio de um merge.
+
+### Rebase
+
+O rebase e uma forma de reorganizar os commits de uma branch usando como base uma outra branch.
+
+Ele pode ser utilizado para atualizar uma branch com alterações mais recentes da `main`, mantendo o historico de commits mais organizado.
+
+### Conflitos
+
+Um conflito acontece quando duas alterações diferentes tentam modificar a mesma parte de um arquivo e o Git nao consegue decidir automaticamente qual alteração deve ser mantida.
+
+Quando isso acontece, o desenvolvedor precisa analisar as alterações e escolher o que deve permanecer antes de finalizar o merge ou rebase.
