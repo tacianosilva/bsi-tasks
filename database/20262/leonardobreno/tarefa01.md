@@ -15,7 +15,20 @@ Ele fornece recursos para armazenar,consultar,alterar e excluir o banco de dados
 tambem auxilia no controle de segurança,integridade,concorrencia e recuperação das informações.
 
 Exemplos de SGBDs:
-    MySQL, PostgreSQL, Oracle, Database, Microsoft SQL Server e SQlite.
+    MySQL, PostgreSQL, Oracle Database, Microsoft SQL Server e SQLite.
 
 uma empresa pode possuiro um banco de dados contendo os dados dos clientes e pedidos e utilizar o PostgreSQL para gerenciar essas informações.
 
+Q2. Problemas dos Sistemas de Arquivos
+
+Os sistemas de arquivos podem apresentar varios problemas quando usados para armazenar muitos dados.
+
+Um dos principais problemas e a redundancia de dados, pois a mesma informação pode aparecer em varios arquivos.
+
+Tambem pode acontecer a inconsistencia dos dados, quando uma informação e alterada em um arquivo mas continua diferente em outro arquivo.
+
+Outro problema e a dificuldade para controlar o acesso de varios usuarios ao mesmo tempo, pois duas pessoas podem tentar alterar o mesmo dado ao mesmo tempo.
+
+Tambem existem problemas de segurança, recuperação dos dados depois de falhas e dificuldade para realizar consultas e alterações mais complexas.
+
+Por esses motivos os SGBDs sao utilizados para facilitar a organização, segurança, integridade e recuperação dos dados.
