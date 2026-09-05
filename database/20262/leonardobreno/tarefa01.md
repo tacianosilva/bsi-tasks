@@ -100,3 +100,31 @@ d - Uma transferencia que levaria o saldo abaixo do limite permitido e rejeitada
 A propriedade envolvida e a consistencia.
 
 Isso acontece porque o banco precisa garantir que os dados continuem seguindo as regras definidas, nesse caso nao permitindo que o saldo fique abaixo do limite.
+
+Q5. Recuperação, integridade, redundancia e inconsistencia
+
+Recuperação
+
+A recuperação e o processo de recuperar os dados depois de uma falha no sistema, como uma queda de energia ou problema no servidor.
+
+O SGBD possui mecanismos que permitem recuperar os dados e deixar o banco em um estado correto depois de uma falha.
+
+Integridade
+
+A integridade significa manter os dados corretos e de acordo com as regras definidas no banco de dados.
+
+O SGBD pode utilizar regras e restrições para evitar dados incorretos, como valores duplicados ou informações que nao podem ficar vazias.
+
+Redundancia
+
+A redundancia acontece quando a mesma informação e armazenada varias vezes sem necessidade.
+
+O SGBD ajuda a diminuir esse problema organizando os dados de forma que uma mesma informação nao precise ser repetida em varios lugares.
+
+Inconsistencia
+
+A inconsistencia acontece quando existem informações diferentes para o mesmo dado.
+
+Por exemplo, se o telefone de um cliente aparece como 9999-1111 em um lugar e 8888-2222 em outro.
+
+O SGBD ajuda a evitar esse problema mantendo os dados organizados e controlando as alterações feitas nas informações.
