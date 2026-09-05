@@ -72,3 +72,31 @@ A durabilidade significa que depois que uma operação for confirmada, seus dado
 Em uma transferencia bancaria, depois que o banco confirmar a operação, o resultado deve continuar salvo mesmo se o servidor desligar logo depois.
 
 Se o SGBD nao garantir a durabilidade, uma transferencia poderia ser confirmada e depois desaparecer quando o servidor fosse reiniciado.
+
+Q4. Propriedades ACID nos cenarios
+
+a - Queda de energia no meio de uma transferencia deixou o valor debitado da conta de origem, mas nao creditado na conta de destino.
+
+A propriedade envolvida e a atomicidade.
+
+Isso acontece porque a transferencia deveria ser realizada por completo ou nao ser realizada.
+
+Nesse caso apenas uma parte da operação aconteceu.
+
+b - Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.
+
+A propriedade envolvida e o isolamento.
+
+Isso acontece porque existem duas operações acontecendo ao mesmo tempo e o SGBD precisa controlar essas operações para evitar que o saldo fique incorreto.
+
+c - O sistema confirma a operação, mas depois de reiniciar o servidor o dado foi perdido.
+
+A propriedade envolvida e a durabilidade.
+
+Depois que a operação foi confirmada, o dado deveria continuar armazenado mesmo depois de uma falha ou reinicialização do servidor.
+
+d - Uma transferencia que levaria o saldo abaixo do limite permitido e rejeitada pelo banco.
+
+A propriedade envolvida e a consistencia.
+
+Isso acontece porque o banco precisa garantir que os dados continuem seguindo as regras definidas, nesse caso nao permitindo que o saldo fique abaixo do limite.
