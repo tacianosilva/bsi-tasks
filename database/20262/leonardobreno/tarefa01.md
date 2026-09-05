@@ -32,3 +32,43 @@ Outro problema e a dificuldade para controlar o acesso de varios usuarios ao mes
 Tambem existem problemas de segurança, recuperação dos dados depois de falhas e dificuldade para realizar consultas e alterações mais complexas.
 
 Por esses motivos os SGBDs sao utilizados para facilitar a organização, segurança, integridade e recuperação dos dados.
+
+Q3. Propriedades ACID
+
+Atomicidade
+
+A atomicidade significa que uma operação deve acontecer por completo ou nao acontecer.
+
+Em uma transferencia bancaria, primeiro o valor e retirado da conta de origem e depois colocado na conta de destino.
+
+As duas operações devem acontecer juntas.
+
+Se o SGBD nao garantir a atomicidade, pode acontecer de o dinheiro ser retirado da conta de origem mas nao chegar na conta de destino.
+
+Consistencia
+
+A consistencia significa que os dados devem continuar seguindo as regras definidas pelo banco de dados.
+
+Em uma transferencia bancaria, o banco pode ter uma regra que impede que o saldo fique abaixo de um determinado limite.
+
+Se uma transferencia fizer o saldo ficar abaixo desse limite, a operação deve ser recusada.
+
+Se o SGBD nao garantir a consistencia, poderiam existir dados que nao seguem as regras do sistema.
+
+Isolamento
+
+O isolamento significa que operações realizadas ao mesmo tempo nao devem causar problemas umas nas outras.
+
+Por exemplo, dois atendentes podem tentar realizar uma transferencia ou retirar dinheiro da mesma conta ao mesmo tempo.
+
+O SGBD deve controlar essas operações para que o saldo final fique correto.
+
+Se o SGBD nao garantir o isolamento, duas operações simultaneas poderiam usar o mesmo saldo e causar um valor incorreto.
+
+Durabilidade
+
+A durabilidade significa que depois que uma operação for confirmada, seus dados devem continuar armazenados mesmo que aconteça uma falha no sistema.
+
+Em uma transferencia bancaria, depois que o banco confirmar a operação, o resultado deve continuar salvo mesmo se o servidor desligar logo depois.
+
+Se o SGBD nao garantir a durabilidade, uma transferencia poderia ser confirmada e depois desaparecer quando o servidor fosse reiniciado.
