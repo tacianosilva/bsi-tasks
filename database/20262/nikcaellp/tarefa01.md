@@ -44,3 +44,88 @@ Um SGBD tem como objetivo facilitar o gerenciamento dos dados, garantindo sua or
 A recuperação permite restaurar os dados após falhas, utilizando mecanismos como backups e registros das transações. A integridade garante que os dados permaneçam corretos e respeitem as regras estabelecidas pelo sistema. 
 A redundância é controlada para evitar a duplicação desnecessária de informações, reduzindo o desperdício de espaço e possíveis conflitos. 
 Já a inconsistência é evitada por meio de mecanismos que garantem que os dados permaneçam corretos e coerentes durante as operações realizadas no banco.
+
+## Q6.
+Principais Entidades e Atributos
+
+Entidade: Cliente
+Atributos:
+id_cliente
+nome
+CNPJ
+email
+telefone
+
+Entidade: Projeto
+Atributos:
+id_projeto
+nome
+descricao
+data_inicio
+data_fim
+status
+
+entidade: Equipes
+Atributos: 
+id_squad
+nome
+descricao
+
+Entidade: Membro
+Atributos: 
+id_membro
+nome
+email
+cargo
+
+Entidade: Tarefa
+Atributos: 
+id_tarefa
+titulo
+descricao
+status
+prioridade
+data_criacao
+data_conclusao
+
+Entidade: Sprint
+Atributos: 
+id_sprint
+nome
+data_inicio
+data_fim
+objetivo
+
+Entidade: Release
+Atributos: 
+id_release
+versao
+data_lancamento
+descricao
+status
+
+Relacionamentos e cardinalidades
+Cliente → Projeto: um cliente pode ter vários projetos, mas cada projeto pertence a um único cliente. (1,n)(1,1)
+Projeto → Squad: um projeto pode ser atendido por um ou vários squads, e um squad pode trabalhar em um ou vários projetos.(1,n)(1,n)
+Squad → Membro: um squad possui vários membros, e um membro pode participar de um ou vários squads.(1,n)(1,n)
+Projeto → Tarefa: um projeto pode possuir várias tarefas, e cada tarefa pertence a um único projeto.(1,n) (1,1)
+Projeto → Sprint: um projeto pode possuir várias sprints, e cada sprint pertence a um projeto.(1,n)(1,1)
+Sprint → Tarefa: uma sprint pode conter várias tarefas, e uma tarefa pode ser planejada em uma sprint.(1,n)(0,1)
+Projeto → Release: um projeto pode possuir várias releases, e cada release pertence a um projeto.(1,n) (1,1)
+Release → Tarefa: uma release pode incluir várias tarefas, e uma tarefa pode estar associada a uma release.(1,n) (0,1)
+
+Regras de integridade
+O banco de dados deve garantir que:
+
+Todo projeto esteja vinculado a um cliente existente.
+Toda tarefa esteja vinculada a um projeto.
+Toda sprint esteja vinculada a um projeto.
+Toda release esteja vinculada a um projeto.
+Um squad deve possuir pelo menos um membro.
+Cada squad deve possuir apenas um líder técnico, um supervisor e um gerente de produto.
+Um membro não pode ocupar simultaneamente cargos incompatíveis dentro do mesmo squad.
+A data de término de uma sprint não pode ser anterior à sua data de início.
+Uma release deve possuir uma versão e estar vinculada a um projeto válido.
+Uma tarefa não pode ser atribuída a uma sprint de outro projeto.
+
+[Diagrama da Q6](https://app.brmodeloweb.com/publicview/6a9d94904aef6b43c180c202)
