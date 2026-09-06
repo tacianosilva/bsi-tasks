@@ -38,3 +38,9 @@ Durabilidade: a propriedade nessa situação teria que garantir que após o serv
 
 d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
 Consistência: impede que uma regra do sistema seja quebrada, já que sem saldo suficeinte a transação não seria permitida
+
+## Q5. Um SGBD trata dos seguintes aspectos: recuperação, integridade, redundância e inconsistência. Explique cada um deles e descreva como o SGBD os gerencia.
+Um SGBD tem como objetivo facilitar o gerenciamento dos dados, garantindo sua organização, segurança e confiabilidade. 
+A recuperação permite restaurar os dados após falhas, utilizando mecanismos como backups e registros das transações. A integridade garante que os dados permaneçam corretos e respeitem as regras estabelecidas pelo sistema. 
+A redundância é controlada para evitar a duplicação desnecessária de informações, reduzindo o desperdício de espaço e possíveis conflitos. 
+Já a inconsistência é evitada por meio de mecanismos que garantem que os dados permaneçam corretos e coerentes durante as operações realizadas no banco.
