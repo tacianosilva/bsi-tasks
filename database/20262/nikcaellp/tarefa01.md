@@ -9,3 +9,7 @@ SGBDs: São sistemas de gerenciamento de banco de dados, utilizados para gerenci
 
 ## Q2. Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados?
 Os principais seriam a organização dos dados, evitar inconsistências, reduzir redundâncias, dificuldades de acessos e consultas, segurança, dificuldades de compartilhamento, concorrência e problemas de integridade
+
+## Q3. Explique as propriedades ACID: atomicidade, consistência, isolamento e durabilidade. Para cada propriedade, descreva um exemplo prático no contexto de uma transferência bancária e explique o que aconteceria se o SGBD não garantisse essa propriedade.
+As propriedades ACID garentem confiabilidade e padronização de armazenamento e gerenciamento dos dados, a uma maneira que garante que os dados só possam ser alterados se seguirem as observações da ACID.## Q2. Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados?
+Os principais seriam a organização dos dados, inconsistências, redundâncias, acessos e consultas, segurança, dificuldades de compartilhamento, concorrência e problemas de integridade
