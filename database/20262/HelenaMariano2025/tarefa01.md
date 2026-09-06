@@ -114,3 +114,37 @@ A propriedade envolvida é principalmente a **Consistência**.
 O banco de dados possui regras que precisam ser respeitadas, como a restrição de que o saldo não pode ficar abaixo de determinado limite. Antes de confirmar a transferência, o SGBD deve verificar essas regras.
 
 Nesse caso, a operação é rejeitada para impedir que o banco de dados fique em um estado inválido.
+
+## Q5. Recuperação, integridade, redundância e inconsistência
+
+### Recuperação
+
+A recuperação é o conjunto de mecanismos utilizados para restaurar o banco de dados após uma falha, como queda de energia, erro do sistema ou falha de hardware.
+
+O SGBD utiliza recursos como logs de transações, backups e mecanismos de recuperação para tentar garantir que os dados não sejam perdidos ou permaneçam em um estado incorreto após uma falha.
+
+Por exemplo, se ocorrer uma queda de energia durante uma transferência bancária, o SGBD pode utilizar as informações registradas no log para desfazer uma operação incompleta ou recuperar uma transação que já havia sido confirmada.
+
+### Integridade
+
+A integridade está relacionada à garantia de que os dados armazenados sejam válidos, corretos e estejam de acordo com as regras definidas para o banco de dados.
+
+O SGBD gerencia a integridade por meio de restrições e regras, como chaves primárias, chaves estrangeiras, valores obrigatórios e restrições de domínio.
+
+Por exemplo, uma chave estrangeira pode impedir que uma venda seja cadastrada para um cliente que não existe no banco de dados.
+
+### Redundância
+
+A redundância ocorre quando uma mesma informação é armazenada mais de uma vez sem necessidade.
+
+O SGBD pode reduzir a redundância por meio de uma boa organização do banco de dados, como a normalização, que busca dividir os dados em estruturas relacionadas de forma adequada.
+
+Por exemplo, em vez de armazenar os dados completos de um cliente em todas as suas compras, os dados do cliente podem ser armazenados uma única vez e relacionados aos registros de suas compras.
+
+### Inconsistência
+
+A inconsistência ocorre quando existem informações diferentes ou incorretas para representar o mesmo dado.
+
+O SGBD busca evitar inconsistências por meio do controle de integridade, das transações e do controle de concorrência.
+
+Por exemplo, se duas partes do sistema possuem informações diferentes sobre o saldo de uma conta, existe uma inconsistência. O SGBD utiliza mecanismos de transação e controle de concorrência para evitar que operações simultâneas deixem o banco de dados em um estado incorreto.
