@@ -25,3 +25,16 @@ Duas transferências ocorrendo simultaneamente não devem causar interferência 
 
 *Durabilidade: Depois que uma transação é confirmada (salva), os dados ficam garantidos permanentemente.
 Depois que a transferência for confirmada, ela deve continuar registrada mesmo se o servidor ou sistema for reiniciado.
+
+## Q4. Para cada cenário abaixo, indique qual(is) propriedade(s) ACID está(ão) em jogo e justifique sua resposta: 
+a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino:  
+Atomicidade: nesse cenário a atomicidade iria garantir que após a queda de energia o valor não seria debitado da conta de origem, pós a transação não foi encerrada, por isso o processo todo teria que ser cancelado.
+
+b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta. 
+Isolamento: As duas operações ocorrem simultaneamente e precisam ser isoladas para que uma não interfira nos dados utilizados pela outra.
+
+c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.
+Durabilidade: a propriedade nessa situação teria que garantir que após o servidor fosse reiniciado, os dados ainda estariam salvos e armazenados
+
+d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+Consistência: impede que uma regra do sistema seja quebrada, já que sem saldo suficeinte a transação não seria permitida
