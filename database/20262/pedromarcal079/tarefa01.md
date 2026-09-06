@@ -45,3 +45,15 @@ Durabilidade. Uma vez que a transação foi confirmada (commit), os dados altera
 Consistência. SGBD e a aplicação devem garantir que o banco passe de um estado válido a outro, respeitando todas as regras de negócio e restrições de integridade definidas, como a proibição de ultrapassar o limite permitido de saldo.
 
 ---
+
+# Q5 - Um SGBD trata dos seguintes aspectos: recuperação, integridade, redundância e inconsistência. Explique cada um deles e descreva como o SGBD os gerencia. 
+
+A recuperação trata da capacidade de restaurar o banco a um estado consistente após falhas de hardware, software ou interrupções de energia. O SGBD gerencia isso mantendo um arquivo de log de transações (Write-Ahead Logging), o que permite refazer operações confirmadas (redo) e desfazer operações incompletas (undo) durante o reinício do sistema.
+
+A integridade garante a precisão, validade e confiabilidade dos dados armazenados em conformidade com as regras do negócio e do modelo relacional. O SGBD a gerencia aplicando restrições automáticas declaradas no esquema, como chaves primárias (integridade de entidade), chaves estrangeiras (integridade referencial), valores não nulos (NOT NULL) e regras de checagem (CHECK).
+
+A redundância refere-se à duplicação desnecessária de um mesmo dado em diferentes tabelas ou registros do banco. O SGBD mitiga esse problema por meio de técnicas de normalização e estruturas relacionais bem modeladas, assegurando que cada dado possua um local único de armazenamento lógico, utilizando referências (chaves estrangeiras) em vez de cópias.
+
+A inconsistência ocorre quando cópias de um mesmo dado assumem valores divergentes devido a falhas em atualizações simultâneas ou redundância descontrolada. O SGBD a gerencia integrando o controle de redundância com mecanismos de controle de concorrência e transações ACID, garantindo que toda modificação seja propagada de forma atômica e coordenada em todo o sistema.
+
+---
