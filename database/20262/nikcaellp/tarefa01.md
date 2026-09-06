@@ -6,3 +6,6 @@ SGBDs: São sistemas de gerenciamento de banco de dados, utilizados para gerenci
 - mongoDB: Banco de dados orientado a documentos
 - oracleDB: Banco de dados relacional de uma empresa
 - postgreSQL: Banco de dados de uma aplicação
+
+## Q2. Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados?
+Os principais seriam a organização dos dados, evitar inconsistências, reduzir redundâncias, dificuldades de acessos e consultas, segurança, dificuldades de compartilhamento, concorrência e problemas de integridade
