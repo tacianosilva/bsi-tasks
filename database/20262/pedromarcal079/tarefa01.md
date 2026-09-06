@@ -57,3 +57,52 @@ A redundância refere-se à duplicação desnecessária de um mesmo dado em dife
 A inconsistência ocorre quando cópias de um mesmo dado assumem valores divergentes devido a falhas em atualizações simultâneas ou redundância descontrolada. O SGBD a gerencia integrando o controle de redundância com mecanismos de controle de concorrência e transações ACID, garantindo que toda modificação seja propagada de forma atômica e coordenada em todo o sistema.
 
 ---
+
+# Q6 - Considere o cenário de uma empresa de desenvolvimento de software que atende outras empresas como clientes. A empresa organiza seu trabalho em squads (equipes) compostas por desenvolvedores, testadores, líder técnico, supervisor e gerente de produto. Cada squad resolve tarefas (issues) e planeja releases, testes e o cronograma de sprints (iterações) dos projetos de cada cliente. 
+
+# Sem utilizar SQL, elabore um mini-projeto conceitual do banco de dados dessa empresa, deixando claro: 
+
+## a) As principais entidades envolvidas (clientes, squads, membros, tarefas, projetos, sprints, releases). 
+
+* Cliente: representa a empresa contratante que demanda e financia as soluções de software.
+* Projeto: representa o escopo de software contratado por um cliente a ser desenvolvido.
+* Squad: representa a equipe multidisciplinar de colaboradores alocada para executar projetos.
+* Membro: representa os profissionais individuais que integram as equipes técnicas e de gestão.
+* Sprint: representa a iteração ou ciclo de tempo fixo de trabalho planejado para o projeto.
+* Tarefa (Issue): representa a unidade de trabalho, funcionalidade ou correção a ser realizada.
+* Release: representa o pacote de entrega ou versão finalizada do software publicada para o cliente.
+* Teste: representa os procedimentos de validação e garantia de qualidade aplicados às tarefas.
+
+## b) Os principais atributos de cada entidade. 
+
+* Cliente: id_cliente (identificador único), razao_social, cnpj, email_contato, telefone.
+* Projeto: id_projeto (identificador único), nome_projeto, descricao, data_inicio, data_previsao_fim, status.
+* Squad: id_squad (identificador único), nome_squad, data_criacao.
+* Membro: id_membro (identificador único), nome, email, cargo_papel (Desenvolvedor, Testador, Líder Técnico, Supervisor, Gerente de Produto).
+* Sprint: id_sprint (identificador único), numero_sprint, data_inicio, data_fim, objetivo.
+* Tarefa (Issue): id_tarefa (identificador único), titulo, descricao, tipo (Bug, Feature, Melhoria), prioridade, status (A * Fazer, Em Andamento, Concluída).
+* Release: id_release (identificador único), versao_tag (ex.: v1.0.0), data_lancamento, notas_da_versao.
+* Teste: id_teste (identificador único), nome_cenario, resultado (Passou, Falhou, Bloqueado), data_execucao.
+
+## c) Os relacionamentos entre as entidades (com a cardinalidade, ex.: "um cliente pode ter vários projetos").
+
+* Cliente – Projeto: Um Cliente pode contratar um ou muitos Projetos (1:N), e cada Projeto pertence obrigatoriamente a exatamente um Cliente (1:1).
+* Squad – Projeto: Uma Squad pode atender a um ou vários Projetos ao longo do tempo (1:N), e cada Projeto é conduzido por uma Squad responsável (1:1).
+* Squad – Membro: Uma Squad é composta por vários Membros (1:N), e cada Membro está alocado em exatamente uma Squad ativa por período (1:1).
+* Projeto – Sprint: Um Projeto é organizado em uma ou várias Sprints (1:N), e cada Sprint pertence exclusivamente a um Projeto (1:1).
+* Projeto – Release: Um Projeto planeja uma ou várias Releases (1:N), e cada Release pertence a um único Projeto (1:1).
+* Sprint – Tarefa: Uma Sprint pode conter zero, uma ou várias Tarefas (1:N), e cada Tarefa planejada está associada a uma única Sprint (1:1).
+* Membro – Tarefa: Um Membro pode ser responsável por zero ou várias Tarefas (1:N), e cada Tarefa possui no máximo um Membro responsável atribuído (0:1).
+* Release – Tarefa: Uma Release agrupa uma ou várias Tarefas concluídas (1:N), e uma Tarefa finalizada pode compor no máximo uma Release (0:1).
+* Tarefa – Teste: Uma Tarefa pode passar por um ou vários Testes de validação (1:N), e cada Teste é vinculado a uma Tarefa específica (1:1).
+
+## d) Em linguagem natural, as regras de integridade (restrições) que o banco de dados deveria garantir, ex.: "apenas um líder por squad", "toda tarefa precisa estar vinculada a um projeto". 
+
+* Liderança e Gestão Únicas por Squad: Cada Squad deve possuir obrigatoriamente apenas um Líder Técnico e no máximo um Gerente de Produto ativos simultaneamente.
+* Consistência Cronológica das Sprints: A data de término de uma Sprint deve ser estritamente posterior à sua data de início, e duas Sprints do mesmo Projeto não podem ter intervalos de datas sobrepostos.
+* Vínculo Obrigatório de Tarefas: Toda Tarefa cadastrada deve estar obrigatoriamente associada a um Projeto ativo e a uma Squad executora.
+* Atribuição Consistente de Responsáveis: Um Membro só pode ser atribuído como responsável por uma Tarefa se pertencer à mesma Squad responsável pelo Projeto da referida Tarefa.
+* Validação Prévia para Fechamento de Release: Uma Tarefa só pode ser vinculada a uma Release se todos os seus Testes associados tiverem status registrado como "Passou" e o status da própria Tarefa for "Done".
+* Unicidade de Identificadores e Versões: Cada Cliente deve possuir um CNPJ único no sistema, e a versão de cada Release deve ser única dentro do escopo do mesmo Projeto.
+
+---
