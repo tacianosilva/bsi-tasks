@@ -148,3 +148,178 @@ A inconsistência ocorre quando existem informações diferentes ou incorretas p
 O SGBD busca evitar inconsistências por meio do controle de integridade, das transações e do controle de concorrência.
 
 Por exemplo, se duas partes do sistema possuem informações diferentes sobre o saldo de uma conta, existe uma inconsistência. O SGBD utiliza mecanismos de transação e controle de concorrência para evitar que operações simultâneas deixem o banco de dados em um estado incorreto.
+
+## Q6. Mini-projeto conceitual de uma empresa de desenvolvimento de software
+
+Considerando o cenário apresentado, pode-se elaborar um modelo conceitual para representar os principais dados utilizados pela empresa de desenvolvimento de software.
+
+### a Entidades envolvidas
+
+As principais entidades identificadas são:
+
+- **Cliente:** empresa que contrata os serviços de desenvolvimento.
+- **Projeto:** trabalho desenvolvido para um cliente.
+- **Squad:** equipe responsável pelo desenvolvimento de um ou mais projetos.
+- **Membro:** profissional que participa de uma squad.
+- **Tarefa:** atividade ou issue que precisa ser realizada dentro de um projeto.
+- **Sprint:** período de desenvolvimento em que um conjunto de tarefas é planejado e executado.
+- **Release:** versão ou entrega do projeto disponibilizada ao cliente.
+
+### b Principais atributos
+
+#### Cliente
+
+- id_cliente
+- nome
+- CNPJ
+- email
+- telefone
+
+#### Projeto
+
+- id_projeto
+- nome
+- descrição
+- data_inicio
+- data_fim
+- status
+
+#### Squad
+
+- id_squad
+- nome
+- descrição
+
+#### Membro
+
+- id_membro
+- nome
+- email
+- cargo
+- data_entrada
+
+O atributo **cargo** pode representar funções como desenvolvedor, testador, líder técnico, supervisor ou gerente de produto.
+
+#### Tarefa
+
+- id_tarefa
+- título
+- descrição
+- status
+- prioridade
+- data_criacao
+- data_conclusao
+
+#### Sprint
+
+- id_sprint
+- nome
+- data_inicio
+- data_fim
+- objetivo
+- status
+
+#### Release
+
+- id_release
+- versão
+- data_prevista
+- data_lancamento
+- status
+- descrição
+
+### c Relacionamentos e cardinalidades
+
+#### Cliente — Projeto
+
+Um **cliente pode possuir vários projetos**, enquanto cada projeto pertence a um único cliente.
+
+**Cardinalidade:** Cliente (1) — (N) Projeto.
+
+#### Projeto — Squad
+
+Um **projeto pode ser desenvolvido por uma ou várias squads**, e uma squad pode trabalhar em vários projetos.
+
+**Cardinalidade:** Projeto (N) — (N) Squad.
+
+#### Squad — Membro
+
+Uma **squad é formada por vários membros**, e um membro pode participar de uma ou mais squads ao longo dos projetos.
+
+**Cardinalidade:** Squad (N) — (N) Membro.
+
+#### Projeto — Tarefa
+
+Um **projeto possui várias tarefas**, enquanto cada tarefa deve estar vinculada a um único projeto.
+
+**Cardinalidade:** Projeto (1) — (N) Tarefa.
+
+#### Projeto — Sprint
+
+Um **projeto pode possuir várias sprints**, e cada sprint pertence a um único projeto.
+
+**Cardinalidade:** Projeto (1) — (N) Sprint.
+
+#### Sprint — Tarefa
+
+Uma **sprint pode possuir várias tarefas**, e uma tarefa pode ser planejada para uma sprint. Uma tarefa também pode existir antes de ser atribuída a uma sprint.
+
+**Cardinalidade:** Sprint (1) — (N) Tarefa.
+
+#### Projeto — Release
+
+Um **projeto pode possuir várias releases**, enquanto cada release pertence a um único projeto.
+
+**Cardinalidade:** Projeto (1) — (N) Release.
+
+#### Membro — Tarefa
+
+Um **membro pode ser responsável por várias tarefas**, enquanto uma tarefa pode possuir um membro responsável.
+
+**Cardinalidade:** Membro (1) — (N) Tarefa.
+
+### d Regras de integridade
+
+O banco de dados deve garantir algumas regras para manter os dados corretos e consistentes:
+
+1. Todo cliente deve possuir um identificador único.
+
+2. Todo projeto deve estar vinculado a um cliente existente.
+
+3. Um cliente pode possuir vários projetos, mas cada projeto deve pertencer a apenas um cliente.
+
+4. Uma tarefa deve estar vinculada a um projeto existente.
+
+5. Uma sprint deve estar vinculada a um projeto existente.
+
+6. Uma release deve estar vinculada a um projeto existente.
+
+7. Uma tarefa não pode ser atribuída a uma sprint pertencente a outro projeto.
+
+8. Uma tarefa pode possuir apenas um membro responsável por vez.
+
+9. Uma squad deve possuir pelo menos um membro.
+
+10. Cada membro deve possuir uma função definida dentro da equipe.
+
+11. Cada squad deve possuir apenas um líder técnico responsável pela equipe.
+
+12. Uma squad pode possuir vários desenvolvedores e testadores.
+
+13. Uma squad pode possuir apenas um supervisor responsável pela equipe.
+
+14. Uma squad pode possuir um gerente de produto responsável pelo acompanhamento do produto.
+
+15. As datas de uma sprint devem ser válidas, de forma que a data de início não seja posterior à data de término.
+
+16. As datas de uma release devem ser compatíveis com o cronograma do projeto.
+
+17. Os identificadores de clientes, projetos, squads, membros, tarefas, sprints e releases devem ser únicos.
+
+18. Uma tarefa concluída deve possuir seu status registrado como concluído e, quando aplicável, uma data de conclusão.
+
+19. Uma release não deve ser marcada como lançada antes de sua data de lançamento.
+
+20. Um projeto encerrado não deve receber novas tarefas ou sprints sem uma alteração válida de seu estado.
+
+Essas regras ajudam o SGBD a manter os dados íntegros, consistentes e relacionados corretamente, evitando registros inválidos ou informações conflitantes.
