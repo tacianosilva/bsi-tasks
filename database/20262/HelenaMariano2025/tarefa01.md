@@ -80,3 +80,37 @@ A durabilidade garante que, depois que uma transação é confirmada, seus dados
 Em uma transferência bancária, depois que o banco confirma a operação, o débito e o crédito devem permanecer registrados mesmo que o servidor seja reiniciado logo depois.
 
 Sem durabilidade, uma transferência poderia ser confirmada para o usuário, mas desaparecer do banco de dados após uma falha no servidor.
+
+## Q4. Situações envolvendo as propriedades ACID
+
+### a Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.
+
+A propriedade envolvida é principalmente a **Atomicidade**.
+
+Uma transferência bancária deve ser tratada como uma única transação: o valor deve ser debitado da conta de origem e creditado na conta de destino. Se uma queda de energia ocorrer entre essas duas operações, o SGBD deve desfazer o débito para que a transferência não fique parcialmente concluída.
+
+Nesse caso, a atomicidade não foi garantida, pois apenas uma parte da transação foi realizada.
+
+### b Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.
+
+A propriedade envolvida é principalmente o **Isolamento**.
+
+Quando duas operações são realizadas simultaneamente sobre a mesma conta, o SGBD deve controlar a execução das transações para evitar que uma operação utilize informações incorretas ou desatualizadas.
+
+Sem isolamento adequado, as duas transações podem ler o mesmo saldo disponível e ambas realizarem o débito, causando um saldo incorreto ou permitindo que a conta seja utilizada além do limite permitido.
+
+### c O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.
+
+A propriedade envolvida é a **Durabilidade**.
+
+Depois que uma transação é confirmada, seus resultados devem permanecer armazenados mesmo após uma falha do sistema, queda de energia ou reinicialização do servidor.
+
+Nesse caso, a durabilidade não foi garantida porque a operação foi confirmada, mas o dado foi perdido após o reinício.
+
+### d Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+
+A propriedade envolvida é principalmente a **Consistência**.
+
+O banco de dados possui regras que precisam ser respeitadas, como a restrição de que o saldo não pode ficar abaixo de determinado limite. Antes de confirmar a transferência, o SGBD deve verificar essas regras.
+
+Nesse caso, a operação é rejeitada para impedir que o banco de dados fique em um estado inválido.
