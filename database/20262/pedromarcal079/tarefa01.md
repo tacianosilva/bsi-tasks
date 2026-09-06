@@ -25,3 +25,23 @@ O **Isolamento** dita que transações concorrentes ocorram sem interferir umas 
 A **Durabilidade** certifica que, após a confirmação da transferência, as mudanças persistam de forma definitiva no banco, mesmo diante de falhas de energia ou quedas do servidor. Se o SGBD não garantisse essa persistência, o cliente veria a transferência confirmada na tela, mas um reinício repentino do servidor apagaria o registro, desfazendo o crédito já validado.
 
 ---
+
+# Q4 - Para cada cenário abaixo, indique qual(is) propriedade(s) ACID está(ão) em jogo e justifique sua resposta: 
+
+## a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino. 
+
+Atomicidade. A transferência bancária é uma transação indivisível composta por débito e crédito; ao falhar no meio do caminho, o SGBD deveria ter desfeito o débito para manter o princípio do "tudo ou nada".
+
+## b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta. 
+
+Isolamento. O cenário envolve concorrência entre duas transações simultâneas sobre o mesmo recurso; o SGBD deve isolar as execuções para que uma não sobrescreva ou tome decisões com base no estado não finalizado da outra (evitando perda de atualização).
+
+## c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido. 
+
+Durabilidade. Uma vez que a transação foi confirmada (commit), os dados alterados devem resistir a falhas e reinicializações do sistema, sendo gravados de forma permanente no armazenamento não volátil (geralmente por meio de logs de transação).
+
+## d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+
+Consistência. SGBD e a aplicação devem garantir que o banco passe de um estado válido a outro, respeitando todas as regras de negócio e restrições de integridade definidas, como a proibição de ultrapassar o limite permitido de saldo.
+
+---
