@@ -29,3 +29,13 @@ Antes dos SGBDs, os dados eram salvos em sistemas de arquivos comuns do sistema 
 * **Durabilidade:** Uma vez confirmada (*commit*), a transação é permanente, mesmo em caso de falha do sistema.
   * *Exemplo:* O caixa eletrônico emite o comprovante da transferência e, um segundo depois, acaba a energia do data center.
   * *Se falhar:* Ao reiniciar, a transferência confirmada não estaria no banco de dados. Com durabilidade garantida, o dado já estará salvo no disco físico.
+
+### Q4. Identificação das Propriedades ACID nos Cenários
+* **a)** Queda de energia no meio de uma transferência deixou o valor debitado, mas não creditado.
+  * **Propriedade:** **Atomicidade**. Justificativa: A transação foi interrompida pela metade e não desfez (rollback) as etapas parciais.
+* **b)** Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.
+  * **Propriedade:** **Isolamento**. Justificativa: Falta de controle de concorrência. Uma transação enxergou o estado incompleto ou não bloqueado da outra.
+* **c)** O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.
+  * **Propriedade:** **Durabilidade**. Justificativa: A garantia de que um dado "commitado" sobreviveria a falhas (sendo gravado em disco) não foi cumprida.
+* **d)** Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+  * **Propriedade:** **Consistência**. Justificativa: O SGBD impediu a operação porque ela violava uma restrição de integridade (regra de negócio de limite de saldo).
