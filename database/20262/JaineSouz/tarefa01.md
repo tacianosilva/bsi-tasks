@@ -76,3 +76,39 @@ Por exemplo, depois que uma transferência bancária é confirmada, o débito e 
 
 Sem durabilidade, uma operação poderia ser confirmada para o usuário e posteriormente desaparecer, fazendo com que o banco retornasse a um estado anterior.
 
+
+
+## Q4. Cenários envolvendo ACID
+
+### a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.
+
+A propriedade diretamente envolvida é a **atomicidade**.
+
+A transferência deveria ser tratada como uma única transação. O débito e o crédito precisam ocorrer juntos. Se ocorrer uma falha no meio da operação, o SGBD deve desfazer o débito ou completar corretamente a transação, evitando que apenas uma parte seja efetivada.
+
+Também existe relação com a **durabilidade**, pois o SGBD precisa manter corretamente o estado recuperado após a falha.
+
+### b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.
+
+A propriedade diretamente envolvida é o **isolamento**.
+
+As duas transações estão acontecendo simultaneamente e precisam ser controladas para evitar que ambas utilizem o mesmo estado do saldo de maneira incorreta.
+
+Sem isolamento, as duas operações poderiam ler o mesmo saldo e realizar débitos que ultrapassassem o valor realmente disponível.
+
+### c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.
+
+A propriedade diretamente envolvida é a **durabilidade**.
+
+Depois de uma transação ser confirmada, seus efeitos precisam permanecer armazenados mesmo depois de uma falha ou reinicialização do servidor.
+
+Se o dado fosse perdido, a operação que havia sido confirmada deixaria de existir.
+
+### d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+
+A propriedade diretamente envolvida é a **consistência**.
+
+O banco possui uma regra que determina que o saldo não pode ficar abaixo de determinado limite. A transação deve respeitar essa regra.
+
+Nesse caso, o SGBD deve impedir que uma operação inválida seja confirmada e, consequentemente, manter o banco de dados em um estado consistente.
+
