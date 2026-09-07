@@ -27,9 +27,89 @@ Duas das principais notações são a Notação de Chen e a Notação UML. Elas 
 
 ---
 
+# Q4. A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.
 
+### CLIENTE
+
+| Atributo      | Tipo   | Chave |
+| ------------- | ------ | ----- |
+| id            | string | PK    |
+| nome          | string |       |
+| email_contato | string |       |
+
+### FUNCIONARIO
+
+| Atributo | Tipo   | Chave          |
+| -------- | ------ | -------------- |
+| id       | string | PK             |
+| nome     | string |                |
+| email    | string |                |
+| papel    | string |                |
+| squad_id | string | FK → SQUAD.id |
+
+### SQUAD
+
+| Atributo | Tipo   | Chave |
+| -------- | ------ | ----- |
+| id       | string | PK    |
+| nome     | string |       |
+
+### PROJETO
+
+| Atributo   | Tipo   | Chave            |
+| ---------- | ------ | ---------------- |
+| id         | string | PK               |
+| nome       | string |                  |
+| descricao  | string |                  |
+| cliente_id | string | FK → CLIENTE.id |
+
+### SQUAD_PROJETO (tabela associativa)
+
+| Atributo   | Tipo   | Chave                |
+| ---------- | ------ | -------------------- |
+| squad_id   | string | PK, FK → SQUAD.id   |
+| projeto_id | string | PK, FK → PROJETO.id |
+
+### SPRINT
+
+| Atributo    | Tipo   | Chave            |
+| ----------- | ------ | ---------------- |
+| id          | string | PK               |
+| numero      | int    |                  |
+| data_inicio | date   |                  |
+| data_fim    | date   |                  |
+| squad_id    | string | FK → SQUAD.id   |
+| projeto_id  | string | FK → PROJETO.id |
+
+### RELEASE
+
+| Atributo       | Tipo   | Chave            |
+| -------------- | ------ | ---------------- |
+| id             | string | PK               |
+| versao         | string |                  |
+| data_planejada | date   |                  |
+| squad_id       | string | FK → SQUAD.id   |
+| projeto_id     | string | FK → PROJETO.id |
+
+### TAREFA
+
+| Atributo         | Tipo   | Chave                           |
+| ---------------- | ------ | ------------------------------- |
+| id               | string | PK                              |
+| descricao        | string |                                 |
+| prioridade       | string |                                 |
+| situacao         | string |                                 |
+| estimativa_horas | float  |                                 |
+| id_projeto       | string | FK → PROJETO.id (obrigatório) |
+| id_sprint        | string | FK → SPRINT.id (opcional)      |
+| id_funcionario   | string | FK → FUNCIONARIO.id (opcional) |
+| id_release       | string | FK → RELEASE.id (opcional)     |
 
 <p a<wbr>
+
+---
+
+
 
 <p a<wbr>
 
