@@ -33,3 +33,46 @@ Os principais problemas são:
 - **Dificuldade de recuperação:** em caso de falhas, pode ser difícil recuperar os dados para um estado consistente.
 - **Dependência entre programas e dados:** alterações na estrutura dos arquivos podem exigir alterações nos programas que os utilizam.
 - **Dificuldade de garantir integridade:** torna-se mais difícil garantir que os dados sigam determinadas regras e restrições.
+
+
+## Q3. Propriedades ACID
+
+As propriedades **ACID** são características que garantem maior confiabilidade às transações realizadas em um banco de dados. ACID significa **Atomicidade, Consistência, Isolamento e Durabilidade**.
+
+### Atomicidade
+
+Atomicidade significa que uma transação deve ser tratada como uma operação única: ela é realizada completamente ou não é realizada.
+
+Em uma transferência bancária, suponha que uma pessoa transfira R$ 500,00 da conta A para a conta B. A operação envolve duas ações:
+
+1. Retirar R$ 500,00 da conta A.
+2. Adicionar R$ 500,00 na conta B.
+
+As duas operações devem ocorrer juntas.
+
+Se o SGBD não garantisse atomicidade e ocorresse uma falha depois do débito, mas antes do crédito, o dinheiro poderia ser retirado da conta A sem aparecer na conta B.
+
+### Consistência
+
+Consistência significa que uma transação deve levar o banco de dados de um estado válido para outro estado válido, respeitando as regras e restrições definidas.
+
+Por exemplo, se uma conta não pode ficar com saldo negativo, uma transferência não deve permitir que o saldo da conta de origem fique abaixo desse limite.
+
+Se a consistência não fosse garantida, uma transferência poderia deixar a conta com um saldo inválido, violando as regras estabelecidas pelo banco.
+
+### Isolamento
+
+Isolamento significa que transações executadas simultaneamente não devem interferir de maneira incorreta umas nas outras. O resultado deve ser equivalente a uma execução controlada das operações.
+
+Por exemplo, imagine que duas transferências sejam realizadas simultaneamente usando o mesmo saldo. O SGBD deve controlar essas operações para que as duas transações não utilizem incorretamente o mesmo saldo disponível.
+
+Sem isolamento, duas operações poderiam ler o mesmo saldo antes que uma delas fosse efetivada, causando um resultado incorreto.
+
+### Durabilidade
+
+Durabilidade significa que, depois que uma transação é confirmada, seus efeitos devem permanecer armazenados mesmo que ocorra uma falha posteriormente.
+
+Por exemplo, depois que uma transferência bancária é confirmada, o débito e o crédito devem continuar registrados mesmo se ocorrer uma queda de energia ou o servidor precisar ser reiniciado.
+
+Sem durabilidade, uma operação poderia ser confirmada para o usuário e posteriormente desaparecer, fazendo com que o banco retornasse a um estado anterior.
+
