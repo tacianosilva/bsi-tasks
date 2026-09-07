@@ -89,3 +89,18 @@ falha ou reinicialização do servidor. Nesse caso, a durabilidade não foi gara
 
 **R: Consistência.** A transação foi rejeitada porque violaria uma regra ou restrição do banco de dados. A consistência garante
 que as transações não deixem o banco de dados em um estado inválido.
+
+**Q5.**
+
+* **Recuperação:** É a capacidade de restaurar os dados para um estado consistente após uma falha, como uma queda de energia ou
+erro no sistema. O SGBD gerencia isso por meio de mecanismos como logs de transações, backups e recuperação de dados.
+
+* **Integridade:** Refere-se à garantia de que os dados permaneçam corretos, válidos e consistentes. O SGBD utiliza regras e
+restrições, como `PRIMARY KEY`, `FOREIGN KEY`, `NOT NULL` e `UNIQUE`, para impedir a inserção de dados inválidos.
+
+* **Redundância:** Ocorre quando a mesma informação é armazenada mais de uma vez de forma desnecessária. O SGBD pode reduzir a
+redundância por meio da organização adequada das tabelas e da normalização do banco de dados.
+
+* **Inconsistência:** Ocorre quando existem diferentes versões de uma mesma informação e elas apresentam valores diferentes. O
+SGBD ajuda a evitar esse problema por meio do controle das transações, das restrições de integridade e do gerenciamento
+dos acessos concorrentes.
