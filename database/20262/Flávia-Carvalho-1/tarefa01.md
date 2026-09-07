@@ -50,3 +50,8 @@ As propriedades ACID garantem que as transações realizadas no banco de dados s
 **c)** A propriedade envolvida é a **durabilidade**, pois uma operação confirmada deve continuar registrada mesmo depois de uma falha ou reinicialização do servidor. Se o dado foi perdido, essa propriedade não foi garantida.
 
 **d)** A propriedade envolvida é a **consistência**, pois o banco deve manter suas regras após uma operação. Como a transferência faria o saldo ficar abaixo do limite permitido, ela deve ser rejeitada para manter os dados dentro das regras definidas.
+
+
+## Q5. Um SGBD trata dos seguintes aspectos: recuperação, integridade, redundância e inconsistência. Explique cada um deles e descreva como o SGBD os gerencia.
+
+A **recuperação** está relacionada à capacidade de recuperar os dados após uma falha no sistema, evitando que as informações sejam perdidas. A **integridade** garante que os dados permaneçam corretos e sigam as regras definidas no banco. A **redundância** ocorre quando uma mesma informação é armazenada mais de uma vez, e o SGBD busca reduzir essa repetição para evitar desperdício e problemas nos dados. A **inconsistência** acontece quando existem informações diferentes para um mesmo dado. O SGBD ajuda a evitar esse problema mantendo os dados atualizados e seguindo as regras de integridade.
