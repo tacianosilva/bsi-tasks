@@ -102,3 +102,117 @@ erDiagram
     SPRINT ||--o{ TAREFA : "organiza"
     SQUAD ||--o{ RELEASE : "planeja"
     RELEASE ||--o{ TAREFA : "agrupa"
+```
+
+## Q4. Mapeamento para o Modelo Relacional
+
+A partir do Diagrama ER conceitual, realizamos o mapeamento para o modelo relacional convertendo as entidades em tabelas e aplicando as regras de transformação de relacionamentos (como a propagação de chaves estrangeiras nas relações 1 para N).
+
+### Relações (Tabelas) e suas Estruturas
+
+1. **CLIENTE**
+   * **Atributos:** `codigo` (PK), `nome`, `email_contato`
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** Nenhuma
+
+2. **PROJETO**
+   * **Atributos:** `codigo` (PK), `nome`, `descricao`, `cliente_codigo` (FK)
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** `cliente_codigo` faz referência a `CLIENTE(codigo)` *(Representa a cardinalidade 1 para N entre Cliente e Projeto)*.
+
+3. **SQUAD**
+   * **Atributos:** `codigo` (PK), `nome`
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** Nenhuma
+
+4. **FUNCIONARIO**
+   * **Atributos:** `codigo` (PK), `nome`, `email`, `papel`, `squad_codigo` (FK)
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** `squad_codigo` faz referência a `SQUAD(codigo)` *(Representa a cardinalidade 1 para N entre Squad e Funcionário)*.
+
+5. **SPRINT**
+   * **Atributos:** `codigo` (PK), `numero`, `data_inicio`, `data_fim`, `squad_codigo` (FK)
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** `squad_codigo` faz referência a `SQUAD(codigo)` *(Representa a cardinalidade 1 para N entre Squad e Sprint)*.
+
+6. **TAREFA (Issue)**
+   * **Atributos:** `codigo` (PK), `descricao`, `prioridade`, `status`, `estimativa_horas`, `projeto_codigo` (FK), `squad_codigo` (FK), `sprint_codigo` (FK), `release_codigo` (FK - opcional)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):** 
+     * `projeto_codigo` faz referência a `PROJETO(codigo)`
+     * `squad_codigo` faz referência a `SQUAD(codigo)`
+     * `sprint_codigo` faz referência a `SPRINT(codigo)`
+     * `release_codigo` faz referência a `RELEASE(codigo)` *(vínculo da tarefa com a release que a agrupa)*.
+
+7. **RELEASE**
+   * **Atributos:** `codigo` (PK), `versao`, `data_lancamento`, `cliente_codigo` (FK), `squad_codigo` (FK)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):** 
+     * `cliente_codigo` faz referência a `CLIENTE(codigo)` *(indica o cliente para quem a release é planejada)*
+     * `squad_codigo` faz referência a `SQUAD(codigo)` *(indica qual squad planejou a release)*.
+
+```mermaid
+erDiagram
+    CLIENTE {
+        string codigo PK
+        string nome
+        string email_contato
+    }
+
+    PROJETO {
+        string codigo PK
+        string nome
+        string descricao
+        string cliente_codigo FK
+    }
+
+    SQUAD {
+        string codigo PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        string codigo PK
+        string nome
+        string email
+        string papel
+        string squad_codigo FK
+    }
+
+    SPRINT {
+        string codigo PK
+        int numero
+        string data_inicio
+        string data_fim
+        string squad_codigo FK
+    }
+
+    TAREFA {
+        string codigo PK
+        string descricao
+        string prioridade
+        string status
+        int estimativa_horas
+        string projeto_codigo FK
+        string squad_codigo FK
+        string sprint_codigo FK
+        string release_codigo FK
+    }
+
+    RELEASE {
+        string codigo PK
+        string versao
+        string data_lancamento
+        string cliente_codigo FK
+        string squad_codigo FK
+    }
+
+    CLIENTE ||--o{ PROJETO : "1:N"
+    CLIENTE ||--o{ RELEASE : "1:N"
+    SQUAD ||--o{ FUNCIONARIO : "1:N"
+    SQUAD ||--o{ SPRINT : "1:N"
+    SQUAD ||--o{ RELEASE : "1:N"
+    SQUAD ||--o{ TAREFA : "1:N"
+    PROJETO ||--o{ TAREFA : "1:N"
+    SPRINT ||--o{ TAREFA : "1:N"
+    RELEASE ||--o{ TAREFA : "1:N"
