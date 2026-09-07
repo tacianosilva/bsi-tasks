@@ -21,3 +21,16 @@ Por exemplo, uma empresa pode ter um banco de dados contendo informações de se
 ## Q2. Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados?
 
 O uso de sistemas de arquivos para armazenar dados pode causar problemas como a redundância de informações, quando os mesmos dados são armazenados em diferentes arquivos, ocupando espaço desnecessário. Também pode ocorrer inconsistência, caso uma informação seja alterada em um arquivo e permaneça desatualizada em outro. Além disso, o acesso aos dados pode se tornar mais difícil conforme a quantidade de arquivos aumenta. Quando várias pessoas precisam alterar os mesmos arquivos ao mesmo tempo, podem ocorrer conflitos ou perda de informações. Outro problema está relacionado à segurança, pois pode ser difícil controlar quais usuários podem acessar ou modificar determinados dados. Em caso de falhas, a recuperação das informações também pode ser complicada.
+
+
+## Q3. Explique as propriedades ACID: atomicidade, consistência, isolamento e durabilidade. Para cada propriedade, descreva um exemplo prático no contexto de uma transferência bancária e explique o que aconteceria se o SGBD não garantisse essa propriedade.
+
+As propriedades ACID garantem que as transações realizadas no banco de dados sejam executadas de forma segura.
+
+**Atomicidade** significa que uma transação deve ser concluída por inteiro ou não ser realizada. Em uma transferência bancária, o valor deve ser retirado da conta de origem e creditado na conta de destino. Se ocorrer uma falha depois do débito, a operação deve ser desfeita. Sem atomicidade, o dinheiro poderia ser retirado da conta de origem sem chegar à conta de destino.
+
+**Consistência** significa que os dados devem continuar seguindo as regras definidas pelo banco de dados após uma transação. Em uma transferência, o saldo das contas deve continuar correto e dentro das regras estabelecidas. Sem consistência, uma operação poderia deixar dados inválidos, como um saldo abaixo do limite permitido.
+
+**Isolamento** significa que transações realizadas ao mesmo tempo não devem interferir umas nas outras de forma incorreta. Por exemplo, se duas transferências forem realizadas ao mesmo tempo na mesma conta, cada uma deve considerar corretamente o saldo disponível. Sem isolamento, as duas operações poderiam usar o mesmo saldo e permitir um valor maior do que o disponível.
+
+**Durabilidade** significa que, depois que uma transação é confirmada, seus dados devem permanecer armazenados mesmo que ocorra uma falha no sistema. Em uma transferência, depois que o banco confirmar a operação, o débito e o crédito devem continuar registrados mesmo após uma queda de energia ou reinicialização do servidor. Sem durabilidade, uma transferência confirmada poderia desaparecer após uma falha.
