@@ -35,3 +35,84 @@ As notações de Diagrama Entidade-Relacionamento mais comuns são a Notação d
     * Chen: Elipses (círculos/ovais) ligadas à entidade por linhas, com a chave sublinhada.
 
     * Crow's Foot e UML: Listados diretamente em compartimentos dentro da caixa da entidade, indicados com marcações como PK.
+
+---
+
+# Q3 - Construa um Diagrama ER para projetar a base de dados de uma empresa de desenvolvimento de software com outras empresas como clientes. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras. 
+
+## a) A empresa presta serviços de desenvolvimento de software para outras empresas (clientes). Cada cliente é identificado por um código, um nome e um e-mail de contato. 
+
+## b) Os funcionários da empresa trabalham em squads (equipes). Cada funcionário é identificado por um código, um nome e um e-mail, e possui um papel na equipe: desenvolvedor, testador, líder técnico, supervisor ou gerente de produto. 
+
+## c) Cada squad é formada por vários funcionários e resolve tarefas (issues). Uma tarefa tem código, descrição, prioridade, situação e uma estimativa em horas. As tarefas pertencem a projetos de um cliente. 
+
+## d) O trabalho é organizado em iterações (sprints). Uma squad planeja releases para seus clientes; uma release agrupa um conjunto de tarefas e passa por testes de validação.
+
+```mermaid
+---
+title: Modelo Conceitual - Empresa de Desenvolvimento de Software
+---
+erDiagram
+    CLIENTE ||--o{ PROJETO : contrata
+    PROJETO ||--|{ SPRINT : organiza
+    PROJETO ||--o{ RELEASE : entrega
+    PROJETO ||--|{ TAREFA : contem
+
+    SQUAD ||--o{ PROJETO : executa
+    SQUAD ||--|{ FUNCIONARIO : aloca
+    SQUAD ||--o{ SPRINT : planeja
+
+    SPRINT ||--o{ TAREFA : inclui
+    RELEASE ||--|{ TAREFA : agrupa
+    TAREFA ||--o{ TESTE : passa_por
+
+    CLIENTE {
+        int codigo PK
+        string nome
+        string email_contato
+    }
+
+    PROJETO {
+        int codigo PK
+        string nome
+        string descricao
+    }
+
+    SQUAD {
+        int codigo PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        int codigo PK
+        string nome
+        string email
+        string papel
+    }
+
+    SPRINT {
+        int codigo PK
+        string objetivo
+        date data_inicio
+        date data_fim
+    }
+
+    TAREFA {
+        int codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        int estimativa_horas
+    }
+
+    RELEASE {
+        int codigo PK
+        string versao_tag
+        date data_lancamento
+    }
+
+    TESTE {
+        int codigo PK
+        string nome_cenario
+        string resultado
+    }
