@@ -34,3 +34,19 @@ As propriedades ACID garantem que as transações realizadas no banco de dados s
 **Isolamento** significa que transações realizadas ao mesmo tempo não devem interferir umas nas outras de forma incorreta. Por exemplo, se duas transferências forem realizadas ao mesmo tempo na mesma conta, cada uma deve considerar corretamente o saldo disponível. Sem isolamento, as duas operações poderiam usar o mesmo saldo e permitir um valor maior do que o disponível.
 
 **Durabilidade** significa que, depois que uma transação é confirmada, seus dados devem permanecer armazenados mesmo que ocorra uma falha no sistema. Em uma transferência, depois que o banco confirmar a operação, o débito e o crédito devem continuar registrados mesmo após uma queda de energia ou reinicialização do servidor. Sem durabilidade, uma transferência confirmada poderia desaparecer após uma falha.
+
+
+## Q4. Para cada cenário abaixo, indique qual(is) propriedade(s) ACID está(ão) em jogo e justifique sua resposta: 
+
+### a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino. 
+### b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta. 
+### c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido. 
+### d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+
+**a)** A propriedade envolvida é a **atomicidade**, pois a transferência deveria realizar o débito e o crédito como uma única operação. Como houve uma queda de energia depois do débito, o SGBD deveria desfazer a operação para que o valor não ficasse apenas retirado da conta de origem.
+
+**b)** A propriedade envolvida é o **isolamento**, pois duas operações estão acontecendo ao mesmo tempo sobre a mesma conta. O SGBD deve garantir que uma operação não interfira de forma incorreta na outra, evitando que as duas utilizem o mesmo saldo disponível.
+
+**c)** A propriedade envolvida é a **durabilidade**, pois uma operação confirmada deve continuar registrada mesmo depois de uma falha ou reinicialização do servidor. Se o dado foi perdido, essa propriedade não foi garantida.
+
+**d)** A propriedade envolvida é a **consistência**, pois o banco deve manter suas regras após uma operação. Como a transferência faria o saldo ficar abaixo do limite permitido, ela deve ser rejeitada para manter os dados dentro das regras definidas.
