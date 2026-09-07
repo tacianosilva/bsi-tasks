@@ -116,3 +116,68 @@ erDiagram
         string nome_cenario
         string resultado
     }
+```
+---
+
+# Q4 - A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.
+
+* **Cliente** (
+    **codigo** [PK], 
+    nome, 
+    email_contato
+  )
+
+* **Squad** (
+    **codigo** [PK], 
+    nome
+  )
+
+* **Funcionario** (
+    **codigo** [PK], 
+    nome, 
+    email, 
+    papel, 
+    **codigo_squad** [FK -> Squad(codigo)]
+  )
+
+* **Projeto** (
+    **codigo** [PK], 
+    nome, 
+    descricao, 
+    **codigo_cliente** [FK -> Cliente(codigo)], 
+    **codigo_squad** [FK -> Squad(codigo)]
+  )
+
+* **Sprint** (
+    **codigo** [PK], 
+    objetivo, 
+    data_inicio, 
+    data_fim, 
+    **codigo_projeto** [FK -> Projeto(codigo)], 
+    **codigo_squad** [FK -> Squad(codigo)]
+  )
+
+* **Release** (
+    **codigo** [PK], 
+    versao_tag, 
+    data_lancamento, 
+    **codigo_projeto** [FK -> Projeto(codigo)]
+  )
+
+* **Tarefa** (
+    **codigo** [PK], 
+    descricao, 
+    prioridade, 
+    situacao, 
+    estimativa_horas, 
+    **codigo_projeto** [FK -> Projeto(codigo)], 
+    **codigo_sprint** [FK -> Sprint(codigo)], 
+    **codigo_release** [FK -> Release(codigo)]
+  )
+
+* **Teste** (
+    **codigo** [PK], 
+    nome_cenario, 
+    resultado, 
+    **codigo_tarefa** [FK -> Tarefa(codigo)]
+  )
