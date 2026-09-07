@@ -41,4 +41,76 @@ Abaixo estão exemplos práticos de como diferentes notações representam o mes
 
 * **Atributos Multivalorados (Atributos com múltiplos valores, como telefones de um cliente):**
   * *Notação de Chen:* É desenhado como uma **elipse dupla** conectada à entidade.
-  * *Notação Pé de Galinha / Modelo Relacional:* Como o modelo relacional não comporta múltiplos valores numa mesma coluna, a notação modela uma **entidade dependente associada** (tabela separada) ligada por uma relação 1 para N.\n
+  * *Notação Pé de Galinha / Modelo Relacional:* Como o modelo relacional não comporta múltiplos valores numa mesma coluna, a notação modela uma **entidade dependente associada** (tabela separada) ligada por uma relação 1 para N.
+
+## Q3. Diagrama ER Conceitual (Mermaid.js)
+
+Com base nos requisitos da empresa de desenvolvimento de software, o modelo conceitual abaixo descreve as entidades do negócio, seus atributos, identificadores (indicados por `PK`) e as relações de cardinalidade, sem incluir chaves estrangeiras (mantendo o foco puramente conceitual):
+
+```mermaid
+erDiagram
+    CLIENTE {
+        string codigo PK "Código identificador único"
+        string nome "Nome da empresa cliente"
+        string email_contato "E-mail de contato do cliente"
+    }
+
+    PROJETO {
+        string codigo PK "Identificador do projeto"
+        string nome "Nome do projeto"
+        string descricao "Descrição do escopo"
+        date data_inicio "Data de início do projeto"
+    }
+
+    SQUAD {
+        string codigo PK "Identificador da squad"
+        string nome "Nome da equipe"
+    }
+
+    FUNCIONARIO {
+        string codigo PK "Identificador do funcionário"
+        string nome "Nome completo"
+        string email "E-mail institucional"
+        string papel "Desenvolvedor, Testador, Líder, Supervisor, PM"
+    }
+
+    TAREFA {
+        string codigo PK "Código da issue"
+        string descricao "Descrição da tarefa"
+        string prioridade "Baixa, Média, Alta, Crítica"
+        string situacao "A Fazer, Em Andamento, Concluída"
+        int estimativa_horas "Estimativa de esforço em horas"
+    }
+
+    SPRINT {
+        string codigo PK "Identificador da sprint"
+        int numero "Número sequencial da iteração"
+        date data_inicio "Data de início da iteração"
+        date data_fim "Data de término da iteração"
+    }
+
+    RELEASE {
+        string codigo PK "Identificador da release"
+        string versao "Versão da entrega (ex: v1.0)"
+        date data_lancamento "Data planejada ou realizada"
+    }
+
+    TESTE_VALIDACAO {
+        string codigo PK "Identificador do teste"
+        string descricao "Cenário de teste validado"
+        string resultado "Aprovado, Reprovado, Pendente"
+        date data_execucao "Data de execução do teste"
+    }
+
+    CLIENTE ||--o{ PROJETO : "contrata"
+    CLIENTE ||--o{ RELEASE : "recebe"
+    PROJETO ||--|{ TAREFA : "contem"
+    PROJETO ||--o{ SPRINT : "possui"
+    SQUAD ||--|{ FUNCIONARIO : "composta_por"
+    SQUAD ||--o{ TAREFA : "resolve"
+    SQUAD ||--o{ SPRINT : "executa"
+    SQUAD ||--o{ RELEASE : "planeja"
+    SPRINT ||--o{ TAREFA : "organiza"
+    RELEASE ||--|{ TAREFA : "agrupa"
+    RELEASE ||--o{ TESTE_VALIDACAO : "passa_por"
+```\n
