@@ -113,4 +113,139 @@ erDiagram
     SPRINT ||--o{ TAREFA : "organiza"
     RELEASE ||--|{ TAREFA : "agrupa"
     RELEASE ||--o{ TESTE_VALIDACAO : "passa_por"
+```
+
+## Q4. Mapeamento para o Modelo Relacional
+
+A partir do Diagrama ER conceitual, realizamos o mapeamento para o modelo relacional convertendo as entidades em tabelas e propagando as chaves estrangeiras (FK) para representar as relações:
+
+### Relações (Tabelas) e Estrutura de Chaves
+
+1. **CLIENTE**
+   * **Atributos:** `codigo` (PK), `nome`, `email_contato`
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** Nenhuma
+
+2. **PROJETO**
+   * **Atributos:** `codigo` (PK), `nome`, `descricao`, `data_inicio`, `cliente_codigo` (FK)
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** `cliente_codigo` referencia `CLIENTE(codigo)` *(representa a relação 1:N entre Cliente e Projeto)*
+
+3. **SQUAD**
+   * **Atributos:** `codigo` (PK), `nome`
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** Nenhuma
+
+4. **FUNCIONARIO**
+   * **Atributos:** `codigo` (PK), `nome`, `email`, `papel`, `squad_codigo` (FK)
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** `squad_codigo` referencia `SQUAD(codigo)` *(representa a relação 1:N entre Squad e Funcionário)*
+
+5. **SPRINT**
+   * **Atributos:** `codigo` (PK), `numero`, `data_inicio`, `data_fim`, `projeto_codigo` (FK), `squad_codigo` (FK)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):**
+     * `projeto_codigo` referencia `PROJETO(codigo)`
+     * `squad_codigo` referencia `SQUAD(codigo)`
+
+6. **RELEASE**
+   * **Atributos:** `codigo` (PK), `versao`, `data_lancamento`, `cliente_codigo` (FK), `squad_codigo` (FK)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):**
+     * `cliente_codigo` referencia `CLIENTE(codigo)`
+     * `squad_codigo` referencia `SQUAD(codigo)`
+
+7. **TAREFA (Issue)**
+   * **Atributos:** `codigo` (PK), `descricao`, `prioridade`, `situacao`, `estimativa_horas`, `projeto_codigo` (FK), `squad_codigo` (FK), `sprint_codigo` (FK - opcional), `release_codigo` (FK - opcional)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):**
+     * `projeto_codigo` referencia `PROJETO(codigo)`
+     * `squad_codigo` referencia `SQUAD(codigo)`
+     * `sprint_codigo` referencia `SPRINT(codigo)`
+     * `release_codigo` referencia `RELEASE(codigo)`
+
+8. **TESTE_VALIDACAO**
+   * **Atributos:** `codigo` (PK), `descricao`, `resultado`, `data_execucao`, `release_codigo` (FK)
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** `release_codigo` referencia `RELEASE(codigo)`
+
+### Diagrama do Modelo Relacional em Mermaid.js
+
+```mermaid
+erDiagram
+    CLIENTE {
+        string codigo PK
+        string nome
+        string email_contato
+    }
+
+    PROJETO {
+        string codigo PK
+        string nome
+        string descricao
+        date data_inicio
+        string cliente_codigo FK
+    }
+
+    SQUAD {
+        string codigo PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        string codigo PK
+        string nome
+        string email
+        string papel
+        string squad_codigo FK
+    }
+
+    SPRINT {
+        string codigo PK
+        int numero
+        date data_inicio
+        date data_fim
+        string projeto_codigo FK
+        string squad_codigo FK
+    }
+
+    RELEASE {
+        string codigo PK
+        string versao
+        date data_lancamento
+        string cliente_codigo FK
+        string squad_codigo FK
+    }
+
+    TAREFA {
+        string codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        int estimativa_horas
+        string projeto_codigo FK
+        string squad_codigo FK
+        string sprint_codigo FK
+        string release_codigo FK
+    }
+
+    TESTE_VALIDACAO {
+        string codigo PK
+        string descricao
+        string resultado
+        date data_execucao
+        string release_codigo FK
+    }
+
+    CLIENTE ||--o{ PROJETO : "1:N"
+    CLIENTE ||--o{ RELEASE : "1:N"
+    SQUAD ||--o{ FUNCIONARIO : "1:N"
+    SQUAD ||--o{ SPRINT : "1:N"
+    SQUAD ||--o{ RELEASE : "1:N"
+    SQUAD ||--o{ TAREFA : "1:N"
+    PROJETO ||--o{ TAREFA : "1:N"
+    PROJETO ||--o{ SPRINT : "1:N"
+    SPRINT ||--o{ TAREFA : "1:N"
+    RELEASE ||--o{ TAREFA : "1:N"
+    RELEASE ||--o{ TESTE_VALIDACAO : "1:N"
 ```\n
