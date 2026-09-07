@@ -248,4 +248,17 @@ erDiagram
     SPRINT ||--o{ TAREFA : "1:N"
     RELEASE ||--o{ TAREFA : "1:N"
     RELEASE ||--o{ TESTE_VALIDACAO : "1:N"
-```\n
+```
+
+## Q5. Restrições de Integridade Referencial e de Domínio
+
+As restrições de integridade garantem que os dados no banco de dados reflitam fielmente as regras de negócio e previnam dados inválidos ou órfãos:
+
+* **Vínculo Obrigatório de Projetos:** Todo projeto deve estar obrigatoriamente associado a um cliente existente (`cliente_codigo` não nulo referenciando `CLIENTE`). Um projeto não pode existir de forma órfã.
+* **Atribuição Obrigatória de Tarefas:** Toda tarefa (issue) deve pertencer obrigatoriamente a um projeto existente (`projeto_codigo`) e estar sob a responsabilidade de uma squad existente (`squad_codigo`). Opcionalmente, pode ser alocada a uma sprint ou a uma release.
+* **Alocação de Funcionários:** Todo funcionário cadastrado deve pertencer a uma squad ativa (`squad_codigo` em `FUNCIONARIO`).
+* **Liderança Técnica da Squad:** Cada squad deve possuir em sua composição pelo menos um funcionário com o papel de Líder Técnico como responsável técnico da equipe.
+* **Planejamento de Releases e Sprints:** Toda release planejada e toda sprint executada devem estar associadas à squad responsável e a um cliente/projeto válido.
+* **Validação de Testes:** Todo teste de validação deve estar referenciado a uma release existente no banco (`release_codigo`).
+* **Consistência Temporal:** A data de término de uma sprint (`data_fim`) não pode ser anterior à sua data de início (`data_inicio`).
+* **Proteção contra Dados Órfãos (Integridade Referencial na Exclusão):** A exclusão de um cliente ou projeto deve ser impedida (`RESTRICT` ou `NO ACTION`) enquanto existirem tarefas ou releases ativas vinculadas a eles, garantindo que o histórico do desenvolvimento permaneça íntegro.\n
