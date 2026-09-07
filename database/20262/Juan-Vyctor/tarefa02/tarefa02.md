@@ -109,7 +109,19 @@ Duas das principais notações são a Notação de Chen e a Notação UML. Elas 
 
 ---
 
+# Q5. Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").
 
+* Todo projeto deve estar vinculado a um cliente existente no cadastro.
+* Todo funcionário deve pertencer a um squad existente.
+* Cada da tabela associativa deve referenciar um squad e um projeto que realmente existam no banco.
+* Todo sprint deve estar vinculada a um squad existente.
+* Todo sprint deve estar vinculada a um projeto existente.
+* Toda release deve estar vinculada a um squad existente.
+* Toda release deve estar vinculada a um projeto existente.
+* Uma tarefa só pode existir vinculada a um projeto existente.
+* Quando uma tarefa estiver vinculada a uma sprint, essa sprint deve existir no banco.
+* Quando uma tarefa tiver um responsável atribuído, esse funcionário deve existir no banco.
+* Quando uma tarefa estiver vinculada a uma release, essa release deve existir no banco.
 
 <p a<wbr>
 
