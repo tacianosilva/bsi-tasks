@@ -23,6 +23,12 @@ Duas das principais notações são a Notação de Chen e a Notação UML. Elas 
 
 ### d) O trabalho é organizado em iterações (sprints). Uma squad planeja releases para seus clientes; uma release agrupa um conjunto de tarefas e passa por testes de validação.
 
+![Modelo Mermaid](<./modelo mermaid.png>)
+
+---
+
+
+
 <p a<wbr>
 
 <p a<wbr>
