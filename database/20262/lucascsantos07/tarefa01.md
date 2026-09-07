@@ -29,8 +29,7 @@ difícil controlar possíveis conflitos entre esses acessos.
 * **Problemas de segurança:** Como nem todos os usuários devem ter acesso a todos os dados, é necessário controlar as permissões
 de acesso. Em sistemas de arquivos, esse controle pode ser mais difícil de implementar e gerenciar.
 
-**Q3.** As propriedades **ACID** são características que garantem a confiabilidade e a segurança das transações realizadas em um
-banco de dados.
+**Q3.**
 
 * **Atomicidade:** Garante que uma transação seja executada completamente ou que nenhuma de suas operações seja aplicada. Em
 outras palavras, uma transação não pode ser parcialmente concluída.
@@ -66,3 +65,27 @@ no banco de dados, mesmo que ocorra uma falha no sistema.
 
   **Sem durabilidade:** Uma transferência poderia ser confirmada, mas suas alterações poderiam ser perdidas após uma falha do
   sistema.
+
+**Q4.**
+
+**a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de
+destino.**
+
+**R: Atomicidade.** A transação foi executada apenas parcialmente: o valor foi debitado da conta de origem, mas não foi
+creditado na conta de destino. A atomicidade garante que a transação seja totalmente concluída ou que todas as alterações sejam
+desfeitas.
+
+**b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.**
+
+**R: Isolamento.** Como duas transações estão sendo executadas simultaneamente, o SGBD precisa garantir que uma não interfira
+incorretamente na outra. O isolamento evita que as operações concorrentes produzam um resultado inconsistente.
+
+**c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.**
+
+**R: Durabilidade.** Depois que uma transação é confirmada, suas alterações devem permanecer armazenadas mesmo que ocorra uma
+falha ou reinicialização do servidor. Nesse caso, a durabilidade não foi garantida.
+
+**d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**
+
+**R: Consistência.** A transação foi rejeitada porque violaria uma regra ou restrição do banco de dados. A consistência garante
+que as transações não deixem o banco de dados em um estado inválido.
