@@ -45,3 +45,76 @@ Antes dos SGBDs, os dados eram salvos em sistemas de arquivos comuns do sistema 
 * **Integridade:** Garantia de que os dados estão corretos e seguem as regras. O SGBD gerencia isso através de restrições (Constraints) como chaves primárias, chaves estrangeiras, verificação de tipos de dados e triggers, bloqueando inserções inválidas na raiz.
 * **Redundância:** É a duplicação desnecessária de dados. O SGBD (em um modelo relacional bem feito) minimiza a redundância usando a normalização, garantindo que um dado seja armazenado em apenas um lugar e referenciado por IDs em outras tabelas.
 * **Inconsistência:** É o resultado da redundância descontrolada (o mesmo dado com valores diferentes em locais diferentes). O SGBD evita isso ao centralizar o dado; se o nome do cliente muda na tabela de clientes, todas as consultas que cruzam com essa tabela passam a ver o nome novo instantaneamente.
+
+### Q6. Mini-projeto Conceitual de Banco de Dados (Empresa de Software)
+
+Este modelo conceitual descreve a estrutura de dados necessária para gerenciar o fluxo de trabalho ágil da empresa de desenvolvimento de software, garantindo o rastreamento desde o cliente até a entrega final (release).
+
+**a) Entidades Principais e b) Seus Atributos**
+
+* **Cliente:** 
+  * `ID_Cliente` (Identificador único)
+  * `Razao_Social` e `Nome_Fantasia`
+  * `CNPJ` 
+  * `Email_Contato` e `Telefone`
+  * `Data_Cadastro`
+* **Projeto:** 
+  * `ID_Projeto` (Identificador único)
+  * `Nome_Projeto`
+  * `Descricao_Escopo`
+  * `Data_Inicio` e `Data_Previsao_Fim`
+  * `Status` (Ex: Planejamento, Em Andamento, Pausado, Concluído)
+* **Squad (Equipe):** 
+  * `ID_Squad` (Identificador único)
+  * `Nome_Squad` (Ex: "Esquadrão Alpha", "Team Mobile")
+  * `Foco_Atuacao` (Ex: Front-end, Back-end, Fullstack)
+* **Membro (Colaborador):** 
+  * `ID_Membro` (Identificador único)
+  * `Nome_Completo`
+  * `Email_Corporativo`
+  * `Papel` (Desenvolvedor, Testador, Líder Técnico, Supervisor, Gerente de Produto)
+  * `Nivel_Senioridade` (Junior, Pleno, Sênior)
+* **Sprint (Iteração):** 
+  * `ID_Sprint` (Identificador único)
+  * `Numero_Sprint` (Ex: Sprint 1, Sprint 2)
+  * `Objetivo_Sprint` (Meta da iteração)
+  * `Data_Inicio` e `Data_Fim`
+  * `Status` (Planejada, Ativa, Finalizada)
+* **Tarefa (Issue):** 
+  * `ID_Tarefa` (Identificador único)
+  * `Titulo` e `Descricao_Detalhada`
+  * `Tipo` (Bug, Nova Funcionalidade, Melhoria técnica)
+  * `Prioridade` (Baixa, Média, Alta, Crítica)
+  * `Status` (Backlog, A Fazer, Em Progresso, Em Teste, Concluído)
+  * `Pontos_Esforco` (Estimativa de complexidade)
+* **Release (Entrega):** 
+  * `ID_Release` (Identificador único)
+  * `Versao_Tag` (Ex: v1.0.0, v1.1.2)
+  * `Data_Lancamento`
+  * `Notas_Versao` (Release Notes detalhando o que foi entregue)
+
+---
+
+**c) Relacionamentos e Cardinalidade**
+
+* **Cliente ↔ Projeto (1:N):** Um cliente pode solicitar um ou vários projetos ao longo do tempo. No entanto, um projeto pertence exclusivamente a um único cliente.
+* **Squad ↔ Membro (1:N):** Uma squad é composta por vários membros colaboradores. Para garantir o foco, cada membro está alocado em apenas uma squad por vez.
+* **Projeto ↔ Sprint (1:N):** O ciclo de vida de um projeto é dividido em várias sprints. Uma sprint, por sua vez, está vinculada a um único projeto.
+* **Squad ↔ Tarefa (1:N):** Uma squad assume a responsabilidade de resolver múltiplas tarefas. Cada tarefa no sistema é designada para a fila de uma única squad.
+* **Membro ↔ Tarefa (1:N):** Um membro pode ser designado como o "responsável técnico" por várias tarefas, mas uma tarefa específica tem apenas um membro executando-a em determinado momento.
+* **Sprint ↔ Tarefa (1:N):** Durante o planejamento, uma sprint agrupa diversas tarefas a serem executadas. Uma vez planejada, a tarefa pertence àquela sprint específica.
+* **Projeto ↔ Release (1:N):** Um projeto gera diversas entregas (releases) incrementais ao longo do seu desenvolvimento.
+* **Release ↔ Tarefa (1:N):** Uma release é composta por um conjunto de tarefas concluídas. Uma tarefa que foi entregue fica registrada no histórico de uma única release.
+
+---
+
+**d) Regras de Integridade e Restrições de Negócio**
+
+Para garantir a qualidade e a consistência dos dados (evitando anomalias), o banco de dados deve aplicar as seguintes regras em linguagem natural:
+
+1. **Regra de Composição Estrutural da Squad:** Toda squad deve ser formada obrigatoriamente por pelo menos um desenvolvedor e um testador, e possuir uma estrutura de gestão com **exatamente** um (1) Líder Técnico, um (1) Supervisor e um (1) Gerente de Produto.
+2. **Integridade de Atribuição (Dependência Lógica):** Uma tarefa só pode ser atribuída a um `Membro` se este membro pertencer à `Squad` responsável por aquela tarefa.
+3. **Integridade de Lançamento (Release):** O sistema deve bloquear a inclusão de uma tarefa em uma Release caso o `Status` da tarefa seja diferente de "Concluído". Não se pode entregar código não finalizado.
+4. **Integridade Temporal e Cronológica:** A `Data_Fim` de uma Sprint deve ser obrigatoriamente posterior à sua `Data_Inicio`. Da mesma forma, a `Data_Lancamento` de uma Release não pode ser anterior à data de início do respectivo projeto.
+5. **Integridade Referencial Estrita:** Nenhuma tarefa pode ficar "órfã" no sistema. Ela deve obrigatoriamente estar associada a um Projeto (diretamente no backlog ou através de uma Sprint ativa).
+6. **Unicidade de Identificação:** O atributo `CNPJ` na entidade Cliente e o `Email_Corporativo` na entidade Membro não podem se repetir, impedindo duplicidade de cadastros no sistema.
