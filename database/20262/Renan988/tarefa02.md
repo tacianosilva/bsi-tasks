@@ -216,3 +216,16 @@ erDiagram
     PROJETO ||--o{ TAREFA : "1:N"
     SPRINT ||--o{ TAREFA : "1:N"
     RELEASE ||--o{ TAREFA : "1:N"
+```
+
+## Q5. Restrições de Integridade Referencial e de Domínio
+
+As restrições de integridade garantem que os dados permaneçam consistentes, válidos e reflitam corretamente as regras de negócio do sistema. No esquema projetado para a empresa de desenvolvimento de software, aplicam-se as seguintes restrições:
+
+*   **Vínculo Obrigatório de Projeto:** Um projeto não pode existir de forma isolada; todo projeto deve estar obrigatoriamente associado a um cliente cadastrado e existente (`cliente_codigo` em `PROJETO` é uma chave estrangeira obrigatória).
+*   **Atribuição de Tarefas:** Toda tarefa (issue) deve estar estritamente vinculada a um projeto válido (`projeto_codigo`). Opcionalmente, pode ser associada a uma sprint e a uma release, mas o projeto de origem é mandatório.
+*   **Alocação de Funcionários:** Nenhum funcionário pode ficar sem equipe; todo funcionário deve estar alocado a uma squad existente (`squad_codigo` em `FUNCIONARIO`).
+*   **Composição Mínima da Squad:** Para que uma squad esteja apta a operar, seu quadro de membros deve conter obrigatoriamente pelo menos um funcionário com o papel de **Líder Técnico**, um **Supervisor** e um **Gerente de Produto**, além dos desenvolvedores e testadores.
+*   **Gestão de Sprints e Releases:** Sprints e releases devem estar associadas a uma squad válida responsável pela sua execução e planejamento. 
+*   **Coerência Temporal:** A data de término de uma sprint (`data_fim`) nunca pode ser anterior à sua data de início (`data_inicio`).
+*   **Proteção contra Dados Órfãos (Exclusão):** Um cliente que possui projetos ativos não pode ser excluído do banco de dados enquanto existirem registros dependentes vinculados a ele, evitando inconsistências estruturais.
