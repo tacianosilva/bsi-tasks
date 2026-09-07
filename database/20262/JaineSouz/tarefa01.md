@@ -17,3 +17,19 @@ Um **Sistema Gerenciador de Banco de Dados (SGBD)** é o software responsável p
 | Banco de dados de uma aplicação que necessita de documentos flexíveis | MongoDB |
 
 A principal diferença entre os dois conceitos: o **banco de dados corresponde aos dados armazenados e organizados**, enquanto o **SGBD é o software utilizado para gerenciar esses dados**.
+
+
+## Q2. Problemas dos Sistemas de Arquivos
+
+A utilização de sistemas de arquivos para armazenar dados pode causar diversos problemas, principalmente quando a quantidade de informações e de usuários aumenta.
+
+Os principais problemas são:
+
+- **Redundância de dados:** a mesma informação pode ser armazenada várias vezes em arquivos diferentes.
+- **Inconsistência:** quando uma informação duplicada é alterada em um arquivo, mas não em outro, os dados podem ficar diferentes.
+- **Dificuldade de compartilhamento:** vários sistemas podem ter dificuldade para acessar e utilizar os mesmos dados de forma organizada.
+- **Problemas de segurança:** o controle de acesso aos arquivos pode ser limitado ou difícil de administrar.
+- **Dificuldade de controle de concorrência:** dois usuários podem tentar alterar o mesmo dado simultaneamente e causar conflitos.
+- **Dificuldade de recuperação:** em caso de falhas, pode ser difícil recuperar os dados para um estado consistente.
+- **Dependência entre programas e dados:** alterações na estrutura dos arquivos podem exigir alterações nos programas que os utilizam.
+- **Dificuldade de garantir integridade:** torna-se mais difícil garantir que os dados sigam determinadas regras e restrições.
