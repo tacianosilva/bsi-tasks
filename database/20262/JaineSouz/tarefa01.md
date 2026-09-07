@@ -112,3 +112,31 @@ O banco possui uma regra que determina que o saldo não pode ficar abaixo de det
 
 Nesse caso, o SGBD deve impedir que uma operação inválida seja confirmada e, consequentemente, manter o banco de dados em um estado consistente.
 
+
+## Q5. Recuperação, integridade, redundância e inconsistência
+
+### Recuperação
+
+Recuperação é a capacidade de restaurar o banco de dados para um estado correto depois de uma falha, como queda de energia, erro do sistema ou falha do servidor.
+
+O SGBD pode utilizar mecanismos como logs de transações, backups e operações de recuperação para desfazer transações incompletas ou recuperar transações que foram confirmadas.
+
+### Integridade
+
+Integridade está relacionada à garantia de que os dados armazenados sejam válidos, corretos e respeitem as regras estabelecidas para o banco.
+
+O SGBD pode utilizar restrições de integridade, como chaves primárias, chaves estrangeiras, valores obrigatórios e regras de domínio, para impedir dados inválidos.
+
+### Redundância
+
+Redundância ocorre quando a mesma informação é armazenada desnecessariamente em vários lugares.
+
+O SGBD pode reduzir a redundância por meio da organização adequada dos dados e da modelagem do banco, evitando que a mesma informação precise ser repetida em diversas estruturas.
+
+### Inconsistência
+
+Inconsistência ocorre quando existem informações conflitantes ou incorretas no banco de dados.
+
+Por exemplo, se o endereço de um cliente estiver atualizado em um local, mas continuar antigo em outro, os dados estarão inconsistentes.
+
+O SGBD ajuda a evitar inconsistências por meio de restrições de integridade, controle de transações e controle de concorrência.
