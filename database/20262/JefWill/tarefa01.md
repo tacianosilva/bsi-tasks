@@ -41,3 +41,32 @@ Os principais problemas são:
 - **Anomalias no acesso concorrente:** Quando vários usuários tentam atualizar o mesmo arquivo simultaneamente, o sistema de arquivos não oferece controle transacional fino. Uma gravação pode sobrescrever a outra, causando perda de dados (*lost updates*).
 - **Problemas de segurança:** O controle de permissões de sistemas de arquivos atua em nível de arquivo ou diretório, sendo muito difícil definir regras de segurança mais granulares (como restringir acesso a determinados campos ou registros sensíveis para certos usuários).
 
+## Q3. Propriedades ACID
+
+O conceito de transação em bancos de dados representa uma unidade lógica de processamento que inclui uma ou mais operações de acesso e modificação (como leituras e gravações). Para que o sistema garanta confiabilidade e precisão mesmo diante de falhas ou acessos concorrentes, as transações devem respeitar as propriedades **ACID** (**A**tomicidade, **C**onsistência, **I**solamento e **D**urabilidade):
+
+### Atomicidade (Atomicity)
+A atomicidade determina que a transação é indivisível e funciona sob a regra do "tudo ou nada". Ou todas as operações que compõem a transação são executadas com êxito (*commit*), ou nenhuma alteração é aplicada ao banco, revertendo qualquer modificação parcial já realizada (*rollback*).
+
+- **Exemplo prático (transferência bancária):** Uma transferência de R$ 200,00 da Conta A para a Conta B exige duas etapas: subtrair R$ 200,00 do saldo da Conta A e adicionar R$ 200,00 ao saldo da Conta B. As duas etapas precisam ser concluídas juntas.
+- **Se o SGBD não garantisse:** Se o sistema sofrer uma pane logo após subtrair o valor da Conta A, mas antes de somar na Conta B, o dinheiro seria retirado de A sem jamais chegar a B, sumindo do sistema.
+
+### Consistência (Consistency)
+A consistência assegura que a execução de uma transação leve o banco de dados de um estado válido a outro estado igualmente válido, respeitando todas as regras de integridade, restrições e regras de negócio predefinidas.
+
+- **Exemplo prático (transferência bancária):** Se a Conta A possui saldo de R$ 100,00 e o banco proíbe saldo negativo (sem cheque especial), uma tentativa de transferência de R$ 200,00 deve ser barrada. Além disso, a soma total dos saldos do banco antes da transferência deve ser exatamente a mesma após a operação (conservação do valor monetário).
+- **Se o SGBD não garantisse:** A transação poderia deixar a Conta A com saldo negativo não permitido ou gerar discrepâncias na soma total das contas, corrompendo a integridade contábil do banco.
+
+### Isolamento (Isolation)
+O isolamento garante que transações executadas simultaneamente não interfiram umas nas outras. O resultado obtido com transações concorrentes deve ser exatamente o mesmo que seria obtido se elas fossem executadas de forma sequencial (uma após a outra).
+
+- **Exemplo prático (transferência bancária):** Suponha que a Conta A tenha R$ 300,00 de saldo. Ao mesmo tempo, um cliente tenta transferir R$ 200,00 pelo aplicativo enquanto um débito automático de R$ 200,00 é processado. O SGBD deve isolar as operações para que a segunda transação veja o saldo atualizado após o término da primeira.
+- **Se o SGBD não garantisse:** As duas transações poderiam ler o mesmo saldo de R$ 300,00 ao mesmo tempo. Ambas autorizariam a saída de R$ 200,00, permitindo a retirada de R$ 400,00 de uma conta que possuía apenas R$ 300,00 (anomalia de perda de atualização ou leitura inconsistente).
+
+### Durabilidade (Durability)
+A durabilidade garante que, assim que uma transação for confirmada (*commit*), as alterações realizadas tornam-se permanentes e não serão perdidas por nenhuma falha posterior do sistema (como queda de energia ou travamento do servidor).
+
+- **Exemplo prático (transferência bancária):** Uma vez que a transferência é finalizada e o comprovante é emitido na tela do cliente, os dados do débito e do crédito já foram gravados de forma segura em armazenamento persistente (disco e logs de transação).
+- **Se o SGBD não garantisse:** Uma queda de energia logo após a confirmação da operação poderia apagar os dados da memória volátil, fazendo com que a transferência "desaparecesse" e o saldo retornasse ao valor anterior à transação após a reinicialização do servidor.
+
+
