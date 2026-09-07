@@ -140,3 +140,119 @@ Inconsistência ocorre quando existem informações conflitantes ou incorretas n
 Por exemplo, se o endereço de um cliente estiver atualizado em um local, mas continuar antigo em outro, os dados estarão inconsistentes.
 
 O SGBD ajuda a evitar inconsistências por meio de restrições de integridade, controle de transações e controle de concorrência.
+
+
+## Q6. Mini-projeto conceitual
+
+O banco de dados proposto representa uma empresa de desenvolvimento de software que trabalha com clientes e organiza suas equipes em squads.
+
+### a) Entidades
+
+As principais entidades são:
+
+- Cliente
+- Projeto
+- Squad
+- Membro
+- Tarefa
+- Sprint
+- Release
+
+### b) Principais atributos
+
+#### Cliente
+
+- `id_cliente`
+- `nome`
+- `razão_social`
+- `CNPJ`
+- `email`
+- `telefone`
+
+#### Projeto
+
+- `id_projeto`
+- `nome`
+- `descrição`
+- `data_inicio`
+- `data_fim`
+- `status`
+
+#### Squad
+
+- `id_squad`
+- `nome`
+- `objetivo`
+- `data_criacao`
+- `status`
+
+#### Membro
+
+- `id_membro`
+- `nome`
+- `email`
+- `cargo`
+- `data_entrada`
+
+O atributo `cargo` pode representar funções como desenvolvedor, testador, líder técnico, supervisor ou gerente de produto.
+
+#### Tarefa
+
+- `id_tarefa`
+- `título`
+- `descrição`
+- `prioridade`
+- `status`
+- `data_criacao`
+- `data_conclusao`
+
+#### Sprint
+
+- `id_sprint`
+- `nome`
+- `objetivo`
+- `data_inicio`
+- `data_fim`
+- `status`
+
+#### Release
+
+- `id_release`
+- `versão`
+- `descrição`
+- `data_planejada`
+- `data_lancamento`
+- `status`
+
+### c) Relacionamentos e cardinalidades
+
+- **Um cliente pode ter vários projetos**, mas cada projeto pertence a um único cliente.
+- **Um projeto pode ter várias squads**, e uma squad pode participar de diferentes projetos ao longo do tempo.
+- **Uma squad possui vários membros**, e um membro pode participar de diferentes squads ao longo do tempo.
+- **Um projeto pode possuir várias tarefas**, mas cada tarefa deve estar vinculada a um projeto.
+- **Uma sprint pertence a um projeto** e um projeto pode possuir várias sprints.
+- **Uma sprint pode conter várias tarefas**, enquanto uma tarefa pode estar associada a uma sprint.
+- **Um projeto pode possuir várias releases**, mas cada release pertence a um projeto.
+- **Uma release pode estar relacionada a várias tarefas**, indicando quais tarefas foram incluídas naquela versão.
+- **Uma squad pode ser responsável por várias tarefas**, enquanto uma tarefa possui uma squad responsável.
+- **Cada squad possui um líder técnico**, responsável pela liderança técnica da equipe.
+
+### d) Regras de integridade
+
+O banco de dados deveria garantir as seguintes regras:
+
+1. Todo cliente deve possuir um identificador único.
+2. Um cliente pode possuir vários projetos, mas todo projeto deve estar vinculado a um cliente.
+3. Toda tarefa deve estar vinculada a um projeto.
+4. Toda sprint deve estar vinculada a um projeto.
+5. Toda release deve estar vinculada a um projeto.
+6. Uma tarefa não pode estar associada a uma sprint de outro projeto.
+7. Uma tarefa deve possuir um status válido, como "pendente", "em andamento" ou "concluída".
+8. Uma sprint deve possuir uma data de início anterior à data de término.
+9. Uma release deve possuir uma versão identificável dentro de seu projeto.
+10. Uma squad deve possuir pelo menos um membro.
+11. Cada squad deve possuir apenas um líder técnico responsável em determinado período.
+12. Um membro pode participar de diferentes squads ao longo do tempo, mas o banco deve registrar corretamente sua participação.
+13. Os identificadores de clientes, projetos, squads, membros, tarefas, sprints e releases devem ser únicos.
+14. Uma tarefa não deve ser registrada como concluída sem que exista uma data de conclusão, quando essa regra fizer parte das políticas da empresa.
+15. Uma release não pode ser lançada antes do projeto correspondente existir.
