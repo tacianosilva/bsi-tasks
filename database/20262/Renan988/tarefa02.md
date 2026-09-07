@@ -40,4 +40,65 @@ Para entender a divergência prática entre as abordagens, veja como diferentes 
     *   *Notação de Chen:* Utiliza uma **elipse dupla** ligada à entidade.
     *   *Notação Pé de Galinha / Relacional:* Como o modelo relacional puro não suporta atributos multivalorados em uma única coluna, essa notação exige a criação de uma **nova entidade filha** (uma tabela auxiliar) ligada por uma relação 1 para N.
 
-    
+## Q3. Diagrama ER Conceitual (Mermaid.js)
+
+Com base nos requisitos apresentados, o modelo conceitual mapeia as entidades do negócio, seus atributos, identificadores (chaves primárias indicadas por `PK`) e as cardinalidades entre elas, sem incluir chaves estrangeiras (foco puramente conceitual).
+
+### Diagrama ER em Mermaid.js
+
+```mermaid
+erDiagram
+    CLIENTE {
+        string codigo PK "Identificador único do cliente"
+        string nome "Nome da empresa cliente"
+        string email_contato "E-mail de contato"
+    }
+
+    PROJETO {
+        string codigo PK "Identificador do projeto"
+        string nome "Nome do projeto"
+        string descricao "Descrição detalhada"
+    }
+
+    SQUAD {
+        string codigo PK "Identificador da squad"
+        string nome "Nome da equipe"
+    }
+
+    FUNCIONARIO {
+        string codigo PK "Identificador do funcionário"
+        string nome "Nome completo"
+        string email "E-mail corporativo"
+        string papel "Dev, Tester, Líder, Supervisor, PM"
+    }
+
+    TAREFA {
+        string codigo PK "Identificador da issue"
+        string descricao "Descrição da tarefa"
+        string prioridade "Baixa, Média, Alta"
+        string status "A fazer, Fazendo, Concluído"
+        int estimativa_horas "Estimativa de esforço em horas"
+    }
+
+    SPRINT {
+        string codigo PK "Identificador da sprint"
+        int numero "Número sequencial da iteração"
+        string data_inicio "Data de início"
+        string data_fim "Data de término"
+    }
+
+    RELEASE {
+        string codigo PK "Identificador da release"
+        string versao "Número da versão (ex: v1.0)"
+        string data_lancamento "Data de lançamento"
+    }
+
+    CLIENTE ||--o{ PROJETO : "possui"
+    PROJETO ||--o{ TAREFA : "contém"
+    CLIENTE ||--o{ RELEASE : "recebe"
+    SQUAD ||--o{ FUNCIONARIO : "composta_por"
+    SQUAD ||--o{ TAREFA : "resolve"
+    SQUAD ||--o{ SPRINT : "executa"
+    SPRINT ||--o{ TAREFA : "organiza"
+    SQUAD ||--o{ RELEASE : "planeja"
+    RELEASE ||--o{ TAREFA : "agrupa"
