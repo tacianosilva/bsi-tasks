@@ -23,3 +23,51 @@ Relacionamentos representam as associações existentes entre as entidades.
 Por exemplo, um CLIENTE possui PROJETOS. Nesse caso, existe um relacionamento entre as entidades CLIENTE e PROJETO.
 
 Os relacionamentos também podem possuir restrições de cardinalidade, indicando quantas ocorrências de uma entidade podem estar associadas a ocorrências de outra entidade.
+
+## Q2. Notações para Diagramas Entidade-Relacionamento
+
+Existem diferentes notações utilizadas para representar Diagramas Entidade-Relacionamento. Apesar das diferenças visuais, essas notações representam conceitos semelhantes, como entidades, atributos, relacionamentos e cardinalidades.
+
+### Notação de Chen
+
+A notação de Chen é uma das formas tradicionais de representação de modelos Entidade-Relacionamento.
+
+Nessa notação:
+
+- Entidades são representadas por retângulos;
+- Relacionamentos são representados por losangos;
+- Atributos são representados por elipses;
+- A cardinalidade é indicada junto aos relacionamentos.
+
+Por exemplo, considerando um CLIENTE que possui PROJETOS, teríamos uma entidade CLIENTE relacionada à entidade PROJETO por meio do relacionamento POSSUI.
+
+### Notação Crow's Foot
+
+A notação Crow's Foot utiliza símbolos nas extremidades dos relacionamentos para representar a cardinalidade. O símbolo semelhante a um "pé de galinha" representa a possibilidade de várias ocorrências.
+
+Por exemplo, a relação:
+
+CLIENTE ||--o{ PROJETO
+
+indica que um cliente pode possuir zero ou vários projetos, enquanto cada projeto está associado a exatamente um cliente.
+
+### Notação UML
+
+A UML também pode representar associações entre elementos utilizando multiplicidades. Alguns exemplos são:
+
+- `1` → exatamente um;
+- `0..1` → zero ou um;
+- `0..*` → zero ou muitos;
+- `1..*` → um ou muitos.
+
+Assim, a relação:
+
+CLIENTE "1" — "0..*" PROJETO
+
+possui o mesmo significado conceitual de um cliente que pode estar associado a vários projetos.
+
+### Comparação
+
+O mesmo conceito pode ser representado visualmente de maneiras diferentes dependendo da notação utilizada. Por exemplo, o relacionamento entre CLIENTE e PROJETO pode ser representado por um losango na notação de Chen, por símbolos de cardinalidade na notação Crow's Foot ou por multiplicidades na UML.
+
+O Mermaid utiliza a notação Crow's Foot para seus Diagramas Entidade-Relacionamento e permite representar entidades, atributos e cardinalidades diretamente no código do diagrama.
