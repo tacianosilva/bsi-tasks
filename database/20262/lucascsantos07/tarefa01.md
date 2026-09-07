@@ -104,3 +104,73 @@ redundância por meio da organização adequada das tabelas e da normalização 
 * **Inconsistência:** Ocorre quando existem diferentes versões de uma mesma informação e elas apresentam valores diferentes. O
 SGBD ajuda a evitar esse problema por meio do controle das transações, das restrições de integridade e do gerenciamento
 dos acessos concorrentes.
+
+**Q6.**
+
+**a)** Entidades
+
+As principais entidades identificadas no sistema são:
+
+- **Membro:** representa os integrantes das squads, como desenvolvedores, testadores, líderes técnicos, supervisores e gerentes de produto.
+- **Squad:** representa as equipes responsáveis pelo desenvolvimento dos projetos.
+- **Cliente:** representa as empresas que contratam os serviços de desenvolvimento.
+- **Projeto:** representa os projetos desenvolvidos para os clientes.
+- **Tarefa:** representa as tarefas (issues) realizadas pelas squads.
+- **Sprint:** representa as iterações utilizadas para organizar e planejar as tarefas dos projetos.
+- **Release:** representa as versões ou entregas dos projetos.
+
+**b)** Atributos
+
+- **Membro:** `id`, `nome`, `email`, `cargo`.
+- **Squad:** `id`, `nome`.
+- **Cliente:** `id`, `nome`, `cnpj`, `email`, `telefone`.
+- **Projeto:** `id`, `nome`, `descrição`, `status`, `data_inicio`, `data_fim`.
+- **Tarefa:** `id`, `nome`, `data_inicio`, `data_termino`, `status`,  `descrição`.
+- **Sprint:** `id`, `nome`, `data_inicio`, `data_fim`.
+- **Release:** `id`, `versão`, `data_inicio`, `data_fim`.
+
+**c)** Relacionamentos
+
+- **Membro — participa — Squad:** uma squad possui de 1 a N membros, enquanto cada membro participa de exatamente uma squad.
+- **Squad — atende — Cliente:** uma squad atende exatamente um cliente, enquanto um cliente pode ser atendido por uma ou várias squads.
+- **Squad — realiza — Tarefa:** uma squad realiza de 1 a N tarefas, enquanto cada tarefa é realizada por uma única squad.
+- **Cliente — tem — Projeto:** um cliente possui de 1 a N projetos, enquanto cada projeto pertence a um único cliente.
+- **Projeto — possui — Sprint:** um projeto possui de 1 a N sprints, enquanto cada sprint pertence a um único projeto.
+- **Projeto — possui — Release:** um projeto possui de 1 a N releases, enquanto cada release pertence a um único projeto.
+- **Sprint — contém — Tarefa:** uma sprint pode conter várias tarefas, e uma tarefa pode estar associada a várias sprints.
+
+**d)** Regras de integridade
+
+O banco de dados deve garantir as seguintes regras:
+
+- Cada membro deve estar vinculado a exatamente uma squad.
+
+- Cada squad deve possuir pelo menos um membro.
+
+- Cada squad deve atender exatamente um cliente.
+
+- Um cliente pode ser atendido por uma ou várias squads.
+
+- Cada tarefa deve estar vinculada a exatamente uma squad.
+
+- Cada squad deve realizar pelo menos uma tarefa.
+
+- Cada projeto deve pertencer a exatamente um cliente.
+
+- Cada cliente deve possuir pelo menos um projeto.
+
+- Cada sprint deve pertencer a exatamente um projeto.
+
+- Cada projeto deve possuir pelo menos uma sprint.
+
+- Uma tarefa pode estar associada a uma ou várias sprints, permitindo que uma tarefa não concluída seja transferida para outra sprint.
+
+- Cada release deve pertencer a exatamente um projeto.
+
+- Cada projeto deve possuir pelo menos uma release.
+
+- Os identificadores (`id`) das entidades devem ser únicos, não podendo existir duas entidades do mesmo tipo com o mesmo identificador.
+
+- O CNPJ de um cliente deve ser único, não podendo dois clientes diferentes possuir o mesmo CNPJ.
+
+- As datas de início e término de tarefas e sprints devem ser válidas, de modo que a data de término não seja anterior à data de início.
