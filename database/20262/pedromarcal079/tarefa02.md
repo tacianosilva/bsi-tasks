@@ -181,3 +181,18 @@ erDiagram
     resultado, 
     **codigo_tarefa** [FK -> Tarefa(codigo)]
   )
+
+---
+
+# Q5 - Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico"). 
+
+As principais restrições de integridade referencial que o esquema deve garantir são:
+
+* Funcionários e Squads: Todo funcionário vinculado a uma equipe deve apontar para uma Squad existente. A exclusão de uma squad com membros ativos deve ser bloqueada.
+* Projetos, Clientes e Squads: Todo Projeto deve obrigatoriamente referenciar um Cliente e uma Squad válidos. Não é permitido excluir um cliente que possua projetos ativos.
+* Sprints e Releases: Toda Sprint e toda Release devem pertencer a um Projeto cadastrado, impedindo iterações ou entregas "órfãs".
+* Tarefas (Issues): Toda Tarefa deve estar ligada a um Projeto existente. Quando vinculada a uma Sprint ou Release, estas devem existir e pertencer obrigatoriamente ao mesmo projeto da tarefa.
+* Testes: Todo Teste depende da existência de uma Tarefa. A exclusão de uma tarefa deve remover em cascata os seus testes de validação correspondentes.
+* Regras de Negócio e Domínio: O campo papel em Funcionario só aceita os valores pré-definidos da equipe, e cada squad deve manter ao menos um funcionário com a função de líder técnico.
+
+---
