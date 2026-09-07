@@ -97,5 +97,35 @@ A propriedade diretamente envolvida é a **consistência**.
 
 O banco possui uma regra de negócio que determina que o saldo não pode ficar abaixo de determinado limite. A função da consistência é garantir que o banco só passe de um estado válido para outro estado válido, fazendo com que o SGBD rejeite qualquer operação que viole essas regras.
 
+## Q5. Recuperação, integridade, redundância e inconsistência
+
+### Recuperação
+
+A recuperação diz respeito à capacidade do SGBD de restaurar o banco de dados para um estado consistente e correto após a ocorrência de alguma falha (como pane no sistema operacional, erro de software ou queda repentina de energia).
+
+O SGBD gerencia a recuperação utilizando logs de transação (*write-ahead logging*), pontos de controle (*checkpoints*) e backups periódicos. Quando o sistema reinicia após uma falha, o SGBD analisa os logs para desfazer as transações que não foram concluídas (*undo*) e reaplicar as alterações daquelas que já haviam sido confirmadas (*redo*).
+
+### Integridade
+
+A integridade está relacionada à garantia de que as informações armazenadas no banco sejam precisas, válidas e sigam as regras estabelecidas pelo modelo de dados e pelo domínio da aplicação.
+
+O SGBD gerencia a integridade através de restrições (*constraints*), como:
+- **Chaves primárias:** garantem que cada registro seja único e identificável;
+- **Chaves estrangeiras:** garantem a integridade referencial entre tabelas relacionadas;
+- **Restrições de tipo e domínio:** impedem valores nulos indevidos (`NOT NULL`), valores repetidos (`UNIQUE`) ou dados fora de um padrão aceito (`CHECK`).
+
+### Redundância
+
+Redundância acontece quando o mesmo dado é armazenado de forma repetida e desnecessária em vários locais do banco de dados, o que causa desperdício de espaço de armazenamento e aumenta o risco de falhas em atualizações.
+
+O SGBD e os projetistas gerenciam e minimizam a redundância por meio de uma boa modelagem conceitual e relacional, aplicando técnicas de **normalização** de dados. Nos casos em que a redundância é necessária (como em replicações para distribuição de carga e alta disponibilidade), o próprio SGBD se encarrega de sincronizar os dados entre os servidores.
+
+### Inconsistência
+
+Inconsistência ocorre quando existem informações divergentes ou contraditórias sobre um mesmo fato ou entidade dentro do banco de dados. Ela é quase sempre consequência da redundância descontrolada (por exemplo, o telefone de um cliente ser alterado em uma tabela de pedidos, mas permanecer antigo no seu cadastro geral).
+
+O SGBD gerencia a inconsistência aplicando o controle de concorrência entre transações simultâneas, garantindo as propriedades ACID e exigindo o cumprimento das restrições de integridade referencial. Com isso, nenhuma alteração parcial é permitida e os dados mantêm a sua coerência.
+
+
 
 
