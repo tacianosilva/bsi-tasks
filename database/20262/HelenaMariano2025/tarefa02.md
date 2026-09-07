@@ -195,3 +195,77 @@ erDiagram
 
     RELEASE ||--|{ TESTE : possui
 ```
+## Q4. Projeto do Banco de Dados Relacional
+
+A partir do modelo conceitual apresentado na questão anterior, o banco de dados relacional pode ser representado pelas seguintes tabelas.
+
+### CLIENTE
+
+**CLIENTE**
+- `codigo_cliente` — chave primária (PK)
+- `nome`
+- `email`
+
+### PROJETO
+
+**PROJETO**
+- `codigo_projeto` — chave primária (PK)
+- `nome`
+- `descricao`
+- `codigo_cliente` — chave estrangeira (FK) → CLIENTE(`codigo_cliente`)
+
+### SQUAD
+
+**SQUAD**
+- `codigo_squad` — chave primária (PK)
+- `nome`
+
+### FUNCIONARIO
+
+**FUNCIONARIO**
+- `codigo_funcionario` — chave primária (PK)
+- `nome`
+- `email`
+- `papel`
+- `codigo_squad` — chave estrangeira (FK) → SQUAD(`codigo_squad`)
+
+### TAREFA
+
+**TAREFA**
+- `codigo_tarefa` — chave primária (PK)
+- `descricao`
+- `prioridade`
+- `situacao`
+- `estimativa_horas`
+- `codigo_projeto` — chave estrangeira (FK) → PROJETO(`codigo_projeto`)
+- `codigo_squad` — chave estrangeira (FK) → SQUAD(`codigo_squad`)
+- `codigo_sprint` — chave estrangeira (FK) → SPRINT(`codigo_sprint`)
+- `codigo_release` — chave estrangeira (FK) → RELEASE(`codigo_release`)
+
+### SPRINT
+
+**SPRINT**
+- `codigo_sprint` — chave primária (PK)
+- `nome`
+- `data_inicio`
+- `data_fim`
+- `codigo_projeto` — chave estrangeira (FK) → PROJETO(`codigo_projeto`)
+- `codigo_squad` — chave estrangeira (FK) → SQUAD(`codigo_squad`)
+
+### RELEASE
+
+**RELEASE**
+- `codigo_release` — chave primária (PK)
+- `versao`
+- `data_prevista`
+- `status_validacao`
+- `codigo_projeto` — chave estrangeira (FK) → PROJETO(`codigo_projeto`)
+- `codigo_squad` — chave estrangeira (FK) → SQUAD(`codigo_squad`)
+
+### TESTE
+
+**TESTE**
+- `codigo_teste` — chave primária (PK)
+- `data_teste`
+- `resultado`
+- `codigo_release` — chave estrangeira (FK) → RELEASE(`codigo_release`)
