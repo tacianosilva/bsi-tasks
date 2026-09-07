@@ -69,4 +69,33 @@ A durabilidade garante que, assim que uma transação for confirmada (*commit*),
 - **Exemplo prático (transferência bancária):** Uma vez que a transferência é finalizada e o comprovante é emitido na tela do cliente, os dados do débito e do crédito já foram gravados de forma segura em armazenamento persistente (disco e logs de transação).
 - **Se o SGBD não garantisse:** Uma queda de energia logo após a confirmação da operação poderia apagar os dados da memória volátil, fazendo com que a transferência "desaparecesse" e o saldo retornasse ao valor anterior à transação após a reinicialização do servidor.
 
+## Q4. Cenários envolvendo ACID
+
+### a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.
+
+A propriedade diretamente envolvida é a **atomicidade**.
+
+A transferência precisa ser tratada como uma única operação indivisível (tudo ou nada). O débito e o crédito precisam acontecer juntos. Como a energia caiu no meio do processo, a transação foi concluída apenas pela metade. Nesse caso, o SGBD deve desfazer o débito (*rollback*) para não deixar a operação incompleta. 
+
+Também existe relação com a **consistência**, pois a soma total dos valores no sistema ficaria incorreta enquanto a operação não fosse desfeita.
+
+### b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.
+
+A propriedade diretamente envolvida é o **isolamento**.
+
+As duas transações estão acontecendo de forma simultânea e precisam ser controladas pelo SGBD para que uma não interfira na outra. Sem o devido isolamento, os dois atendentes poderiam ler o mesmo saldo antes que o outro debitasse, provocando uma atualização perdida (*lost update*) e permitindo uma retirada de valor maior do que o saldo realmente disponível.
+
+### c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.
+
+A propriedade diretamente envolvida é a **durabilidade**.
+
+A partir do momento em que o sistema confirma para o usuário que a transação foi concluída (*commit*), as alterações devem ser salvas de forma permanente em disco. Se o servidor for reiniciado e a alteração for perdida, significa que o SGBD falhou em garantir a durabilidade da transação.
+
+### d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+
+A propriedade diretamente envolvida é a **consistência**.
+
+O banco possui uma regra de negócio que determina que o saldo não pode ficar abaixo de determinado limite. A função da consistência é garantir que o banco só passe de um estado válido para outro estado válido, fazendo com que o SGBD rejeite qualquer operação que viole essas regras.
+
+
 
