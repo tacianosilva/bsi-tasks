@@ -70,4 +70,128 @@ possui o mesmo significado conceitual de um cliente que pode estar associado a v
 
 O mesmo conceito pode ser representado visualmente de maneiras diferentes dependendo da notação utilizada. Por exemplo, o relacionamento entre CLIENTE e PROJETO pode ser representado por um losango na notação de Chen, por símbolos de cardinalidade na notação Crow's Foot ou por multiplicidades na UML.
 
+O Mermaid utiliza a notação Crow's Foot para seus Diagramas Entidade-Relacionamento e permite representar entidades, atributos e cardinalidades diretamente no código do diagrama.## Q2. Notações para Diagramas Entidade-Relacionamento
+
+Existem diferentes notações utilizadas para representar Diagramas Entidade-Relacionamento. Apesar das diferenças visuais, essas notações representam conceitos semelhantes, como entidades, atributos, relacionamentos e cardinalidades.
+
+### Notação de Chen
+
+A notação de Chen é uma das formas tradicionais de representação de modelos Entidade-Relacionamento.
+
+Nessa notação:
+
+- Entidades são representadas por retângulos;
+- Relacionamentos são representados por losangos;
+- Atributos são representados por elipses;
+- A cardinalidade é indicada junto aos relacionamentos.
+
+Por exemplo, considerando um CLIENTE que possui PROJETOS, teríamos uma entidade CLIENTE relacionada à entidade PROJETO por meio do relacionamento POSSUI.
+
+### Notação Crow's Foot
+
+A notação Crow's Foot utiliza símbolos nas extremidades dos relacionamentos para representar a cardinalidade. O símbolo semelhante a um "pé de galinha" representa a possibilidade de várias ocorrências.
+
+Por exemplo, a relação:
+
+CLIENTE ||--o{ PROJETO
+
+indica que um cliente pode possuir zero ou vários projetos, enquanto cada projeto está associado a exatamente um cliente.
+
+### Notação UML
+
+A UML também pode representar associações entre elementos utilizando multiplicidades. Alguns exemplos são:
+
+- `1` → exatamente um;
+- `0..1` → zero ou um;
+- `0..*` → zero ou muitos;
+- `1..*` → um ou muitos.
+
+Assim, a relação:
+
+CLIENTE "1" — "0..*" PROJETO
+
+possui o mesmo significado conceitual de um cliente que pode estar associado a vários projetos.
+
+### Comparação
+
+O mesmo conceito pode ser representado visualmente de maneiras diferentes dependendo da notação utilizada. Por exemplo, o relacionamento entre CLIENTE e PROJETO pode ser representado por um losango na notação de Chen, por símbolos de cardinalidade na notação Crow's Foot ou por multiplicidades na UML.
+
 O Mermaid utiliza a notação Crow's Foot para seus Diagramas Entidade-Relacionamento e permite representar entidades, atributos e cardinalidades diretamente no código do diagrama.
+
+## Q3. Diagrama Entidade-Relacionamento
+
+O diagrama abaixo representa o modelo conceitual de uma empresa de desenvolvimento de software. Foram consideradas as entidades, seus atributos, identificadores, relacionamentos e respectivas cardinalidades.
+
+As chaves estrangeiras não foram incluídas como atributos, pois o diagrama está sendo representado em nível conceitual. Os relacionamentos já representam as associações entre as entidades.
+
+```mermaid
+erDiagram
+
+    CLIENTE {
+        int codigo_cliente PK
+        string nome
+        string email
+    }
+
+    PROJETO {
+        int codigo_projeto PK
+        string nome
+        string descricao
+    }
+
+    SQUAD {
+        int codigo_squad PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        int codigo_funcionario PK
+        string nome
+        string email
+        string papel
+    }
+
+    TAREFA {
+        int codigo_tarefa PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+
+    SPRINT {
+        int codigo_sprint PK
+        string nome
+        date data_inicio
+        date data_fim
+    }
+
+    RELEASE {
+        int codigo_release PK
+        string versao
+        date data_prevista
+        string status_validacao
+    }
+
+    TESTE {
+        int codigo_teste PK
+        date data_teste
+        string resultado
+    }
+
+    CLIENTE ||--o{ PROJETO : possui
+    PROJETO ||--o{ TAREFA : possui
+
+    SQUAD ||--|{ FUNCIONARIO : possui
+    SQUAD ||--o{ TAREFA : resolve
+
+    PROJETO ||--o{ SPRINT : organiza
+    SQUAD ||--o{ SPRINT : executa
+    SPRINT ||--o{ TAREFA : organiza
+
+    PROJETO ||--o{ RELEASE : possui
+    SQUAD ||--o{ RELEASE : planeja
+    RELEASE ||--|{ TAREFA : agrupa
+
+    RELEASE ||--|{ TESTE : possui
+```
