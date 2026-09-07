@@ -17,3 +17,7 @@ Alguns exemplos de SGBDs são:
 - **SQLite**
 
 Por exemplo, uma empresa pode ter um banco de dados contendo informações de seus clientes e utilizar o **MySQL** como SGBD para gerenciar essas informações.
+
+## Q2. Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados?
+
+O uso de sistemas de arquivos para armazenar dados pode causar problemas como a redundância de informações, quando os mesmos dados são armazenados em diferentes arquivos, ocupando espaço desnecessário. Também pode ocorrer inconsistência, caso uma informação seja alterada em um arquivo e permaneça desatualizada em outro. Além disso, o acesso aos dados pode se tornar mais difícil conforme a quantidade de arquivos aumenta. Quando várias pessoas precisam alterar os mesmos arquivos ao mesmo tempo, podem ocorrer conflitos ou perda de informações. Outro problema está relacionado à segurança, pois pode ser difícil controlar quais usuários podem acessar ou modificar determinados dados. Em caso de falhas, a recuperação das informações também pode ser complicada.
