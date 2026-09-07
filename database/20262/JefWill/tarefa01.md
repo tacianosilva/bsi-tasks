@@ -126,6 +126,104 @@ Inconsistência ocorre quando existem informações divergentes ou contraditóri
 
 O SGBD gerencia a inconsistência aplicando o controle de concorrência entre transações simultâneas, garantindo as propriedades ACID e exigindo o cumprimento das restrições de integridade referencial. Com isso, nenhuma alteração parcial é permitida e os dados mantêm a sua coerência.
 
+## Q6. Mini-projeto conceitual
 
+O modelo conceitual a seguir descreve a estrutura de banco de dados para uma empresa de desenvolvimento de software que atende outras empresas como clientes e organiza o trabalho por meio de equipes multidisciplinares (*squads*).
 
+### a) Entidades
 
+As principais entidades envolvidas são:
+
+- **Cliente:** empresas que contratam os serviços de desenvolvimento de software.
+- **Projeto:** projetos de software contratados pelos clientes.
+- **Squad:** equipes responsáveis pelo planejamento e execução técnica.
+- **Membro:** profissionais que compõem as squads (desenvolvedores, testadores, líderes técnicos, supervisores e gerentes de produto).
+- **Tarefa:** demandas, issues, novas funcionalidades ou correções de bugs a serem implementadas.
+- **Sprint:** períodos ou iterações de tempo fixo para execução das tarefas de um projeto.
+- **Release:** versões entregáveis de software disponibilizadas para o cliente.
+
+### b) Principais atributos
+
+#### Cliente
+- `id_cliente`
+- `razao_social`
+- `nome_fantasia`
+- `cnpj`
+- `email_contato`
+- `telefone`
+
+#### Projeto
+- `id_projeto`
+- `nome`
+- `descricao`
+- `data_inicio`
+- `data_previsao_fim`
+- `status` (ex.: em planejamento, em andamento, concluído)
+
+#### Squad
+- `id_squad`
+- `nome`
+- `data_criacao`
+- `ativa`
+
+#### Membro
+- `id_membro`
+- `nome`
+- `email`
+- `cargo` (ex.: desenvolvedor, testador, líder técnico, supervisor, gerente de produto)
+- `data_admissao`
+
+#### Tarefa
+- `id_tarefa`
+- `titulo`
+- `descricao`
+- `tipo` (ex.: feature, bug, teste, documentação)
+- `prioridade` (ex.: baixa, média, alta, crítica)
+- `status` (ex.: a fazer, em andamento, em revisão, concluída)
+- `pontos_estimados`
+- `data_criacao`
+- `data_conclusao`
+
+#### Sprint
+- `id_sprint`
+- `numero_sprint`
+- `objetivo`
+- `data_inicio`
+- `data_fim`
+- `status` (ex.: planejada, em andamento, encerrada)
+
+#### Release
+- `id_release`
+- `versao` (ex.: v1.0.0)
+- `data_lancamento_planejada`
+- `data_lancamento_real`
+- `notas_da_versao`
+- `status`
+
+### c) Relacionamentos e cardinalidades
+
+- **Um cliente pode ter vários projetos**, mas cada projeto pertence a um único cliente.
+- **Um projeto pode ter várias squads atuando nele**, e uma squad pode atuar em múltiplos projetos ao longo do tempo.
+- **Uma squad é composta por vários membros**, mas cada membro está alocado em uma única squad em determinado período.
+- **Um projeto pode ter várias tarefas**, e cada tarefa está obrigatoriamente associada a um único projeto.
+- **Um projeto é dividido em várias sprints**, mas cada sprint pertence a um único projeto.
+- **Uma sprint agrupa várias tarefas**, enquanto uma tarefa pode estar associada a uma sprint (ou aguardar no backlog do projeto).
+- **Um projeto pode gerar várias releases**, e cada release pertence a um único projeto.
+- **Uma release reúne várias tarefas entregues**, indicando quais itens de trabalho foram publicados naquela versão.
+- **Uma squad é responsável por várias tarefas**, e cada tarefa possui uma squad responsável por sua execução.
+- **Um membro pode ser o responsável direto por várias tarefas**, enquanto uma tarefa pode ter um membro atribuído como responsável.
+
+### d) Regras de integridade
+
+Em linguagem natural, o banco de dados deve assegurar as seguintes regras e restrições:
+
+1. Todo identificador principal (`id_cliente`, `id_projeto`, `id_squad`, `id_membro`, `id_tarefa`, `id_sprint`, `id_release`) deve ser único.
+2. Campos essenciais de identificação e contato (como `cnpj` do cliente e `email` dos membros) não podem se repetir no sistema.
+3. Todo projeto deve estar obrigatoriamente associado a um cliente existente.
+4. Toda tarefa deve estar obrigatoriamente vinculada a um projeto e a uma squad responsável.
+5. Uma tarefa só pode ser alocada em uma sprint que pertença ao mesmo projeto da tarefa.
+6. Cada squad deve possuir obrigatoriamente apenas um membro com a função de Líder Técnico como responsável técnico da equipe.
+7. A data de início de uma sprint deve ser obrigatoriamente anterior à sua data de término.
+8. A data de previsão de fim de um projeto não pode ser anterior à sua data de início.
+9. Em um mesmo projeto, não podem existir duas releases com o mesmo número de versão.
+10. Uma tarefa não pode ser registrada com status de concluída sem que possua uma data de conclusão devidamente registrada.
