@@ -28,3 +28,41 @@ difícil controlar possíveis conflitos entre esses acessos.
 
 * **Problemas de segurança:** Como nem todos os usuários devem ter acesso a todos os dados, é necessário controlar as permissões
 de acesso. Em sistemas de arquivos, esse controle pode ser mais difícil de implementar e gerenciar.
+
+**Q3.** As propriedades **ACID** são características que garantem a confiabilidade e a segurança das transações realizadas em um
+banco de dados.
+
+* **Atomicidade:** Garante que uma transação seja executada completamente ou que nenhuma de suas operações seja aplicada. Em
+outras palavras, uma transação não pode ser parcialmente concluída.
+
+  **Exemplo:** Em uma transferência bancária, é necessário retirar o valor da conta de origem e adicioná-lo à conta de destino.
+  Se ocorrer uma falha durante a operação, todas as alterações devem ser desfeitas.
+
+  **Sem atomicidade:** O dinheiro poderia ser retirado da conta de origem, mas não ser adicionado à conta de destino.
+
+* **Consistência:** Garante que uma transação mantenha o banco de dados em um estado válido, respeitando as regras e restrições
+definidas.
+
+  **Exemplo:** Se uma conta possui R$ 500,00 e é realizada uma transferência de R$ 100,00, ao final da operação o saldo deve ser
+  atualizado corretamente para R$ 400,00.
+
+  **Sem consistência:** O banco de dados poderia apresentar informações inválidas ou que não respeitem suas regras, como um
+  saldo incorreto.
+
+* **Isolamento:** Garante que transações executadas simultaneamente não interfiram umas nas outras de forma incorreta. Cada
+transação deve funcionar como se estivesse sendo executada de maneira independente.
+
+  **Exemplo:** Se duas transferências são realizadas ao mesmo tempo a partir da mesma conta, o SGBD deve controlar essas
+  operações para que ambas considerem os valores corretos.
+
+  **Sem isolamento:** Uma transação poderia acessar dados que ainda estão sendo modificados por outra, causando resultados
+  incorretos.
+
+* **Durabilidade:** Garante que, após uma transação ser concluída com sucesso, suas alterações sejam permanentemente armazenadas
+no banco de dados, mesmo que ocorra uma falha no sistema.
+
+  **Exemplo:** Após uma transferência bancária ser confirmada, os novos saldos devem continuar registrados mesmo que o servidor
+  seja desligado ou ocorra uma falha no sistema.
+
+  **Sem durabilidade:** Uma transferência poderia ser confirmada, mas suas alterações poderiam ser perdidas após uma falha do
+  sistema.
