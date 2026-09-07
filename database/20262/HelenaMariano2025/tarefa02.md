@@ -269,3 +269,33 @@ A partir do modelo conceitual apresentado na questão anterior, o banco de dados
 - `data_teste`
 - `resultado`
 - `codigo_release` — chave estrangeira (FK) → RELEASE(`codigo_release`)
+
+## Q5. Restrições de Integridade Referencial
+
+As restrições de integridade referencial garantem que os relacionamentos entre as tabelas permaneçam consistentes. No banco de dados proposto, podem ser estabelecidas as seguintes regras:
+
+1. Todo PROJETO deve estar associado a um CLIENTE existente. Portanto, o valor de `codigo_cliente` em PROJETO deve corresponder a um `codigo_cliente` existente em CLIENTE.
+
+2. Toda TAREFA deve estar associada a um PROJETO existente. Assim, o `codigo_projeto` informado em TAREFA deve existir na tabela PROJETO.
+
+3. Todo FUNCIONARIO deve estar associado a uma SQUAD existente. Portanto, o `codigo_squad` de FUNCIONARIO deve corresponder a uma SQUAD cadastrada.
+
+4. Toda TAREFA deve estar associada a uma SQUAD responsável por resolvê-la.
+
+5. Toda TAREFA deve estar associada a um SPRINT existente, quando for planejada em uma sprint.
+
+6. Toda TAREFA incluída em uma RELEASE deve estar associada a uma RELEASE existente.
+
+7. Toda RELEASE deve estar associada a um PROJETO e a uma SQUAD existentes.
+
+8. Todo TESTE de validação deve estar associado a uma RELEASE existente.
+
+9. Uma SQUAD deve possuir pelo menos um FUNCIONARIO.
+
+10. Toda SQUAD deve possuir pelo menos um FUNCIONARIO com o papel de líder técnico.
+
+11. O atributo `papel` de FUNCIONARIO deve aceitar somente os papéis definidos no cenário: desenvolvedor, tester, líder técnico, supervisor ou gerente de produto.
+
+12. Não deve ser possível excluir um CLIENTE enquanto existirem PROJETOS associados a ele, a menos que os projetos também sejam tratados de acordo com uma regra de exclusão previamente definida.
+
+Essas restrições garantem que não existam referências para registros inexistentes e que as associações entre clientes, projetos, squads, funcionários, tarefas, sprints, releases e testes permaneçam consistentes.
