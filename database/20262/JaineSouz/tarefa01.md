@@ -256,3 +256,26 @@ O banco de dados deveria garantir as seguintes regras:
 13. Os identificadores de clientes, projetos, squads, membros, tarefas, sprints e releases devem ser únicos.
 14. Uma tarefa não deve ser registrada como concluída sem que exista uma data de conclusão, quando essa regra fizer parte das políticas da empresa.
 15. Uma release não pode ser lançada antes do projeto correspondente existir.
+
+
+## Conceitos de Git e GitHub
+
+### Branch
+
+Uma branch é uma ramificação do projeto que permite desenvolver uma funcionalidade ou alteração de forma isolada, sem modificar diretamente a branch principal. Nesta atividade foi utilizada uma branch específica para desenvolver a Tarefa 01.
+
+### Pull Request
+
+Um Pull Request (PR) é uma solicitação para que as alterações realizadas em uma branch sejam analisadas e incorporadas a outra branch. Nesta atividade, o Pull Request será utilizado para solicitar a inclusão da branch `feature/tarefa01` do fork no `main` do repositório original.
+
+### Merge
+
+Merge é o processo de combinar as alterações de uma branch com outra. Por exemplo, depois da análise de um Pull Request, as alterações da branch da tarefa podem ser incorporadas à branch `main`.
+
+### Rebase
+
+Rebase é uma operação utilizada para reposicionar os commits de uma branch sobre uma base mais recente. Ele pode ser utilizado para atualizar uma branch com as alterações mais recentes de outra branch, reorganizando o histórico de commits.
+
+### Conflitos
+
+Conflitos acontecem quando o Git não consegue decidir automaticamente como combinar alterações realizadas em uma mesma parte de um arquivo ou em arquivos relacionados. Quando isso acontece, o desenvolvedor precisa analisar as alterações, escolher ou combinar corretamente os conteúdos e depois registrar a resolução do conflito.
