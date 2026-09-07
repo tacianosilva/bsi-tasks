@@ -1,0 +1,3 @@
+# Q1. O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).
+
+Os três elementos principais são **Entidades**, geralmente os objetos do mundo real que queremos representar dentro do banco, com existências independentes; **Atributos**, que são as características dessas **Entidades**, como um nome ou CPF; e por fim, **Relacionamentos**, que é a forma que essas **Entidades** se relacionam entre si. Um exemplo clássico é que "um Cliente (entidade) faz (relacionamento) uma Compra (entidade)".
