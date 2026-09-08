@@ -87,3 +87,48 @@ As propriedades **ACID** garantem a confiabilidade de transações em um SGBD re
 * **Inconsistência:**
   * **Definição:** Presença de dados divergentes ou conflitantes para descrever um mesmo registro real.
   * **Como gerencia:** Controla transações simultâneas via mecanismos de concorrência (como travas de leitura/escrita e MVCC) e mantém as restrições relacionais ativas.
+
+---
+
+## Questão 06 - Mini-Projeto Conceitual (Empresa de Software)
+
+### a) Entidades Principais
+1. `Cliente`: Empresa contratante dos serviços de software.
+2. `Projeto`: Produto de software contratado por um cliente específico.
+3. `Squad`: Equipe multidisciplinar de desenvolvimento.
+4. `Membro`: Profissional pertencente a uma equipe (desenvolvedores, testadores, líderes, etc.).
+5. `Sprint`: Intervalo de tempo delimitado (iteração) para entrega de tarefas.
+6. `Tarefa (Issue)`: Demanda ou funcionalidade a ser construída ou corrigida.
+7. `Release`: Versão empacotada, homologada e entregue ao cliente.
+
+### b) Atributos por Entidade
+
+* **Cliente:** `id_cliente`, `nome_empresa`, `cnpj`, `email_contato`, `telefone`.
+* **Projeto:** `id_projeto`, `nome_projeto`, `descricao`, `data_inicio`, `data_previsao_fim`, `status`.
+* **Squad:** `id_squad`, `nome_squad`, `data_criacao`.
+* **Membro:** `id_membro`, `nome`, `email`, `cargo_papel` (desenvolvedor, testador, líder técnico, supervisor, gerente de produto), `status_ativo`.
+* **Sprint:** `id_sprint`, `numero_sprint`, `data_inicio`, `data_fim`, `meta_sprint`.
+* **Tarefa:** `id_tarefa`, `titulo`, `descricao`, `tipo` (bug, feature, melhoria), `prioridade`, `status` (a fazer, em andamento, concluído), `estimativa_horas`.
+* **Release:** `id_release`, `versao` (ex.: `v1.2.0`), `data_lancamento`, `notas_versao`.
+
+### c) Relacionamentos e Cardinalidades
+
+| Entidade Origem | Relação | Entidade Destino | Cardinalidade | Descrição |
+| :--- | :---: | :--- | :---: | :--- |
+| **Cliente** | *possui* | **Projeto** | `1 : N` | Um cliente contrata vários projetos; cada projeto pertence a um único cliente. |
+| **Squad** | *aloca* | **Membro** | `1 : N` | Uma squad possui vários membros; cada membro atua em uma squad por vez. |
+| **Squad** | *trabalha em* | **Projeto** | `N : M` | Uma squad pode atuar em múltiplos projetos; projetos podem receber mais de uma squad. |
+| **Projeto** | *divide-se em* | **Sprint** | `1 : N` | O projeto é organizado em sprints; a sprint pertence a um único projeto. |
+| **Sprint** | *contém* | **Tarefa** | `0 : N` | A sprint contém várias tarefas; a tarefa pode ou não estar alocada em uma sprint. |
+| **Projeto** | *possui* | **Tarefa** | `1 : N` | Toda tarefa pertence obrigatoriamente a um projeto. |
+| **Membro** | *executa* | **Tarefa** | `0 : N` | Um membro pode ser responsável por várias tarefas; uma tarefa tem até um responsável direto. |
+| **Release** | *agrupa* | **Tarefa** | `1 : N` | A release agrupa tarefas concluídas; uma tarefa entregue pertence a uma release. |
+
+### d) Regras de Integridade do Sistema
+
+1. **Liderança Exclusiva:** Cada `Squad` deve possuir **exatamente um** `Membro` com a atribuição de Líder Técnico.
+2. **Vinculação Obrigatória:** Nenhuma `Tarefa` pode existir de forma isolada; ela deve estar obrigatoriamente vinculada a um `Projeto` ativo.
+3. **Consistência de Escopo:** Uma `Tarefa` só pode ser associada a uma `Sprint` que pertença ao mesmo `Projeto` ao qual a tarefa está vinculada.
+4. **Unicidade de Versão:** O identificador da `versao` de uma `Release` deve ser único dentro do escopo de um mesmo projeto.
+5. **Consistência Cronológica:** A `data_inicio` de uma `Sprint` deve ser estritamente anterior à sua `data_fim`.
+6. **Fechamento de Versão:** Uma `Release` só pode ser marcada como lançada quando todas as tarefas vinculadas a ela estiverem com o status "concluído".
