@@ -27,3 +27,29 @@ O uso de sistemas de arquivos convencionais (pastas e arquivos como `.txt`, `.cs
 4. **Problemas de Integridade:** Regras de negócio (ex.: *saldo nunca pode ser menor que zero*) precisam ser programadas manualmente dentro de cada sistema, abrindo brechas para gravações incorretas.
 5. **Anomalias de Acesso Concorrente:** Se dois usuários ou programas abrirem e tentarem gravar no mesmo arquivo ao mesmo tempo, dados serão sobrescritos ou corrompidos.
 6. **Problemas de Segurança:** Faltam permissões granulares; o sistema geralmente só permite liberar ou bloquear o arquivo inteiro, não permitindo filtrar colunas ou registros confidenciais.
+
+---
+
+## Questão 03 - As Propriedades ACID
+
+As propriedades **ACID** garantem a confiabilidade de transações em um SGBD relacional:
+
+### Atomicidade
+* **Conceito:** A transação é tratada como uma unidade única e indivisível. Ou todas as suas operações são concluídas com sucesso, ou nada é gravado (ocorre o *rollback*).
+* **Exemplo Bancário:** Transferência de R$ 200 de Alice para Bob. O sistema precisa **debitar** de Alice e **creditar** em Bob.
+* **Se o SGBD falhar:** Caso falte energia após o débito em Alice, o dinheiro sumirá da conta dela sem nunca chegar à conta de Bob.
+
+### Consistência
+* **Conceito:** A transação deve respeitar rigorosamente todas as restrições, tipos e regras do sistema, levando o banco de dados de um estado válido a outro estado válido.
+* **Exemplo Bancário:** Alice possui saldo de R$ 50 e o banco não permite cheque especial. Uma tentativa de saque de R$ 100 é abortada.
+* **Se o SGBD falhar:** O banco permitiria o saldo negativo, violando as regras contábeis e gerando registros inválidos.
+
+### Isolamento
+* **Conceito:** Transações concorrentes são executadas sem interferir no andamento uma da outra, de modo que o resultado final seja idêntico ao de execuções sequenciais.
+* **Exemplo Bancário:** Dois saques simultâneos de R$ 100 acontecem em uma conta conjunta que possui exatamente R$ 100 de saldo.
+* **Se o SGBD falhar:** Ambas as operações leriam o saldo de R$ 100 ao mesmo instante e liberariam o saque, resultando em um rombo de saldo (*lost update*).
+
+### Durabilidade
+* **Conceito:** Uma vez que a transação é confirmada (*commit*), as alterações tornam-se definitivas e persistem mesmo diante de quedas de energia ou reinicializações do servidor.
+* **Exemplo Bancário:** Após o aplicativo exibir o comprovante de transferência realizada, os dados já foram salvos em disco seguro.
+* **Se o SGBD falhar:** Uma reinicialização imediata do servidor apagaria o registro da operação, devolvendo o dinheiro para a conta de origem.
