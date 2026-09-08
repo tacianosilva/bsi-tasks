@@ -91,3 +91,40 @@ A utilização de arquivos comuns de sistema operacional (como arquivos de texto
    * **Gerenciamento:** Controlando estritamente a redundância e utilizando mecanismos de travamento de concorrência (*locks*) para que todas as atualizações sejam propagadas uniformemente em transações ACID.
 
 ---
+
+### Q6. Mini-Projeto Conceitual do Banco de Dados (Sem SQL)
+
+#### a) Entidades Principais
+* **Cliente**
+* **Squad**
+* **Membro** (Desenvolvedores, Testadores, Líderes Técnicos, Supervisores, Gerentes)
+* **Projeto**
+* **Sprint**
+* **Release**
+* **Tarefa** (Issue)
+
+#### b) Principais Atributos por Entidade
+* **Cliente:** ID_Cliente, NomeRazaoSocial, CNPJ, EmailContato, Telefone.
+* **Squad:** ID_Squad, NomeSquad, DataCriacao.
+* **Membro:** ID_Membro, Nome, Email, Cargo (Desenvolvedor, Testador, Líder, Supervisor, Gerente).
+* **Projeto:** ID_Projeto, NomeProjeto, Descricao, DataInicio, DataPrevisaoFim.
+* **Sprint:** ID_Sprint, NumeroSprint, DataInicio, DataFim, Objetivo.
+* **Release:** ID_Release, Versao, DataLancamento, DescricaoMudancas.
+* **Tarefa (Issue):** ID_Tarefa, Titulo, Descricao, Status (A Fazer, Em Andamento, Concluído), Prioridade, EstimativaHoras.
+
+#### c) Relacionamentos e Cardinalidades
+* **Cliente - Projeto:** Um Cliente pode contratar *vários* Projetos. Um Projeto pertence a *apenas um* Cliente. `(1:N)`
+* **Squad - Projeto:** Uma Squad pode trabalhar em *vários* Projetos. Um Projeto é atendido por *apenas uma* Squad principal. `(1:N)`
+* **Squad - Membro:** Uma Squad possui *vários* Membros. Um Membro pertence a *uma* Squad. `(1:N)`
+* **Projeto - Sprint:** Um Projeto é dividido em *várias* Sprints. Uma Sprint pertence a *apenas um* Projeto. `(1:N)`
+* **Sprint - Tarefa:** Uma Sprint pode conter *várias* Tarefas. Uma Tarefa pode estar associada a *no máximo uma* Sprint. `(1:N)`
+* **Projeto - Release:** Um Projeto lança *várias* Releases. Uma Release pertence a *apenas um* Projeto. `(1:N)`
+* **Release - Tarefa:** Uma Release inclui *várias* Tarefas finalizadas. Uma Tarefa pode fazer parte de *apenas uma* Release. `(1:N)`
+* **Membro - Tarefa (Responsável):** Um Membro pode ser responsável por *várias* Tarefas. Uma Tarefa está atribuída a *no máximo um* Membro responsável. `(1:N)`
+
+#### d) Regras de Integridade (Restrições)
+1. **Liderança Única:** Cada Squad deve possuir exatamente um Membro com a atribuição/papel de "Líder Técnico".
+2. **Vínculo Obrigatório de Projeto:** Toda Tarefa (Issue) precisa obrigatoriamente estar vinculada a um Projeto existente.
+3. **Unicidade de Identificadores:** O CNPJ do Cliente e o E-mail dos Membros devem ser únicos em todo o sistema.
+4. **Pertencimento de Release:** Uma Tarefa só pode ser incluída em uma Release se o seu status for "Concluído".
+5. **Restrição Temporal:** A data inicial de uma Sprint não pode ser maior do que a sua data final de término.
