@@ -90,3 +90,17 @@ erDiagram
     }
 ```
 
+## Q4. Modelo Relacional
+
+A partir do diagrama ER, o modelo relacional é composto pelas seguintes tabelas:
+
+- **CLIENTE** (`codigo` PK, `nome`, `email`)
+- **PROJETO** (`codigo` PK, `nome`, `cliente_codigo` FK)
+- **SQUAD** (`codigo` PK, `nome`)
+- **FUNCIONARIO** (`codigo` PK, `nome`, `email`, `papel`, `squad_codigo` FK)
+- **SPRINT** (`codigo` PK, `data_inicio`, `data_fim`, `squad_codigo` FK)
+- **TAREFA** (`codigo` PK, `descricao`, `prioridade`, `situacao`, `estimativa_horas`, `projeto_codigo` FK, `squad_codigo` FK, `sprint_codigo` FK, `release_codigo` FK)
+- **RELEASE** (`codigo` PK, `versao`, `squad_codigo` FK, `cliente_codigo` FK)
+- **TESTE_VALIDACAO** (`codigo` PK, `data`, `resultado`, `release_codigo` FK)
+
+As chaves estrangeiras representam os relacionamentos entre as tabelas e referenciam as respectivas chaves primárias.
