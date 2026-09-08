@@ -22,3 +22,64 @@ Existem diferentes notações para representar um Diagrama Entidade-Relacionamen
 
 Assim, um mesmo relacionamento, como **um cliente possuir vários projetos (1:N)**, pode ser representado por símbolos de cardinalidade diferentes dependendo da notação utilizada.
 
+## Q3. Diagrama ER
+
+```mermaid
+erDiagram
+
+    CLIENTE ||--o{ PROJETO : possui
+    PROJETO ||--o{ TAREFA : possui
+
+    SQUAD ||--|{ FUNCIONARIO : possui
+    SQUAD ||--o{ TAREFA : resolve
+
+    SQUAD ||--o{ SPRINT : organiza
+    SPRINT ||--o{ TAREFA : contem
+
+    SQUAD ||--o{ RELEASE : planeja
+    RELEASE ||--|{ TAREFA : agrupa
+    RELEASE }o--|| CLIENTE : destinada_a
+
+    CLIENTE {
+        int codigo PK
+        string nome
+        string email
+    }
+
+    PROJETO {
+        int codigo PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        int codigo PK
+        string nome
+        string email
+        string papel
+    }
+
+    SQUAD {
+        int codigo PK
+        string nome
+    }
+
+    TAREFA {
+        int codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+
+    SPRINT {
+        int codigo PK
+        date data_inicio
+        date data_fim
+    }
+
+    RELEASE {
+        int codigo PK
+        string versao
+    }
+```
+
