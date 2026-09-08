@@ -51,3 +51,23 @@ A utilização de arquivos comuns de sistema operacional (como arquivos de texto
 * **Sem SGBD garantindo:** A transação seria confirmada na memória RAM e, se houvesse uma queda de energia no servidor em seguida, o dinheiro transferido reapareceria na conta de origem como se nada tivesse acontecido.
 
 ---
+
+### Q4. Análise de Cenários e Propriedades ACID
+
+* **a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.**
+  * **Propriedade:** **Atomicidade**.
+  * **Justificativa:** Houve uma falha no princípio do "tudo ou nada". A operação parou pela metade e não realizou o *rollback* (desfazer) da primeira etapa.
+
+* **b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.**
+  * **Propriedade:** **Isolamento**.
+  * **Justificativa:** Trata-se do controle de concorrência. Uma transação interferiu no estado da outra por não executarem isoladamente.
+
+* **c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.**
+  * **Propriedade:** **Durabilidade**.
+  * **Justificativa:** Após o término e confirmação da transação, os dados deveriam ter sido salvos em armazenamento não-volátil permanentemente.
+
+* **d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**
+  * **Propriedade:** **Consistência**.
+  * **Justificativa:** O SGBD impediu a transação para manter o banco em um estado válido perante as regras de integridade predefinidas.
+
+---
