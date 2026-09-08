@@ -34,3 +34,16 @@ ser perdidos mesmo que o servidor seja reiniciado.
 
 d) Consistência: uma operação que viole uma regra do banco de dados deve
 ser rejeitada.
+
+
+**Q5. Explique como um SGBD trata recuperação, integridade, redundância e inconsistência.**
+
+A recuperação permite restaurar os dados após falhas.
+
+A integridade garante que os dados armazenados sigam as regras definidas
+no banco de dados.
+
+A redundância é reduzida através de uma boa organização dos dados.
+
+A inconsistência é evitada através de regras de integridade e do controle
+das transações.
