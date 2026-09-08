@@ -70,3 +70,20 @@ As propriedades **ACID** garantem a confiabilidade de transações em um SGBD re
 * **d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**
   * **Propriedade garantida:** **Consistência**.
   * **Justificativa:** O sistema interceptou e bloqueou a transação com base nas regras de integridade pré-definidas para a conta.
+
+---
+
+## Questão 05 - Aspectos de Gerenciamento do SGBD
+
+* **Recuperação:**
+  * **Definição:** Capacidade do sistema de retornar a um estado consistente após travamentos, falhas de sistema ou falhas de energia.
+  * **Como gerencia:** Utiliza **Write-Ahead Logging (WAL)**, onde toda alteração é gravada em um log antes do arquivo de dados final, permitindo rotinas de `redo` (refazer) e `undo` (desfazer).
+* **Integridade:**
+  * **Definição:** Garantia de que os dados armazenados estejam corretos, válidos e dentro das restrições de negócio.
+  * **Como gerencia:** Aplicação forçada de chaves primárias (`PRIMARY KEY`), chaves estrangeiras (`FOREIGN KEY`), restrições de nulidade (`NOT NULL`), checagens (`CHECK`) e tipos de dados.
+* **Redundância:**
+  * **Definição:** Repetição desnecessária da mesma informação em diferentes tabelas ou campos.
+  * **Como gerencia:** Através de técnicas de **normalização** de dados. Quando a redundância é necessária (como em índices para ganho de velocidade), o próprio motor se encarrega de sincronizá-la automaticamente.
+* **Inconsistência:**
+  * **Definição:** Presença de dados divergentes ou conflitantes para descrever um mesmo registro real.
+  * **Como gerencia:** Controla transações simultâneas via mecanismos de concorrência (como travas de leitura/escrita e MVCC) e mantém as restrições relacionais ativas.
