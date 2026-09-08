@@ -21,4 +21,16 @@ Os principais problemas são:
 devem permanecer armazenados mesmo após uma falha do sistema.
 
 
+**Q4. Para cada cenário abaixo, indique qual(is) propriedade(s) ACID está(ão) em jogo e justifique sua resposta: a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino. b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta. c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido. d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**
 
+a) Atomicidade: uma transferência bancária deve acontecer completamente
+ou não acontecer.
+
+b) Isolamento: duas operações realizadas ao mesmo tempo não devem causar
+um resultado incorreto.
+
+c) Durabilidade: após uma operação ser confirmada, seus dados não devem
+ser perdidos mesmo que o servidor seja reiniciado.
+
+d) Consistência: uma operação que viole uma regra do banco de dados deve
+ser rejeitada.
