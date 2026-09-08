@@ -47,3 +47,83 @@ A redundância é reduzida através de uma boa organização dos dados.
 
 A inconsistência é evitada através de regras de integridade e do controle
 das transações.
+
+**Q6. Considere o cenário de uma empresa de desenvolvimento de software que atende outras empresas como clientes. A empresa organiza seu trabalho em squads (equipes) compostas por desenvolvedores, testadores, líder técnico, supervisor e gerente de produto. Cada squad resolve tarefas (issues) e planeja releases, testes e o cronograma de sprints (iterações) dos projetos de cada cliente.**
+
+**Sem utilizar SQL, elabore um mini-projeto conceitual do banco de dados dessa empresa, deixando claro: a) As principais entidades envolvidas (clientes, squads, membros, tarefas, projetos, sprints, releases). b) Os principais atributos de cada entidade. c) Os relacionamentos entre as entidades (com a cardinalidade, ex.: "um cliente pode ter vários projetos"). d) Em linguagem natural, as regras de integridade (restrições) que o banco de dados deveria garantir, ex.: "apenas um líder por squad", "toda tarefa precisa estar vinculada a um projeto".**
+
+### a) Principais entidades
+
+As principais entidades são: Cliente, Projeto, Squad, Membro, Tarefa, Sprint e Release.
+
+### b) Principais atributos
+
+**Cliente**
+- id
+- nome
+- email
+- telefone
+
+**Projeto**
+- id
+- nome
+- descrição
+- data_inicio
+- data_fim
+
+**Squad**
+- id
+- nome
+
+**Membro**
+- id
+- nome
+- email
+- cargo
+
+**Tarefa**
+- id
+- título
+- descrição
+- status
+- prioridade
+
+**Sprint**
+- id
+- nome
+- data_inicio
+- data_fim
+
+**Release**
+- id
+- versão
+- data
+- descrição
+
+### c) Relacionamentos e cardinalidades
+
+Um cliente pode ter vários projetos, mas cada projeto pertence a um único cliente.
+
+Um projeto pode possuir várias squads, e uma squad pode participar de vários projetos.
+
+Uma squad pode possuir vários membros, mas cada membro pertence a uma única squad.
+
+Um projeto pode possuir várias tarefas, mas cada tarefa pertence a um único projeto.
+
+Um projeto pode possuir várias sprints, mas cada sprint pertence a um único projeto.
+
+Uma sprint pode possuir várias tarefas, e uma tarefa pode participar de uma sprint.
+
+Um projeto pode possuir várias releases, mas cada release pertence a um único projeto.
+
+### d) Regras de integridade
+
+- Todo projeto deve estar vinculado a um cliente.
+- Toda tarefa deve estar vinculada a um projeto.
+- Todo membro deve estar vinculado a uma squad.
+- Cada squad deve possuir apenas um líder técnico.
+- Toda sprint deve estar vinculada a um projeto.
+- Toda release deve estar vinculada a um projeto.
+- A data de fim de uma sprint deve ser posterior à data de início.
+- Toda tarefa deve possuir um status válido.
+- Toda release deve possuir uma versão identificável.
