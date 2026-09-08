@@ -27,3 +27,27 @@ A utilização de arquivos comuns de sistema operacional (como arquivos de texto
 5. **Problemas de Segurança:** Dificuldade em restringir o acesso a partes específicas dos dados por nível de permissão do usuário.
 
 ---
+
+### Q3. Propriedades ACID
+
+#### 1. Atomicidade
+* **Explicação:** Garante que uma transação seja tratada como uma unidade indivisível ("tudo ou nada"). Ou todas as operações da transação são concluídas com sucesso, ou nenhuma é mantida.
+* **Exemplo:** Transferir R$ 100 de A para B envolve duas etapas: debitar RS 100 de A e creditar RS 100 em B. Se a atomicidade for mantida, ambas ocorrem ou ambas falham.
+* **Sem SGBD garantindo:** O valor seria debitado da conta A, o sistema falharia antes do crédito, e R$ 100 desapareceriam do sistema bancário sem chegar à conta B.
+
+#### 2. Consistência
+* **Explicação:** Garante que a transação leve o banco de dados de um estado válido para outro estado válido, respeitando todas as regras de integridade e restrições (constraints).
+* **Exemplo:** O banco possui uma regra onde o saldo de uma conta não pode ser negativo sem limite contratado. A transferência só é aceita se o saldo final respeitar essa restrição.
+* **Sem SGBD garantindo:** O cliente transferiria um valor maior do que possui, gerando um saldo negativo inválido violando as regras de negócio do banco.
+
+#### 3. Isolamento
+* **Explicação:** Garante que transações executadas concorrentemente (ao mesmo tempo) não interfiram umas nas outras, como se estivessem sendo executadas de forma sequencial.
+* **Exemplo:** Se duas transferências ocorrerem simultaneamente na mesma conta, uma esperará o término do cálculo da outra para ler o saldo atualizado.
+* **Sem SGBD garantindo:** Duas transações lendo o saldo inicial de R$ 500 juntas poderiam ambas aprovar saques de RS 400 no mesmo segundo, resultando em um saldo final incoerente.
+
+#### 4. Durabilidade
+* **Explicação:** Garante que, uma vez confirmada a transação (*commit*), os dados persistirão permanentemente no banco de dados, mesmo em caso de falhas no sistema ou queda de energia.
+* **Exemplo:** Após o banco retornar "Transferência realizada com sucesso", a alteração do saldo está gravada em disco de forma definitiva.
+* **Sem SGBD garantindo:** A transação seria confirmada na memória RAM e, se houvesse uma queda de energia no servidor em seguida, o dinheiro transferido reapareceria na conta de origem como se nada tivesse acontecido.
+
+---
