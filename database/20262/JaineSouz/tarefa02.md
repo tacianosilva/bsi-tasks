@@ -104,3 +104,17 @@ A partir do diagrama ER, o modelo relacional é composto pelas seguintes tabelas
 - **TESTE_VALIDACAO** (`codigo` PK, `data`, `resultado`, `release_codigo` FK)
 
 As chaves estrangeiras representam os relacionamentos entre as tabelas e referenciam as respectivas chaves primárias.
+
+
+## Q5. Integridade Referencial
+
+As restrições de integridade referencial garantem que as chaves estrangeiras das tabelas sempre correspondam a registros existentes nas tabelas relacionadas.
+
+- Um **projeto** deve estar associado a um `CLIENTE` existente.
+- Um **funcionário** deve estar associado a uma `SQUAD` existente.
+- Uma **sprint** deve estar associada a uma `SQUAD` existente.
+- Uma **tarefa** deve estar associada a um `PROJETO`, uma `SQUAD`, uma `SPRINT` e uma `RELEASE` existentes.
+- Uma **release** deve estar associada a uma `SQUAD` e a um `CLIENTE` existentes.
+- Um **teste de validação** deve estar associado a uma `RELEASE` existente.
+
+Além disso, cada `SQUAD` deve possuir pelo menos um funcionário com o papel de **tech lead**.
