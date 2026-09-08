@@ -13,6 +13,12 @@ Os principais problemas são:
 * Problemas de integridade
 * Problemas de segurança
 
+**Q3. Explique as propriedades ACID: atomicidade, consistência, isolamento e durabilidade. Para cada propriedade, descreva um exemplo prático no contexto de uma transferência bancária e explique o que aconteceria se o SGBD não garantisse essa propriedade.**  
+* Atomicidade significa que uma transação deve ser finalizada completamente ou não ser realizada; 
+* Consistência significa que o banco de dados deve permanecer em um estado válido após uma transação;
+* Isolamento significa que transações executadas simultaneamente não devem interferir de maneira incorreta umas nas outras;
+* Durabilidade significa que, após uma transação ser confirmada, seus dados
+devem permanecer armazenados mesmo após uma falha do sistema.
 
 
 
