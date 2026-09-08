@@ -71,3 +71,23 @@ A utilização de arquivos comuns de sistema operacional (como arquivos de texto
   * **Justificativa:** O SGBD impediu a transação para manter o banco em um estado válido perante as regras de integridade predefinidas.
 
 ---
+
+### Q5. Aspectos Tratados pelo SGBD
+
+1. **Recuperação:**
+   * **Conceito:** Capacidade de restaurar o banco de dados a um estado consistente após falhas de hardware, software ou energia.
+   * **Gerenciamento:** O SGBD utiliza arquivos de *logs de transações* (write-ahead logging) e pontos de verificação (*checkpoints*) para refazer (*redo*) operações confirmadas e desfazer (*undo*) transações incompletas após uma reinicialização.
+
+2. **Integridade:**
+   * **Conceito:** Garantia de que os dados inseridos e modificados no banco estejam corretos, precisos e válidos segundo as regras do negócio.
+   * **Gerenciamento:** Através do uso de restrições de integridade (*constraints*) definidas no esquema, como chaves primárias (PK), chaves estrangeiras (FK), checagens de tipos de dados (`CHECK`) e declarações de não-nulo (`NOT NULL`).
+
+3. **Redundância:**
+   * **Conceito:** Duplicação desnecessária e indesejada dos mesmos dados em diferentes partes do banco de dados.
+   * **Gerenciamento:** O SGBD minimiza a redundância por meio de processos de *normalização* do modelo relacional, garantindo que cada dado seja armazenado centralizadamente em um único local e referenciado por chaves.
+
+4. **Inconsistência:**
+   * **Conceito:** Situação na qual duas cópias diferentes do mesmo dado possuem valores divergentes, gerando incerteza sobre qual informação é verdadeira.
+   * **Gerenciamento:** Controlando estritamente a redundância e utilizando mecanismos de travamento de concorrência (*locks*) para que todas as atualizações sejam propagadas uniformemente em transações ACID.
+
+---
