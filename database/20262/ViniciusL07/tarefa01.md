@@ -53,3 +53,20 @@ As propriedades **ACID** garantem a confiabilidade de transações em um SGBD re
 * **Conceito:** Uma vez que a transação é confirmada (*commit*), as alterações tornam-se definitivas e persistem mesmo diante de quedas de energia ou reinicializações do servidor.
 * **Exemplo Bancário:** Após o aplicativo exibir o comprovante de transferência realizada, os dados já foram salvos em disco seguro.
 * **Se o SGBD falhar:** Uma reinicialização imediata do servidor apagaria o registro da operação, devolvendo o dinheiro para a conta de origem.
+
+---
+
+## Questão 04 - Análise de Cenários ACID
+
+* **a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.**
+  * **Propriedade violada:** **Atomicidade**.
+  * **Justificativa:** A operação foi executada pela metade, violando o princípio do "tudo ou nada". O sistema deveria ter desfeito o débito (*rollback*).
+* **b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.**
+  * **Propriedade em jogo:** **Isolamento**.
+  * **Justificativa:** Trata-se de concorrência simultânea sobre o mesmo registro. O SGBD precisa bloquear ou enfileirar as transações para evitar leitura suja ou perda de atualização.
+* **c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.**
+  * **Propriedade violada:** **Durabilidade**.
+  * **Justificativa:** Se o cliente recebeu a confirmação do *commit*, o dado deveria ter sido persistido em memória não-volátil (disco/log WAL).
+* **d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**
+  * **Propriedade garantida:** **Consistência**.
+  * **Justificativa:** O sistema interceptou e bloqueou a transação com base nas regras de integridade pré-definidas para a conta.
