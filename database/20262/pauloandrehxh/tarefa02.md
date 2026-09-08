@@ -117,3 +117,169 @@ A representação visual das entidades e dos relacionamentos possui regras próp
 | Entidade fraca/subordinada | Retângulo duplo | Entidade dependente, conforme a convenção | Pode ser modelada por composição/dependência |
 
 **Observação:** a forma exata dos símbolos pode variar de acordo com a ferramenta e a convenção adotada. O importante é que o modelo apresente claramente os conceitos e suas restrições.
+
+## Q3. Diagrama ER Conceitual (Empresa de Software)
+
+O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras. 
+
+* a) A empresa presta serviços de desenvolvimento de software para outras empresas (clientes). Cada cliente é identificado por um código, um nome e um e-mail de contato. 
+
+* b) Os funcionários da empresa trabalham em squads (equipes). Cada funcionário é identificado por um código, um nome e um e-mail, e possui um papel na equipe: desenvolvedor, testador, líder técnico, supervisor ou gerente de produto. 
+
+* c) Cada squad é formada por vários funcionários e resolve tarefas (issues). Uma tarefa tem código, descrição, prioridade, situação e uma estimativa em horas. As tarefas pertencem a projetos de um cliente. 
+
+* d) O trabalho é organizado em iterações (sprints). Uma squad planeja releases para seus clientes; uma release agrupa um conjunto de tarefas e passa por testes de validação.
+
+### Análise do problema
+
+A empresa de desenvolvimento possui **clientes**, **funcionários**, **squads**, **projetos**, **issues**, **sprints** e **releases**.
+
+Para evitar redundância:
+
+- os dados de um cliente são armazenados somente em `CLIENTE`;
+- os dados de um funcionário são armazenados somente em `FUNCIONARIO`;
+- a associação entre funcionário e squad é representada pelo relacionamento;
+- um projeto pertence a um cliente, evitando repetir os dados do cliente em cada issue;
+- uma issue pertence a um projeto;
+- uma release agrupa issues;
+- uma sprint organiza o trabalho de uma squad;
+- a validação da release é representada por um relacionamento com o processo/registro de validação, sem duplicar os dados da release.
+
+O modelo abaixo está no nível conceitual. Portanto, não são utilizadas chaves estrangeiras (FKs).
+
+
+### Entidades e atributos
+
+**CLIENTE**
+
+- codigo_cliente — identificador
+- nome
+- email_contato
+
+**FUNCIONARIO**
+
+- codigo_funcionario — identificador
+- nome
+- email
+- papel
+
+O atributo `papel` possui um domínio restrito:
+
+- Desenvolvedor;
+- Testador;
+- Líder técnico;
+- Supervisor;
+- Gerente de produto
+
+**SQUAD**
+
+- codigo_squad — identificador
+- nome
+
+**PROJETO**
+
+- codigo_projeto — identificador
+- nome
+- descricao
+
+**ISSUE**
+
+- codigo_issue — identificador
+- descricao
+- prioridade
+- situacao
+- estimativa_horas
+
+**SPRINT**
+
+- codigo_sprint — identificador
+- nome
+- data_inicio
+- data_fim
+
+**RELEASE**
+
+- codigo_release — identificador
+- versao
+- data_planejada
+- situacao
+
+**VALIDACAO**
+
+- codigo_validacao — identificador
+- data_validacao
+- resultado
+- observacao
+
+
+### Relacionamentos
+
+**CLIENTE — possui — PROJETO**
+
+Um cliente pode possuir vários projetos, mas cada projeto pertence a um único cliente.
+
+**Cardinalidade:** `CLIENTE 1:N PROJETO`
+
+---
+
+**FUNCIONARIO — pertence — SQUAD**
+
+Uma squad é formada por vários funcionários. Um funcionário pertence a uma squad.
+
+**Cardinalidade:** `SQUAD 1:N FUNCIONARIO`
+
+---
+
+**SQUAD — resolve — ISSUE**
+
+Uma squad resolve várias issues. Uma issue é resolvida por uma squad.
+
+**Cardinalidade:** `SQUAD 1:N ISSUE`
+
+---
+
+**PROJETO — possui — ISSUE**
+
+Um projeto pode possuir várias issues. Cada issue pertence a um projeto.
+
+**Cardinalidade:** `PROJETO 1:N ISSUE`
+
+---
+
+**SQUAD — planeja — RELEASE**
+
+Uma squad pode planejar várias releases. Cada release é planejada por uma squad.
+
+**Cardinalidade:** `SQUAD 1:N RELEASE`
+
+---
+
+**SPRINT — organiza — ISSUE**
+
+Uma sprint pode conter várias issues. Uma issue pode ser planejada em uma sprint.
+
+**Cardinalidade:** `SPRINT 1:N ISSUE`
+
+> Essa escolha evita duplicar dados da sprint nas issues. Caso o sistema precise permitir que a mesma issue participe de várias sprints ao longo de seu ciclo de vida, esse relacionamento deverá ser alterado para **N:N**, criando posteriormente uma entidade associativa no modelo lógico.
+
+---
+
+**RELEASE — agrupa — ISSUE**
+
+Uma release agrupa um conjunto de issues. Uma issue pode fazer parte de uma release.
+
+**Cardinalidade:** `RELEASE 1:N ISSUE`
+
+> Em um sistema real, uma issue poderia também participar de mais de uma release, por exemplo, se for adiada de uma versão para outra. Nesse caso, o relacionamento conceitual seria N:N. Para a interpretação mais simples do enunciado, foi adotado 1:N.
+
+---
+
+**RELEASE — passa por — VALIDACAO**
+
+Uma release passa por testes de validação. Uma validação pertence a uma release.
+
+**Cardinalidade:** `RELEASE 1:N VALIDACAO`
+
+> Isso permite registrar diferentes execuções de validação para a mesma release, por exemplo, uma primeira validação que falhou e uma segunda que foi aprovada.
+
+---
