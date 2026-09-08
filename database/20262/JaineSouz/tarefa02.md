@@ -39,6 +39,7 @@ erDiagram
     SQUAD ||--o{ RELEASE : planeja
     RELEASE ||--|{ TAREFA : agrupa
     RELEASE }o--|| CLIENTE : destinada_a
+    RELEASE ||--|{ TESTE_VALIDACAO : passa_por
 
     CLIENTE {
         int codigo PK
@@ -80,6 +81,12 @@ erDiagram
     RELEASE {
         int codigo PK
         string versao
+    }
+
+    TESTE_VALIDACAO {
+        int codigo PK
+        date data
+        string resultado
     }
 ```
 
