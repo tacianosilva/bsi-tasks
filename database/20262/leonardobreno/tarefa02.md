@@ -299,3 +299,31 @@ A tabela FUNCIONARIO possui codigo_squad como chave estrangeira, que faz referen
 A tabela TAREFA possui chaves estrangeiras para SQUAD, PROJETO, SPRINT e RELEASE.
 
 A tabela TESTE_VALIDACAO possui codigo_release como chave estrangeira, que faz referencia ao codigo_release da tabela RELEASE.
+
+Q5. Restricoes de Integridade Referencial
+
+As restricoes de integridade referencial servem para garantir que os relacionamentos entre as tabelas estejam corretos.
+
+Um projeto so pode existir se estiver vinculado a um cliente existente.
+
+Uma tarefa so pode existir se estiver vinculada a um projeto existente.
+
+Uma tarefa deve estar vinculada a uma squad existente.
+
+Uma tarefa pode estar vinculada a uma sprint existente.
+
+Uma tarefa pode estar vinculada a uma release existente.
+
+Um funcionario so pode estar vinculado a uma squad existente.
+
+Uma sprint so pode existir se estiver vinculada a uma squad existente.
+
+Uma release deve estar vinculada a uma squad e a um cliente existentes.
+
+Um teste de validacao so pode existir se estiver vinculado a uma release existente.
+
+Toda squad deve possuir um lider tecnico.
+
+As chaves estrangeiras devem sempre fazer referencia a registros que existem nas tabelas relacionadas.
+
+Um registro que esteja sendo utilizado por outra tabela nao deve ser excluido sem antes verificar os relacionamentos existentes.
