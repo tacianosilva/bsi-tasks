@@ -51,16 +51,48 @@
 
 ### a) Entidades
 
-**Resposta**:
+**Resposta**: Esses aspectos surgiram no SGBD Justamente por que elas eram o problema principal dos sistemas de arquivos.
+- Recuperação (Após falhas): Capacidade do sistema a retornar ao seu estado consistente após uma falha. Ele utiliza o Mecanismo de Log que registra todas as operações antes de gravá-las no disco. Quando o sistema cai, o sistema lê esse log ao reiniciar, e refaz as operações salvas e desfaz as incompletas
+- Integridade: Garante que os dados armazenados sejam confiáveis, precisos e sigam as regras de negócio. O sistema gerencia através de limitações de integridade, declaradas no esquema do banco.
+- Redundância: Armazenamento duplicado e desnecessário da mesma informação, o SGBD usa a Normalização para mitigar esse problema
+- Inconsistência: Ocorre quando cópias diferentes do mesmo dado possuem valores distintos. Quando um dado precisa ser atualizado, ele só é modificado em um único lugar pelo SGBD, mitigando esse problema de inconsistência
 
 ### b) Atributos
 
-**Resposta**:
+**Resposta**: As entidades representam objetos do mundo real no qual o sistema precisa guardar informações. As entidades que criei foram:
+- Cliente: A empresa externa que contrata os serviços de desenvolvimento.
+- Projeto: O produto de software ou serviço que está sendo desenvolvido para um cliente.
+- Squad: A equipe multidisciplinar responsável pela execução do trabalho.
+- Membro: Os profissionais que trabalham na empresa (desenvolvedores, testadores, líderes, etc.).
+- Sprint: O ciclo/iteração de tempo (ex: 2 semanas) onde as tarefas são executadas.
+- Tarefa (Issue): A unidade de trabalho que precisa ser feita (um bug, uma nova funcionalidade).
+- Release: O pacote de entregas de software gerado a partir de um conjunto de tarefas concluídas e testadas.
+Os atributos são as características de cada entidade. Os atributos são:
+- Cliente: _ID_Cliente_, Nome_Empresa, CNPJ, Telefone_Contato, Email.
+- Projeto: _ID_Projeto_, Nome_Projeto, Descricao, Data_Inicio, Orcamento.
+- Squad: _ID_Squad_, Nome_Squad, Foco_Atuacao (ex: mobile, backend).
+- Membro: _ID_Membro_, Nome, CPF, Cargo (Dev, QA, Tech Lead, PM, Supervisor), Data_Admissao.
+- Sprint: _ID_Sprint_, Numero_Sprint, Data_Inicio, Data_Fim, Objetivo.
+- Tarefa (Issue): _ID_Tarefa_, Titulo, Descricao, Status (To Do, Doing, Done), Prioridade, Pontuacao_Estimada (Story Points).
+- Release: _ID_Release_, Versao (ex: v1.0.0), Data_Lancamento, Notas_de_Versao.
 
 ### c) Relacionamentos e cardinalidades
 
 **Resposta**:
+- Cliente e Projeto (1:N): Um Cliente pode ter vários Projetos, mas um Projeto pertence a apenas um Cliente.
+- Projeto e Squad (N:M): Um Projeto pode ser atendido por uma ou mais Squads, e uma Squad pode trabalhar em vários Projetos ao longo do tempo.
+- Squad e Membro (1:N): Uma Squad possui vários Membros, mas um Membro pertence a apenas uma Squad por vez.
+- Projeto e Sprint (1:N): Um Projeto possui várias Sprints cronológicas, mas uma Sprint pertence a apenas um Projeto.
+- Sprint e Tarefa (1:N): Uma Sprint contém várias Tarefas, e uma Tarefa pode ser alocada em apenas uma Sprint.
+- Membro e Tarefa (1:N): Um Membro (responsável) pode assumir várias Tarefas, mas uma Tarefa é atribuída a apenas um Membro responsável.
+- Tarefa e Release (1:N): Uma Release agrupa várias Tarefas concluídas, e uma Tarefa concluída pode fazer parte de apenas uma Release.
 
 ### d) Regras de integridade
 
 **Resposta**:
+- Liderança Única: Cada Squad deve ter obrigatoriamente apenas um Membro com o cargo de "Líder Técnico" e apenas um "Gerente de Produto (PM)" associados ativos.
+- Vínculo de Projeto: Toda Tarefa criada precisa estar obrigatoriamente vinculada a um Projeto existente.
+- Consistência de Cronograma: A data de início de uma Sprint deve ser estritamente anterior à sua data de término.
+- Unicidade Cadastral: Não podem existir dois Clientes com o mesmo CNPJ, nem dois Membros com o mesmo CPF.
+- Fluxo de Status: Uma Tarefa só pode ser vinculada a uma Release se o seu `Status` for igual a "Done" (Concluída).
+- Integridade Referencial de Exclusão: Se um Cliente for excluído do sistema, o SGBD deve impedir a ação ou remover em cascata seus Projetos e Tarefas associados para evitar dados órfãos.
