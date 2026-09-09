@@ -351,3 +351,37 @@ Os relacionamentos muitos-para-muitos precisam ser representados por novas rela�
 
 * `matricula_supervisor` → `FUNCIONARIO(matricula)`
 * `matricula_supervisionado` → `FUNCIONARIO(matricula)`
+
+
+
+## Q5. Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").
+
+As restrições de integridade referencial que devem ser garantidas no esquema são:
+
+* `CONTATO.cnpj` deve fazer referência a um `EMPRESA_CLIENTE.cnpj` existente. Todo contato deve estar vinculado a uma empresa cliente.
+
+* `CONTRATO.cnpj` deve fazer referência a um `EMPRESA_CLIENTE.cnpj` existente. Todo contrato deve estar vinculado a uma empresa cliente.
+
+* `CONTRATO.numero_contrato` deve ser referenciado por um único projeto, conforme a relação 1:1 entre `CONTRATO` e `PROJETO`. Um projeto não pode estar associado a um contrato inexistente.
+
+* `PROJETO.codigo_equipe` deve fazer referência a um `EQUIPE.codigo_equipe` existente. Todo projeto deve estar vinculado a uma equipe existente.
+
+* `TAREFA.codigo_projeto` deve fazer referência a um `PROJETO.codigo_projeto` existente. Toda tarefa deve estar vinculada a um projeto existente.
+
+* `FATURA.codigo_projeto` deve fazer referência a um `PROJETO.codigo_projeto` existente. Toda fatura deve estar vinculada a um projeto existente.
+
+* `FUNCIONARIO.matricula_supervisor` deve fazer referência a uma `FUNCIONARIO.matricula` existente ou ser nulo. Dessa forma, um funcionário pode não possuir supervisor.
+
+* `EQUIPE_FUNCIONARIO.codigo_equipe` deve fazer referência a um `EQUIPE.codigo_equipe` existente.
+
+* `EQUIPE_FUNCIONARIO.matricula` deve fazer referência a um `FUNCIONARIO.matricula` existente.
+
+* `TAREFA_FUNCIONARIO.codigo_tarefa` deve fazer referência a um `TAREFA.codigo_tarefa` existente.
+
+* `TAREFA_FUNCIONARIO.matricula` deve fazer referência a um `FUNCIONARIO.matricula` existente.
+
+* `PROJETO_TECNOLOGIA.codigo_projeto` deve fazer referência a um `PROJETO.codigo_projeto` existente.
+
+* `PROJETO_TECNOLOGIA.id_tecnologia` deve fazer referência a um `TECNOLOGIA.id_tecnologia` existente.
+
+Além disso, quando uma entidade possuir registros dependentes, sua exclusão deve respeitar os vínculos existentes. Por exemplo, um projeto que possua tarefas ou faturas vinculadas não deve ser excluído de forma que essas referências apontem para um projeto inexistente. A exclusão deve ser restringida ou os registros dependentes devem ser tratados conforme a regra definida para o sistema.
