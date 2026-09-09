@@ -275,3 +275,174 @@ dois endereços diferentes, saldo que não bate com o extrato).
   Assim o banco converge sempre para um único estado consistente.
 
 ---
+
+## Q6. Mini-projeto conceitual — Empresa de desenvolvimento de software
+
+Cenário: uma *software house* atende **empresas clientes**, organiza-se em **squads** e
+executa **projetos** divididos em **sprints**, com **tarefas**, **testes** e **releases**.
+
+### a) Principais entidades
+
+- **Cliente** — a empresa contratante.
+- **Projeto** — trabalho contratado por um cliente.
+- **Squad** — equipe responsável por um ou mais projetos.
+- **Membro** — pessoa que trabalha na software house (desenvolvedor, testador, líder
+  técnico, supervisor, gerente de produto).
+- **PapelNoSquad** (associativa) — vínculo de um membro a um squad exercendo um papel.
+- **Sprint** — iteração de tempo fixo dentro de um projeto.
+- **Tarefa (Issue)** — unidade de trabalho a ser resolvida.
+- **Release** — versão entregável do software de um projeto.
+- **Teste** — caso/execução de teste associado a tarefas e/ou releases.
+
+### b) Principais atributos
+
+**Cliente**
+- `id_cliente` (identificador)
+- `razao_social`, `nome_fantasia`
+- `cnpj` (único)
+- `email_contato`, `telefone`
+- `data_inicio_contrato`
+
+**Projeto**
+- `id_projeto` (identificador)
+- `nome`
+- `descricao`
+- `data_inicio`, `data_prevista_fim`, `data_fim_real`
+- `status` (em análise, ativo, pausado, concluído, cancelado)
+- `id_cliente` (cliente dono do projeto)
+- `id_squad` (squad responsável)
+
+**Squad**
+- `id_squad` (identificador)
+- `nome` (único)
+- `data_criacao`
+- `ativo` (sim/não)
+
+**Membro**
+- `id_membro` (identificador)
+- `nome_completo`
+- `email_corporativo` (único)
+- `cargo` (desenvolvedor, testador, líder técnico, supervisor, gerente de produto)
+- `data_admissao`
+- `ativo` (sim/não)
+
+**PapelNoSquad** (associação Membro–Squad)
+- `id_membro`, `id_squad`
+- `papel` (desenvolvedor, testador, líder técnico, supervisor, gerente de produto)
+- `data_entrada`, `data_saida`
+- `alocacao_percentual`
+
+**Sprint**
+- `id_sprint` (identificador)
+- `id_projeto`
+- `numero` / `nome`
+- `data_inicio`, `data_fim`
+- `objetivo` (meta da sprint)
+- `status` (planejada, em andamento, encerrada)
+
+**Tarefa (Issue)**
+- `id_tarefa` (identificador)
+- `titulo`, `descricao`
+- `tipo` (feature, bug, melhoria, débito técnico)
+- `prioridade` (baixa, média, alta, crítica)
+- `status` (backlog, a fazer, em andamento, em teste, concluída)
+- `estimativa` (pontos ou horas)
+- `data_abertura`, `data_conclusao`
+- `id_projeto` (obrigatório)
+- `id_sprint` (opcional — tarefa pode estar no backlog)
+- `id_membro_responsavel` (opcional)
+- `id_release` (opcional — release em que a tarefa foi entregue)
+
+**Release**
+- `id_release` (identificador)
+- `id_projeto`
+- `versao` (ex.: 1.4.0) — única dentro do projeto
+- `data_planejada`, `data_lancamento`
+- `status` (planejada, em homologação, lançada)
+- `notas_da_versao`
+
+**Teste**
+- `id_teste` (identificador)
+- `id_projeto`
+- `titulo`, `descricao`
+- `tipo` (unitário, integração, sistema, aceitação, regressão)
+- `resultado` (não executado, passou, falhou, bloqueado)
+- `data_execucao`
+- `id_membro_executor` (opcional)
+- `id_tarefa` (opcional — teste que valida uma tarefa)
+- `id_release` (opcional — teste de uma release)
+
+### c) Relacionamentos e cardinalidade
+
+- **Cliente (1) — (N) Projeto**: um cliente pode ter vários projetos; cada projeto pertence
+  a exatamente um cliente.
+- **Squad (1) — (N) Projeto**: um squad pode ser responsável por vários projetos; cada
+  projeto é conduzido por um squad. *(Se a empresa permitir troca de squad ao longo do
+  tempo, isso vira uma associativa Projeto–Squad com período de vigência.)*
+- **Membro (N) — (M) Squad** por meio de **PapelNoSquad**: um membro pode participar de
+  vários squads e um squad tem vários membros; a associação guarda o papel e o período.
+- **Projeto (1) — (N) Sprint**: um projeto tem várias sprints; cada sprint pertence a um
+  único projeto.
+- **Projeto (1) — (N) Tarefa**: um projeto tem várias tarefas; toda tarefa pertence a um
+  único projeto.
+- **Sprint (1) — (N) Tarefa**: uma sprint contém várias tarefas; uma tarefa está em no
+  máximo uma sprint (pode estar em nenhuma).
+- **Membro (1) — (N) Tarefa** (responsável): um membro pode ser responsável por várias
+  tarefas; cada tarefa tem no máximo um responsável.
+- **Projeto (1) — (N) Release**: um projeto tem várias releases; cada release pertence a um
+  projeto.
+- **Release (1) — (N) Tarefa**: uma release agrupa várias tarefas entregues; uma tarefa é
+  associada a no máximo uma release.
+- **Projeto (1) — (N) Teste**: cada teste pertence a um projeto.
+- **Tarefa (1) — (N) Teste** e **Release (1) — (N) Teste**: um teste pode validar uma
+  tarefa e/ou uma release; cada tarefa/release pode ter vários testes.
+- **Membro (1) — (N) Teste** (executor): um membro pode executar vários testes.
+
+### d) Regras de integridade (em linguagem natural)
+
+1. Todo **projeto** precisa estar vinculado a exatamente **um cliente**.
+2. Toda **tarefa** precisa estar vinculada a exatamente **um projeto**.
+3. Toda **sprint** e toda **release** pertencem a exatamente **um projeto**.
+4. Se uma tarefa estiver associada a uma **sprint**, essa sprint deve ser **do mesmo
+   projeto** da tarefa. A mesma regra vale para a **release** associada à tarefa.
+5. Cada **squad** tem **exatamente um líder técnico ativo** por vez ("apenas um líder por
+   squad").
+6. Um **squad**, quando ativo, deve ter ao menos **um desenvolvedor** e **um testador**.
+7. O **papel** exercido em `PapelNoSquad` deve ser compatível com o **cargo** do membro
+   (ex.: quem não é testador não entra como testador).
+8. Um **membro** não pode ter dois vínculos **ativos** no mesmo squad com o mesmo papel
+   (sem sobreposição de períodos).
+9. **CNPJ do cliente** e **e-mail corporativo do membro** são **únicos**.
+10. A **versão** de uma release é **única dentro do projeto**.
+11. Datas devem ser coerentes: `data_inicio` ≤ `data_fim` em sprints, projetos e contratos;
+    `data_abertura` ≤ `data_conclusao` na tarefa; `data_planejada` ≤ `data_lancamento` na
+    release.
+12. Uma **tarefa só pode ter status "concluída"** se tiver `data_conclusao` preenchida e um
+    **responsável** definido.
+13. Uma **release "lançada"** só é válida se **todas as tarefas associadas** estiverem
+    concluídas e seus testes de aceitação/regressão tiverem **resultado "passou"**.
+14. O **responsável** por uma tarefa deve ser um membro que participe (via
+    `PapelNoSquad`) do squad responsável pelo projeto da tarefa.
+15. Não é permitido **excluir** um cliente que possua projetos, nem um projeto que possua
+    tarefas/sprints/releases (exclusão restrita ou em cascata controlada).
+16. Campos identificadores nunca são nulos; atributos obrigatórios (`nome`, `titulo`,
+    `status`, chaves estrangeiras obrigatórias) não aceitam valor nulo.
+17. Atributos com lista de valores (`status`, `prioridade`, `tipo`, `resultado`, `papel`,
+    `cargo`) só aceitam valores do conjunto pré-definido (domínio).
+
+### Diagrama conceitual (visão textual)
+
+```
+CLIENTE ----< PROJETO >---- SQUAD
+                 |             |
+                 |             |  (Membro N:M Squad via PAPEL_NO_SQUAD)
+                 |             |
+        +--------+--------+    MEMBRO
+        |        |        |     |  \
+     SPRINT   RELEASE   TESTE   |   >-- responsável por --< TAREFA
+        |        |        |     |
+        +---< TAREFA >----+-----+ (executor de) TESTE
+```
+
+Legenda: `----<` / `>----` indicam o lado "muitos" do relacionamento (1:N);
+`N:M` indica muitos-para-muitos resolvido por entidade associativa.
