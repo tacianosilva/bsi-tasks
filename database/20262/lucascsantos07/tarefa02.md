@@ -23,3 +23,84 @@ Na **notação IDEF1X**, há maior destaque para as chaves e para a dependência
 A **UML** também pode ser utilizada para representar estruturas semelhantes às de um DER, principalmente por meio de diagramas de classes. Nesse caso, as multiplicidades são representadas por valores como `1`, `0..1`, `1..*` e `*`.
 
 Assim, um mesmo conceito pode possuir representações diferentes dependendo da notação. Por exemplo, uma cardinalidade **um para muitos** pode ser representada como `1:N` na notação Chen, por uma barra e um pé de galinha na notação Crow's Foot, ou como `1..*` em UML. Dessa forma, as diferentes notações modificam principalmente a forma visual de representar o modelo, mantendo a mesma informação conceitual.
+
+## Q3: 
+```mermaid
+
+---
+config:
+  layout: elk
+---
+erDiagram
+
+    CLIENTE ||--o{ PROJETO : possui
+
+    SQUAD ||--|{ FUNCIONARIO : possui
+
+    SQUAD ||--o{ TAREFA : resolve
+
+    PROJETO ||--o{ TAREFA : contem
+
+    SQUAD ||--o{ ITERACAO : planeja
+
+    ITERACAO ||--o{ TAREFA : organiza
+
+    SQUAD ||--o{ RELEASE : planeja
+
+    PROJETO ||--o{ RELEASE : possui
+
+    RELEASE ||--|{ TAREFA : agrupa
+
+    RELEASE ||--o{ TESTE_VALIDACAO : passa_por
+
+    CLIENTE {
+        int codigo_cliente PK
+        string nome
+        string email_contato
+    }
+
+    PROJETO {
+        int codigo_projeto PK
+        string nome
+        string descricao
+    }
+
+    SQUAD {
+        int codigo_squad PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        int codigo_funcionario PK
+        string nome
+        string email
+        string papel
+    }
+
+    TAREFA {
+        int codigo_tarefa PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+
+    ITERACAO {
+        int codigo_iteracao PK
+        string nome
+        date data_inicio
+        date data_fim
+    }
+
+    RELEASE {
+        int codigo_release PK
+        string nome
+        date data_prevista
+        string status
+    }
+
+    TESTE_VALIDACAO {
+        int codigo_teste PK
+        string resultado
+    }
+```
