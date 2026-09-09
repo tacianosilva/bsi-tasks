@@ -23,3 +23,25 @@ Alguns exemplos de bancos de dados e seus respectivos SGBDs são:
 O armazenamento de dados diretamente em arquivos pode causar diversos problemas quando o sistema cresce. Entre eles estão a **redundância de dados**, quando a mesma informação é armazenada em vários arquivos; a **inconsistência**, quando essas cópias possuem valores diferentes; a dificuldade de controlar o **acesso e a segurança** das informações; e a dificuldade de realizar consultas e alterações de forma eficiente.
 
 Além disso, sistemas baseados apenas em arquivos apresentam dificuldades para garantir a **integridade dos dados** e para recuperar informações após falhas. Também pode haver problemas quando vários usuários tentam acessar ou modificar os mesmos dados simultaneamente. Os SGBDs foram desenvolvidos para solucionar esses problemas, oferecendo mecanismos de segurança, controle de concorrência, integridade, recuperação e gerenciamento centralizado dos dados.
+
+---
+
+## Q3. Propriedades ACID
+
+As propriedades ACID garantem que as transações realizadas em um banco de dados sejam executadas de forma confiável. ACID é formado por **Atomicidade, Consistência, Isolamento e Durabilidade**.
+
+### Atomicidade
+
+Uma transação deve ser executada completamente ou não ser executada. Por exemplo, em uma transferência bancária, o valor deve ser retirado da conta de origem e depositado na conta de destino. Se ocorrer uma falha depois do débito, a operação deve ser desfeita para que o dinheiro não desapareça.
+
+### Consistência
+
+A transação deve manter o banco de dados em um estado válido, respeitando suas regras e restrições. Em uma transferência, por exemplo, não deve ser permitido que uma operação deixe o saldo ou outros dados em uma situação proibida pelas regras do sistema. Sem consistência, poderiam surgir dados inválidos ou que não obedecem às regras do banco.
+
+### Isolamento
+
+Transações executadas simultaneamente não devem interferir umas nas outras de maneira incorreta. Por exemplo, se duas transferências forem realizadas ao mesmo tempo sobre a mesma conta, cada operação deve trabalhar com dados controlados para evitar que uma transação utilize informações incorretas produzidas pela outra.
+
+### Durabilidade
+
+Depois que uma transação é confirmada, seus efeitos devem permanecer registrados mesmo que ocorra uma falha no sistema. Assim, após uma transferência ser concluída e o servidor reiniciar, o débito e o crédito realizados devem continuar registrados. Sem durabilidade, uma transação confirmada poderia ser perdida após uma falha.
