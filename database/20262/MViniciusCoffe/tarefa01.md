@@ -13,7 +13,11 @@
 ## Q3. Propriedades ACID
 - Explique as propriedades ACID: atomicidade, consistência, isolamento e durabilidade. Para cada propriedade, descreva um exemplo prático no contexto de uma transferência bancária e explique o que aconteceria se o SGBD não garantisse essa propriedade.
 
-**Resposta**:
+**Resposta**: Essas propriedades são fundamentais para o funcionamento pleno não só de bancos de dados, mas para grande parte das operações de softwares. Para elucidar esses conceitos, vou tratar do seguinte caso: **SGBD Debita os R$ 100 da conta A e deposita o mesmo valor na conta B**
+- Atomicidade (Tudo ou nada): Uma transação é uma unidade indivisível, ou as operações rodam, ou o banco não sai de seu estado atual. Se o SGBD falhar nessa parte, pode acontecer que o SGBD debite os 100 reais de uma conta, e, por uma falha subsequente, não deposite o mesmo valor na conta B, fazendo com que o dinheiro sumisse.
+- Consistência: Garante que uma transação leve o banco de um estado válido para outro, respeitando regras, restrições e a integridade do sistema. Se o sistema falhasse nessa regra, o SGBD Poderia debitar 100 reais da conta A, mesmo só tendo 10 reais, violando a regra de negócio que diz que não pode ter saldo negativo.
+- Isolamento: Garante que múltiplas transações concorrentes ocorram de tal forma que uma não interfira na outra, para a transação 2 ocorrer, a 1 tem que encerrar. Se o SGBD Falhasse nessa operação, o banco poderia sofrer dois débitos de 100 simultâneos, deixando a conta final com um saldo incompatível (Ou negativo)
+- Durabilidade: Se a operação já tiver sido feita, ela deve ser permanentemente salva em um meio não-volátil, como SSD ou HDs. Se o sistema falhasse, o SGBD Poderia encerrar uma operação, ela ainda estar na memória RAM e os dados logo voltarem ao estado anterior, ou serem perdidos/corrompidos.
 
 ## Q4. Cenários ACID
 - Para cada cenário abaixo, indique qual(is) propriedade(s) ACID está(ão) em jogo e justifique sua resposta:
