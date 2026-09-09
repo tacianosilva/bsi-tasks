@@ -65,3 +65,15 @@ A propriedade envolvida é a **Durabilidade**. Depois que a transação é confi
 ### d) Transferência rejeitada porque deixaria o saldo abaixo do limite permitido
 
 A propriedade envolvida é a **Consistência**. O banco de dados deve impedir operações que violem as regras e restrições definidas pelo sistema. Nesse caso, a transferência é rejeitada porque deixaria a conta em um estado inválido.
+
+---
+
+## Q5. Recuperação, integridade, redundância e inconsistência
+
+A **recuperação** é o conjunto de mecanismos utilizados pelo SGBD para restaurar o banco de dados a um estado consistente após falhas, como quedas de energia ou problemas no servidor. Isso pode ser realizado por meio de logs, backups e mecanismos de recuperação de transações.
+
+A **integridade** está relacionada à garantia de que os dados permaneçam corretos e de acordo com as regras definidas pelo sistema. O SGBD utiliza restrições, como chaves primárias, chaves estrangeiras e regras de validação, para evitar dados inválidos.
+
+A **redundância** ocorre quando a mesma informação é armazenada desnecessariamente em diferentes locais. O SGBD ajuda a reduzir esse problema por meio da organização dos dados e da normalização, evitando duplicações desnecessárias.
+
+A **inconsistência** acontece quando existem diferentes versões de uma mesma informação e elas apresentam valores divergentes. O SGBD utiliza transações, controle de concorrência e regras de integridade para manter os dados consistentes, mesmo quando vários usuários acessam ou modificam as informações simultaneamente.
