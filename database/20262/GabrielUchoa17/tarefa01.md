@@ -50,3 +50,39 @@ escolhendo/combinando as versões, remover os marcadores, dar `git add` no arqui
 resolvido e concluir com `git commit` (merge) ou `git rebase --continue` (rebase).
 
 ---
+
+## Q1. Banco de Dados e Sistema Gerenciador de Banco de Dados
+
+**Banco de Dados (BD)** é uma coleção organizada de dados relacionados entre si, que
+representam aspectos do mundo real (o *minimundo*) e são armazenados de forma persistente
+para atender a um conjunto de aplicações e usuários. Um BD tem um propósito definido, é
+estruturado segundo um modelo de dados e busca reduzir redundância e inconsistência.
+
+**Sistema Gerenciador de Banco de Dados (SGBD)** é o software que fica entre os usuários/
+aplicações e os dados físicos, permitindo **definir** (esquemas, tipos, restrições),
+**construir** (armazenar), **manipular** (consultar, inserir, atualizar, remover) e
+**compartilhar** o banco de dados de forma controlada. O SGBD também cuida de segurança,
+controle de concorrência, controle de acesso, backup e recuperação, e garante as
+propriedades das transações.
+
+De forma resumida: o **banco de dados** é o *conjunto de dados*; o **SGBD** é o *programa
+que gerencia* esse conjunto. O conjunto formado por SGBD + banco(s) de dados + aplicações
+costuma ser chamado de **Sistema de Banco de Dados**.
+
+### Exemplos
+
+| Banco de dados (o dado em si) | SGBD que o gerencia | Modelo |
+|---|---|---|
+| Cadastro acadêmico de uma universidade | PostgreSQL, Oracle Database, MySQL/MariaDB, SQL Server | Relacional |
+| Catálogo de produtos e pedidos de um e-commerce | PostgreSQL, MySQL | Relacional |
+| Coleção de documentos JSON de um app mobile | MongoDB, Couchbase | Documentos (NoSQL) |
+| Carrinho de compras / cache de sessão | Redis | Chave-valor (NoSQL) |
+| Rede de relacionamentos / recomendação | Neo4j | Grafos (NoSQL) |
+| Métricas e séries temporais de sensores IoT | InfluxDB, TimescaleDB | Séries temporais |
+| Banco local embarcado em um aplicativo desktop/mobile | SQLite | Relacional embarcado |
+
+> Observação: nomes como "PostgreSQL", "MySQL" e "Oracle" designam, a rigor, os **SGBDs**;
+> o *banco de dados* é a base específica que cada organização cria e povoa dentro deles
+> (ex.: o banco `siga_ufrn` rodando sobre o SGBD PostgreSQL).
+
+---
