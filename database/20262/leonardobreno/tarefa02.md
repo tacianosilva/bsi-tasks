@@ -41,3 +41,87 @@ Nessa notacao, as entidades sao representadas de forma semelhante a tabelas e os
 Tambem existe a notacao UML, que pode ser utilizada para representar classes e seus relacionamentos. Ela utiliza caixas para representar as classes e linhas para representar os relacionamentos.
 
 As diferentes notacoes possuem formas diferentes de representar os mesmos conceitos, como entidades, atributos, relacionamentos e cardinalidades.
+
+Q3. Diagrama ER
+
+O diagrama abaixo representa o modelo Entidade-Relacionamento conceitual da empresa de desenvolvimento de software.
+
+```mermaid
+erDiagram
+
+    CLIENTE {
+        int codigo PK
+        string nome
+        string email
+    }
+
+    FUNCIONARIO {
+        int codigo PK
+        string nome
+        string email
+        string papel
+    }
+
+    SQUAD {
+        int codigo PK
+        string nome
+    }
+
+    PROJETO {
+        int codigo PK
+        string nome
+        string descricao
+    }
+
+    TAREFA {
+        int codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+
+    SPRINT {
+        int codigo PK
+        string nome
+        date data_inicio
+        date data_fim
+    }
+
+    RELEASE {
+        int codigo PK
+        string versao
+        date data
+        string situacao
+    }
+
+    TESTE_VALIDACAO {
+        int codigo PK
+        date data
+        string resultado
+        string observacao
+    }
+
+    CLIENTE ||--o{ PROJETO : possui
+    SQUAD ||--|{ FUNCIONARIO : possui
+    SQUAD ||--o{ TAREFA : resolve
+    PROJETO ||--o{ TAREFA : possui
+    SQUAD ||--o{ SPRINT : planeja
+    SPRINT ||--o{ TAREFA : organiza
+    SQUAD ||--o{ RELEASE : planeja
+    CLIENTE ||--o{ RELEASE : recebe
+    RELEASE ||--|{ TAREFA : agrupa
+    RELEASE ||--o{ TESTE_VALIDACAO : possui
+```
+
+No modelo, cada entidade possui um identificador próprio e seus atributos. Os relacionamentos representam as ligações entre os dados e suas cardinalidades.
+
+Um cliente pode possuir varios projetos, e cada projeto pertence a um cliente.
+
+Uma squad e formada por varios funcionarios, e cada funcionario pertence a uma squad. O papel do funcionario indica se ele e desenvolvedor, testador, lider tecnico, supervisor ou gerente de produto.
+
+Uma squad pode resolver varias tarefas, e cada tarefa pertence a um projeto de um cliente.
+
+Uma squad pode planejar varias sprints, e uma sprint pode organizar varias tarefas.
+
+Uma squad pode planejar varias releases para seus clientes. Uma release agrupa varias tarefas e pode possuir varios testes de validacao.
