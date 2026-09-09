@@ -76,3 +76,39 @@ Significa que, uma vez que uma transação é confirmada (committed), os dados g
 **c)** **Durabilidade**, claramente um caso de durabilidade, pois está garante que transações confirmadas, ficaram salvas em memória não volátil e sobrevivam a falhas do sistema ou reinicializações.
 
 **d)** **Consistência**, a consistência garante que as regras negócio e estruturas sejam seguidas, portanto essa propriedade não permitiria que uma transação que violaria uma regra de negócio fosse executada, pois istó levaria o sistema de um estado válido onde essas regras são respeitadas para um inválido onde não são.
+
+## Q5.
+**Enunciado:** Um SGBD trata dos seguintes aspectos: **recuperação, integridade, redundância e inconsistência**. Explique cada um deles e descreva como o SGBD os gerencia.
+
+### Resposta
+
+#### 1. Recuperação (Recovery)
+
+* **Conceito:** Refere-se à capacidade do SGBD de restaurar o banco de dados a um estado consistente e correto após a ocorrência de falhas sejam elas de hardware (queda de energia, falha de disco), de software (erros no sistema operacional) ou de sistema (interrupção abrupta de transações).
+* **Como o SGBD gerencia:** 
+  * **Log de Transações (WAL - *Write-Ahead Logging*):** Antes de modificar qualquer dado no disco, o SGBD registra todas as operações planejadas em um arquivo de log permanente.
+  * **Operações de *UNDO* e *REDO*:** Durante a reinicialização após uma falha, o sistema analisa o log. Ele desfaz (*UNDO*) o efeito de transações que foram interrompidas sem concluir e refaz (*REDO*) as transações que já haviam sido finalizadas (*commit*), mas cujos dados atualizados ainda não tinham sido gravados fisicamente no disco.
+  * **Pontos de Verificação (*Checkpoints*):** Periodicamente, o SGBD força a gravação no disco de todas as alterações pendentes na memória, encurtando o tempo e a quantidade de dados que precisam ser analisados e restaurados durante o processo de recuperação
+
+#### 2. Integridade (Integrity)
+
+* **Conceito:** Trata-se do cumprimento de regras de negócio e restrições para garantir que os dados armazenados sejam válidos, precisos e confiáveis. Impede a inserção de informações incorretas ou sem sentido no sistema.
+* **Como o SGBD gerencia:**
+  * **Restrições de Integridade (*Constraints*):** O SGBD valida automaticamente os dados na entrada através de regras declaradas no esquema:
+    * *Chave Primária (`PRIMARY KEY`):* garante que cada registro seja único.
+    * *Chave Estrangeira (`FOREIGN KEY`):* mantém a integridade referencial entre tabelas relacionadas.
+    * *Campos `NOT NULL` e `CHECK`:* impedem valores nulos indesejados ou impõem condições específicas (ex: `idade >= 18`).
+
+#### 3. Redundância (Redundancy)
+
+* **Conceito:** É a duplicação desnecessária e repetida dos mesmos dados em múltiplos locais dentro do banco de dados. A redundância não controlada consome espaço em disco inutilmente e facilita o surgimento de divergências entre as cópias do mesmo dado.
+* **Como o SGBD gerencia:**
+  * **Normalização de Dados:** Aplicação de técnicas e regras estruturais (Formas Normais) durante a modelagem do banco de dados para dividir tabelas complexas em tabelas menores e interconectadas por chaves, eliminando a duplicação de atributos.
+  * **Redundância Controlada:** Em cenários específicos de alto desempenho onde a duplicação é consciente e necessária (como em *Data Warehouses* ou views materializadas), o próprio SGBD se encarrega de sincronizar e atualizar automaticamente as cópias para que permaneçam iguais
+
+#### 4. Inconsistência (Inconsistency)
+
+* **Conceito:** Ocorre quando cópias do mesmo dado contêm valores diferentes entre si, gerando uma contradição no sistema. É a consequência direta de falhas ao gerenciar a redundância ou de modificações simultâneas não controladas por múltiplos usuários.
+* **Como o SGBD gerencia:**
+  * **Controle de Concorrência:** O SGBD utiliza mecanismos como bloqueios de dados (*Locks*), ordenação por *timestamps* ou controle de concorrência multiversão (MVCC) para coordenar transações simultâneas e evitar problemas como leituras sujas (*dirty reads*) ou atualizações perdidas (*lost updates*).
+  * **Propriedade de Isolamento:** Garante que a execução de transações concorrentes produza o mesmo resultado que produziria se elas fossem executadas sequencialmente, mantendo todos os dados sempre uniformes e alinhados.
