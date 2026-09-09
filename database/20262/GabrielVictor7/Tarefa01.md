@@ -21,3 +21,12 @@ isolamento: em um banco de dados, é comum que diversas transações ocorram sob
 
 durabilidade: garante que uma transação feita se mantenha no seu estado de conclusão, mesmo que o sistema apresente algum problema, isso se torna possível através do salvamento em dispositivos de memória, como HD e SSD. um sistema bancário onde uma pessoa debite todo o valor de sua conta e após esse débito, aconteça uma falha no sistema, mesmo após o sistema voltar a funcionar, o valor que foi debitado deve permanecer. 
 
+## Q4. Para cada cenário abaixo, indique qual(is) propriedade(s) ACID está(ão) em jogo e justifique sua resposta: a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino. b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta. c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido. d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco. 
+
+A) Atomicidade: diz que a transação ou deve ocorrer 100% certa ou não ocorrer, nesse caso ela foi violada pois, o banco deveria se manter no estado original antes de qualquer debitação.
+
+B)Isolamento: Não deveria ser possível ocorrer, pois o isolamento através do gerenciamento de bloqueio garante que as transações ocorram como uma fila, só pode passar uma por vez, e não duas juntas.
+
+C)Durabilidade: Após a efetivação completa da operação o sistema deve manter o estado válido, mesmo que ocorra alguma gravidade que afete o sistema, através do salvamento em dispositivos de memórias como SSD ou HD.
+
+D)Consistência: O banco de dados em estado válido deve permanecer válido após cada transação. Como tentou debitar um valor que não existia, o princípio da consistência não permite que a transação aconteça, mantendo o banco em seu estado original. 
