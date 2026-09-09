@@ -24,19 +24,19 @@
 
 ### a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.
 
-**Resposta**:
+**Resposta**: Atomicidade, pois a operação de débito foi cortada no meio do caminho, fazendo com que o dinheiro sumisse
 
 ### b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.
 
-**Resposta**:
+**Resposta**: Isolamento, pois a operação duplicada pode causar inconsistências. Primeiro uma operação deve ocorrer, depois a outra
 
 ### c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.
 
-**Resposta**:
+**Resposta**: Durabilidade, Pois os dados que estavam na memória primária do servidor foram perdidos, e eles deveriam estar salvos no SSD/HD
 
 ### d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
 
-**Resposta**:
+**Resposta**: Consistência, pois as operações devem seguir as regras de negócio (Não deve haver saldo negativo). Portanto, a operação foi rejeitada por ausência de saldo
 
 ## Q5. Aspectos tratados por um SGBD
 - Um SGBD trata dos seguintes aspectos: recuperação, integridade, redundância e inconsistência. Explique cada um deles e descreva como o SGBD os gerencia.
