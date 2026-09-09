@@ -55,3 +55,24 @@ Determina que transações concorrentes ocorram de forma isolada umas das outras
 Significa que, uma vez que uma transação é confirmada (committed), os dados gravados permanecem salvos de maneira permanente no sistema, mesmo em casos de falhas de energia, quedas de sistema ou erros inesperados.
 
 **Exemplo:** Um cliente realiza uma transferência e logo após isso o sistema cai. Se a propriedade de durabilidade não fosse garantida, a transação poderia ser perdida.
+
+## Q4.
+**Enunciado:** Para cada cenário abaixo, indique qual(is) propriedade(s) ACID está(ão) em jogo e **justifique** sua resposta:
+
+   a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.
+
+   b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.
+
+   c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.
+
+   d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+
+### Resposta
+
+**a)** **Atomicidade**, é possivel ver que a transação não foi realizada o que se configura como sendo um caso onde a atomicidade entraria em ação, pois ela garante que caso uma transação que é considerada unitaria não seja completa o banco retorne para o ponto antes da transação ser iniciada ("Tudo ou nada").
+
+**b)** **Isolamento**, é possivel analisar que se trata de um caso de isolamento, pois essa propriedade garante que transações concorrentes sejam realizadas sem interferirem uma com a outra de tal maneria que o resultado final é igual ao resultado de uma execução sequencial.
+
+**c)** **Durabilidade**, claramente um caso de durabilidade, pois está garante que transações confirmadas, ficaram salvas em memória não volátil e sobrevivam a falhas do sistema ou reinicializações.
+
+**d)** **Consistência**, a consistência garante que as regras negócio e estruturas sejam seguidas, portanto essa propriedade não permitiria que uma transação que violaria uma regra de negócio fosse executada, pois istó levaria o sistema de um estado válido onde essas regras são respeitadas para um inválido onde não são.
