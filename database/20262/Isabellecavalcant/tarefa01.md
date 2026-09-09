@@ -17,3 +17,9 @@ Alguns exemplos de bancos de dados e seus respectivos SGBDs são:
 É importante diferenciar o banco de dados do SGBD: o banco de dados corresponde aos dados armazenados, enquanto o SGBD é o software utilizado para gerenciar esses dados.
 
 ---
+
+## Q2. Problemas do armazenamento em sistemas de arquivos
+
+O armazenamento de dados diretamente em arquivos pode causar diversos problemas quando o sistema cresce. Entre eles estão a **redundância de dados**, quando a mesma informação é armazenada em vários arquivos; a **inconsistência**, quando essas cópias possuem valores diferentes; a dificuldade de controlar o **acesso e a segurança** das informações; e a dificuldade de realizar consultas e alterações de forma eficiente.
+
+Além disso, sistemas baseados apenas em arquivos apresentam dificuldades para garantir a **integridade dos dados** e para recuperar informações após falhas. Também pode haver problemas quando vários usuários tentam acessar ou modificar os mesmos dados simultaneamente. Os SGBDs foram desenvolvidos para solucionar esses problemas, oferecendo mecanismos de segurança, controle de concorrência, integridade, recuperação e gerenciamento centralizado dos dados.
