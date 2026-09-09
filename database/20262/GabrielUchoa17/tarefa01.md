@@ -186,3 +186,44 @@ de gravação em disco e *write-ahead log*.
   teria o comprovante, mas o saldo voltaria ao valor anterior.
 
 ---
+
+## Q4. Análise de cenários
+
+### a) Queda de energia deixou o valor debitado de A, mas não creditado em B
+
+- **Propriedade em jogo:** **Atomicidade** (e, como consequência, **Consistência**).
+- **Justificativa:** a transação (débito + crédito) foi executada pela metade. A
+  atomicidade exige "tudo ou nada": o SGBD deveria, na recuperação, desfazer o débito já
+  aplicado (*rollback* via log), pois a transação não chegou ao commit. O estado resultante
+  também viola a consistência (a soma dos saldos mudou / dinheiro sumiu), mas a causa raiz
+  é a falta de atomicidade na recuperação de falha.
+
+### b) Dois atendentes debitam ao mesmo tempo o mesmo saldo
+
+- **Propriedade em jogo:** **Isolamento** (e **Consistência** do resultado).
+- **Justificativa:** são duas transações concorrentes sobre o mesmo dado. Sem isolamento
+  adequado (bloqueios ou controle de versão), ocorre *lost update*: as duas leem o saldo
+  inicial, cada uma subtrai seu valor e grava, e uma sobrescreve a outra — um dos débitos
+  "some". Com isolamento serializável, uma transação espera a outra terminar, e os dois
+  débitos são aplicados corretamente. O efeito final indevido (saldo maior do que deveria,
+  possivelmente negativo) também é uma violação de consistência.
+
+### c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido
+
+- **Propriedade em jogo:** **Durabilidade**.
+- **Justificativa:** houve *commit* (a operação foi confirmada ao usuário), portanto seus
+  efeitos deveriam ser permanentes. Se um reinício apaga o dado, o SGBD não persistiu de
+  forma segura (ex.: faltou *flush* do log/dos dados para armazenamento não volátil antes
+  de confirmar). A durabilidade garante que o que foi confirmado resiste a falhas
+  posteriores.
+
+### d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada
+
+- **Propriedade em jogo:** **Consistência** (com apoio da **Atomicidade**).
+- **Justificativa:** existe uma regra de integridade ("saldo não pode ficar abaixo do
+  limite"). A transação que violaria essa regra **não é efetivada**: o SGBD aborta e faz
+  *rollback*, mantendo o banco em estado válido. Aqui o comportamento está **correto** — é
+  exatamente a consistência sendo garantida (a atomicidade assegura que o débito tentado
+  seja totalmente desfeito).
+
+---
