@@ -77,3 +77,157 @@ A **integridade** está relacionada à garantia de que os dados permaneçam corr
 A **redundância** ocorre quando a mesma informação é armazenada desnecessariamente em diferentes locais. O SGBD ajuda a reduzir esse problema por meio da organização dos dados e da normalização, evitando duplicações desnecessárias.
 
 A **inconsistência** acontece quando existem diferentes versões de uma mesma informação e elas apresentam valores divergentes. O SGBD utiliza transações, controle de concorrência e regras de integridade para manter os dados consistentes, mesmo quando vários usuários acessam ou modificam as informações simultaneamente.
+
+---
+
+## Q6. Mini-projeto conceitual de um sistema para uma empresa de software
+
+O sistema proposto tem como objetivo gerenciar clientes, projetos, squads, tarefas, releases, testes e sprints de uma empresa de desenvolvimento de software.
+
+### Entidades e principais atributos
+
+**Cliente**
+- id_cliente
+- nome
+- email
+- telefone
+
+**Projeto**
+- id_projeto
+- nome
+- descrição
+- data_inicio
+- status
+
+**Squad**
+- id_squad
+- nome
+- área de atuação
+
+**Membro**
+- id_membro
+- nome
+- email
+- cargo
+
+O cargo pode assumir valores como desenvolvedor, tester, tech lead, supervisor ou product manager.
+
+**Tarefa**
+- id_tarefa
+- título
+- descrição
+- prioridade
+- status
+- data_criacao
+
+**Sprint**
+- id_sprint
+- nome
+- data_inicio
+- data_fim
+- objetivo
+
+**Release**
+- id_release
+- versão
+- data_lancamento
+- status
+
+**Teste**
+- id_teste
+- tipo
+- resultado
+- data_execucao
+
+### Relacionamentos e cardinalidades
+
+- Um **Cliente** pode possuir vários **Projetos**, enquanto cada Projeto pertence a um único Cliente. Portanto, a relação é **1:N**.
+- Um **Projeto** pode possuir vários **Squads**, e cada Squad está associado a um Projeto. Relação **1:N**.
+- Uma **Squad** possui vários **Membros**, enquanto cada Membro pertence a uma Squad. Relação **1:N**.
+- Um **Projeto** pode possuir várias **Tarefas**, e cada Tarefa pertence a um Projeto. Relação **1:N**.
+- Uma **Squad** pode ser responsável por várias Tarefas, enquanto cada Tarefa possui uma Squad responsável. Relação **1:N**.
+- Um **Projeto** pode possuir várias **Sprints**, enquanto cada Sprint pertence a um único Projeto. Relação **1:N**.
+- Uma **Sprint** pode conter várias Tarefas, enquanto uma Tarefa pode estar associada a uma Sprint. Relação **1:N**.
+- Um **Projeto** pode possuir várias **Releases**, enquanto cada Release pertence a um Projeto. Relação **1:N**.
+- Uma **Release** pode possuir vários **Testes**, enquanto cada Teste está associado a uma Release. Relação **1:N**.
+- Um **Membro** pode ser responsável por várias Tarefas, enquanto cada Tarefa possui um responsável. Relação **1:N**.
+
+### Regras de integridade
+
+O sistema deve garantir que cada entidade possua um identificador único. Um Projeto deve estar associado a um Cliente existente e uma Tarefa deve estar associada a um Projeto existente. As datas de início e fim de uma Sprint devem ser válidas, sendo que a data de início não pode ser posterior à data de fim.
+
+O status de Projetos, Tarefas, Sprints e Releases deve utilizar apenas valores previamente definidos pelo sistema. Uma Tarefa não pode ser atribuída a um Membro inexistente, e uma Release não pode ser considerada concluída sem que os testes necessários tenham sido executados.
+
+### Diagrama conceitual
+
+```mermaid
+erDiagram
+    CLIENTE ||--o{ PROJETO : possui
+    PROJETO ||--o{ SQUAD : possui
+    SQUAD ||--o{ MEMBRO : possui
+    PROJETO ||--o{ TAREFA : possui
+    SQUAD ||--o{ TAREFA : responsavel
+    MEMBRO ||--o{ TAREFA : executa
+    PROJETO ||--o{ SPRINT : possui
+    SPRINT ||--o{ TAREFA : contem
+    PROJETO ||--o{ RELEASE : possui
+    RELEASE ||--o{ TESTE : possui
+
+    CLIENTE {
+        int id_cliente PK
+        string nome
+        string email
+        string telefone
+    }
+
+    PROJETO {
+        int id_projeto PK
+        string nome
+        string descricao
+        date data_inicio
+        string status
+    }
+
+    SQUAD {
+        int id_squad PK
+        string nome
+        string area_atuacao
+    }
+
+    MEMBRO {
+        int id_membro PK
+        string nome
+        string email
+        string cargo
+    }
+
+    TAREFA {
+        int id_tarefa PK
+        string titulo
+        string descricao
+        string prioridade
+        string status
+        date data_criacao
+    }
+
+    SPRINT {
+        int id_sprint PK
+        string nome
+        date data_inicio
+        date data_fim
+        string objetivo
+    }
+
+    RELEASE {
+        int id_release PK
+        string versao
+        date data_lancamento
+        string status
+    }
+
+    TESTE {
+        int id_teste PK
+        string tipo
+        string resultado
+        date data_execucao
+    }
