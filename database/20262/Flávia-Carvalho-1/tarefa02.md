@@ -61,3 +61,96 @@ A **entidade subordinada** também possui representações diferentes. Na notaç
 Os **atributos** também apresentam diferenças. Na notação de Chen, são representados por elipses ligadas às entidades. Na Crow's Foot, aparecem dentro da caixa da entidade. Na UML, ficam dentro da caixa que representa a classe.
 
 
+## Q3. Construa um Diagrama ER para projetar a base de dados de uma empresa de desenvolvimento de software com outras empresas como clientes. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras.
+
+O modelo proposto representa uma empresa de desenvolvimento de software e seus principais elementos. A entidade EMPRESA_CLIENTE armazena os dados das empresas atendidas, enquanto CONTATO registra as pessoas responsáveis pela comunicação com cada cliente.
+
+A entidade CONTRATO representa os contratos firmados com as empresas clientes e está relacionada a um PROJETO, que contém as informações referentes ao desenvolvimento contratado. Cada projeto pode gerar várias FATURA.
+
+As atividades de desenvolvimento são realizadas pelas EQUIPE, que podem atuar em vários projetos. Os FUNCIONARIO podem integrar diferentes equipes e também podem receber tarefas específicas. A entidade TAREFA registra as atividades dos projetos e pode ser atribuída a funcionários.
+
+A entidade TECNOLOGIA registra as tecnologias utilizadas nos projetos, permitindo relacionar cada projeto às tecnologias empregadas em seu desenvolvimento.
+
+O modelo também representa a relação de supervisão entre funcionários, permitindo registrar qual funcionário supervisiona outros funcionários.
+
+O diagrama ER é representado em Mermaid.js abaixo:
+
+erDiagram
+    EMPRESA_CLIENTE {
+        string cnpj PK
+        string razao_social
+        string nome_fantasia
+        string endereco
+        string telefone
+        string email
+        string segmento_atuacao
+    }
+    CONTATO {
+        int id_contato PK
+        string nome
+        string cargo
+        string telefone
+        string email
+    }
+    CONTRATO {
+        string numero_contrato PK
+        date data_assinatura
+        decimal valor_total
+        string tipo_contrato
+        date vigencia_inicio
+        date vigencia_fim
+    }
+    PROJETO {
+        string codigo_projeto PK
+        string nome
+        string descricao
+        date data_inicio
+        date data_fim_prevista
+        decimal orcamento
+        string status
+    }
+    FATURA {
+        string numero_fatura PK
+        date data_emissao
+        decimal valor
+        date data_vencimento
+        string status_pagamento
+    }
+    EQUIPE {
+        string codigo_equipe PK
+        string nome_equipe
+        string area_atuacao
+    }
+    FUNCIONARIO {
+        string matricula PK
+        string nome
+        string cargo
+        string email
+        date data_contratacao
+        decimal salario
+    }
+    TAREFA {
+        string codigo_tarefa PK
+        string descricao
+        date data_inicio
+        date data_fim
+        string status
+        string prioridade
+    }
+    TECNOLOGIA {
+        int id_tecnologia PK
+        string nome
+        string versao
+        string categoria
+    }
+
+    EMPRESA_CLIENTE ||--o{ CONTATO : possui
+    EMPRESA_CLIENTE ||--o{ CONTRATO : assina
+    CONTRATO ||--|| PROJETO : formaliza
+    EQUIPE ||--o{ PROJETO : executa
+    PROJETO ||--o{ TAREFA : compreende
+    PROJETO ||--o{ FATURA : gera
+    EQUIPE }o--o{ FUNCIONARIO : integra
+    TAREFA }o--o{ FUNCIONARIO : e_atribuida_a
+    PROJETO }o--o{ TECNOLOGIA : utiliza
+    FUNCIONARIO ||--o{ FUNCIONARIO : supervisiona
