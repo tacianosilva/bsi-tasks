@@ -104,3 +104,82 @@ erDiagram
         string resultado
     }
 ```
+
+## Q4. A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.
+
+### Lista das Entidades:
+
+**CLIENTE**(
+- codigo_cliente **PK**
+- nome
+- email_contato
+
+)
+
+**PROJETO**(
+- codigo_projeto **PK**
+- nome
+- descricao
+- codigo_cliente **FK** → CLIENTE(codigo_cliente)
+
+)
+
+
+**SQUAD**(
+- codigo_squad **PK**
+- nome
+
+)
+
+
+**FUNCIONARIO**(
+- codigo_funcionario **PK**
+- nome
+- email
+- papel
+- codigo_squad **FK** → SQUAD(codigo_squad)
+
+)
+
+
+**TAREFA**(
+- codigo_tarefa **PK**
+- descricao
+- prioridade
+- situacao
+- estimativa_horas
+- codigo_squad **FK** → SQUAD(codigo_squad)
+- codigo_projeto **FK** → PROJETO(codigo_projeto)
+- codigo_iteracao **FK** → ITERACAO(codigo_iteracao)
+- codigo_release **FK** → RELEASE(codigo_release)
+
+)
+
+
+**ITERACAO**(
+- codigo_iteracao **PK**
+- nome
+- data_inicio
+- data_fim
+- codigo_squad **FK** → SQUAD(codigo_squad)
+
+)
+
+
+**RELEASE**(
+- codigo_release **PK**
+- nome
+- data_prevista
+- status
+- codigo_squad **FK** → SQUAD(codigo_squad)
+- codigo_projeto **FK** → PROJETO(codigo_projeto)
+
+)
+
+
+**TESTE_VALIDACAO**(
+- codigo_teste **PK**
+- resultado
+- codigo_release **FK** → RELEASE(codigo_release)
+
+)
