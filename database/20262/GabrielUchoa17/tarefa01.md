@@ -129,3 +129,60 @@ diretamente pelos programas de aplicação apresenta várias limitações cláss
 O SGBD surge justamente para resolver esse conjunto de problemas de forma centralizada.
 
 ---
+
+## Q3. Propriedades ACID
+
+As transações de um SGBD devem respeitar quatro propriedades, conhecidas pela sigla
+**ACID**. O cenário usado nos exemplos é uma **transferência bancária de R$ 100 da conta A
+para a conta B**, composta por dois passos: (1) debitar R$ 100 de A e (2) creditar R$ 100
+em B.
+
+### Atomicidade (Atomicity)
+
+A transação é uma unidade **indivisível**: ou **todos** os seus passos são efetivados, ou
+**nenhum** é (tudo ou nada). Se algo falha no meio, o SGBD faz *rollback* e desfaz o que já
+tinha sido feito.
+
+- **Exemplo:** o débito em A é executado; antes do crédito em B, o sistema cai. Na
+  recuperação, o SGBD desfaz o débito, e A volta a ter o saldo original.
+- **Sem essa propriedade:** o dinheiro sairia de A e nunca chegaria em B — R$ 100
+  "desaparecem" do sistema. O estado ficaria permanentemente parcial.
+
+### Consistência (Consistency)
+
+Uma transação leva o banco de um **estado válido a outro estado válido**, respeitando todas
+as regras de integridade (restrições de chave, checagens, regras de negócio, invariantes).
+O que estava consistente antes continua consistente depois.
+
+- **Exemplo:** invariantes "a soma dos saldos de A e B é constante" e "saldo ≥ 0". Ao
+  transferir R$ 100, a transação só efetiva se, ao final, ambas as regras continuarem
+  verdadeiras (ex.: A tinha saldo suficiente).
+- **Sem essa propriedade:** a transferência poderia deixar A com saldo negativo ou criar/
+  destruir dinheiro, violando as regras do negócio e produzindo dados sem sentido.
+
+### Isolamento (Isolation)
+
+Transações executando **concorrentemente** não interferem umas nas outras; o resultado
+final é como se elas tivessem rodado em **alguma ordem sequencial** (serializável). Uma
+transação não enxerga o estado intermediário de outra.
+
+- **Exemplo:** enquanto a transferência de A para B está em andamento, outra transação
+  consulta o saldo total. Com isolamento, ela vê o total **antes** ou **depois** da
+  transferência inteira, nunca o instante em que A já foi debitada mas B ainda não foi
+  creditada.
+- **Sem essa propriedade:** ocorreriam anomalias como *dirty read* (ler dado não
+  confirmado), *lost update* (uma atualização sobrescreve a outra) e *non-repeatable read*,
+  gerando saldos incorretos.
+
+### Durabilidade (Durability)
+
+Depois que o SGBD **confirma** (commit) a transação, seus efeitos são **permanentes** e
+sobrevivem a falhas posteriores (queda de energia, reinício, crash), normalmente por meio
+de gravação em disco e *write-ahead log*.
+
+- **Exemplo:** o cliente recebe "transferência concluída". Um segundo depois o servidor é
+  desligado na tomada. Ao voltar, o débito em A e o crédito em B continuam registrados.
+- **Sem essa propriedade:** a operação confirmada seria perdida no reinício; o cliente
+  teria o comprovante, mas o saldo voltaria ao valor anterior.
+
+---
