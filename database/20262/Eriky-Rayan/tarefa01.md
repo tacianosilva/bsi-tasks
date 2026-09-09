@@ -112,3 +112,137 @@ Significa que, uma vez que uma transação é confirmada (committed), os dados g
 * **Como o SGBD gerencia:**
   * **Controle de Concorrência:** O SGBD utiliza mecanismos como bloqueios de dados (*Locks*), ordenação por *timestamps* ou controle de concorrência multiversão (MVCC) para coordenar transações simultâneas e evitar problemas como leituras sujas (*dirty reads*) ou atualizações perdidas (*lost updates*).
   * **Propriedade de Isolamento:** Garante que a execução de transações concorrentes produza o mesmo resultado que produziria se elas fossem executadas sequencialmente, mantendo todos os dados sempre uniformes e alinhados.
+
+## Q6.
+**Enunciado:** Considere o cenário de uma **empresa de desenvolvimento de software** que atende outras empresas como clientes. A empresa organiza seu trabalho em **squads** (equipes) compostas por desenvolvedores, testadores, líder técnico, supervisor e gerente de produto. Cada squad resolve **tarefas** (issues) e planeja **releases**, testes e o cronograma de **sprints** (iterações) dos projetos de cada cliente.
+
+Sem utilizar SQL, elabore um **mini-projeto conceitual** do banco de dados dessa empresa, deixando claro:
+
+   a) As principais **entidades** envolvidas (clientes, squads, membros, tarefas, projetos, sprints, releases).
+
+   b) Os principais **atributos** de cada entidade.
+
+   c) Os **relacionamentos** entre as entidades (com a cardinalidade, ex.: "um cliente pode ter vários projetos").
+   
+   d) Em linguagem natural, as **regras de integridade** (restrições) que o banco de dados deveria garantir, ex.: "apenas um líder por squad", "toda tarefa precisa estar vinculada a um projeto".
+
+### Resposta
+
+#### Diagrama
+```mermaid
+erDiagram
+    CLIENTE ||--|{ PROJETO : "possui"
+    SQUAD ||--o{ MEMBRO : "contém"
+    MEMBRO ||--o{ SQUAD : "lidera"
+    PROJETO ||--|{ SQUAD : "é atendido por"
+    PROJETO ||--|{ SPRINT : "é dividido em"
+    PROJETO ||--|{ TAREFA : "contém"
+    PROJETO ||--o{ RELEASE : "gera"
+    SPRINT ||--o{ TAREFA : "aloca"
+    RELEASE ||--o{ TAREFA : "inclui"
+    MEMBRO ||--o{ TAREFA : "é responsável por"
+    MEMBRO ||--o{ TAREFA : "relata"
+
+    CLIENTE {
+        int id_cliente PK
+        string nome_empresa
+        string cnpj
+        string email_contato
+        string telefone
+    }
+
+    PROJETO {
+        int id_projeto PK
+        string nome_projeto
+        string descricao
+        date data_inicio
+        date data_fim_prevista
+        string status
+        int id_cliente FK
+    }
+
+    SQUAD {
+        int id_squad PK
+        string nome_squad
+        string especialidade
+        int id_lider FK
+        int id_projeto FK
+    }
+
+    MEMBRO {
+        int id_membro PK
+        string nome
+        string email
+        string cargo
+        int id_squad FK
+    }
+
+    SPRINT {
+        int id_sprint PK
+        int numero_sprint
+        date data_inicio
+        date data_fim
+        string objetivo
+        int id_projeto FK
+    }
+
+    RELEASE {
+        int id_release PK
+        string versao
+        date data_publicacao
+        string descricao_mudancas
+        int id_projeto FK
+    }
+
+    TAREFA {
+        int id_tarefa PK
+        string titulo
+        string descricao
+        string tipo
+        string prioridade
+        string status
+        int estimativa_horas
+        int id_projeto FK
+        int id_sprint FK
+        int id_release FK
+        int id_membro_atribuido FK
+        int id_membro_relator FK
+    }
+```
+
+#### Documentação
+
+#### Relacionamentos e Cardinalidades
+
+| Entidade Origem | Entidade Destino | Cardinalidade | Descrição |
+| :--- | :--- | :---: | :--- |
+| **Cliente** | **Projeto** | `1 : N` | Um cliente pode ter **vários** projetos vinculados, mas cada projeto pertence a apenas **um** cliente. |
+| **Projeto** | **Squad** | `1 : N` | Cada squad é responsável por apenas **um** projeto por vez. Um projeto pode ser atendido por **uma ou várias** squads. |
+| **Squad** | **Membro** | `0 : N` | Uma squad contém **zero ou vários** membros. Um membro pode estar alocado em **uma** squad ou em **nenhuma** (disponível / *bench*). |
+| **Membro** | **Squad (Liderança)** | `0 : 1` | Um membro pode atuar como líder de no máximo **uma** squad, e cada squad possui exatamente **um** líder técnico. |
+| **Projeto** | **Sprint** | `1 : N` | Um projeto é dividido em **uma ou várias** sprints. Cada sprint pertence a apenas **um** projeto. |
+| **Projeto** | **Release** | `1 : N` | Um projeto pode gerar **várias** releases. Cada release pertence a **um** único projeto. |
+| **Projeto** | **Tarefa** | `1 : N` | Um projeto contém **várias** tarefas. Toda tarefa está associada a exatamente **um** projeto. |
+| **Sprint** | **Tarefa** | `0 : N` | Uma sprint abriga **zero ou várias** tarefas. Uma tarefa pode não estar alocada em nenhuma sprint (Backlog) ou pertencer a **uma** sprint por vez. |
+| **Release** | **Tarefa** | `0 : N` | Uma release reúne **zero ou várias** tarefas finalizadas. Uma tarefa pode não ter release associada ou pertencer a **uma** release. |
+| **Membro** | **Tarefa (Atribuído)** | `0 : N` | Um membro pode ser responsável por **várias** tarefas, e uma tarefa pode ter **um** responsável ou **nenhum** (não atribuída). |
+| **Membro** | **Tarefa (Relator)** | `1 : N` | Um membro pode cadastrar **várias** tarefas. Toda tarefa possui obrigatoriamente **um** relator que a criou. |
+
+---
+
+#### Regras de Integridade (Restrições)
+
+* **Exclusividade e Escopo da Squad**:
+  * Uma squad é responsável por apenas **um único projeto** por vez.
+  * O líder atribuído a uma squad (`id_lider`) deve ser um profissional cadastrado com o cargo equivalente a "Líder Técnico".
+* **Alocação Opcional de Membros**:
+  * Um membro **pode existir no sistema sem estar vinculado a uma squad** (permitindo cadastro de profissionais em transição, consultores ou alocados em reserva técnica).
+* **Vínculo Obrigatório de Projeto**:
+  * Toda tarefa deve pertencer obrigatoriamente a um Projeto existente (`id_projeto` NOT NULL).
+* **Coerência de Escopo Cruzado**:
+  * Uma tarefa só pode ser associada a uma **Sprint** ou **Release** pertencente ao **mesmo Projeto** vinculado à própria tarefa.
+* **Consistência de Datas**:
+  * A `data_fim` de uma Sprint deve ser obrigatoriamente posterior à sua `data_inicio`.
+  * A `data_fim_prevista` do Projeto deve ser posterior à sua `data_inicio`.
+* **Unicidade de Identificadores**:
+  * Os campos de identificação de negócio como `cnpj` (Cliente) e `email` (Membro) devem ser **únicos** em toda a base de dados.
