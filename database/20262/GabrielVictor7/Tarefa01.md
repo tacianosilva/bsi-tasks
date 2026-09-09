@@ -30,3 +30,13 @@ B)Isolamento: Não deveria ser possível ocorrer, pois o isolamento através do 
 C)Durabilidade: Após a efetivação completa da operação o sistema deve manter o estado válido, mesmo que ocorra alguma gravidade que afete o sistema, através do salvamento em dispositivos de memórias como SSD ou HD.
 
 D)Consistência: O banco de dados em estado válido deve permanecer válido após cada transação. Como tentou debitar um valor que não existia, o princípio da consistência não permite que a transação aconteça, mantendo o banco em seu estado original. 
+
+## Q5. Um SGBD trata dos seguintes aspectos: recuperação, integridade, redundância e inconsistência. Explique cada um deles e descreva como o SGBD os gerencia.
+
+Recuperação: O SGBD garante uma recuperação do estado anterior do banco de dados após uma transação que ocorreu de forma falha, ou mantém o estado do banco caso ocorra algum problema no sistema, através do salvamento em dispositivos de memória, através de um checkpoint que o SGBD cria. O SGBD também utiliza um log de transação(arquivo binário gravado no dispositivo de memória), onde se registram todas as alterações mesmo sem ter aplicado elas ao banco, e em caso de falha, ele consulta esse log para saber se deu certo ou não. 
+
+integridade: É a gerência que o SGBD faz para verificar se os dados que vão para o banco de dados são válidos. Ele faz essa verificação através de restrições predefinidas, que devem ser atendidas quando um dado vai ser inserido, alterado, excluído ou consultado. Garante também que os relacionamentos entre tabelas sejam logicamente estruturados para que se tornem válidos. 
+
+redundância: O SGBD usa da normalização para dividir os dados em diferentes tabelas relacionadas entre si. No caso em que uma pessoa realiza uma compra em algum site, vai haver a tabela Compra e a tabela Cliente, em vez de armazenar tudo em uma tabela só. Chaves primárias também servem para evitar redundância, pois só pode haver um registro com a mesma chave primária, garantindo que cada linha seja única. 
+
+inconsistência: É quando banco de dados válido passa para o estado invalido, o SGBD lida com isso utilizando sistemas de rollbacks por salvamento em log de transação, restaurando o banco de dados ao seu estado original, em casos de transação inválidas.
