@@ -64,3 +64,29 @@ Na prática, depois que a transferência é confirmada e o sistema avisa que a o
 
 Se a durabilidade não fosse garantida, o sistema poderia confirmar a transação e, se o servidor reiniciasse logo em seguida, a alteração se perderia. O cliente acharia que fez uma transferência que, na verdade, nunca aconteceu de fato.
 
+
+## Q4. Cenários e propriedades ACID envolvidas
+
+**a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.**
+
+Propriedade envolvida: atomicidade.
+
+A transação era composta por duas operações, débito e crédito, que deveriam ser tratadas como uma unidade só. Como apenas uma parte foi concluída, o princípio de tudo ou nada da atomicidade foi violado.
+
+**b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.**
+
+Propriedade envolvida: isolamento.
+
+O problema acontece porque as duas transações concorrentes leram o mesmo saldo inicial sem estarem devidamente isoladas uma da outra, causando uma condição de corrida em que uma sobrescreve o efeito da outra. Um controle de isolamento adequado impediria que a segunda leitura ocorresse antes de a primeira transação terminar.
+
+**c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.**
+
+Propriedade envolvida: durabilidade.
+
+Depois que uma transação é confirmada, ela deveria persistir independentemente de qualquer falha que aconteça em seguida. O fato de o dado ter sido perdido após o commit mostra que a garantia de durabilidade não foi cumprida.
+
+**d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**
+
+Propriedade envolvida: consistência.
+
+Nesse caso o SGBD está funcionando corretamente. Ele impediu que uma regra de negócio, o limite mínimo de saldo, fosse violada, garantindo que o banco de dados continue num estado válido antes e depois da transação.
