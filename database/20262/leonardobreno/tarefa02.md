@@ -125,3 +125,177 @@ Uma squad pode resolver varias tarefas, e cada tarefa pertence a um projeto de u
 Uma squad pode planejar varias sprints, e uma sprint pode organizar varias tarefas.
 
 Uma squad pode planejar varias releases para seus clientes. Uma release agrupa varias tarefas e pode possuir varios testes de validacao.
+
+
+Q4. Mapeamento para o Modelo Relacional
+
+
+CLIENTE
+
+codigo_cliente (PK)
+nome
+email
+
+
+FUNCIONARIO
+
+codigo_funcionario (PK)
+nome
+email
+papel
+codigo_squad (FK)
+
+
+SQUAD
+
+codigo_squad (PK)
+nome
+
+
+PROJETO
+
+codigo_projeto (PK)
+nome
+descricao
+codigo_cliente (FK)
+
+
+TAREFA
+
+codigo_tarefa (PK)
+descricao
+prioridade
+situacao
+estimativa_horas
+codigo_squad (FK)
+codigo_projeto (FK)
+codigo_sprint (FK)
+codigo_release (FK)
+
+
+SPRINT
+
+codigo_sprint (PK)
+nome
+data_inicio
+data_fim
+codigo_squad (FK)
+
+
+RELEASE
+
+codigo_release (PK)
+versao
+data
+situacao
+codigo_squad (FK)
+codigo_cliente (FK)
+
+
+TESTE_VALIDACAO
+
+codigo_teste (PK)
+data
+resultado
+observacao
+codigo_release (FK)
+
+
+As chaves primarias identificam de forma unica cada registro de uma tabela.
+
+As chaves estrangeiras sao utilizadas para relacionar as tabelas entre si.
+
+Por exemplo, a tabela PROJETO possui a chave estrangeira codigo_cliente, que referencia a chave primaria da tabela CLIENTE.
+
+A tabela FUNCIONARIO possui a chave estrangeira codigo_squad, que indica a qual squad o funcionario pertence.
+
+A tabela TAREFA possui chaves estrangeiras para representar os relacionamentos com SQUAD, PROJETO, SPRINT e RELEASE.
+
+A tabela TESTE_VALIDACAO possui uma chave estrangeira para RELEASE, pois os testes sao realizados sobre uma release.
+
+Q4. Mapeamento para o Modelo Relacional
+
+Com o Diagrama ER anterior, montar as tabelas do banco de dados.
+
+CLIENTE
+
+codigo_cliente (PK)
+nome
+email
+
+
+FUNCIONARIO
+
+codigo_funcionario (PK)
+nome
+email
+papel
+codigo_squad (FK)
+
+
+SQUAD
+
+codigo_squad (PK)
+nome
+
+
+PROJETO
+
+codigo_projeto (PK)
+nome
+descricao
+codigo_cliente (FK)
+
+
+TAREFA
+
+codigo_tarefa (PK)
+descricao
+prioridade
+situacao
+estimativa_horas
+codigo_squad (FK)
+codigo_projeto (FK)
+codigo_sprint (FK)
+codigo_release (FK)
+
+
+SPRINT
+
+codigo_sprint (PK)
+nome
+data_inicio
+data_fim
+codigo_squad (FK)
+
+
+RELEASE
+
+codigo_release (PK)
+versao
+data
+situacao
+codigo_squad (FK)
+codigo_cliente (FK)
+
+
+TESTE_VALIDACAO
+
+codigo_teste (PK)
+data
+resultado
+observacao
+codigo_release (FK)
+
+
+A chave primaria (PK) serve para identificar cada registro da tabela.
+
+A chave estrangeira (FK) serve para fazer a ligação entre as tabelas.
+
+Por exemplo, a tabela PROJETO possui codigo_cliente como chave estrangeira, que faz referencia ao codigo_cliente da tabela CLIENTE.
+
+A tabela FUNCIONARIO possui codigo_squad como chave estrangeira, que faz referencia ao codigo_squad da tabela SQUAD.
+
+A tabela TAREFA possui chaves estrangeiras para SQUAD, PROJETO, SPRINT e RELEASE.
+
+A tabela TESTE_VALIDACAO possui codigo_release como chave estrangeira, que faz referencia ao codigo_release da tabela RELEASE.
