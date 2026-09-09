@@ -154,3 +154,200 @@ erDiagram
     TAREFA }o--o{ FUNCIONARIO : e_atribuida_a
     PROJETO }o--o{ TECNOLOGIA : utiliza
     FUNCIONARIO ||--o{ FUNCIONARIO : supervisiona
+
+
+    
+## Q4. A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.
+
+A partir do Diagrama ER da questão anterior, o modelo pode ser transformado nas seguintes relações:
+
+### EMPRESA_CLIENTE
+
+**Atributos:**
+
+* `cnpj`
+* `razao_social`
+* `nome_fantasia`
+* `endereco`
+* `telefone`
+* `email`
+* `segmento_atuacao`
+
+**Chave primária:** `cnpj`
+
+**Chaves estrangeiras:** nenhuma.
+
+### CONTATO
+
+**Atributos:**
+
+* `id_contato`
+* `nome`
+* `cargo`
+* `telefone`
+* `email`
+* `cnpj`
+
+**Chave primária:** `id_contato`
+
+**Chave estrangeira:** `cnpj` → `EMPRESA_CLIENTE(cnpj)`
+
+### CONTRATO
+
+**Atributos:**
+
+* `numero_contrato`
+* `data_assinatura`
+* `valor_total`
+* `tipo_contrato`
+* `vigencia_inicio`
+* `vigencia_fim`
+* `cnpj`
+
+**Chave primária:** `numero_contrato`
+
+**Chave estrangeira:** `cnpj` → `EMPRESA_CLIENTE(cnpj)`
+
+### PROJETO
+
+**Atributos:**
+
+* `codigo_projeto`
+* `nome`
+* `descricao`
+* `data_inicio`
+* `data_fim_prevista`
+* `orcamento`
+* `status`
+* `numero_contrato`
+* `codigo_equipe`
+
+**Chave primária:** `codigo_projeto`
+
+**Chaves estrangeiras:**
+
+* `numero_contrato` → `CONTRATO(numero_contrato)`
+* `codigo_equipe` → `EQUIPE(codigo_equipe)`
+
+### FATURA
+
+**Atributos:**
+
+* `numero_fatura`
+* `data_emissao`
+* `valor`
+* `data_vencimento`
+* `status_pagamento`
+* `codigo_projeto`
+
+**Chave primária:** `numero_fatura`
+
+**Chave estrangeira:** `codigo_projeto` → `PROJETO(codigo_projeto)`
+
+### EQUIPE
+
+**Atributos:**
+
+* `codigo_equipe`
+* `nome_equipe`
+* `area_atuacao`
+
+**Chave primária:** `codigo_equipe`
+
+**Chaves estrangeiras:** nenhuma.
+
+### FUNCIONARIO
+
+**Atributos:**
+
+* `matricula`
+* `nome`
+* `cargo`
+* `email`
+* `data_contratacao`
+* `salario`
+
+**Chave primária:** `matricula`
+
+**Chaves estrangeiras:** nenhuma.
+
+### TAREFA
+
+**Atributos:**
+
+* `codigo_tarefa`
+* `descricao`
+* `data_inicio`
+* `data_fim`
+* `status`
+* `prioridade`
+* `codigo_projeto`
+
+**Chave primária:** `codigo_tarefa`
+
+**Chave estrangeira:** `codigo_projeto` → `PROJETO(codigo_projeto)`
+
+### TECNOLOGIA
+
+**Atributos:**
+
+* `id_tecnologia`
+* `nome`
+* `versao`
+* `categoria`
+
+**Chave primária:** `id_tecnologia`
+
+**Chaves estrangeiras:** nenhuma.
+
+### Relações resultantes dos relacionamentos N:N
+
+Os relacionamentos muitos-para-muitos precisam ser representados por novas relações.
+
+**EQUIPE_FUNCIONARIO**
+
+* `codigo_equipe`
+* `matricula`
+
+**Chave primária:** (`codigo_equipe`, `matricula`)
+
+**Chaves estrangeiras:**
+
+* `codigo_equipe` → `EQUIPE(codigo_equipe)`
+* `matricula` → `FUNCIONARIO(matricula)`
+
+**TAREFA_FUNCIONARIO**
+
+* `codigo_tarefa`
+* `matricula`
+
+**Chave primária:** (`codigo_tarefa`, `matricula`)
+
+**Chaves estrangeiras:**
+
+* `codigo_tarefa` → `TAREFA(codigo_tarefa)`
+* `matricula` → `FUNCIONARIO(matricula)`
+
+**PROJETO_TECNOLOGIA**
+
+* `codigo_projeto`
+* `id_tecnologia`
+
+**Chave primária:** (`codigo_projeto`, `id_tecnologia`)
+
+**Chaves estrangeiras:**
+
+* `codigo_projeto` → `PROJETO(codigo_projeto)`
+* `id_tecnologia` → `TECNOLOGIA(id_tecnologia)`
+
+**SUPERVISAO**
+
+* `matricula_supervisor`
+* `matricula_supervisionado`
+
+**Chave primária:** (`matricula_supervisor`, `matricula_supervisionado`)
+
+**Chaves estrangeiras:**
+
+* `matricula_supervisor` → `FUNCIONARIO(matricula)`
+* `matricula_supervisionado` → `FUNCIONARIO(matricula)`
