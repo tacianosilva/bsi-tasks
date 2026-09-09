@@ -27,3 +27,40 @@ Antes de os SGBDs se popularizarem, os dados eram armazenados diretamente em arq
 - **Falta de atomicidade**. Se o sistema falhasse no meio de uma operação, não existia um mecanismo automático para desfazer as alterações que já tinham sido feitas parcialmente.
 - **Problemas de acesso concorrente**. Quando dois usuários acessavam e alteravam o mesmo arquivo ao mesmo tempo, um podia sobrescrever as mudanças do outro sem perceber.
 - **Segurança limitada**. Era difícil restringir o acesso a partes específicas dos dados, já que a proteção dependia apenas das permissões do sistema operacional, sem um controle mais granular.
+
+## Q3. Propriedades ACID
+
+Para os exemplos abaixo, vamos usar uma transferência de R$ 100 da Conta A para a Conta B.
+
+### Atomicidade
+
+A transação é tratada como uma unidade indivisível. Ou todas as suas operações são executadas, ou nenhuma delas é.
+
+Na prática, a transferência envolve duas operações: debitar R$ 100 da Conta A e creditar R$ 100 na Conta B. A atomicidade garante que essas duas operações aconteçam juntas, como se fossem uma só.
+
+Se essa propriedade não fosse garantida, o sistema poderia debitar o valor da Conta A e, por conta de uma falha no meio do caminho, nunca chegar a creditar na Conta B. O dinheiro simplesmente sumiria do sistema.
+
+### Consistência
+
+A transação leva o banco de dados de um estado válido para outro estado igualmente válido, respeitando as regras e restrições definidas, sejam elas de integridade referencial, de domínio ou regras de negócio.
+
+Um exemplo prático é que a soma dos saldos de todas as contas antes e depois da transferência precisa ser exatamente a mesma. Nenhuma regra, como um limite mínimo de saldo, pode ser desrespeitada.
+
+Se a consistência falhasse, seria possível, por exemplo, uma transferência deixar uma conta com saldo abaixo do limite permitido, ou o valor total de dinheiro no sistema mudar sem motivo nenhum, o que quebraria as regras do negócio.
+
+### Isolamento
+
+Transações concorrentes não devem interferir umas nas outras. O resultado final precisa ser equivalente ao que se teria se cada transação fosse executada em sequência, uma de cada vez.
+
+Um exemplo prático: se duas transferências envolvendo a Conta A acontecem ao mesmo tempo, uma delas não pode enxergar um estado intermediário e incompleto da outra.
+
+Sem isolamento, dois atendentes poderiam ler o mesmo saldo da Conta A ao mesmo tempo e ambos debitarem R$ 100, gerando um saldo final errado. É a chamada condição de corrida.
+
+### Durabilidade
+
+Uma vez que a transação é confirmada, suas alterações persistem mesmo diante de falhas que aconteçam depois, como uma queda de energia ou um travamento do sistema.
+
+Na prática, depois que a transferência é confirmada e o sistema avisa que a operação foi concluída com sucesso, os novos saldos precisam estar salvos de forma permanente.
+
+Se a durabilidade não fosse garantida, o sistema poderia confirmar a transação e, se o servidor reiniciasse logo em seguida, a alteração se perderia. O cliente acharia que fez uma transferência que, na verdade, nunca aconteceu de fato.
+
