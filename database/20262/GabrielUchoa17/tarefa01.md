@@ -227,3 +227,51 @@ de gravação em disco e *write-ahead log*.
   seja totalmente desfeito).
 
 ---
+
+## Q5. Aspectos tratados pelo SGBD
+
+### Recuperação (Recovery)
+
+Capacidade de trazer o banco de volta a um **estado consistente** após falhas (de
+transação, de sistema ou de mídia).
+
+- **Como o SGBD gerencia:** mantém um **log de transações** (*write-ahead logging* — o
+  registro do log vai para disco antes da alteração dos dados). Em falhas, executa **UNDO**
+  das transações não confirmadas e **REDO** das confirmadas que ainda não tinham sido
+  gravadas. Usa **checkpoints** para limitar quanto do log precisa ser reprocessado e
+  **backups** + log para recuperação de mídia (disco danificado).
+
+### Integridade (Integrity)
+
+Garantia de que os dados são **corretos, válidos e coerentes** com as regras do minimundo.
+
+- **Como o SGBD gerencia:** aplica **restrições declarativas** — chave primária (unicidade
+  e não nulo), **chave estrangeira** (integridade referencial), `NOT NULL`, `UNIQUE`,
+  `CHECK`, domínios/tipos — verificadas automaticamente a cada operação. Regras mais
+  complexas são impostas por **triggers**, *stored procedures* e pelo controle
+  transacional (consistência do ACID). Operações que violam qualquer restrição são
+  rejeitadas.
+
+### Redundância (Redundancy)
+
+Repetição desnecessária do mesmo dado em vários lugares, que desperdiça espaço e abre porta
+para inconsistência.
+
+- **Como o SGBD gerencia:** promove **projeto de esquema normalizado** (formas normais)
+  para que cada fato seja armazenado **uma única vez**; usa **chaves estrangeiras** para
+  referenciar dados em vez de copiá-los. Quando alguma redundância é introduzida de
+  propósito (desnormalização por desempenho, índices, réplicas, *cache*, visões
+  materializadas), o próprio SGBD se encarrega de **manter as cópias sincronizadas**.
+
+### Inconsistência (Inconsistency)
+
+Situação em que cópias ou partes relacionadas dos dados se contradizem (o mesmo cliente com
+dois endereços diferentes, saldo que não bate com o extrato).
+
+- **Como o SGBD gerencia:** combina os mecanismos acima — **eliminação da redundância**
+  pela modelagem, **restrições de integridade** que impedem estados contraditórios,
+  **controle de concorrência** (isolamento) que evita que transações simultâneas gerem
+  dados incoerentes, e **recuperação** que descarta efeitos de transações incompletas.
+  Assim o banco converge sempre para um único estado consistente.
+
+---
