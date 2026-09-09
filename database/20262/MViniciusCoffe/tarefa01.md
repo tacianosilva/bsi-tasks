@@ -8,7 +8,7 @@
 ## Q2. Sistemas de Arquivos
 - Quais os principais problemas de utilizar Sistemas de Arquivos para armazenagem de dados?
 
-**Resposta**:
+**Resposta**: Os principais problemas são: Operações sobre um mesmo arquivo de dois ou mais programas diferentes podia causa inconsistências, o sistema devia ter um estado anterior para consertar, os dados eram duplicados constantemente, você tinha que saber onde estavam os dados por que cada aplicação tinha seu padrão, além de que qualquer usuário podia ter acesso a dados. Esse e outros problemas que vieram acarretar no surgimento dos SGBDs
 
 ## Q3. Propriedades ACID
 - Explique as propriedades ACID: atomicidade, consistência, isolamento e durabilidade. Para cada propriedade, descreva um exemplo prático no contexto de uma transferência bancária e explique o que aconteceria se o SGBD não garantisse essa propriedade.
