@@ -45,3 +45,23 @@ Transações executadas simultaneamente não devem interferir umas nas outras de
 ### Durabilidade
 
 Depois que uma transação é confirmada, seus efeitos devem permanecer registrados mesmo que ocorra uma falha no sistema. Assim, após uma transferência ser concluída e o servidor reiniciar, o débito e o crédito realizados devem continuar registrados. Sem durabilidade, uma transação confirmada poderia ser perdida após uma falha.
+
+---
+
+## Q4. Identificação das propriedades ACID nos cenários
+
+### a) Falha de energia após o débito e antes do crédito
+
+A propriedade envolvida é a **Atomicidade**. A transferência deve ser tratada como uma única transação: ou o débito e o crédito acontecem, ou nenhum dos dois permanece registrado. Caso contrário, o dinheiro poderia ser retirado da conta de origem sem ser depositado na conta de destino.
+
+### b) Dois funcionários debitam o mesmo saldo simultaneamente
+
+A propriedade envolvida é o **Isolamento**. As transações simultâneas devem ser controladas para que uma não interfira incorretamente na outra. Sem isolamento, os dois funcionários poderiam consultar o mesmo saldo inicial e realizar débitos que ultrapassassem o valor realmente disponível.
+
+### c) Operação confirmada, mas dados perdidos após reinicialização do servidor
+
+A propriedade envolvida é a **Durabilidade**. Depois que a transação é confirmada, seus efeitos devem permanecer armazenados mesmo após uma falha ou reinicialização do servidor. Sem essa propriedade, uma operação que já havia sido concluída poderia desaparecer.
+
+### d) Transferência rejeitada porque deixaria o saldo abaixo do limite permitido
+
+A propriedade envolvida é a **Consistência**. O banco de dados deve impedir operações que violem as regras e restrições definidas pelo sistema. Nesse caso, a transferência é rejeitada porque deixaria a conta em um estado inválido.
