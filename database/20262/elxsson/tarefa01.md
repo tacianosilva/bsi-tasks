@@ -90,3 +90,14 @@ Depois que uma transação é confirmada, ela deveria persistir independentement
 Propriedade envolvida: consistência.
 
 Nesse caso o SGBD está funcionando corretamente. Ele impediu que uma regra de negócio, o limite mínimo de saldo, fosse violada, garantindo que o banco de dados continue num estado válido antes e depois da transação.
+
+## Q5. Recuperação, integridade, redundância e inconsistência
+
+**Recuperação** é a capacidade do SGBD de restaurar o banco de dados a um estado consistente depois de uma falha, seja uma queda de energia, um erro de hardware ou um travamento do sistema. Para isso, o SGBD costuma usar logs de transações, também chamados de write-ahead log, além de pontos de verificação e rotinas de rollback e redo. Esses mecanismos permitem desfazer transações que ficaram incompletas ou refazer transações que já tinham sido confirmadas, mas ainda não haviam sido gravadas em disco.
+
+**Integridade** significa manter os dados corretos e coerentes com as regras do domínio, como chaves primárias únicas, chaves estrangeiras válidas e valores dentro de um intervalo permitido. O SGBD garante isso através de restrições declaradas no próprio esquema do banco, como PRIMARY KEY, FOREIGN KEY, CHECK e NOT NULL, que são verificadas automaticamente a cada operação de escrita.
+
+**Redundância** é a repetição desnecessária do mesmo dado em vários lugares. Vale notar que um certo grau de redundância pode ser usado de propósito, por exemplo em índices ou em estratégias de desnormalização voltadas a melhorar a performance. O problema mesmo é a redundância descontrolada. O SGBD ajuda a reduzi-la por meio da normalização do esquema relacional, organizando os dados em tabelas bem estruturadas que evitam repetição sem necessidade.
+
+**Inconsistência** acontece quando dados duplicados não são atualizados de forma sincronizada, fazendo com que representações diferentes do mesmo fato divirjam entre si. O SGBD lida com isso combinando o controle de redundância, feito através da normalização, com os mecanismos transacionais de atomicidade e isolamento, garantindo que, quando um dado muda, todas as suas referências no banco permaneçam coerentes.
+
