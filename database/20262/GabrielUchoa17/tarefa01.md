@@ -86,3 +86,46 @@ costuma ser chamado de **Sistema de Banco de Dados**.
 > (ex.: o banco `siga_ufrn` rodando sobre o SGBD PostgreSQL).
 
 ---
+
+## Q2. Problemas de usar Sistemas de Arquivos para armazenar dados
+
+Guardar dados em arquivos comuns (texto, planilhas, arquivos binários próprios) manipulados
+diretamente pelos programas de aplicação apresenta várias limitações clássicas:
+
+1. **Redundância e inconsistência de dados.** O mesmo dado é copiado em vários arquivos/
+   formatos por equipes diferentes. Atualizar um lugar e esquecer outro gera versões
+   divergentes do mesmo fato (ex.: endereço do cliente diferente em dois arquivos).
+
+2. **Dificuldade de acesso aos dados.** Cada nova consulta ("clientes de tal cidade com
+   saldo acima de X") exige escrever um novo programa, pois não há uma linguagem de
+   consulta declarativa pronta.
+
+3. **Isolamento dos dados.** Dados espalhados em muitos arquivos e formatos diferentes
+   dificultam recuperar informações relacionadas de forma integrada.
+
+4. **Problemas de integridade.** As regras de negócio (ex.: "saldo não pode ficar
+   negativo") ficam espalhadas no código de cada aplicação. Adicionar novas restrições ou
+   garanti-las de forma uniforme é trabalhoso e frágil.
+
+5. **Problemas de atomicidade.** Uma falha (queda de energia, erro) no meio de uma
+   operação que envolve vários arquivos pode deixar os dados num estado parcial/
+   inconsistente, sem mecanismo automático para desfazer.
+
+6. **Anomalias de acesso concorrente.** Vários usuários/programas escrevendo ao mesmo
+   tempo, sem controle de concorrência, podem sobrescrever alterações uns dos outros e
+   corromper os dados.
+
+7. **Problemas de segurança e controle de acesso.** É difícil conceder a cada usuário
+   acesso só à parte dos dados que lhe cabe; normalmente o controle é "tudo ou nada" no
+   nível do arquivo.
+
+8. **Dependência entre programa e dados.** Mudar o formato/layout do arquivo obriga a
+   alterar todos os programas que o leem (falta de independência de dados física e
+   lógica).
+
+9. **Ausência de backup e recuperação padronizados.** Não há um mecanismo integrado de
+   log, checkpoint e restauração a um estado consistente após falhas.
+
+O SGBD surge justamente para resolver esse conjunto de problemas de forma centralizada.
+
+---
