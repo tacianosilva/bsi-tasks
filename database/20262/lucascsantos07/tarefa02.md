@@ -183,3 +183,43 @@ erDiagram
 - codigo_release **FK** → RELEASE(codigo_release)
 
 )
+
+## Q5. Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").
+
+O esquema projetado deve garantir as seguintes restrições de integridade:
+
+- Todo projeto deve estar associado a um cliente existente. Portanto,
+  `codigo_cliente` em PROJETO deve referenciar um cliente existente em CLIENTE.
+
+- Todo funcionário deve estar associado a uma squad existente. Portanto,
+  `codigo_squad` em FUNCIONARIO deve referenciar uma squad existente em SQUAD.
+
+- Toda tarefa deve estar associada a uma squad existente. Portanto,
+  `codigo_squad` em TAREFA deve referenciar uma squad existente em SQUAD.
+
+- Toda tarefa deve pertencer a um projeto existente. Portanto,
+  `codigo_projeto` em TAREFA deve referenciar um projeto existente em PROJETO.
+
+- Toda iteração deve estar associada a uma squad existente. Portanto,
+  `codigo_squad` em ITERACAO deve referenciar uma squad existente em SQUAD.
+
+- Toda tarefa deve estar associada a uma iteração existente. Portanto,
+  `codigo_iteracao` em TAREFA deve referenciar uma iteração existente em ITERACAO.
+
+- Toda release deve estar associada a uma squad existente. Portanto,
+  `codigo_squad` em RELEASE deve referenciar uma squad existente em SQUAD.
+
+- Toda release deve estar associada a um projeto existente. Portanto,
+  `codigo_projeto` em RELEASE deve referenciar um projeto existente em PROJETO.
+
+- Toda tarefa agrupada em uma release deve estar associada a uma release
+  existente. Portanto, `codigo_release` em TAREFA deve referenciar uma
+  release existente em RELEASE.
+
+- Todo teste de validação deve estar associado a uma release existente.
+  Portanto, `codigo_release` em TESTE_VALIDACAO deve referenciar uma release
+  existente em RELEASE.
+
+- Toda squad deve possuir pelo menos um funcionário com o papel de
+  líder técnico. Essa é uma restrição de negócio que deve ser validada
+  adicionalmente, pois não é garantida apenas pelas chaves estrangeiras.
