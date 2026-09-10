@@ -213,3 +213,52 @@ erDiagram
         string observacao
     }
 ```
+
+## Q4. A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.
+
+Abaixo está o mapeamento do Diagrama ER para o Modelo Relacional, detalhando os atributos, chaves primárias e estrangeiras de cada tabela.
+
+### CLIENTE
+* **Atributos:** <u>codigo_cliente</u>, nome, email_contato
+* **Chave Primária (PK):** codigo_cliente
+* **Chave Estrangeira (FK):** Nenhuma
+
+### SQUAD
+* **Atributos:** <u>codigo_squad</u>, nome
+* **Chave Primária (PK):** codigo_squad
+* **Chave Estrangeira (FK):** Nenhuma
+
+### FUNCIONARIO
+* **Atributos:** <u>codigo_funcionario</u>, nome, email, papel, *codigo_squad*
+* **Chave Primária (PK):** codigo_funcionario
+* **Chave Estrangeira (FK):** codigo_squad (referencia SQUAD)
+
+### PROJETO
+* **Atributos:** <u>codigo_projeto</u>, nome, descricao, *codigo_cliente*
+* **Chave Primária (PK):** codigo_projeto
+* **Chave Estrangeira (FK):** codigo_cliente (referencia CLIENTE)
+
+### SPRINT
+* **Atributos:** <u>codigo_sprint</u>, nome, data_inicio, data_fim, *codigo_squad*
+* **Chave Primária (PK):** codigo_sprint
+* **Chave Estrangeira (FK):** codigo_squad (referencia SQUAD)
+
+### RELEASE
+* **Atributos:** <u>codigo_release</u>, versao, data_planejada, situacao, *codigo_squad*
+* **Chave Primária (PK):** codigo_release
+* **Chave Estrangeira (FK):** codigo_squad (referencia SQUAD)
+
+### VALIDACAO
+* **Atributos:** <u>codigo_validacao</u>, data_validacao, resultado, observacao, *codigo_release*
+* **Chave Primária (PK):** codigo_validacao
+* **Chave Estrangeira (FK):** codigo_release (referencia RELEASE)
+
+### ISSUE
+* **Atributos:** <u>codigo_issue</u>, descricao, prioridade, situacao, estimativa_horas, *codigo_projeto*, *codigo_squad*, *codigo_sprint*, *codigo_release*
+* **Chave Primária (PK):** codigo_issue
+* **Chaves Estrangeiras (FKs):**
+  * codigo_projeto (referencia PROJETO)
+  * codigo_squad (referencia SQUAD)
+  * codigo_sprint (referencia SPRINT)
+  * codigo_release (referencia RELEASE)
+
