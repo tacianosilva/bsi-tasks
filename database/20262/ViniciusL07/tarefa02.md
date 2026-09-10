@@ -19,3 +19,17 @@ O Modelo Entidade-Relacionamento (proposto originalmente por Peter Chen em 1976)
    * **Conceito:** Associações lógicas existentes entre duas ou mais entidades, representando como interagem no domínio modelado.
    * **Exemplo:** A associação `ALOCA` entre `SQUAD` e `FUNCIONARIO`.
    * **Cardinalidade:** Restrição estrutural que define o número mínimo e máximo de ocorrências de uma entidade que podem estar associadas a ocorrências de outra entidade (ex.: `1:1`, `1:N`, `N:M`).
+
+---
+
+## Questão 02 - Notações em Diagramas Entidade-Relacionamento (DER)
+
+Ao longo da evolução da Engenharia de Software e Banco de Dados, surgiram diversas notações gráficas para expressar os mesmos conceitos de modelagem:
+
+| Conceito / Elemento | Notação de Peter Chen (1976) | Notação Pé de Galinha (*Crow's Foot* / Martin) | Notação UML (*Class Diagram*) |
+| :--- | :--- | :--- | :--- |
+| **Entidade** | Retângulo com o nome da entidade. | Retângulo dividido em seções (Nome, Chaves, Atributos). | Retângulo com três compartimentos (Nome, Atributos, Operações). |
+| **Relacionamento** | Losango conectado às entidades por linhas retas. | Linha conectando as entidades com conectores nas pontas. | Linha de associação com nome do papel ou multiplicidade. |
+| **Atributos** | Elipses (ovais) ligadas à entidade por linhas. | Listados dentro da caixa da própria entidade. | Listados como propriedades dentro da classe. |
+| **Cardinalidade** | Rótulos nas linhas (ex.: `(1,1)`, `(0,n)`, `(1,n)`). | Símbolos gráficos nas pontas: anel (`0`), traço (`1`), tridente/pé de galinha (`N`). | Notação intervalar nas extremidades: `0..1`, `1..1`, `0..*`, `1..*`. |
+| **Entidade Fraca** | Retângulo duplo ligado por losango duplo. | Retângulo com cantos arredondados ou linha de relacionamento contínua (*identificadora*). | Composição (linha terminada em losango preenchido preto). |
