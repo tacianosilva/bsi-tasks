@@ -201,3 +201,48 @@ O mapeamento conceitual (MER) para o modelo lógico relacional resulta no conjun
 | `projeto_codigo` | `INT` | **FK** | Referencia `PROJETO(codigo)` (Obrigatória) |
 | `sprint_codigo` | `INT` | **FK** | Referencia `SPRINT(codigo)` (Opcional / Nula se estiver no backlog) |
 | `release_codigo` | `INT` | **FK** | Referencia `RELEASE(codigo)` (Opcional / Nula até ser homologada) |
+
+---
+
+## Questão 05 - Restrições de Integridade Referencial e Regras de Negócio
+
+As regras de integridade abaixo garantem que o banco de dados permaneça em um estado consistente contra inserções, alterações ou remoções inválidas:
+
+### 1. Integridade Referencial entre Entidades
+
+* **Vinculação Projeto-Cliente:**
+  * Toda tupla de `PROJETO` exige um `cliente_codigo` existente e válido na tabela `CLIENTE`.
+  * *Ação de deleção:* Não é permitido excluir um `CLIENTE` se houver projetos em andamento a ele associados (`ON DELETE RESTRICT`).
+
+* **Dependência Existencial da Tarefa:**
+  * O campo `projeto_codigo` na tabela `TAREFA` é estritamente obrigatório (`NOT NULL`).
+  * Não são permitidas tarefas "órfãs" (sem projeto).
+  * Caso um projeto seja formalmente excluído, suas tarefas são removidas em conjunto (`ON DELETE CASCADE`).
+
+* **Pertencimento de Membro à Squad:**
+  * Todo registro de `FUNCIONARIO` deve ter uma chave estrangeira válida `squad_codigo` apontando para `SQUAD`.
+  * Um funcionário não pode permanecer no banco sem uma equipe designada.
+
+* **Alocação de Iteração (Sprint) e Homologação (Release):**
+  * Os campos `sprint_codigo` e `release_codigo` na tabela `TAREFA` admitem valores nulos (`NULL`), permitindo que a tarefa fique no *backlog*.
+  * Caso preenchidos, os valores devem obrigatoriamente existir em `SPRINT` e `RELEASE`, respectivamente.
+
+---
+
+### 2. Regras de Consistência Semântica e Integridade de Domínio
+
+* **Consistência de Escopo de Tarefas:**
+  * A `TAREFA` só pode receber uma `sprint_codigo` se a referida `SPRINT` pertencer exatamente ao mesmo `PROJETO` da tarefa.
+  * Tarefas não podem ser alocadas em sprints de projetos alheios.
+
+* **Restrição de Domínio de Atuação:**
+  * O atributo `papel` na entidade `FUNCIONARIO` deve ser validado via restrição de checagem (`CHECK`), aceitando apenas o conjunto fechado de valores:
+    ```sql
+    CHECK (papel IN ('desenvolvedor', 'testador', 'lider_tecnico', 'supervisor', 'gerente_produto'))
+    ```
+
+* **Liderança Técnica Exclusiva:**
+  * Toda `SQUAD` deve conter exatamente **um** registro em `FUNCIONARIO` com o atributo `papel = 'lider_tecnico'`.
+
+* **Consistência Temporal de Sprints:**
+  * A restrição do sistema deve assegurar que a `data_inicio` seja estritamente menor que a `data_fim` (`CHECK (data_inicio < data_fim)`).
