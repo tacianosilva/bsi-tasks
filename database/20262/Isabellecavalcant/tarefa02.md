@@ -39,3 +39,73 @@ Apesar da diferença visual e sintática, as duas representações expressam a m
 [2] MERMAID. *Class diagrams*. Disponível em: https://mermaid.js.org/syntax/classDiagram.html. Acesso em: 10 set. 2026.
 
 ---
+## Q3. Modelo Entidade-Relacionamento
+
+Para uma empresa de desenvolvimento de software, o modelo conceitual foi elaborado considerando clientes, projetos, funcionários, squads, tarefas, sprints e releases. O modelo busca evitar redundâncias, representando cada informação em uma única entidade e utilizando os relacionamentos para estabelecer as associações entre os elementos do sistema.
+
+### Entidades e atributos
+
+- **CLIENTE:** código, nome e e-mail de contato.
+- **PROJETO:** código e nome.
+- **FUNCIONARIO:** código, nome, e-mail e papel, podendo ser desenvolvedor, tester, líder técnico, supervisor ou gerente de produto.
+- **SQUAD:** código e nome.
+- **TAREFA:** código, descrição, prioridade, situação e estimativa de horas.
+- **SPRINT:** código e nome.
+- **RELEASE:** código e nome.
+
+### Q3. Diagrama Entidade-Relacionamento
+
+```mermaid
+erDiagram
+    CLIENTE ||--o{ PROJETO : possui
+    PROJETO ||--o{ TAREFA : possui
+
+    SQUAD ||--|{ FUNCIONARIO : composta_por
+    SQUAD ||--o{ TAREFA : resolve
+    SQUAD ||--o{ SPRINT : organiza
+    SQUAD ||--o{ RELEASE : planeja
+
+    SPRINT ||--o{ TAREFA : organiza
+    RELEASE o{--|{ TAREFA : agrupa
+
+    CLIENTE {
+        int codigo PK
+        string nome
+        string email
+    }
+
+    PROJETO {
+        int codigo PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        int codigo PK
+        string nome
+        string email
+        string papel
+    }
+
+    SQUAD {
+        int codigo PK
+        string nome
+    }
+
+    TAREFA {
+        int codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+
+    SPRINT {
+        int codigo PK
+        string nome
+    }
+
+    RELEASE {
+        int codigo PK
+        string nome
+    }
+```
