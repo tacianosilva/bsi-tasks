@@ -33,3 +33,69 @@ Ao longo da evolução da Engenharia de Software e Banco de Dados, surgiram dive
 | **Atributos** | Elipses (ovais) ligadas à entidade por linhas. | Listados dentro da caixa da própria entidade. | Listados como propriedades dentro da classe. |
 | **Cardinalidade** | Rótulos nas linhas (ex.: `(1,1)`, `(0,n)`, `(1,n)`). | Símbolos gráficos nas pontas: anel (`0`), traço (`1`), tridente/pé de galinha (`N`). | Notação intervalar nas extremidades: `0..1`, `1..1`, `0..*`, `1..*`. |
 | **Entidade Fraca** | Retângulo duplo ligado por losango duplo. | Retângulo com cantos arredondados ou linha de relacionamento contínua (*identificadora*). | Composição (linha terminada em losango preenchido preto). |
+
+---
+
+## Questão 03 — Diagrama ER Conceitual (Mermaid.js)
+
+```mermaid
+erDiagram
+    CLIENTE ||--o{ PROJETO : contrata
+    PROJETO ||--|{ SPRINT : "e dividido em"
+    PROJETO ||--|{ TAREFA : contem
+    PROJETO ||--o{ RELEASE : entrega
+
+    SQUAD ||--|{ FUNCIONARIO : aloca
+    SQUAD ||--o{ PROJETO : "atua em"
+    SQUAD ||--o{ RELEASE : planeja
+
+    SPRINT ||--o{ TAREFA : "inclui no ciclo"
+    RELEASE ||--o{ TAREFA : agrupa
+
+    CLIENTE {
+        int codigo PK
+        string nome
+        string email_contato
+    }
+
+    FUNCIONARIO {
+        int codigo PK
+        string nome
+        string email
+        string papel
+    }
+
+    SQUAD {
+        int codigo PK
+        string nome
+    }
+
+    PROJETO {
+        int codigo PK
+        string nome
+        string descricao
+    }
+
+    SPRINT {
+        int codigo PK
+        int numero
+        date data_inicio
+        date data_fim
+    }
+
+    TAREFA {
+        int codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+
+    RELEASE {
+        int codigo PK
+        string versao
+        date data_lancamento
+        string resultado_testes
+    }
+
+    
