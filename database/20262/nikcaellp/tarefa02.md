@@ -1,0 +1,2 @@
+## Q1.Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).
+Os três elementos básicos são Entidade, Atributo e os Relacionamentos. Com esses elementos, é possível representar a estrutura dos dados de um sistema, suas características e as relações existentes entre as entidades.
