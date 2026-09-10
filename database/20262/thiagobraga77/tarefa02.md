@@ -27,3 +27,62 @@ A UML(Unified Modeling Language) também pode ser utilizada para representar est
 **Q3. Construa um Diagrama ER para projetar a base de dados de uma empresa de desenvolvimento de software com outras empresas como clientes. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras. a) A empresa presta serviços de desenvolvimento de software para outras empresas (clientes). Cada cliente é identificado por um código, um nome e um e-mail de contato. b) Os funcionários da empresa trabalham em squads (equipes). Cada funcionário é identificado por um código, um nome e um e-mail, e possui um papel na equipe: desenvolvedor, testador, líder técnico, supervisor ou gerente de produto. c) Cada squad é formada por vários funcionários e resolve tarefas (issues). Uma tarefa tem código, descrição, prioridade, situação e uma estimativa em horas. As tarefas pertencem a projetos de um cliente. d) O trabalho é organizado em iterações (sprints). Uma squad planeja releases para seus clientes; uma release agrupa um conjunto de tarefas e passa por testes de validação.**
 
 ![Diagrama ER](<img/questao3.png>)
+
+**Q4. A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.**
+
+**1. CLIENTE**
+* **Atributos:** `codigo_cliente`, `nome`, `email`
+* **PK:** `codigo_cliente`
+* **FK:** Nenhuma
+
+**2. PROJETO**
+* **Atributos:** `codigo_projeto`, `nome`, `descricao`, `codigo_cliente`
+* **PK:** `codigo_projeto`
+* **FK:** `codigo_cliente` (Referencia `CLIENTE.codigo_cliente`)
+
+**3. SQUAD**
+* **Atributos:** `codigo_squad`, `nome`
+* **PK:** `codigo_squad`
+* **FK:** Nenhuma
+
+**4. FUNCIONARIO**
+* **Atributos:** `codigo_funcionario`, `nome`, `email`
+* **PK:** `codigo_funcionario`
+* **FK:** Nenhuma
+
+**5. PAPEL**
+* **Atributos:** `codigo_papel`, `nome_papel`
+* **PK:** `codigo_papel`
+* **FK:** Nenhuma
+
+**6. ALOCACAO_SQUAD** *(Tabela associativa)*
+* **Atributos:** `codigo_squad`, `codigo_funcionario`, `codigo_papel`
+* **PK:** (`codigo_squad`, `codigo_funcionario`)
+* **FKs:** 
+  * `codigo_squad` (Referencia `SQUAD.codigo_squad`)
+  * `codigo_funcionario` (Referencia `FUNCIONARIO.codigo_funcionario`)
+  * `codigo_papel` (Referencia `PAPEL.codigo_papel`)
+
+**7. TAREFA**
+* **Atributos:** `codigo_tarefa`, `descricao`, `prioridade`, `situacao`, `estimativa_horas`, `codigo_projeto`, `codigo_squad`
+* **PK:** `codigo_tarefa`
+* **FKs:**
+  * `codigo_projeto` (Referencia `PROJETO.codigo_projeto`)
+  * `codigo_squad` (Referencia `SQUAD.codigo_squad`)
+
+**8. SPRINT**
+* **Atributos:** `codigo_sprint`, `numero`, `data_inicio`, `data_fim`, `codigo_squad`
+* **PK:** `codigo_sprint`
+* **FK:** `codigo_squad` (Referencia `SQUAD.codigo_squad`)
+
+**9. RELEASE**
+* **Atributos:** `codigo_release`, `versao`, `data_planejada`, `codigo_sprint`
+* **PK:** `codigo_release`
+* **FK:** `codigo_sprint` (Referencia `SPRINT.codigo_sprint`)
+
+**10. RELEASE_TAREFA** *(Tabela associativa)*
+* **Atributos:** `codigo_release`, `codigo_tarefa`
+* **PK:** (`codigo_release`, `codigo_tarefa`)
+* **FKs:**
+  * `codigo_release` (Referencia `RELEASE.codigo_release`)
+  * `codigo_tarefa` (Referencia `TAREFA.codigo_tarefa`)
