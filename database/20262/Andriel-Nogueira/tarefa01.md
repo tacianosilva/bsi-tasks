@@ -31,3 +31,29 @@ A utilização de arquivos convencionais (como `.txt`, `.csv` ou planilhas) para
 6. **Problemas de Segurança e Integridade:** É difícil aplicar regras de integridade (ex: proibir valores negativos) e restrições de segurança refinadas por usuário/tabela em nível de sistema operacional.
 
 ---
+
+## Questão 03: Propriedades ACID
+
+As propriedades ACID garantem a confiabilidade de transações em SGBDs relacionais.
+
+### 1. Atomicidade (Atomicidade - "Tudo ou Nada")
+* **Conceito:** Garante que a transação seja tratada como uma unidade indivisível de trabalho. Ou todas as operações da transação são executadas com sucesso (*commit*), ou o estado do banco é revertido totalmente (*rollback*).
+* **Exemplo Prático:** Em uma transferência de R$ 100 de Ana para Bob, ocorre um débito na conta de Ana e um crédito na conta de Bob.
+* **Sem a garantia do SGBD:** Se o sistema falhar após o débito na conta de Ana mas antes do crédito na conta de Bob, o dinheiro somaria do sistema (débito mantido sem a contrapartida).
+
+### 2. Consistência (Consistency)
+* **Conceito:** Garante que a transação só leve o banco de dados de um estado válido para outro estado válido, respeitando todas as restrições de integridade, chaves e regras de negócio.
+* **Exemplo Prático:** Uma regra do banco impede que uma conta fique com saldo negativo abaixo de R$ 0.
+* **Sem a garantia do SGBD:** Se uma transferência de R$ 500 for solicitada por alguém que só tem R$ 100, o saldo ficaria -$400, violando as regras do domínio bancário.
+
+### 3. Isolamento (Isolation)
+* **Conceito:** Garante que transações simultâneas sejam executadas de forma transparente, como se fossem sequenciais, impedindo que uma transação veja dados intermediários e não confirmados de outra.
+* **Exemplo Prático:** Duas transferências simultâneas de R$ 50 são solicitadas na mesma conta que possui R$ 100 de saldo.
+* **Sem a garantia do SGBD:** Ocorre a "leitura suja" ou "atualização perdida": ambas as transações leem o saldo inicial de R$ 100 ao mesmo tempo e ambas decrementam R$ 50, resultando em um saldo final de R$ 50 em vez de R$ 0.
+
+### 4. Durabilidade (Durability)
+* **Conceito:** Garante que, uma vez que a transação seja confirmada (*commit*), os dados persistirão permanentemente na memória não volátil (disco), resistindo a falhas do sistema, quedas de energia ou reinicializações.
+* **Exemplo Prático:** O aplicativo exibe a mensagem "Transferência concluída com sucesso".
+* **Sem a garantia do SGBD:** Se o servidor desligar segundos após o confirmação por ter mantido o dado apenas em memória RAM sem gravar no disco (ou log de transações), o valor transferido desapareceria ao religar.
+
+--- 
