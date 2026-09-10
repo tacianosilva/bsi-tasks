@@ -112,3 +112,32 @@ As propriedades ACID garantem a confiabilidade de transações em SGBDs relacion
 * **Tarefa (Issue):** `ID_Tarefa`, `Titulo`, `Descricao`, `Status` (A Fazer, Em Andamento, Em Teste, Concluído), `Estimativa_Horas`, `Prioridade`.
 
 ---
+
+### c) Relacionamentos e Cardinalidades
+
+1. **Cliente - Projeto:**
+   * Um Cliente contrata **um ou vários** Projetos (1:N).
+   * Um Projeto pertence a **apenas um** Cliente (1:1).
+2. **Squad - Projeto:**
+   * Uma Squad pode ser alocada em **um ou vários** Projetos (1:N).
+   * Um Projeto é executado por **apenas uma** Squad (1:1).
+3. **Squad - Membro:**
+   * Uma Squad possui **vários** Membros (1:N).
+   * Um Membro pertence a **apenas uma** Squad por vez (1:1).
+4. **Projeto - Sprint:**
+   * Um Projeto é dividido em **uma ou várias** Sprints (1:N).
+   * Uma Sprint pertence a **apenas um** Projeto (1:1).
+5. **Projeto - Release:**
+   * Um Projeto possui **uma ou várias** Releases (1:N).
+   * Uma Release pertence a **apenas um** Projeto (1:1).
+6. **Sprint - Tarefa:**
+   * Uma Sprint planeja **uma ou várias** Tarefas (1:N).
+   * Uma Tarefa pode estar vinculada a **no máximo uma** Sprint (0:1 - pode existir no backlog sem sprint).
+7. **Release - Tarefa:**
+   * Uma Release entrega **uma ou várias** Tarefas (1:N).
+   * Uma Tarefa concluída é entregue em **apenas uma** Release (1:1).
+8. **Membro - Tarefa:**
+   * Um Membro pode ser responsável por **várias** Tarefas (1:N).
+   * Uma Tarefa é atribuída a **apenas um** Membro responsável (0:1 ou 1:1).
+
+---
