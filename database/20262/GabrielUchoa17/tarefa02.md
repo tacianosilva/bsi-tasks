@@ -330,3 +330,240 @@ cada fato seja armazenado **uma única vez**:
    quantidade de tarefas concluídas de uma release): todos são obtidos por agregação.
 
 ---
+
+## Q4. Mapeamento para o Modelo Relacional
+
+### Regras de mapeamento aplicadas
+
+| # | Regra | Onde foi aplicada |
+|---|---|---|
+| 1 | **Entidade forte** → relação com os atributos simples; identificador vira **chave primária**. | `CLIENTE`, `FUNCIONARIO`, `SQUAD`, `PROJETO`, `TAREFA`, `TESTE` |
+| 2 | **Entidade fraca** → relação cuja **PK é composta** pela PK da entidade proprietária + a chave parcial; a parte herdada é também **FK**. | `SPRINT`, `RELEASE` |
+| 3 | **Relacionamento 1:N** → a **FK** vai para o lado **N**. | `PROJETO.cod_cliente`, `PROJETO.cod_squad`, `TAREFA.cod_projeto`, `TESTE`→`RELEASE` |
+| 4 | **Relacionamento 1:N opcional** → a FK vai para o lado N e **aceita NULL**. | `TAREFA.num_sprint`, `TAREFA.versao_release`, `TAREFA.cod_responsavel`, `TESTE.cod_executor` |
+| 5 | **Relacionamento N:M** → nova relação (associativa) com PK composta pelas PKs dos dois lados. | `PARTICIPACAO` |
+| 6 | **Atributos do relacionamento** → colunas da relação gerada pelo relacionamento. | `PARTICIPACAO.papel`, `.data_entrada`, `.data_saida` |
+
+### Esquema relacional resultante
+
+Legenda: **negrito** = chave primária · *itálico* = chave estrangeira · `(N)` = aceita nulo.
+
+1. **CLIENTE**(**codigo**, nome, email_contato)
+2. **FUNCIONARIO**(**codigo**, nome, email)
+3. **SQUAD**(**codigo**, nome, data_criacao)
+4. **PARTICIPACAO**(***cod_funcionario***, ***cod_squad***, papel, data_entrada, data_saida `(N)`)
+5. **PROJETO**(**codigo**, nome, descricao, data_inicio, data_prevista_fim, data_fim_real `(N)`, situacao, *cod_cliente*, *cod_squad*)
+6. **SPRINT**(***cod_projeto***, **numero**, data_inicio, data_fim, objetivo, situacao)
+7. **RELEASE**(***cod_projeto***, **versao**, data_planejada, data_lancamento `(N)`, notas `(N)`, situacao)
+8. **TAREFA**(**codigo**, descricao, prioridade, situacao, estimativa_horas, *cod_projeto*, *num_sprint* `(N)`, *versao_release* `(N)`, *cod_responsavel* `(N)`)
+9. **TESTE**(**codigo**, titulo, tipo, resultado, data_execucao `(N)`, *cod_projeto*, *versao_release*, *cod_executor* `(N)`)
+
+### Detalhamento das relações
+
+#### 1. `CLIENTE`
+
+| Atributo | Tipo | Chave | Nulo? | Observação |
+|---|---|---|---|---|
+| `codigo` | VARCHAR | **PK** | não | Identificador do cliente |
+| `nome` | VARCHAR | — | não | |
+| `email_contato` | VARCHAR | — | não | `UNIQUE` |
+
+#### 2. `FUNCIONARIO`
+
+| Atributo | Tipo | Chave | Nulo? | Observação |
+|---|---|---|---|---|
+| `codigo` | VARCHAR | **PK** | não | |
+| `nome` | VARCHAR | — | não | |
+| `email` | VARCHAR | — | não | `UNIQUE` (chave candidata) |
+
+> O **papel** *não* aparece aqui: ele pertence ao relacionamento com a squad (ver
+> `PARTICIPACAO`).
+
+#### 3. `SQUAD`
+
+| Atributo | Tipo | Chave | Nulo? | Observação |
+|---|---|---|---|---|
+| `codigo` | VARCHAR | **PK** | não | |
+| `nome` | VARCHAR | — | não | `UNIQUE` |
+| `data_criacao` | DATE | — | não | |
+
+#### 4. `PARTICIPACAO` — relação associativa (N:M entre `FUNCIONARIO` e `SQUAD`)
+
+| Atributo | Tipo | Chave | Nulo? | Referencia |
+|---|---|---|---|---|
+| `cod_funcionario` | VARCHAR | **PK** / FK | não | `FUNCIONARIO(codigo)` |
+| `cod_squad` | VARCHAR | **PK** / FK | não | `SQUAD(codigo)` |
+| `papel` | VARCHAR | — | não | `desenvolvedor`, `testador`, `lider_tecnico`, `supervisor`, `gerente_produto` |
+| `data_entrada` | DATE | — | não | |
+| `data_saida` | DATE | — | **sim** | Nulo enquanto o vínculo estiver ativo |
+
+- **PK composta:** (`cod_funcionario`, `cod_squad`)
+
+#### 5. `PROJETO`
+
+| Atributo | Tipo | Chave | Nulo? | Referencia |
+|---|---|---|---|---|
+| `codigo` | VARCHAR | **PK** | não | |
+| `nome` | VARCHAR | — | não | |
+| `descricao` | TEXT | — | sim | |
+| `data_inicio` | DATE | — | não | |
+| `data_prevista_fim` | DATE | — | sim | |
+| `data_fim_real` | DATE | — | sim | |
+| `situacao` | VARCHAR | — | não | domínio fechado |
+| `cod_cliente` | VARCHAR | FK | não | `CLIENTE(codigo)` |
+| `cod_squad` | VARCHAR | FK | não | `SQUAD(codigo)` |
+
+#### 6. `SPRINT` — entidade fraca de `PROJETO`
+
+| Atributo | Tipo | Chave | Nulo? | Referencia |
+|---|---|---|---|---|
+| `cod_projeto` | VARCHAR | **PK** / FK | não | `PROJETO(codigo)` |
+| `numero` | INT | **PK** | não | Chave parcial |
+| `data_inicio` | DATE | — | não | |
+| `data_fim` | DATE | — | não | |
+| `objetivo` | TEXT | — | sim | |
+| `situacao` | VARCHAR | — | não | |
+
+- **PK composta:** (`cod_projeto`, `numero`) — a sprint só existe dentro de um projeto.
+
+#### 7. `RELEASE` — entidade fraca de `PROJETO`
+
+| Atributo | Tipo | Chave | Nulo? | Referencia |
+|---|---|---|---|---|
+| `cod_projeto` | VARCHAR | **PK** / FK | não | `PROJETO(codigo)` |
+| `versao` | VARCHAR | **PK** | não | Chave parcial (ex.: `1.4.0`) |
+| `data_planejada` | DATE | — | não | |
+| `data_lancamento` | DATE | — | sim | Preenchida ao lançar |
+| `notas` | TEXT | — | sim | |
+| `situacao` | VARCHAR | — | não | |
+
+- **PK composta:** (`cod_projeto`, `versao`) — a versão é única **dentro do projeto**.
+
+#### 8. `TAREFA`
+
+| Atributo | Tipo | Chave | Nulo? | Referencia |
+|---|---|---|---|---|
+| `codigo` | VARCHAR | **PK** | não | |
+| `descricao` | TEXT | — | não | |
+| `prioridade` | VARCHAR | — | não | domínio fechado |
+| `situacao` | VARCHAR | — | não | domínio fechado |
+| `estimativa_horas` | INT | — | sim | |
+| `cod_projeto` | VARCHAR | FK | **não** | `PROJETO(codigo)` |
+| `num_sprint` | INT | FK¹ | sim | — |
+| `versao_release` | VARCHAR | FK² | sim | — |
+| `cod_responsavel` | VARCHAR | FK | sim | `FUNCIONARIO(codigo)` |
+
+- **FK¹ composta:** (`cod_projeto`, `num_sprint`) → `SPRINT(cod_projeto, numero)`
+- **FK² composta:** (`cod_projeto`, `versao_release`) → `RELEASE(cod_projeto, versao)`
+
+> **Por que reaproveitar `cod_projeto` nas duas FKs compostas?** Porque assim o próprio
+> esquema **impede estruturalmente** que uma tarefa seja alocada a uma sprint ou a uma
+> release de **outro** projeto — a mesma coluna serve para identificar o projeto da tarefa,
+> da sprint e da release. Isso evita tanto a redundância de guardar o projeto duas vezes
+> quanto a possibilidade de contradição.
+
+#### 9. `TESTE`
+
+| Atributo | Tipo | Chave | Nulo? | Referencia |
+|---|---|---|---|---|
+| `codigo` | VARCHAR | **PK** | não | |
+| `titulo` | VARCHAR | — | não | |
+| `tipo` | VARCHAR | — | não | domínio fechado |
+| `resultado` | VARCHAR | — | não | domínio fechado |
+| `data_execucao` | DATE | — | sim | Nulo enquanto não executado |
+| `cod_projeto` | VARCHAR | FK³ | não | — |
+| `versao_release` | VARCHAR | FK³ | não | — |
+| `cod_executor` | VARCHAR | FK | sim | `FUNCIONARIO(codigo)` |
+
+- **FK³ composta:** (`cod_projeto`, `versao_release`) → `RELEASE(cod_projeto, versao)`
+
+### Diagrama do esquema lógico (já com chaves estrangeiras)
+
+```mermaid
+erDiagram
+    CLIENTE     ||--o{ PROJETO       : "1:N"
+    SQUAD       ||--o{ PROJETO       : "1:N"
+    FUNCIONARIO ||--o{ PARTICIPACAO  : "1:N"
+    SQUAD       ||--o{ PARTICIPACAO  : "1:N"
+    PROJETO     ||--o{ SPRINT        : "1:N"
+    PROJETO     ||--o{ RELEASE       : "1:N"
+    PROJETO     ||--o{ TAREFA        : "1:N"
+    SPRINT      |o--o{ TAREFA        : "0..1:N"
+    RELEASE     |o--o{ TAREFA        : "0..1:N"
+    RELEASE     ||--o{ TESTE         : "1:N"
+    FUNCIONARIO |o--o{ TAREFA        : "0..1:N"
+    FUNCIONARIO |o--o{ TESTE         : "0..1:N"
+
+    CLIENTE {
+        varchar codigo PK
+        varchar nome
+        varchar email_contato UK
+    }
+    FUNCIONARIO {
+        varchar codigo PK
+        varchar nome
+        varchar email UK
+    }
+    SQUAD {
+        varchar codigo PK
+        varchar nome UK
+        date    data_criacao
+    }
+    PARTICIPACAO {
+        varchar cod_funcionario PK, FK
+        varchar cod_squad PK, FK
+        varchar papel
+        date    data_entrada
+        date    data_saida "nulo"
+    }
+    PROJETO {
+        varchar codigo PK
+        varchar nome
+        text    descricao
+        date    data_inicio
+        date    data_prevista_fim
+        date    data_fim_real "nulo"
+        varchar situacao
+        varchar cod_cliente FK
+        varchar cod_squad FK
+    }
+    SPRINT {
+        varchar cod_projeto PK, FK
+        int     numero PK "chave parcial"
+        date    data_inicio
+        date    data_fim
+        text    objetivo
+        varchar situacao
+    }
+    RELEASE {
+        varchar cod_projeto PK, FK
+        varchar versao PK "chave parcial"
+        date    data_planejada
+        date    data_lancamento "nulo"
+        text    notas
+        varchar situacao
+    }
+    TAREFA {
+        varchar codigo PK
+        text    descricao
+        varchar prioridade
+        varchar situacao
+        int     estimativa_horas
+        varchar cod_projeto FK
+        int     num_sprint FK "nulo - com cod_projeto"
+        varchar versao_release FK "nulo - com cod_projeto"
+        varchar cod_responsavel FK "nulo"
+    }
+    TESTE {
+        varchar codigo PK
+        varchar titulo
+        varchar tipo
+        varchar resultado
+        date    data_execucao "nulo"
+        varchar cod_projeto FK
+        varchar versao_release FK
+        varchar cod_executor FK "nulo"
+    }
+```
+
+---
