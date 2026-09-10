@@ -1,0 +1,6 @@
+Q1
+O Modelo Entidade-Relacionamento (MER) fundamenta-se em três elementos básicos para abstrair o mundo real e representar a estrutura lógica de um banco de dados:
+
+* **Entidades:** Representam objetos, pessoas, lugares ou conceitos do mundo real que possuem existência própria e sobre os quais o sistema precisa armazenar informações (ex.: *Cliente*, *Funcionário*, *Projeto*). Podem ser concretas (como um objeto físico) ou abstratas (como uma venda ou um contrato).
+* **Atributos:** São as propriedades, características ou qualificadores que descrevem as entidades ou os relacionamentos (ex.: *Nome*, *E-mail*, *Data de Nascimento*). Dentre os atributos, destaca-se o identificador (ou chave), que possui a função de distinguir de forma única cada ocorrência de uma entidade.
+* **Relacionamentos:** Definem as conexões, vínculos ou associações lógicas existentes entre duas ou mais entidades, refletindo a dinâmica e as regras de negócio da aplicação (ex.: um *Funcionário* **pertence a** uma *Squad*).
