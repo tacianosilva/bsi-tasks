@@ -188,3 +188,13 @@ Associa as tarefas incluídas em cada release.
 * **PK Composta:** (`codigo_release`, `codigo_tarefa`)
 * **FK1:** `codigo_release` referencia `RELEASE(codigo_release)`
 * **FK2:** `codigo_tarefa` referencia `TAREFA(codigo_tarefa)`
+
+Q5
+* **Vinculação de Projetos a Clientes:** Um **PROJETO** só pode ser criado se estiver associado a um **CLIENTE** previamente cadastrado. Não é permitido excluir um cliente da base enquanto existirem projetos associados a ele (*ON DELETE RESTRICT*).
+* **Alocação de Funcionários em Squads:** Todo **FUNCIONARIO** deve estar vinculado a uma **SQUAD** existente. A exclusão de uma squad não deve ser permitida enquanto houver funcionários alocados nela.
+* **Composição Obrigatória de Squad (Liderança):** Toda **SQUAD** deve possuir pelo menos um **FUNCIONARIO** associado cujo atributo `papel` seja classificado como "Líder Técnico".
+* **Atribuição e Origem de Tarefas:** Uma **TAREFA** só pode ser cadastrada se estiver vinculada a um **PROJETO** existente e a uma **SQUAD** responsável. A remoção do projeto ou da squad impede a permanência do registro da tarefa sem dono.
+* **Vínculo de Tarefas com Sprints:** Uma **TAREFA** só pode referenciar uma **SPRINT** que exista no banco de dados. Caso uma sprint seja removida, a referência na tarefa correspondente deve ser definida como nula (*ON DELETE SET NULL*), mantendo a tarefa na base para replanejamento.
+* **Execução de Sprints:** Uma **SPRINT** só pode ser planejada e iniciada se estiver diretamente associada a uma **SQUAD** existente.
+* **Planejamento de Releases:** Uma **RELEASE** só pode ser criada se estiver associada a uma **SQUAD** responsável e a um **CLIENTE** destinatário devidamente cadastrados.
+* **Associação entre Releases e Tarefas:** Um registro na tabela intermediária **RELEASE_TAREFA** só pode existir se referenciar uma **RELEASE** e uma **TAREFA** válidas. Se uma release ou uma tarefa for excluída, os vínculos correspondentes nesta tabela associativa devem ser removidos automaticamente (*ON DELETE CASCADE*).
