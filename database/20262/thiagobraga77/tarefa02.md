@@ -10,11 +10,18 @@ Os três elementos básicos de um Modelo Entidade-Relacionamento(MER) são entid
 Existem diversas notações utilizadas para representar diagramas Entidade-Relacionamento. Entre as mais conhecidas estão a **notação de Chen**, a **notação Crow's Foot(Pé de Galinha)** e a **notação UML**.
 
 **Notação de Chen**
+
 A notação de Chen utiliza diferentes formas geométricas para representar os elementos do modelo. As entidades são representadas por retângulos, os atributos por elipses, os relacionamentos por losangos e as linhas conectam os atributos às entidades, e as entidades aos losangos.
 
 
 **Notação Crow's Foot**
+
 A notação Crow's Foot, também conhecida como notação "Pé de Galinha", utiliza símbolos nas extremidades das linhas para representar a cardinalidade dos relacionamentos.
 
 **Notação UML** 
+
 A UML(Unified Modeling Language) também pode ser utilizada para representar estruturas de sistemas e banco de dados. Neste modelo, as entidades podem ser representadas como classes, contendo seus atributos e relacionamentos com outras classes.
+
+**Q3. Construa um Diagrama ER para projetar a base de dados de uma empresa de desenvolvimento de software com outras empresas como clientes. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras. a) A empresa presta serviços de desenvolvimento de software para outras empresas (clientes). Cada cliente é identificado por um código, um nome e um e-mail de contato. b) Os funcionários da empresa trabalham em squads (equipes). Cada funcionário é identificado por um código, um nome e um e-mail, e possui um papel na equipe: desenvolvedor, testador, líder técnico, supervisor ou gerente de produto. c) Cada squad é formada por vários funcionários e resolve tarefas (issues). Uma tarefa tem código, descrição, prioridade, situação e uma estimativa em horas. As tarefas pertencem a projetos de um cliente. d) O trabalho é organizado em iterações (sprints). Uma squad planeja releases para seus clientes; uma release agrupa um conjunto de tarefas e passa por testes de validação.**
+
+![Diagrama ER](<img/questao3.png>)
