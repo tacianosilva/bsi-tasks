@@ -34,3 +34,58 @@ Existem diversas notações para Diagramas Entidade-Relacionamento (DER), desenv
 * *Chen:* Elipse com o texto do atributo **sublinhado**.
 * *Crow's Foot:* O atributo é posicionado na **seção superior** do retângulo da entidade, com a indicação `PK` ao lado.
 * *UML:* O atributo recebe um estereótipo `<<PK>>` ou símbolo de visibilidade especial.
+
+Q3
+erDiagram
+    CLIENTE {
+        int codigo_cliente PK
+        string nome
+        string email
+    }
+
+    PROJETO {
+        int codigo_projeto PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        int codigo_funcionario PK
+        string nome
+        string email
+        string papel
+    }
+
+    SQUAD {
+        int codigo_squad PK
+        string nome
+    }
+
+    TAREFA {
+        int codigo_tarefa PK
+        string descricao
+        string prioridade
+        string situacao
+        int estimativa_horas
+    }
+
+    SPRINT {
+        int codigo_sprint PK
+        date data_inicio
+        date data_fim
+    }
+
+    RELEASE {
+        int codigo_release PK
+        date data_liberacao
+        string resultado_validacao
+    }
+
+    CLIENTE ||--|{ PROJETO : "contrata"
+    PROJETO ||--|{ TAREFA : "contem"
+    SQUAD ||--|{ FUNCIONARIO : "aloca"
+    SQUAD ||--o{ TAREFA : "resolve"
+    SQUAD ||--o{ SPRINT : "executa"
+    SQUAD ||--o{ RELEASE : "planeja"
+    CLIENTE ||--o{ RELEASE : "recebe"
+    SPRINT ||--o{ TAREFA : "organiza"
+    RELEASE }|--|{ TAREFA : "agrupa"
