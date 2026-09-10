@@ -74,3 +74,16 @@ As propriedades ACID garantem a confiabilidade de transações em SGBDs relacion
   * **Justificativa:** O SGBD barrou a transação para evitar que o banco entrasse em um estado inválido, preservando a restrição/regra de negócio definida.
 
 ---
+
+## Questão 05: Aspectos Tratados pelo SGBD
+
+1. **Recuperação:** É a capacidade do SGBD de restaurar o banco de dados a um estado consistente após falhas de hardware, software ou sistema.
+   * *Como gerencia:* Utiliza arquivos de **Log de Transações (WAL - Write-Ahead Logging)** e pontos de verificação (*checkpoints*) para refazer (*Redo*) transações confirmadas ou desfazer (*Undo*) transações incompletas no momento da falha.
+2. **Integridade:** Garante que os dados armazenados sejam corretos, precisos e válidos de acordo com as regras estabelecidas.
+   * *Como gerencia:* Aplica restrições de integridade (*constraints*) no esquema, como `NOT NULL`, `UNIQUE`, Chaves Primárias (`PRIMARY KEY`), Chaves Estrangeiras (`FOREIGN KEY`) e validações condicionais (`CHECK`).
+3. **Redundância:** Ocorre quando o mesmo dado é armazenado desnecessariamente em múltiplos locais.
+   * *Como gerencia:* Utiliza técnicas de **Normalização de Dados** para dividir as tabelas de forma lógica e centralizar as informações, controlando qualquer cópia duplicada através de visões ou gatilhos.
+4. **Inconsistência:** Ocorre quando cópias do mesmo dado apresentam valores diferentes devido a atualizações desincronizadas ou falhas.
+   * *Como gerencia:* Controla as atualizações por meio de controle de concorrência (mecanismos de trava/*locks* e controle de versão de concorrência multiversão - MVCC) e pela garantia de atomicidade e consistência das transações.
+
+---
