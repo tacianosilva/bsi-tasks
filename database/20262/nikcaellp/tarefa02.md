@@ -2,7 +2,8 @@
 Os três elementos básicos são:
 - Entidade 
 - Atributo 
-- Relacionamentos.
+- Relacionamentos
+
  Com esses elementos, é possível representar a estrutura dos dados de um sistema, suas características e as relações existentes entre as entidades.
 
 ## Q2. Pesquise sobre as várias notações possíveis para Diagramas ER e cite alguns exemplos de notações diferentes para o mesmo conceito (ex.: cardinalidade, entidade subordinada, etc.).
@@ -159,3 +160,18 @@ O mapeamento do Diagrama ER para o Modelo Relacional resulta nas seguintes rela�
 - data_inicio
 - data_fim
 - cod_squad — FK → SQUAD(cod_squad)
+
+## Q5.
+
+As principais restrições de integridade referencial do esquema são:
+
+- Um projeto só pode existir vinculado a um cliente existente na tabela CLIENTE.
+- Uma tarefa só pode existir vinculada a um projeto existente na tabela PROJETO.
+- Uma tarefa só pode estar vinculada a uma squad existente na tabela SQUAD.
+- Uma release só pode ser criada para uma squad existente na tabela SQUAD.
+- Uma release só pode estar vinculada a um projeto existente na tabela PROJETO.
+- Um funcionário só pode estar vinculado a uma squad existente na tabela SQUAD.
+- Uma sprint só pode estar vinculada a uma squad existente na tabela SQUAD.
+- Uma tarefa agrupada em uma release deve existir previamente na tabela TAREFA.
+- Os códigos utilizados como chaves primárias devem ser únicos e não podem ser nulos.
+- Não deve ser permitido excluir um cliente, projeto ou squad caso existam registros que ainda dependam deles, evitando referências para registros inexistentes.
