@@ -101,3 +101,42 @@ erDiagram
         string situacao
         int estimativa_horas
     }
+```
+
+---
+
+## Questão 04: Mapeamento para o Modelo Relacional
+
+Abaixo está a conversão do Modelo Conceitual para o Modelo Relacional com suas respectivas chaves primárias (PK) e chaves estrangeiras (FK):
+
+1. **CLIENTE** (**id_cliente**, nome, email)
+   * **PK:** `id_cliente`
+
+2. **SQUAD** (**id_squad**, nome)
+   * **PK:** `id_squad`
+
+3. **FUNCIONARIO** (**id_funcionario**, nome, email, papel, *id_squad*)
+   * **PK:** `id_funcionario`
+   * **FK:** `id_squad` referência **SQUAD(id_squad)**
+
+4. **PROJETO** (**id_projeto**, nome, descricao, *id_cliente*, *id_squad*)
+   * **PK:** `id_projeto`
+   * **FK:** `id_cliente` referência **CLIENTE(id_cliente)**
+   * **FK:** `id_squad` referência **SQUAD(id_squad)**
+
+5. **SPRINT** (**id_sprint**, numero, data_inicio, data_fim, *id_projeto*)
+   * **PK:** `id_sprint`
+   * **FK:** `id_projeto` referência **PROJETO(id_projeto)**
+
+6. **RELEASE** (**id_release**, versao, data_validacao, *id_projeto*, *id_squad*)
+   * **PK:** `id_release`
+   * **FK:** `id_projeto` referência **PROJETO(id_projeto)**
+   * **FK:** `id_squad` referência **SQUAD(id_squad)**
+
+7. **TAREFA** (**id_tarefa**, descricao, prioridade, situacao, estimativa_horas, *id_projeto*, *id_sprint*, *id_release*)
+   * **PK:** `id_tarefa`
+   * **FK:** `id_projeto` referência **PROJETO(id_projeto)**
+   * **FK:** `id_sprint` referência **SPRINT(id_sprint)**
+   * **FK:** `id_release` referência **RELEASE(id_release)**
+
+---
