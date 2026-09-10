@@ -141,3 +141,12 @@ As propriedades ACID garantem a confiabilidade de transações em SGBDs relacion
    * Uma Tarefa é atribuída a **apenas um** Membro responsável (0:1 ou 1:1).
 
 ---
+
+### d) Regras de Integridade (Restrições)
+
+1. **Restrição de Liderança:** Cada Squad deve conter **exatamente um** Membro com a função de "Líder Técnico".
+2. **Vínculo Obrigatório de Projeto:** Toda Tarefa (Issue) criada deve estar obrigatoriamente associada a **um único** Projeto existente.
+3. **Coerência de Datas da Sprint:** A `Data_Fim` de uma Sprint deve ser estritamente posterior à sua `Data_Inicio`.
+4. **Restrição de Alocação de Membro:** Um Membro só pode ter uma Tarefa atribuída a ele se essa Tarefa pertencer a um Projeto gerido pela Squad da qual o Membro faz parte.
+5. **Composição de Squads:** Toda Squad precisa ter no mínimo 3 membros e no máximo 10 membros cadastrados para estar ativa.
+6. **Unicidade de Release:** Dentro do mesmo Projeto, não podem existir duas Releases com a mesma `Versao`.
