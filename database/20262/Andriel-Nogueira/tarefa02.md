@@ -140,3 +140,15 @@ Abaixo está a conversão do Modelo Conceitual para o Modelo Relacional com suas
    * **FK:** `id_release` referência **RELEASE(id_release)**
 
 ---
+
+## Questão 05: Restrições de Integridade Referencial
+
+As regras de integridade referencial e de domínio que devem ser asseguradas no banco de dados incluem:
+
+1. **Integridade de Tarefas e Projetos:** Toda `TAREFA` cadastrada deve estar obrigatoriamente vinculada a um `PROJETO` existente. Não é permitido criar tarefas sem projeto associado.
+2. **Integridade de Projetos e Clientes:** Um `PROJETO` não pode existir sem estar associado a um `CLIENTE` válido previamente cadastrado.
+3. **Integridade de Exclusão de Clientes:** Caso um `CLIENTE` seja removido do banco de dados, o SGBD deve impedir a exclusão caso existam projetos associados (*RESTRICT/NO ACTION*) ou realizar a exclusão/arquivamento em cascata conforme as regras operacionais.
+4. **Integridade de Alocação de Funcionários:** Todo `FUNCIONARIO` deve estar alocado a uma `SQUAD` existente.
+5. **Integridade de Escopo da Release:** Uma `RELEASE` só pode agrupar tarefas que pertençam ao mesmo `PROJETO` associado a essa release.
+6. **Liderança em Squads:** Toda `SQUAD` deve conter obrigatoriamente ao menos um `FUNCIONARIO` cujo atributo `papel` seja definido como **"Líder Técnico"**.
+7. **Consistência de Datas:** A data inicial de uma `SPRINT` deve ser obrigatoriamente anterior à sua data final.
