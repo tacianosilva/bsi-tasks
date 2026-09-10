@@ -118,7 +118,7 @@ A representação visual das entidades e dos relacionamentos possui regras próp
 
 **Observação:** a forma exata dos símbolos pode variar de acordo com a ferramenta e a convenção adotada. O importante é que o modelo apresente claramente os conceitos e suas restrições.
 
-## Q3. Diagrama ER Conceitual (Empresa de Software)
+## Q3. Diagrama ER (Empresa de Software)
 
 O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras. 
 
@@ -147,139 +147,69 @@ Para evitar redundância:
 
 O modelo abaixo está no nível conceitual. Portanto, não são utilizadas chaves estrangeiras (FKs).
 
+```mermaid
+erDiagram
 
-### Entidades e atributos
+    CLIENTE ||--o{ PROJETO : "possui"
+    SQUAD ||--|{ FUNCIONARIO : "forma"
+    SQUAD ||--o{ ISSUE : "resolve"
+    PROJETO ||--o{ ISSUE : "possui"
+    SQUAD ||--o{ SPRINT : "organiza"
+    SPRINT ||--o{ ISSUE : "planeja"
+    SQUAD ||--o{ RELEASE : "planeja"
+    RELEASE ||--o{ ISSUE : "agrupa"
+    RELEASE ||--|{ VALIDACAO : "passa por"
 
-**CLIENTE**
+    CLIENTE {
+        int codigo_cliente PK
+        string nome
+        string email_contato
+    }
 
-- codigo_cliente — identificador
-- nome
-- email_contato
+    FUNCIONARIO {
+        int codigo_funcionario PK
+        string nome
+        string email
+        string papel
+    }
 
-**FUNCIONARIO**
+    SQUAD {
+        int codigo_squad PK
+        string nome
+    }
 
-- codigo_funcionario — identificador
-- nome
-- email
-- papel
+    PROJETO {
+        int codigo_projeto PK
+        string nome
+        string descricao
+    }
 
-O atributo `papel` possui um domínio restrito:
+    ISSUE {
+        int codigo_issue PK
+        string descricao
+        string prioridade
+        string situacao
+        decimal estimativa_horas
+    }
 
-- Desenvolvedor;
-- Testador;
-- Líder técnico;
-- Supervisor;
-- Gerente de produto
+    SPRINT {
+        int codigo_sprint PK
+        string nome
+        date data_inicio
+        date data_fim
+    }
 
-**SQUAD**
+    RELEASE {
+        int codigo_release PK
+        string versao
+        date data_planejada
+        string situacao
+    }
 
-- codigo_squad — identificador
-- nome
-
-**PROJETO**
-
-- codigo_projeto — identificador
-- nome
-- descricao
-
-**ISSUE**
-
-- codigo_issue — identificador
-- descricao
-- prioridade
-- situacao
-- estimativa_horas
-
-**SPRINT**
-
-- codigo_sprint — identificador
-- nome
-- data_inicio
-- data_fim
-
-**RELEASE**
-
-- codigo_release — identificador
-- versao
-- data_planejada
-- situacao
-
-**VALIDACAO**
-
-- codigo_validacao — identificador
-- data_validacao
-- resultado
-- observacao
-
-
-### Relacionamentos
-
-**CLIENTE — possui — PROJETO**
-
-Um cliente pode possuir vários projetos, mas cada projeto pertence a um único cliente.
-
-**Cardinalidade:** `CLIENTE 1:N PROJETO`
-
----
-
-**FUNCIONARIO — pertence — SQUAD**
-
-Uma squad é formada por vários funcionários. Um funcionário pertence a uma squad.
-
-**Cardinalidade:** `SQUAD 1:N FUNCIONARIO`
-
----
-
-**SQUAD — resolve — ISSUE**
-
-Uma squad resolve várias issues. Uma issue é resolvida por uma squad.
-
-**Cardinalidade:** `SQUAD 1:N ISSUE`
-
----
-
-**PROJETO — possui — ISSUE**
-
-Um projeto pode possuir várias issues. Cada issue pertence a um projeto.
-
-**Cardinalidade:** `PROJETO 1:N ISSUE`
-
----
-
-**SQUAD — planeja — RELEASE**
-
-Uma squad pode planejar várias releases. Cada release é planejada por uma squad.
-
-**Cardinalidade:** `SQUAD 1:N RELEASE`
-
----
-
-**SPRINT — organiza — ISSUE**
-
-Uma sprint pode conter várias issues. Uma issue pode ser planejada em uma sprint.
-
-**Cardinalidade:** `SPRINT 1:N ISSUE`
-
-> Essa escolha evita duplicar dados da sprint nas issues. Caso o sistema precise permitir que a mesma issue participe de várias sprints ao longo de seu ciclo de vida, esse relacionamento deverá ser alterado para **N:N**, criando posteriormente uma entidade associativa no modelo lógico.
-
----
-
-**RELEASE — agrupa — ISSUE**
-
-Uma release agrupa um conjunto de issues. Uma issue pode fazer parte de uma release.
-
-**Cardinalidade:** `RELEASE 1:N ISSUE`
-
-> Em um sistema real, uma issue poderia também participar de mais de uma release, por exemplo, se for adiada de uma versão para outra. Nesse caso, o relacionamento conceitual seria N:N. Para a interpretação mais simples do enunciado, foi adotado 1:N.
-
----
-
-**RELEASE — passa por — VALIDACAO**
-
-Uma release passa por testes de validação. Uma validação pertence a uma release.
-
-**Cardinalidade:** `RELEASE 1:N VALIDACAO`
-
-> Isso permite registrar diferentes execuções de validação para a mesma release, por exemplo, uma primeira validação que falhou e uma segunda que foi aprovada.
-
----
+    VALIDACAO {
+        int codigo_validacao PK
+        date data_validacao
+        string resultado
+        string observacao
+    }
+```
