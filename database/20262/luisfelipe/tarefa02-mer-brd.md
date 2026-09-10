@@ -89,3 +89,102 @@ erDiagram
     CLIENTE ||--o{ RELEASE : "recebe"
     SPRINT ||--o{ TAREFA : "organiza"
     RELEASE }|--|{ TAREFA : "agrupa"
+
+Q4
+A seguir, apresenta-se o **mapeamento do Diagrama ER para o Modelo Relacional**. As Chaves Primárias (**PK**) e Chaves Estrangeiras (**FK**) estão explicitadas para cada relação:
+
+---
+
+### **1. CLIENTE**
+
+Armazena as empresas clientes contratantes.
+
+* **CLIENTE** (**`codigo_cliente`** [PK], `nome`, `email`)
+* **PK:** `codigo_cliente`
+
+
+
+---
+
+### **2. PROJETO**
+
+Projetos contratados por cada cliente.
+
+* **PROJETO** (**`codigo_projeto`** [PK], `nome`, `codigo_cliente` [FK])
+* **PK:** `codigo_projeto`
+* **FK:** `codigo_cliente` referencia `CLIENTE(codigo_cliente)`
+
+
+
+---
+
+### **3. SQUAD**
+
+Equipes de desenvolvimento de software.
+
+* **SQUAD** (**`codigo_squad`** [PK], `nome`)
+* **PK:** `codigo_squad`
+
+
+
+---
+
+### **4. FUNCIONARIO**
+
+Membros das equipes com seus respectivos papéis.
+
+* **FUNCIONARIO** (**`codigo_funcionario`** [PK], `nome`, `email`, `papel`, `codigo_squad` [FK])
+* **PK:** `codigo_funcionario`
+* **FK:** `codigo_squad` referencia `SQUAD(codigo_squad)`
+
+
+
+---
+
+### **5. SPRINT**
+
+Iterações de trabalho conduzidas pelas squads.
+
+* **SPRINT** (**`codigo_sprint`** [PK], `data_inicio`, `data_fim`, `codigo_squad` [FK])
+* **PK:** `codigo_sprint`
+* **FK:** `codigo_squad` referencia `SQUAD(codigo_squad)`
+
+
+
+---
+
+### **6. TAREFA**
+
+Atividades/issues a serem resolvidas.
+
+* **TAREFA** (**`codigo_tarefa`** [PK], `descricao`, `prioridade`, `situacao`, `estimativa_horas`, `codigo_projeto` [FK], `codigo_squad` [FK], `codigo_sprint` [FK, opcional])
+* **PK:** `codigo_tarefa`
+* **FK:** `codigo_projeto` referencia `PROJETO(codigo_projeto)`
+* **FK:** `codigo_squad` referencia `SQUAD(codigo_squad)`
+* **FK:** `codigo_sprint` referencia `SPRINT(codigo_sprint)` *(pode ser nula até a tarefa ser alocada em uma sprint)*
+
+
+
+---
+
+### **7. RELEASE**
+
+Entregas/versões planejadas por uma squad para um cliente.
+
+* **RELEASE** (**`codigo_release`** [PK], `data_liberacao`, `resultado_validacao`, `codigo_squad` [FK], `codigo_cliente` [FK])
+* **PK:** `codigo_release`
+* **FK:** `codigo_squad` referencia `SQUAD(codigo_squad)`
+* **FK:** `codigo_cliente` referencia `CLIENTE(codigo_cliente)`
+
+
+
+---
+
+### **8. RELEASE_TAREFA** (Tabela Intermediária do Relacionamento N:M)
+
+Associa as tarefas incluídas em cada release.
+
+* **RELEASE_TAREFA** (**`codigo_release`** [PK][FK], **`codigo_tarefa`** [PK][FK])
+* **PK Composta:** (`codigo_release`, `codigo_tarefa`)
+* **FK1:** `codigo_release` referencia `RELEASE(codigo_release)`
+* **FK2:** `codigo_tarefa` referencia `TAREFA(codigo_tarefa)`
