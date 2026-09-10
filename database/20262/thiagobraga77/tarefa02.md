@@ -5,6 +5,8 @@ Os três elementos básicos de um Modelo Entidade-Relacionamento(MER) são entid
 * Entidades: Representam objetos ou elementos do mundo real que precisam ser armazenados no banco de dados. Exemplo, em uma empresa de desenvolvimento de software, podemos ter as entidades **Cliente**, **Funcionário**, **Squad** e **Projeto**.
 * Atributos: São as características que descrevem uma entidade. Por exemplo, a entidade **Cliente** pode possuir os atributos **cpf**, **nome** e **email**.
 
+* Relacionamentos: representam as associações entre as entidades. Por exemplo, um **Cliente** possui **Projetos**, enquanto uma **Squad** é formada por vários **Funcionários**.
+
 **Q2. Pesquise sobre as várias notações possíveis para Diagramas ER e cite alguns exemplos de notações diferentes para o mesmo conceito (ex.: cardinalidade, entidade subordinada, etc.).**
 
 Existem diversas notações utilizadas para representar diagramas Entidade-Relacionamento. Entre as mais conhecidas estão a **notação de Chen**, a **notação Crow's Foot(Pé de Galinha)** e a **notação UML**.
