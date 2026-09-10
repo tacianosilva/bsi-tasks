@@ -567,3 +567,116 @@ erDiagram
 ```
 
 ---
+
+## Q5. Restrições de integridade referencial
+
+A **integridade referencial** exige que todo valor de uma chave estrangeira ou **seja nulo**
+(quando o vínculo for opcional) **ou corresponda a um valor existente** na chave primária da
+relação referenciada. Em outras palavras: **não pode haver referência a algo que não
+existe**.
+
+### A. Restrições de existência (dependência direta)
+
+1. **Todo projeto pertence a um cliente existente.** Não é possível cadastrar um projeto
+   cujo `cod_cliente` não corresponda a um cliente já registrado.
+2. **Todo projeto é conduzido por uma squad existente.** O `cod_squad` do projeto precisa
+   apontar para uma squad cadastrada, e esse vínculo é obrigatório.
+3. **Uma tarefa só pode existir vinculada a um projeto existente.** O `cod_projeto` da
+   tarefa é obrigatório e deve referenciar um projeto já cadastrado — não existe tarefa
+   "solta", sem projeto.
+4. **Toda sprint pertence a um projeto existente**, e **toda release pertence a um projeto
+   existente**. Por serem entidades fracas, elas sequer podem ser identificadas sem o
+   projeto: excluído o projeto, suas sprints e releases deixam de fazer sentido.
+5. **Todo teste valida uma release existente.** Um teste não pode referenciar uma release
+   inexistente ou já removida.
+6. **Toda participação liga um funcionário existente a uma squad existente.** Os dois lados
+   da relação associativa `PARTICIPACAO` são obrigatórios.
+
+### B. Restrições de vínculos opcionais (FK que aceita nulo)
+
+7. **A sprint de uma tarefa é opcional, mas, se informada, deve existir.** Uma tarefa pode
+   estar no *backlog* (`num_sprint` nulo); se tiver sprint, essa sprint precisa estar
+   cadastrada.
+8. **A release de uma tarefa é opcional, mas, se informada, deve existir.** Uma tarefa
+   ainda não entregue não aponta para release alguma.
+9. **O responsável por uma tarefa é opcional, mas, se informado, deve ser um funcionário
+   existente.** O mesmo vale para o **executor de um teste**.
+
+### C. Coerência entre caminhos (integridade referencial composta)
+
+10. **A sprint de uma tarefa deve pertencer ao mesmo projeto da tarefa.** Isso é garantido
+    estruturalmente porque a chave estrangeira é o par (`cod_projeto`, `num_sprint`)
+    referenciando `SPRINT(cod_projeto, numero)`: como `cod_projeto` é a mesma coluna usada
+    para ligar a tarefa ao projeto, é **impossível** apontar para a sprint de outro projeto.
+11. **A release de uma tarefa deve pertencer ao mesmo projeto da tarefa** — garantida pelo
+    mesmo mecanismo, com o par (`cod_projeto`, `versao_release`).
+12. **O teste, a release que ele valida e o projeto dessa release formam um caminho
+    coerente**, pois a FK do teste também é o par (`cod_projeto`, `versao_release`).
+
+### D. Políticas de exclusão e atualização
+
+| Referência | `ON DELETE` | `ON UPDATE` | Justificativa |
+|---|---|---|---|
+| `PROJETO.cod_cliente` → `CLIENTE` | **RESTRICT** | CASCADE | Não se apaga um cliente que ainda tem projetos; primeiro trata-se o histórico. |
+| `PROJETO.cod_squad` → `SQUAD` | **RESTRICT** | CASCADE | Uma squad com projetos ativos não pode ser removida. |
+| `SPRINT.cod_projeto` → `PROJETO` | **CASCADE** | CASCADE | Entidade fraca: sem o projeto, a sprint não existe. |
+| `RELEASE.cod_projeto` → `PROJETO` | **CASCADE** | CASCADE | Entidade fraca: sem o projeto, a release não existe. |
+| `TAREFA.cod_projeto` → `PROJETO` | **CASCADE** | CASCADE | Toda tarefa depende existencialmente do projeto. |
+| `TAREFA (cod_projeto, num_sprint)` → `SPRINT` | **SET NULL** | CASCADE | Apagada a sprint, a tarefa volta ao *backlog* em vez de sumir. |
+| `TAREFA (cod_projeto, versao_release)` → `RELEASE` | **SET NULL** | CASCADE | A tarefa continua existindo mesmo se a release for cancelada. |
+| `TAREFA.cod_responsavel` → `FUNCIONARIO` | **SET NULL** | CASCADE | Se o funcionário sai, a tarefa fica sem responsável, não é apagada. |
+| `TESTE (cod_projeto, versao_release)` → `RELEASE` | **CASCADE** | CASCADE | O teste existe para validar aquela release. |
+| `TESTE.cod_executor` → `FUNCIONARIO` | **SET NULL** | CASCADE | Preserva o registro do teste mesmo sem o executor. |
+| `PARTICIPACAO.cod_funcionario` → `FUNCIONARIO` | **CASCADE** | CASCADE | Removido o funcionário, seus vínculos de equipe caem junto. |
+| `PARTICIPACAO.cod_squad` → `SQUAD` | **CASCADE** | CASCADE | Removida a squad, seus vínculos caem junto. |
+
+> Observação prática: em um sistema real, prefere-se **inativar** (`ativo = falso`) em vez
+> de excluir clientes, funcionários e squads, justamente para preservar o histórico sem
+> esbarrar nas restrições `RESTRICT`.
+
+### E. Restrições semânticas além das chaves estrangeiras
+
+Estas regras **não são expressáveis apenas com chaves estrangeiras** — exigem `CHECK`,
+`UNIQUE`, *assertions* ou *triggers*:
+
+13. **Toda squad deve possuir exatamente um líder técnico ativo.** Não pode haver squad sem
+    líder, nem dois líderes simultâneos na mesma squad (unicidade parcial sobre
+    `PARTICIPACAO` onde `papel = 'lider_tecnico'` e `data_saida` é nula).
+14. **Uma squad ativa deve ter ao menos um desenvolvedor e ao menos um testador.**
+15. **Um funcionário não pode ter dois vínculos ativos no mesmo squad** — garantido pela PK
+    composta de `PARTICIPACAO`.
+16. **O responsável por uma tarefa deve participar da squad que conduz o projeto da
+    tarefa.** É uma restrição de caminho: `TAREFA → PROJETO → SQUAD → PARTICIPACAO →
+    FUNCIONARIO`.
+17. **O executor de um teste deve ter papel de testador ou de líder técnico** na squad
+    responsável pelo projeto da release testada.
+18. **A versão de uma release é única dentro do projeto** — garantida pela PK composta
+    (`cod_projeto`, `versao`); o mesmo número de versão pode se repetir em projetos
+    diferentes.
+19. **O número de uma sprint é único dentro do projeto** — garantido pela PK composta
+    (`cod_projeto`, `numero`).
+20. **Coerência de datas:** `data_inicio ≤ data_fim` em sprints; `data_inicio ≤
+    data_prevista_fim` em projetos; `data_planejada ≤ data_lancamento` em releases;
+    `data_entrada ≤ data_saida` em `PARTICIPACAO`.
+21. **As sprints de um mesmo projeto não devem ter períodos sobrepostos.**
+22. **Uma tarefa só pode ter situação "concluída"** se possuir responsável definido.
+23. **Uma release só pode passar à situação "lançada"** se todas as tarefas a ela associadas
+    estiverem concluídas e se todos os seus testes de aceitação e de regressão tiverem
+    resultado "passou"; nesse momento `data_lancamento` passa a ser obrigatória.
+24. **Domínios fechados:** `papel`, `prioridade`, `situacao`, `tipo` e `resultado` só
+    aceitam valores da lista pré-definida (`CHECK ... IN (...)`).
+25. **Unicidade de chaves candidatas:** `FUNCIONARIO.email`, `CLIENTE.email_contato` e
+    `SQUAD.nome` são únicos.
+26. **Nenhum atributo obrigatório aceita nulo:** identificadores, nomes, situações e as
+    chaves estrangeiras marcadas como obrigatórias.
+
+---
+
+## Referências
+
+- ELMASRI, R.; NAVATHE, S. B. *Sistemas de Banco de Dados*. 7. ed. Pearson.
+- SILBERSCHATZ, A.; KORTH, H. F.; SUDARSHAN, S. *Sistema de Banco de Dados*. 6. ed. Elsevier.
+- CHEN, P. P. *The Entity-Relationship Model — Toward a Unified View of Data*. ACM TODS, 1976.
+- HEUSER, C. A. *Projeto de Banco de Dados*. 6. ed. Bookman.
+- Mermaid — Entity Relationship Diagrams: <https://mermaid.js.org/syntax/entityRelationshipDiagram.html>
+- Guia Básico de Markdown: <https://docs.pipz.com/central-de-ajuda/learning-center/guia-basico-de-markdown>
