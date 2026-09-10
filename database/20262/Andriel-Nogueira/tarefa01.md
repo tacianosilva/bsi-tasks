@@ -100,3 +100,15 @@ As propriedades ACID garantem a confiabilidade de transações em SGBDs relacion
 * **Tarefa** (Issue)
 
 ---
+
+### b) Atributos Principais
+
+* **Cliente:** `ID_Cliente` (Identificador), `Razao_Social`, `CNPJ`, `Email_Contato`, `Telefone`.
+* **Squad:** `ID_Squad`, `Nome_Squad`, `Especialidade`.
+* **Membro:** `ID_Membro`, `Nome_Completo`, `CPF`, `Papel` (Desenvolvedor, Testador, Líder Técnico, Supervisor, Gerente de Produto), `Email`.
+* **Projeto:** `ID_Projeto`, `Nome_Projeto`, `Descricao`, `Data_Inicio`, `Status`.
+* **Sprint:** `ID_Sprint`, `Numero_Sprint`, `Data_Inicio`, `Data_Fim`, `Meta_Sprint`.
+* **Release:** `ID_Release`, `Versao`, `Data_Lancamento`, `Notas_Versao`.
+* **Tarefa (Issue):** `ID_Tarefa`, `Titulo`, `Descricao`, `Status` (A Fazer, Em Andamento, Em Teste, Concluído), `Estimativa_Horas`, `Prioridade`.
+
+---
