@@ -39,6 +39,7 @@ Apesar da diferença visual e sintática, as duas representações expressam a m
 [2] MERMAID. *Class diagrams*. Disponível em: https://mermaid.js.org/syntax/classDiagram.html. Acesso em: 10 set. 2026.
 
 ---
+
 ## Q3. Modelo Entidade-Relacionamento
 
 Para uma empresa de desenvolvimento de software, o modelo conceitual foi elaborado considerando clientes, projetos, funcionários, squads, tarefas, sprints e releases. O modelo busca evitar redundâncias, representando cada informação em uma única entidade e utilizando os relacionamentos para estabelecer as associações entre os elementos do sistema.
@@ -109,3 +110,56 @@ erDiagram
         string nome
     }
 ```
+
+---
+
+## Q4. Mapeamento para o Modelo Relacional
+
+A partir do modelo Entidade-Relacionamento apresentado na questão anterior, foi realizado o mapeamento para o modelo relacional. As chaves estrangeiras são utilizadas para representar os relacionamentos entre as tabelas.
+
+### Relações
+
+**CLIENTE**
+- codigo_cliente (PK)
+- nome
+- email
+
+**PROJETO**
+- codigo_projeto (PK)
+- codigo_cliente (FK → CLIENTE.codigo_cliente)
+
+**FUNCIONARIO**
+- codigo_funcionario (PK)
+- nome
+- email
+- papel
+- codigo_squad (FK → SQUAD.codigo_squad)
+
+**SQUAD**
+- codigo_squad (PK)
+
+**TAREFA**
+- codigo_tarefa (PK)
+- descricao
+- prioridade
+- situacao
+- estimativa_horas
+- codigo_projeto (FK → PROJETO.codigo_projeto)
+- codigo_squad (FK → SQUAD.codigo_squad)
+- codigo_sprint (FK → SPRINT.codigo_sprint)
+
+**SPRINT**
+- codigo_sprint (PK)
+- codigo_squad (FK → SQUAD.codigo_squad)
+
+**RELEASE**
+- codigo_release (PK)
+- codigo_cliente (FK → CLIENTE.codigo_cliente)
+
+Como a relação entre RELEASE e TAREFA é muitos-para-muitos, é necessária uma relação associativa:
+
+**RELEASE_TAREFA**
+- codigo_release (PK, FK → RELEASE.codigo_release)
+- codigo_tarefa (PK, FK → TAREFA.codigo_tarefa)
+
+---
