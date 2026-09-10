@@ -152,22 +152,23 @@ Não existe uma notação única para Diagramas ER. As mais difundidas são:
 
 ```mermaid
 flowchart LR
-    cod(("<u>codigo</u>")) --- CLIENTE
+    cod(("codigo (id)")) --- CLIENTE
     nome((nome)) --- CLIENTE
     email((email_contato)) --- CLIENTE
 
     CLIENTE[CLIENTE] --- R{contrata}
     R --- PROJETO[PROJETO]
 
-    PROJETO --- pcod(("<u>codigo</u>"))
+    PROJETO --- pcod(("codigo (id)"))
     PROJETO --- pnome((nome))
 
     linkStyle default stroke-width:1px
 ```
 
 Legenda do fragmento: retângulos = entidades, losango = relacionamento, elipses =
-atributos, sublinhado = identificador. O mesmo fragmento aparece a seguir, na Q3, em
-notação **pé de galinha** (a que o Mermaid `erDiagram` implementa nativamente).
+atributos e a marca `(id)` assinala o atributo identificador — que, na notação original de
+Chen, aparece **sublinhado**. O mesmo fragmento é retomado na Q3 em notação **pé de
+galinha**, que é a implementada nativamente pelo `erDiagram` do Mermaid.
 
 ---
 
