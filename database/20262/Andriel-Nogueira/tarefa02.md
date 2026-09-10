@@ -38,3 +38,66 @@ Existem diversas notações gráficas para a modelagem de Diagramas Entidade-Rel
 | **Entidade Fraca / Subordinada** | Retângulo duplo | Linha tracejada no relacionamento | Classe dependente de composição |
 
 ---
+
+## Questão 03: Diagrama ER Conceitual (Mermaid.js)
+
+Abaixo está a representação conceitual do ecossistema de desenvolvimento de software da empresa, modelado usando a sintaxe Pé de Galinha do Mermaid.js:
+
+```mermaid
+erDiagram
+    CLIENTE ||--o{ PROJETO : contrata
+    PROJETO ||--o{ SPRINT : "é dividido em"
+    PROJETO ||--o{ RELEASE : "possui"
+    PROJETO ||--o{ TAREFA : "agrupa"
+    
+    SQUAD ||--o{ FUNCIONARIO : aloca
+    SQUAD ||--o{ PROJETO : "executa"
+    SQUAD ||--o{ RELEASE : planeja
+    
+    RELEASE ||--o{ TAREFA : "entrega/testa"
+    SPRINT ||--o{ TAREFA : "planeja"
+    
+    CLIENTE {
+        int codigo PK
+        string nome
+        string email
+    }
+
+    FUNCIONARIO {
+        int codigo PK
+        string nome
+        string email
+        string papel
+    }
+
+    SQUAD {
+        int codigo PK
+        string nome
+    }
+
+    PROJETO {
+        int codigo PK
+        string nome
+        string descricao
+    }
+
+    SPRINT {
+        int codigo PK
+        int numero
+        date data_inicio
+        date data_fim
+    }
+
+    RELEASE {
+        int codigo PK
+        string versao
+        date data_validacao
+    }
+
+    TAREFA {
+        int codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        int estimativa_horas
+    }
