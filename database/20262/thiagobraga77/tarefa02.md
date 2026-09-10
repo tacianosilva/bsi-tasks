@@ -86,3 +86,12 @@ A UML(Unified Modeling Language) também pode ser utilizada para representar est
 * **FKs:**
   * `codigo_release` (Referencia `RELEASE.codigo_release`)
   * `codigo_tarefa` (Referencia `TAREFA.codigo_tarefa`)
+
+
+**Q5. Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").**
+1. **Integridade entre Projetos e Clientes:** Um projeto só pode ser cadastrado se estiver vinculado a um cliente já existente na tabela `CLIENTE` (`codigo_cliente`). Se um cliente for removido, o sistema deve impedir a exclusão caso existam projetos ativos ou realizar a remoção em cascata dos projetos vinculados.
+2. **Integridade entre Tarefas, Projetos e Squads:** Uma tarefa só pode existir associada a um projeto existente (`codigo_projeto`). Da mesma forma, se uma tarefa for atribuída para resolução por uma squad, o identificador (`codigo_squad`) precisa corresponder a uma squad válida.
+3. **Integridade na Alocação de Equipes:** Na tabela `ALOCACAO_SQUAD`, só é possível associar um funcionário a uma squad se ambos (`codigo_funcionario` e `codigo_squad`) já estiverem previamente cadastrados. O papel atribuído também deve corresponder a um registro existente na tabela `PAPEL` (`codigo_papel`).
+4. **Integridade em Sprints e Releases:** Uma *Sprint* só pode ser criada se estiver vinculada a uma squad existente (`codigo_squad`). Igualmente, uma *Release* deve estar obrigatoriamente associada a uma *Sprint* válida (`codigo_sprint`).
+5. **Integridade no Agrupamento de Tarefas por Release:** Na tabela associativa `RELEASE_TAREFA`, não é permitido vincular uma tarefa inexistente a uma *release*, tampouco incluir tarefas em uma *release* que não esteja cadastrada.
+6. **Unicidade de Papel por Squad:** Devido à chave primária composta (`codigo_squad`, `codigo_funcionario`) na tabela de alocação, a integridade garante que um funcionário ocupe apenas um papel específico dentro de uma mesma squad.
