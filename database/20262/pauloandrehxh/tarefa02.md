@@ -262,3 +262,26 @@ Abaixo está o mapeamento do Diagrama ER para o Modelo Relacional, detalhando os
   * codigo_sprint (referencia SPRINT)
   * codigo_release (referencia RELEASE)
 
+
+## Q5. Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado
+
+Com base no mapeamento relacional, as restrições de integridade referencial e regras de negócio que o banco de dados deve garantir são:
+
+1. **Integridade de Funcionários (Membros da Squad):** 
+   Todo funcionário cadastrado no sistema deve, obrigatoriamente, estar vinculado a uma squad existente. O banco de dados não pode permitir a inserção de um funcionário apontando para uma squad fantasma (que não existe) e não deve deixar um funcionário "órfão" sem equipe.
+
+2. **Integridade de Projetos e Clientes:** 
+   Um projeto não pode existir de forma isolada. Ele deve sempre estar associado a um cliente válido e já cadastrado na base de dados. Se um cliente for removido do sistema, deve haver uma regra clara sobre o que acontece com seus projetos (por exemplo, impedir a exclusão do cliente se houver projetos ativos).
+
+3. **Integridade de Tarefas (Issues):** 
+   Uma tarefa só pode ser criada no sistema se for vinculada a um projeto existente. Além disso, caso essa tarefa seja alocada a uma squad para resolução, adicionada a uma sprint ou agrupada em uma release, todas essas entidades (squad, sprint e release) referenciadas devem existir previamente no banco de dados.
+
+4. **Integridade de Sprints e Releases:** 
+   As iterações de trabalho (sprints) e as entregas (releases) só podem ser planejadas e criadas no sistema se estiverem vinculadas a uma squad válida. 
+
+5. **Integridade de Validação de Testes:** 
+   Um registro de validação só pode ser inserido no sistema se fizer referência direta a uma release previamente cadastrada. Não se pode ter um resultado de teste para uma versão de software que não existe no banco.
+
+6. **Restrições de Domínio e Negócio (Regras Adicionais):**
+   * **Papel do Funcionário:** O cargo (papel) de um funcionário só pode receber valores válidos pré-determinados (Desenvolvedor, Testador, Líder técnico, Supervisor ou Gerente de produto).
+   * **Liderança:** O sistema deve garantir que toda squad possua um (e apenas um) funcionário com o papel de Líder técnico.
