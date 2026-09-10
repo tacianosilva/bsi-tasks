@@ -87,3 +87,16 @@ As propriedades ACID garantem a confiabilidade de transações em SGBDs relacion
    * *Como gerencia:* Controla as atualizações por meio de controle de concorrência (mecanismos de trava/*locks* e controle de versão de concorrência multiversão - MVCC) e pela garantia de atomicidade e consistência das transações.
 
 ---
+
+## Questão 06: Mini-Projeto Conceitual de BD (Empresa de Software)
+
+### a) Entidades Principais
+* **Cliente**
+* **Squad**
+* **Membro** (Profissional)
+* **Projeto**
+* **Sprint** (Iteração)
+* **Release**
+* **Tarefa** (Issue)
+
+---
