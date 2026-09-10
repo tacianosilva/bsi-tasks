@@ -163,3 +163,19 @@ Como a relação entre RELEASE e TAREFA é muitos-para-muitos, é necessária um
 - codigo_tarefa (PK, FK → TAREFA.codigo_tarefa)
 
 ---
+
+## Q5. Restrições de Integridade Referencial
+
+As seguintes restrições de integridade referencial devem ser garantidas no esquema projetado:
+
+- Um projeto só pode existir se estiver vinculado a um cliente existente.
+- Uma tarefa só pode existir se estiver vinculada a um projeto existente.
+- Uma tarefa só pode ser atribuída a uma squad existente.
+- Um funcionário só pode pertencer a uma squad existente.
+- Uma sprint só pode estar vinculada a uma squad existente.
+- Uma tarefa organizada em uma sprint só pode estar vinculada a uma sprint existente.
+- Uma release só pode estar vinculada a um cliente existente.
+- Uma associação entre release e tarefa só pode ser criada se a release e a tarefa existirem.
+- Toda squad deve possuir pelo menos um funcionário com o papel de líder técnico.
+- O papel de um funcionário deve corresponder a uma das funções previstas: desenvolvedor, tester, líder técnico, supervisor ou gerente de produto.
+- Ao excluir um cliente, seus projetos e releases não devem permanecer vinculados a um cliente inexistente.
