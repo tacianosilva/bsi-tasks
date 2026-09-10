@@ -170,3 +170,163 @@ atributos, sublinhado = identificador. O mesmo fragmento aparece a seguir, na Q3
 notação **pé de galinha** (a que o Mermaid `erDiagram` implementa nativamente).
 
 ---
+
+## Q3. Diagrama ER — Empresa de desenvolvimento de software
+
+### Minimundo considerado
+
+Uma empresa presta serviços de desenvolvimento de software para **empresas clientes**. Os
+**funcionários** se organizam em **squads**, cada um com um **papel** definido dentro da
+equipe. Uma squad conduz os **projetos** de seus clientes; cada projeto se organiza em
+**sprints**, compreende **tarefas** e planeja **releases**, que passam por **testes** de
+validação.
+
+### Diagrama ER (notação pé de galinha, nível conceitual)
+
+> Conforme o enunciado, o diagrama está no **nível conceitual**: são exibidos apenas
+> atributos próprios e **identificadores** (`PK`); **nenhuma chave estrangeira** foi
+> incluída — as associações aparecem como relacionamentos, não como colunas.
+
+```mermaid
+erDiagram
+    CLIENTE      ||--o{ PROJETO : "contrata"
+    SQUAD        ||--o{ PROJETO : "conduz"
+    FUNCIONARIO  }|--|{ SQUAD   : "participa-de (papel, periodo)"
+
+    PROJETO      ||--o{ SPRINT  : "organiza-se-em"
+    PROJETO      ||--o{ TAREFA  : "compreende"
+    PROJETO      ||--o{ RELEASE : "planeja"
+
+    SPRINT       |o--o{ TAREFA  : "aloca"
+    RELEASE      |o--o{ TAREFA  : "agrupa"
+    RELEASE      ||--o{ TESTE   : "e-validada-por"
+
+    FUNCIONARIO  |o--o{ TAREFA  : "responsabiliza-se-por"
+    FUNCIONARIO  |o--o{ TESTE   : "executa"
+
+    CLIENTE {
+        string codigo PK "identificador"
+        string nome
+        string email_contato
+    }
+
+    FUNCIONARIO {
+        string codigo PK "identificador"
+        string nome
+        string email "unico"
+    }
+
+    SQUAD {
+        string codigo PK "identificador"
+        string nome "unico"
+        date   data_criacao
+    }
+
+    PROJETO {
+        string codigo PK "identificador"
+        string nome
+        string descricao
+        date   data_inicio
+        date   data_prevista_fim
+        string situacao "em analise-ativo-pausado-concluido-cancelado"
+    }
+
+    SPRINT {
+        int    numero PK "chave parcial (entidade fraca de PROJETO)"
+        date   data_inicio
+        date   data_fim
+        string objetivo
+        string situacao "planejada-em andamento-encerrada"
+    }
+
+    TAREFA {
+        string codigo PK "identificador"
+        string descricao
+        string prioridade "baixa-media-alta-critica"
+        string situacao "aberta-em andamento-em teste-concluida"
+        int    estimativa_horas
+    }
+
+    RELEASE {
+        string versao PK "chave parcial (entidade fraca de PROJETO)"
+        date   data_planejada
+        date   data_lancamento
+        string notas
+        string situacao "planejada-em homologacao-lancada"
+    }
+
+    TESTE {
+        string codigo PK "identificador"
+        string titulo
+        string tipo "unitario-integracao-sistema-aceitacao-regressao"
+        string resultado "nao executado-passou-falhou-bloqueado"
+        date   data_execucao
+    }
+```
+
+### Leitura das restrições de cardinalidade
+
+| Relacionamento | Cardinalidade | Leitura |
+|---|---|---|
+| `CLIENTE` — contrata — `PROJETO` | 1 : N | Um cliente contrata **zero ou vários** projetos; todo projeto pertence a **exatamente um** cliente (participação total do projeto). |
+| `SQUAD` — conduz — `PROJETO` | 1 : N | Uma squad conduz **zero ou vários** projetos; todo projeto é conduzido por **exatamente uma** squad. |
+| `FUNCIONARIO` — participa-de — `SQUAD` | N : M | Um funcionário participa de **uma ou mais** squads; toda squad é formada por **um ou mais** funcionários. |
+| `PROJETO` — organiza-se-em — `SPRINT` | 1 : N | Um projeto tem **zero ou várias** sprints; toda sprint pertence a **exatamente um** projeto (**dependência existencial**). |
+| `PROJETO` — compreende — `TAREFA` | 1 : N | Um projeto reúne **zero ou várias** tarefas; toda tarefa pertence a **exatamente um** projeto. |
+| `PROJETO` — planeja — `RELEASE` | 1 : N | Um projeto planeja **zero ou várias** releases; toda release pertence a **exatamente um** projeto (**dependência existencial**). |
+| `SPRINT` — aloca — `TAREFA` | 1 : N opcional | Uma sprint aloca **zero ou várias** tarefas; uma tarefa está em **no máximo uma** sprint (pode ficar no *backlog*). |
+| `RELEASE` — agrupa — `TAREFA` | 1 : N opcional | Uma release agrupa **zero ou várias** tarefas; uma tarefa é entregue em **no máximo uma** release. |
+| `RELEASE` — é-validada-por — `TESTE` | 1 : N | Uma release passa por **zero ou vários** testes; todo teste valida **exatamente uma** release. |
+| `FUNCIONARIO` — responsabiliza-se-por — `TAREFA` | 1 : N opcional | Um funcionário pode ser responsável por **várias** tarefas; uma tarefa tem **no máximo um** responsável. |
+| `FUNCIONARIO` — executa — `TESTE` | 1 : N opcional | Um funcionário executa **vários** testes; um teste é executado por **no máximo um** funcionário. |
+
+### Atributo de relacionamento
+
+O **papel** exercido na equipe (`desenvolvedor`, `testador`, `líder técnico`, `supervisor`,
+`gerente de produto`) **não é atributo de `FUNCIONARIO` nem de `SQUAD`**: ele só faz
+sentido no contexto da associação entre os dois, pois o mesmo funcionário pode exercer
+papéis diferentes em squads diferentes. Por isso `papel` — junto de `data_entrada` e
+`data_saida` — é **atributo do relacionamento `participa-de` (N:M)**.
+
+Como a notação pé de galinha do Mermaid não permite anexar atributos a uma linha de
+relacionamento, esses atributos aparecem no **rótulo** do relacionamento. Na Q4 eles passam
+a compor a relação associativa `PARTICIPACAO`.
+
+### Entidades fracas (subordinadas)
+
+`SPRINT` e `RELEASE` são **entidades fracas**: não possuem identificador próprio suficiente.
+
+- Uma sprint é o "número 3 **do projeto X**" — `numero` é apenas a **chave parcial**.
+- Uma release é a "versão 1.4.0 **do projeto X**" — `versao` é a **chave parcial**.
+
+A identificação completa só ocorre pela combinação com o identificador de `PROJETO`, por
+meio do **relacionamento identificador**. Isso se materializa como **chave primária
+composta** no mapeamento relacional da Q4.
+
+### Decisões de projeto para evitar redundância
+
+O enunciado exige que **não haja redundância de dados**. As decisões abaixo garantem que
+cada fato seja armazenado **uma única vez**:
+
+1. **A squad que resolve uma tarefa não é armazenada na tarefa.** O enunciado diz que a
+   squad resolve tarefas e que as tarefas pertencem a projetos de um cliente. Como cada
+   projeto é conduzido por **exatamente uma** squad, a squad responsável por uma tarefa é
+   **derivável** pelo caminho `TAREFA → PROJETO → SQUAD`. Um vínculo direto
+   `SQUAD—TAREFA` duplicaria o dado e permitiria contradição (tarefa apontando para uma
+   squad diferente da squad do seu projeto).
+
+2. **O cliente não é armazenado na tarefa, na sprint nem na release.** Ele é obtido por
+   `PROJETO → CLIENTE`. Do mesmo modo, "a squad planeja releases *para seus clientes*" é
+   atendido por `RELEASE → PROJETO → CLIENTE`.
+
+3. **`TESTE` se liga a `RELEASE`, e não também a `PROJETO`.** O projeto do teste vem de
+   `TESTE → RELEASE → PROJETO`.
+
+4. **O papel foi retirado de `FUNCIONARIO`** e colocado no relacionamento, como explicado
+   acima — evitando repetir ou contradizer o papel quando o funcionário atua em mais de uma
+   squad.
+
+5. **Nenhum atributo derivado é armazenado** (ex.: total de horas estimadas de uma sprint,
+   quantidade de tarefas concluídas de uma release): todos são obtidos por agregação.
+
+---
