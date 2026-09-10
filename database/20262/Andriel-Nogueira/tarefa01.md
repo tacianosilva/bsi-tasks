@@ -57,3 +57,20 @@ As propriedades ACID garantem a confiabilidade de transações em SGBDs relacion
 * **Sem a garantia do SGBD:** Se o servidor desligar segundos após o confirmação por ter mantido o dado apenas em memória RAM sem gravar no disco (ou log de transações), o valor transferido desapareceria ao religar.
 
 --- 
+
+## Questão 04: Análise de Cenários ACID
+
+* **a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.**
+  * **Propriedade:** **Atomicidade**.
+  * **Justificativa:** A transação foi interrompida no meio e não executou o mecanismo de *rollback* para reverter a primeira operação parcial (o débito).
+* **b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.**
+  * **Propriedade:** **Isolamento**.
+  * **Justificativa:** Trata-se de um conflito de concorrência onde a execução em paralelo de duas transações interferiu no resultado correto da leitura/escrita do saldo.
+* **c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.**
+  * **Propriedade:** **Durabilidade**.
+  * **Justificativa:** A confirmação (*commit*) garantia que o dado estaria salvo permanentemente, mas a alteração não foi persistida corretamente no armazenamento físico.
+* **d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.**
+  * **Propriedade:** **Consistência**.
+  * **Justificativa:** O SGBD barrou a transação para evitar que o banco entrasse em um estado inválido, preservando a restrição/regra de negócio definida.
+
+---
