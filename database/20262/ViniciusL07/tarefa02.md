@@ -96,6 +96,108 @@ erDiagram
         string versao
         date data_lancamento
         string resultado_testes
-    }
+    } 
+```
 
-    
+---
+
+## Questão 04 - Mapeamento para o Modelo Relacional
+
+O mapeamento conceitual (MER) para o modelo lógico relacional resulta no conjunto de tabelas abaixo. Os atributos sublinhados e destacados representam as **Chaves Primárias (PK)**, enquanto os identificadores com referência externa representam as **Chaves Estrangeiras (FK)**.
+
+### Tabela: `CLIENTE`
+> Armazena os dados cadastrais das empresas contratantes.
+
+| Atributo | Tipo de Dado | Restrição de Chave | Descrição |
+| :--- | :--- | :---: | :--- |
+| `codigo` | `INT` | **PK** | Identificador único do cliente |
+| `nome` | `VARCHAR(100)` | — | Razão social / nome da empresa |
+| `email_contato` | `VARCHAR(100)` | — | E-mail corporativo de contato |
+
+---
+
+### Tabela: `SQUAD`
+> Registra as equipes multidisciplinares da empresa.
+
+| Atributo | Tipo de Dado | Restrição de Chave | Descrição |
+| :--- | :--- | :---: | :--- |
+| `codigo` | `INT` | **PK** | Identificador único da squad |
+| `nome` | `VARCHAR(50)` | — | Nome da squad |
+
+---
+
+### Tabela: `FUNCIONARIO`
+> Contém os membros alocados nas squads e suas funções.
+
+| Atributo | Tipo de Dado | Restrição de Chave | Referência Externa |
+| :--- | :--- | :---: | :--- |
+| `codigo` | `INT` | **PK** | — |
+| `nome` | `VARCHAR(100)` | — | — |
+| `email` | `VARCHAR(100)` | — | — |
+| `papel` | `VARCHAR(30)` | — | Domínio: desenvolvedor, testador, líder técnico, supervisor, gerente de produto |
+| `squad_codigo` | `INT` | **FK** | Referencia `SQUAD(codigo)` |
+
+---
+
+### Tabela: `PROJETO`
+> Representa as demandas e produtos contratados por cada cliente.
+
+| Atributo | Tipo de Dado | Restrição de Chave | Referência Externa |
+| :--- | :--- | :---: | :--- |
+| `codigo` | `INT` | **PK** | — |
+| `nome` | `VARCHAR(100)` | — | — |
+| `descricao` | `TEXT` | — | — |
+| `cliente_codigo` | `INT` | **FK** | Referencia `CLIENTE(codigo)` |
+
+---
+
+### Tabela: `SQUAD_PROJETO`
+> Tabela associativa que resolve o relacionamento muitos-para-muitos ($N:M$) entre squads e projetos.
+
+| Atributo | Tipo de Dado | Restrição de Chave | Referência Externa |
+| :--- | :--- | :---: | :--- |
+| `squad_codigo` | `INT` | **PK, FK** | Referencia `SQUAD(codigo)` |
+| `projeto_codigo` | `INT` | **PK, FK** | Referencia `PROJETO(codigo)` |
+
+---
+
+### Tabela: `SPRINT`
+> Controla os ciclos de iteração de cada projeto.
+
+| Atributo | Tipo de Dado | Restrição de Chave | Referência Externa |
+| :--- | :--- | :---: | :--- |
+| `codigo` | `INT` | **PK** | — |
+| `numero` | `INT` | — | — |
+| `data_inicio` | `DATE` | — | — |
+| `data_fim` | `DATE` | — | — |
+| `projeto_codigo` | `INT` | **FK** | Referencia `PROJETO(codigo)` |
+
+---
+
+### Tabela: `RELEASE`
+> Registra as versões homologadas e entregues de um projeto.
+
+| Atributo | Tipo de Dado | Restrição de Chave | Referência Externa |
+| :--- | :--- | :---: | :--- |
+| `codigo` | `INT` | **PK** | — |
+| `versao` | `VARCHAR(20)` | — | Exemplo: `v1.0.0` |
+| `data_lancamento` | `DATE` | — | — |
+| `resultado_testes`| `VARCHAR(50)` | — | — |
+| `projeto_codigo` | `INT` | **FK** | Referencia `PROJETO(codigo)` |
+| `squad_codigo` | `INT` | **FK** | Referencia `SQUAD(codigo)` |
+
+---
+
+### Tabela: `TAREFA`
+> Especifica as issues operacionais do sistema e seus vínculos de ciclo.
+
+| Atributo | Tipo de Dado | Restrição de Chave | Referência Externa |
+| :--- | :--- | :---: | :--- |
+| `codigo` | `INT` | **PK** | — |
+| `descricao` | `TEXT` | — | — |
+| `prioridade` | `VARCHAR(20)` | — | Exemplo: Baixa, Média, Alta |
+| `situacao` | `VARCHAR(20)` | — | Exemplo: Aberta, Em Andamento, Concluída |
+| `estimativa_horas`| `DECIMAL(5,2)` | — | — |
+| `projeto_codigo` | `INT` | **FK** | Referencia `PROJETO(codigo)` (Obrigatória) |
+| `sprint_codigo` | `INT` | **FK** | Referencia `SPRINT(codigo)` (Opcional / Nula se estiver no backlog) |
+| `release_codigo` | `INT` | **FK** | Referencia `RELEASE(codigo)` (Opcional / Nula até ser homologada) |
