@@ -98,3 +98,90 @@ TAREFA  }| -- || EQUIPE : possui
 EQUIPE  }| -- || RELEASE : possui
 EQUIPE  || -- |{ INTERACOES : possui
 FUNCIONARIO }| -- || EQUIPE : possui
+
+
+## Q4. A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação. 
+
+erDiagram
+
+
+CLIENTE{
+int codigo_cliente PK
+String CNPJ
+String nome
+}
+
+
+
+
+FUNCIONARIO{
+int codigo_func PK
+int codigo_equipe FK
+string nome
+string email
+string funcao
+}
+
+
+
+
+EQUIPE{
+int codigo_equipe PK
+string nome
+}
+
+
+
+
+
+
+
+
+TAREFA{
+int codigo_tarefa PK
+int codigo_equipe FK
+int codigo_release FK
+string descricao
+string prioridade
+string situacao
+string horas
+}
+
+
+
+
+INTERACOES{
+int codigo_sprint PK
+int codigo_equipe FK
+int numero
+date data_inicio
+date data_fim
+}
+
+
+
+
+RELEASE{
+int codigo_release PK
+int codigo_projeto FK
+date data_planejada
+string versao
+}
+
+
+
+
+PROJETO{
+int codigo_projeto PK
+int codigo_cliente FK
+string nome
+}
+
+
+CLIENTE || -- |{ PROJETO : possui
+PROJETO || -- |{ RELEASE : possui
+TAREFA  }| -- || RELEASE : possui
+TAREFA  }| -- || EQUIPE : possui
+EQUIPE  }| -- || RELEASE : possui
+EQUIPE  || -- |{ INTERACOES : possui
+FUNCIONARIO }| -- || EQUIPE : possui
