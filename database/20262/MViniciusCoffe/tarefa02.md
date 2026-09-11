@@ -119,4 +119,9 @@ Como a modelagem conceitual permite que um funcionário participe de várias squ
 ## Q5. Prática 3
 Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").
 
-**Resposta**:
+**Resposta**: Com base no projeto, as restrições de integridade que garantem a coesão dos dados na base são:
+- Integridade de Tarefa e Projeto: Uma tarefa (issue) só pode ser cadastrada se estiver obrigatoriamente vinculada a um projeto existente. Se o projeto for excluído, a política do banco deve bloquear a deleção ou remover as tarefas associadas (cascade) para evitar tarefas órfãs.
+- Integridade de Projeto e Cliente: Todo projeto registrado no sistema deve pertencer a um cliente cadastrado e válido na base de dados.
+- Integridade de Planejamento (Squads): Sprints e Releases não existem isoladamente no sistema; elas devem ser criadas e planejadas sob a responsabilidade de uma Squad específica que exista na tabela de Squads.
+- Restrição de Domínio do Funcionario: O atributo "papel" do funcionário só deve aceitar os valores predefinidos do domínio: 'desenvolvedor', 'testador', 'líder técnico', 'supervisor' ou 'gerente de produto' (isso pode ser garantido via CHECK constraint ou enumeração).
+- Atribuição de Tarefas: Se uma tarefa for alocada a uma sprint ou a uma release, essas entidades de planejamento (sprint/release) já devem constar no banco. Além disso, a squad responsável por resolver a tarefa deve existir.
