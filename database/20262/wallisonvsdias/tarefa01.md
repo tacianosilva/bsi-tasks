@@ -15,6 +15,7 @@ Operação do Git que combina o histórico de duas branches distintas. Ao execut
 Processo alternativo de integração que move ou reaplica uma sequência de commits de uma branch sobre a ponta mais recente de outra branch. Em vez de criar um commit de junção como o merge, o rebase reescreve o histórico de forma linear, facilitando a leitura da linha do tempo do projeto.
 
 ### Conflitos
+<<<<<<< HEAD
 Situação que ocorre quando dois desenvolvedores (ou branches) alteram as mesmas linhas de um mesmo arquivo — ou quando um arquivo é excluído em uma branch e modificado em outra — e o Git tenta uni-los. Como o sistema não pode decidir automaticamente qual alteração é a correta sem risco de perda de lógica, ele suspende a operação e solicita que o desenvolvedor resolva manualmente as seções conflitantes antes de concluir a integração.
 
 ---
@@ -165,3 +166,6 @@ As propriedades ACID definem os requisitos essenciais que garantem que transaç�
 5. **Datas Coerentes de Sprints:** A data de início de uma Sprint deve ser estritamente anterior à sua data de término, e duas Sprints ativas da mesma Squad não podem possuir períodos sobrepostos.
 6. **Fechamento de Release:** Uma Release só pode ser marcada como lançada se todas as Tarefas a ela vinculadas estiverem com status *Done* e com seus respectivos testes validados.
 7. **Integridade de Documentação Fiscal:** O CNPJ de cada Cliente e o CPF de cada Membro devem ser únicos e válidos no sistema (`UNIQUE`).
+=======
+Situação que ocorre quando dois desenvolvedores (ou branches) alteram as mesmas linhas de um mesmo arquivo — ou quando um arquivo é excluído em uma branch e modificado em outra — e o Git tenta uni-los. Como o sistema não pode decidir automaticamente qual alteração é a correta sem risco de perda de lógica, ele suspende a operação e solicita que o desenvolvedor resolva manualmente as seções conflitantes antes de concluir a integração.
+>>>>>>> 2996c4a04ca188642a74330fcdb32a1133939378
