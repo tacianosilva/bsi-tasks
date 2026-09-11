@@ -120,3 +120,75 @@ erDiagram
  
 ---
  
+## Q4. Mapeamento para o Modelo Relacional
+ 
+A partir do diagrama ER, cada entidade forte vira uma relação (tabela). Relacionamentos 1:N migram a chave primária do lado "1" como chave estrangeira para o lado "N". Relacionamentos N:M geram uma tabela associativa própria.
+ 
+### Tabela `CLIENTE`
+| Atributo | Tipo | Restrição |
+|---|---|---|
+| cod_cliente | string | **PK** |
+| nome | string | |
+| email_contato | string | |
+ 
+### Tabela `SQUAD`
+| Atributo | Tipo | Restrição |
+|---|---|---|
+| cod_squad | string | **PK** |
+| nome_squad | string | |
+ 
+### Tabela `FUNCIONARIO`
+| Atributo | Tipo | Restrição |
+|---|---|---|
+| cod_funcionario | string | **PK** |
+| nome | string | |
+| email | string | |
+| papel | string | |
+| cod_squad | string | **FK** → SQUAD.cod_squad |
+ 
+### Tabela `PROJETO`
+| Atributo | Tipo | Restrição |
+|---|---|---|
+| cod_projeto | string | **PK** |
+| nome_projeto | string | |
+| cod_cliente | string | **FK** → CLIENTE.cod_cliente |
+ 
+### Tabela `ISSUE`
+| Atributo | Tipo | Restrição |
+|---|---|---|
+| cod_issue | string | **PK** |
+| descricao | string | |
+| prioridade | string | |
+| situacao | string | |
+| estimativa_horas | int | |
+| status_validacao | string | |
+| cod_projeto | string | **FK** → PROJETO.cod_projeto |
+| cod_squad | string | **FK** → SQUAD.cod_squad |
+| cod_release | string | **FK** (opcional/nulo) → RELEASE.cod_release |
+ 
+### Tabela `SPRINT`
+| Atributo | Tipo | Restrição |
+|---|---|---|
+| cod_sprint | string | **PK** |
+| numero | int | |
+| data_inicio | date | |
+| data_fim | date | |
+| cod_squad | string | **FK** → SQUAD.cod_squad |
+ 
+### Tabela `RELEASE`
+| Atributo | Tipo | Restrição |
+|---|---|---|
+| cod_release | string | **PK** |
+| versao | string | |
+| data_prevista | date | |
+| cod_squad | string | **FK** → SQUAD.cod_squad |
+| cod_cliente | string | **FK** → CLIENTE.cod_cliente |
+ 
+### Tabela associativa `SPRINT_ISSUE` (resolve o N:M Sprint × Issue)
+| Atributo | Tipo | Restrição |
+|---|---|---|
+| cod_sprint | string | **PK, FK** → SPRINT.cod_sprint |
+| cod_issue | string | **PK, FK** → ISSUE.cod_issue |
+ 
+---
+ 
