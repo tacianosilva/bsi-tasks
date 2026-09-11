@@ -76,3 +76,23 @@ As propriedades ACID definem os requisitos essenciais que garantem que transaç�
 * **Conceito:** Uma vez que uma transação é confirmada (*committed*), suas alterações tornam-se permanentes e não serão perdidas por qualquer falha posterior do sistema, como queda de energia ou travamento do servidor.
 * **Exemplo Bancário:** O cliente realiza uma transferência e o sistema exibe a mensagem de confirmação com comprovante emitido.
 * **Sem a propriedade:** Caso o servidor sofra um desligamento repentino segundos após a confirmação, os dados gravados apenas em memória volátil (RAM) seriam perdidos, fazendo a transação "desaparecer" após o reinício do sistema.
+
+---
+
+## Q4. Análise dos Cenários e Propriedades ACID
+
+### a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.
+* **Propriedade violada:** **Atomicidade**.
+* **Justificativa:** A transação foi executada apenas pela metade. Em vez de aplicar a política do "tudo ou nada", o sistema registrou o débito sem o crédito correspondente. O SGBD deveria ter desfeito o débito (*rollback*) automaticamente durante o procedimento de recuperação.
+
+### b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.
+* **Propriedade em jogo / violada:** **Isolamento**.
+* **Justificativa:** Trata-se de um problema clássico de concorrência (*lost update* ou leitura suja). Sem o devido isolamento entre transações concorrentes (por exemplo, via mecanismos de bloqueio/locks ou controle por versão - MVCC), uma operação interferiu na outra, levando a um cálculo errôneo do saldo final.
+
+### c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.
+* **Propriedade violada:** **Durabilidade**.
+* **Justificativa:** A operação já havia recebido o status de transação concluída (*commit*). O SGBD falhou em persistir as alterações em memória secundária não volátil (por exemplo, via escrita prévia em log - WAL), violando a garantia de permanência dos dados confirmados.
+
+### d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+* **Propriedade garantida:** **Consistência**.
+* **Justificativa:** O sistema impediu a transação para evitar a violação de uma restrição de integridade (regra de negócio que define o saldo mínimo). O SGBD garantiu que o banco permanecesse em um estado válido, cancelando a operação que tornaria os dados inconsistentes.
