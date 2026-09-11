@@ -96,3 +96,27 @@ As propriedades ACID definem os requisitos essenciais que garantem que transaç�
 ### d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
 * **Propriedade garantida:** **Consistência**.
 * **Justificativa:** O sistema impediu a transação para evitar a violação de uma restrição de integridade (regra de negócio que define o saldo mínimo). O SGBD garantiu que o banco permanecesse em um estado válido, cancelando a operação que tornaria os dados inconsistentes.
+
+---
+
+## Q5. Aspectos Tratados pelo SGBD
+
+### 1. Recuperação (*Recovery*)
+* **Conceito:** Capacidade de restabelecer o banco de dados a um estado íntegro e consistente após falhas de software, hardware, panes de rede ou desastres.
+* **Como o SGBD gerencia:** Utiliza o mecanismo de log de transações (*Write-Ahead Logging* - WAL), checkpoints periódicos e algoritmos de recuperação (como o ARIES). Durante a reinicialização pós-falha, o SGBD executa o procedimento de **REDO** (refaz operações de transações confirmadas que não foram descarregadas no disco) e de **UNDO** (desfaz operações de transações que ficaram incompletas no momento da queda).
+
+### 2. Integridade (*Integrity*)
+* **Conceito:** Preservação da exatidão, validade e coerência dos dados em conformidade com as regras lógicas e restrições estruturais impostas pelo negócio.
+* **Como o SGBD gerencia:** Através de restrições declarativas no esquema DDL, tais como:
+  * Integridade de Domínio (tipos de dados, cláusulas `CHECK`, `NOT NULL`).
+  * Integridade de Entidade (definição de chaves primárias - `PRIMARY KEY` e chaves candidatas - `UNIQUE`).
+  * Integridade Referencial (definição de chaves estrangeiras - `FOREIGN KEY`, com regras de ação como `CASCADE` ou `RESTRICT`).
+  * *Triggers* e procedimentos armazenados para regras procedimentais complexas.
+
+### 3. Redundância (*Redundancy*)
+* **Conceito:** Existência de dados repetidos desnecessariamente em múltiplos locais do banco de dados, o que consome espaço de armazenamento excessivo e amplia os pontos de falha na manutenção.
+* **Como o SGBD gerencia:** Promove o controle da redundância através do processo de **Normalização de Dados** (1FN, 2FN, 3FN, BCNF), decompondo as tabelas e unindo-as logicamente via chaves estrangeiras. Quando a redundância é introduzida deliberadamente (por questões de desempenho/desnormalização ou replicação de servidores), o SGBD assume o controle para manter as cópias sincronizadas automaticamente.
+
+### 4. Inconsistência (*Inconsistency*)
+* **Conceito:** Ocorrência de dados divergentes ou contraditórios que representam o mesmo fato no mundo real, geralmente resultante de redundâncias descontroladas ou acessos concorrentes mal administrados.
+* **Como o SGBD gerencia:** Elimina a raiz da inconsistência controlando a redundância e aplicando rigorosos mecanismos de **Controle de Concorrência** (como protocolo de bloqueio de duas fases - 2PL, *timestamp ordering* ou MVCC), assegurando que leituras e escritas concorrentes respeitem os níveis de isolamento estabelecidos.
