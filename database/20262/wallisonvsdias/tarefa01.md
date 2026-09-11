@@ -16,3 +16,23 @@ Processo alternativo de integração que move ou reaplica uma sequência de comm
 
 ### Conflitos
 Situação que ocorre quando dois desenvolvedores (ou branches) alteram as mesmas linhas de um mesmo arquivo — ou quando um arquivo é excluído em uma branch e modificado em outra — e o Git tenta uni-los. Como o sistema não pode decidir automaticamente qual alteração é a correta sem risco de perda de lógica, ele suspende a operação e solicita que o desenvolvedor resolva manualmente as seções conflitantes antes de concluir a integração.
+
+---
+
+## Q1. Banco de Dados vs. SGBD
+
+### Banco de Dados (BD)
+É uma coleção logicamente coerente e estruturada de dados relacionados, projetada para representar um aspecto específico do mundo real (minimundo) e atender às necessidades operacionais ou analíticas de usuários e sistemas. Os dados são organizados de modo a facilitar seu armazenamento, consulta e atualização, podendo estar centralizados em um servidor ou distribuídos por múltiplos nós.
+
+### Sistema Gerenciador de Banco de Dados (SGBD / DBMS)
+É o conjunto de softwares responsáveis por definir, construir, manipular, compartilhar e proteger as bases de dados. O SGBD atua como intermediário entre as aplicações usuárias e o armazenamento físico, fornecendo abstração de dados, mecanismos de controle de concorrência, recuperação após falhas, garantia de integridade e controle rígido de acesso e segurança.
+
+### Exemplos de Bancos de Dados e seus respectivos SGBDs
+
+| Categoria | SGBD | Exemplos Típicos de Bases de Dados |
+| :--- | :--- | :--- |
+| **Relacional (RDBMS)** | **PostgreSQL** | Base cadastral e financeira de um e-commerce |
+| **Relacional (RDBMS)** | **MySQL / MariaDB** | Base transacional de um portal de notícias em WordPress |
+| **Relacional Corporativo** | **Oracle Database** | Sistema contábil e de faturamento de uma multinacional |
+| **NoSQL (Documentos)** | **MongoDB** | Catálogo de produtos com esquemas flexíveis e logs |
+| **NoSQL (Chave-Valor)** | **Redis** | Armazenamento de sessões de usuários e cache de alta velocidade |
