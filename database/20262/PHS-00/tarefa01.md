@@ -15,3 +15,17 @@ Alguns exemplos de bancos de dados são:
 * **SQLite** - utiliza o SGBD SQLite.
 
 Na prática, muitas vezes usamos o nome do próprio SGBD para falar do banco de dados, mas os dois conceitos não são exatamente a mesma coisa.
+
+## Q2. Problemas dos Sistemas de Arquivos
+
+Utilizar sistemas de arquivos para armazenar grandes quantidades de dados pode gerar vários problemas. Alguns deles são:
+
+* **Redundância de dados:** a mesma informação pode acabar sendo armazenada várias vezes.
+* **Inconsistência:** quando uma informação é alterada em um arquivo e não é alterada em outro, os dados ficam diferentes.
+* **Dificuldade de acesso:** consultas mais complexas podem ser difíceis de realizar.
+* **Problemas de segurança:** pode ser mais difícil controlar quem pode acessar ou modificar cada informação.
+* **Falta de controle de concorrência:** dois usuários podem tentar alterar o mesmo dado ao mesmo tempo.
+* **Dificuldade de recuperação:** se um arquivo for perdido ou corrompido, recuperar os dados pode ser complicado.
+* **Pouca organização:** conforme a quantidade de informações aumenta, fica mais difícil manter os dados organizados.
+
+Por causa desses problemas, os SGBDs foram criados para facilitar o gerenciamento e aumentar a confiabilidade dos dados.
