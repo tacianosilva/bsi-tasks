@@ -36,3 +36,17 @@ Situação que ocorre quando dois desenvolvedores (ou branches) alteram as mesma
 | **Relacional Corporativo** | **Oracle Database** | Sistema contábil e de faturamento de uma multinacional |
 | **NoSQL (Documentos)** | **MongoDB** | Catálogo de produtos com esquemas flexíveis e logs |
 | **NoSQL (Chave-Valor)** | **Redis** | Armazenamento de sessões de usuários e cache de alta velocidade |
+
+---
+
+## Q2. Principais Problemas no Uso de Sistemas de Arquivos para Armazenamento de Dados
+
+Antes da consolidação dos SGBDs, as aplicações armazenavam dados diretamente em arquivos do sistema operacional (como arquivos de texto, binários ou CSV). Essa abordagem apresenta limitações críticas:
+
+1. **Redundância e Inconsistência de Dados:** Como diferentes aplicações criam seus próprios arquivos, a mesma informação acaba duplicada em locais distintos (ex.: endereço do cliente no arquivo de cobrança e no arquivo de entregas). Se um arquivo for atualizado e o outro não, os dados tornam-se contraditórios (inconsistentes).
+2. **Dificuldade de Acesso aos Dados:** Consultas não previstas originalmente exigem a escrita de novos programas ou scripts manuais para varrer, filtrar e extrair as informações necessárias, tornando a recuperação de dados lenta e dependente de desenvolvimento.
+3. **Isolamento de Dados:** Como os dados ficam dispersos em múltiplos arquivos com extensões e formatos heterogêneos, cruzá-los ou correlacioná-los exige esforço complexo de processamento manual.
+4. **Problemas de Integridade:** As regras de negócio (como "o saldo da conta não pode ser negativo") precisam ser embutidas diretamente no código de cada aplicação cliente. Se novas aplicações forem criadas ou se a regra mudar, a integridade é facilmente violada.
+5. **Falta de Atomicidade nas Operações:** Uma falha mecânica ou elétrica no meio da gravação de um arquivo deixa a base em estado parcial e corrompido, sem um mecanismo nativo de retorno ao estado anterior (*rollback*).
+6. **Anomalias de Acesso Concorrente:** Se múltiplos usuários ou processos tentarem ler e gravar no mesmo arquivo simultaneamente, ocorrem problemas graves de corrida (*race conditions*), como a sobrescrita inadvertida de dados (*lost update*).
+7. **Problemas de Segurança e Controle de Acesso:** Sistemas de arquivos oferecem controle de permissões em nível de arquivo ou pasta, sendo inviável restringir o acesso a colunas ou linhas específicas para perfis de usuários distintos.
