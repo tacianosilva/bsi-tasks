@@ -39,7 +39,54 @@ b) Os funcionários da empresa trabalham em squads (equipes). Cada funcionário 
 c) Cada squad é formada por vários funcionários e resolve tarefas (issues). Uma tarefa tem código, descrição, prioridade, situação e uma estimativa em horas. As tarefas pertencem a projetos de um cliente.
 d) O trabalho é organizado em iterações (sprints). Uma squad planeja releases para seus clientes; uma release agrupa um conjunto de tarefas e passa por testes de validação.
 
-**Resposta**:
+**Resposta**: Abaixo está a representação conceitual do cenário proposto usando a notação do Mermaid. (Note que não existem chaves estrangeiras -> foco apenas no nível conceitual) e que foi criada uma entidade PROJETO para atender ao requisito de que as tarefas "pertencem a projetos de um cliente".
+
+``` mermaid
+erDiagram
+    CLIENTE ||--|{ PROJETO : solicita
+    PROJETO ||--o{ TAREFA : possui
+    SQUAD ||--|{ FUNCIONARIO : "é formada por"
+    SQUAD ||--o{ SPRINT : organiza
+    SQUAD ||--o{ RELEASE : planeja
+    SQUAD ||--o{ TAREFA : resolve
+    SPRINT ||--o{ TAREFA : contem
+    RELEASE ||--o{ TAREFA : agrupa
+
+    CLIENTE {
+        int codigo PK
+        string nome
+        string email_contato
+    }
+    FUNCIONARIO {
+        int codigo PK
+        string nome
+        string email
+        string papel
+    }
+    SQUAD {
+        int codigo PK
+        string nome
+    }
+    PROJETO {
+        int codigo PK
+        string nome
+    }
+    TAREFA {
+        int codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+    SPRINT {
+        int codigo PK
+        string nome
+    }
+    RELEASE {
+        int codigo PK
+        string nome
+    }
+```
 
 ## Q4. Prática 2
 A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.
