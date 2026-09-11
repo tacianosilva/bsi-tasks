@@ -91,7 +91,30 @@ erDiagram
 ## Q4. Prática 2
 A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.
 
-**Resposta**:
+**Resposta**: Abaixo está o mapeamento do nível conceitual para o nível lógico (Modelo Relacional). As relações estão normalizadas para evitar redundância, com as Chaves Primárias (PK) destacadas em negrito e as Chaves Estrangeiras (FK) marcadas com asterisco e indicadas logo abaixo.
+
+Como a modelagem conceitual permite que um funcionário participe de várias squads ao longo do tempo (e vice-versa), criei uma tabela associativa para garantir a resolução do relacionamento N:M entre Squad e Funcionário.
+
+- CLIENTE (codigo_cliente, nome, email_contato)
+- FUNCIONARIO (codigo_funcionario, nome, email, papel)
+- SQUAD (codigo_squad, nome)
+- MEMBRO_SQUAD (codigo_squad*, codigo_funcionario*)
+  - codigo_squad é FK referenciando SQUAD(codigo_squad)
+  - codigo_funcionario é FK referenciando FUNCIONARIO(codigo_funcionario)
+- PROJETO (codigo_projeto, nome, codigo_cliente*)
+  - codigo_cliente é FK referenciando CLIENTE(codigo_cliente)
+
+- SPRINT (codigo_sprint, nome, codigo_squad*)
+  - codigo_squad é FK referenciando SQUAD(codigo_squad)
+
+- RELEASE (codigo_release, nome, codigo_squad*)
+  - codigo_squad é FK referenciando SQUAD(codigo_squad)
+
+- TAREFA (codigo_tarefa, descricao, prioridade, situacao, estimativa_horas, codigo_projeto*, codigo_squad*, codigo_sprint*, codigo_release*)
+  - codigo_projeto é FK referenciando PROJETO(codigo_projeto)
+  - codigo_squad é FK referenciando SQUAD(codigo_squad)
+  - codigo_sprint é FK referenciando SPRINT(codigo_sprint)
+  - codigo_release é FK referenciando RELEASE(codigo_release)
 
 ## Q5. Prática 3
 Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").
