@@ -192,3 +192,19 @@ A partir do diagrama ER, cada entidade forte vira uma relação (tabela). Relaci
  
 ---
  
+## Q5. Descreva, em linguagem natural, as **restrições de integridade referencial** que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").
+ 
+- Toda **PROJETO** só pode existir vinculada a um **CLIENTE** já cadastrado (`PROJETO.cod_cliente` deve existir em `CLIENTE.cod_cliente`).
+- Toda **ISSUE** só pode existir vinculada a um **PROJETO** existente (`ISSUE.cod_projeto` deve existir em `PROJETO.cod_projeto`).
+- Toda **ISSUE** deve estar associada a uma **SQUAD** existente responsável por resolvê-la (`ISSUE.cod_squad` deve existir em `SQUAD.cod_squad`).
+- Todo **FUNCIONARIO** deve pertencer a uma **SQUAD** cadastrada (`FUNCIONARIO.cod_squad` deve existir em `SQUAD.cod_squad`).
+- Toda **SPRINT** só pode existir vinculada a uma **SQUAD** existente (`SPRINT.cod_squad` deve existir em `SQUAD.cod_squad`).
+- Toda **RELEASE** deve estar vinculada a uma **SQUAD** que a planejou e a um **CLIENTE** que a receberá; ambos devem já existir na base (`RELEASE.cod_squad` e `RELEASE.cod_cliente` devem existir em `SQUAD` e `CLIENTE`, respectivamente).
+- Um registro em **SPRINT_ISSUE** só pode existir se tanto a **SPRINT** quanto a **ISSUE** referenciadas já existirem (`cod_sprint` em `SPRINT` e `cod_issue` em `ISSUE`); o par `(cod_sprint, cod_issue)` não pode se repetir.
+- Uma **ISSUE**, quando vinculada a uma **RELEASE** (`cod_release` preenchido), só pode referenciar uma Release já existente; o campo pode ser nulo, indicando que a Issue ainda não foi incluída em nenhuma Release, mas nunca pode apontar para mais de uma Release ao mesmo tempo.
+- Não é permitido excluir um **CLIENTE** que ainda possua **PROJETOS** ou **RELEASES** vinculados (integridade referencial na exclusão — deve-se restringir, ou tratar em cascata conforme a regra de negócio).
+- Não é permitido excluir uma **SQUAD** que ainda possua **FUNCIONARIOS**, **ISSUES**, **SPRINTS** ou **RELEASES** vinculados.
+- Não é permitido excluir um **PROJETO** que ainda possua **ISSUES** vinculadas.
+- Não é permitido excluir uma **RELEASE** que ainda possua **ISSUES** vinculadas a ela; antes da exclusão, essas Issues devem ser desvinculadas (`cod_release` definido como nulo) ou a exclusão deve ser tratada conforme a regra de negócio.
+- Não é permitido excluir uma **SPRINT** que ainda possua vínculos ativos na tabela associativa `SPRINT_ISSUE` sem antes remover (ou tratar) esses vínculos.
+ 
