@@ -120,7 +120,7 @@ erDiagram
  
 ---
  
-## Q4. Mapeamento para o Modelo Relacional
+## Q4. A partir do Diagrama ER da questão anterior, faça o **mapeamento para o Modelo Relacional**: liste as relações (tabelas), com seus atributos, e identifique as **chaves primárias** e as **chaves estrangeiras** de cada relação.
  
 A partir do diagrama ER, cada entidade forte vira uma relação (tabela). Relacionamentos 1:N migram a chave primária do lado "1" como chave estrangeira para o lado "N". Relacionamentos N:M geram uma tabela associativa própria.
  
