@@ -29,3 +29,39 @@ Utilizar sistemas de arquivos para armazenar grandes quantidades de dados pode g
 * **Pouca organização:** conforme a quantidade de informações aumenta, fica mais difícil manter os dados organizados.
 
 Por causa desses problemas, os SGBDs foram criados para facilitar o gerenciamento e aumentar a confiabilidade dos dados.
+
+## Q3. Propriedades ACID
+
+As propriedades ACID são características importantes das transações realizadas em um banco de dados. ACID significa Atomicidade, Consistência, Isolamento e Durabilidade.
+
+### Atomicidade
+
+Atomicidade significa que uma transação deve ser realizada por completo ou não ser realizada. Não pode acontecer de apenas uma parte da operação ser concluída.
+
+**Exemplo:** em uma transferência de R$ 100,00, o banco precisa retirar os R$ 100,00 da conta de origem e adicionar os R$ 100,00 na conta de destino.
+
+Se o SGBD não garantisse atomicidade, poderia acontecer de o dinheiro ser retirado da primeira conta, mas não chegar na segunda.
+
+### Consistência
+
+Consistência significa que uma transação deve manter o banco de dados em um estado válido, respeitando as regras definidas.
+
+**Exemplo:** se uma conta não pode ficar com saldo abaixo de -R$ 500,00, uma transferência que ultrapasse esse limite deve ser rejeitada.
+
+Sem consistência, o banco poderia permitir operações que deixassem os dados em uma situação inválida.
+
+### Isolamento
+
+Isolamento significa que transações executadas ao mesmo tempo não devem causar problemas umas nas outras.
+
+**Exemplo:** dois atendentes tentam realizar uma transferência usando o mesmo saldo ao mesmo tempo. O banco precisa controlar essas operações para que o saldo não seja utilizado de forma incorreta.
+
+Sem isolamento, as duas operações poderiam ler o mesmo saldo antes de uma delas ser atualizada e acabar causando um saldo incorreto.
+
+### Durabilidade
+
+Durabilidade significa que, depois que uma transação é confirmada, seus dados devem continuar armazenados mesmo que ocorra uma falha no sistema.
+
+**Exemplo:** depois que uma transferência é confirmada, o resultado precisa continuar registrado mesmo que o servidor seja desligado logo depois.
+
+Sem durabilidade, uma transferência poderia aparecer como concluída e depois desaparecer quando o servidor fosse reiniciado.
