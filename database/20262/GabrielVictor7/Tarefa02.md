@@ -185,3 +185,18 @@ TAREFA  }| -- || EQUIPE : possui
 EQUIPE  }| -- || RELEASE : possui
 EQUIPE  || -- |{ INTERACOES : possui
 FUNCIONARIO }| -- || EQUIPE : possui
+
+
+
+
+## Q5. Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico"). 
+
+
+* todo projeto deve estar relacionado a um cliente
+* toda release deve estar relacionada a um projeto
+* não pode existir uma tarefa com codigo_release que não exista na tabela
+* Uma release pode conter várias tarefas, mas cada tarefa pertence a uma única release. 
+* Todo funcionário deve estar obrigatoriamente vinculado a uma equipe existente 
+* Um funcionário só estar participando de no máximo 1 equipe por vez
+* Uma tarefa só pode ser atribuída a equipes que existam. 
+* Uma equippe só pode existir se tiver funcionários relacionados a ela
