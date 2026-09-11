@@ -91,3 +91,31 @@ Depois que uma operação foi confirmada, ela deveria continuar registrada mesmo
 A propriedade envolvida é a **consistência**.
 
 A operação foi rejeitada porque violaria uma regra definida para o banco. Dessa forma, o banco de dados continua em um estado válido.
+
+## Q5. Recuperação, integridade, redundância e inconsistência
+
+### Recuperação
+
+Recuperação é a capacidade de recuperar os dados depois de uma falha, como queda de energia, erro do sistema ou problema no servidor.
+
+O SGBD pode utilizar recursos como logs, backups e mecanismos de recuperação para tentar restaurar o banco para um estado correto.
+
+### Integridade
+
+Integridade está relacionada à garantia de que os dados armazenados continuam corretos e obedecem às regras definidas no banco.
+
+O SGBD pode fazer isso usando restrições, como chaves primárias, chaves estrangeiras, valores obrigatórios e regras para determinados dados.
+
+### Redundância
+
+Redundância acontece quando a mesma informação é armazenada várias vezes sem necessidade.
+
+O SGBD ajuda a diminuir esse problema por meio da organização adequada dos dados e da normalização das tabelas, evitando repetir informações desnecessariamente.
+
+### Inconsistência
+
+Inconsistência acontece quando existem informações diferentes para o mesmo dado.
+
+Por exemplo, se o endereço de um cliente estiver atualizado em uma tabela, mas continuar antigo em outra, existe uma inconsistência.
+
+O SGBD ajuda a evitar isso centralizando os dados e aplicando regras de integridade, além de controlar as alterações realizadas pelos usuários.
