@@ -16,3 +16,85 @@ Notação de Barker: utiliza retângulos com bordas arredondadas para as entidad
 
 Diagramas de Classe UML: serve para representar a estruturação e relações das classes que servem de modelos para objetos. 
 
+## Q3. Construa um Diagrama ER para projetar a base de dados de uma empresa de desenvolvimento de software com outras empresas como clientes. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras. a) A empresa presta serviços de desenvolvimento de software para outras empresas (clientes). Cada cliente é identificado por um código, um nome e um e-mail de contato. b) Os funcionários da empresa trabalham em squads (equipes). Cada funcionário é identificado por um código, um nome e um e-mail, e possui um papel na equipe: desenvolvedor, testador, líder técnico, supervisor ou gerente de produto. c) Cada squad é formada por vários funcionários e resolve tarefas (issues). Uma tarefa tem código, descrição, prioridade, situação e uma estimativa em horas. As tarefas pertencem a projetos de um cliente. d) O trabalho é organizado em iterações (sprints). Uma squad planeja releases para seus clientes; uma release agrupa um conjunto de tarefas e passa por testes de validação.
+
+
+erDiagram
+
+
+CLIENTE{
+int codigo_cliente
+String CNPJ
+String nome
+}
+
+
+
+
+FUNCIONARIO{
+int codigo_func 
+
+
+string nome
+string email
+string funcao
+}
+
+
+
+
+EQUIPE{
+int codigo_equipe 
+string nome
+}
+
+
+
+
+
+
+
+
+TAREFA{
+int codigo_tarefa
+string descricao
+string prioridade
+string situacao
+string horas
+}
+
+
+
+
+INTERACOES{
+int codigo_sprint 
+int numero
+date data_inicio
+date data_fim
+}
+
+
+
+
+RELEASE{
+int codigo_release 
+date data_planejada
+string versao
+}
+
+
+
+
+PROJETO{
+int codigo_projeto 
+string nome
+}
+
+
+CLIENTE || -- |{ PROJETO : possui
+PROJETO || -- |{ RELEASE : possui
+TAREFA  }| -- || RELEASE : possui
+TAREFA  }| -- || EQUIPE : possui
+EQUIPE  }| -- || RELEASE : possui
+EQUIPE  || -- |{ INTERACOES : possui
+FUNCIONARIO }| -- || EQUIPE : possui
