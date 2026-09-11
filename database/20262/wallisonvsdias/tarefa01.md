@@ -120,3 +120,48 @@ As propriedades ACID definem os requisitos essenciais que garantem que transaç�
 ### 4. Inconsistência (*Inconsistency*)
 * **Conceito:** Ocorrência de dados divergentes ou contraditórios que representam o mesmo fato no mundo real, geralmente resultante de redundâncias descontroladas ou acessos concorrentes mal administrados.
 * **Como o SGBD gerencia:** Elimina a raiz da inconsistência controlando a redundância e aplicando rigorosos mecanismos de **Controle de Concorrência** (como protocolo de bloqueio de duas fases - 2PL, *timestamp ordering* ou MVCC), assegurando que leituras e escritas concorrentes respeitem os níveis de isolamento estabelecidos.
+
+---
+
+## Q6. Mini-Projeto Conceitual: Gestão de Software por Squads
+
+### a) Entidades Principais
+1. **Cliente:** Empresa contratante dos serviços de desenvolvimento.
+2. **Projeto:** Produto ou sistema contratado por um cliente e desenvolvido pela empresa.
+3. **Squad:** Equipe multidisciplinar responsável pelo planejamento e execução do trabalho técnico.
+4. **Membro:** Profissional que integra a empresa e atua nas squads (desenvolvedor, testador, líder técnico, supervisor ou gerente de produto).
+5. **Sprint:** Iteração de tempo fixo na qual um conjunto planejado de tarefas deve ser executado.
+6. **Release:** Versão entregável e estável de um projeto disponibilizada para o cliente ou ambiente de produção.
+7. **Tarefa (Issue):** Unidade atômica de trabalho a ser resolvida (bug, nova feature, melhoria técnica ou teste).
+
+### b) Atributos Principais de Cada Entidade
+
+* **Cliente:** `id_cliente` (PK), `cnpj`, `razao_social`, `nome_fantasia`, `email_contato`, `telefone`, `data_cadastro`.
+* **Projeto:** `id_projeto` (PK), `nome_projeto`, `descricao`, `data_inicio`, `previsao_termino`, `status`, `id_cliente` (FK).
+* **Squad:** `id_squad` (PK), `nome_squad`, `area_foco`, `data_criacao`.
+* **Membro:** `id_membro` (PK), `nome_completo`, `email_corporativo`, `cpf`, `papel` (*Desenvolvedor*, *Testador*, *Líder Técnico*, *Supervisor*, *Gerente de Produto*), `data_admissao`, `id_squad` (FK).
+* **Sprint:** `id_sprint` (PK), `numero_sprint`, `objetivo`, `data_inicio`, `data_fim`, `status`, `id_squad` (FK).
+* **Release:** `id_release` (PK), `versao_semantica` (ex: v1.2.0), `data_lancamento`, `notas_release`, `id_projeto` (FK).
+* **Tarefa (Issue):** `id_tarefa` (PK), `titulo`, `descricao`, `tipo` (*Feature*, *Bug*, *Teste*, *Melhoria*), `prioridade`, `status` (*To Do*, *Doing*, *Done*), `estimativa_horas`, `id_projeto` (FK), `id_sprint` (FK), `id_release` (FK), `id_membro_responsavel` (FK).
+
+### c) Relacionamentos e Cardinalidades
+
+* **Cliente - Projeto:** Um Cliente pode contratar um ou muitos Projetos (1:N). Um Projeto pertence obrigatoriamente a exatamente um Cliente (1:1).
+* **Projeto - Squad:** Um Projeto pode ser atendido por uma ou mais Squads (ao longo do tempo ou por módulos) e uma Squad pode atuar em um ou muitos Projetos (N:N).
+* **Squad - Membro:** Uma Squad possui muitos Membros (1:N). Um Membro atua em exatamente uma Squad por período (1:1).
+* **Squad - Sprint:** Uma Squad planeja e executa muitas Sprints (1:N). Uma Sprint pertence obrigatoriamente a uma única Squad (1:1).
+* **Projeto - Release:** Um Projeto possui uma ou muitas Releases ao longo do seu ciclo de vida (1:N). Uma Release pertence a apenas um Projeto (1:1).
+* **Projeto - Tarefa:** Um Projeto é composto por muitas Tarefas (1:N). Uma Tarefa pertence obrigatoriamente a um único Projeto (1:1).
+* **Sprint - Tarefa:** Uma Sprint contém zero ou muitas Tarefas alocadas em seu backlog (1:N). Uma Tarefa pode estar alocada em no máximo uma Sprint de cada vez, ou nenhuma se estiver no backlog geral (0:1).
+* **Release - Tarefa:** Uma Release agrupa uma ou muitas Tarefas finalizadas (1:N). Uma Tarefa pode estar vinculada a no máximo uma Release (0:1).
+* **Membro - Tarefa:** Um Membro pode ser responsável por zero ou muitas Tarefas (1:N). Uma Tarefa pode ter zero ou um Membro responsável atribuído (0:1).
+
+### d) Regras de Integridade (Restrições de Negócio)
+
+1. **Unicidade de Liderança Técnica:** Cada Squad deve possuir exatamente um Membro com o papel de *Líder Técnico* ativo por período.
+2. **Exclusividade do Gerente de Produto:** Uma Squad não pode possuir mais de um *Gerente de Produto* (Product Manager) ativo simultaneamente.
+3. **Vinculação Obrigatória de Tarefas:** Toda Tarefa deve estar obrigatoriamente associada a um Projeto cadastrado antes de ser movimentada ou alocada.
+4. **Consistência de Atribuição da Tarefa:** Uma Tarefa só pode ser atribuída a um Membro que pertença à Squad que está atuando no Projeto correspondente ou executando a Sprint daquela Tarefa.
+5. **Datas Coerentes de Sprints:** A data de início de uma Sprint deve ser estritamente anterior à sua data de término, e duas Sprints ativas da mesma Squad não podem possuir períodos sobrepostos.
+6. **Fechamento de Release:** Uma Release só pode ser marcada como lançada se todas as Tarefas a ela vinculadas estiverem com status *Done* e com seus respectivos testes validados.
+7. **Integridade de Documentação Fiscal:** O CNPJ de cada Cliente e o CPF de cada Membro devem ser únicos e válidos no sistema (`UNIQUE`).
