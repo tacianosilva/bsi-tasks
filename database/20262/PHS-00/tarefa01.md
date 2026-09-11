@@ -65,3 +65,29 @@ Durabilidade significa que, depois que uma transação é confirmada, seus dados
 **Exemplo:** depois que uma transferência é confirmada, o resultado precisa continuar registrado mesmo que o servidor seja desligado logo depois.
 
 Sem durabilidade, uma transferência poderia aparecer como concluída e depois desaparecer quando o servidor fosse reiniciado.
+
+## Q4. Propriedades ACID nos cenários
+
+### a) Queda de energia no meio de uma transferência deixou o valor debitado da conta de origem, mas não creditado na conta de destino.
+
+A propriedade envolvida é principalmente a **atomicidade**.
+
+A transferência deveria ser tratada como uma única operação. Ou o débito e o crédito são realizados, ou nenhum dos dois deveria ser aplicado. Nesse caso, apenas uma parte foi realizada.
+
+### b) Dois atendentes debitam, ao mesmo tempo, o mesmo saldo de uma conta.
+
+A propriedade envolvida é o **isolamento**.
+
+As duas operações estão acontecendo ao mesmo tempo e precisam ser controladas para não utilizarem o mesmo saldo de forma incorreta.
+
+### c) O sistema confirma a operação, mas após reiniciar o servidor o dado foi perdido.
+
+A propriedade envolvida é a **durabilidade**.
+
+Depois que uma operação foi confirmada, ela deveria continuar registrada mesmo após uma falha ou reinicialização do servidor.
+
+### d) Uma transferência que levaria o saldo abaixo do limite permitido é rejeitada pelo banco.
+
+A propriedade envolvida é a **consistência**.
+
+A operação foi rejeitada porque violaria uma regra definida para o banco. Dessa forma, o banco de dados continua em um estado válido.
