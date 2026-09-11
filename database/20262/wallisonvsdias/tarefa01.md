@@ -50,3 +50,29 @@ Antes da consolidação dos SGBDs, as aplicações armazenavam dados diretamente
 5. **Falta de Atomicidade nas Operações:** Uma falha mecânica ou elétrica no meio da gravação de um arquivo deixa a base em estado parcial e corrompido, sem um mecanismo nativo de retorno ao estado anterior (*rollback*).
 6. **Anomalias de Acesso Concorrente:** Se múltiplos usuários ou processos tentarem ler e gravar no mesmo arquivo simultaneamente, ocorrem problemas graves de corrida (*race conditions*), como a sobrescrita inadvertida de dados (*lost update*).
 7. **Problemas de Segurança e Controle de Acesso:** Sistemas de arquivos oferecem controle de permissões em nível de arquivo ou pasta, sendo inviável restringir o acesso a colunas ou linhas específicas para perfis de usuários distintos.
+
+---
+
+## Q3. Propriedades ACID
+
+As propriedades ACID definem os requisitos essenciais que garantem que transações em um banco de dados sejam processadas com confiabilidade.
+
+### 1. Atomicidade (*Atomicity*)
+* **Conceito:** A transação é indivisível ("tudo ou nada"). Ou todas as operações que compõem a transação são concluídas com êxito, ou nenhuma alteração é aplicada, revertendo o banco ao seu estado original (*rollback*).
+* **Exemplo Bancário:** Transferência de R$ 200 da Conta A para a Conta B. A transação envolve: debitar R$ 200 de A e creditar R$ 200 em B.
+* **Sem a propriedade:** Se o sistema falhar logo após debitar a Conta A e antes de creditar a Conta B, o dinheiro simplesmente sumiria do sistema: o cliente A perde R$ 200 e o cliente B não recebe nada.
+
+### 2. Consistência (*Consistency*)
+* **Conceito:** A execução de uma transação deve conduzir o banco de dados de um estado válido a outro estado igualmente válido, respeitando rigorosamente todas as regras de negócio, restrições de integridade e tipos de dados definidos no esquema.
+* **Exemplo Bancário:** Uma regra do banco determina que o saldo de uma conta corrente padrão nunca pode ser inferior a R$ 0.
+* **Sem a propriedade:** Se uma transação tentar transferir R$ 500 de uma conta que possui saldo de apenas R$ 100 sem autorização de limite de crédito, o sistema permitiria a operação, violando a integridade contábil e deixando a conta em estado inválido perante as regras do banco.
+
+### 3. Isolamento (*Isolation*)
+* **Conceito:** A execução simultânea de múltiplas transações não deve permitir que uma transação interfira no andamento ou visualize estados intermediários incompletos de outra. O resultado final deve ser equivalente ao de uma execução estritamente sequencial.
+* **Exemplo Bancário:** Uma conta possui R$ 300. Dois atendentes tentam, no mesmo segundo, debitar R$ 200 cada um em caixas diferentes.
+* **Sem a propriedade:** Ambas as transações leem simultaneamente o saldo de R$ 300, consideram a operação viável e realizam o débito. O saldo final ficaria registrado como R$ 100 (uma atualização sobrescreve a outra), permitindo o saque de R$ 400 a partir de um saldo inicial de R$ 300 (*Lost Update*).
+
+### 4. Durabilidade (*Durability*)
+* **Conceito:** Uma vez que uma transação é confirmada (*committed*), suas alterações tornam-se permanentes e não serão perdidas por qualquer falha posterior do sistema, como queda de energia ou travamento do servidor.
+* **Exemplo Bancário:** O cliente realiza uma transferência e o sistema exibe a mensagem de confirmação com comprovante emitido.
+* **Sem a propriedade:** Caso o servidor sofra um desligamento repentino segundos após a confirmação, os dados gravados apenas em memória volátil (RAM) seriam perdidos, fazendo a transação "desaparecer" após o reinício do sistema.
