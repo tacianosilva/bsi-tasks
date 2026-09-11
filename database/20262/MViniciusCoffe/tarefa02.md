@@ -13,7 +13,23 @@
 ## Q2. Notaçoes DER
 - Pesquise sobre as várias notações possíveis para Diagramas ER e cite alguns exemplos de notações diferentes para o mesmo conceito (ex.: cardinalidade, entidade subordinada, etc.).
 
-**Resposta**: 
+**Resposta**: Existem diversas abordagens visuais para representar o Modelo ER, criadas para facilitar a comunicação entre projetistas e stakeholders. As principais são:
+
+- Notação de Peter Chen (Original): É a mais clássica para modelagem puramente conceitual.
+  1. Entidade: Retângulo.
+  2. Relacionamento: Losango.
+  3. Atributos: Elipses (ou balões) ligadas às entidades.
+  4. Cardinalidade: Escrita nas linhas conectoras no formato (min, max) como (1,1) ou (0,n), ou ainda 1 e N soltos.
+
+Notação Pé de Galinha (Crow's Foot / Martin): Muito utilizada em ferramentas modernas e modelagem lógica.
+  1. Entidade: Caixa (tabela) com os atributos listados dentro.
+  2. Relacionamento: Linhas conectando as caixas. O losango desaparece (ou vira uma entidade associativa).
+  3. Cardinalidade: Desenhada diretamente nas extremidades da linha. Um traço reto indica "1", um círculo indica "0" (opcional), e três traços abertos (o pé de galinha) indicam "Muitos" (N).
+
+Notação UML (Diagrama de Classes): Focada em orientação a objetos, mas muito adaptada para banco de dados.
+  1. Entidade: Retângulo dividido em seções (Nome, Atributos, Operações).
+  2. Relacionamento: Linha simples ou setas entre as classes.
+  3. Cardinalidade: Expressa em texto próximo à extremidade da linha como 1..1 ou 0..*.
 
 ## Q3. Prática
 - Construa um Diagrama ER para projetar a base de dados de uma empresa de desenvolvimento de software com outras empresas como clientes. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando Mermaid.js. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, sem incluir chaves estrangeiras.
