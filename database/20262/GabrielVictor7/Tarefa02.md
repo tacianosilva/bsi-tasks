@@ -6,3 +6,13 @@ atributos: São as características que vão dar personalidade a entidade, os qu
 
 relacionamentos: São as relações lógicas que vão ligar uma entidade a outra para construir a estrutura do banco de dados, podendo conter restrições, como cardinalidades, chaves participação e integridade
 
+## Q2. Pesquise sobre as várias notações possíveis para Diagramas ER e cite alguns exemplos de notações diferentes para o mesmo conceito (ex.: cardinalidade, entidade subordinada, etc.). 
+
+Notação de Chen: utiliza de retângulos para representar as entidades, elipses para atributos e losangos para relacionamentos, e N:M para representar muitos para muitos na cardinalidade.
+
+Notação Pé de Galinha (Crow's Foot / IE): Utiliza caixas com colunas para representar as entidades e uma reta que separa o nome da entidade dos atributos, e utiliza símbolos para definir cardinalidades, como 1 barra vertical para representar 1 e 3 ramificações para representar o relacionamento de muitos. 
+
+Notação de Barker: utiliza retângulos com bordas arredondadas para as entidades e os atributos, as cardinalidades são as mesmas da notação pé de galinha. 
+
+Diagramas de Classe UML: serve para representar a estruturação e relações das classes que servem de modelos para objetos. 
+
