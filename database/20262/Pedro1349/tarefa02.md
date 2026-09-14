@@ -153,6 +153,7 @@ erDiagram
     - date data_inicio
     - date data_fim
     - string situacao
+    - int codigo_squad FK
 
   }
 
