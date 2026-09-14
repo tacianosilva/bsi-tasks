@@ -82,3 +82,12 @@ Abaixo, a listagem das tabelas geradas a partir do MER acima, com os atributos, 
   * *FK: cod_projeto referencia Projeto(codigo)*
   * *FK: cod_sprint referencia Sprint(codigo)*
   * *FK: cod_release referencia Release(codigo)*
+
+  ### Q5. Restrições de Integridade Referencial
+Para garantir a consistência dos dados do nosso esquema lógico, as seguintes regras de integridade referencial devem ser garantidas pelo SGBD:
+1. Um projeto não pode existir sem estar vinculado a um cliente cadastrado e válido.
+2. Todo funcionário deve estar obrigatoriamente alocado a uma squad existente no sistema.
+3. Uma sprint e uma release só podem ser planejadas/executadas por uma squad que já exista no banco de dados.
+4. Uma release só pode ser entregue para um cliente que tenha cadastro prévio.
+5. Uma tarefa (issue) só pode ser criada se estiver atrelada a um projeto existente.
+6. Se uma tarefa for alocada a uma sprint ou a uma release, o registro correspondente dessa sprint ou release já deve existir previamente.
