@@ -27,44 +27,44 @@ erDiagram
     SPRINT ||--o{ TAREFA : "contem"
 
     CLIENTE {
-        int codigo PK
+        int codigo 
         string nome
         string email_contato
     }
     FUNCIONARIO {
-        int codigo PK
+        int codigo 
         string nome
         string email
         string papel
     }
     SQUAD {
-        int codigo PK
+        int codigo 
         string nome
     }
     PROJETO {
-        int codigo PK
+        int codigo
         string nome
     }
     TAREFA {
-        int codigo PK
+        int codigo 
         string descricao
         string prioridade
         string situacao
         int estimativa_horas
     }
     SPRINT {
-        int codigo PK
+        int codigo 
         string nome
         date data_inicio
         date data_fim
     }
     RELEASE {
-        int codigo PK
+        int codigo
         string versao
         boolean teste_validacao
     }
-
-    ### Q4. Mapeamento para o Modelo Relacional
+```
+### Q4. Mapeamento para o Modelo Relacional
 Abaixo, a listagem das tabelas geradas a partir do MER acima, com os atributos, chaves primárias (PK) indicadas sublinhadas e chaves estrangeiras (FK) indicadas em itálico com a tabela de referência:
 
 * **Cliente** (<u>codigo</u>, nome, email_contato)
