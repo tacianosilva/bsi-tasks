@@ -63,3 +63,22 @@ erDiagram
         string versao
         boolean teste_validacao
     }
+
+    ### Q4. Mapeamento para o Modelo Relacional
+Abaixo, a listagem das tabelas geradas a partir do MER acima, com os atributos, chaves primárias (PK) indicadas sublinhadas e chaves estrangeiras (FK) indicadas em itálico com a tabela de referência:
+
+* **Cliente** (<u>codigo</u>, nome, email_contato)
+* **Projeto** (<u>codigo</u>, nome, *cod_cliente*)
+  * *FK: cod_cliente referencia Cliente(codigo)*
+* **Squad** (<u>codigo</u>, nome)
+* **Funcionario** (<u>codigo</u>, nome, email, papel, *cod_squad*)
+  * *FK: cod_squad referencia Squad(codigo)*
+* **Sprint** (<u>codigo</u>, nome, data_inicio, data_fim, *cod_squad*)
+  * *FK: cod_squad referencia Squad(codigo)*
+* **Release** (<u>codigo</u>, versao, teste_validacao, *cod_squad*, *cod_cliente*)
+  * *FK: cod_squad referencia Squad(codigo)*
+  * *FK: cod_cliente referencia Cliente(codigo)*
+* **Tarefa** (<u>codigo</u>, descricao, prioridade, situacao, estimativa_horas, *cod_projeto*, *cod_sprint*, *cod_release*)
+  * *FK: cod_projeto referencia Projeto(codigo)*
+  * *FK: cod_sprint referencia Sprint(codigo)*
+  * *FK: cod_release referencia Release(codigo)*
