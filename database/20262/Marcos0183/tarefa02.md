@@ -107,9 +107,28 @@ erDiagram
     CLIENTE ||--o{ RELEASE: Cliente_Release
     TAREFA  ||--o{ VALIDACAO: Tarefa_Validacao
 
-
-
-
-
-
 ```
+#
+
+# Q4
+
+#### OBS: Os atributos em negrito, são as chaves primarias e as com fundo diferente `assim` são as estrangeiras(não sei como sublinha no markdown)
+
+ - EMPRESA{};
+
+ - EQUIPE{};
+
+ - FUNCIONARIO{**codigo**, e-mail, nome, funcao};
+
+ - CLIENTE{**codigo**, **e-mail**, nome};
+
+ - TAREFA{**codigo**, descricao, prioridade, situacao, est_horas}
+
+ - CLI_TAREFA{**`codigo`**, **e-mail**, descricao, prioridade, situacao, est_horas}
+
+ - RELEASE{}
+
+ - INTERACAO{}
+
+ - VALIDACAO{}
+ 
