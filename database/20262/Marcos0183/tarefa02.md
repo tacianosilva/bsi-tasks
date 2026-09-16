@@ -27,3 +27,89 @@ Classes(Retângulos divididos em 3 partes) com atributos e métodos, multiplicid
 
 ### Barker
 Caixas com cantos arredondados, linhas contínuas, tracejados, com "pé de galinha" em uma extremidade.
+
+#
+
+# Q3
+
+### Relações
+
+
+- EMPRESA (1,1) -- ◇ Empresa_Cliente ◇ -- (0,N) CLIENTE;
+- EMPRESA (1,1) -- ◇ Empresa_Equipe ◇ -- (0,N) EQUIPE;
+- EMPRESA (1,1) -- ◇ Empresa_Funcionario ◇ -- (1,N) FUNCIONARIO;
+- EQUIPE (1,N) -- ◇ Equipe_Funcionario ◇ -- (1,N) FUNCIONARIO;
+- EQUIPE (1,1) -- ◇ Equipe_Release ◇ -- (0,N) RELEASE;
+- EQUIPE (1,1) -- ◇ Equipe_Interacao ◇ -- (0,N) INTERACAO;
+- CLIENTE (1,1) -- ◇ Tarefa_de_Clientes ◇ -- (0,N) TAREFA;
+- CLIENTE (1,1) -- ◇ Cliente_Release ◇ -- (0,N) RELEASE;
+- TAREFA (1,1) -- ◇ Tarefa_Validacao ◇ -- (1,N).
+
+
+
+
+```mermaid
+
+---
+config:
+  theme: dark
+  layout: elk
+---
+erDiagram
+    EMPRESA{}
+
+    CLIENTE{
+        string codigo
+        string e-mail
+        string nome
+    }
+
+    EQUIPE{
+
+    }
+
+    FUNCIONARIO{
+        string codigo
+        string e-mail
+        string nome
+        string funcao
+    }
+
+    TAREFA {
+        string codigo
+        string descricao
+        string prioridade
+        string situcao
+        string est_horas
+    }
+
+    INTERACAO{
+
+    }
+
+    RELEASE{
+
+    }
+
+    VALIDACAO{
+
+    }
+
+
+    EMPRESA ||--o{ CLIENTE : Empresa_Cliente
+    EMPRESA ||--o{ EQUIPE : Empresa_Equipe
+    EMPRESA ||--o{ FUNCIONARIO : Empresa_Funcionario
+    EQUIPE  }|--|{ FUNCIONARIO: Equipe_Funcionario
+    EQUIPE  ||--o{ TAREFA: Equipe_Tarefa
+    EQUIPE  ||--o{ RELEASE: Equipe_Release
+    EQUIPE  ||--o{ INTERACAO: Equipe_Iteracao
+    CLIENTE ||--o{ TAREFA: Tarefa_de_Clientes
+    CLIENTE ||--o{ RELEASE: Cliente_Release
+    TAREFA  ||--o{ VALIDACAO: Tarefa_Validacao
+
+
+
+
+
+
+```
