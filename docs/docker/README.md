@@ -18,6 +18,13 @@ Disponibilizamos **três abordagens complementares** para atender a diferentes p
 
 ---
 
+## 🤖 Prompt para Assistentes de IA
+
+Para gerar novos ambientes personalizados para outras linguagens e stacks utilizando assistentes de IA (ChatGPT, Claude, Gemini, Opencode), consulte o:
+- **[Prompt Mestre para Dev Containers](prompt-devcontainer.md)**: Prompt pronto e estruturado que gera o `Dockerfile` e `devcontainer.json` solicitando informações da stack e aplicando as regras de segurança e permissões Git.
+
+---
+
 ## 🛠️ Templates e Modelos Executáveis
 
 Os arquivos de configuração e `Dockerfiles` prontos para cópia ou uso direto em seus projetos estão organizados na pasta raiz [`docker/`](../../docker/):
