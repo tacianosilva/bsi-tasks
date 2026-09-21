@@ -6,9 +6,9 @@ Neste diretório teremos os links das tarefas e projetos dos discentes.
 
 * [Descrição das Tarefas](tarefas/README.md)
 
-* Discente 1:
-  * Link Tarefa 1 (issue): 
-  * Link Repositório do Projeto:
+* MViniciusCoffe:
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/449
+  * Link Repositório do Projeto: https://github.com/MViniciusCoffe/SpendSmart
 * Discente 2:
   * Link Tarefa 1 (issue):
   * Link Repositório do Projeto:
