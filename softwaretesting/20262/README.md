@@ -6,9 +6,11 @@ Neste diretório teremos os links das tarefas e projetos dos discentes.
 
 * [Descrição das Tarefas](tarefas/README.md)
 
-* Discente 1:
-  * Link Tarefa 1 (issue): 
-  * Link Repositório do Projeto:
+* JaineSouz:
+
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/448
+
+  * Link Repositório do Projeto: https://github.com/HelenaMariano2025/projetoPNLD
 * Discente 2:
   * Link Tarefa 1 (issue):
   * Link Repositório do Projeto:
