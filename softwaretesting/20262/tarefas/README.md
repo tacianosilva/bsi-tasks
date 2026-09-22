@@ -8,9 +8,12 @@ Neste diretório teremos as descrições das tarefas da disciplina e os links pa
 
 ## Respostas dos Discentes
 
-* <username>:
-  * Link Tarefa 1 (issue):
-  * Link `tarefa01.md`:
+* JaineSouz:
+
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/448
+
+  * Link `tarefa01.md`: softwaretesting/20262/tarefas/JaineSouz/tarefa01.md
+  
 * <username>:
   * Link Tarefa 1 (issue):
   * Link `tarefa01.md`:
