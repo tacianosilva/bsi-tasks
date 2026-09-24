@@ -63,3 +63,26 @@ A stack utilizada atualmente é:
 * pnpm;
 * Git;
 * GitHub.
+
+## 3. Framework de Testes de Unidade
+
+O framework escolhido foi o **Jest**.
+
+O Jest é um framework de testes para JavaScript que fornece recursos para criação, organização e execução de testes automatizados.
+
+Entre os principais recursos utilizados no projeto estão:
+
+* `describe()` para agrupar testes relacionados;
+* `test()` para definir casos de teste;
+* `expect()` para realizar verificações;
+* `jest.fn()` para criar funções mock;
+* `mockResolvedValue()` para simular retornos assíncronos;
+* `mockRejectedValue()` para simular erros;
+* geração automática de relatórios de cobertura.
+
+No projeto também é utilizado o **Supertest**, que permite realizar requisições HTTP diretamente contra uma aplicação Express durante os testes, sem a necessidade de iniciar o servidor em uma porta real.
+
+### Links
+
+* Documentação oficial do Jest: [Documentação Jest](https://jestjs.io/docs/getting-started)
+* Documentação do Supertest: [Documentação Supertest](https://www.npmjs.com/package/supertest)
