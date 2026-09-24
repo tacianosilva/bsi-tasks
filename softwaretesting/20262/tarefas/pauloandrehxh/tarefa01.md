@@ -130,3 +130,47 @@ O tutorial apresenta conceitos relacionados a:
 Como material complementar, também foi utilizada a documentação do Prisma sobre testes, especialmente os conteúdos relacionados a testes unitários, mocks e testes de integração.
 
 **Documentação Testes do Prisma**: [Link Prisma Docs](https://www.prisma.io/blog/series/testing-with-prisma)
+
+## 6. Mock Objects
+
+Mock Objects são objetos simulados utilizados durante os testes para substituir dependências reais de uma unidade de código.
+
+Por exemplo, um service pode depender do Prisma para realizar uma consulta ao banco de dados. Em um teste unitário, não é necessário acessar o banco real. Em vez disso, é possível substituir o Prisma por um mock.
+
+Um exemplo simplificado é:
+
+```javascript
+const prismaMock = {
+    usuario: {
+        findMany: jest.fn(),
+        findUnique: jest.fn(),
+        create: jest.fn(),
+        update: jest.fn(),
+        delete: jest.fn()
+    }
+};
+```
+
+Dessa forma, o teste pode determinar previamente o comportamento da dependência.
+
+Por exemplo:
+
+```javascript
+prismaMock.usuario.findMany.mockResolvedValue([
+    {
+        id: 1,
+        name: 'Paulo'
+    }
+]);
+```
+
+O uso de mocks ajuda a:
+
+* isolar a unidade testada;
+* evitar alterações no banco de dados real;
+* simular diferentes situações;
+* simular erros;
+* tornar os testes mais rápidos;
+* tornar os testes mais previsíveis.
+
+No Arena UFRN, a arquitetura baseada em injeção de dependência facilita a utilização de mocks do Prisma nos testes.
