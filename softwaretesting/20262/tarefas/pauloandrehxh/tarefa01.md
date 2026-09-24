@@ -110,3 +110,23 @@ Essas ferramentas facilitam a identificação de problemas durante o desenvolvim
 ### Link
 
 * Documentação de Debug do VS Code: [Link Docs Debug](https://code.visualstudio.com/docs/debugtest/debugging)
+
+## 5. Tutorial de CRUD e Testes
+
+Como referência para o desenvolvimento e estudo dos testes foi utilizado um tutorial sobre criação e teste de APIs CRUD utilizando Node.js, Express, Jest e Supertest.
+
+O tutorial apresenta conceitos relacionados a:
+
+* criação de endpoints REST;
+* operações de criação, consulta, atualização e exclusão;
+* configuração do Jest;
+* utilização do Supertest;
+* testes dos endpoints da aplicação;
+* verificação dos códigos de status HTTP;
+* validação das respostas da API.
+
+**Tutorial:** [Link Tutorial](https://www.youtube.com/watch?v=vDLE8hqzA8I)
+
+Como material complementar, também foi utilizada a documentação do Prisma sobre testes, especialmente os conteúdos relacionados a testes unitários, mocks e testes de integração.
+
+**Documentação Testes do Prisma**: [Link Prisma Docs](https://www.prisma.io/blog/series/testing-with-prisma)
