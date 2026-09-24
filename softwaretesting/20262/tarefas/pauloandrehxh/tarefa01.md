@@ -26,3 +26,40 @@ Entre os benefícios dos testes unitários estão:
 * execução rápida dos testes;
 * isolamento das regras de negócio;
 * redução de regressões durante o desenvolvimento.
+
+## 2. Linguagem e Stack Utilizada
+
+A linguagem escolhida para o desenvolvimento do projeto foi **JavaScript**.
+
+O projeto utilizado nesta atividade é o **Arena UFRN**, uma aplicação web para gerenciamento e reserva de quadras.
+
+A stack utilizada atualmente é:
+
+### Backend
+
+* Node.js;
+* Express;
+* JavaScript com ES Modules;
+* Prisma ORM;
+* SQLite;
+* Better SQLite3.
+
+### Frontend
+
+* React;
+* Vite;
+* Tailwind CSS;
+* JavaScript.
+
+### Testes e qualidade
+
+* Jest;
+* Supertest;
+* SonarQube;
+* GitHub Actions.
+
+### Gerenciamento e versionamento
+
+* pnpm;
+* Git;
+* GitHub.
