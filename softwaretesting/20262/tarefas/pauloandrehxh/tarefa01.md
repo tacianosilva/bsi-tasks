@@ -84,5 +84,29 @@ No projeto também é utilizado o **Supertest**, que permite realizar requisiç�
 
 ### Links
 
-* Documentação oficial do Jest: [Documentação Jest](https://jestjs.io/docs/getting-started)
-* Documentação do Supertest: [Documentação Supertest](https://www.npmjs.com/package/supertest)
+* Documentação oficial do Jest: [Link Jest](https://jestjs.io/docs/getting-started)
+* Documentação do Supertest: [Link Supertest](https://www.npmjs.com/package/supertest)
+
+## 4. Ambiente de Desenvolvimento e Debug
+
+A IDE/editor utilizado durante o desenvolvimento é o **Visual Studio Code**.
+
+O VS Code possui suporte integrado para depuração de aplicações JavaScript e Node.js.
+
+Entre os recursos utilizados ou disponíveis estão:
+
+* breakpoints;
+* execução passo a passo;
+* inspeção de variáveis;
+* call stack;
+* watch expressions;
+* Debug Console;
+* execução e depuração através do terminal integrado;
+* Auto Attach para processos Node.js;
+* configuração de depuração através do arquivo `launch.json`.
+
+Essas ferramentas facilitam a identificação de problemas durante o desenvolvimento sem depender apenas de mensagens adicionadas através de `console.log()`.
+
+### Link
+
+* Documentação de Debug do VS Code: [Link Docs Debug](https://code.visualstudio.com/docs/debugtest/debugging)
