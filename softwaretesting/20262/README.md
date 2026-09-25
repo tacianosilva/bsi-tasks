@@ -6,9 +6,9 @@ Neste diretório teremos os links das tarefas e projetos dos discentes.
 
 * [Descrição das Tarefas](tarefas/README.md)
 
-* Discente 1:
-  * Link Tarefa 1 (issue): 
-  * Link Repositório do Projeto:
+* Paulo André Alves de Moura:
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/457
+  * Link Repositório do Projeto: https://github.com/pauloandrehxh/arena-ufrn
 * Discente 2:
   * Link Tarefa 1 (issue):
   * Link Repositório do Projeto:
