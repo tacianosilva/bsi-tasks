@@ -27,3 +27,6 @@ Neste diretório teremos os links das tarefas e projetos dos discentes.
 * Grupo 4:
   * Link Repositório:
   * Link Doc Visão:
+* Isabelle Cavalcanti da Silva:
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/458
+  * Link Repositório do Projeto: https://github.com/HelenaMariano2025/projetoPNLD
