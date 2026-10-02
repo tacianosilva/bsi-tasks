@@ -9,6 +9,8 @@ Neste diretório teremos os links das tarefas e projetos dos discentes.
 * Discente 1:
   * Link Tarefa 1 (issue): 
   * Link Repositório do Projeto:
+  * Link Tarefa 2 (issue): https://github.com/tacianosilva/bsi-tasks/issues/463
+  * Link Repositório do Projeto:  
 * Discente 2:
   * Link Tarefa 1 (issue):
   * Link Repositório do Projeto:
