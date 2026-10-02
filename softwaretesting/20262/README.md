@@ -5,9 +5,9 @@ Neste diretório teremos os links das tarefas e projetos dos discentes.
 ## Tarefas
 
 * [Descrição das Tarefas](tarefas/README.md)
-
-* Discente 1:
-  * Link Tarefa 1 (issue): 
+  
+* Discente 1: Joseph Douglas Moura Batista
+  * Link Tarefa 1 (issue):  
   * Link Repositório do Projeto:
   * Link Tarefa 2 (issue): https://github.com/tacianosilva/bsi-tasks/issues/463
   * Link Repositório do Projeto:  
