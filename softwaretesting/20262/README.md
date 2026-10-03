@@ -26,6 +26,6 @@ Neste diretório teremos os links das tarefas e projetos dos discentes.
 * Grupo 3:
   * Link Repositório:
   * Link Doc Visão:
-* Grupo 4:
+* Joseph Douglas:
   * Link Repositório:
   * Link Doc Visão:
