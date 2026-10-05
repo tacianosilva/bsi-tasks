@@ -34,8 +34,8 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Repositório do Projeto:
 
 * `JaineSouz` (Jaine Souza — G1):
-  * Link Tarefa 1 (issue):
-  * Link Tarefa 2 (issue):
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/448
+  * Link Tarefa 2 (issue): https://github.com/tacianosilva/bsi-tasks/issues/467
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto:
 
