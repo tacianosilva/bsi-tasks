@@ -14,7 +14,7 @@
 
 - **Repositório do projeto:** https://github.com/arthurazvd/comercializa
 - **Pull Request da implementação:** https://github.com/arthurazvd/comercializa/pull/3
-- **Relatório de Testes de Aceitação (QA):** https://github.com/arthurazvd/comercializa/blob/task/477/docs/qa/relatorio-qa-us14.md
+- **Relatório de Testes de Aceitação (QA):** https://github.com/arthurazvd/comercializa/blob/main/docs/qa/relatorio-qa-us14.md
 - **Dashboard do SonarQube LABENS:** https://labens.dct.ufrn.br/sonarqube/dashboard?id=comercializa
 - **Issue da disciplina:** https://github.com/tacianosilva/bsi-tasks/issues/477
 
@@ -178,7 +178,7 @@ Diante dessa limitação, os cenários de aceitação definidos para a US14 fora
 Os três cenários de aceitação executados foram aprovados e não foram identificados bugs funcionais durante a validação.
 
 **Relatório de QA:**  
-https://github.com/arthurazvd/comercializa/blob/task/477/docs/qa/relatorio-qa-us14.md
+https://github.com/arthurazvd/comercializa/blob/main/docs/qa/relatorio-qa-us14.md
 
 ## 13. Evidências
 
