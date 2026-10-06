@@ -86,14 +86,23 @@ partir do texto escrito.
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
-### G3 (a definir)
+### G3 — Comercializa
 
-  * Link Repositório:
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link SonarQube LABENS:
+Sistema web voltado ao gerenciamento de pequenos comércios, permitindo o controle de produtos,
+estoque, vendas e demais informações necessárias para auxiliar na administração do estabelecimento.
+
+**Equipe:** Arthur Azevêdo (`@arthurazvd`).
+
+**Tecnologias:** Python, Django, Django REST Framework e PostgreSQL.
+
+- Link Repositório: [https://github.com/arthurazvd/comercializa](https://github.com/arthurazvd/comercializa)
+- Link Documento de Visão: [https://github.com/arthurazvd/comercializa/blob/main/docs/01-visao-do-projeto.md](https://github.com/arthurazvd/comercializa/blob/main/docs/01-visao-do-projeto.md)
+- Link Relatório do Estado Atual dos Testes: [https://github.com/arthurazvd/comercializa/blob/main/docs/13-estado-atual-testes.md](https://github.com/arthurazvd/comercializa/blob/main/docs/13-estado-atual-testes.md)
+- Link Plano da Iteração 1: [https://github.com/arthurazvd/comercializa/blob/main/docs/14-iteracao-01.md](https://github.com/arthurazvd/comercializa/blob/main/docs/14-iteracao-01.md)
+- Link Plano de Teste Geral (PTG): [PTG](https://github.com/arthurazvd/comercializa/blob/main/docs/15-plano-teste-geral.md)
+- Link Plano de Teste das Iterações 1 e 2 (PTI): [PTI](https://github.com/arthurazvd/comercializa/blob/main/docs/16-plano-teste-iteracoes-01-02.md)
+- Link Workflow CI: [GitHub Actions](https://github.com/arthurazvd/comercializa/actions/runs/37508130355)
+- Link SonarQube LABENS: [Comercializa](https://labens.dct.ufrn.br/sonarqube/dashboard?id=comercializa)
 
 ### G4 (a definir)
 
