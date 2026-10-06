@@ -37,6 +37,19 @@ A imagem é construída a partir do **Ubuntu** e o **opencode é instalado como 
 
 A imagem oficial `ghcr.io/anomalyco/opencode` é mínima (baseada em Alpine Linux) e não traz Git, GitHub CLI nem Python. Por isso construímos a nossa própria imagem — veja a Seção 2.
 
+### Comando oficial (imagem mínima)
+
+```bash
+docker run -it --rm -v "$(pwd)":/workspace -w /workspace ghcr.io/anomalyco/opencode
+```
+
+- `-it`: terminal interativo (TUI do opencode).
+- `--rm`: remove o container ao sair (ambiente efêmero).
+- `-v "$(pwd)":/workspace`: monta a pasta atual do host em `/workspace`.
+- `-w /workspace`: diretório de trabalho inicial.
+
+Com ele o opencode já inicia na pasta do projeto, mas você precisará instalar Git, `gh` e Python sob demanda (Seção 4). Para ter tudo pronto de forma reproduzível, use a imagem da Seção 2.
+
 ---
 
 ## 2. Dockerfile de Referência
