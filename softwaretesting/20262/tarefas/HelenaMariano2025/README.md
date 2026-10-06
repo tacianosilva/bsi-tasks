@@ -12,3 +12,7 @@ Esta atividade apresenta a implementação e execução de testes automatizados 
 Foram desenvolvidos testes unitários com mocks para o `TurmaRepository`, um teste de integração utilizando o banco de dados MariaDB e um relatório de cobertura de código utilizando PHPUnit e Xdebug.
 
 Também foi configurado o projeto para utilizar o relatório de cobertura no SonarQube.
+
+# Tarefa 02 - Implementação do User Story da Iteração 1
+
+[Ver tarefa02.md](tarefa02.md)
