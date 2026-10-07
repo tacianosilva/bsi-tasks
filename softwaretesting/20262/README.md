@@ -45,6 +45,12 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software>
 
+* `Jose-Samuel-Lima` (José Samuel Lima — G4):
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/452
+  * Link Tarefa 2 (issue): https://github.com/tacianosilva/bsi-tasks/issues/479
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: https://github.com/MViniciusCoffe/SpendSmart
+
 ---
 
 ## 👥 Projetos de Grupo 2026.2
