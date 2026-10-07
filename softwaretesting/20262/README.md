@@ -48,6 +48,7 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
 * `MViniciusCoffe` (Marcus Vinícius de Souza Azevedo — SpendSmart):
   * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/449
   * Link Tarefa 2 (issue): https://github.com/tacianosilva/bsi-tasks/issues/468
+  * Link Tarefa 2 (entrega): [tarefas/MViniciusCoffe/tarefa02.md](tarefas/MViniciusCoffe/tarefa02.md)
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/MViniciusCoffe/SpendSmart>
 
