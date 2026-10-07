@@ -116,6 +116,7 @@ com cadastro de quadras, usuários e agendamento de horários.
   * Link Plano de Teste Geral (PTG): <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/plano_teste.md>
   * Link Plano de Teste das Iterações 1 e 2 (PTI): [Iteração 1](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/iteracoes/iteracao01.md) e [Iteração 2](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/iteracoes/iteracao02.md)
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/dashboard?id=arena-ufrn>
+  * Link Workflow de CI: [Configuração](https://github.com/pauloandrehxh/arena-ufrn/blob/main/.github/workflows/backend-ci.yaml) e [execução com sucesso](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/37555641340)
 
 ---
 
