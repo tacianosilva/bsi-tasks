@@ -15,7 +15,7 @@
 
 | Entrega                                                                  | Link                                                                                                                                       |
 | :----------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
-| Pull Request no repositório do projeto                                   | [SpendSmart — branch `task/468` (`main...task/468`)](https://github.com/MViniciusCoffe/SpendSmart/compare/main...task/468)                 |
+| Pull Request no repositório do projeto                                   | [SpendSmart #42](https://github.com/MViniciusCoffe/SpendSmart/pull/42)                                                                     |
 | Pull Request desta Tarefa (bsi-tasks)                                    | [#490](https://github.com/tacianosilva/bsi-tasks/pull/490)                                                                                 |
 | Relatório de Testes de Aceitação (QA da US-001)                          | [acceptance-test-report-us-001.md](https://github.com/MViniciusCoffe/SpendSmart/blob/task/468/docs/acceptance-test-report-us-001.md)       |
 | Relatório de QA da Iteração 1 (escrito pelo colega sobre a minha US-010) | [acceptance-test-report-iteration-1.md](https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/acceptance-test-report-iteration-1.md) |
@@ -241,8 +241,8 @@ falhando. O aceite depende de:
 
 ## 6. Pull Request no Repositório do Projeto
 
-**PR:** [SpendSmart — `compare/main...task/468`](https://github.com/MViniciusCoffe/SpendSmart/compare/main...task/468)
-(branch `task/468`, 4 commits — o PR é aberto a partir deste compare)
+**PR:** [SpendSmart #42](https://github.com/MViniciusCoffe/SpendSmart/pull/42)
+(branch `task/468`, 4 commits)
 
 **Commits:**
 
