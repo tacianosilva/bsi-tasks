@@ -45,6 +45,12 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software>
 
+* `pauloandrehxh` (Paulo André Alves de Moura — G4):
+  * Link Tarefa 1 (issue): <https://github.com/tacianosilva/bsi-tasks/issues/457>
+  * Link Tarefa 2 (issue): <https://github.com/tacianosilva/bsi-tasks/issues/471>
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
+
 ---
 
 ## 👥 Projetos de Grupo 2026.2
@@ -95,14 +101,22 @@ partir do texto escrito.
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
   * Link SonarQube LABENS:
 
-### G4 (a definir)
+### G4 — Arena UFRN
 
-  * Link Repositório:
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link SonarQube LABENS:
+Aplicação web para gerenciamento e reserva de quadras de areia da UFRN,
+com cadastro de quadras, usuários e agendamento de horários.
+
+**Equipe:** Paulo André Alves de Moura (`@pauloandrehxh`) e Luis Felipe (`@Luisfelipelinhares`).
+
+**Tecnologias:** JavaScript, React, Vite, Node.js, Express, Prisma, SQLite, Jest e Supertest.
+
+  * Link Repositório: <https://github.com/pauloandrehxh/arena-ufrn>
+  * Link Documento de Visão: <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/visao.md>
+  * Link Relatório do Estado Atual dos Testes: <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/estado_testes.md>
+  * Link Plano de Teste Geral (PTG): <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/plano_teste.md>
+  * Link Plano de Teste das Iterações 1 e 2 (PTI): [Iteração 1](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/iteracoes/iteracao01.md) e [Iteração 2](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/iteracoes/iteracao02.md)
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/dashboard?id=arena-ufrn>
+  * Link Workflow de CI: [Configuração](https://github.com/pauloandrehxh/arena-ufrn/blob/main/.github/workflows/backend-ci.yaml) e [execução com sucesso](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/37555641340)
 
 ---
 
@@ -110,4 +124,3 @@ partir do texto escrito.
 
   * Processo de desenvolvimento YP-Agentic: <https://github.com/tacianosilva/engenharia-software/tree/main/yp-agentic>
   * Servidor SonarQube do LABENS/UFRN: <https://labens.dct.ufrn.br/sonarqube/>
-
