@@ -45,6 +45,10 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software>
 
+* `pauloandrehxh` (Paulo André Alves de Moura — G4):
+  * Link Tarefa 2 (issue): <https://github.com/tacianosilva/bsi-tasks/issues/471>
+  * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
+
 ---
 
 ## 👥 Projetos de Grupo 2026.2
