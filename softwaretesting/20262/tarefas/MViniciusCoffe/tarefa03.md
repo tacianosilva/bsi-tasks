@@ -15,7 +15,7 @@
 
 | Entrega                                        | Link                                                                                                                                       |
 | :--------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
-| Branch de implementação (SpendSmart)            | [SpendSmart task/497](https://github.com/MViniciusCoffe/SpendSmart/tree/task/497)                                                           |
+| Pull Request no repositório do projeto         | [SpendSmart #45](https://github.com/MViniciusCoffe/SpendSmart/pull/45)                                                                     |
 | Especificação Gherkin da US-013                 | [docs/user-stories.md](https://github.com/MViniciusCoffe/SpendSmart/blob/task/497/docs/user-stories.md)                                     |
 | Testes de integração da US-013                 | [expenseRegistration.test.js](https://github.com/MViniciusCoffe/SpendSmart/blob/task/497/tests/integration/postgres/expenseRegistration.test.js) |
 | Relatório de QA da US-007 (José Samuel)        | Pendente                                                                                                                                    |
