@@ -16,3 +16,7 @@ Também foi configurado o projeto para utilizar o relatório de cobertura no Son
 # Tarefa 02 - Implementação do User Story da Iteração 1
 
 [Ver tarefa02.md](tarefa02.md)
+
+# Tarefa 03 - Implementação do User Story da Iteração 2 e Atuação como QA
+
+[Ver tarefa03.md](tarefa03.md)
