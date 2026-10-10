@@ -62,10 +62,10 @@ Jaine Souza (`@JaineSouz`).
 **Tecnologias:** PHP, MySQL, MySQLi, HTML, CSS, JavaScript, jQuery e Bootstrap.
 
   * Link Repositório: <https://github.com/HelenaMariano2025/projetoPNLD>
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
+  * Link Documento de Visão: <https://github.com/HelenaMariano2025/projetoPNLD/blob/main/docs/001-documento-visao.md>
+  * Link Relatório do Estado Atual dos Testes: <https://github.com/HelenaMariano2025/projetoPNLD/blob/main/docs/relatorio-estado-atual-testes.md>
+  * Link Plano de Teste Geral (PTG): <https://github.com/HelenaMariano2025/projetoPNLD/blob/main/docs/plano-geral-de-testes.md>
+  * Link Plano de Teste das Iterações 1 e 2 (PTI): <https://github.com/HelenaMariano2025/projetoPNLD/blob/main/docs/plano-testes-iteracoes-1-e-2.md>
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
 ### G2 — IA Voz
