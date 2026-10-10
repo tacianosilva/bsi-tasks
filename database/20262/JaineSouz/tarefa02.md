@@ -1,0 +1,120 @@
+# Tarefa 02 - MER e Projeto de Banco de Dados Relacional
+## Q1. Modelo Entidade-Relacionamento
+
+Os três elementos básicos de um Modelo Entidade-Relacionamento (MER) são:
+
+* **Entidade:** representa objetos ou elementos sobre os quais serão armazenados dados, como `Cliente` ou `Funcionário`.
+* **Atributo:** representa as características de uma entidade, como o nome e o e-mail de um `Cliente`.
+* **Relacionamento:** representa a associação entre duas ou mais entidades, como um `Cliente` possuir um `Projeto`.
+
+
+## Q2. Notações para Diagramas ER
+
+Existem diferentes notações para representar um Diagrama Entidade-Relacionamento (ER). As mais conhecidas são **Chen**, **Crow's Foot** e **UML**. Os mesmos conceitos podem ser representados de maneiras diferentes em cada notação.
+
+| Conceito | Chen | Crow's Foot | UML |
+|---|---|---|---|
+| **Entidade** | Retângulo | Caixa | Classe/caixa |
+| **Atributo** | Elipse | Campo dentro da entidade | Atributo dentro da classe |
+| **Relacionamento** | Losango | Linha entre as entidades | Associação entre classes |
+| **Cardinalidade** | Números ou indicadores próximos ao relacionamento | Símbolos de "pé de galinha" | Multiplicidades, como `1`, `0..1` e `1..*` |
+| **Entidade subordinada (fraca)** | Retângulo duplo | Dependência indicada pelo relacionamento | Pode ser representada por composição ou associação, dependendo do caso |
+
+Assim, um mesmo relacionamento, como **um cliente possuir vários projetos (1:N)**, pode ser representado por símbolos de cardinalidade diferentes dependendo da notação utilizada.
+
+## Q3. Diagrama ER
+
+```mermaid
+erDiagram
+
+    CLIENTE ||--o{ PROJETO : possui
+    PROJETO ||--o{ TAREFA : possui
+
+    SQUAD ||--|{ FUNCIONARIO : possui
+    SQUAD ||--o{ TAREFA : resolve
+
+    SQUAD ||--o{ SPRINT : organiza
+    SPRINT ||--o{ TAREFA : contem
+
+    SQUAD ||--o{ RELEASE : planeja
+    RELEASE ||--|{ TAREFA : agrupa
+    RELEASE }o--|| CLIENTE : destinada_a
+    RELEASE ||--|{ TESTE_VALIDACAO : passa_por
+
+    CLIENTE {
+        int codigo PK
+        string nome
+        string email
+    }
+
+    PROJETO {
+        int codigo PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        int codigo PK
+        string nome
+        string email
+        string papel
+    }
+
+    SQUAD {
+        int codigo PK
+        string nome
+    }
+
+    TAREFA {
+        int codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+
+    SPRINT {
+        int codigo PK
+        date data_inicio
+        date data_fim
+    }
+
+    RELEASE {
+        int codigo PK
+        string versao
+    }
+
+    TESTE_VALIDACAO {
+        int codigo PK
+        date data
+        string resultado
+    }
+```
+
+## Q4. Modelo Relacional
+
+A partir do diagrama ER, o modelo relacional é composto pelas seguintes tabelas:
+
+- **CLIENTE** (`codigo` PK, `nome`, `email`)
+- **PROJETO** (`codigo` PK, `nome`, `cliente_codigo` FK)
+- **SQUAD** (`codigo` PK, `nome`)
+- **FUNCIONARIO** (`codigo` PK, `nome`, `email`, `papel`, `squad_codigo` FK)
+- **SPRINT** (`codigo` PK, `data_inicio`, `data_fim`, `squad_codigo` FK)
+- **TAREFA** (`codigo` PK, `descricao`, `prioridade`, `situacao`, `estimativa_horas`, `projeto_codigo` FK, `squad_codigo` FK, `sprint_codigo` FK, `release_codigo` FK)
+- **RELEASE** (`codigo` PK, `versao`, `squad_codigo` FK, `cliente_codigo` FK)
+- **TESTE_VALIDACAO** (`codigo` PK, `data`, `resultado`, `release_codigo` FK)
+
+As chaves estrangeiras representam os relacionamentos entre as tabelas e referenciam as respectivas chaves primárias.
+
+
+## Q5. Integridade Referencial
+
+As restrições de integridade referencial garantem que as chaves estrangeiras das tabelas sempre correspondam a registros existentes nas tabelas relacionadas.
+
+- Um **projeto** deve estar associado a um `CLIENTE` existente.
+- Um **funcionário** deve estar associado a uma `SQUAD` existente.
+- Uma **sprint** deve estar associada a uma `SQUAD` existente.
+- Uma **tarefa** deve estar associada a um `PROJETO`, uma `SQUAD`, uma `SPRINT` e uma `RELEASE` existentes.
+- Uma **release** deve estar associada a uma `SQUAD` e a um `CLIENTE` existentes.
+- Um **teste de validação** deve estar associado a uma `RELEASE` existente.
+
+Além disso, cada `SQUAD` deve possuir pelo menos um funcionário com o papel de **tech lead**.
