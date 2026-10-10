@@ -70,9 +70,9 @@ O PR avançou depois para `270402f`, alterando apenas a documentação de
 evidências; o código testado não mudou. Se houver novas mudanças de código,
 o resultado precisará de reteste.
 
-Relatório reproduzível: `arena-ufrn/docs/qa/t3-us04-disponibilidade.md`, na
-branch local `docs/t3-qa-us04` (link público pendente de publicação). Runner:
-`backend/tests/acceptance/disponibilidade.qa.js`. Testes com Supertest,
+Relatório reproduzível: [QA da US04 — resultados e defeito](https://github.com/pauloandrehxh/arena-ufrn/blob/a5b736d9db43d5b4797c3487aaed9ffbcd65417f/docs/qa/t3-us04-disponibilidade.md),
+publicado na branch `docs/t3-qa-us04` pelo [PR #17](https://github.com/pauloandrehxh/arena-ufrn/pull/17),
+ainda aberto. Runner: `backend/tests/acceptance/disponibilidade.qa.js`. Testes com Supertest,
 SQLite temporário e dados sintéticos, sem alterar o PR do colega. O
 [CI do PR #16](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/38014945803)
 passou 201 testes/10 suítes; cobertura global: 83,37% statements,
@@ -88,17 +88,16 @@ ficam com o ciclo de revisão do PR #16. Não se afirma Quality Gate aprovado.
 
 | Item | Situação |
 |---|---|
-| PR da US03 no projeto | [#15 integrado](https://github.com/pauloandrehxh/arena-ufrn/pull/15); falta vincular o relatório de QA depois de publicá-lo |
-| QA de Paulo da US04 de Luis | Executado na revisão `725274c` do [PR #16](https://github.com/pauloandrehxh/arena-ufrn/pull/16); relatório e runner locais pendentes de publicação; 1 falha pendente |
+| PR da US03 no projeto | [#15 integrado](https://github.com/pauloandrehxh/arena-ufrn/pull/15); relatório de QA publicado posteriormente no [PR #17](https://github.com/pauloandrehxh/arena-ufrn/pull/17) |
+| QA de Paulo da US04 de Luis | Executado na revisão `725274c` do [PR #16](https://github.com/pauloandrehxh/arena-ufrn/pull/16); [relatório publicado](https://github.com/pauloandrehxh/arena-ufrn/blob/a5b736d9db43d5b4797c3487aaed9ffbcd65417f/docs/qa/t3-us04-disponibilidade.md); 1 falha pendente |
 | QA de Luis da US03 | [Modelo de relatório na `main`](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/qa/t3-us03-cancelamentos.md), com resultados condicionados à confirmação prática; evidência independente de execução ainda não comprovada |
 | SonarQube LABENS | Scanner do [CI da US03](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/37988121948) e do [CI da US04](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/38014945803) enviou análises; API do Quality Gate retornou 401, prints/problemas do dashboard pendentes |
 | PR da tarefa na disciplina | Ainda não aberto |
 
-O **relatório de QA exigido no enunciado já foi produzido e executado**; o
-endereço público desse arquivo só poderá ser informado após a publicação da
-branch `docs/t3-qa-us04`. Nesta revisão local, consulte o caminho
-`arena-ufrn/docs/qa/t3-us04-disponibilidade.md`. Não substituir esse caminho
-por um URL de arquivo ainda não publicado.
+O **relatório de QA exigido no enunciado foi produzido, executado e publicado**
+no [commit `a5b736d` do projeto](https://github.com/pauloandrehxh/arena-ufrn/blob/a5b736d9db43d5b4797c3487aaed9ffbcd65417f/docs/qa/t3-us04-disponibilidade.md).
+O PR #17 ainda depende de revisão/merge; o link aponta para a revisão fixa que
+contém o relatório, e não presume sua integração à `main`.
 
 US04 é responsabilidade de Luis Felipe (@Luisfelipelinhares), com QA de Paulo.
 O relatório da US03 publicado por Luis atribui pareceres "aprovado no modelo"
