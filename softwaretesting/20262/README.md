@@ -30,8 +30,8 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
 * `Isabellecavalcant` (Isabelle Cavalcanti — G1):
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
-  * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto:
+  * Link Tarefa 3 (issue): https://github.com/tacianosilva/bsi-tasks/issues/500
+  * Link Repositório do Projeto: https://github.com/HelenaMariano2025/projetoPNLD
 
 * `JaineSouz` (Jaine Souza — G1):
   * Link Tarefa 1 (issue):
