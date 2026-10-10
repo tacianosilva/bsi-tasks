@@ -92,7 +92,7 @@ ficam com o ciclo de revisão do PR #16. Não se afirma Quality Gate aprovado.
 | QA de Paulo da US04 de Luis | Executado na revisão `725274c` do [PR #16](https://github.com/pauloandrehxh/arena-ufrn/pull/16); [relatório publicado](https://github.com/pauloandrehxh/arena-ufrn/blob/a5b736d9db43d5b4797c3487aaed9ffbcd65417f/docs/qa/t3-us04-disponibilidade.md); 1 falha pendente |
 | QA de Luis da US03 | [Modelo de relatório na `main`](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/qa/t3-us03-cancelamentos.md), com resultados condicionados à confirmação prática; evidência independente de execução ainda não comprovada |
 | SonarQube LABENS | Scanner do [CI da US03](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/37988121948) e do [CI da US04](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/38014945803) enviou análises; API do Quality Gate retornou 401, prints/problemas do dashboard pendentes |
-| PR da tarefa na disciplina | Ainda não aberto |
+| PR da tarefa na disciplina | [#511 aberto para a `main` da disciplina](https://github.com/tacianosilva/bsi-tasks/pull/511), sem merge |
 
 O **relatório de QA exigido no enunciado foi produzido, executado e publicado**
 no [commit `a5b736d` do projeto](https://github.com/pauloandrehxh/arena-ufrn/blob/a5b736d9db43d5b4797c3487aaed9ffbcd65417f/docs/qa/t3-us04-disponibilidade.md).
