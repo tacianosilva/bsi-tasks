@@ -2,6 +2,10 @@
 
 Repositório para Auxílio no Ensino de Banco de Dados Engenharia de Software, Teste de Software e Programação Web do curso de Bacharelado em Sistemas de Informação CERES/UFRN - Caicó RN
 
+## Ambientes de Desenvolvimento (Docker & Dev Containers)
+
+Para orientações sobre configuração de ambientes isolados e padronizados com Docker e Dev Containers, consulte a [Documentação de Docker e Dev Containers](docs/docker/README.md) e os modelos executáveis na pasta [docker/](docker/).
+
 ## Teste de Software
 
 Na página da Disciplina [Teste de Software](softwaretesting/README.md) você encontra informações, materiais, exemplos e descrição das tarefas.
