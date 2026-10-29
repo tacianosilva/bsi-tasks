@@ -19,9 +19,13 @@ Ao término deste laboratório, o discente será capaz de:
 
 ## 2. Pré-requisitos e Verificação do Ambiente
 
-Para a realização desta atividade, é obrigatório possuir o Docker Engine e o plugin Docker Compose instalados no sistema operacional.
+Para a realização desta atividade, é obrigatório possuir o **Git**, o **Docker Engine** e o plugin **Docker Compose** instalados no sistema operacional.
 
-Abra um terminal e execute os comandos abaixo para verificar as versões instaladas:
+Abra um terminal e execute os comandos abaixo para verificar as ferramentas instaladas:
+
+```bash
+git --version
+```
 
 ```bash
 docker --version
@@ -31,17 +35,25 @@ docker --version
 docker compose version
 ```
 
-Certifique-se de que o daemon do Docker está em execução ativa antes de prosseguir.
+Certifique-se de que o Git está configurado com seu nome e e-mail (`git config --global user.name` e `git config --global user.email`) e que o daemon do Docker está em execução ativa antes de prosseguir.
 
-## 3. Variáveis de Ambiente e Versionamento
+## 3. Repositório Pessoal e Variáveis de Ambiente
 
 O gerenciamento de credenciais e parâmetros de infraestrutura em projetos de software deve seguir convenções rígidas para evitar o vazamento de senhas em repositórios públicos.
 
-### 3.1 Criação do arquivo modelo (.env.example)
+### 3.1 Repositório pessoal público para a disciplina
 
-O arquivo `.env.example` serve como documentação técnica do contrato de configuração da aplicação. Ele deve ser versionado no repositório pessoal e conter apenas valores genéricos ou descritivos, nunca credenciais reais de produção ou segredos.
+Para versionar os códigos, scripts e arquivos de configuração deste laboratório:
+1. O discente deve **criar ou reutilizar um repositório pessoal público no GitHub** dedicado à disciplina (por exemplo, `dct2201-banco-de-dados` ou `tarefas-bd`).
+2. No `README.md` desse repositório pessoal, inclua uma seção clara indicando onde estão localizados os arquivos da Tarefa 03 (por exemplo, na pasta `tarefa03/` ou na raiz do repositório), descrevendo a finalidade de cada arquivo.
+3. O link deste repositório pessoal público (apontando para o `README.md` correspondente) deverá ser informado no relatório em Markdown e na submissão do SIGAA.
+4. **Importante:** Os códigos de infraestrutura (`docker-compose.yml`, `.env.example`, `setup.sql`, etc.) devem ficar **exclusivamente no seu repositório pessoal público**. Para o repositório da turma (`bsi-tasks`), só deve ser enviado o arquivo Markdown de resposta na branch do seu Pull Request vinculado à issue criada.
 
-Crie na pasta raiz da sua atividade o arquivo `.env.example` com o seguinte conteúdo exato:
+### 3.2 Criação do arquivo modelo (.env.example)
+
+O arquivo `.env.example` serve como documentação técnica do contrato de configuração da aplicação. Ele deve ser versionado no seu repositório pessoal e conter apenas valores genéricos ou descritivos, nunca credenciais reais de produção ou segredos.
+
+Crie na pasta da Tarefa 03 o arquivo `.env.example` com o seguinte conteúdo exato:
 
 ```text
 MARIADB_ROOT_PASSWORD=troque_por_uma_senha_forte
@@ -50,7 +62,7 @@ MARIADB_PORT=3306
 CLOUDBEAVER_PORT=8978
 ```
 
-### 3.2 Criação do arquivo de ambiente local (.env)
+### 3.3 Criação do arquivo de ambiente local (.env)
 
 O arquivo `.env` contém os valores reais utilizados na sua máquina local durante o desenvolvimento. Este arquivo **nunca** deve ser adicionado ao controle de versão Git.
 
@@ -67,7 +79,7 @@ Regras fundamentais sobre o arquivo `.env`:
 - O arquivo deve se chamar exatamente `.env` (sem extensões como `.txt` ou prefixos adicionais).
 - Deve estar localizado obrigatoriamente no mesmo diretório em que o comando `docker compose` for executado.
 
-### 3.3 Configuração do .gitignore
+### 3.4 Configuração do .gitignore
 
 Para assegurar que o arquivo com credenciais locais nunca seja enviado ao repositório acidentalmente, declare-o no `.gitignore`.
 
@@ -77,7 +89,7 @@ Crie ou edite o arquivo `.gitignore` na raiz do seu projeto pessoal:
 .env
 ```
 
-### 3.4 Verificação de segurança e interpolação
+### 3.5 Verificação de segurança e interpolação
 
 Execute o comando do Git para comprovar que o arquivo `.env` está sendo corretamente ignorado pelo versionador:
 
@@ -392,23 +404,24 @@ Realize os 15 desafios descritos abaixo, documentando o código SQL utilizado, c
 
 O formato de entrega da Tarefa 03 combina o fluxo do repositório de tarefas da disciplina (`bsi-tasks`) com um repositório pessoal do discente para a infraestrutura do projeto.
 
-### 12.1 Criação do repositório pessoal do discente
-1. Crie um repositório público ou privado no seu GitHub pessoal para a atividade (ex.: `dct2201-tarefa03-docker`).
-2. Adicione a este repositório os arquivos gerados no laboratório:
+### 12.1 Criação ou reutilização do repositório pessoal
+1. Crie ou reutilize um **repositório pessoal público** no seu GitHub para a disciplina (ex.: `dct2201-banco-de-dados`).
+2. No `README.md` desse repositório pessoal, inclua uma seção indicando onde estão os arquivos da Tarefa 03 (por exemplo, dentro de uma pasta `tarefa03/` ou na raiz), descrevendo os artefatos:
    - `.env.example`
    - `docker-compose.yml`
    - `.gitignore` (garantindo que `.env` não seja versionado)
    - `setup.sql` (quando implementado no desafio)
-3. **ATENÇÃO:** Os arquivos de infraestrutura (`docker-compose.yml`, `.env.example`, etc.) **NÃO** devem ser enviados para o repositório principal `bsi-tasks`, pois lá é mantido apenas o histórico de entregas dos discentes.
+3. **ATENÇÃO:** Os códigos e arquivos de infraestrutura (`docker-compose.yml`, `.env.example`, etc.) **NÃO** devem ser enviados para o repositório `bsi-tasks`. Eles pertencem exclusivamente ao seu repositório pessoal público.
 
 ### 12.2 Fluxo no repositório bsi-tasks
 1. **Crie uma issue** no repositório original `tacianosilva/bsi-tasks` com o título padronizado:  
    `Tarefa 03 - Docker e SGBD - <username>`  
    (onde `<username>` é o seu usuário no GitHub). Guarde o número da issue para citar nos commits (`#<id_issue>`).
 2. Crie uma branch específica da tarefa no seu fork do `bsi-tasks` (ex.: `tarefa03/<username>` ou `feature/tarefa03`).
-3. Crie e edite o seu arquivo de resposta em Markdown localizado em:  
-   `database/20262/<username>/tarefa03.md`
-4. Faça commits pequenos contendo a referência à issue e abra o Pull Request da sua branch para a `main` do `bsi-tasks`.
+3. Crie e edite **apenas** o seu arquivo de resposta em Markdown localizado em:  
+   `database/20262/<username>/tarefa03.md`  
+   **Lembre-se:** o Pull Request para o `bsi-tasks` deve conter estritamente esse arquivo Markdown com as respostas e evidências; nenhum outro arquivo deve ser commitado no `bsi-tasks`.
+4. Faça commits pequenos contendo a referência à issue (`#<id_issue>`) e abra o Pull Request da sua branch para a `main` do `bsi-tasks`.
 
 ### 12.3 Conteúdo obrigatório do arquivo tarefa03.md
 O arquivo `tarefa03.md` deve conter:
