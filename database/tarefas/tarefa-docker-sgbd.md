@@ -202,9 +202,14 @@ O CloudBeaver é uma ferramenta de administração de banco de dados relacional 
 5. Clique em **Test Connection** para validar os parâmetros. Com o teste bem-sucedido, salve a conexão.
 6. Abra o editor de SQL (botão "SQL" na barra superior) vinculado a essa conexão para executar os scripts a seguir.
 
-## 7. Modelagem e Criação do Banco de Dados (DDL)
+## 7. Introdução Prática a DDL: Modelagem e Criação do Banco
 
-Conectado como usuário `root`, execute os comandos DDL (Data Definition Language) abaixo para criar a base de dados `biblioteca` e as tabelas com seus respectivos relacionamentos e restrições.
+> **Nota Didática — Para quem está começando com Bancos de Dados:**  
+> Você ainda estudará a linguagem SQL em detalhes nas próximas aulas. Por enquanto, guarde esta distinção fundamental:
+> - **DDL (Data Definition Language — Linguagem de Definição de Dados):** São os comandos responsáveis por criar, alterar ou excluir as **estruturas** onde as informações serão guardadas (é como projetar gavetas, pastas e prateleiras). Exemplos: `CREATE DATABASE` (cria o banco de dados) e `CREATE TABLE` (cria as tabelas e define suas colunas e regras).
+> - **DML (Data Manipulation Language — Linguagem de Manipulação de Dados):** São os comandos que lidam com o **conteúdo** dentro dessas estruturas (colocar novos dados com `INSERT`, consultar o que existe com `SELECT`, atualizar dados com `UPDATE` ou remover dados com `DELETE`).
+
+Conectado como usuário `root` no editor SQL do CloudBeaver, execute os comandos DDL abaixo para criar o banco de dados `biblioteca` e as tabelas `autores` e `livros`:
 
 ```sql
 CREATE DATABASE IF NOT EXISTS biblioteca
@@ -230,14 +235,18 @@ CREATE TABLE IF NOT EXISTS livros (
 );
 ```
 
-### Explicação técnica dos componentes DDL:
-- `utf8mb4` e `utf8mb4_general_ci`: Conjunto de caracteres e colagem modernos que suportam codificação completa Unicode, incluindo acentos, pontuação internacional e caracteres de múltiplos bytes.
-- `INT`: Tipo de dado numérico inteiro utilizado para identificadores únicos e anos.
-- `VARCHAR(N)`: Armazena cadeias de caracteres com tamanho dinâmico até o limite máximo estipulado por N.
-- `DECIMAL(10,2)`: Representação numérica de ponto fixo exata para grandezas financeiras (10 dígitos totais, sendo 2 casas decimais), evitando erros de arredondamento inerentes a tipos de ponto flutuante como `FLOAT` ou `DOUBLE`.
-- `AUTO_INCREMENT PRIMARY KEY`: Garante a unicidade do identificador de cada linha, gerando valores inteiros sequenciais automaticamente a cada inserção.
-- `NOT NULL`: Restrição de integridade de domínio que impede a inserção de registros sem preenchimento do campo.
-- `FOREIGN KEY (autor_id) REFERENCES autores(id)`: Restrição de integridade referencial que impede o cadastro de livros apontando para autores inexistentes e garante consistência relacional na base.
+### Explicação básica dos elementos DDL:
+- `CREATE DATABASE` e `USE`: Criam o compartimento principal chamado `biblioteca` e ativam esse banco para os comandos seguintes.
+- `utf8mb4`: Permite armazenar qualquer caractere Unicode (acentuação da língua portuguesa, caracteres internacionais e símbolos).
+- `INT`: Define uma coluna numérica inteira (usada para anos e códigos identificadores).
+- `VARCHAR(N)`: Define um campo de texto com limite máximo de N caracteres.
+- `DECIMAL(10,2)`: Formato numérico exato com 2 casas decimais, ideal para valores monetários (preços).
+- `AUTO_INCREMENT PRIMARY KEY`: Identificador único de cada linha. O banco gera números sequenciais automáticos (1, 2, 3...) a cada nova inserção, impedindo duplicidade de identificadores.
+- `NOT NULL`: Obriga o preenchimento do campo (o dado não pode ficar vazio).
+- `FOREIGN KEY (autor_id) REFERENCES autores(id)`: Chave estrangeira que conecta a tabela `livros` à tabela `autores`. Garante integridade referencial: um livro só pode ser cadastrado se o seu `autor_id` pertencer a um autor que já existe previamente na tabela `autores`.
+
+**Pergunta Discursiva 1 (para responder no seu relatório):**  
+*Explique com suas palavras a diferença entre criar uma tabela (DDL) e inserir registros nessa tabela (DML). Se apagarmos uma tabela com um comando DDL (`DROP TABLE`), o que acontece com os dados que estavam dentro dela?*
 
 ## 8. Gerenciamento de Usuários e Privilégios
 
@@ -280,13 +289,17 @@ Observe que `app_biblioteca` possui apenas operações de manipulação de dados
 DROP TABLE autores;
 ```
 
-3. O MariaDB irá recusar a instrução e emitir o seguinte erro:
+3. O MariaDB irá recusar a instrução e emitir a seguinte mensagem de erro:
 
 ```text
 SQL Error [1142] [42000]: DROP command denied to user 'app_biblioteca'@'...' for table 'autores'
 ```
 
-4. Documente essa evidência no relatório em Markdown (com print legível ou registro exato de tela) exibindo a instrução, o usuário conectado e a mensagem exata de erro retornada pelo SGBD. Isso comprova que a integridade física do banco de dados está resguardada mesmo sob eventual comprometimento da conta da aplicação.
+**Pergunta Discursiva 2 (para responder no seu relatório):**  
+*Descreva com suas palavras o que aconteceu quando você tentou executar o comando `DROP TABLE autores` com a conta `app_biblioteca`. Por que o MariaDB recusou a operação com o erro 1142? De que forma essa restrição protege a integridade do banco de dados caso a aplicação web sofra uma invasão ou falha de programação?*
+
+**Pergunta Discursiva 3 (para responder no seu relatório):**  
+*Por que os usuários foram criados com o host `'%'` em vez de `'localhost'`? Qual é o papel da rede interna do Docker nessa decisão técnica?*
 
 ### 8.4 Operações de revogação e remoção (referência técnica)
 
@@ -300,9 +313,13 @@ Para gerenciar o ciclo de vida de privilégios, o SGBD disponibiliza os comandos
 -- DROP USER 'usuario_exemplo'@'%';
 ```
 
-## 9. Carga de Dados Inicial
+## 9. Carga de Dados e Povoamento com IA Generativa
 
-Conectado como `root` ou como `app_biblioteca`, execute a inserção dos registros no banco `biblioteca`:
+Os comandos de inserção (`INSERT`) pertencem à categoria **DML** (Data Manipulation Language). Eles são usados para inserir tuplas (linhas de registros) nas tabelas que você criou.
+
+### 9.1 Carga inicial mínima
+
+Conectado como `root` ou como `app_biblioteca`, execute a inserção dos registros clássicos no banco `biblioteca`:
 
 ```sql
 USE biblioteca;
@@ -321,26 +338,69 @@ INSERT INTO livros (titulo, ano_publicacao, preco, autor_id) VALUES
 ('Orgulho e Preconceito', 1813, 29.90, 4);
 ```
 
-## 10. Consultas Obrigatórias
+### 9.2 Povoamento expandido: Gerando mais dados com IA Generativa
 
-Execute individualmente cada uma das seis consultas SQL obrigatórias a seguir. Registre o resultado de cada uma no relatório em Markdown.
+Para testar consultas e operações com um volume mais realista de dados, você irá utilizar uma ferramenta de IA generativa (como ChatGPT, Claude ou Gemini) para gerar um lote adicional de autores e livros.
+
+Copie e utilize o seguinte prompt na ferramenta de IA da sua escolha:
+
+```text
+Atue como um especialista em bancos de dados relacionais. 
+
+Tenho duas tabelas no MariaDB com a seguinte estrutura DDL:
+
+CREATE TABLE autores (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  pais VARCHAR(50),
+  ano_nascimento INT
+);
+
+CREATE TABLE livros (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(150) NOT NULL,
+  ano_publicacao INT,
+  preco DECIMAL(10,2),
+  autor_id INT,
+  FOREIGN KEY (autor_id) REFERENCES autores(id)
+);
+
+Já possuo 4 autores cadastrados (com IDs de 1 a 4). 
+Por favor, gere comandos SQL 'INSERT INTO' para:
+1. Mais 10 autores de diversas nacionalidades e épocas históricas (IDs a partir de 5).
+2. Pelo menos 25 livros variados associados corretamente a esses novos autores (e também aos autores de IDs 1 a 4).
+3. Preços realistas em formato numérico decimal (ex: 49.90) e anos de publicação consistentes com a época de nascimento do respectivo autor.
+
+Retorne apenas o bloco de comandos SQL prontos para execução no MariaDB.
+```
+
+**Instruções de execução:**
+1. Execute o script SQL gerado pela IA no editor SQL do CloudBeaver.
+2. Salve os comandos gerados em um arquivo chamado `povoamento.sql` no seu repositório pessoal no GitHub.
+
+**Pergunta Discursiva 4 (para responder no seu relatório):**  
+*Quantos autores e livros no total ficaram cadastrados na sua base após a execução da carga expandida? O que aconteceria se você tentasse inserir um livro cujo `autor_id` fosse 999 (um autor inexistente)? Qual regra do banco impede essa ação?*
+
+## 10. Consultas Obrigatórias (Leitura de Dados com SELECT)
+
+As instruções de consulta são realizadas através do comando `SELECT`. Embora você ainda vá aprofundar os operadores de consulta ao longo da disciplina, execute individualmente cada uma das seis consultas abaixo no CloudBeaver para inspecionar os dados.
 
 ### Consulta 1: Seleção completa de livros
-Demonstra a recuperação irrestrita de todas as colunas e tuplas cadastradas na relação de livros.
+Recupera todos os registros e todas as colunas cadastradas na tabela de livros.
 ```sql
 SELECT * FROM livros;
 ```
 
 ### Consulta 2: Projeção de atributos e ordenação descendente
-Demonstra a seleção de atributos específicos (projeção) com ordenação cronológica decrescente por ano de publicação.
+Seleciona apenas as colunas de título e ano, exibindo as obras em ordem cronológica decrescente (do mais recente para o mais antigo).
 ```sql
 SELECT titulo, ano_publicacao
 FROM livros
 ORDER BY ano_publicacao DESC;
 ```
 
-### Consulta 3: Filtragem com predicado temporal
-Demonstra a aplicação de restrição condicional na cláusula WHERE para filtrar obras do século XIX ou anteriores.
+### Consulta 3: Filtragem condicional (WHERE)
+Filtra os livros aplicando uma condição temporal: apenas livros publicados antes do ano de 1900.
 ```sql
 SELECT *
 FROM livros
@@ -348,15 +408,15 @@ WHERE ano_publicacao < 1900;
 ```
 
 ### Consulta 4: Junção relacional (INNER JOIN) entre livros e autores
-Demonstra a combinação de dados de duas relações através do cruzamento entre chave primária e chave estrangeira.
+Combina dados de duas tabelas diferentes conectando a chave estrangeira (`livros.autor_id`) com a chave primária (`autores.id`), permitindo exibir o título do livro junto com o nome real do seu autor e o preço.
 ```sql
 SELECT l.titulo, a.nome AS autor, l.preco
 FROM livros l
 JOIN autores a ON l.autor_id = a.id;
 ```
 
-### Consulta 5: Agrupamento e função de agregação estatística
-Demonstra o particionamento dos registros por autor (GROUP BY) calculando a média aritmética dos preços de suas obras.
+### Consulta 5: Agrupamento e cálculo de média (GROUP BY e AVG)
+Agrupa as linhas por autor e calcula a média aritmética de preço das obras de cada escritor.
 ```sql
 SELECT a.nome AS autor, AVG(l.preco) AS preco_medio
 FROM autores a
@@ -364,41 +424,44 @@ JOIN livros l ON a.id = l.autor_id
 GROUP BY a.id, a.nome;
 ```
 
-### Consulta 6: Subconsulta escalar com filtro relacional
-Demonstra o aninhamento de uma consulta interna para determinar a média geral de preços, retornando apenas as obras acima desse valor.
+### Consulta 6: Subconsulta comparativa
+Usa uma consulta interna para calcular a média geral de preço de todos os livros e, em seguida, lista apenas os livros cujo preço individual seja superior a essa média.
 ```sql
 SELECT *
 FROM livros
 WHERE preco > (SELECT AVG(preco) FROM livros);
 ```
 
+**Pergunta Discursiva 5 (para responder no seu relatório):**  
+*Analise as Consultas 4 e 5. Em linguagem simples, qual é a vantagem prática de dividir os dados em duas tabelas relacionadas (`autores` e `livros`) em vez de guardar o nome e o país do autor repetido dentro de cada linha da tabela de livros?*
+
 ## 11. Desafios Práticos
 
-Realize os 15 desafios descritos abaixo, documentando o código SQL utilizado, comandos no terminal, justificativas conceituais e evidências de execução no arquivo de relatório da entrega.
+Realize os 15 desafios descritos abaixo. No seu arquivo `tarefa03.md`, documente o código SQL utilizado, os comandos no terminal e as respostas discursivas solicitadas para cada desafio (não é necessário anexar capturas de tela; as evidências são o código e as explicações conceituais).
 
 ### Bloco A: Docker e Infraestrutura de Ambiente
 
-1. **Alteração de porta do SGBD:** Altere a variável `MARIADB_PORT` no `.env` para a porta `3307`. Reinicie o serviço e reconfigure a conexão do CloudBeaver conectando na porta externa alterada, comprovando o mapeamento correto.
-2. **Dois ambientes simultâneos:** Configure duas pastas distintas no seu computador com arquivos `docker-compose.yml` e portas/volumes desacoplados. Suba ambos simultaneamente e comprove com `docker ps` quatro contêineres rodando em paralelo sem conflitos de rede ou volume.
-3. **Persistência do volume e alteração de senha de root:** Altere o valor de `MARIADB_ROOT_PASSWORD` no arquivo `.env` para uma nova senha qualquer. Execute `docker compose up -d` e comprove que a autenticação antiga continua válida enquanto a nova senha falha. Explique detalhadamente por que isso ocorre e quais são as duas formas possíveis de aplicar uma nova senha de root.
-4. **Comportamento da validação estrita (:?):** Apague temporariamente o arquivo `.env` (ou comente a linha da senha de root) e execute `docker compose up -d`. Documente a mensagem de erro do Compose e explique o propósito técnico do modificador `:?` para ambientes de produção.
+1. **Alteração de porta do SGBD:** Altere a variável `MARIADB_PORT` no `.env` para a porta `3307`. Reinicie o serviço e explique como você reconfigurou a conexão do CloudBeaver para acessar o banco na porta alterada.
+2. **Dois ambientes simultâneos:** Configure duas pastas distintas no seu computador com arquivos `docker-compose.yml` e portas/volumes desacoplados. Explique como você garantiu que quatro contêineres rodassem em paralelo sem conflito de portas ou nomes.
+3. **Persistência do volume e alteração de senha de root:** Altere o valor de `MARIADB_ROOT_PASSWORD` no arquivo `.env` para uma nova senha qualquer. Execute `docker compose up -d` e observe que a autenticação antiga continua válida enquanto a nova falha. Explique detalhadamente por que isso ocorre e quais são os dois caminhos possíveis para aplicar uma nova senha de root.
+4. **Comportamento da validação estrita (:?):** Apague temporariamente o arquivo `.env` (ou comente a linha da senha de root) e execute `docker compose up -d`. Documente a mensagem de erro emitida pelo Compose e explique discursivamente a importância do modificador `:?` em ambientes profissionais.
 5. **Inspeção de variáveis no compose:** Execute `docker compose config` no terminal e liste três variáveis de ambiente que foram resolvidas e interpoladas a partir do `.env`.
 
-### Bloco B: Modelagem e Consultas SQL Avançadas
+### Bloco B: Modelagem e Consultas SQL Básicas
 
 6. **Criação da tabela de empréstimos:** Escreva o comando DDL para criar a tabela `emprestimos` contendo os campos `id` (INT AUTO_INCREMENT PRIMARY KEY), `livro_id` (INT), `data_emprestimo` (DATE) e `devolvido` (BOOLEAN), com restrição de chave estrangeira referenciando `livros(id)`.
 7. **Carga da tabela empréstimos:** Escreva as instruções `INSERT` para cadastrar três registros de empréstimos, sendo dois com status não devolvido (`FALSE` ou `0`) e um devolvido (`TRUE` ou `1`).
 8. **Consulta de pendências:** Escreva uma consulta que liste todos os empréstimos pendentes (não devolvidos), trazendo o título do livro, a data de empréstimo e o nome do autor do livro.
 9. **Filtragem de grupos com HAVING:** Escreva uma consulta que agrupe os livros por autor e retorne a contagem total de obras de cada um, filtrando exclusivamente autores que possuem mais de 1 livro cadastrado (`HAVING COUNT(*) > 1`).
-10. **Atualização proporcional (UPDATE):** Execute uma instrução DML para reajustar o preço de um livro específico em 10% de acréscimo. Exiba o `SELECT` antes e após a alteração.
-11. **Remoção condicional (DELETE):** Cadastre um novo autor sem nenhum livro associado e, em seguida, execute a instrução `DELETE` para removê-lo da tabela `autores`. Documente por que essa operação é permitida sem violar integridade referencial.
+10. **Atualização proporcional (UPDATE):** Execute uma instrução DML para reajustar o preço de um livro específico em 10% de acréscimo. Transcreva a consulta `UPDATE` utilizada e comente o resultado.
+11. **Remoção condicional (DELETE):** Cadastre um novo autor sem nenhum livro associado e, em seguida, execute a instrução `DELETE` para removê-lo da tabela `autores`. Explique por que essa remoção foi aceita sem violar a restrição de chave estrangeira.
 
 ### Bloco C: Administração e Privilégios Avançados
 
 12. **Criação de usuário restrito para relatórios:** Crie um usuário chamado `relatorios` com senha `Relatorios2026!`, concedendo privilégio de `SELECT` exclusivamente sobre a tabela `livros` do banco `biblioteca`.
-13. **Teste de restrição de visibilidade:** Conecte-se com o usuário `relatorios` e tente consultar a tabela `autores`. Capture e explique a mensagem de erro emitida pelo SGBD.
-14. **Concessão e revogação dinâmica de privilégios:** Conectado como `root`, conceda privilégio de `INSERT` na tabela `livros` para o usuário `relatorios`. Conecte-se como `relatorios`, realize uma inserção com sucesso e, em seguida, retorne ao `root` e revogue o privilégio via `REVOKE`. Comprove que nova tentativa de inserção falha.
-15. **Script idempotente de automação (setup.sql):** Desenvolva um script SQL completo e autocontido chamado `setup.sql` que recrie do zero todo o banco de dados `biblioteca`, suas tabelas, restrições, usuários (`app_biblioteca`, `consulta`) com privilégios e a carga de dados original. O script deve ser idempotente (usar cláusulas como `DROP ... IF EXISTS`, `CREATE ... IF NOT EXISTS`), de modo que possa ser reexecutado múltiplas vezes sem erros.
+13. **Teste de restrição de visibilidade:** Conecte-se com o usuário `relatorios`, tente consultar a tabela `autores` e transcreva a mensagem de erro emitida pelo SGBD, explicando o motivo do bloqueio.
+14. **Concessão e revogação dinâmica de privilégios:** Conectado como `root`, conceda privilégio de `INSERT` na tabela `livros` para o usuário `relatorios`. Realize uma inserção de teste com sucesso e, em seguida, revogue o privilégio via `REVOKE`. Descreva discursivamente o resultado de tentar inserir novamente após a revogação.
+15. **Script idempotente de automação (setup.sql):** Desenvolva um script SQL completo chamado `setup.sql` que recrie do zero todo o banco de dados `biblioteca`, suas tabelas, restrições, usuários (`app_biblioteca`, `consulta`) com privilégios e a carga de dados. Versiona esse arquivo no seu repositório pessoal no GitHub.
 
 ## 12. Fluxo de Entrega e Estrutura do Relatório
 
@@ -424,25 +487,30 @@ O formato de entrega da Tarefa 03 combina o fluxo do repositório de tarefas da 
 4. Faça commits pequenos contendo a referência à issue (`#<id_issue>`) e abra o Pull Request da sua branch para a `main` do `bsi-tasks`.
 
 ### 12.3 Conteúdo obrigatório do arquivo tarefa03.md
-O arquivo `tarefa03.md` deve conter:
-- **Identificação:** Nome do discente, usuário GitHub e e-mail acadêmico.
-- **Link do Repositório Pessoal:** Link clicável para o repositório GitHub do discente contendo os arquivos de configuração (`docker-compose.yml`, `.env.example`, `.gitignore`, `setup.sql`).
-- **Prints e Evidências Práticas:**
-  - Print do `docker ps` com contêineres ativos (`Up`).
-  - Print da árvore de arquivos do projeto no repositório pessoal.
-  - Print do `git check-ignore -v .env`.
-  - Print do `docker compose config` com a senha de root devidamente tarjada.
-  - Print da conexão do CloudBeaver com o banco `biblioteca`.
-  - Prints das seis consultas obrigatórias com os dados resultantes visíveis.
-  - Prints dos desafios dos Blocos A, B e C.
-  - Print do `SHOW GRANTS` dos usuários `app_biblioteca` e `consulta`.
-  - Print do erro `SQL Error [1142]` ao tentar executar `DROP TABLE` com `app_biblioteca`.
-- **Respostas Dissertativas:**
-  - **Questão a:** Por que uma aplicação comercial nunca deve se conectar ao banco de dados utilizando o usuário `root`? O que pode ocorrer com o servidor de banco de dados caso as credenciais do usuário da aplicação sejam vazadas?
-  - **Questão b:** Qual é a diferença fundamental entre privilégios DDL (Data Definition Language) e DML (Data Manipulation Language)? Por que é uma boa prática de segurança separá-los em contas de usuários distintas?
-  - **Questão c:** Por que o arquivo `.env.example` deve ser commitado no repositório de código enquanto o arquivo `.env` nunca deve ser versionado? Quais são os riscos e consequências práticas de comitar credenciais reais em um repositório público no GitHub?
-  - **Questão d:** O uso do arquivo `.env` e a inclusão no `.gitignore` eliminam por completo todos os riscos de segurança de credenciais em um ambiente de desenvolvimento e produção? Justifique sua resposta considerando que o arquivo permanece armazenado em texto puro no sistema de arquivos do servidor.
-  - **Questão e:** O que é um contêiner e quais são as principais vantagens de utilizar o Docker para provisionar ambientes de banco de dados em atividades didáticas de graduação em comparação com a instalação manual do SGBD diretamente no sistema operacional do computador do aluno?
+O arquivo `tarefa03.md` deve ser organizado nas seguintes seções:
+
+1. **Identificação e Repositório:**
+   - Nome completo do discente, usuário no GitHub e e-mail acadêmico.
+   - Link direto e clicável para o **repositório pessoal público no GitHub** contendo os arquivos de configuração (`docker-compose.yml`, `.env.example`, `.gitignore`, `povoamento.sql` e `setup.sql`), com o `README.md` orientativo.
+
+2. **Respostas às Perguntas Discursivas dos Passos Práticos:**
+   - **Pergunta Discursiva 1:** Diferença entre DDL e DML, e impacto de um `DROP TABLE`.
+   - **Pergunta Discursiva 2:** Análise do erro 1142 ao tentar `DROP TABLE` com usuário restrito e relação com o princípio do menor privilégio.
+   - **Pergunta Discursiva 3:** Justificativa técnica para o uso do host `'%'` em vez de `'localhost'` na arquitetura conteinerizada do Docker.
+   - **Pergunta Discursiva 4:** Relato sobre o povoamento expandido gerado com IA (quantidade final de registros) e o que ocorre ao tentar associar livro a autor inexistente (integridade referencial).
+   - **Pergunta Discursiva 5:** Análise das consultas relacionais e vantagens de normalizar dados em tabelas separadas (`autores` e `livros`) em vez de duplicar textos.
+
+3. **Respostas Dissertativas Conceituais:**
+   - **Questão a:** Por que uma aplicação comercial nunca deve se conectar ao banco de dados utilizando o usuário `root`? O que pode ocorrer com o servidor de banco de dados caso as credenciais do usuário da aplicação sejam vazadas?
+   - **Questão b:** Qual é a diferença fundamental entre privilégios DDL (Data Definition Language) e DML (Data Manipulation Language)? Por que é uma boa prática de segurança separá-los em contas de usuários distintas?
+   - **Questão c:** Por que o arquivo `.env.example` deve ser commitado no repositório de código enquanto o arquivo `.env` nunca deve ser versionado? Quais são os riscos e consequências práticas de comitar credenciais reais em um repositório público no GitHub?
+   - **Questão d:** O uso do arquivo `.env` e a inclusão no `.gitignore` eliminam por completo todos os riscos de segurança de credenciais em um ambiente de desenvolvimento e produção? Justifique sua resposta considerando que o arquivo permanece armazenado em texto puro no sistema de arquivos do servidor.
+   - **Questão e:** O que é um contêiner e quais são as principais vantagens de utilizar o Docker para provisionar ambientes de banco de dados em atividades didáticas de graduação em comparação com a instalação manual do SGBD diretamente no sistema operacional do computador do aluno?
+
+4. **Desafios Realizados:**
+   - Apresentação dos códigos SQL desenvolvidos, transcrição dos comandos do terminal e justificativas conceituais para os desafios dos Blocos A, B e C que foram executados.
+
+> **Observação:** Não é necessário anexar capturas de tela (prints). As evidências da sua prática serão avaliadas através da clareza e precisão das suas respostas discursivas e da conferência dos arquivos versionados no seu repositório pessoal público.
 
 ### 12.4 Envio no SIGAA
 No portal SIGAA, na tarefa correspondente, o discente deve enviar textualmente:
