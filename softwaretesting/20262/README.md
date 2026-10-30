@@ -45,6 +45,12 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software>
 
+* `MViniciusCoffe` (Marcus Vinícius de Souza Azevedo — SpendSmart):
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/449
+  * Link Tarefa 2 (issue): https://github.com/tacianosilva/bsi-tasks/issues/468
+  * Link Tarefa 3 (issue): https://github.com/tacianosilva/bsi-tasks/issues/497
+  * Link Repositório do Projeto: <https://github.com/MViniciusCoffe/SpendSmart>
+
 ---
 
 ## 👥 Projetos de Grupo 2026.2
@@ -86,14 +92,20 @@ partir do texto escrito.
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
-### G3 (a definir)
+### G3 — SpendSmart
 
-  * Link Repositório:
+Sistema pessoal de controle financeiro: receitas, despesas, categorias e dashboard, em Next.js + Supabase.
+
+**Equipe:** Marcus Vinícius de Souza Azevedo (`@MViniciusCoffe`) e José Samuel Lima (`@Jose-Samuel-Lima`).
+
+**Tecnologias:** Next.js, React, Supabase (PostgreSQL), Jest, SonarQube.
+
+  * Link Repositório: <https://github.com/MViniciusCoffe/SpendSmart>
   * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link SonarQube LABENS:
+  * Link Relatório do Estado Atual dos Testes: <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/test-state-report.md>
+  * Link Plano de Teste Geral (PTG): <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/test-plan.md>
+  * Link Plano de Teste das Iterações 1 e 2 (PTI): <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/test-plan-iterations.md>
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/dashboard?id=spendsmart>
 
 ### G4 (a definir)
 
