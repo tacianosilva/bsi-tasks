@@ -16,7 +16,7 @@
 - **Pergunta 1**
     - Enunciado: *Explique com suas palavras a diferença entre criar uma tabela (DDL) e inserir registros nessa tabela (DML). Se apagarmos uma tabela com um comando DDL (`DROP TABLE`), o que acontece com os dados que estavam dentro dela?*
 
-    - Resposta:
+    - Resposta: DDL serve para criar a estrutura da tabela que receberá dados posteriormente, mas está vazia em sua concepção. DML serve para popular a tabela com dados que estejam organizados conforme a estrutura da tabela e as regras do banco impostas. Ao apagar uma tabela utilizando o comando DROP TABLE, a estrutura da tabela e todos os dados armazenados nela são eliminados definitivamente do banco de dados. Caso existam restrições de chave estrangeira apontando para essa tabela, o SGBD interromperá a execução do comando e exibirá um erro, impedindo o apagamento até que as dependências sejam resolvidas.
 - **Pergunta 2**
     - Enunciado: *Descreva com suas palavras o que aconteceu quando você tentou executar o comando `DROP TABLE autores` com a conta `app_biblioteca`. Por que o MariaDB recusou a operação com o erro 1142? De que forma essa restrição protege a integridade do banco de dados caso a aplicação web sofra uma invasão ou falha de programação?*
 
