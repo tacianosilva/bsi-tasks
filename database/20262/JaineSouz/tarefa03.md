@@ -9,7 +9,7 @@
 - **Disciplina:** DCT2201 — Banco de Dados
 - **Issue:** [#523 — Tarefa 03 - Docker e SGBD - JaineSouz](https://github.com/tacianosilva/bsi-tasks/issues/523)
 - **Repositório pessoal:** [DCT2201 — Banco de Dados](https://github.com/JaineSouz/dct2201-banco-de-dados)
-- **Pull Request:** (inserir o link após abrir o PR)
+- **Pull Request:** (https://github.com/tacianosilva/bsi-tasks/pull/528)
 
 Os arquivos de infraestrutura e configuração da atividade estão organizados no repositório pessoal, principalmente nas pastas `tarefa03/` e `tarefa03-instancia2/`. O repositório contém os arquivos `docker-compose.yml`, `.env.example`, `.gitignore`, `povoamento.sql` e `setup.sql`, além do README com orientações sobre a organização do projeto.
 
