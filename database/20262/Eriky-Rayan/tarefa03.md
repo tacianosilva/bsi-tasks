@@ -26,7 +26,7 @@
 - **Pergunta 3**
     - Enunciado: *Por que os usuários foram criados com o host `'%'` em vez de `'localhost'`? Qual é o papel da rede interna do Docker nessa decisão técnica?*
 
-    - Resposta:
+    - Resposta: A especificação `'usuario'@'localhost'` limita o acesso estritamente a conexões locais que partem de dentro do próprio contêiner do banco de dados (via soquete Unix ou interface de loopback). Por estarem em contêineres distintos, o CloudBeaver faz a conexão utilizando o IP atribuído à sua própria interface na rede do Docker. Como o IP exato dos contêineres pode mudar a cada reinicialização ou recriação do ambiente, utiliza-se o caractere coringa '%' ('usuario'@'%'), que instrui o SGBD a aceitar conexões vindas de qualquer endereço IP, viabilizando a comunicação entre os contêineres da rede Docker.
 - **Pergunta 4**
     - Enunciado: *Quantos autores e livros no total ficaram cadastrados na sua base após a execução da carga expandida? O que aconteceria se você tentasse inserir um livro cujo `autor_id` fosse 999 (um autor inexistente)? Qual regra do banco impede essa ação?*
 
