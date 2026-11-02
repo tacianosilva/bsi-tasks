@@ -8,42 +8,46 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
 
 > **Prazo unificado de entrega para a 1ª unidade:** Até **06/10/2026**.
 
-* [Guia e Visão Geral das Tarefas](tarefas/README.md)
-* **Tarefas Individuais:**
-  * [Tarefa 01 — Teste de Unidade, Integração, Cobertura e CI](tarefas/T1.md)
-  * [Tarefa 02 — Implementação do User Story da Iteração 1 e Atuação como QA](tarefas/T2.md)
-  * [Tarefa 03 — Implementação do User Story da Iteração 2 e Atuação como QA](tarefas/T3.md)
-* **Tarefas de Projeto (Grupo):**
-  * [Projeto 01 — Dados dos Projetos e Documentos Gerais do Projeto](tarefas/P1.md)
-  * [Projeto 02 — Planos de Teste e Integração Contínua com SonarQube](tarefas/P2.md)
+- [Guia e Visão Geral das Tarefas](tarefas/README.md)
+- **Tarefas Individuais:**
+  - [Tarefa 01 — Teste de Unidade, Integração, Cobertura e CI](tarefas/T1.md)
+  - [Tarefa 02 — Implementação do User Story da Iteração 1 e Atuação como QA](tarefas/T2.md)
+  - [Tarefa 03 — Implementação do User Story da Iteração 2 e Atuação como QA](tarefas/T3.md)
+- **Tarefas de Projeto (Grupo):**
+  - [Projeto 01 — Dados dos Projetos e Documentos Gerais do Projeto](tarefas/P1.md)
+  - [Projeto 02 — Planos de Teste e Integração Contínua com SonarQube](tarefas/P2.md)
 
 ---
 
 ## 👤 Entregas Individuais (Discentes)
 
-* `HelenaMariano2025` (Helena Dantas — G1):
-  * Link Tarefa 1 (issue):
-  * Link Tarefa 2 (issue):
-  * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto:
+- `HelenaMariano2025` (Helena Dantas — G1):
 
-* `Isabellecavalcant` (Isabelle Cavalcanti — G1):
-  * Link Tarefa 1 (issue):
-  * Link Tarefa 2 (issue):
-  * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto:
+  - Link Tarefa 1 (issue):
+  - Link Tarefa 2 (issue):
+  - Link Tarefa 3 (issue):
+  - Link Repositório do Projeto:
 
-* `JaineSouz` (Jaine Souza — G1):
-  * Link Tarefa 1 (issue):
-  * Link Tarefa 2 (issue):
-  * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto:
+- `Isabellecavalcant` (Isabelle Cavalcanti — G1):
 
-* `JosephDouglas7` (Joseph Douglas Moura Batista — G2):
-  * Link Tarefa 1 (issue):
-  * Link Tarefa 2 (issue):
-  * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto: <https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software>
+  - Link Tarefa 1 (issue):
+  - Link Tarefa 2 (issue):
+  - Link Tarefa 3 (issue):
+  - Link Repositório do Projeto:
+
+- `JaineSouz` (Jaine Souza — G1):
+
+  - Link Tarefa 1 (issue):
+  - Link Tarefa 2 (issue):
+  - Link Tarefa 3 (issue):
+  - Link Repositório do Projeto:
+
+- `JosephDouglas7` (Joseph Douglas Moura Batista — G2):
+
+  - Link Tarefa 1 (issue):
+  - Link Tarefa 2 (issue):
+  - Link Tarefa 3 (issue):
+  - Link Repositório do Projeto: [https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software](https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software)
 
 ---
 
@@ -61,12 +65,12 @@ Jaine Souza (`@JaineSouz`).
 
 **Tecnologias:** PHP, MySQL, MySQLi, HTML, CSS, JavaScript, jQuery e Bootstrap.
 
-  * Link Repositório: <https://github.com/HelenaMariano2025/projetoPNLD>
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
+- Link Repositório: [https://github.com/HelenaMariano2025/projetoPNLD](https://github.com/HelenaMariano2025/projetoPNLD)
+- Link Documento de Visão:
+- Link Relatório do Estado Atual dos Testes:
+- Link Plano de Teste Geral (PTG):
+- Link Plano de Teste das Iterações 1 e 2 (PTI):
+- Link SonarQube LABENS: [https://labens.dct.ufrn.br/sonarqube/](https://labens.dct.ufrn.br/sonarqube/)
 
 ### G2 — IA Voz
 
@@ -79,35 +83,43 @@ partir do texto escrito.
 
 **Tecnologias:** Python.
 
-  * Link Repositório: <https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software>
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
+- Link Repositório: [https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software](https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software)
+- Link Documento de Visão:
+- Link Relatório do Estado Atual dos Testes:
+- Link Plano de Teste Geral (PTG):
+- Link Plano de Teste das Iterações 1 e 2 (PTI):
+- Link SonarQube LABENS: [https://labens.dct.ufrn.br/sonarqube/](https://labens.dct.ufrn.br/sonarqube/)
 
-### G3 (a definir)
+### G3 — Comercializa
 
-  * Link Repositório:
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link SonarQube LABENS:
+Sistema web voltado ao gerenciamento de pequenos comércios, permitindo o controle de produtos,
+estoque, vendas e demais informações necessárias para auxiliar na administração do estabelecimento.
+
+**Equipe:** Arthur Azevêdo (`@arthurazvd`).
+
+**Tecnologias:** Python, Django, Django REST Framework e PostgreSQL.
+
+- Link Repositório: [https://github.com/arthurazvd/comercializa](https://github.com/arthurazvd/comercializa)
+- Link Documento de Visão: [https://github.com/arthurazvd/comercializa/blob/main/docs/01-visao-do-projeto.md](https://github.com/arthurazvd/comercializa/blob/main/docs/01-visao-do-projeto.md)
+- Link Relatório do Estado Atual dos Testes: [https://github.com/arthurazvd/comercializa/blob/main/docs/13-estado-atual-testes.md](https://github.com/arthurazvd/comercializa/blob/main/docs/13-estado-atual-testes.md)
+- Link Plano da Iteração 1: [https://github.com/arthurazvd/comercializa/blob/main/docs/14-iteracao-01.md](https://github.com/arthurazvd/comercializa/blob/main/docs/14-iteracao-01.md)
+- Link Plano de Teste Geral (PTG): [PTG](https://github.com/arthurazvd/comercializa/blob/main/docs/15-plano-teste-geral.md)
+- Link Plano de Teste das Iterações 1 e 2 (PTI): [PTI](https://github.com/arthurazvd/comercializa/blob/main/docs/16-plano-teste-iteracoes-01-02.md)
+- Link Workflow CI: [GitHub Actions](https://github.com/arthurazvd/comercializa/actions/runs/37508130355)
+- Link SonarQube LABENS: [Comercializa](https://labens.dct.ufrn.br/sonarqube/dashboard?id=comercializa)
 
 ### G4 (a definir)
 
-  * Link Repositório:
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link SonarQube LABENS:
+- Link Repositório:
+- Link Documento de Visão:
+- Link Relatório do Estado Atual dos Testes:
+- Link Plano de Teste Geral (PTG):
+- Link Plano de Teste das Iterações 1 e 2 (PTI):
+- Link SonarQube LABENS:
 
 ---
 
 ## 🔗 Referências Comuns
 
-  * Processo de desenvolvimento YP-Agentic: <https://github.com/tacianosilva/engenharia-software/tree/main/yp-agentic>
-  * Servidor SonarQube do LABENS/UFRN: <https://labens.dct.ufrn.br/sonarqube/>
-
+- Processo de desenvolvimento YP-Agentic: [https://github.com/tacianosilva/engenharia-software/tree/main/yp-agentic](https://github.com/tacianosilva/engenharia-software/tree/main/yp-agentic)
+- Servidor SonarQube do LABENS/UFRN: [https://labens.dct.ufrn.br/sonarqube/](https://labens.dct.ufrn.br/sonarqube/)
