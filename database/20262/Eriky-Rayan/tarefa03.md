@@ -30,7 +30,10 @@
 - **Pergunta 4**
     - Enunciado: *Quantos autores e livros no total ficaram cadastrados na sua base após a execução da carga expandida? O que aconteceria se você tentasse inserir um livro cujo `autor_id` fosse 999 (um autor inexistente)? Qual regra do banco impede essa ação?*
 
-    - Resposta:
+    - Resposta: Após a execução do script de carga expandida, o banco de dados ficou com 14 autores e 30 livros cadastrados.
+    Caso houvesse a tentativa de inserir um livro com `autor_id = 999`, o MariaDB recusaria a operação e retornaria um erro de violação de restrição.
+    A regra responsável por esse bloqueio é o princípio da integridade referencial, implementada na tabela livros por meio de uma restrição de chave estrangeira (FOREIGN KEY):
+    `FOREIGN KEY (autor_id) REFERENCES autores(id)`
 - **Pergunta 5**
     - Enunciado: *Analise as Consultas 4 e 5. Em linguagem simples, qual é a vantagem prática de dividir os dados em duas tabelas relacionadas (`autores` e `livros`) em vez de guardar o nome e o país do autor repetido dentro de cada linha da tabela de livros?*
 
