@@ -23,10 +23,10 @@ Neste diretório temos as descrições das tarefas da disciplina e os links para
 
 Cada discente deve criar sua pasta com seu username do GitHub (`softwaretesting/20262/tarefas/<username>/`), com os arquivos de cada tarefa (`tarefa01.md`, `tarefa02.md`, `tarefa03.md`) e cadastrar os links abaixo:
 
-* `<username>`:
+* `<JaineSouz>`:
   * Link Tarefa 1 (issue):
-  * Link `tarefa01.md`:
+  * Link [`tarefa01.md`](https://github.com/tacianosilva/bsi-tasks/issues/448):
   * Link Tarefa 2 (issue):
-  * Link `tarefa02.md`:
+  * Link [`tarefa02.md`](https://github.com/tacianosilva/bsi-tasks/issues/467):
   * Link Tarefa 3 (issue):
-  * Link `tarefa03.md`:
+  * Link [`tarefa03.md`](https://github.com/tacianosilva/bsi-tasks/issues/504):
