@@ -1,3 +1,12 @@
+Aluno: Henderson Emanuel Bernardo de Medeiros
+
+Usuário: HendsMede1r0s
+
+Email: henderson.medeiros.131@ufrn.edu.br 
+
+Link do repositório: [https://github.com/HendsMede1r0s/dct2201-banco-de-dados](https://github.com/HendsMede1r0s/dct2201-banco-de-dados)
+
+
 # Perguntas Discursivas
 
 ## Pergunta Discursiva 1
