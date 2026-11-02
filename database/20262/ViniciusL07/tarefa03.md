@@ -26,3 +26,22 @@ Após a execução da carga expandida via IA generativa, a base ficou com um tot
 ### Pergunta Discursiva 5
 A grande vantagem da normalização (separar em tabelas relacionais `autores` e `livros`) é eliminar a redundância e impedir anomalias de atualização. Se guardássemos nome e país do autor em cada linha da tabela de livros, qualquer mudança no país de um autor exigiria atualizar centenas de registros duplicados, abrindo margem para inconsistências de dados e desperdício de espaço em memória/disco.
 
+---
+
+## 3. Respostas Dissertativas Conceituais
+
+### Questão A
+Uma aplicação comercial jamais deve utilizar a conta `root` porque essa conta possui controle irrestrito e privilégios administrativos globais (como apagar bases, criar usuários, alterar esquemas ou até executar comandos no sistema). Se as credenciais da aplicação vazarem, um invasor ganhará controle total sobre o servidor e todas as bases de dados hospedadas nele.
+
+### Questão B
+Privilégios DDL administram o esquema e a arquitetura das estruturas (ex: `CREATE`, `ALTER`, `DROP`), enquanto DML gerencia os registros contidos nas tabelas (ex: `SELECT`, `INSERT`, `UPDATE`, `DELETE`). A separação garante o princípio do menor privilégio, garantindo que usuários operacionais e microsserviços não alterem ou destruam acidentalmente o modelo de dados.
+
+### Questão C
+O arquivo `.env.example` funciona como uma documentação de contrato técnico, contendo apenas o nome das variáveis necessárias e valores genéricos/fictícios, sendo seguro versioná-lo. Já o `.env` guarda credenciais reais da máquina local ou produção. Versionar o `.env` em um repositório público expõe dados sensíveis a robôs de varredura (ciberataques), comprometendo a segurança da infraestrutura.
+
+### Questão D
+Não, usar `.env` e `.gitignore` isola apenas o versionamento via Git. O arquivo continua salvo em texto puro no sistema de arquivos do servidor. Se o servidor sofrer acesso indevido, leitura local de arquivos por falha de aplicação (LFI) ou permissões de leitura incorretas no SO, as credenciais ainda poderão ser lidas. Em produção, utilizam-se cofres de segredos (*Secret Managers* ou *Docker Secrets*).
+
+### Questão E
+Um contêiner é um ambiente isolado em nível de processo que empacota uma aplicação e todas as suas dependências. A vantagem em disciplinas acadêmicas em relação à instalação manual é a portabilidade e a padronização do ambiente: evita divergências de versões entre sistemas operacionais dos alunos, dispensa a poluição do SO com instalações nativas e permite subir/destruir um banco completo via linha de comando sem conflitos.
+
