@@ -20,7 +20,9 @@
 - **Pergunta 2**
     - Enunciado: *Descreva com suas palavras o que aconteceu quando você tentou executar o comando `DROP TABLE autores` com a conta `app_biblioteca`. Por que o MariaDB recusou a operação com o erro 1142? De que forma essa restrição protege a integridade do banco de dados caso a aplicação web sofra uma invasão ou falha de programação?*
 
-    - Resposta:
+    - Resposta: Ao tentar executar o comando `DROP TABLE autores` logado como `app_biblioteca`, o MariaDB interrompeu a operação e retornou o erro 1142 (42000): `DROP command denied to user 'app_biblioteca'@'...' for table 'autores'`. Isso aconteceu porque a conta da aplicação não possui o privilégio DDL DROP concedido no banco de dados.
+    Ao tentar executar o comando DROP TABLE autores logado como app_biblioteca, o MariaDB interrompeu a operação e retornou o erro 1142 (42000): DROP command denied to user 'app_biblioteca'@'localhost' for table 'autores'. Isso aconteceu porque a conta da aplicação não possui o privilégio DDL DROP concedido no banco de dados.
+    Essa restrição segue o Princípio do Menor Privilégio, garantindo que a conta da aplicação tenha apenas os acessos estritamente necessários para o seu funcionamento em tempo de execução (como SELECT, INSERT, UPDATE e DELETE). Se algum invasor tentasse injetar um script malicioso, o sgbd bloquearia a operação. O mesmo aconteceria se alguem cometesse algum erro durante o processo de programação, desde que a operação tentada exija um privilégio que a conta da aplicação não possui
 - **Pergunta 3**
     - Enunciado: *Por que os usuários foram criados com o host `'%'` em vez de `'localhost'`? Qual é o papel da rede interna do Docker nessa decisão técnica?*
 
