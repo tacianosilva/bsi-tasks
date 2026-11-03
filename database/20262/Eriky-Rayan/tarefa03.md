@@ -37,7 +37,7 @@
 - **Pergunta 5**
     - Enunciado: *Analise as Consultas 4 e 5. Em linguagem simples, qual é a vantagem prática de dividir os dados em duas tabelas relacionadas (`autores` e `livros`) em vez de guardar o nome e o país do autor repetido dentro de cada linha da tabela de livros?*
 
-    - Resposta:
+    - Resposta: Se os dados do autor estivessem na tabela de livros e um autor mudasse de país ou tivesse seu nome corrigido, seria necessário alterar múltiplos registros (um para cada livro escrito por ele). Se algum registro não fosse atualizado por falha, o banco ficaria com dados contraditórios. Com as tabelas separadas, o autor é cadastrado uma única vez na tabela `autores`, e qualquer alteração é feita em um único lugar, refletindo automaticamente em todos os seus livros. Alem disso, em vez de repetir textos como o nome e o país do autor em cada linha da tabela `livros`, a tabela armazena apenas um número inteiro (`autor_id`), reduzindo drasticamente o tamanho do banco de dados e o uso de memória.
 
 ## 3. Respostas Dissertativas Conceituais
 
