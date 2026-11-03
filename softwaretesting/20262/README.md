@@ -22,29 +22,67 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
 
 ## 👤 Entregas Individuais (Discentes)
 
-* `HelenaMariano2025` (Helena Dantas — G1):
+* `arthurazvd` (Arthur José dos Santos Azevedo — G5):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/arthurazvd/comercializa>
+
+* `HelenaMariano2025` (Helena Dantas Mariano — G1):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
+
+* *(username pendente)* (Hildemberg Eling de Araújo Lucena — Grupo pendente):
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto:
 
-* `Isabellecavalcant` (Isabelle Cavalcanti — G1):
+* `Isabellecavalcant` (Isabelle Cavalcanti da Silva — G1):
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto:
+  * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
 
-* `JaineSouz` (Jaine Souza — G1):
+* `JaineSouz` (Jaine Souza da Luz — G1):
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto:
+  * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
+
+* `Jose-Samuel-Lima` (José Samuel Silva Lima — G4):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
+  * Link Repositório do Projeto (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
 
 * `JosephDouglas7` (Joseph Douglas Moura Batista — G2):
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software>
+
+* `Luisfelipelinhares` (Luís Felipe Linhares Pereira — G3):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
+
+* `MViniciusCoffe` (Marcus Vinícius de Souza Azevedo — G4):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
+  * Link Repositório do Projeto (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
+
+* `pauloandrehxh` (Paulo André Alves de Moura — G3):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
 
 ---
 
@@ -57,8 +95,8 @@ cadastro de alunos, turmas e livros, além dos registros de empréstimos e devol
 apresentada como HBL Control / Sistema BHL, com foco no controle de livros didáticos do Instituto
 Federal, Campus Patos.
 
-**Equipe:** Helena Dantas (`@HelenaMariano2025`), Isabelle Cavalcanti (`@Isabellecavalcant`) e
-Jaine Souza (`@JaineSouz`).
+**Equipe:** Helena Dantas Mariano (`@HelenaMariano2025`), Isabelle Cavalcanti da Silva (`@Isabellecavalcant`) e
+Jaine Souza da Luz (`@JaineSouz`).
 
 **Tecnologias:** PHP, MySQL, MySQLi, HTML, CSS, JavaScript, jQuery e Bootstrap.
 
@@ -91,27 +129,64 @@ partir do texto escrito.
   * Link Testes de Sistema (E2E):
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
-### G3 (a definir)
+### G3 — Arena UFRN (Gestor de Quadra de Areia)
 
-  * Link Repositório:
+Aplicação web para gerenciamento e reserva da quadra de areia da UFRN. O sistema permite que
+alunos autenticados (via e-mail ou matrícula simulada) agendem horários, consultem a
+disponibilidade em tempo real e cancelem reservas, implementando regras de negócio para evitar
+monopólio de horários por um único curso ou aluno.
+
+**Equipe:** Luís Felipe Linhares Pereira (`@Luisfelipelinhares`) e Paulo André Alves de Moura (`@pauloandrehxh`).
+
+**Tecnologias:** React (JavaScript), Tailwind CSS, Node.js (Express), SQLite, Prisma ORM, Jest, React Testing Library e Cypress.
+
+  * Link Repositório: <https://github.com/pauloandrehxh/arena-ufrn>
   * Link Documento de Visão:
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
   * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
   * Link Testes de Sistema (E2E):
-  * Link SonarQube LABENS:
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
-### G4 (a definir)
+### G4 — SpendSmart
 
-  * Link Repositório:
+Aplicativo desenvolvido para auxiliar no controle das finanças pessoais, permitindo cadastrar,
+editar e excluir receitas e despesas organizadas por categorias e formas de pagamento, além de
+apresentar um painel com saldo, receitas e gastos.
+
+**Equipe:** José Samuel Silva Lima (`@Jose-Samuel-Lima`) e Marcus Vinícius de Souza Azevedo (`@MViniciusCoffe`).
+
+**Tecnologias:** JavaScript (React, Next.js e Jest), HTML, CSS, PostgreSQL (em nuvem), AWS e Git.
+
+  * Link Repositório (Backend — foco principal na disciplina): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
+  * Link Repositório (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
   * Link Documento de Visão:
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
   * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
   * Link Testes de Sistema (E2E):
-  * Link SonarQube LABENS:
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
+
+### G5 — Comercializa
+
+Sistema desenvolvido para auxiliar na gestão comercial de pequenos negócios, permitindo o
+gerenciamento de produtos, categorias, estoque e vendas, painel de desempenho do negócio e
+recomendações para estoque baixo, produtos próximos do vencimento e itens com baixa saída.
+
+**Equipe:** Arthur José dos Santos Azevedo (`@arthurazvd`).
+
+**Tecnologias:** Python, Django, Django REST Framework, SQLite, pytest, pytest-django, pytest-cov e GitHub Actions.
+
+  * Link Repositório: <https://github.com/arthurazvd/comercializa>
+  * Link Documento de Visão:
+  * Link Relatório do Estado Atual dos Testes:
+  * Link Plano de Teste Geral (PTG):
+  * Link Plano de Teste das Iterações 1 e 2 (PTI):
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
 ---
 
