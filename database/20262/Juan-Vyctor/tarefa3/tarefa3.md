@@ -107,6 +107,8 @@ Duas das formas de resolver são as seguinte:
 1. Apagar tudo e criar de novo. Como não vão haver dados salvos, o processo inicial será feito novamente e os novos dados serão aplicados, ao custo de perder tudo que o banco possuia.
 2. Alterar a senha manualmente. É possível acessar via Docker nosso banco, e lá dentro fazer a alteração dos dados. O comando `ALTER USER 'usuario' IDENTIFIED BY 'nova senha'` funciona perfeitamente para o que é requisitado aqui.
 
+
+
 #### 4. Comportamento da validação estrita (:?): Apague temporariamente o arquivo .env (ou comente a linha da senha de root) e execute docker compose up -d. Documente a mensagem de erro emitida pelo Compose e explique discursivamente a importância do modificador :? em ambientes profissionais.
 
 ```
@@ -116,9 +118,58 @@ required variable MARIADB_ROOT_PASSWORD is missing a value: defina MARIADB_ROOT_
 
 O símbolo `:?` é um sinal de obrigatoriedade no Docker, e ele pode ser entendido como "se essa variável está faltando, é um erro." O valor antes do sinal é o que não queremos que falte, nesse caso a senha, e o após é o erro que queremos exibir para quem tentou fazer a operação. Esse tipo de tratamento é extremamente importante não somente em ambientes profissionais mas em qualquer projeto trabalhado por múltiplas pessoas. Não pensando somente no fator "rodar o código com algo faltando", isso também previne que a ausência de algo vital para o funcionamento não irá causar nenhum problema na aplicação enquanto no ar, como o corrompimento de um arquivo ou a quebra de alguma parte do sistema.
 
-
 #### 5. Inspeção de variáveis no compose: Execute docker compose config no terminal e liste três variáveis de ambiente que foram resolvidas e interpoladas a partir do .env.
 
 1. MARIADB_DATABASE: O valor foi aquele declarado na variável de ambiente.
 2. MARIADB_ROOT_PASSWORD: mesmo que no CloudBeaver ainda esteja sendo utilizada a senha, antiga, o valor alterado em `.env` se registra aqui.
 3. PORT (tanto no CloudBeaver quanto MariaDB): As portas são coletadas a partir desse arquivo, e se houver inconsistências, o sistema não vai ao ar.
+
+### Bloco B: Modelagem e Consultas SQL Básica
+
+#### 6. Criação da tabela de empréstimos: Escreva o comando DDL para criar a tabela emprestimos contendo os campos id (INT AUTO_INCREMENT PRIMARY KEY), livro_id (INT), data_emprestimo (DATE) e devolvido (BOOLEAN), com restrição de chave estrangeira referenciando livros(id).
+
+```SQL
+CREATE TABLE IF NOT EXISTS emprestimos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  data_emprestimo DATE,
+  devolvido BOOL,
+  livro_id INT,
+  FOREIGN KEY (livro_id) REFERENCES livros(id)
+);
+```
+
+#### 7. Carga da tabela empréstimos: Escreva as instruções INSERT para cadastrar três registros de empréstimos, sendo dois com status não devolvido (FALSE ou 0) e um devolvido (TRUE ou 1).
+
+```SQL
+INSERT INTO emprestimos (data_emprestimo, devolvido, livro_id) VALUES
+('2026-10-05', 1, 1),
+('2026-10-28', 0, 7),
+('2026-11-02', 0, 13);
+```
+
+#### 8. Consulta de pendências: Escreva uma consulta que liste todos os empréstimos pendentes (não devolvidos), trazendo o título do livro, a data de empréstimo e o nome do autor do livro.
+
+```SQL
+SELECT l.titulo, e.data_emprestimo, a.nome AS autor FROM emprestimos e
+  INNER JOIN livros l ON l.id = e.livro_id
+  INNER JOIN autores a ON a.id = l.autor_id
+  WHERE e.devolvido = 0;
+```
+
+#### 9. Filtragem de grupos com HAVING: Escreva uma consulta que agrupe os livros por autor e retorne a contagem total de obras de cada um, filtrando exclusivamente autores que possuem mais de 1 livro cadastrado (HAVING COUNT(*) > 1).
+
+#### 10. Atualização proporcional (UPDATE): Execute uma instrução DML para reajustar o preço de um livro específico em 10% de acréscimo. Transcreva a consulta UPDATE utilizada e comente o resultado.
+
+```SQL
+UPDATE livros SET preco = preco + 1 WHERE id = 1;
+```
+
+#### 11. Remoção condicional (DELETE): Cadastre um novo autor sem nenhum livro associado e, em seguida, execute a instrução DELETE para removê-lo da tabela autores. Explique por que essa remoção foi aceita sem violar a restrição de chave estrangeira.
+
+```SQL
+INSERT INTO autores (nome, pais, ano_nascimento) VALUES ('Lelé da Cuquinha', 'Brasil', 9999);
+
+DELETE FROM autores WHERE nome = 'Lelé da Cuquinha';
+```
+
+O comando passa por não haver nenhum livro que utilizasse seu ID como FK. Se houvesse e fosse permitido, ficaria uma inconsistência no banco, e assim a ação é impedida. Como não é o caso, funciona sem mais problema.
