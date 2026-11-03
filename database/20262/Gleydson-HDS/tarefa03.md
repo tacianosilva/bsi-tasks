@@ -90,3 +90,66 @@ relacionadas (autores e livros) em vez de guardar o nome e o país do autor repe
 
 ---
 
+### **3. RESPOSTAS DISSERTATIVAS CONCEITUAIS**
+
+**Questão a: Por que uma aplicação comercial nunca deve se conectar ao banco de dados utilizando o usuário root? O que pode ocorrer com o servidor de banco de dados caso as credenciais do usuário da aplicação sejam vazadas?**
+
+    Uma aplicação comercial nunca deve utilizar o usuário root para se conectar ao banco de dados, pois ele possui privilégios administrativos elevados, podendo criar, alterar e excluir bancos de dados, tabelas e usuários. Caso a aplicação apresente uma falha de segurança ou suas credenciais sejam vazadas, um invasor poderá utilizar esses privilégios para comprometer todo o servidor de banco de dados.
+    
+    Entre as possíveis consequências estão a exclusão ou alteração de dados, o roubo de informações confidenciais, a criação de usuários não autorizados e a interrupção dos serviços.
+    
+    Por isso, recomenda-se utilizar um usuário específico para a aplicação, com permissões limitadas às operações necessárias. Esse princípio é conhecido como Princípio do Menor Privilégio, reduzindo os danos que podem ocorrer em caso de comprometimento das credenciais.
+    
+**Questão b: Qual é a diferença fundamental entre privilégios DDL (Data Definition Language) e DML (Data Manipulation Language)? Por que é uma boa prática de segurança separá-los em contas de usuários distintas?**
+
+    A diferença fundamental entre DDL e DML está no tipo de operação realizada no banco de dados.
+
+    DDL (Data Definition Language): permite definir e modificar a estrutura do banco de dados, por meio de comandos como CREATE, ALTER e DROP, utilizados para criar, alterar e excluir tabelas e outros objetos.
+
+    DML (Data Manipulation Language): permite manipular os dados armazenados nas tabelas, por meio de comandos como INSERT, UPDATE e DELETE, utilizados para inserir, atualizar e excluir registros.
+
+    Separar esses privilégios em contas distintas é uma boa prática de segurança porque limita as ações que cada usuário pode realizar. Por exemplo, uma aplicação que precisa apenas cadastrar e consultar informações não necessita de permissão para alterar a estrutura do banco de dados.
+    
+    Dessa forma, caso as credenciais de uma aplicação sejam comprometidas, o invasor terá menos possibilidades de causar danos, como excluir tabelas ou modificar a estrutura do banco. Essa separação também facilita o controle de acesso e a administração do banco de dados.
+
+**Questão c: Por que o arquivo .env.example deve ser commitado no repositório de código enquanto o arquivo .env nunca deve ser versionado? Quais são os riscos e consequências práticas de comitar credenciais reais em um repositório público no GitHub?**
+
+    O arquivo .env.example deve ser versionado porque funciona como um modelo de configuração, indicando quais variáveis de ambiente são necessárias para executar o projeto, sem armazenar credenciais reais. Dessa forma, outros desenvolvedores conseguem configurar seu próprio ambiente utilizando esse arquivo como referência.
+    
+    Já o arquivo .env contém configurações locais e informações sensíveis, como senhas e credenciais de acesso ao banco de dados. Por isso, ele não deve ser versionado e precisa estar listado no .gitignore.
+    
+    Comitar credenciais reais em um repositório público no GitHub pode permitir que pessoas não autorizadas obtenham acesso ao banco de dados e a outros serviços. Entre as possíveis consequências estão o roubo, a alteração ou a exclusão de informações, além do comprometimento de todo o ambiente.
+    
+    É importante destacar que excluir o arquivo de um commit posterior não elimina necessariamente o risco, pois as credenciais podem continuar disponíveis no histórico do Git ou em cópias do repositório. Caso isso aconteça, as senhas expostas devem ser alteradas imediatamente.
+    
+**Questão d: O uso do arquivo .env e a inclusão no .gitignore eliminam por completo todos os riscos de segurança de credenciais em um ambiente de desenvolvimento e produção? Justifique sua resposta considerando que o arquivo permanece armazenado em texto puro no sistema de arquivos do servidor.**
+
+    Não. O uso do arquivo .env e sua inclusão no .gitignore não eliminam completamente os riscos de segurança das credenciais. Essas medidas evitam que o arquivo seja enviado acidentalmente ao repositório Git, mas não protegem seu conteúdo contra acessos indevidos no próprio sistema.
+    
+    Como o arquivo permanece armazenado em texto puro no sistema de arquivos do servidor, qualquer pessoa ou processo que consiga acessá-lo poderá visualizar as credenciais, caso não existam outras medidas de proteção.
+    
+    Entre os riscos estão o acesso não autorizado ao arquivo, o vazamento por meio de backups desprotegidos, a exposição em logs e o comprometimento do servidor.
+    
+    Para reduzir esses riscos, é importante restringir as permissões de leitura do arquivo, proteger os backups, evitar registrar senhas em logs e utilizar ferramentas de gerenciamento de segredos (Secrets Management) em ambientes de produção.
+    
+    Portanto, o .env e o .gitignore são medidas importantes, mas devem fazer parte de uma estratégia de segurança mais ampla, que proteja as credenciais durante todo o seu armazenamento e utilização.
+
+**Questão e: O que é um contêiner e quais são as principais vantagens de utilizar o Docker para provisionar ambientes de banco de dados em atividades didáticas de graduação em comparação com a instalação manual do SGBD diretamente no sistema operacional do computador do aluno?**
+
+    Um contêiner é uma unidade isolada que reúne uma aplicação e suas dependências necessárias para funcionar, utilizando recursos do sistema operacional hospedeiro. Ele permite executar aplicações em ambientes separados, sem a necessidade de instalar e configurar todos os componentes diretamente no computador.
+    
+    A utilização do Docker para provisionar ambientes de banco de dados em atividades didáticas apresenta diversas vantagens em comparação com a instalação manual de um SGBD:
+    
+    Facilidade de instalação: permite configurar o MariaDB e outras ferramentas por meio de arquivos de configuração, como o docker-compose.yml.
+    
+    Padronização: todos os alunos podem utilizar o mesmo ambiente, reduzindo problemas causados por diferenças entre sistemas operacionais e configurações.
+    
+    Isolamento: os serviços executados nos contêineres ficam separados do sistema operacional e de outras aplicações.
+    
+    Reprodutibilidade: permite recriar o ambiente com as mesmas configurações sempre que necessário.
+    
+    Facilidade de manutenção: possibilita iniciar, parar e substituir contêineres sem precisar reinstalar o SGBD no computador.
+    
+    Organização: permite executar diferentes versões ou instâncias de bancos de dados simultaneamente, utilizando portas distintas.
+    
+    Portanto, o Docker facilita o aprendizado e a realização de atividades práticas, pois oferece ambientes padronizados, isolados e reproduzíveis, reduzindo o tempo gasto com instalações e configurações manuais.
