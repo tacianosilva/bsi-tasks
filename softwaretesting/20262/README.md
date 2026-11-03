@@ -16,6 +16,7 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
 * **Tarefas de Projeto (Grupo):**
   * [Projeto 01 — Dados dos Projetos e Documentos Gerais do Projeto](tarefas/P1.md)
   * [Projeto 02 — Planos de Teste e Integração Contínua com SonarQube](tarefas/P2.md)
+  * [Projeto 03 — Automação de Testes de Sistema, Testes Instrumentais com IA, Usabilidade e Acessibilidade](tarefas/P3.md)
 
 ---
 
@@ -66,6 +67,8 @@ Jaine Souza (`@JaineSouz`).
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
 ### G2 — IA Voz
@@ -84,6 +87,8 @@ partir do texto escrito.
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
 ### G3 (a definir)
@@ -93,6 +98,8 @@ partir do texto escrito.
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
   * Link SonarQube LABENS:
 
 ### G4 (a definir)
@@ -102,6 +109,8 @@ partir do texto escrito.
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
   * Link SonarQube LABENS:
 
 ---

@@ -14,6 +14,7 @@ Neste diretório temos as descrições das tarefas da disciplina e os links para
 ### Tarefas de Projeto (Grupo)
 * [**Projeto 01 — Dados dos Projetos e Documentos Gerais do Projeto**](P1.md)
 * [**Projeto 02 — Planos de Teste e Integração Contínua com SonarQube**](P2.md)
+* [**Projeto 03 — Automação de Testes de Sistema, Testes Instrumentais com IA, Usabilidade e Acessibilidade**](P3.md)
 
 > **Prazo de entrega unificado para a 1ª unidade:** Até **06/10/2026**.
 
