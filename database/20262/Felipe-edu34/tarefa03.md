@@ -330,3 +330,5 @@ Essa abordagem permite executar novamente o script e reconstruir o ambiente inic
 A atividade permitiu aplicar conceitos de administração de banco de dados, configuração de serviços com Docker Compose, modelagem relacional, manipulação de dados e gerenciamento de privilégios.
 
 Os testes demonstraram a importância da integridade referencial, da separação de usuários e da aplicação do princípio do menor privilégio.
+
+fim
