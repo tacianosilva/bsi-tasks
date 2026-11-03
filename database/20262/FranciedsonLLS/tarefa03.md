@@ -4,7 +4,7 @@
 
 - **Discente:** Franciedson Lucas Linhares da Silva
 - **Usuário no GitHub:** [@FranciedsonLLS](https://github.com/FranciedsonLLS)
-- **E-mail acadêmico:** franciedsonlucas@gmail.com
+- **E-mail acadêmico:** lucas.linhares.145@ufrn.edu.br
 - **Issue:** #545
 - **Repositório pessoal público:** <https://github.com/FranciedsonLLS/dct2201-banco-de-dados>
   - Arquivos da Tarefa 03: [`tarefa03/`](https://github.com/FranciedsonLLS/dct2201-banco-de-dados/tree/main/tarefa03) (`docker-compose.yml`, `.env.example`, `.gitignore`, `povoamento.sql`, `setup.sql`, scripts de cada etapa em `sql/` e o segundo ambiente do Desafio 2 em `ambiente2/`). O `README.md` do repositório descreve a finalidade de cada arquivo.
