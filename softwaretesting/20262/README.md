@@ -41,7 +41,7 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Repositório do Projeto:
 
 * `Isabellecavalcant` (Isabelle Cavalcanti da Silva — G1):
-  * Link Tarefa 1 (issue):
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/458
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
@@ -194,4 +194,3 @@ recomendações para estoque baixo, produtos próximos do vencimento e itens com
 
   * Processo de desenvolvimento YP-Agentic: <https://github.com/tacianosilva/engenharia-software/tree/main/yp-agentic>
   * Servidor SonarQube do LABENS/UFRN: <https://labens.dct.ufrn.br/sonarqube/>
-
