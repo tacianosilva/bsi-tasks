@@ -11,7 +11,6 @@
 
 Vale ressaltar que o arquivo de povoamento da base ([povoamento.sql](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/tarefa3/povoamento.sql)) foi gerado com auxílio de uma IA generativa, o [Claude](claude.ai), devido à instruções explicitas vindas da tarefa.
 
-
 ## 2. Repostas das perguntas discursivas
 
 ### *Explique com suas palavras a diferença entre criar uma tabela (DDL) e inserir registros nessa tabela (DML). Se apagarmos uma tabela com um comando DDL (`DROP TABLE`), o que acontece com os dados que estavam dentro dela?*
@@ -53,8 +52,29 @@ Esse erro trata exatamente da falha da `foreign key`, impedindo o resto da opera
 
 O motivo principal é evitar dados repetidos e dessa forma diminuir a chance de ter inconsistências no sistema. Nessa base, Machado de Assis tem quatro livros salvos, se todas as suas informações ficassem salvas na tabela `livros`, qualquer alteração no perfil do autor teria de ser repetida em todas as entradas, algo que em bancos maiores é completamente inviável. Deixar em tabelas separadas facilita tanto a busca (procurar dentro de `autores`) quanto manter a consistência de dados.
 
+## 3. Respostas Dissertativas:
 
-## 3. Desafios
+### **Questão a:** Por que uma aplicação comercial nunca deve se conectar ao banco de dados utilizando o usuário `root`? O que pode ocorrer com o servidor de banco de dados caso as credenciais do usuário da aplicação sejam vazadas?
+
+Por várias questões de segurança, a primeira delas sendo os privilégios. O usuário `root` tem muitas mais permissões do que aquelas que são necessárias em várias partes da aplicação, então usuários que não deveriam ter esse poder podem mexer no que não devem, como um `DROP` acidental ou proposital vindo de fora. Além disso, ter vários usuários faz ser mais fácil de encontrar quem fez o que, por meio de auditoria por exemplo, e caso alguma conta seja vazada, (provavelmente) não vai ser aquela com permissão de fazer o que quiser.
+
+### **Questão b:** Qual é a diferença fundamental entre privilégios DDL (Data Definition Language) e DML (Data Manipulation Language)? Por que é uma boa prática de segurança separá-los em contas de usuários distintas?
+
+A forma mais simples de pensar é que DDL é o "formato" que as coisas tomam e DML são as "informações" dessas coisas. DDL envolve lidar com tabelas, suas colunas e tipos de dados que recebem, e DML são os dados dessas tabelas, as linhas e registros. É bom deixar isso separado por questões de segurança: lidar melhor com vazamentos, ser mais difícil de causar danos dentro do sistema, é mais fácil de saber quem fez o que.
+
+### **Questão c:** Por que o arquivo `.env.example` deve ser commitado no repositório de código enquanto o arquivo `.env` nunca deve ser versionado? Quais são os riscos e consequências práticas de comitar credenciais reais em um repositório público no GitHub?
+
+Por ser um exemplo, um deles é apenas uma base a ser seguida, com valores fictícios e ilustrativos para que outras pessoas possam preencher, enquanto o outro é o que de fato possui dados críticos. Se o local fosse ao ar, seria um caso gravíssimo de vazamento de dados de um projeto, já que todas as pessoas teriam como acessar por terem as credenciais.
+
+### **Questão d:** O uso do arquivo `.env` e a inclusão no `.gitignore` eliminam por completo todos os riscos de segurança de credenciais em um ambiente de desenvolvimento e produção? Justifique sua resposta considerando que o arquivo permanece armazenado em texto puro no sistema de arquivos do servidor.
+
+Não, apenas um deles. Ainda podem acontecer vazamento por outros meios, ou então um ataque ao sistema, coisas do gênero. Se alguém tem acesso ao projeto de verdade, tudo isso ainda vai estar acessível.
+
+### **Questão e:** O que é um contêiner e quais são as principais vantagens de utilizar o Docker para provisionar ambientes de banco de dados em atividades didáticas de graduação em comparação com a instalação manual do SGBD diretamente no sistema operacional do computador do aluno?
+
+Contêiners são pacotes de dados que tem tudo que algum sistema ou funcionalidade precisa pra funcionar, que é executado por cima do sistema operacional, lidando com problemas de diferenças entre eles. A principal vantagem no contexto didático é ser fácil de reproduzir, todo mundo tendo um mesmo arquivo faz todo mundo ter a mesma configuração. Junto disso, o fato de que isso não depende do sistema do usuário, então quem fica no Windows não tem que se preocupar com compatibilidade.
+
+## 4. Desafios
 
 ### Bloco A: Docker e Infraestrutura de Ambiente
 
@@ -70,7 +90,6 @@ You have to remove (or rename) that container to be able to reuse that name.
 Então fiz isso, removi o antigo com `docker rm lab-mariadb`, e imaginando que o mesmo aconteceria com o contêiner `lab-cloudbeaver`, fiz o mesmo procedimento, apenas alterando o nome do arquivo a ser removido. Depois disso, subi com `docker compose up -d && docker compose ps` e tudo parecia estar certinho.
 
 Indo para o Cloudbeaver, tive que fazer a configuração inicial novamente, já que o anterior foi removido. Criei com as mesmas senhas e dados, e recriei todas as entradas que estavam no banco anteriormente.
-
 
 #### 2.  Dois ambientes simultâneos: Configure duas pastas distintas no seu computador com arquivos docker-compose.yml e portas/volumes desacoplados. Explique como você garantiu que quatro contêineres rodassem em paralelo sem conflito de portas ou nomes.
 
@@ -97,7 +116,6 @@ dct2201-banco-de-dados/
 
 As mudanças principais foram dentro de cada arquivo. Nos dois ambientes novos, os arquivos ` .env` tiveram seus dados alterados para impedir conflitos, tanto o Mariadb quanto o CloudBeaver ganharam novas portas, e um novo nome foi dado para cada database. Nos arquivos ` .yaml`, a ideia foi similar mas um pouco mais aprofundada: os dois contêiners ganharam o sufixo   `ambiente<numero>`para serem diferenciados, assim como seus`volumes`. Também foi necessário mudar as portas utilizadas para estarem de acordo com os novos valores do `.env`, alteração feita da mesma forma que a anterior. Como não existiam valores prévios para esses ambientes, não foi necessário faazer nenhuma exclusão.
 
-
 #### 3. Persistência do volume e alteração de senha de root: Altere o valor de MARIADB_ROOT_PASSWORD no arquivo .env para uma nova senha qualquer. Execute docker compose up -d e observe que a autenticação antiga continua válida enquanto a nova falha. Explique detalhadamente por que isso ocorre e quais são os dois caminhos possíveis para aplicar uma nova senha de root.
 
 A que se mantém válida é a antiga, mesmo após a atualização do `.env`. O que acontece é que o MariaDB só faz a verificação das variáveis de ambiente se não houver um banco já criado. Como na primeira inicialização não tinha, foi feito todo o processo de criação e definição de valores, algo que até é citado nas instruções da tarefa. Como à esse ponto já existe um banco, o MariaDB simplesmente pula essa etapa, e nem chega a olhar o `.env` novamente.
@@ -106,8 +124,6 @@ Duas das formas de resolver são as seguinte:
 
 1. Apagar tudo e criar de novo. Como não vão haver dados salvos, o processo inicial será feito novamente e os novos dados serão aplicados, ao custo de perder tudo que o banco possuia.
 2. Alterar a senha manualmente. É possível acessar via Docker nosso banco, e lá dentro fazer a alteração dos dados. O comando `ALTER USER 'usuario' IDENTIFIED BY 'nova senha'` funciona perfeitamente para o que é requisitado aqui.
-
-
 
 #### 4. Comportamento da validação estrita (:?): Apague temporariamente o arquivo .env (ou comente a linha da senha de root) e execute docker compose up -d. Documente a mensagem de erro emitida pelo Compose e explique discursivamente a importância do modificador :? em ambientes profissionais.
 
