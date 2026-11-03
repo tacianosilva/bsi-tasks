@@ -2,9 +2,9 @@
 
 ## 1. Identificação e Repositório
 
-- **Discente:** Jefferson Willame
+- **Discente:** Jefferson Willame Sena de Medeiros
 - **GitHub:** [JefWill](https://github.com/JefWill)
-- **E-mail acadêmico:** PENDENTE DE PREENCHIMENTO PELO DISCENTE
+- **E-mail acadêmico:** Jefferson.willame.712@ufrn.edu.br
 - **Disciplina:** DCT2201 — Banco de Dados, Sistemas de Informação — CERES/UFRN.
 - **Repositório pessoal público e README:** [dct2201-banco-de-dados](https://github.com/JefWill/dct2201-banco-de-dados/blob/main/README.md).
 - **Arquivos:** [docker-compose.yml](https://github.com/JefWill/dct2201-banco-de-dados/blob/main/tarefa03/docker-compose.yml), [.env.example](https://github.com/JefWill/dct2201-banco-de-dados/blob/main/tarefa03/.env.example), [.gitignore](https://github.com/JefWill/dct2201-banco-de-dados/blob/main/.gitignore), [povoamento.sql](https://github.com/JefWill/dct2201-banco-de-dados/blob/main/tarefa03/povoamento.sql) e [setup.sql](https://github.com/JefWill/dct2201-banco-de-dados/blob/main/tarefa03/setup.sql).
