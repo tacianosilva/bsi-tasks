@@ -109,3 +109,61 @@ Trecho do resultado da Consulta 5:
 ```
 
 ---
+## 3. Respostas Dissertativas Conceituais
+
+### Questão a - Por que a aplicação nunca deve usar `root`
+
+O `root` tem **todos os privilégios** sobre o servidor inteiro: pode apagar qualquer banco, alterar estruturas, criar e remover usuários, mudar senhas e ler os dados de todos os sistemas hospedados ali. Uma aplicação comercial precisa, em geral, apenas ler e gravar dados no seu próprio banco. Conectar com `root` dá a ela um poder que ela não usa e que vira risco.
+
+Se as credenciais da aplicação vazarem, por exemplo por um arquivo de configuração exposto, um log ou SQL Injection, quem as obtiver passa a agir com os privilégios dessa conta:
+
+- **com `root`:** o invasor controla o servidor inteiro. Pode apagar todos os bancos (`DROP DATABASE`), copiar todos os dados, criar uma conta própria para manter o acesso e até trancar os administradores, trocando a senha do `root`;
+- **com uma conta de menor privilégio** (como a `app_biblioteca`): o dano fica restrito ao banco `biblioteca` e às operações de DML. Ainda é sério, porque ele pode ler e alterar dados, mas não destrói estruturas nem toma o servidor.
+
+Por isso a conta da aplicação deve ter só o necessário, e o `root` fica reservado para administração.
+
+### Questão b - Privilégios DDL x DML e por que separá-los
+
+- **DDL** (Data Definition Language): privilégios sobre a **estrutura**, como `CREATE`, `ALTER`, `DROP`, `INDEX` e `REFERENCES`. Eles mudam o "formato" do banco.
+- **DML** (Data Manipulation Language): privilégios sobre o **conteúdo**, como `SELECT`, `INSERT`, `UPDATE` e `DELETE`. Eles mexem nas linhas, sem mudar a estrutura.
+
+No dia a dia, a aplicação só precisa de DML. Mudanças de estrutura acontecem raramente, em migrações planejadas feitas por um administrador. Separar em contas distintas (como `app_biblioteca` só com DML, `consulta` só com `SELECT` e o `root` para DDL) traz duas vantagens:
+1. **Limita o estrago** de invasões e bugs, como mostrou o erro 1142: mesmo comprometida, a conta da aplicação não derruba tabelas.
+2. **Separa responsabilidades e facilita a auditoria:** fica claro quem pode mudar a estrutura, e qualquer alteração de esquema passa obrigatoriamente pela conta administrativa.
+
+### Questão c - Por que versionar o `.env.example` e nunca o `.env`
+
+O `.env.example` é a **documentação do contrato de configuração**: mostra quais variáveis o projeto precisa (`MARIADB_ROOT_PASSWORD`, `MARIADB_DATABASE`, `MARIADB_PORT`, `CLOUDBEAVER_PORT`), com valores genéricos. Quem clona o repositório copia o arquivo para `.env` e preenche com os próprios valores. Ele não contém segredo nenhum, então pode e deve ser versionado.
+
+O `.env` contém os **valores reais**, inclusive senhas. Se for commitado em um repositório público:
+- qualquer pessoa pode ler as credenciais, e existem robôs que varrem o GitHub o tempo todo procurando senhas e chaves expostas;
+- **apagar o arquivo depois não resolve**: ele continua no histórico do Git, em forks e em clones já feitos. A única solução segura é **trocar a senha** (considerar a credencial comprometida) e limpar o histórico;
+- as consequências vão de acesso indevido ao banco, vazamento de dados pessoais (com implicações legais, como a LGPD) e perda de dados, até custos financeiros quando se trata de chaves de serviços de nuvem.
+
+O `.gitignore` com a linha `.env` evita esse erro. Neste trabalho isso foi confirmado com `git check-ignore -v .env` e com o `git status`, que nunca listou o `.env`.
+
+### Questão d - `.env` + `.gitignore` eliminam todos os riscos?
+
+**Não.** Eles resolvem um problema específico: impedem que a senha vá parar no **repositório Git**. Mas o arquivo continua salvo **em texto puro** no disco, e outros riscos permanecem:
+
+- **Acesso ao servidor ou à máquina:** qualquer pessoa ou processo com permissão de leitura na pasta (outro usuário do sistema, um malware, um invasor que entrou por outra falha) lê a senha diretamente.
+- **Backups, cópias e imagens:** o `.env` pode ir parar em backups, arquivos `.zip`, imagens Docker ou serviços de sincronização sem proteção.
+- **Exposição em tempo de execução:** neste próprio laboratório, `docker compose config` e `docker exec lab-mariadb printenv MARIADB_ROOT_PASSWORD` exibiram a senha em texto claro. Quem tem acesso ao Docker vê as variáveis de ambiente dos contêineres, e elas também podem aparecer em logs e mensagens de erro.
+- **Erro humano:** basta um `git add -f .env`, um `.gitignore` apagado ou uma cópia com outro nome (como `.env.bak`) para o arquivo ser versionado.
+
+Por isso, em produção, o recomendado é usar um **gerenciador de segredos** (Docker Secrets, HashiCorp Vault, AWS Secrets Manager, Azure Key Vault etc.), permissões de arquivo restritas, rotação periódica de senhas e o menor privilégio em todas as contas. O `.env` é uma boa prática para **desenvolvimento**, não uma solução completa de segurança.
+
+### Questão e - O que é um contêiner e as vantagens do Docker no ensino
+
+Um **contêiner** é um processo isolado que roda com tudo o que precisa (binários, bibliotecas e configuração) empacotado em uma **imagem**. Ele compartilha o kernel do sistema hospedeiro, por isso é muito mais leve e rápido que uma máquina virtual, mas tem o próprio sistema de arquivos, a própria rede e os próprios processos.
+
+Vantagens em relação a instalar o SGBD direto no sistema do aluno:
+
+- **Mesmo ambiente para todos:** a imagem `mariadb:11` é a mesma em Windows, Linux ou macOS, o que acaba com o "na minha máquina funciona".
+- **Instalação e remoção limpas:** um `docker compose up -d` sobe tudo, e um `docker compose down -v` apaga tudo, sem deixar serviços, arquivos ou configurações espalhados pelo sistema.
+- **Sem conflito com o que já existe:** neste trabalho, mudei a porta para 3307 e rodei **dois ambientes completos ao mesmo tempo** (Desafios 1 e 2), algo trabalhoso com instalação manual.
+- **Infraestrutura como código:** o `docker-compose.yml` versionado documenta exatamente como o ambiente é montado, e qualquer pessoa reproduz o mesmo resultado.
+- **Liberdade para errar:** dá para quebrar, apagar o volume e recomeçar do zero em segundos (o `setup.sql` recria o banco inteiro), o que é ideal para aprender.
+- **Proximidade com o mercado:** é a mesma forma como bancos e serviços são executados em empresas e na nuvem.
+
+---
