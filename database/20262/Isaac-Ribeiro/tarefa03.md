@@ -26,3 +26,9 @@ Essa restrição protege a integridade do banco de dados porque impede que uma a
 Os usuários foram criados com o host `'%'` porque o MariaDB precisa aceitar conexões originadas de outros contêineres, como o CloudBeaver, e não apenas conexões locais no próprio contêiner do banco. O símbolo `%` funciona como curinga e permite que o usuário se autentique a partir de diferentes endereços de rede.
 
 Se fosse utilizado `'localhost'`, o acesso ficaria restrito ao próprio contêiner do MariaDB, e as conexões vindas do CloudBeaver seriam recusadas. A rede interna criada pelo Docker Compose permite que os contêineres se comuniquem usando o nome do serviço, como `mariadb`. Por isso, o host `%` é necessário para que as contas possam ser utilizadas nessa comunicação entre contêineres.
+
+## Pergunta Discursiva 4
+
+Antes da carga expandida, a base possuía 4 autores e 5 livros. A execução do script adicionou mais 10 autores e 26 livros. Portanto, ao final da carga, ficaram cadastrados **14 autores e 31 livros** no total.
+
+Se fosse inserido um livro com `autor_id = 999`, o MariaDB recusaria a operação, pois não existe um autor com esse identificador na tabela `autores`. A regra que impede essa inserção é a **restrição de chave estrangeira** (`FOREIGN KEY (autor_id) REFERENCES autores(id)`), que garante a integridade referencial entre as tabelas `livros` e `autores`.
