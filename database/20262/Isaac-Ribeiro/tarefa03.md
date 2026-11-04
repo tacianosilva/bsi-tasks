@@ -15,6 +15,12 @@ Uma aplicação comercial nunca deve se conectar ao banco de dados utilizando o 
 
 Se as credenciais do usuário da aplicação forem vazadas, um invasor poderá acessar o banco usando as permissões concedidas a essa conta. Dependendo desses privilégios, ele poderá consultar, alterar ou excluir dados e até comprometer a disponibilidade e a integridade do sistema. Quando a aplicação utiliza `root`, o impacto pode ser ainda maior, pois o invasor poderá modificar ou apagar estruturas inteiras do banco, criar novos usuários privilegiados e destruir todos os dados. Por isso, as credenciais devem ser protegidas e as contas administrativas nunca devem ser usadas diretamente pela aplicação.
 
+### Questão b
+
+Privilégios DDL estão relacionados à definição e à alteração da estrutura do banco de dados, incluindo comandos como `CREATE`, `ALTER` e `DROP`. Privilégios DML estão relacionados à manipulação dos dados existentes, incluindo comandos como `SELECT`, `INSERT`, `UPDATE` e `DELETE`.
+
+Separar esses privilégios em contas distintas aplica o princípio do menor privilégio. A conta utilizada pela aplicação pode receber somente os privilégios DML necessários para seu funcionamento, enquanto uma conta administrativa fica responsável pelas operações DDL. Dessa forma, uma falha na aplicação ou o vazamento de suas credenciais não permite que um invasor altere ou destrua a estrutura do banco de dados.
+
 ## Perguntas Discursivas
 
 ## Pergunta Discursiva 1
