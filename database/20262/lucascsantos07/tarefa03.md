@@ -248,3 +248,89 @@ WHERE id = 15;
 ```
 
 **Explicação:** A exclusão foi aceita porque nenhum livro estava associado ao autor Raphael Montes. Como a chave estrangeira `livros.autor_id` referencia `autores.id`, a remoção não viola a restrição de integridade referencial, pois não existem registros na tabela `livros` que dependam desse autor.
+
+### Bloco C: Administração e Privilégios Avançados
+
+**Desafio 12**: Criação de usuário restrito para relatórios
+
+**Criação do usuário:**
+
+```sql
+CREATE USER 'relatorios'@'%' IDENTIFIED BY 'Relatorios2026!';
+```
+
+**Concessão do privilégio de consulta:**
+
+```sql
+GRANT SELECT ON biblioteca.livros
+TO 'relatorios'@'%';
+```
+
+**Verificação dos privilégios:**
+
+```sql
+SHOW GRANTS FOR 'relatorios'@'%';
+```
+
+O usuário `relatorios` recebeu exclusivamente o privilégio `SELECT` sobre a tabela `livros` do banco `biblioteca`.
+
+**Desafio 13**: Teste de restrição de visibilidade
+
+**Comando executado:**
+
+```sql
+SELECT * FROM biblioteca.autores;
+```
+
+**Mensagem de erro retornada pelo MariaDB:**
+
+```text
+SQL Error [1142] [42000]: SELECT command denied to user 'relatorios'@'172.20.0.3' for table `biblioteca`.`autores`
+```
+
+**Explicação:** O SGBD bloqueou a consulta porque o usuário `relatorios` possui privilégio `SELECT` exclusivamente sobre a tabela `livros`. Como não recebeu permissão de consulta sobre `autores`, o acesso foi negado. Isso demonstra o funcionamento do princípio do menor privilégio, limitando o acesso do usuário apenas aos recursos necessários.
+
+
+Desafio 14: Concessão e revogação dinâmica de privilégios
+
+**Concessão do privilégio INSERT (conectado como root):**
+
+```sql
+GRANT INSERT ON biblioteca.livros
+TO 'relatorios'@'%';
+```
+
+**Inserção de teste (conectado como relatorios):**
+
+```sql
+INSERT INTO biblioteca.livros
+    (titulo, ano_publicacao, preco, autor_id)
+VALUES
+    ('Sonho de uma Noite de Verão', 1595, 39.90, 11);
+```
+
+A inserção foi realizada com sucesso, demonstrando que o usuário recebeu o privilégio `INSERT`.
+
+**Revogação do privilégio (conectado como root):**
+
+```sql
+REVOKE INSERT ON biblioteca.livros
+FROM 'relatorios'@'%';
+```
+
+**Nova tentativa de inserção (conectado como relatorios):**
+
+```sql
+INSERT INTO biblioteca.livros
+    (titulo, ano_publicacao, preco, autor_id)
+VALUES
+    ('Sonho de uma Noite de Verão', 1595, 39.90, 11);
+```
+
+**Mensagem de erro retornada:**
+
+```text
+SQL Error [1142] [42000]: (conn=19) INSERT command denied to user 'relatorios'@'172.20.0.3' for table `biblioteca`.`livros`
+```
+
+**Explicação:** Após a revogação do privilégio `INSERT`, o usuário `relatorios` perdeu a autorização para adicionar registros à tabela `livros`. A nova tentativa foi bloqueada pelo SGBD, demonstrando que os privilégios podem ser concedidos e revogados dinamicamente, conforme as necessidades de acesso.
