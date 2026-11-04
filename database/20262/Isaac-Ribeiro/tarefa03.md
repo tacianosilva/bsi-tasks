@@ -222,3 +222,66 @@ WHERE id = @autor_temporario_id;
 ```
 
 O autor temporário recebeu o ID 15 e foi removido com sucesso. A remoção foi aceita porque nenhum registro da tabela `livros` referenciava esse autor. A restrição de chave estrangeira impede a exclusão de um autor que ainda possua livros associados, mas permite a exclusão quando não há registros dependentes.
+
+### Bloco C - Administração e privilégios avançados
+
+#### 12. Criação de usuário restrito para relatórios
+
+O usuário `relatorios` foi criado com acesso de leitura somente à tabela `livros`:
+
+```sql
+CREATE USER 'relatorios'@'%' IDENTIFIED BY 'Relatorios2026!';
+GRANT SELECT ON biblioteca.livros TO 'relatorios'@'%';
+```
+
+O comando `SHOW GRANTS FOR 'relatorios'@'%';` confirmou o privilégio `SELECT` exclusivo sobre `biblioteca.livros`.
+
+#### 13. Teste de restrição de visibilidade
+
+Conectado como `relatorios`, a consulta da tabela `livros` foi permitida e retornou 31 registros. Ao consultar `autores`, o MariaDB retornou:
+
+```text
+ERROR 1142 (42000): SELECT command denied to user 'relatorios'@'localhost'
+for table `biblioteca`.`autores`
+```
+
+O bloqueio ocorreu porque o usuário não recebeu privilégio `SELECT` sobre `biblioteca.autores`. Esse resultado confirma o princípio do menor privilégio.
+
+#### 14. Concessão e revogação dinâmica de privilégios
+
+O privilégio de inserção foi concedido temporariamente:
+
+```sql
+GRANT INSERT ON biblioteca.livros TO 'relatorios'@'%';
+```
+
+Com o privilégio concedido, a inserção de teste foi realizada com sucesso:
+
+```sql
+INSERT INTO biblioteca.livros (titulo, ano_publicacao, preco, autor_id)
+VALUES ('Livro de Teste Relatorios', 2026, 19.90, 1);
+```
+
+O registro foi criado com o ID 32. Em seguida, o privilégio foi revogado:
+
+```sql
+REVOKE INSERT ON biblioteca.livros FROM 'relatorios'@'%';
+```
+
+Após a revogação, uma nova tentativa de inserção foi recusada com o erro `1142 (42000)`, informando que o comando `INSERT` foi negado. A primeira inserção permaneceu no banco, pois a revogação impede novas operações, mas não desfaz alterações anteriores.
+
+#### 15. Script idempotente de automação
+
+O arquivo [setup.sql](./setup.sql) foi desenvolvido para recriar o banco `biblioteca`, suas tabelas (`autores`, `livros` e `emprestimos`), as chaves estrangeiras, a carga inicial e expandida e os usuários `app_biblioteca` e `consulta` com seus privilégios.
+
+O script começa com `DROP DATABASE IF EXISTS biblioteca`, portanto sua execução recria o banco de forma limpa e repetível. Essa operação é destrutiva e deve ser usada apenas quando for desejado apagar os dados existentes ou quando houver backup.
+
+Os usuários são recriados com:
+
+```sql
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON biblioteca.* TO 'app_biblioteca'@'%';
+
+GRANT SELECT
+ON biblioteca.* TO 'consulta'@'%';
+```
