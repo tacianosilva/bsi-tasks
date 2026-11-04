@@ -14,6 +14,7 @@ Neste diretório temos as descrições das tarefas da disciplina e os links para
 ### Tarefas de Projeto (Grupo)
 * [**Projeto 01 — Dados dos Projetos e Documentos Gerais do Projeto**](P1.md)
 * [**Projeto 02 — Planos de Teste e Integração Contínua com SonarQube**](P2.md)
+* [**Projeto 03 — Automação de Testes de Sistema, Testes Instrumentais com IA, Usabilidade e Acessibilidade**](P3.md)
 
 > **Prazo de entrega unificado para a 1ª unidade:** Até **06/10/2026**.
 
@@ -22,6 +23,14 @@ Neste diretório temos as descrições das tarefas da disciplina e os links para
 ## 📝 Respostas dos Discentes
 
 Cada discente deve criar sua pasta com seu username do GitHub (`softwaretesting/20262/tarefas/<username>/`), com os arquivos de cada tarefa (`tarefa01.md`, `tarefa02.md`, `tarefa03.md`) e cadastrar os links abaixo:
+
+* `JaineSouz` (Jaine Souza da Luz):
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/448
+  * Link `tarefa01.md`: softwaretesting/20262/tarefas/JaineSouz/tarefa01.md
+  * Link Tarefa 2 (issue):
+  * Link `tarefa02.md`:
+  * Link Tarefa 3 (issue):
+  * Link `tarefa03.md`:
 
 * `<username>`:
   * Link Tarefa 1 (issue):
