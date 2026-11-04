@@ -21,6 +21,12 @@ Privilégios DDL estão relacionados à definição e à alteração da estrutur
 
 Separar esses privilégios em contas distintas aplica o princípio do menor privilégio. A conta utilizada pela aplicação pode receber somente os privilégios DML necessários para seu funcionamento, enquanto uma conta administrativa fica responsável pelas operações DDL. Dessa forma, uma falha na aplicação ou o vazamento de suas credenciais não permite que um invasor altere ou destrua a estrutura do banco de dados.
 
+### Questão c
+
+O arquivo `.env.example` deve ser commitado porque serve como modelo de configuração para outros desenvolvedores, mostrando quais variáveis de ambiente precisam ser definidas sem expor seus valores reais. Já o arquivo `.env` contém configurações específicas do ambiente e pode armazenar senhas, tokens e outras credenciais, por isso deve ser incluído no `.gitignore` e mantido fora do controle de versão.
+
+Comitar credenciais reais em um repositório público no GitHub pode permitir que qualquer pessoa as utilize para acessar o banco de dados, serviços externos ou outros recursos da aplicação. As consequências podem incluir leitura, alteração ou exclusão de dados, uso indevido de serviços pagos e comprometimento de outros sistemas. Mesmo que o arquivo seja apagado posteriormente, as credenciais podem permanecer no histórico do Git, em forks ou em caches. Por isso, credenciais expostas devem ser revogadas e substituídas imediatamente.
+
 ## Perguntas Discursivas
 
 ## Pergunta Discursiva 1
