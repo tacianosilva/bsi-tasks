@@ -28,6 +28,10 @@ lessons/django-oauth/.env
 lessons/django-oauth/db.sqlite3
 database/connections/java/spring-data-jpa/.env
 
+.env
+
+
+
 # Build and IDE artifacts (global)
 **/.idea/
 **/target/
