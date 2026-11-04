@@ -138,5 +138,133 @@ Para atividades didáticas de banco de dados, as vantagens sobre instalar o SGBD
 - **Várias versões ou ambientes lado a lado:** no Desafio 2 rodei dois ambientes completos ao mesmo tempo.
 - **Reprodutibilidade:** toda a infraestrutura está descrita em arquivos versionáveis.
 - **Isolamento de conflitos:** se há um MySQL local na porta 3306, basta mudar a porta publicada.
+
+---
+ 
+ ## 4. Desafios Realizados
+ 
+### Bloco A: Docker e Infraestrutura
+ 
+#### Desafio 1: alteração de porta do SGBD
+ 
+No `.env` alterei `MARIADB_PORT=3307` e reiniciei o serviço:
+ 
+```
+PS> docker compose up -d
+[+] up 2/2
+ ✔ Container lab-cloudbeaver Running
+ ✔ Container lab-mariadb     Started
+ 
+PS> docker ps
+CONTAINER ID   IMAGE                        COMMAND                 CREATED          STATUS          PORTS                                         NAMES
+7bb64069a40b   mariadb:11                   "docker-entrypoint.s…"  13 seconds ago   Up 11 seconds   0.0.0.0:3307->3306/tcp, [::]:3307->3306/tcp   lab-mariadb
+2711348678ab   dbeaver/cloudbeaver:latest   "./launch-product.sh"   5 hours ago      Up 5 hours      0.0.0.0:8978->8978/tcp, [::]:8978->8978/tcp   lab-cloudbeaver
+```
+ 
+A porta publicada do MariaDB passou a ser `3307->3306`.
+ 
+**Reconfiguração do CloudBeaver:** a conexão do CloudBeaver **não precisou ser alterada**. Ele acessa o MariaDB pela rede interna do Docker, usando o nome do serviço e a porta interna (`mariadb:3306`), que não mudou. A variável `MARIADB_PORT` altera apenas o lado do **host** no mapeamento `"${MARIADB_PORT:-3306}:3306"`. A porta 3307 só é usada por clientes que estão fora do Docker, como um DBeaver instalado no Windows, que usaria `localhost:3307`. Após a mudança, testei a conexão no CloudBeaver (host `mariadb`, porta `3306`) e ela continuou funcionando normalmente, o que confirma essa explicação.
+ 
+#### Desafio 2: dois ambientes simultâneos
+ 
+Copiei a pasta `tarefa03` para `tarefa03-b` e, no ambiente B, usei portas e nomes diferentes (`MARIADB_PORT=3307`, `CLOUDBEAVER_PORT=8979` e nomes de contêiner `lab2-mariadb` e `lab2-cloudbeaver`). Em cada pasta executei `docker compose up -d`:
+ 
+```
+PS> docker compose up -d        (dentro de tarefa03-b)
+[+] up 4/4
+ ✔ Network tarefa03-b_default     Created
+ ✔ Volume tarefa03-b_mariadb_data Created
+ ✔ Container lab2-mariadb         Started
+ ✔ Container lab2-cloudbeaver     Started
+ 
+PS> docker ps
+CONTAINER ID   IMAGE                        COMMAND                 CREATED          STATUS          PORTS                                         NAMES
+9de45c2a5e17   dbeaver/cloudbeaver:latest   "./launch-product.sh"   17 seconds ago   Up 16 seconds   0.0.0.0:8979->8978/tcp, [::]:8979->8978/tcp   lab2-cloudbeaver
+844bd02acd55   mariadb:11                   "docker-entrypoint.s…"  17 seconds ago   Up 16 seconds   0.0.0.0:3307->3306/tcp, [::]:3307->3306/tcp   lab2-mariadb
+5e570cad87a8   mariadb:11                   "docker-entrypoint.s…"  5 minutes ago    Up 5 minutes    0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp   lab-mariadb
+2711348678ab   dbeaver/cloudbeaver:latest   "./launch-product.sh"   5 hours ago      Up 5 hours      0.0.0.0:8978->8978/tcp, [::]:8978->8978/tcp   lab-cloudbeaver
+```
+ 
+**Como evitei conflitos entre os quatro contêineres:**
+ 
+1. **Portas do host:** o ambiente A usa 3306 e 8978, e o B usa 3307 e 8979. Duas aplicações não podem ocupar a mesma porta do host.
+2. **Nomes dos contêineres:** `container_name` precisa ser único no Docker, então o ambiente B usa `lab2-mariadb` e `lab2-cloudbeaver`.
+3. **Redes e volumes:** o Compose prefixa esses recursos com o nome do projeto (a pasta), gerando `tarefa03-b_default` e `tarefa03-b_mariadb_data`. Assim os dados e a rede do ambiente B ficam separados dos do A.
+As portas internas (3306 e 8978) são iguais nos dois ambientes sem problema, pois cada contêiner tem a sua própria rede isolada.
+ 
+#### Desafio 3: persistência do volume e alteração da senha de root
+ 
+Alterei `MARIADB_ROOT_PASSWORD` no `.env` para `NovaSenha2026!` e executei `docker compose up -d`. Em seguida testei as duas senhas:
+ 
+```
+PS> docker compose up -d
+ ✔ Container lab-mariadb     Running
+ ✔ Container lab-cloudbeaver Running
+ 
+PS> docker exec -it lab-mariadb mariadb -uroot -p'RootLab2026!aB' -e "SELECT 1;"
++---+
+| 1 |
++---+
+| 1 |
++---+
+ 
+PS> docker exec -it lab-mariadb mariadb -uroot -p'NovaSenha2026!' -e "SELECT 1;"
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+```
+ 
+A senha antiga continuou válida e a nova foi recusada.
+ 
+**Por que isso ocorre:** a variável `MARIADB_ROOT_PASSWORD` só é lida pelo script de entrypoint da imagem na **primeira inicialização** do diretório de dados. Nesse momento a senha é gravada nos dados do MariaDB, dentro do volume `mariadb_data`. Nas execuções seguintes, o volume já está inicializado, então o MariaDB reaproveita os dados (e a senha antiga) e ignora o valor novo do `.env`. O `.env` apenas alimenta o contêiner, e a senha real vive dentro do banco.
+ 
+**Dois caminhos para aplicar uma nova senha de root:**
+ 
+1. **Recriar o volume** com `docker compose down -v` seguido de `docker compose up -d`. A nova senha do `.env` é aplicada na criação, mas **todos os dados são perdidos**.
+2. **Alterar a senha dentro do banco**, sem perder dados, conectado com a senha antiga:
+```sql
+ALTER USER 'root'@'%' IDENTIFIED BY 'NovaSenha2026!';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'NovaSenha2026!';
+FLUSH PRIVILEGES;
+```
+ 
+Executei o caminho 2 como root: o `ALTER USER` foi aceito, a nova senha passou a ser válida e a antiga deixou de funcionar. Depois disso é preciso manter o `.env` e a conexão do CloudBeaver coerentes com a senha real, e foi o que fiz. Ao final, voltei root para a senha original do laboratório, e as demais etapas seguiram com ela.
+ 
+#### Desafio 4: validação estrita `:?`
+ 
+Renomeei o `.env` para `.env.bak` e executei o Compose:
+ 
+```
+PS> mv .env .env.bak
+PS> docker compose up -d
+error while interpolating services.mariadb.environment.MARIADB_ROOT_PASSWORD: required variable MARIADB_ROOT_PASSWORD is missing a value: defina MARIADB_ROOT_PASSWORD no arquivo .env
+```
+ 
+O Compose abortou antes de criar qualquer contêiner. O modificador `:?` faz a execução **falhar cedo e com uma mensagem clara** quando a variável está ausente ou vazia. Em ambientes profissionais isso é importante porque impede a subida de um banco sem senha (inseguro) ou com configuração incompleta, evita falhas obscuras mais tarde e acelera o diagnóstico, já que a mensagem diz exatamente o que corrigir. O `.env` foi restaurado depois do teste.
+ 
+#### Desafio 5: inspeção com `docker compose config`
+ 
+Saída resumida do comando (valores já resolvidos a partir do `.env`):
+ 
+```
+services:
+  mariadb:
+    container_name: lab-mariadb
+    environment:
+      MARIADB_DATABASE: labdb
+      MARIADB_ROOT_PASSWORD: RootLab2026!aB
+    image: mariadb:11
+    ports:
+      - mode: ingress
+        target: 3306
+        published: "3306"
+        protocol: tcp
+```
+ 
+Três variáveis interpoladas a partir do `.env`:
+ 
+1. `MARIADB_ROOT_PASSWORD: RootLab2026!aB`
+2. `MARIADB_DATABASE: labdb`
+3. A porta publicada do MariaDB, `published: "3306"` (de `MARIADB_PORT`). No CloudBeaver, a porta publicada `"8978"` vem de `CLOUDBEAVER_PORT`.
+A senha acima é a senha de laboratório fornecida no próprio enunciado da tarefa.
+ 
 ---
  
