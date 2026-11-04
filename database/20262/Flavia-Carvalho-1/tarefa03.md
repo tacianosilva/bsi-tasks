@@ -268,3 +268,109 @@ A senha acima é a senha de laboratório fornecida no próprio enunciado da tare
  
 ---
  
+ ### Bloco B: Modelagem e Consultas SQL Básicas
+ 
+#### Desafio 6: tabela `emprestimos`
+ 
+```sql
+USE biblioteca;
+ 
+CREATE TABLE IF NOT EXISTS emprestimos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  livro_id INT,
+  data_emprestimo DATE,
+  devolvido BOOLEAN,
+  FOREIGN KEY (livro_id) REFERENCES livros(id)
+);
+```
+ 
+#### Desafio 7: carga de empréstimos
+ 
+```sql
+INSERT INTO emprestimos (livro_id, data_emprestimo, devolvido) VALUES
+(1, '2026-10-01', FALSE),
+(3, '2026-10-15', FALSE),
+(4, '2026-09-20', TRUE);
+```
+ 
+Dois empréstimos ficaram pendentes (`FALSE`) e um devolvido (`TRUE`). Os dois comandos foram executados sem erros.
+ 
+#### Desafio 8: empréstimos pendentes
+ 
+```sql
+SELECT l.titulo, e.data_emprestimo, a.nome AS autor
+FROM emprestimos e
+JOIN livros l ON e.livro_id = l.id
+JOIN autores a ON l.autor_id = a.id
+WHERE e.devolvido = FALSE;
+```
+ 
+Resultado obtido:
+ 
+```
+Dom Casmurro        2026-10-01   Machado de Assis
+A Hora da Estrela   2026-10-15   Clarice Lispector
+```
+ 
+Foram listados os dois empréstimos ainda não devolvidos, cada um com o título do livro, a data do empréstimo e o nome do autor (obtido pelo segundo `JOIN`). O empréstimo de "Cem Anos de Solidão", já devolvido, ficou de fora pelo filtro `WHERE e.devolvido = FALSE`.
+ 
+#### Desafio 9: filtragem de grupos com `HAVING`
+ 
+```sql
+SELECT a.nome AS autor, COUNT(*) AS total_obras
+FROM autores a
+JOIN livros l ON a.id = l.autor_id
+GROUP BY a.id, a.nome
+HAVING COUNT(*) > 1;
+```
+ 
+Resultado obtido (10 autores):
+ 
+```
+Machado de Assis         4
+Clarice Lispector        3
+Gabriel García Márquez   3
+Jane Austen              3
+William Shakespeare      3
+Victor Hugo              2
+Miguel de Cervantes      2
+Franz Kafka              2
+George Orwell            2
+Haruki Murakami          2
+```
+ 
+Os autores com apenas um livro (Chinua Achebe, Jorge Luis Borges, Fiódor Dostoiévski e Isabel Allende) foram excluídos pelo `HAVING`. O `WHERE` filtra linhas antes do agrupamento, e o `HAVING` filtra os grupos depois da agregação.
+ 
+#### Desafio 10: atualização proporcional (`UPDATE`)
+ 
+```sql
+UPDATE livros SET preco = preco * 1.10 WHERE id = 1;
+SELECT id, titulo, preco FROM livros WHERE id = 1;
+```
+ 
+Resultado:
+ 
+```
+1   Dom Casmurro   43.89
+```
+ 
+O preço de "Dom Casmurro" era 39.90 (Consulta 1) e passou a 43.89, ou seja, 39.90 × 1,10. O `WHERE id = 1` limitou a alteração a um único livro, pois sem ele todos os preços da tabela seriam reajustados.
+ 
+#### Desafio 11: remoção condicional (`DELETE`)
+ 
+```sql
+INSERT INTO autores (nome, pais, ano_nascimento) VALUES ('Autor Temporario', 'Brasil', 1990);
+SELECT * FROM autores ORDER BY id DESC LIMIT 1;
+DELETE FROM autores WHERE nome = 'Autor Temporario';
+```
+ 
+O autor foi cadastrado com o id gerado automaticamente:
+ 
+```
+15   Autor Temporario   Brasil   1990
+```
+ 
+A remoção foi aceita sem violar a chave estrangeira porque nenhum livro referencia esse autor. A restrição `livros.autor_id -> autores.id` só impede apagar um autor que **tenha** livros associados, pois isso deixaria registros órfãos. Como o autor não tinha filhos, não havia nada a proteger. O `DELETE` foi executado sem erro, e a tabela voltou a ter 14 autores.
+ 
+---
+ 
