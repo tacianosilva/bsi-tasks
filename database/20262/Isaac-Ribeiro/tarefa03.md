@@ -7,6 +7,14 @@
 - **E-mail acadêmico:** isaac.ribeiro.018@ufrn.edu.br
 - **Repositório pessoal:** https://github.com/Isaac-Ribeiro/Banco_de_Dados_UFRN.git
 
+## Respostas Dissertativas Conceituais
+
+### Questão a
+
+Uma aplicação comercial nunca deve se conectar ao banco de dados utilizando o usuário `root` porque essa conta possui privilégios administrativos muito amplos, como criar, alterar e excluir bancos, tabelas, usuários e dados. O acesso da aplicação deve utilizar uma conta própria, com apenas os privilégios necessários para executar suas funções, seguindo o princípio do menor privilégio.
+
+Se as credenciais do usuário da aplicação forem vazadas, um invasor poderá acessar o banco usando as permissões concedidas a essa conta. Dependendo desses privilégios, ele poderá consultar, alterar ou excluir dados e até comprometer a disponibilidade e a integridade do sistema. Quando a aplicação utiliza `root`, o impacto pode ser ainda maior, pois o invasor poderá modificar ou apagar estruturas inteiras do banco, criar novos usuários privilegiados e destruir todos os dados. Por isso, as credenciais devem ser protegidas e as contas administrativas nunca devem ser usadas diretamente pela aplicação.
+
 ## Perguntas Discursivas
 
 ## Pergunta Discursiva 1
