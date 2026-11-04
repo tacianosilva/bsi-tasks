@@ -135,3 +135,90 @@ As seguintes variáveis foram resolvidas pelo Compose:
 - `CLOUDBEAVER_PORT` -> `8978`.
 
 O resultado também confirmou os mapeamentos `3306:3306` e `8978:8978`, o volume nomeado `mariadb_data` e os serviços `mariadb` e `cloudbeaver`.
+
+### Bloco B - Modelagem e consultas SQL básicas
+
+#### 6. Criação da tabela de empréstimos
+
+A tabela `emprestimos` foi criada no banco `biblioteca` com uma chave estrangeira para `livros(id)`:
+
+```sql
+CREATE TABLE IF NOT EXISTS emprestimos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  livro_id INT NOT NULL,
+  data_emprestimo DATE NOT NULL,
+  devolvido BOOLEAN NOT NULL DEFAULT FALSE,
+  FOREIGN KEY (livro_id) REFERENCES livros(id)
+);
+```
+
+#### 7. Carga da tabela `emprestimos`
+
+Foram inseridos três empréstimos: dois pendentes e um já devolvido.
+
+```sql
+INSERT INTO emprestimos (livro_id, data_emprestimo, devolvido) VALUES
+  (1, '2026-10-20', FALSE),
+  (7, '2026-10-25', FALSE),
+  (14, '2026-10-15', TRUE);
+```
+
+Após a execução, a tabela continha 3 registros.
+
+#### 8. Consulta de pendências
+
+A consulta abaixo lista os empréstimos ainda não devolvidos, mostrando o título do livro, a data e o autor:
+
+```sql
+SELECT
+  l.titulo,
+  e.data_emprestimo,
+  a.nome AS autor
+FROM emprestimos e
+JOIN livros l ON l.id = e.livro_id
+JOIN autores a ON a.id = l.autor_id
+WHERE e.devolvido = FALSE;
+```
+
+#### 9. Filtragem de grupos com `HAVING`
+
+Esta consulta agrupa os livros por autor e retorna somente os autores com mais de um livro:
+
+```sql
+SELECT
+  a.id,
+  a.nome,
+  COUNT(*) AS total_livros
+FROM autores a
+JOIN livros l ON l.autor_id = a.id
+GROUP BY a.id, a.nome
+HAVING COUNT(*) > 1;
+```
+
+#### 10. Atualização proporcional
+
+O preço do livro de ID 1 foi reajustado em 10%:
+
+```sql
+UPDATE livros
+SET preco = ROUND(preco * 1.10, 2)
+WHERE id = 1;
+```
+
+O livro `Dom Casmurro` tinha preço de `39.90` e passou a custar `43.89`. O comando alterou somente o registro identificado por `id = 1`.
+
+#### 11. Remoção condicional
+
+Foi cadastrado um autor sem livros associados e, em seguida, ele foi removido:
+
+```sql
+INSERT INTO autores (nome, pais, ano_nascimento)
+VALUES ('Autor Temporario', 'Brasil', 2000);
+
+SET @autor_temporario_id = LAST_INSERT_ID();
+
+DELETE FROM autores
+WHERE id = @autor_temporario_id;
+```
+
+O autor temporário recebeu o ID 15 e foi removido com sucesso. A remoção foi aceita porque nenhum registro da tabela `livros` referenciava esse autor. A restrição de chave estrangeira impede a exclusão de um autor que ainda possua livros associados, mas permite a exclusão quando não há registros dependentes.
