@@ -100,3 +100,43 @@ Se o nome e o país do autor ficassem repetidos em cada linha de `livros`, "Mach
  
 ---
  
+ ## 3. Respostas Dissertativas Conceituais
+ 
+### Questão a: por que a aplicação nunca deve usar o usuário `root`
+ 
+O `root` tem poder total sobre o servidor: pode ler e alterar qualquer banco, apagar tabelas e bancos inteiros, criar e remover usuários e alterar privilégios. Uma aplicação comercial só precisa operar sobre os dados do próprio banco, então dar a ela `root` concede muito mais poder do que o necessário.
+ 
+Se as credenciais da aplicação vazarem, o impacto depende dessa conta. Com `root`, o invasor controla o servidor de banco inteiro: pode copiar todos os dados, apagá-los, criar contas para manter acesso e atingir outros bancos do mesmo servidor. Com uma conta restrita como `app_biblioteca`, o dano fica limitado aos dados daquele banco, e, como mostrei no erro 1142, ela não consegue apagar tabelas.
+ 
+### Questão b: privilégios DDL x DML e por que separá-los
+ 
+Privilégios DDL permitem alterar a **estrutura** do banco (`CREATE`, `ALTER`, `DROP`). Privilégios DML permitem trabalhar com o **conteúdo** das tabelas (`SELECT`, `INSERT`, `UPDATE`, `DELETE`). A aplicação no dia a dia só precisa de DML.
+ 
+Separar em contas distintas é boa prática porque limita o dano de erros e ataques: uma falha na aplicação ou uma credencial vazada não consegue destruir ou modificar a estrutura do banco. Mudanças estruturais ficam com uma conta administrativa, usada em momentos controlados e por pessoas responsáveis. Neste laboratório isso ficou demonstrado com `app_biblioteca` (DML), `consulta` (somente `SELECT`) e `root` (administração).
+ 
+### Questão c: `.env.example` x `.env` e os riscos de commitar credenciais
+ 
+O `.env.example` é o modelo de configuração: lista as variáveis de que o projeto precisa, com valores genéricos (como `troque_por_uma_senha_forte`), e por isso deve ser versionado, pois documenta o contrato de configuração e permite que qualquer pessoa monte o próprio `.env`. O `.env` contém os valores reais (senhas) e nunca deve ser versionado.
+ 
+Commitar credenciais reais em um repositório público é grave. Robôs varrem o GitHub em busca de segredos e os encontram muito rápido. Além disso, o histórico do Git guarda o conteúdo antigo: apagar o arquivo depois não remove a senha dos commits anteriores. As consequências práticas incluem acesso indevido ao banco, vazamento ou destruição de dados e a obrigação de trocar todas as credenciais expostas.
+ 
+### Questão d: `.env` + `.gitignore` eliminam todos os riscos?
+ 
+Não. Essa prática evita apenas o vazamento das credenciais **por meio do repositório**. O arquivo continua gravado em texto puro no sistema de arquivos, e qualquer pessoa ou processo com acesso ao disco, a um backup ou ao contêiner comprometido pode ler as senhas. Há ainda outros caminhos de exposição: as variáveis aparecem em `docker compose config`, como se vê nas saídas deste relatório, e podem ser vistas em inspeções do contêiner (`docker inspect`).
+ 
+Em ambientes reais usam-se complementos: gerenciadores de segredos (Docker secrets, HashiCorp Vault, cofres de provedores de nuvem), permissões restritas no arquivo, rotação periódica de senhas e privilégio mínimo para cada conta.
+ 
+### Questão e: o que é um contêiner e vantagens do Docker no ensino
+ 
+Um contêiner é um processo isolado que empacota uma aplicação com as bibliotecas e dependências de que precisa, compartilhando o kernel do sistema operacional hospedeiro. Por isso é mais leve e rápido de iniciar que uma máquina virtual completa.
+ 
+Para atividades didáticas de banco de dados, as vantagens sobre instalar o SGBD diretamente no computador são:
+ 
+- **Ambiente igual para todos:** o mesmo `docker-compose.yml` gera o mesmo ambiente em qualquer máquina.
+- **Instalação rápida e sem poluir o sistema:** não há instalador nem serviço residente.
+- **Fácil de destruir e recriar do zero** (`docker compose down -v`).
+- **Várias versões ou ambientes lado a lado:** no Desafio 2 rodei dois ambientes completos ao mesmo tempo.
+- **Reprodutibilidade:** toda a infraestrutura está descrita em arquivos versionáveis.
+- **Isolamento de conflitos:** se há um MySQL local na porta 3306, basta mudar a porta publicada.
+---
+ 
