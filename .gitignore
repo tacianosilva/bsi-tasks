@@ -27,11 +27,10 @@ languages/scala/hello-maven/.mvn/
 lessons/django-oauth/.env
 lessons/django-oauth/db.sqlite3
 database/connections/java/spring-data-jpa/.env
-docker-compose.yml
-.env.example
+
 .env
-.gitignore
-setup.sql
+
+
 
 # Build and IDE artifacts (global)
 **/.idea/
