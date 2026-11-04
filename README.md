@@ -1,41 +1,11 @@
-# BSI Tasks
+# Repositório destinado às atividades da disciplina DCT2201 - Banco de Dados, do curso de Sistemas de Informação da UFRN.
 
-Repositório para Auxílio no Ensino de Banco de Dados Engenharia de Software, Teste de Software e Programação Web do curso de Bacharelado em Sistemas de Informação CERES/UFRN - Caicó RN
+# Arquivos da Tarefa 03 - Docker Compose, MariaDB e Administração de SGBD
+Os arquivos da tarefa 03 estão organizados na pasta "Pedro1349", caminho da pasta: "database\20262\Pedro1349" :
+## Arquivos:
+- docker-compose.yml: arquivo que mostra a configuração do banco MariaDB e do CloudBeaver;
+- .env.example: modelo que mostra como o arquivo ".env" deve ser criado, além de exemplificar como as variáveis de ambiente devem ser configuradas;
+- povoamento.sql: comandos SQL para fazer o povoamento do banco de dados;
+- setup.sql: script que pode ser usado para fazer a criação do banco de dados, criação e povoamento das tabelas, criação de usuários e de suas permissões;
 
-## Ambientes de Desenvolvimento (Docker & Dev Containers)
 
-Para orientações sobre configuração de ambientes isolados e padronizados com Docker e Dev Containers, consulte a [Documentação de Docker e Dev Containers](docs/docker/README.md) e os modelos executáveis na pasta [docker/](docker/).
-
-## Teste de Software
-
-Na página da Disciplina [Teste de Software](softwaretesting/README.md) você encontra informações, materiais, exemplos e descrição das tarefas.
-
-## Banco de Dados
-
-Na página [Dicas BD](database/README.md) você encontra informações de como executar o **SGBD** utilizando docker e outros exemplos.
-
-Exemplos de código SQL encontrados na pasta [*bd*](database/scripts).
-
-### Clientes SQL
-
-* SQuirreL SQL Client - Universal SQL Client [Download](http://squirrel-sql.sourceforge.net/)
-
-## Java
-
-Exemplos de código Java encontrados na pasta *java*.
-
-## C#
-
-Exemplos de código C# encontrados na pasta *csharp*.
-
-# Ferramentas Interessantes
-
-## ngrok - secure introspectable tunnels to localhost
-
-* ngrok [Download](https://ngrok.com/download)
-
-```bash
-  ./ngrok http -region=sa 8000
-```
-
-# Licença
