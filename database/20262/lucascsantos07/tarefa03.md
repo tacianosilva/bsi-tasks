@@ -154,3 +154,97 @@ O comando apresentou a configuração final dos serviços, substituindo as refer
 - **`MARIADB_PORT`:** utilizada para definir a porta externa `3307`, por meio do mapeamento para a porta interna `3306` do MariaDB.
 
 Dessa forma, foi possível observar que o comando `docker compose config` permite visualizar como as variáveis são interpretadas e aplicadas à configuração dos serviços antes de sua execução, facilitando a identificação de valores ausentes ou incorretos.
+
+
+### Bloco B: Modelagem e Consultas SQL Básicas
+
+Desafio 6: Criação da tabela de empréstimos
+
+```sql
+CREATE TABLE emprestimos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    livro_id INT,
+    data_emprestimo DATE,
+    devolvido BOOLEAN,
+    CONSTRAINT fk_emprestimos_livros
+        FOREIGN KEY (livro_id)
+        REFERENCES livros(id)
+);
+```
+
+Desafio 7: Carga da tabela empréstimos
+
+```sql
+INSERT INTO emprestimos (livro_id, data_emprestimo, devolvido)
+VALUES
+    (1, '2026-10-20', FALSE),
+    (2, '2026-10-22', FALSE),
+    (3, '2026-10-25', TRUE);
+```
+
+Desafio 8: Consulta de pendências
+
+```sql
+SELECT
+    l.titulo,
+    e.data_emprestimo,
+    a.nome AS autor
+FROM emprestimos e
+INNER JOIN livros l ON e.livro_id = l.id
+INNER JOIN autores a ON l.autor_id = a.id
+WHERE e.devolvido = FALSE;
+```
+
+Desafio 9: Filtragem de grupos com HAVING
+
+```sql
+SELECT
+    a.nome AS autor,
+    COUNT(*) AS total_livros
+FROM autores a
+INNER JOIN livros l ON a.id = l.autor_id
+GROUP BY a.id, a.nome
+HAVING COUNT(*) > 1;
+```
+
+Desafio 10: Atualização proporcional (UPDATE)
+
+```sql
+UPDATE livros
+SET preco = preco * 1.10
+WHERE id = 1;
+```
+
+**Resultado:** o preço do livro `Dom Casmurro` foi reajustado de R$ 39,90 para R$ 43,89, correspondendo a um acréscimo de 10%.
+
+Desafio 11: Remoção condicional (DELETE)
+
+**Cadastro do autor:**
+
+```sql
+INSERT INTO autores (nome, pais, ano_nascimento)
+VALUES ('Raphael Montes', 'Brasil', 1990);
+```
+
+**Consulta do autor cadastrado:**
+
+```sql
+SELECT * FROM autores
+WHERE nome = 'Raphael Montes';
+```
+
+**Remoção do autor (ID 15):**
+
+```sql
+DELETE FROM autores
+WHERE id = 15;
+```
+
+**Verificação da exclusão:**
+
+```sql
+SELECT * FROM autores
+WHERE id = 15;
+```
+
+**Explicação:** A exclusão foi aceita porque nenhum livro estava associado ao autor Raphael Montes. Como a chave estrangeira `livros.autor_id` referencia `autores.id`, a remoção não viola a restrição de integridade referencial, pois não existem registros na tabela `livros` que dependam desse autor.
