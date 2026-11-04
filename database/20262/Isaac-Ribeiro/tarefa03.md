@@ -2,7 +2,7 @@
 
 ## Identificação e repositório
 
-- **Discente:** Isaac Vilton
+- **Discente:** Isaac Vilton Ribeiro
 - **Usuário no GitHub:** Isaac-Ribeiro
 - **E-mail acadêmico:** isaac.ribeiro.018@ufrn.edu.br
 - **Repositório pessoal:** https://github.com/Isaac-Ribeiro/Banco_de_Dados_UFRN.git
