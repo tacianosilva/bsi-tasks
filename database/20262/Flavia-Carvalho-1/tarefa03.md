@@ -374,3 +374,173 @@ A remoção foi aceita sem violar a chave estrangeira porque nenhum livro refere
  
 ---
  
+ ### Bloco C: Administração e Privilégios Avançados
+ 
+#### Desafio 12: usuário restrito para relatórios
+ 
+```sql
+CREATE USER 'relatorios'@'%' IDENTIFIED BY 'Relatorios2026!';
+GRANT SELECT ON biblioteca.livros TO 'relatorios'@'%';
+FLUSH PRIVILEGES;
+```
+ 
+O privilégio `SELECT` foi concedido exclusivamente sobre a tabela `livros` do banco `biblioteca`, e não sobre `biblioteca.*`. A existência da conta foi comprovada pela conexão do Desafio 13.
+ 
+#### Desafio 13: teste de restrição de visibilidade
+ 
+Conectado como `relatorios` (`SELECT CURRENT_USER();` retornou `relatorios@%`), executei:
+ 
+```sql
+SELECT * FROM autores;
+```
+ 
+```
+SQL Error [1142] [42000]: (conn=11) SELECT command denied to user 'relatorios'@'172.18.0.3' for table `biblioteca`.`autores`
+```
+ 
+O bloqueio ocorre porque o privilégio foi concedido só em `biblioteca.livros`. Como o MariaDB nega por padrão tudo que não foi explicitamente concedido, a tabela `autores` ficou inacessível para essa conta. Como contraprova, `SELECT * FROM livros;` funcionou nessa mesma conexão e retornou os 30 livros (com "Dom Casmurro" já a 43.89, resultado do Desafio 10).
+ 
+#### Desafio 14: concessão e revogação dinâmica de privilégios
+ 
+Sequência executada, com os resultados obtidos:
+ 
+```sql
+-- como root
+GRANT INSERT ON biblioteca.livros TO 'relatorios'@'%';
+-- Status: Executed
+ 
+-- conectado como relatorios
+INSERT INTO livros (titulo, ano_publicacao, preco, autor_id)
+VALUES ('Livro de Teste', 2025, 19.90, 1);
+-- Status: Executed | Updated Rows: 1   (inserção com sucesso)
+ 
+-- como root
+REVOKE INSERT ON biblioteca.livros FROM 'relatorios'@'%';
+-- Status: Executed
+ 
+-- conectado como relatorios, nova tentativa de inserção
+-- SQL Error [1142] [42000]: (conn=11) INSERT command denied to user 'relatorios'@'172.18.0.3' for table `biblioteca`.`livros`
+ 
+-- limpeza, como root
+DELETE FROM livros WHERE titulo = 'Livro de Teste';
+-- Status: Executed | Updated Rows: 1
+```
+ 
+Depois do `GRANT`, a inserção funcionou (1 linha afetada). Depois do `REVOKE`, a mesma inserção voltou a ser recusada com o erro 1142, mostrando que a permissão foi retirada. O registro de teste foi removido em seguida.
+ 
+#### Desafio 15: script idempotente `setup.sql`
+ 
+O script `setup.sql` (versionado no repositório pessoal) recria do zero o banco `biblioteca`: apaga o banco se existir, recria banco e tabelas (`autores`, `livros`, `emprestimos`), recria os usuários `app_biblioteca` e `consulta` com seus privilégios (usando `DROP USER IF EXISTS` antes de cada `CREATE USER`) e carrega os dados (carga mínima e povoamento expandido).
+ 
+Executado como root no CloudBeaver:
+ 
+```
+Executed queries: 17 / 17
+Duration: 117 ms
+Updated Rows: 48
+```
+ 
+O script foi executado mais de uma vez em sequência sem apresentar erros, o que comprova a idempotência. As contagens conferidas depois da execução foram **14 autores e 30 livros**.
+ 
+<details>
+<summary>Conteúdo do setup.sql</summary>
+```sql
+-- setup.sql: recria do zero o banco biblioteca (pode ser executado várias vezes)
+ 
+DROP DATABASE IF EXISTS biblioteca;
+CREATE DATABASE biblioteca
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_general_ci;
+USE biblioteca;
+ 
+CREATE TABLE autores (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  pais VARCHAR(50),
+  ano_nascimento INT
+);
+ 
+CREATE TABLE livros (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(150) NOT NULL,
+  ano_publicacao INT,
+  preco DECIMAL(10,2),
+  autor_id INT,
+  FOREIGN KEY (autor_id) REFERENCES autores(id)
+);
+ 
+CREATE TABLE emprestimos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  livro_id INT,
+  data_emprestimo DATE,
+  devolvido BOOLEAN,
+  FOREIGN KEY (livro_id) REFERENCES livros(id)
+);
+ 
+DROP USER IF EXISTS 'app_biblioteca'@'%';
+DROP USER IF EXISTS 'consulta'@'%';
+ 
+CREATE USER 'app_biblioteca'@'%' IDENTIFIED BY 'AppBib2026!';
+GRANT SELECT, INSERT, UPDATE, DELETE ON biblioteca.* TO 'app_biblioteca'@'%';
+ 
+CREATE USER 'consulta'@'%' IDENTIFIED BY 'Consulta2026!';
+GRANT SELECT ON biblioteca.* TO 'consulta'@'%';
+ 
+FLUSH PRIVILEGES;
+ 
+INSERT INTO autores (nome, pais, ano_nascimento) VALUES
+('Machado de Assis', 'Brasil', 1839),
+('Clarice Lispector', 'Brasil', 1920),
+('Gabriel García Márquez', 'Colômbia', 1927),
+('Jane Austen', 'Inglaterra', 1775);
+ 
+INSERT INTO livros (titulo, ano_publicacao, preco, autor_id) VALUES
+('Dom Casmurro', 1899, 39.90, 1),
+('Memórias Póstumas de Brás Cubas', 1881, 45.00, 1),
+('A Hora da Estrela', 1977, 32.50, 2),
+('Cem Anos de Solidão', 1967, 59.90, 3),
+('Orgulho e Preconceito', 1813, 29.90, 4);
+ 
+-- Povoamento expandido (conteúdo de povoamento.sql, sem o USE)
+INSERT INTO autores (id, nome, pais, ano_nascimento) VALUES
+(5, 'William Shakespeare', 'Inglaterra', 1564),
+(6, 'Victor Hugo', 'França', 1802),
+(7, 'Miguel de Cervantes', 'Espanha', 1547),
+(8, 'Franz Kafka', 'República Tcheca', 1883),
+(9, 'George Orwell', 'Inglaterra', 1903),
+(10, 'Haruki Murakami', 'Japão', 1949),
+(11, 'Chinua Achebe', 'Nigéria', 1930),
+(12, 'Jorge Luis Borges', 'Argentina', 1899),
+(13, 'Fiódor Dostoiévski', 'Rússia', 1821),
+(14, 'Isabel Allende', 'Chile', 1942);
+ 
+INSERT INTO livros (titulo, ano_publicacao, preco, autor_id) VALUES
+('Quincas Borba', 1891, 37.90, 1),
+('Esaú e Jacó', 1904, 38.90, 1),
+('Perto do Coração Selvagem', 1943, 39.90, 2),
+('A Paixão Segundo G.H.', 1964, 41.90, 2),
+('O Amor nos Tempos do Cólera', 1985, 52.90, 3),
+('Crônica de uma Morte Anunciada', 1981, 36.90, 3),
+('Razão e Sensibilidade', 1811, 41.90, 4),
+('Emma', 1815, 38.90, 4),
+('Hamlet', 1603, 34.90, 5),
+('Romeu e Julieta', 1597, 32.90, 5),
+('Macbeth', 1606, 36.90, 5),
+('Os Miseráveis', 1862, 69.90, 6),
+('O Corcunda de Notre-Dame', 1831, 54.90, 6),
+('Dom Quixote', 1605, 59.90, 7),
+('Novelas Exemplares', 1613, 46.90, 7),
+('A Metamorfose', 1915, 34.90, 8),
+('O Processo', 1925, 39.90, 8),
+('A Revolução dos Bichos', 1945, 39.90, 9),
+('1984', 1949, 44.90, 9),
+('Norwegian Wood', 1987, 54.90, 10),
+('Kafka à Beira-Mar', 2002, 59.90, 10),
+('O Mundo se Despedaça', 1958, 42.90, 11),
+('Ficções', 1944, 47.90, 12),
+('Crime e Castigo', 1866, 55.90, 13),
+('A Casa dos Espíritos', 1982, 49.90, 14);
+```
+ 
+</details>
+---
