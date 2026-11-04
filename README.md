@@ -1,6 +1,6 @@
 # Repositório destinado às atividades da disciplina DCT2201 - Banco de Dados, do curso de Sistemas de Informação da UFRN.
 
-# Arquivos da Tarefa 03 - Docker Compose, MariaDB e Administração de SGBD
+## Arquivos da Tarefa 03 - Docker Compose, MariaDB e Administração de SGBD
 Os arquivos da tarefa 03 estão organizados na pasta "Pedro1349", caminho da pasta: "database\20262\Pedro1349" :
 ## Arquivos:
 - docker-compose.yml: arquivo que mostra a configuração do banco MariaDB e do CloudBeaver;
