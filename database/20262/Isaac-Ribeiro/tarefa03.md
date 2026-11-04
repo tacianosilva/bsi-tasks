@@ -32,3 +32,9 @@ Se fosse utilizado `'localhost'`, o acesso ficaria restrito ao próprio contêin
 Antes da carga expandida, a base possuía 4 autores e 5 livros. A execução do script adicionou mais 10 autores e 26 livros. Portanto, ao final da carga, ficaram cadastrados **14 autores e 31 livros** no total.
 
 Se fosse inserido um livro com `autor_id = 999`, o MariaDB recusaria a operação, pois não existe um autor com esse identificador na tabela `autores`. A regra que impede essa inserção é a **restrição de chave estrangeira** (`FOREIGN KEY (autor_id) REFERENCES autores(id)`), que garante a integridade referencial entre as tabelas `livros` e `autores`.
+
+## Pergunta Discursiva 5
+
+As Consultas 4 e 5 mostram como as tabelas `autores` e `livros` podem ser relacionadas por meio da chave estrangeira `autor_id`. A principal vantagem de manter essas informações em tabelas separadas é evitar a repetição do nome e do país do autor em todos os livros escritos por ele.
+
+Essa organização reduz a duplicação de dados e o espaço utilizado, além de facilitar atualizações. Se o país de um autor mudar ou tiver sido cadastrado incorretamente, basta alterar essa informação em um único registro da tabela `autores`. A separação também evita inconsistências, pois a chave estrangeira garante que cada livro esteja associado a um autor existente. Esse modelo segue o princípio da normalização e torna as consultas e a manutenção do banco mais confiáveis.
