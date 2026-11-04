@@ -33,6 +33,12 @@ Não. O uso do arquivo `.env` e sua inclusão no `.gitignore` reduzem o risco de
 
 Em ambientes de produção, é recomendável restringir as permissões do arquivo, evitar que ele seja incluído em imagens ou logs, proteger os backups e utilizar mecanismos próprios de gerenciamento de segredos sempre que possível. Também devem ser aplicados controle de acesso, monitoramento e rotação periódica das credenciais. Portanto, o `.gitignore` protege principalmente contra o versionamento acidental, mas não substitui as demais medidas de segurança.
 
+### Questão e
+
+Um contêiner é uma unidade isolada que empacota uma aplicação, suas dependências e suas configurações para execução de forma consistente em diferentes ambientes. Ele utiliza recursos do sistema operacional hospedeiro, mas mantém processos, rede e sistema de arquivos organizados em um ambiente separado dos demais serviços.
+
+Em atividades didáticas, utilizar Docker para provisionar bancos de dados facilita a instalação e a configuração do MariaDB, pois o aluno pode iniciar o ambiente com poucos comandos e sem instalar o SGBD diretamente no sistema operacional. Os contêineres tornam o ambiente reproduzível, isolado e mais próximo entre os computadores dos alunos, além de permitirem testar diferentes versões e remover ou recriar o laboratório com facilidade. O uso de volumes também permite preservar os dados quando os contêineres são removidos. Dessa forma, o Docker reduz conflitos com outros programas, evita configurações manuais específicas de cada computador e torna a preparação e a limpeza do ambiente mais rápidas.
+
 ## Perguntas Discursivas
 
 ## Pergunta Discursiva 1
