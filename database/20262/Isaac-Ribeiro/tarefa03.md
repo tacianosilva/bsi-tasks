@@ -27,6 +27,12 @@ O arquivo `.env.example` deve ser commitado porque serve como modelo de configur
 
 Comitar credenciais reais em um repositório público no GitHub pode permitir que qualquer pessoa as utilize para acessar o banco de dados, serviços externos ou outros recursos da aplicação. As consequências podem incluir leitura, alteração ou exclusão de dados, uso indevido de serviços pagos e comprometimento de outros sistemas. Mesmo que o arquivo seja apagado posteriormente, as credenciais podem permanecer no histórico do Git, em forks ou em caches. Por isso, credenciais expostas devem ser revogadas e substituídas imediatamente.
 
+### Questão d
+
+Não. O uso do arquivo `.env` e sua inclusão no `.gitignore` reduzem o risco de exposição acidental no repositório, mas não eliminam todos os riscos de segurança. O arquivo continua armazenado em texto puro no sistema de arquivos do servidor, podendo ser lido por pessoas ou processos que obtenham acesso indevido à máquina, ao contêiner, aos backups ou aos registros do ambiente.
+
+Em ambientes de produção, é recomendável restringir as permissões do arquivo, evitar que ele seja incluído em imagens ou logs, proteger os backups e utilizar mecanismos próprios de gerenciamento de segredos sempre que possível. Também devem ser aplicados controle de acesso, monitoramento e rotação periódica das credenciais. Portanto, o `.gitignore` protege principalmente contra o versionamento acidental, mas não substitui as demais medidas de segurança.
+
 ## Perguntas Discursivas
 
 ## Pergunta Discursiva 1
