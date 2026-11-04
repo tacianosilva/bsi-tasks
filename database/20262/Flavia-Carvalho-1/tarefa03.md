@@ -544,3 +544,45 @@ INSERT INTO livros (titulo, ano_publicacao, preco, autor_id) VALUES
  
 </details>
 ---
+
+### Consultas obrigatórias (seção 10 do enunciado)
+ 
+Executadas individualmente no CloudBeaver, com a base já povoada (14 autores e 30 livros), antes do `UPDATE` do Desafio 10:
+ 
+| # | Consulta | Linhas retornadas | Observação |
+|---|---|---|---|
+| 1 | `SELECT * FROM livros;` | 30 | Todos os livros, ids 1 a 30 |
+| 2 | `SELECT titulo, ano_publicacao ... ORDER BY ano_publicacao DESC;` | 30 | Primeiro: "Kafka à Beira-Mar" (2002). Último: "Romeu e Julieta" (1597) |
+| 3 | `... WHERE ano_publicacao < 1900;` | 14 | De "Dom Casmurro" (1899) a "Romeu e Julieta" (1597) |
+| 4 | `JOIN` entre `livros` e `autores` | 30 | Ex.: "Dom Casmurro", Machado de Assis, 39.9 |
+| 5 | `GROUP BY` e `AVG` por autor | 14 | Ex.: Machado de Assis, 40.425 |
+| 6 | Subconsulta com `AVG(preco)` | 13 | Livros acima da média geral de preços |
+ 
+Exemplos de resultado:
+ 
+```
+Consulta 5 (primeiras linhas)
+Machado de Assis          40.425
+Clarice Lispector         38.1
+Gabriel García Márquez    49.9
+Jane Austen               36.9
+```
+ 
+```
+Consulta 6 (primeiras linhas)
+2   Memórias Póstumas de Brás Cubas   1881   45     1
+4   Cem Anos de Solidão               1967   59.9   3
+10  O Amor nos Tempos do Cólera       1985   52.9   3
+```
+ 
+Para a Consulta 6, a soma dos 30 preços listados na Consulta 1 é 1343,70, o que dá uma média geral de 44,79 (cálculo feito a partir dos dados da Consulta 1). Os 13 livros retornados são justamente os de preço acima desse valor.
+ 
+---
+ 
+### Ocorrências durante a prática
+ 
+- **Docker Desktop fechado:** o `docker ps` falhou inicialmente com erro de conexão ao daemon (`npipe:////./pipe/docker_engine`). Foi resolvido abrindo o Docker Desktop. Executar o comando dentro do WSL gerou outro erro, por falta da integração com a distribuição, e por isso a atividade foi feita no PowerShell.
+- **Erro 1046 `No database selected`:** ocorreu ao executar o script de criação instrução por instrução, porque o `USE biblioteca;` não valeu para as instruções seguintes. Resolvi executando o script completo (3 / 3 instruções).
+- **Erro 1396 em `CREATE USER`:** o usuário `app_biblioteca` já existia por uma execução anterior parcial. Resolvi com `DROP USER IF EXISTS` antes de recriar os usuários, o mesmo padrão usado no `setup.sql`.
+- **Login do CloudBeaver:** o erro `Invalid user credentials` veio do login do portal do CloudBeaver, e não do banco: são contas separadas (administrador do portal x `root` do MariaDB).
+ 
