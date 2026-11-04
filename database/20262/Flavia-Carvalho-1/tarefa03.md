@@ -41,3 +41,26 @@ DDL (Data Definition Language) é a parte da linguagem que define a estrutura on
  
 Se uma tabela é apagada com `DROP TABLE`, a estrutura e todos os registros que estavam nela desaparecem juntos. Não existe uma "lixeira" no SGBD: sem backup, esses dados não podem ser recuperados. Por isso `DROP` é considerado um comando destrutivo.
  
+ ### Pergunta Discursiva 2: erro 1142 ao tentar `DROP TABLE` com a conta restrita
+ 
+Criei uma conexão no CloudBeaver com o usuário `app_biblioteca` e executei `DROP TABLE autores;`. O MariaDB recusou o comando e a tabela continuou intacta. A mensagem recebida foi:
+ 
+```
+SQL Error [1142] [42000]: (conn=11) DROP command denied to user 'app_biblioteca'@'172.18.0.3' for table `biblioteca`.`autores`
+```
+ 
+A recusa aconteceu porque essa conta só recebeu privilégios de manipulação de dados. O `SHOW GRANTS` mostra isso:
+ 
+```
+-- app_biblioteca
+GRANT USAGE ON *.* TO `app_biblioteca`@`%`
+GRANT SELECT, INSERT, UPDATE, DELETE ON `biblioteca`.* TO `app_biblioteca`@`%`
+ 
+-- consulta
+GRANT USAGE ON *.* TO `consulta`@`%`
+GRANT SELECT ON `biblioteca`.* TO `consulta`@`%`
+```
+ 
+Apagar uma tabela exige o privilégio `DROP`, que nunca foi concedido. No MariaDB tudo o que não foi concedido explicitamente é negado, e o erro 1142 é essa negação.
+ 
+Essa restrição protege o banco se a aplicação sofrer uma invasão (por exemplo, SQL injection ou vazamento da senha) ou tiver uma falha de programação. Quem controlar a conta da aplicação conseguirá, no máximo, ler e alterar dados, mas não conseguirá apagar tabelas nem mudar a estrutura do banco. O estrago fica limitado, e isso é o princípio do menor privilégio.
