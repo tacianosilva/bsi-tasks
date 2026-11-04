@@ -53,3 +53,46 @@
     - Resposta: Um contêiner é uma unidade padronizada de software que empacota o código de uma aplicação e todas as suas dependências (bibliotecas, arquivos de configuração e executáveis). O contêiner utiliza virtualização em nível de sistema operacional, compartilhando o kernel do sistema hospedeiro. Isso garante que ele seja extremamente leve, rápido para inicializar e isolado do restante do sistema. As vantagens do Docker são a padronização e reprodutabilidade do ambiente, garantindo que os alunos utilizem a mesma versão do SGBD, configurações de charset e dados iniciais, independentemente do SO o que elimina incompatibilidades.E permitir que o estudante pratique em um cenário realista.
 
 ## 4. Desafios Realizados
+
+### Bloco A: Docker e Infraestrutura de Ambiente
+
+1. **Alteração de porta do SGBD:** Altere a variável `MARIADB_PORT` no `.env` para a porta `3307`. Reinicie o serviço e explique como você reconfigurou a conexão do CloudBeaver para acessar o banco na porta alterada.
+    - Resposta: Acessando as configurações da conexão no painel do CloudBeaver e alterando o campo Port de 3306 para 3307.
+
+2. **Dois ambientes simultâneos:** Configure duas pastas distintas no seu computador com arquivos `docker-compose.yml` e portas/volumes desacoplados. Explique como você garantiu que quatro contêineres rodassem em paralelo sem conflito de portas ou nomes.
+    - Resposta:
+
+3. **Persistência do volume e alteração de senha de root:** Altere o valor de `MARIADB_ROOT_PASSWORD` no arquivo `.env` para uma nova senha qualquer. Execute `docker compose up -d` e observe que a autenticação antiga continua válida enquanto a nova falha. Explique detalhadamente por que isso ocorre e quais são os dois caminhos possíveis para aplicar uma nova senha de root.
+    - Resposta:
+
+4. **Comportamento da validação estrita (:?):** Apague temporariamente o arquivo `.env` (ou comente a linha da senha de root) e execute `docker compose up -d`. Documente a mensagem de erro emitida pelo Compose e explique discursivamente a importância do modificador `:?` em ambientes profissionais.
+    - Resposta:
+
+5. **Inspeção de variáveis no compose:** Execute `docker compose config` no terminal e liste três variáveis de ambiente que foram resolvidas e interpoladas a partir do `.env`.
+    - Resposta:
+
+### Bloco B: Modelagem e Consultas SQL Básicas
+
+6. **Criação da tabela de empréstimos:** Escreva o comando DDL para criar a tabela `emprestimos` contendo os campos `id` (INT AUTO_INCREMENT PRIMARY KEY), `livro_id` (INT), `data_emprestimo` (DATE) e `devolvido` (BOOLEAN), com restrição de chave estrangeira referenciando `livros(id)`.
+    - Resposta:
+7. **Carga da tabela empréstimos:** Escreva as instruções `INSERT` para cadastrar três registros de empréstimos, sendo dois com status não devolvido (`FALSE` ou `0`) e um devolvido (`TRUE` ou `1`).
+    - Resposta:
+8. **Consulta de pendências:** Escreva uma consulta que liste todos os empréstimos pendentes (não devolvidos), trazendo o título do livro, a data de empréstimo e o nome do autor do livro.
+    - Resposta:
+9. **Filtragem de grupos com HAVING:** Escreva uma consulta que agrupe os livros por autor e retorne a contagem total de obras de cada um, filtrando exclusivamente autores que possuem mais de 1 livro cadastrado (`HAVING COUNT(*) > 1`).
+    - Resposta:
+10. **Atualização proporcional (UPDATE):** Execute uma instrução DML para reajustar o preço de um livro específico em 10% de acréscimo. Transcreva a consulta `UPDATE` utilizada e comente o resultado.
+    - Resposta:
+11. **Remoção condicional (DELETE):** Cadastre um novo autor sem nenhum livro associado e, em seguida, execute a instrução `DELETE` para removê-lo da tabela `autores`. Explique por que essa remoção foi aceita sem violar a restrição de chave estrangeira.
+    - Resposta:
+
+### Bloco C: Administração e Privilégios Avançados
+
+12. **Criação de usuário restrito para relatórios:** Crie um usuário chamado `relatorios` com senha `Relatorios2026!`, concedendo privilégio de `SELECT` exclusivamente sobre a tabela `livros` do banco `biblioteca`.
+    - Resposta:
+13. **Teste de restrição de visibilidade:** Conecte-se com o usuário `relatorios`, tente consultar a tabela `autores` e transcreva a mensagem de erro emitida pelo SGBD, explicando o motivo do bloqueio.
+    - Resposta:
+14. **Concessão e revogação dinâmica de privilégios:** Conectado como `root`, conceda privilégio de `INSERT` na tabela `livros` para o usuário `relatorios`. Realize uma inserção de teste com sucesso e, em seguida, revogue o privilégio via `REVOKE`. Descreva discursivamente o resultado de tentar inserir novamente após a revogação.
+    - Resposta:
+15. **Script idempotente de automação (setup.sql):** Desenvolva um script SQL completo chamado `setup.sql` que recrie do zero todo o banco de dados `biblioteca`, suas tabelas, restrições, usuários (`app_biblioteca`, `consulta`) com privilégios e a carga de dados. Versiona esse arquivo no seu repositório pessoal no GitHub.
+    - Resposta:
