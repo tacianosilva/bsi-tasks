@@ -178,7 +178,7 @@ SET preco = preco - (preco * 0.1)
 WHERE id = 1;
 ```
 
-o set está diminuindo de 10% do valor do livro que tem o id = 1
+O novo preço de preco vai ser ele mesmo - 10% do valor, e essa alteração só vai ser aplicada no livro que tiver o id 1
 
 ### 11)
 
