@@ -25,6 +25,7 @@ No Docker, o CloudBeaver é outro container e se conecta pela rede interna, com 
 Após o povoamento expandido, o banco ficou com 14 autores e 30 livros.
 
 Ao tentar cadastrar um livro com um autor que não existe, o MariaDB recusa o INSERT com o erro 1452 (violação de chave estrangeira). Isso é a integridade referencial: um livro só pode apontar para um autor existente, o que evita registros órfãos.
+
 ### Pergunta Discursiva 5
 **Análise das consultas relacionais e vantagens de normalizar dados em tabelas separadas (`autores` e `livros`) em vez de duplicar textos.**
 
@@ -41,7 +42,7 @@ Separar autores e livros é melhor do que repetir o nome do autor em cada livro,
 
 O root tem poder total sobre o servidor: acessa e apaga qualquer banco e cria ou remove usuários. A aplicação precisa de muito menos, e uma falha dela (como injeção de SQL) herdaria todo esse poder.
 
-Se as credenciais da aplicação vazarem, o atacante faz o que aquele usuário pode fazer. Com o root, isso é o comprometimento total do servidor. Com um usuário restrito, o dano fica limitado aos dados daquele banco.
+Se as credenciais da aplicação vazarem, o atacante ganha todos os poderes que o root possui. Dessa forma todo o servidor fica comprometido. Com um usuário restrito, o dano fica limitado aos dados daquele banco.
 
 ### Questão b
 **Qual é a diferença fundamental entre privilégios DDL (Data Definition Language) e DML (Data Manipulation Language)? Por que é uma boa prática de segurança separá-los em contas de usuários distintas?**
