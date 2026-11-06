@@ -1,13 +1,12 @@
 ## Identificação
 Nome: Thomas Reyel da Silva Morais
-link:https://github.com/ThomasReyel/bsi-tasks-thomas/tree/tarefa03/ThomasReyel
+link: https://github.com/ThomasReyel/bsi-tasks-thomas/tree/tarefa03/arquivos/database/20262/ThomasReyel/tarefa03
 ## 1. Respostas às Perguntas Discursivas dos Passos Práticos
 
 ### Pergunta Discursiva 1
 **Diferença entre DDL e DML, e impacto de um `DROP TABLE`.**
 
-A diferença está no que cada grupo de comandos altera. A DDL (Data Definition Language) define e modifica a estrutura do banco: CREATE, ALTER, DROP e TRUNCATE. A DML (Data Manipulation Language) trabalha com os dados dentro dessa estrutura: INSERT, UPDATE, DELETE e SELECT.
-O DROP TABLE, que é um DDL, tem seu impacto muito maior que o de um DELETE. O DELETE remove linhas e mantém a tabela existindo, enquanto o DROP TABLE remove a tabela inteira: estrutura, todos os dados, índices e os privilégios associados a ela.
+A diferença está no que cada grupo de comandos altera. A DDL define e modifica esquemas de relações e criação de índices usando CREATE, ALTER, DROP e etc. A DML trabalha com os dados dentro dessas estruturas, nas tuplas, usando: INSERT, UPDATE, DELETE e SELECT. O DROP TABLE, que é um DDL, tem seu impacto muito maior que o de um DELETE. O DELETE remove linhas e mantém a tabela existindo, enquanto o DROP TABLE remove a tabela inteira: estrutura, todos os dados, índices e os privilégios associados a ela.
 
 ### Pergunta Discursiva 2
 **Análise do erro 1142 ao tentar `DROP TABLE` com usuário restrito e relação com o princípio do menor privilégio.**
