@@ -56,7 +56,7 @@ Separá-los em contas distintas é uma boa prática porque a aplicação só pre
 
 O .env contém as senhas reais, por isso não deve ser versionado. O .env.example é um modelo com os nomes das variáveis e valores fictícios, e deve ser commitado para mostrar quais variáveis são necessárias.
 
-Comitar credenciais reais em um repositório público é perigoso, porque robôs varrem o GitHub e as encontram em minutos. Isso pode levar a vazamento ou destruição de dados e a custos indevidos. Como o Git guarda o histórico, apagar o arquivo depois não basta: é preciso trocar as senhas.
+Comitar credenciais reais em um repositório público é perigoso, porque seus dados/senhas ficam a vista de qualquer um que possa ver o repositório. Isso pode levar a vazamento ou destruição de dados. Como o Git guarda o histórico, apagar o arquivo depois não basta: é preciso trocar as senhas.
 
 ### Questão d
 **O uso do arquivo `.env` e a inclusão no `.gitignore` eliminam por completo todos os riscos de segurança de credenciais em um ambiente de desenvolvimento e produção? Justifique sua resposta considerando que o arquivo permanece armazenado em texto puro no sistema de arquivos do servidor.**
