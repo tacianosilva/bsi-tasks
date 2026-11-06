@@ -68,7 +68,7 @@ Por isso ele é só uma primeira proteção. Em produção, é preciso combinar 
 ### Questão e
 **O que é um contêiner e quais são as principais vantagens de utilizar o Docker para provisionar ambientes de banco de dados em atividades didáticas de graduação em comparação com a instalação manual do SGBD diretamente no sistema operacional do computador do aluno?**
 
-Um contêiner é um ambiente isolado e leve que empacota a aplicação com tudo o que ela precisa para rodar, compartilhando o kernel do sistema operacional.
+Containers são um espécie de caixa que guarda tudo a sua aplicação precisa pra rodar alí dentro. Nenhum containers consegue "enxergar" nada fora dele (a não ser que seja configurado para isso), então cada container é como se fosse uma máquina separada, com suas próprias interfaces de rede e variáveis de sistema.
 
 Em aulas, o Docker tem vantagens sobre a instalação manual: todos os alunos usam o mesmo ambiente, a instalação é rápida e descrita em código (docker-compose.yml), não deixa resíduos no computador e permite recomeçar do zero facilmente, além de rodar vários ambientes ao mesmo tempo sem conflito.
 
