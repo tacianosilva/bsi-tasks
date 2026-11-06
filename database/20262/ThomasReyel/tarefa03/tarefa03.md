@@ -11,7 +11,7 @@ A diferença está no que cada grupo de comandos altera. A DDL define e modifica
 ### Pergunta Discursiva 2
 **Análise do erro 1142 ao tentar `DROP TABLE` com usuário restrito e relação com o princípio do menor privilégio.**
 
-O usuário relatórios tem apenas a permissão de VER o conteúdo de livros, outras tabelas ou ações são bloqueadas pelo SGBD.
+O usuário app_biblioteca possui apenas a permissão de usar comandos DML dentro de biblioteca, por isso ele não pode usar um drop em nenhuma tabela. Isso é o princípio do menor privilégio: cada usuário recebe só o necessário para sua função. Assim, mesmo que a conta seja mal usada ou vazada, ela não consegue apagar causar um grande estrago.
 
 ### Pergunta Discursiva 3
 **Justificativa técnica para o uso do host `'%'` em vez de `'localhost'` na arquitetura conteinerizada do Docker.**
