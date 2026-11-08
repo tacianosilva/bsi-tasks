@@ -66,7 +66,11 @@
         - Volumes: Declaração de volumes nomeados independentes para a gravação dos dados de cada banco.
 
 3. **Persistência do volume e alteração de senha de root:** Altere o valor de `MARIADB_ROOT_PASSWORD` no arquivo `.env` para uma nova senha qualquer. Execute `docker compose up -d` e observe que a autenticação antiga continua válida enquanto a nova falha. Explique detalhadamente por que isso ocorre e quais são os dois caminhos possíveis para aplicar uma nova senha de root.
-    - Resposta:
+    - Resposta: A nova senha é ignorada porque o script de inicialização do MariaDB só processa variáveis como MARIADB_ROOT_PASSWORD na criação inicial da base, quando o volume (/var/lib/mysql) está vazio. Quando o volume já possui dados gravados, o script de entrada (entrypoint) detecta as tabelas do sistema (mysql.user) e ignora qualquer alteração feita nas variáveis do arquivo .env. Por esse motivo, a autenticação antiga continua sendo exigida pelo banco.
+
+        - Os dois caminhos para aplicar a nova senha são:
+            - Sem perda de dados: Alterar diretamente via SQL no banco em execução com ALTER USER 'root'@'%' IDENTIFIED BY 'nova_senha'; e FLUSH PRIVILEGES;.
+            - Resetando o volume: Apagar o volume com docker compose down -v e recriar o ambiente com docker compose up -d para forçar a reinicialização do zero.
 
 4. **Comportamento da validação estrita (:?):** Apague temporariamente o arquivo `.env` (ou comente a linha da senha de root) e execute `docker compose up -d`. Documente a mensagem de erro emitida pelo Compose e explique discursivamente a importância do modificador `:?` em ambientes profissionais.
     - Resposta:
