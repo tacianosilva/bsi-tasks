@@ -73,7 +73,8 @@
             - Resetando o volume: Apagar o volume com docker compose down -v e recriar o ambiente com docker compose up -d para forçar a reinicialização do zero.
 
 4. **Comportamento da validação estrita (:?):** Apague temporariamente o arquivo `.env` (ou comente a linha da senha de root) e execute `docker compose up -d`. Documente a mensagem de erro emitida pelo Compose e explique discursivamente a importância do modificador `:?` em ambientes profissionais.
-    - Resposta:
+    - Resposta: Ao remover a variável do .env, o Compose interrompe o deploy e emite o erro:`parsing docker-compose.yml: required variable MARIADB_ROOT_PASSWORD is missing a value: ...`
+    O modificador `:?` é fundamental em ambientes profissionais para evitar que serviços subam em estado inconsistente, sem parâmetros obrigatórios ou expostos com configurações padrão inseguras.
 
 5. **Inspeção de variáveis no compose:** Execute `docker compose config` no terminal e liste três variáveis de ambiente que foram resolvidas e interpoladas a partir do `.env`.
     - Resposta:
