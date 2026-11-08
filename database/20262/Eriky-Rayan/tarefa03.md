@@ -77,7 +77,10 @@
     O modificador `:?` é fundamental em ambientes profissionais para evitar que serviços subam em estado inconsistente, sem parâmetros obrigatórios ou expostos com configurações padrão inseguras.
 
 5. **Inspeção de variáveis no compose:** Execute `docker compose config` no terminal e liste três variáveis de ambiente que foram resolvidas e interpoladas a partir do `.env`.
-    - Resposta:
+    - Resposta: 
+        - MARIADB_ROOT_PASSWORD (interpolada dentro de environment).
+        - MARIADB_PORT (interpolada dentro de ports para o binding do host).
+        - MARIADB_DATABASE (interpolada dentro de environment na criação da base padrão).
 
 ### Bloco B: Modelagem e Consultas SQL Básicas
 
