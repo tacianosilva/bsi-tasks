@@ -60,7 +60,10 @@
     - Resposta: Acessando as configurações da conexão no painel do CloudBeaver e alterando o campo Port de 3306 para 3307.
 
 2. **Dois ambientes simultâneos:** Configure duas pastas distintas no seu computador com arquivos `docker-compose.yml` e portas/volumes desacoplados. Explique como você garantiu que quatro contêineres rodassem em paralelo sem conflito de portas ou nomes.
-    - Resposta:
+    - Resposta: A execução em paralelo sem conflitos é garantida por três isolamentos:
+        - Nomes de projeto/contêiner: Usar nomes diferentes dos contêiners orginais.
+        - Portas no host: Mapeamento de portas distintas para cada pasta (ex.: 3306 e 8978 no primeiro ambiente vs 3307 e 8979 no segundo).
+        - Volumes: Declaração de volumes nomeados independentes para a gravação dos dados de cada banco.
 
 3. **Persistência do volume e alteração de senha de root:** Altere o valor de `MARIADB_ROOT_PASSWORD` no arquivo `.env` para uma nova senha qualquer. Execute `docker compose up -d` e observe que a autenticação antiga continua válida enquanto a nova falha. Explique detalhadamente por que isso ocorre e quais são os dois caminhos possíveis para aplicar uma nova senha de root.
     - Resposta:
