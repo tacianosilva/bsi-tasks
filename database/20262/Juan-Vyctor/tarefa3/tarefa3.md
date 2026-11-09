@@ -7,7 +7,7 @@
 - **E-mail acadêmico:** juan.oliveira.704@ufrn.edu.br
 - **Disciplina:** DCT2201 — Banco de Dados, Sistemas de Informação — CERES/UFRN.
 - **Repositório pessoal público e README:** [dct2201-banco-de-dados](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/README.md).
-- **Arquivos:** [docker-compose.yml](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/tarefa3/docker-compose.yaml), [.env.example](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/tarefa3/.env.example), [.gitignore](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/.gitignore), [povoamento.sql](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/tarefa3/povoamento.sql) e setup.sql.
+- **Arquivos:** [docker-compose.yml](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/tarefa3/docker-compose.yaml), [.env.example](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/tarefa3/.env.example), [.gitignore](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/.gitignore), e [povoamento.sql](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/tarefa3/povoamento.sql).
 
 Vale ressaltar que o arquivo de povoamento da base ([povoamento.sql](https://github.com/Juan-Vyctor/dct2201-banco-de-dados/blob/main/tarefa3/povoamento.sql)) foi gerado com auxílio de uma IA generativa, o [Claude](claude.ai), devido à instruções explicitas vindas da tarefa.
 
