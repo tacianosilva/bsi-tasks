@@ -2,7 +2,7 @@
  - **Nome Completo:** Pedro Lucas da Silva Araújo;
  - **Usuário no GitHub:** Pedro1349;
  - **Email Acadêmico:** pedro.araujo.716@ufrn.edu.br;
- - **Repositório pessoal:** [DCT2201 — Banco de Dados](https://github.com/Pedro1349/bsi-tasks-Pedro1349);
+ - **Repositório pessoal:** [BD_UFRN_Tarefa03](https://github.com/Pedro1349/BD_UFRN_Tarefa03);
 
 # 2 - Perguntas Discursivas:
 ## Pergunta Discursiva 1: Diferença entre DDL e DML, e impacto de um DROP TABLE
@@ -213,4 +213,4 @@
 
   ## (C) 15 - Script idempotente de automação (setup.sql): Desenvolva um script SQL completo chamado setup.sql que recrie do zero todo o banco de dados biblioteca, suas tabelas, restrições, usuários (app_biblioteca, consulta) com privilégios e a carga de dados. Versiona esse arquivo no seu repositório pessoal no GitHub.
   ### Resposta:
-  Crei o arquivo setup.sql, está no caminho "database\20262\Pedro1349" dentro da pasta "Pedro1349". Essa pasta está no repositório: https://github.com/Pedro1349/bsi-tasks-Pedro1349
+  Crei o arquivo setup.sql, está dentro da pasta "Arquivos". Essa pasta está no repositório: [BD_UFRN_Tarefa03](https://github.com/Pedro1349/BD_UFRN_Tarefa03)
