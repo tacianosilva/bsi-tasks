@@ -1,0 +1,7 @@
+**Tarefa 02 \- MER e Projeto de Banco de Dados Relacional**
+
+**Q1.** O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).
+
+O Modelo Entidade-Relacionamento é composto por três elementos básicos: entidades, atributos e relacionamentos. A entidade representa um objeto ou conceito do mundo real sobre o qual se deseja guardar informações e que pode ser distinguido dos demais, como um cliente, um funcionário ou um projeto.
+Os atributos são as propriedades que descrevem uma entidade ou um relacionamento, como o nome e o e-mail de um cliente. Entre eles, o atributo identificador (ou chave) é aquele que o valor diferencia cada ocorrência da entidade, como o código do cliente. Os atributos também podem ser simples ou compostos, e obrigatórios ou opcionais.
+O relacionamento representa a associação entre duas ou mais entidades, como “o cliente contrata um projeto”. Ele é caracterizado pela cardinalidade, que define quantas ocorrências de uma entidade podem se associar a quantas ocorrências da outra (um para um, um para muitos ou muitos para muitos), e pela participação, que indica se a associação é obrigatória ou opcional.
