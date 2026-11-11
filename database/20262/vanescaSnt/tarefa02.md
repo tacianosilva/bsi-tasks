@@ -145,3 +145,8 @@ erDiagram
 	EQUIPE||--|{RELEASE:"planeja"
 	RELEASE||--|{TAREFA:"possui"
 ```
+
+**Q5.** Descreva, em linguagem natural, as **restrições de integridade referencial** que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").
+
+Todo funcionário deve estar vinculado a uma equipe existente, e cada funcionário pertence a apenas uma equipe. Toda tarefa deve estar vinculada a um projeto, a uma equipe, a uma sprint e a uma release existentes. Toda sprint e toda release devem estar vinculadas a uma equipe existente, e toda release também precisa estar vinculada a um projeto existente. Todo projeto deve estar vinculado a um cliente existente. Em todos esses casos, o valor da chave estrangeira deve corresponder a um registro que realmente exista na tabela referenciada, de modo que não pode haver, por exemplo, uma tarefa com release_código inexistente.
+Também não deve ser possível excluir uma equipe que tenha funcionários, tarefas, sprints ou releases vinculados, nem um projeto que tenha tarefas ou releases vinculados, nem um cliente que tenha projetos vinculados, a menos que os registros dependentes sejam antes removidos ou transferidos. Por fim, toda equipe deve possuir ao menos um funcionário com o papel de líder técnico.
