@@ -32,3 +32,12 @@ Após a execução da carga expandida de dados, a base de dados ficou cadastrada
 Se eu tentasse executar uma instrução DML `INSERT` na tabela `livros` informando um `autor_id` igual a `999` (um autor que não existe na tabela `autores`), o MariaDB recusaria a inserção e retornaria um erro de violação de restrição (por exemplo, `SQL Error [1452] [23000]: Cannot add or update a child row: a foreign key constraint fails`).
 
 A regra do banco que impede essa ação é a **Integridade Referencial**, garantida pela restrição de **Chave Estrangeira (`FOREIGN KEY`)**. Essa restrição exige que todo valor inserido na coluna `autor_id` da tabela filha (`livros`) corresponda obrigatoriamente a um valor de `id` já existente e válido na tabela pai (`autores`).
+
+### Pergunta Discursiva 5
+
+**Vantagens da Normalização e Divisão em Tabelas Relacionadas:**
+Ao analisar as Consultas 4 e 5, fica evidente que separar as informações em duas tabelas distintas (`autores` e `livros`) traz vantagens práticas fundamentais em relação ao armazenamento de dados duplicados:
+
+1. **Eliminação de Redundância e Economia de Espaço:** Se o nome, país e ano de nascimento do autor fossem gravados dentro de cada linha da tabela `livros`, esses dados seriam repetidos dezenas de vezes para autores com muitas obras. A divisão economiza espaço de armazenamento ao guardar cada autor uma única vez.
+2. **Integridade e Facilidade de Atualização (Manutenção Única):** Se um autor mudar de nome ou se o seu país de origem precisar ser corrigido, a alteração é feita em apenas um registro na tabela `autores`. Caso estivesse tudo em uma única tabela, seria necessário atualizar centenas de linhas de livros individualmente, correndo o risco de gerar inconsistências se alguma linha fosse esquecida.
+3. **Facilidade em Agregações e Análises:** A separação simplifica o cálculo de estatísticas (como a média de preço calculada na Consulta 5). O banco identifica o autor pelo seu `id` único, permitindo agrupar e cruzar dados com precisão e sem ambiguidades.
