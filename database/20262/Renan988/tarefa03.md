@@ -1,3 +1,8 @@
+# 1 - Indentificação
+ - **Nome Completo:** Renan Medeiros Nogueira;
+ - **Usuário no GitHub:** Renan988;
+ - **Email Acadêmico:** renan.medeiros.150@ufrn.edu.br
+
 ### Pergunta Discursiva 1
 
 **Diferença entre DDL e DML:**
