@@ -11,3 +11,71 @@ O relacionamento representa a associação entre duas ou mais entidades, como �
 A notação de Peter Chen, representa entidades como retângulos, relacionamentos como losangos e atributos como elipses, e indica a cardinalidade com números (1, N ou M) escritos nas linhas que ligam o relacionamento às entidades. A notação pé de galinha (crow’s foot, ou engenharia de informação) representa as entidades como retângulos com os atributos listados dentro delas, e os relacionamentos como linhas simples, cuja cardinalidade é indicada pelos símbolos nas pontas: um traço para “um”, um círculo para “zero” e um símbolo de três pontas, semelhante a um pé de galinha, para “muitos”. É a notação usada pelo Mermaid.
 Outra opção é a notação UML (diagrama de classes), que usa o formato mínimo..máximo (como 0..1, 1..* ou 0..*) nas extremidades das associações. Já a notação IDEF1X representa as entidades dependentes com cantos arredondados e as independentes com cantos retos, além de diferenciar relacionamentos identificadores (linha contínua) e não identificadores (linha tracejada).
 Um mesmo conceito aparece de formas diferentes em cada notação. Para a cardinalidade “um cliente possui muitos projetos”, Chen escreve 1 de um lado e N do outro, o pé de galinha desenha o símbolo de três pontas junto a projeto, e a UML escreve 1 de um lado e 0..* do outro. Para a entidade subordinada (fraca), que depende de outra para existir, Chen usa um retângulo de linha dupla ligado por um losango duplo, enquanto o IDEF1X usa o retângulo de cantos arredondados.
+
+**Q3.** Construa um Diagrama ER para projetar a base de dados de uma **empresa de desenvolvimento de software** com outras empresas como clientes. A base de dados não deve conter redundância de dados. O modelo ER deve ser representado com um diagrama usando **Mermaid.js**. O modelo deve apresentar, ao menos, entidades, relacionamentos, atributos, identificadores e restrições de cardinalidade. O modelo deve ser feito no nível conceitual, **sem incluir chaves estrangeiras**.
+a) A empresa presta serviços de desenvolvimento de software para outras empresas (clientes). Cada cliente é identificado por um código, um nome e um e-mail de contato.
+b) Os funcionários da empresa trabalham em squads (equipes). Cada funcionário é identificado por um código, um nome e um e-mail, e possui um papel na equipe: desenvolvedor, testador, líder técnico, supervisor ou gerente de produto.
+c) Cada squad é formada por vários funcionários e resolve tarefas (issues). Uma tarefa tem código, descrição, prioridade, situação e uma estimativa em horas. As tarefas pertencem a projetos de um cliente.
+d) O trabalho é organizado em iterações (sprints). Uma squad planeja releases para seus clientes; uma release agrupa um conjunto de tarefas e passa por testes de validação.
+
+```mermaid
+erDiagram
+  CLIENTE {
+    int código
+    string nome
+    string email
+  }
+
+
+  FUNCIONÁRIO {
+    int código
+    string nome
+    string email
+    String papel
+  }
+
+
+  EQUIPE {
+    int código
+    string nome
+  }
+
+
+  TAREFA {
+    int código
+    string descrição
+    string prioridade
+    string situação
+    Time horas
+  }
+
+
+  PROJETO {
+    int código
+    string nome
+    string descrição
+  }
+
+
+  SPRINT {
+    int código
+    date inicio
+    date fim
+  }
+
+
+  RELEASE {
+    int código
+    string versão
+    date data
+  }
+
+	EQUIPE||--|{FUNCIONÁRIO:"trabalha"
+	CLIENTE||--|{PROJETO:"possui"
+	TAREFA}|--||EQUIPE:"resolve"
+	PROJETO||--|{TAREFA:"contém"
+	EQUIPE||--|{SPRINT:"organiza"
+	SPRINT||--|{TAREFA:"possui"
+	EQUIPE||--|{RELEASE:"planeja"
+	RELEASE||--|{TAREFA:"possui"
+```
