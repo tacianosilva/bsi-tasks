@@ -79,3 +79,69 @@ erDiagram
 	EQUIPE||--|{RELEASE:"planeja"
 	RELEASE||--|{TAREFA:"possui"
 ```
+
+**Q4.** A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.
+
+```mermaid
+erDiagram
+	CLIENTE {
+		int código PK
+		string nome
+		string email
+	}
+
+	FUNCIONÁRIO {
+		int código PK
+		int equipe_código FK
+		string nome
+		string email
+		String papel
+	}
+
+	EQUIPE {
+		int código PK
+		string nome
+	}
+
+	TAREFA {
+		int código PK
+		int projeto_código FK
+		int equipe_código FK
+		int release_código FK
+    int sprint_código FK
+		string descrição
+		string prioridade
+		string situação
+		Time horas
+	}
+
+	PROJETO {
+		int código PK
+		int cliente_código FK
+		string nome
+		string descrição
+	}
+
+	SPRINT {
+		int código PK
+		int equipe_código FK
+		date inicio
+		date fim
+	}
+
+	RELEASE {
+		int código PK
+		int equipe_código FK
+		string versão
+		date data
+	}
+
+	EQUIPE||--|{FUNCIONÁRIO:"trabalha"
+	CLIENTE||--|{PROJETO:"possui"
+	TAREFA}|--||EQUIPE:"resolve"
+	PROJETO||--|{TAREFA:"contém"
+	EQUIPE||--|{SPRINT:"organiza"
+	SPRINT||--|{TAREFA:"possui"
+	EQUIPE||--|{RELEASE:"planeja"
+	RELEASE||--|{TAREFA:"possui"
+```
