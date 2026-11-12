@@ -4,19 +4,26 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
 
 ---
 
-## 📌 Enunciados das Tarefas e Projetos (1ª Unidade)
-
-> **Prazo unificado de entrega para a 1ª unidade:** Até **06/10/2026**.
+## 📌 Enunciados das Tarefas e Projetos por Unidade
 
 * [Guia e Visão Geral das Tarefas](tarefas/README.md)
-* **Tarefas Individuais:**
-  * [Tarefa 01 — Teste de Unidade, Integração, Cobertura e CI](tarefas/T1.md)
-  * [Tarefa 02 — Implementação do User Story da Iteração 1 e Atuação como QA](tarefas/T2.md)
-  * [Tarefa 03 — Implementação do User Story da Iteração 2 e Atuação como QA](tarefas/T3.md)
-* **Tarefas de Projeto (Grupo):**
-  * [Projeto 01 — Dados dos Projetos e Documentos Gerais do Projeto](tarefas/P1.md)
-  * [Projeto 02 — Planos de Teste e Integração Contínua com SonarQube](tarefas/P2.md)
-  * [Projeto 03 — Automação de Testes de Sistema, Testes Instrumentais com IA, Usabilidade e Acessibilidade](tarefas/P3.md)
+
+### 1ª Unidade (Fundamentos e Planejamento)
+* **Q1 — Questionário Avaliativo — Conceitos de Teste de Software** (SIGAA)
+* [Tarefa 01 — Teste de Unidade, Integração, Cobertura e CI](tarefas/T1.md)
+* [Projeto 01 — Dados dos Projetos e Documentos Gerais do Projeto](tarefas/P1.md)
+* [Projeto 02 — Planos de Teste e Integração Contínua com SonarQube](tarefas/P2.md)
+
+### 2ª Unidade (Desenvolvimento, Mutação e Testes de Sistema)
+* [Tarefa 02 — Implementação do User Story da Iteração 1 e Atuação como QA](tarefas/T2.md)
+* [Tarefa 03 — Implementação do User Story da Iteração 2 e Atuação como QA](tarefas/T3.md)
+* [Projeto 03 — Teste de Mutação e Ampliação da Cobertura](tarefas/P3.md)
+* [Projeto 04 — Automação de Testes de Sistema, Testes Instrumentados com IA, Usabilidade e Acessibilidade](tarefas/P4.md)
+
+### 3ª Unidade (DevOps, CI/CD e Pesquisa Científica)
+* [Tarefa 04 — DevOps, Integração e Entrega Contínua (CI/CD) com Testes Automatizados](tarefas/T4.md)
+* [Tarefa 05 — Leitura e Análise Crítica de Artigo Científico sobre Teste de Software](tarefas/T5.md)
+* [Projeto 05 — Implantação de DevOps, Integração Contínua (CI) e Implantação Contínua (CD) nos Projetos](tarefas/P5.md)
 
 ---
 
