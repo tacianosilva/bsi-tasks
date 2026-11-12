@@ -2,10 +2,10 @@
 
 ## 1. Identificação e Repositório
 
-- **Nome completo:** Pedro Henrique da Silva
-- **Usuário no GitHub:** PHS-00
-- **E-mail acadêmico:** pedro.silva.437@ufrn.edu.br
-- **Repositório Pessoal Público:** [Link para o repositório](https://github.com/PHS-00/bsi-tasks/tree/tarefa03/PHS-00)
+- **Nome completo:** <Seu Nome Completo>
+- **Usuário no GitHub:** <seu-username>
+- **E-mail acadêmico:** <seu-email@ufrn.edu.br>
+- **Repositório Pessoal Público:** [Link para o repositório](https://github.com/<seu-username>/<seu-repositorio>/tree/main/tarefa03)
 
 ---
 
