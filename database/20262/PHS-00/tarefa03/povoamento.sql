@@ -1,0 +1,41 @@
+USE biblioteca;
+
+INSERT INTO autores (nome, pais, ano_nascimento) VALUES
+('George Orwell', 'Inglaterra', 1903),
+('Jorge Amado', 'Brasil', 1912),
+('Fiódor Dostoiévski', 'Rússia', 1821),
+('Franz Kafka', 'Áustria-Hungria', 1883),
+('Virginia Woolf', 'Inglaterra', 1882),
+('José Saramago', 'Portugal', 1922),
+('Chimamanda Ngozi Adichie', 'Nigéria', 1977),
+('Haruki Murakami', 'Japão', 1949),
+('Isabel Allende', 'Chile', 1942),
+('Graciliano Ramos', 'Brasil', 1892);
+
+INSERT INTO livros (titulo, ano_publicacao, preco, autor_id) VALUES
+('Quincas Borba', 1891, 38.90, 1),
+('O Alienista', 1882, 24.50, 1),
+('Perto do Coração Selvagem', 1943, 36.00, 2),
+('A Paixão Segundo G.H.', 1964, 41.90, 2),
+('O Amor nos Tempos do Cólera', 1985, 54.90, 3),
+('Razão e Sensibilidade', 1811, 34.90, 4),
+('1984', 1949, 44.90, 5),
+('A Revolução dos Bichos', 1945, 29.90, 5),
+('Capitães da Areia', 1937, 42.00, 6),
+('Gabriela, Cravo e Canela', 1958, 49.90, 6),
+('Crime e Castigo', 1866, 69.90, 7),
+('Os Irmãos Karamázov', 1880, 84.90, 7),
+('A Metamorfose', 1915, 27.50, 8),
+('O Processo', 1925, 39.90, 8),
+('Mrs. Dalloway', 1925, 37.90, 9),
+('Ao Farol', 1927, 43.50, 9),
+('Ensaio sobre a Cegueira', 1995, 52.90, 10),
+('Memorial do Convento', 1982, 48.00, 10),
+('Hibisco Roxo', 2003, 46.90, 11),
+('Americanah', 2013, 55.90, 11),
+('Norwegian Wood', 1987, 51.00, 12),
+('Kafka à Beira-Mar', 2002, 64.90, 12),
+('A Casa dos Espíritos', 1982, 53.90, 13),
+('Paula', 1994, 44.00, 13),
+('Vidas Secas', 1938, 35.90, 14),
+('São Bernardo', 1934, 33.90, 14);

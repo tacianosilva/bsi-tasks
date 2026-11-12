@@ -1,0 +1,22 @@
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: lab-mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?defina MARIADB_ROOT_PASSWORD no arquivo .env}
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-labdb}
+    ports:
+      - "${MARIADB_PORT:-3306}:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    container_name: lab-cloudbeaver
+    ports:
+      - "${CLOUDBEAVER_PORT:-8978}:8978"
+    depends_on:
+      - mariadb
+
+volumes:
+  mariadb_data:
