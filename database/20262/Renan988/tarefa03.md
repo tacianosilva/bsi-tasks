@@ -2,6 +2,7 @@
  - **Nome Completo:** Renan Medeiros Nogueira;
  - **Usuário no GitHub:** Renan988;
  - **Email Acadêmico:** renan.medeiros.150@ufrn.edu.br
+ - **Repositório Pessoal:** [https://github.com/Renan988/tarefas-bd](https://github.com/Renan988/tarefas-bd.git)
 
 ### Pergunta Discursiva 1
 
