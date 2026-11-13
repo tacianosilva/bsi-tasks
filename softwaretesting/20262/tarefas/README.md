@@ -29,6 +29,12 @@ Neste diretório temos as descrições das tarefas da disciplina e os links para
 
 Cada discente deve criar sua pasta com seu username do GitHub (`softwaretesting/20262/tarefas/<username>/`), com os arquivos de cada tarefa (`tarefa01.md` a `tarefa05.md`) e cadastrar os links abaixo:
 
+### 📌 Boas Práticas de Branches (GitFlow Simplificado)
+
+- **Ramificação sempre a partir da `main`:** Ao iniciar qualquer tarefa (`tarefa01`, `tarefa02`, etc.), sincronize seu fork com o repositório original (`upstream/main`), posicione-se na branch `main` e crie a branch da tarefa a partir dela (`git checkout main && git pull upstream main && git checkout -b tarefa0X/<username>`).
+- **Nunca ramifique em cascata:** Nunca crie uma branch de nova tarefa sobre a branch de uma tarefa anterior que ainda esteja aguardando avaliação. Cada tarefa é autocontida e deve ter sua branch criada a partir da `main` limpa para não acumular commits ou arquivos de tarefas distintas no mesmo Pull Request.
+- Para o guia completo de Git/GitHub, consulte as [Boas Práticas de Git para Tarefas Acadêmicas](https://github.com/tacianosilva/engenharia-software/blob/main/docs/github.md#boas-pr%C3%A1ticas-de-git-para-tarefas-acad%C3%AAmicas-gitflow-simplificado).
+
 * `JaineSouz` (Jaine Souza da Luz):
   * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/448
   * Link `tarefa01.md`: softwaretesting/20262/tarefas/JaineSouz/tarefa01.md
