@@ -63,8 +63,7 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
-  * Link Repositório do Projeto (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
+  * Link Repositório do Projeto: <https://github.com/MViniciusCoffe/SpendSmart>
 
 * `JosephDouglas7` (Joseph Douglas Moura Batista — G2):
   * Link Tarefa 1 (issue):
@@ -79,11 +78,10 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
 
 * `MViniciusCoffe` (Marcus Vinícius de Souza Azevedo — G4):
-  * Link Tarefa 1 (issue):
-  * Link Tarefa 2 (issue):
-  * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
-  * Link Repositório do Projeto (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/449
+  * Link Tarefa 2 (issue): https://github.com/tacianosilva/bsi-tasks/issues/468
+  * Link Tarefa 3 (issue): https://github.com/tacianosilva/bsi-tasks/issues/497
+  * Link Repositório do Projeto: <https://github.com/MViniciusCoffe/SpendSmart>
 
 * `pauloandrehxh` (Paulo André Alves de Moura — G3):
   * Link Tarefa 1 (issue):
@@ -166,15 +164,17 @@ apresentar um painel com saldo, receitas e gastos.
 
 **Tecnologias:** JavaScript (React, Next.js e Jest), HTML, CSS, PostgreSQL (em nuvem), AWS e Git.
 
-  * Link Repositório (Backend — foco principal na disciplina): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
-  * Link Repositório (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
-  * Link Testes de Sistema (E2E):
-  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
+  * Link Repositório (monolito Next.js + Supabase): <https://github.com/MViniciusCoffe/SpendSmart>
+  * Link Documento de Visão: <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/vision.md>
+  * Link Relatório do Estado Atual dos Testes: <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/test-state-report.md>
+  * Link Plano de Teste Geral (PTG): <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/test-plan.md>
+  * Link Plano de Teste das Iterações 1 e 2 (PTI): <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/test-plan-iterations.md>
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade): <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/relatorio-testes-sistema-ia.md>
+  * Link Testes de Sistema (E2E): <https://github.com/MViniciusCoffe/SpendSmart/tree/main/tests/e2e>
+  * Link Issue P3: <https://github.com/tacianosilva/bsi-tasks/issues/577> (projeto: <https://github.com/MViniciusCoffe/SpendSmart/issues/83>)
+  * Link Pull Request P3: <https://github.com/MViniciusCoffe/SpendSmart/pull/84>
+  * Link Correções de Usabilidade e Acessibilidade (Antes × Depois): <https://github.com/MViniciusCoffe/SpendSmart/commit/f224db1> (contraste) e <https://github.com/MViniciusCoffe/SpendSmart/commit/3368ea8> (e-mail já cadastrado)
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/dashboard?id=spendsmart>
 
 ### G5 — Comercializa
 
