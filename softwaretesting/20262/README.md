@@ -4,46 +4,92 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
 
 ---
 
-## 📌 Enunciados das Tarefas e Projetos (1ª Unidade)
-
-> **Prazo unificado de entrega para a 1ª unidade:** Até **06/10/2026**.
+## 📌 Enunciados das Tarefas e Projetos por Unidade
 
 * [Guia e Visão Geral das Tarefas](tarefas/README.md)
-* **Tarefas Individuais:**
-  * [Tarefa 01 — Teste de Unidade, Integração, Cobertura e CI](tarefas/T1.md)
-  * [Tarefa 02 — Implementação do User Story da Iteração 1 e Atuação como QA](tarefas/T2.md)
-  * [Tarefa 03 — Implementação do User Story da Iteração 2 e Atuação como QA](tarefas/T3.md)
-* **Tarefas de Projeto (Grupo):**
-  * [Projeto 01 — Dados dos Projetos e Documentos Gerais do Projeto](tarefas/P1.md)
-  * [Projeto 02 — Planos de Teste e Integração Contínua com SonarQube](tarefas/P2.md)
+
+### 1ª Unidade (Fundamentos e Planejamento)
+* **Q1 — Questionário Avaliativo — Conceitos de Teste de Software** (SIGAA)
+* [Tarefa 01 — Teste de Unidade, Integração, Cobertura e CI](tarefas/T1.md)
+* [Projeto 01 — Dados dos Projetos e Documentos Gerais do Projeto](tarefas/P1.md)
+* [Projeto 02 — Planos de Teste e Integração Contínua com SonarQube](tarefas/P2.md)
+
+### 2ª Unidade (Desenvolvimento, Mutação e Testes de Sistema)
+* [Tarefa 02 — Implementação do User Story da Iteração 1 e Atuação como QA](tarefas/T2.md)
+* [Tarefa 03 — Implementação do User Story da Iteração 2 e Atuação como QA](tarefas/T3.md)
+* [Projeto 03 — Teste de Mutação e Ampliação da Cobertura](tarefas/P3.md)
+* [Projeto 04 — Automação de Testes de Sistema, Testes Instrumentados com IA, Usabilidade e Acessibilidade](tarefas/P4.md)
+
+### 3ª Unidade (DevOps, CI/CD e Pesquisa Científica)
+* [Tarefa 04 — DevOps, Integração e Entrega Contínua (CI/CD) com Testes Automatizados](tarefas/T4.md)
+* [Tarefa 05 — Leitura e Análise Crítica de Artigo Científico sobre Teste de Software](tarefas/T5.md)
+* [Projeto 05 — Implantação de DevOps, Integração Contínua (CI) e Implantação Contínua (CD) nos Projetos](tarefas/P5.md)
 
 ---
 
 ## 👤 Entregas Individuais (Discentes)
 
-* `HelenaMariano2025` (Helena Dantas — G1):
+* `arthurazvd` (Arthur José dos Santos Azevedo — G5):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/arthurazvd/comercializa>
+
+* `HelenaMariano2025` (Helena Dantas Mariano — G1):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
+
+* *(username pendente)* (Hildemberg Eling de Araújo Lucena — Grupo pendente):
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto:
 
-* `Isabellecavalcant` (Isabelle Cavalcanti — G1):
-  * Link Tarefa 1 (issue):
+* `Isabellecavalcant` (Isabelle Cavalcanti da Silva — G1):
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/458
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto:
+  * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
 
-* `JaineSouz` (Jaine Souza — G1):
+* `JaineSouz` (Jaine Souza da Luz — G1):
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/448
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
+
+* `Jose-Samuel-Lima` (José Samuel Silva Lima — G4):
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto:
+  * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
+  * Link Repositório do Projeto (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
 
 * `JosephDouglas7` (Joseph Douglas Moura Batista — G2):
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/JosephDouglas7/Projeto-da-disciplina-teste-de-software>
+
+* `Luisfelipelinhares` (Luís Felipe Linhares Pereira — G3):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
+
+* `MViniciusCoffe` (Marcus Vinícius de Souza Azevedo — G4):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
+  * Link Repositório do Projeto (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
+
+* `pauloandrehxh` (Paulo André Alves de Moura — G3):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
 
 ---
 
@@ -56,8 +102,8 @@ cadastro de alunos, turmas e livros, além dos registros de empréstimos e devol
 apresentada como HBL Control / Sistema BHL, com foco no controle de livros didáticos do Instituto
 Federal, Campus Patos.
 
-**Equipe:** Helena Dantas (`@HelenaMariano2025`), Isabelle Cavalcanti (`@Isabellecavalcant`) e
-Jaine Souza (`@JaineSouz`).
+**Equipe:** Helena Dantas Mariano (`@HelenaMariano2025`), Isabelle Cavalcanti da Silva (`@Isabellecavalcant`) e
+Jaine Souza da Luz (`@JaineSouz`).
 
 **Tecnologias:** PHP, MySQL, MySQLi, HTML, CSS, JavaScript, jQuery e Bootstrap.
 
@@ -66,6 +112,8 @@ Jaine Souza (`@JaineSouz`).
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
 ### G2 — IA Voz
@@ -84,25 +132,68 @@ partir do texto escrito.
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
-### G3 (a definir)
+### G3 — Arena UFRN (Gestor de Quadra de Areia)
 
-  * Link Repositório:
+Aplicação web para gerenciamento e reserva da quadra de areia da UFRN. O sistema permite que
+alunos autenticados (via e-mail ou matrícula simulada) agendem horários, consultem a
+disponibilidade em tempo real e cancelem reservas, implementando regras de negócio para evitar
+monopólio de horários por um único curso ou aluno.
+
+**Equipe:** Luís Felipe Linhares Pereira (`@Luisfelipelinhares`) e Paulo André Alves de Moura (`@pauloandrehxh`).
+
+**Tecnologias:** React (JavaScript), Tailwind CSS, Node.js (Express), SQLite, Prisma ORM, Jest, React Testing Library e Cypress.
+
+  * Link Repositório: <https://github.com/pauloandrehxh/arena-ufrn>
   * Link Documento de Visão:
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link SonarQube LABENS:
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
-### G4 (a definir)
+### G4 — SpendSmart
 
-  * Link Repositório:
+Aplicativo desenvolvido para auxiliar no controle das finanças pessoais, permitindo cadastrar,
+editar e excluir receitas e despesas organizadas por categorias e formas de pagamento, além de
+apresentar um painel com saldo, receitas e gastos.
+
+**Equipe:** José Samuel Silva Lima (`@Jose-Samuel-Lima`) e Marcus Vinícius de Souza Azevedo (`@MViniciusCoffe`).
+
+**Tecnologias:** JavaScript (React, Next.js e Jest), HTML, CSS, PostgreSQL (em nuvem), AWS e Git.
+
+  * Link Repositório (Backend — foco principal na disciplina): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
+  * Link Repositório (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
   * Link Documento de Visão:
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link SonarQube LABENS:
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
+
+### G5 — Comercializa
+
+Sistema desenvolvido para auxiliar na gestão comercial de pequenos negócios, permitindo o
+gerenciamento de produtos, categorias, estoque e vendas, painel de desempenho do negócio e
+recomendações para estoque baixo, produtos próximos do vencimento e itens com baixa saída.
+
+**Equipe:** Arthur José dos Santos Azevedo (`@arthurazvd`).
+
+**Tecnologias:** Python, Django, Django REST Framework, SQLite, pytest, pytest-django, pytest-cov e GitHub Actions.
+
+  * Link Repositório: <https://github.com/arthurazvd/comercializa>
+  * Link Documento de Visão:
+  * Link Relatório do Estado Atual dos Testes:
+  * Link Plano de Teste Geral (PTG):
+  * Link Plano de Teste das Iterações 1 e 2 (PTI):
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
+  * Link Testes de Sistema (E2E):
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
 ---
 
@@ -110,4 +201,3 @@ partir do texto escrito.
 
   * Processo de desenvolvimento YP-Agentic: <https://github.com/tacianosilva/engenharia-software/tree/main/yp-agentic>
   * Servidor SonarQube do LABENS/UFRN: <https://labens.dct.ufrn.br/sonarqube/>
-
