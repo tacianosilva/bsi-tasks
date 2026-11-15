@@ -32,4 +32,73 @@ Existem diversas notações gráficas para representar os mesmos conceitos conce
   * *Chen:* Elipse separada com o texto sublinhado.
   * *Pé de Galinha / Mermaid:* Listado dentro do bloco da entidade com o marcador `PK`.
 
-  
+## Q3. Diagrama ER Conceitual (Mermaid.js)
+
+O diagrama abaixo representa o modelo conceitual da empresa de desenvolvimento de software sem redundância de dados e sem chaves estrangeiras:
+
+```mermaid
+erDiagram
+    CLIENTE {
+        int codigo PK
+        string nome
+        string email_contato
+    }
+
+    PROJETO {
+        int codigo PK
+        string nome
+        string descricao
+        date data_inicio
+    }
+
+    SQUAD {
+        int codigo PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        int codigo PK
+        string nome
+        string email
+        string papel
+    }
+
+    SPRINT {
+        int codigo PK
+        string nome
+        date data_inicio
+        date data_fim
+    }
+
+    RELEASE {
+        int codigo PK
+        string versao
+        date data_prevista
+        string status
+    }
+
+    TAREFA {
+        int codigo PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+
+    TESTE_VALIDACAO {
+        int codigo PK
+        string descricao
+        date data_execucao
+        string resultado
+    }
+
+    CLIENTE ||--o{ PROJETO : "possui"
+    PROJETO ||--o{ TAREFA : "contem"
+    SQUAD ||--|{ FUNCIONARIO : "formada_por"
+    SQUAD ||--o{ TAREFA : "resolve"
+    SPRINT |o--o{ TAREFA : "organiza"
+    SQUAD ||--o{ RELEASE : "planeja"
+    CLIENTE ||--o{ RELEASE : "recebe"
+    RELEASE |o--o{ TAREFA : "agrupa"
+    RELEASE ||--o{ TESTE_VALIDACAO : "passa_por"
+```
