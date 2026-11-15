@@ -102,3 +102,46 @@ erDiagram
     RELEASE |o--o{ TAREFA : "agrupa"
     RELEASE ||--o{ TESTE_VALIDACAO : "passa_por"
 ```
+
+## Q4. Mapeamento para o Modelo Relacional
+
+Aplicando as regras de transformação do MER para o Modelo Relacional (propagando as chaves primárias do lado `1` como chaves estrangeiras no lado `N`):
+
+1. **CLIENTE** (`codigo`, `nome`, `email_contato`)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):** Nenhuma.
+
+2. **PROJETO** (`codigo`, `nome`, `descricao`, `data_inicio`, `codigo_cliente`)
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** `codigo_cliente` referencia `CLIENTE(codigo)`
+
+3. **SQUAD** (`codigo`, `nome`)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):** Nenhuma.
+
+4. **FUNCIONARIO** (`codigo`, `nome`, `email`, `papel`, `codigo_squad`)
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** `codigo_squad` referencia `SQUAD(codigo)`
+
+5. **SPRINT** (`codigo`, `nome`, `data_inicio`, `data_fim`)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):** Nenhuma.
+
+6. **RELEASE** (`codigo`, `versao`, `data_prevista`, `status`, `codigo_squad`, `codigo_cliente`)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):**
+     * `codigo_squad` referencia `SQUAD(codigo)`
+     * `codigo_cliente` referencia `CLIENTE(codigo)`
+
+7. **TAREFA** (`codigo`, `descricao`, `prioridade`, `situacao`, `estimativa_horas`, `codigo_projeto`, `codigo_squad`, `codigo_sprint`, `codigo_release`)
+   * **Chave Primária (PK):** `codigo`
+   * **Chaves Estrangeiras (FK):**
+     * `codigo_projeto` referencia `PROJETO(codigo)`
+     * `codigo_squad` referencia `SQUAD(codigo)`
+     * `codigo_sprint` referencia `SPRINT(codigo)` *(permite `NULL` enquanto a tarefa está no backlog)*
+     * `codigo_release` referencia `RELEASE(codigo)` *(permite `NULL` antes de ser agrupada em uma release)*
+
+8. **TESTE_VALIDACAO** (`codigo`, `descricao`, `data_execucao`, `resultado`, `codigo_release`)
+   * **Chave Primária (PK):** `codigo`
+   * **Chave Estrangeira (FK):** `codigo_release` referencia `RELEASE(codigo)`
+
