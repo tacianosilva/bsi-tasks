@@ -18,3 +18,18 @@ Existem diversas notações gráficas para representar os mesmos conceitos conce
 * **Notação Pé de Galinha (*Crow's Foot* / Information Engineering):** Amplamente utilizada em ferramentas CASE e no Mermaid.js. As entidades são caixas retangulares que contêm os atributos internamente, e os relacionamentos são linhas diretas sem losangos.
 * **Notação UML (Diagrama de Classes adaptado):** Representa entidades como classes (retângulos compartimentados) e relacionamentos como associações com multiplicidades nas extremidades.
 * **Notação IDEF1X:** Muito empregada na engenharia de software corporativa, diferencia visualmente relacionamentos identificadores (linhas contínuas) de não identificadores (linhas tracejadas).
+
+### Exemplos comparativos para o mesmo conceito
+
+* **Cardinalidade (Um para Muitos):**
+  * *Chen:* Escreve-se `1` junto a uma extremidade do losango e `N` na outra (ou pares mínimo/máximo como `(1,1)` e `(0,N)`).
+  * *Pé de Galinha (Crow's Foot / Mermaid):* Utiliza símbolos nas pontas da linha, como `||--o{` (exatamente um de um lado e zero ou muitos do outro).
+  * *UML:* Indica a multiplicidade numericamente nas pontas da associação (`1` de um lado e `0..*` do outro).
+* **Entidade Fraca / Subordinada:**
+  * *Chen:* Representada por um retângulo de borda dupla associado a um losango também de borda dupla.
+  * *IDEF1X / Pé de Galinha:* Representada por um retângulo de cantos arredondados ligado por uma linha contínua (relacionamento identificador) à entidade proprietária.
+* **Atributo Identificador (Chave):**
+  * *Chen:* Elipse separada com o texto sublinhado.
+  * *Pé de Galinha / Mermaid:* Listado dentro do bloco da entidade com o marcador `PK`.
+
+  
