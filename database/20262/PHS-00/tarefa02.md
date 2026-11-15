@@ -145,3 +145,15 @@ Aplicando as regras de transformação do MER para o Modelo Relacional (propagan
    * **Chave Primária (PK):** `codigo`
    * **Chave Estrangeira (FK):** `codigo_release` referencia `RELEASE(codigo)`
 
+## Q5. Restrições de Integridade Referencial e Regras de Negócio
+
+* **Projeto e Cliente:** Todo projeto deve estar obrigatoriamente vinculado a um cliente previamente cadastrado na tabela `CLIENTE`. Um cliente não pode ser excluído enquanto existirem projetos associados a ele.
+* **Funcionário e Squad:** Todo funcionário deve pertencer a uma squad válida e existente na tabela `SQUAD`.
+* **Composição da Squad:** Toda squad deve possuir ao menos um funcionário vinculado e, conforme a estrutura organizacional da equipe, deve contar com um funcionário no papel de líder técnico.
+* **Domínio de Papel do Funcionário:** O atributo `papel` de cada funcionário deve aceitar apenas os valores definidos no domínio (`desenvolvedor`, `testador`, `líder técnico`, `supervisor` ou `gerente de produto`).
+* **Tarefa e Projeto:** Uma tarefa só pode existir vinculada a um projeto de cliente existente na tabela `PROJETO`.
+* **Tarefa e Squad:** Toda tarefa deve estar atribuída a uma squad existente responsável pela sua execução.
+* **Tarefa e Sprint:** Caso uma tarefa esteja associada a uma iteração, o `codigo_sprint` informado deve corresponder a uma sprint válida na tabela `SPRINT`.
+* **Tarefa e Release:** Caso uma tarefa faça parte de uma entrega, o `codigo_release` informado deve existir previamente na tabela `RELEASE`.
+* **Release, Squad e Cliente:** Toda release deve ser planejada por uma squad existente e destinada a um cliente válido cadastrado no sistema.
+* **Teste de Validação e Release:** Todo teste de validação deve estar vinculado a uma release existente na tabela `RELEASE`, não sendo permitido registrar um teste sem uma release correspondente.
