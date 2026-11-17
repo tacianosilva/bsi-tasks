@@ -47,6 +47,19 @@ Cada discente deve criar sua pasta com seu username do GitHub (`softwaretesting/
   * Link Tarefa 5 (issue):
   * Link `tarefa05.md`:
 
+* `MViniciusCoffe` (Marcus Vinícius de Souza Azevedo):
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/449
+  * Link `README.md`: softwaretesting/20262/tarefas/MViniciusCoffe/README.md
+  * Link `tarefa01.md`: softwaretesting/20262/tarefas/MViniciusCoffe/tarefa01.md
+  * Link Tarefa 2 (issue):
+  * Link `tarefa02.md`:
+  * Link Tarefa 3 (issue):
+  * Link `tarefa03.md`:
+  * Link Tarefa 4 (issue):
+  * Link `tarefa04.md`:
+  * Link Tarefa 5 (issue):
+  * Link `tarefa05.md`:
+
 * `<username>`:
   * Link Tarefa 1 (issue):
   * Link `tarefa01.md`:

@@ -79,7 +79,7 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
 
 * `MViniciusCoffe` (Marcus Vinícius de Souza Azevedo — G4):
-  * Link Tarefa 1 (issue):
+  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/449
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
