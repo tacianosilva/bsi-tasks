@@ -8,13 +8,14 @@ O objetivo é assegurar ambientes de execução padronizados, reprodutíveis, se
 
 ## 📚 Guias Disponíveis
 
-Disponibilizamos **três abordagens complementares** para atender a diferentes perfis de desenvolvimento, ferramentas e restrições de infraestrutura:
+Disponibilizamos **quatro abordagens complementares** para atender a diferentes perfis de desenvolvimento, ferramentas e restrições de infraestrutura:
 
 | Guia | Abordagem | Ferramentas | Cenário de Uso Recomendado |
 | :--- | :--- | :--- | :--- |
 | **[Guia 1: Dev Containers Oficial](guia-devcontainers-oficial.md)** | **Principal (Recomendada)** | VS Code + Dev Containers | Padrão da indústria. Interface nativa no host, backend e ferramentas isolados no container. Encaminhamento seguro de credenciais Git (SSH Agent / Credential Helper). |
 | **[Guia 2: Docker CLI Local](guia-docker-cli-local.md)** | **Híbrida** | Terminal + Docker Volumes (`-v`) | Para desenvolvedores que utilizam terminal puro, Neovim, Vim, Emacs ou scripts de CI/CD locais. Edição de código no host e execução sob demanda. |
 | **[Guia 3: Docker com Interface Gráfica X11](guia-docker-x11-gui.md)** | **GUI no Container** | X11 / GTK + VS Code no container | Ambientes de laboratório ou máquinas compartilhadas com permissões restritas no host onde não é viável instalar IDEs localmente. |
+| **[Guia 4: Ambiente opencode](guia-opencode.md)** | **Agente de IA no Container** | Terminal + opencode | Agente de IA (opencode) como assistente de codificação dentro do container, com Git, GitHub CLI e stack Python/Django prontos. Ideal para laboratórios multiusuário. |
 
 ---
 
@@ -32,6 +33,7 @@ Os arquivos de configuração e `Dockerfiles` prontos para cópia ou uso direto 
 - **[`docker/devcontainer/`](../../docker/devcontainer/)**: Template pronto contendo `Dockerfile` e `devcontainer.json`. Pode ser copiado diretamente para a raiz de qualquer projeto como `.devcontainer/`. Inclui Python 3.14, `pip>=25`, `asdf` e suporte a extensões do VS Code.
 - **[`docker/cli-local/`](../../docker/cli-local/)**: `Dockerfile` simplificado e otimizado para compilação e execução via linha de comando sem sobrecarga de IDE.
 - **[`docker/x11-gui/`](../../docker/x11-gui/)**: `Dockerfile` com suporte completo ao servidor de exibição X11, bibliotecas GTK e pacote oficial do VS Code instalado.
+- **[`docker/opencode/`](../../docker/opencode/)**: `Dockerfile` baseado em Ubuntu com o opencode (agente de IA), Git, GitHub CLI e stack Python/Django (`python3`, `python3-dev`, `python3-venv`).
 
 ---
 
