@@ -41,11 +41,11 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
 
-* *(username pendente)* (Hildemberg Eling de Araújo Lucena — Grupo pendente):
+* `Hildemberg986` (Hildemberg Eling de Araújo Lucena — G5):
   * Link Tarefa 1 (issue):
-  * Link Tarefa 2 (issue):
-  * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto:
+  * Link Tarefa 2 (issue): https://github.com/tacianosilva/bsi-tasks/issues/601
+  * Link Tarefa 3 (issue): https://github.com/tacianosilva/bsi-tasks/issues/599
+  * Link Repositório do Projeto: <https://github.com/arthurazvd/comercializa>
 
 * `Isabellecavalcant` (Isabelle Cavalcanti da Silva — G1):
   * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/458
@@ -182,7 +182,7 @@ Sistema desenvolvido para auxiliar na gestão comercial de pequenos negócios, p
 gerenciamento de produtos, categorias, estoque e vendas, painel de desempenho do negócio e
 recomendações para estoque baixo, produtos próximos do vencimento e itens com baixa saída.
 
-**Equipe:** Arthur José dos Santos Azevedo (`@arthurazvd`).
+**Equipe:** Arthur José dos Santos Azevedo (`@arthurazvd`) e Hildemberg Eling de Araújo Lucena (`@Hildemberg986`).
 
 **Tecnologias:** Python, Django, Django REST Framework, SQLite, pytest, pytest-django, pytest-cov e GitHub Actions.
 
