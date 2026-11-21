@@ -20,7 +20,7 @@
 | Checagem de integridade (`/health`)                    | <https://spend-smart-lilac.vercel.app/health>                                                              |
 | Execução do pipeline de deploy (merge do PR #104)      | [Deploy de produção #29](https://github.com/MViniciusCoffe/SpendSmart/actions/runs/44811028671)            |
 | Pull Request da simulação do Quality Gate              | [SpendSmart #106](https://github.com/MViniciusCoffe/SpendSmart/pull/106) (branch `demo/falha-ci`)          |
-| Pull Request da entrega no `bsi-tasks`                 | _a preencher_                                                                                              |
+| Pull Request da entrega no `bsi-tasks`                 | [bsi-tasks #606](https://github.com/tacianosilva/bsi-tasks/pull/606)                                     |
 
 A tarefa foi feita no [SpendSmart](https://github.com/MViniciusCoffe/SpendSmart), o mesmo projeto da
 Tarefa 01 ([#449](https://github.com/tacianosilva/bsi-tasks/issues/449)). É um monolito Next.js 16 com
