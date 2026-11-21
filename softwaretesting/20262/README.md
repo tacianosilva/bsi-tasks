@@ -82,6 +82,7 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/449
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
+  * Link Tarefa 4 (issue): https://github.com/tacianosilva/bsi-tasks/issues/604
   * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
   * Link Repositório do Projeto (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
 
