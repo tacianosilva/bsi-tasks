@@ -23,7 +23,7 @@
 | Endpoint de integridade (`/health`)                            | <https://spend-smart-lilac.vercel.app/health> — responde `200 OK`                                                        |
 | Execução do pipeline de deploy pós-merge                       | [Deploy de produção #29](https://github.com/MViniciusCoffe/SpendSmart/actions/runs/44811028671)                          |
 | Pull Request da simulação do Quality Gate (`demo/falha-ci`)    | [SpendSmart #106](https://github.com/MViniciusCoffe/SpendSmart/pull/106)                                                 |
-| Pull Request da entrega no repositório da disciplina           | [bsi-tasks #PR_DISCIPLINA](https://github.com/tacianosilva/bsi-tasks/pull/PR_DISCIPLINA)                                 |
+| Pull Request da entrega no repositório da disciplina           | [bsi-tasks #608](https://github.com/tacianosilva/bsi-tasks/pull/608)                                 |
 
 A prática foi feita sobre o **SpendSmart**, projeto da Tarefa 01 e do grupo G4, formado por Marcus Vinícius de Souza
 Azevedo e por mim. O pipeline, o endpoint de prontidão, o smoke test pós-deploy e a proteção da `main` estão no
