@@ -1,0 +1,225 @@
+## Q1. O modelo de dados entidade-relacionamento foi desenvolvido para facilitar o projeto de banco de dados, permitindo especificação de um esquema que representa a estrutura lógica geral de um banco de dados. Descreva os três elementos básicos de um Modelo Entidade Relacionamento (MER).
+**R:** Os três elementos básicos são Entidade, Atributos e Relacionamentos.
+
+- Entidades: representam objetos ou elementos do mundo real que possuem existência própria e sobre os quais se deseja armazena informações.
+Exemplos: ``Cliente``, ``Produto``, ``Funcionário``.
+
+- Atributos: representam as características ou propriedades das entidades.
+Exemplos: a entidade ``Cliente`` pode possuir os atributos id, nome, email, cpf e telefone.
+
+- Relacionamentos: representam as associações existentes entre duas ou mais entidades.
+Exemplos: um ``Cliente`` realiza um ``Pedido``.
+
+## Q2. Pesquise sobre as várias notações possíveis para Diagramas ER e cite alguns exemplos de notações diferentes para o mesmo conceito (ex.: cardinalidade, entidade subordinada, etc.).
+
+**R**: Existem várias notações utilizadas para representar Diagramas Entidade-Relacionamento (DER), sendo algumas das mais conhecidas as notações **Chen, Crow's Foot, IDEF1X e UML**. Apesar de utilizarem símbolos diferentes, elas podem representar os mesmos conceitos de um modelo de dados.
+
+Na **notação Chen**, as entidades são representadas por retângulos, os atributos por elipses e os relacionamentos por losangos. A cardinalidade costuma ser representada por números ou letras, como `1`, `N` e `M`. Uma entidade fraca é representada por um retângulo duplo.
+
+Na **notação Crow's Foot**, as entidades são representadas por caixas e os relacionamentos por linhas. A cardinalidade é indicada por símbolos nas extremidades das linhas: uma barra representa "um", um círculo representa "zero" e o símbolo de pé de galinha representa "muitos".
+
+Na **notação IDEF1X**, há maior destaque para as chaves e para a dependência entre entidades. Os relacionamentos podem ser identificadores ou não identificadores, sendo representados por diferentes tipos de linhas.
+
+A **UML** também pode ser utilizada para representar estruturas semelhantes às de um DER, principalmente por meio de diagramas de classes. Nesse caso, as multiplicidades são representadas por valores como `1`, `0..1`, `1..*` e `*`.
+
+Assim, um mesmo conceito pode possuir representações diferentes dependendo da notação. Por exemplo, uma cardinalidade **um para muitos** pode ser representada como `1:N` na notação Chen, por uma barra e um pé de galinha na notação Crow's Foot, ou como `1..*` em UML. Dessa forma, as diferentes notações modificam principalmente a forma visual de representar o modelo, mantendo a mesma informação conceitual.
+
+## Q3: 
+```mermaid
+
+---
+config:
+  layout: elk
+---
+erDiagram
+
+    CLIENTE ||--o{ PROJETO : possui
+
+    SQUAD ||--|{ FUNCIONARIO : possui
+
+    SQUAD ||--o{ TAREFA : resolve
+
+    PROJETO ||--o{ TAREFA : contem
+
+    SQUAD ||--o{ ITERACAO : planeja
+
+    ITERACAO ||--o{ TAREFA : organiza
+
+    SQUAD ||--o{ RELEASE : planeja
+
+    PROJETO ||--o{ RELEASE : possui
+
+    RELEASE ||--|{ TAREFA : agrupa
+
+    RELEASE ||--o{ TESTE_VALIDACAO : passa_por
+
+    CLIENTE {
+        int codigo_cliente PK
+        string nome
+        string email_contato
+    }
+
+    PROJETO {
+        int codigo_projeto PK
+        string nome
+        string descricao
+    }
+
+    SQUAD {
+        int codigo_squad PK
+        string nome
+    }
+
+    FUNCIONARIO {
+        int codigo_funcionario PK
+        string nome
+        string email
+        string papel
+    }
+
+    TAREFA {
+        int codigo_tarefa PK
+        string descricao
+        string prioridade
+        string situacao
+        float estimativa_horas
+    }
+
+    ITERACAO {
+        int codigo_iteracao PK
+        string nome
+        date data_inicio
+        date data_fim
+    }
+
+    RELEASE {
+        int codigo_release PK
+        string nome
+        date data_prevista
+        string status
+    }
+
+    TESTE_VALIDACAO {
+        int codigo_teste PK
+        string resultado
+    }
+```
+
+## Q4. A partir do Diagrama ER da questão anterior, faça o mapeamento para o Modelo Relacional: liste as relações (tabelas), com seus atributos, e identifique as chaves primárias e as chaves estrangeiras de cada relação.
+
+### Lista das Entidades:
+
+**CLIENTE**(
+- codigo_cliente **PK**
+- nome
+- email_contato
+
+)
+
+**PROJETO**(
+- codigo_projeto **PK**
+- nome
+- descricao
+- codigo_cliente **FK** → CLIENTE(codigo_cliente)
+
+)
+
+
+**SQUAD**(
+- codigo_squad **PK**
+- nome
+
+)
+
+
+**FUNCIONARIO**(
+- codigo_funcionario **PK**
+- nome
+- email
+- papel
+- codigo_squad **FK** → SQUAD(codigo_squad)
+
+)
+
+
+**TAREFA**(
+- codigo_tarefa **PK**
+- descricao
+- prioridade
+- situacao
+- estimativa_horas
+- codigo_squad **FK** → SQUAD(codigo_squad)
+- codigo_projeto **FK** → PROJETO(codigo_projeto)
+- codigo_iteracao **FK** → ITERACAO(codigo_iteracao)
+- codigo_release **FK** → RELEASE(codigo_release)
+
+)
+
+
+**ITERACAO**(
+- codigo_iteracao **PK**
+- nome
+- data_inicio
+- data_fim
+- codigo_squad **FK** → SQUAD(codigo_squad)
+
+)
+
+
+**RELEASE**(
+- codigo_release **PK**
+- nome
+- data_prevista
+- status
+- codigo_squad **FK** → SQUAD(codigo_squad)
+- codigo_projeto **FK** → PROJETO(codigo_projeto)
+
+)
+
+
+**TESTE_VALIDACAO**(
+- codigo_teste **PK**
+- resultado
+- codigo_release **FK** → RELEASE(codigo_release)
+
+)
+
+## Q5. Descreva, em linguagem natural, as restrições de integridade referencial que devem ser garantidas no esquema projetado (ex.: "uma tarefa só pode existir vinculada a um projeto de cliente existente", "toda squad deve possuir um líder técnico").
+
+O esquema projetado deve garantir as seguintes restrições de integridade:
+
+- Todo projeto deve estar associado a um cliente existente. Portanto,
+  `codigo_cliente` em PROJETO deve referenciar um cliente existente em CLIENTE.
+
+- Todo funcionário deve estar associado a uma squad existente. Portanto,
+  `codigo_squad` em FUNCIONARIO deve referenciar uma squad existente em SQUAD.
+
+- Toda tarefa deve estar associada a uma squad existente. Portanto,
+  `codigo_squad` em TAREFA deve referenciar uma squad existente em SQUAD.
+
+- Toda tarefa deve pertencer a um projeto existente. Portanto,
+  `codigo_projeto` em TAREFA deve referenciar um projeto existente em PROJETO.
+
+- Toda iteração deve estar associada a uma squad existente. Portanto,
+  `codigo_squad` em ITERACAO deve referenciar uma squad existente em SQUAD.
+
+- Toda tarefa deve estar associada a uma iteração existente. Portanto,
+  `codigo_iteracao` em TAREFA deve referenciar uma iteração existente em ITERACAO.
+
+- Toda release deve estar associada a uma squad existente. Portanto,
+  `codigo_squad` em RELEASE deve referenciar uma squad existente em SQUAD.
+
+- Toda release deve estar associada a um projeto existente. Portanto,
+  `codigo_projeto` em RELEASE deve referenciar um projeto existente em PROJETO.
+
+- Toda tarefa agrupada em uma release deve estar associada a uma release
+  existente. Portanto, `codigo_release` em TAREFA deve referenciar uma
+  release existente em RELEASE.
+
+- Todo teste de validação deve estar associado a uma release existente.
+  Portanto, `codigo_release` em TESTE_VALIDACAO deve referenciar uma release
+  existente em RELEASE.
+
+- Toda squad deve possuir pelo menos um funcionário com o papel de
+  líder técnico. Essa é uma restrição de negócio que deve ser validada
+  adicionalmente, pois não é garantida apenas pelas chaves estrangeiras.
