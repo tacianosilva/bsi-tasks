@@ -19,7 +19,7 @@
 | Aplicação publicada                                    | <https://spend-smart-lilac.vercel.app/>                                                                    |
 | Checagem de integridade (`/health`)                    | <https://spend-smart-lilac.vercel.app/health>                                                              |
 | Execução do pipeline de deploy (merge do PR #104)      | [Deploy de produção #29](https://github.com/MViniciusCoffe/SpendSmart/actions/runs/44811028671)            |
-| Pull Request da simulação do Quality Gate              | _a preencher (branch `demo/falha-ci`)_                                                                     |
+| Pull Request da simulação do Quality Gate              | [SpendSmart #106](https://github.com/MViniciusCoffe/SpendSmart/pull/106) (branch `demo/falha-ci`)          |
 | Pull Request da entrega no `bsi-tasks`                 | _a preencher_                                                                                              |
 
 A tarefa foi feita no [SpendSmart](https://github.com/MViniciusCoffe/SpendSmart), o mesmo projeto da
@@ -379,7 +379,9 @@ interna. Um teste E2E chama o `/health` contra o Supabase local no CI.
 Na execução [Deploy de produção #29](https://github.com/MViniciusCoffe/SpendSmart/actions/runs/44811028671)
 todos os jobs passaram, e o `/health` publicado devolve o commit do merge (`a539cb6`).
 
-<!-- TODO: screenshot do grafo do pipeline (#29) e do /health -->
+![Execução #29 do deploy.yml com todos os jobs verdes](img/tarefa04/deploy-29.png)
+
+![/health em produção respondendo com o commit do merge](img/tarefa04/health-producao.png)
 
 ---
 
@@ -387,16 +389,35 @@ todos os jobs passaram, e o `/health` publicado devolve o commit do merge (`a539
 
 ### 5.1 Teste quebrado de propósito (`demo/falha-ci`)
 
-<!-- TODO: preencher após o PR de demonstração -->
+Na branch `demo/falha-ci` alterei o teste unitário `createTransaction > escreve na tabela transactions`
+para esperar a tabela `"transacoes"`. O código usa `"transactions"`, então o código está certo e o teste
+está errado. Abri o [PR #106](https://github.com/MViniciusCoffe/SpendSmart/pull/106) para a `main`.
 
-| Passo                                              | Evidência     |
-| :------------------------------------------------- | :------------ |
-| Teste alterado para falhar                         | _a preencher_ |
-| PR com o check `test` vermelho e o merge bloqueado | _a preencher_ |
-| Correção do teste e esteira verde de novo          | _a preencher_ |
+| Passo                                              | Commit                                                                         | Resultado                                              |
+| :------------------------------------------------- | :----------------------------------------------------------------------------- | :----------------------------------------------------- |
+| Teste alterado para falhar                         | [`fdcd531`](https://github.com/MViniciusCoffe/SpendSmart/commit/fdcd531)       | `test`, `sonar` e `mutation` vermelhos, merge bloqueado |
+| Correção do teste e esteira verde de novo          | [`ac7759f`](https://github.com/MViniciusCoffe/SpendSmart/commit/ac7759f)       | Todos os checks verdes, "Ready to merge"               |
 
-O deploy só roda no push para a `main`, e a `main` exige os checks verdes. Com um teste quebrado, o
-merge fica bloqueado e o `deploy.yml` nem começa.
+Uma única asserção errada parou três checks. O `test` falhou pelo próprio teste. O `sonar` roda os
+testes com cobertura antes da análise e parou no mesmo ponto. O `mutation` (Stryker) precisa da suíte
+verde antes de gerar os mutantes. Os três falharam em cerca de 20 s, enquanto o `rls + e2e`, que não
+roda os testes de unidade, levou 3 min e passou. Dois dos três são checks obrigatórios da `main`, e o
+GitHub desabilitou o botão de merge.
+
+![PR #106 com três checks falhando e o merge bloqueado](img/tarefa04/pr106-checks-falhando.png)
+
+![Log do job test com o valor esperado e o recebido](img/tarefa04/pr106-log-teste.png)
+
+O deploy de produção só roda no push para a `main`. Como o merge ficou bloqueado, o `deploy.yml` nem
+começou, e a última execução dele continua sendo a #29, do merge do PR #104. O check `Vercel` aparece
+verde no PR porque a Vercel publica um *Preview* de toda branch, numa URL própria e ligado ao projeto
+Supabase de Preview. A produção não foi tocada.
+
+Depois do commit de correção a esteira voltou a ficar verde e o merge foi liberado. O `mutation` não
+rodou dessa vez porque o diff final do PR contra a `main` ficou vazio, e o workflow só roda quando o PR
+muda `src/services/` ou os testes. Deixei o PR aberto, sem merge, como registro da demonstração.
+
+![PR #106 verde depois da correção](img/tarefa04/pr106-verde.png)
 
 ### 5.2 Caso real: o Quality Gate do SonarQube barrando o PR #104
 
@@ -410,7 +431,9 @@ e o Quality Gate passou, sem afrouxar a regra nem mudar o código.
 Os dois hotspots existiam desde setembro. Durante esse tempo o Quality Gate ficou vermelho no painel
 e ninguém viu, porque o job não esperava o resultado.
 
-<!-- TODO: screenshots do antes (check sonar vermelho, painel Failed) e do depois (Passed) -->
+![PR #104 com o check sonar falhando e o merge bloqueado](img/tarefa04/pr104-sonar-falhou.png)
+
+![Painel do SonarQube com o Quality Gate reprovado pelos security hotspots](img/tarefa04/sonar-quality-gate-falhou.png)
 
 ---
 
