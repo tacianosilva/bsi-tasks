@@ -63,8 +63,9 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 1 (issue):
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
-  * Link Repositório do Projeto (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
+  * Link Tarefa 4 (issue): https://github.com/tacianosilva/bsi-tasks/issues/607
+  * Link Tarefa 5 (issue): https://github.com/tacianosilva/bsi-tasks/issues/609
+  * Link Repositório do Projeto: <https://github.com/MViniciusCoffe/SpendSmart>
 
 * `JosephDouglas7` (Joseph Douglas Moura Batista — G2):
   * Link Tarefa 1 (issue):
@@ -82,8 +83,9 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/449
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
-  * Link Repositório do Projeto (Backend): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
-  * Link Repositório do Projeto (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
+  * Link Tarefa 4 (issue): https://github.com/tacianosilva/bsi-tasks/issues/604
+  * Link Tarefa 5 (issue): https://github.com/tacianosilva/bsi-tasks/issues/609
+  * Link Repositório do Projeto: <https://github.com/MViniciusCoffe/SpendSmart>
 
 * `pauloandrehxh` (Paulo André Alves de Moura — G3):
   * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/457
@@ -164,17 +166,24 @@ apresentar um painel com saldo, receitas e gastos.
 
 **Equipe:** José Samuel Silva Lima (`@Jose-Samuel-Lima`) e Marcus Vinícius de Souza Azevedo (`@MViniciusCoffe`).
 
-**Tecnologias:** JavaScript (React, Next.js e Jest), HTML, CSS, PostgreSQL (em nuvem), AWS e Git.
+**Tecnologias:** JavaScript (React, Next.js, Jest e Playwright), HTML, CSS, PostgreSQL (Supabase), Vercel, GitHub Actions e Git.
 
-  * Link Repositório (Backend — foco principal na disciplina): <https://github.com/MViniciusCoffe/SpendSmart-Backend>
-  * Link Repositório (Frontend): <https://github.com/MViniciusCoffe/SpendSmart-Frontend>
+  * Link Repositório do Projeto: <https://github.com/MViniciusCoffe/SpendSmart>
+  * Link Issue P5 (bsi-tasks): https://github.com/tacianosilva/bsi-tasks/issues/609
+  * Link Issue P5 (projeto): https://github.com/MViniciusCoffe/SpendSmart/issues/107
+  * Link Pull Request de entrega da P5: https://github.com/MViniciusCoffe/SpendSmart/pull/108
+  * Link Workflow de CI/CD: <https://github.com/MViniciusCoffe/SpendSmart/blob/main/.github/workflows/deploy.yml>
+  * Link Relatório Técnico de CI/CD (P5): <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/devops/relatorio-ci-cd.md>
+  * Link Relatório de DevOps (T4): <https://github.com/MViniciusCoffe/SpendSmart/blob/main/docs/devops/relatorio-devops.md>
+  * Link Aplicação Publicada: <https://spend-smart-lilac.vercel.app/>
+  * Link Endpoint `/health`: <https://spend-smart-lilac.vercel.app/health>
   * Link Documento de Visão:
   * Link Relatório do Estado Atual dos Testes:
   * Link Plano de Teste Geral (PTG):
   * Link Plano de Teste das Iterações 1 e 2 (PTI):
   * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
   * Link Testes de Sistema (E2E):
-  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/dashboard?id=spendsmart>
 
 ### G5 — Comercializa
 
