@@ -9,7 +9,7 @@
 ## Links de Entrega
 
 - **Issue da Disciplina:** [#612 — Tarefa 04 - DevOps, Integração e Entrega Contínua (CI/CD) Jaine Souza da Luz](https://github.com/tacianosilva/bsi-tasks/issues/612)
-- **Pull Request no Repositório da Disciplina (`bsi-tasks`):** *[Link a ser preenchido após abertura do PR]*
+- **Pull Request no Repositório da Disciplina (`bsi-tasks`):** [https://github.com/tacianosilva/bsi-tasks/pull/616](https://github.com/tacianosilva/bsi-tasks/pull/616)
 - **Repositório Individual da Aplicação:** [https://github.com/JaineSouz/projetoPNLD](https://github.com/JaineSouz/projetoPNLD)
 - **Pull Request no Repositório Individual:** [https://github.com/JaineSouz/projetoPNLD/pull/1](https://github.com/JaineSouz/projetoPNLD/pull/1)
 - **URL Pública da Aplicação (Deploy em Nuvem):** [https://projeto-pnld-jaine.onrender.com/](https://projeto-pnld-jaine.onrender.com/)
