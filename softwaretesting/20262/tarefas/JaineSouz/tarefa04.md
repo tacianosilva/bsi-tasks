@@ -11,9 +11,9 @@
 - **Issue da Disciplina:** [#612 — Tarefa 04 - DevOps, Integração e Entrega Contínua (CI/CD) Jaine Souza da Luz](https://github.com/tacianosilva/bsi-tasks/issues/612)
 - **Pull Request no Repositório da Disciplina (`bsi-tasks`):** *[Link a ser preenchido após abertura do PR]*
 - **Repositório Individual da Aplicação:** [https://github.com/JaineSouz/projetoPNLD](https://github.com/JaineSouz/projetoPNLD)
-- **Pull Request no Repositório Individual:** *[Link do PR da esteira de CI/CD no repositório da aplicação]*
-- **URL Pública da Aplicação (Deploy em Nuvem):** *[URL pública no ar, ex: https://projeto-pnld-t4.onrender.com]*
-- **Endpoint de Integridade (/health):** *[URL pública /health, ex: https://projeto-pnld-t4.onrender.com/health]*
+- **Pull Request no Repositório Individual:** [https://github.com/JaineSouz/projetoPNLD/pull/1](https://github.com/JaineSouz/projetoPNLD/pull/1)
+- **URL Pública da Aplicação (Deploy em Nuvem):** [https://projeto-pnld-jaine.onrender.com/](https://projeto-pnld-jaine.onrender.com/)
+- **Endpoint de Integridade (/health):** [https://projeto-pnld-jaine.onrender.com/health](https://projeto-pnld-jaine.onrender.com/health)
 
 ---
 
