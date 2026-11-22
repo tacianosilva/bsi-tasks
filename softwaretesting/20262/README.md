@@ -57,6 +57,7 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/448
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
+  * Link Tarefa 4 (issue): https://github.com/tacianosilva/bsi-tasks/issues/612
   * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
 
 * `Jose-Samuel-Lima` (José Samuel Silva Lima — G4):
