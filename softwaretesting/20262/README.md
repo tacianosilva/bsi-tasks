@@ -91,6 +91,13 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 3 (issue):
   * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
 
+
+* `Felipe-edu34` (Felipe Eduardo Silva Fernandes — G6):
+  * Link Tarefa 1 (issue):
+  * Link Tarefa 2 (issue):
+  * Link Tarefa 3 (issue):
+  * Link Repositório do Projeto: <https://github.com/Felipe-edu34/capflow-mobile>
+
 ---
 
 ## 👥 Projetos de Grupo 2026.2
@@ -194,6 +201,27 @@ recomendações para estoque baixo, produtos próximos do vencimento e itens com
   * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
   * Link Testes de Sistema (E2E):
   * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
+
+### G6 — CapFlow
+
+Sistema de gestão e controle de inventário, movimentações de estoque e acompanhamento de
+insumos e produtos para produção, com painel gerencial e controle de entradas e saídas.
+
+**Equipe:** Felipe Eduardo Silva Fernandes (`@Felipe-edu34`).
+
+**Tecnologias:** Python, Django, Django REST Framework, React Native (Expo / React Native Web), JavaScript, mutmut e Playwright.
+
+- Link Repositório (Backend — foco em regras de negócio e mutação): <https://github.com/Felipe-edu34/cap-flow>
+- Link Repositório (Frontend / Mobile): <https://github.com/Felipe-edu34/capflow-mobile>
+- Link Documento de Visão:
+- Link Relatório do Estado Atual dos Testes:
+- Link Plano de Teste Geral (PTG):
+- Link Plano de Teste das Iterações 1 e 2 (PTI):
+- Link Relatório Teste de Mutação (P3): <https://github.com/Felipe-edu34/cap-flow/blob/main/docs/relatorio-teste-mutacao.md>
+- Link Testes Unitários / Mutação: <https://github.com/Felipe-edu34/cap-flow/blob/main/estoque/tests.py>
+- Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade): <https://github.com/Felipe-edu34/capflow-mobile/blob/main/docs/relatorio-testes-sistema-ia.md>
+- Link Testes de Sistema (E2E): <https://github.com/Felipe-edu34/capflow-mobile/tree/main/tests/e2e>
+- Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
 
 ---
 
