@@ -89,6 +89,7 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/457
   * Link Tarefa 2 (issue):
   * Link Tarefa 3 (issue):
+  * Link Tarefa 4 (issue): https://github.com/tacianosilva/bsi-tasks/issues/619
   * Link Repositório do Projeto: <https://github.com/pauloandrehxh/arena-ufrn>
 
 ---
