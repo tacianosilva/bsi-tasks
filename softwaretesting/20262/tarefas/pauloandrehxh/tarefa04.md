@@ -13,7 +13,7 @@
 |---|---|
 | PR com o workflow de CI/CD no projeto | [arena-ufrn #24](https://github.com/pauloandrehxh/arena-ufrn/pull/24) |
 | Aplicação publicada em execução | **PENDENTE** — depende da configuração do Web Service na Render |
-| PR da entrega no `bsi-tasks` | **PENDENTE** — será criado a partir de `task/619-ci-cd` |
+| PR da entrega no `bsi-tasks` | [#620](https://github.com/tacianosilva/bsi-tasks/pull/620) |
 | Evidências de CI, Quality Gate e smoke | [docs/evidencias/t4-cicd.md](https://github.com/pauloandrehxh/arena-ufrn/blob/ci/t4-cicd-render/docs/evidencias/t4-cicd.md) |
 
 O workflow técnico foi implementado em `ci/t4-cicd-render`, com os commits `0497df6`, `d9b6c53` e ajustes documentais posteriores. O PR #24 permanece aberto até a configuração do deploy; o merge não foi realizado automaticamente.
