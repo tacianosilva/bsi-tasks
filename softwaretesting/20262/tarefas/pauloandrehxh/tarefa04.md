@@ -12,11 +12,11 @@
 | Item | Link / situação |
 |---|---|
 | PR com o workflow de CI/CD no projeto | [arena-ufrn #24](https://github.com/pauloandrehxh/arena-ufrn/pull/24) |
-| Aplicação publicada em execução | **PENDENTE** — depende da configuração do Web Service na Render |
+| Aplicação publicada em execução | [https://arena-ufrn-dbsz.onrender.com](https://arena-ufrn-dbsz.onrender.com) — `GET /health` verificado |
 | PR da entrega no `bsi-tasks` | [#620](https://github.com/tacianosilva/bsi-tasks/pull/620) |
-| Evidências de CI, Quality Gate e smoke | [docs/evidencias/t4-cicd.md](https://github.com/pauloandrehxh/arena-ufrn/blob/ci/t4-cicd-render/docs/evidencias/t4-cicd.md) |
+| Evidências de CI, Quality Gate e smoke | [docs/evidencias/t4-cicd.md](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/evidencias/t4-cicd.md) |
 
-O workflow técnico foi implementado em `ci/t4-cicd-render`, com os commits `0497df6`, `d9b6c53` e ajustes documentais posteriores. O PR #24 permanece aberto até a configuração do deploy; o merge não foi realizado automaticamente.
+O workflow técnico foi implementado em `ci/t4-cicd-render` e integrado à `main` pelo PR [arena-ufrn #24](https://github.com/pauloandrehxh/arena-ufrn/pull/24). Durante a verificação do deploy, foi identificada uma falha real no serving do React na raiz: a rota `GET /` da API era registrada antes do middleware estático. A correção foi publicada pelo PR [arena-ufrn #26](https://github.com/pauloandrehxh/arena-ufrn/pull/26) e acompanhada de 4 testes de integração.
 
 ---
 
@@ -52,7 +52,7 @@ A pirâmide de testes orienta a distribuição: muitos testes unitários rápido
 
 A Render realiza deploys com substituição de instâncias e health check da nova versão; a estratégia efetiva da conta gratuita é gerida pela plataforma, e o projeto não implementou Blue/Green próprio. Isso é limitação conhecida, não resultado inventado.
 
-*Secrets management* é obrigatório porque URLs de deploy hook e tokens nunca devem aparecer no código versionado, em logs ou em variáveis de PR. O GitHub Actions permite registrar secrets em nível de repositório, ambiente ou organização; eles são criptografados e injetados apenas como variáveis de ambiente para steps autorizados ([GitHub Docs, *Using secrets in GitHub Actions*](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)). Aqui, o hook da Render é lido de `secrets.RENDER_DEPLOY_HOOK_URL`; a URL pública é variável não sensível (`vars.APP_URL`). O workflow não imprime nenhum dos dois valores e falha com `curl --fail` se o secret estiver ausente.
+*Secrets management* é obrigatório porque URLs de deploy hook e tokens nunca devem aparecer no código versionado, em logs ou em variáveis de PR. O GitHub Actions permite registrar secrets em nível de repositório, ambiente ou organização; eles são criptografados e injetados apenas como variáveis de ambiente para steps autorizados ([GitHub Docs, *Using secrets in GitHub Actions*](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)). Aqui, o hook da Render é lido de `secrets.RENDER_DEPLOY_HOOK_URL || secrets.RENDER_DEPLOY_HOOK_URN` — o segundo nome existe porque o secret foi cadastrado com a grafia `URN`; a URL pública é variável não sensível (`vars.APP_URL`). O workflow não imprime nenhum dos dois valores e falha com `curl --fail` se o secret estiver ausente.
 
 ---
 
@@ -65,13 +65,13 @@ O workflow existente foi ampliado, mantendo o nome do arquivo para preservar o h
 ### 2.2 CD — deploy e smoke test
 
 - `deploy` depende de `test-and-sonar` e tem condição `github.event_name == 'push' && github.ref == 'refs/heads/main'`.
-- O step usa `curl --fail` com `ref=${{ github.sha }}` no deploy hook da Render, garantindo que o commit publicado seja exatamente o testado. A Render documenta esse parâmetro e recomenda o secret `RENDER_DEPLOY_HOOK_URL` ([Render, *Deploy Hooks*](https://docs.render.com/deploy-hooks)).
+- O step usa `curl --fail` com `ref=${{ github.sha }}` no deploy hook da Render, garantindo que o commit publicado seja exatamente o testado. A Render documenta esse parâmetro e recomenda o secret `RENDER_DEPLOY_HOOK_URL` ([Render, *Deploy Hooks*](https://docs.render.com/deploy-hooks)). No repositório o secret foi registrado como `RENDER_DEPLOY_HOOK_URN`; o workflow aceita os dois nomes para não exigir a reinserção do valor sensível.
 - `smoke` depende de `deploy` e faz `GET $APP_URL/health` com retries para absorver a inicialização do plano gratuito. O endpoint em `backend/src/app.js` retorna HTTP 200 com `status: "ok"`, `service` e `timestamp`.
 - `render.yaml` descreve Web Service Docker, plano `free`, região `oregon`, `autoDeployTrigger: 'off'`, `healthCheckPath: /health` e variáveis de ambiente. O auto deploy foi desligado para que o único caminho de publicação seja o CI verde ([Render, *Blueprint YAML Reference*](https://docs.render.com/blueprint-spec)).
 
 ### 2.3 Container
 
-O `Dockerfile` é multi-stage: `frontend-build` instala dependências e roda `pnpm build`; `backend-deps` compila `better-sqlite3` e gera o Prisma Client; `runner` copia `node_modules`, código do backend e o `dist` para `/app/public`, executa migrações e inicia em `PORT=10000`. Com `SERVE_STATIC=true`, o Express serve o React e devolve `index.html` para rotas GET que não sejam `/api` ou `/health`. O frontend passou a buscar `/api/quadras` de forma relativa; no desenvolvimento, o Vite faz proxy para `http://localhost:3000`. Backend e frontend saem no mesmo container e domínio, sem CORS entre origens diferentes. O `.dockerignore` exclui `.git`, `.github`, `docs`, `node_modules`, `coverage`, `dist`, `.env`, `.db` e logs.
+O `Dockerfile` é multi-stage: `frontend-build` instala dependências e roda `pnpm build`; `backend-deps` compila `better-sqlite3` e gera o Prisma Client; `runner` copia `node_modules`, código do backend e o `dist` para `/app/public`, executa migrações e inicia em `PORT=10000`. Com `SERVE_STATIC=true`, o módulo `backend/src/static-app.js` monta um app externo que serve os estáticos e o fallback SPA antes de repassar `/api` e `/health` ao app da API. Sem isso, a rota `GET /` da API interceptava a raiz e o navegador recebia JSON em vez do React; o comportamento agora é protegido por 4 testes de integração. O frontend passou a buscar `/api/quadras` de forma relativa; no desenvolvimento, o Vite faz proxy para `http://localhost:3000`. Backend e frontend saem no mesmo container e domínio, sem CORS entre origens diferentes. O `.dockerignore` exclui `.git`, `.github`, `docs`, `node_modules`, `coverage`, `dist`, `.env`, `.db` e logs.
 
 ---
 
@@ -90,15 +90,17 @@ Nas duas execuções, `Deploy na Render` e `Smoke test pós-deploy` ficaram `ski
 
 ## 4. Resultados e evidências
 
-Execução local em 23/11/2026, Node v22.12.0: 31 suítes e 604 testes aprovados; cobertura global de 83,65% statements, 77,56% branches, 92,94% functions e 83,57% lines. `pnpm lint` e `pnpm build` do frontend aprovados.
+Execução local em 23/11/2026, Node v22.12.0: 32 suítes e 608 testes aprovados após a correção do serving estático (31 suítes e 604 testes antes dela); cobertura global de 83,65% statements, 77,56% branches, 92,94% functions e 83,57% lines. `pnpm lint` e `pnpm build` do frontend aprovados.
 
-CI do PR técnico [#24](https://github.com/pauloandrehxh/arena-ufrn/pull/24): run [45290402011](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/45290402011), job aprovado em 1m43s; 291 testes unitários e 313 de integração; a mesma cobertura global; artifact `cobertura-backend` gerado; deploy e smoke `skipped` por ser um PR. Log completo: [docs/evidencias/t4-cicd.md](https://github.com/pauloandrehxh/arena-ufrn/blob/ci/t4-cicd-render/docs/evidencias/t4-cicd.md).
+CI do PR técnico [#24](https://github.com/pauloandrehxh/arena-ufrn/pull/24): run [45290402011](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/45290402011), job aprovado em 1m43s; 291 testes unitários e 313 de integração; a mesma cobertura global; artifact `cobertura-backend` gerado; deploy e smoke `skipped` por ser um PR.
 
-**Deploy e smoke em produção: PENDENTES.** Não há URL pública nem resultado de `GET /health` registrado até o momento porque a criação do serviço na Render e o cadastro do deploy hook são etapas externas ao repositório. A seção de links de entrega será atualizada quando essas evidências existirem. Não se afirma que o deploy foi executado nem que o smoke test passou em produção.
+**Deploy e smoke em produção: executados.** Após o merge do PR #24 na `main`, o run [45300024428](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/45300024428) executou `deploy` (4s) e `smoke` (3s), ambos aprovados. Resposta manual de `GET /health`: `{"status":"ok","service":"arena-ufrn","timestamp":"2026-11-24T00:49:27.673Z"}`.
+
+Após o merge da correção do serving (PR #26), o run [45301240903](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/45301240903) repetiu CI, deploy e smoke com sucesso, com 608 testes em 32 suítes. A branch `ci/t4-cicd-render` foi alinhada com a `main` caso o serviço da Render esteja vinculado a ela. Log completo: [docs/evidencias/t4-cicd.md](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/evidencias/t4-cicd.md).
 
 ### Limitações conhecidas
 
-- Docker CLI não está disponível localmente; a imagem ainda precisa ser construída pela Render.
+- Docker CLI não está disponível localmente; a imagem foi construída pela Render, mas não foi possível validar o `Dockerfile` localmente.
 - O banco é SQLite em `/data` no container, sem disco persistente; dados podem ser perdidos em redeploy.
 - O plano gratuito da Render suspende serviços inativos; o smoke test usa retries, mas a primeira requisição de um usuário pode ser lenta.
 
