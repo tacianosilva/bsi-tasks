@@ -12,11 +12,12 @@
 | Item | Link / situação |
 |---|---|
 | PR com o workflow de CI/CD no projeto | [arena-ufrn #24](https://github.com/pauloandrehxh/arena-ufrn/pull/24) |
+| Correção final do serving do React | [arena-ufrn #28](https://github.com/pauloandrehxh/arena-ufrn/pull/28) |
 | Aplicação publicada em execução | [https://arena-ufrn-dbsz.onrender.com](https://arena-ufrn-dbsz.onrender.com) — `GET /health` verificado |
 | PR da entrega no `bsi-tasks` | [#620](https://github.com/tacianosilva/bsi-tasks/pull/620) |
 | Evidências de CI, Quality Gate e smoke | [docs/evidencias/t4-cicd.md](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/evidencias/t4-cicd.md) |
 
-O workflow técnico foi implementado em `ci/t4-cicd-render` e integrado à `main` pelo PR [arena-ufrn #24](https://github.com/pauloandrehxh/arena-ufrn/pull/24). Durante a verificação do deploy, foi identificada uma falha real no serving do React na raiz: a rota `GET /` da API era registrada antes do middleware estático. A correção foi publicada pelo PR [arena-ufrn #26](https://github.com/pauloandrehxh/arena-ufrn/pull/26) e acompanhada de 4 testes de integração.
+O workflow técnico foi implementado em `ci/t4-cicd-render` e integrado à `main` pelo PR [arena-ufrn #24](https://github.com/pauloandrehxh/arena-ufrn/pull/24). Durante a verificação do deploy, foi identificada uma falha real no serving do React na raiz: a rota `GET /` da API era registrada antes do middleware estático. A correção foi publicada pelo PR [arena-ufrn #26](https://github.com/pauloandrehxh/arena-ufrn/pull/26) e, como o serviço criado manualmente na Render não recebeu `SERVE_STATIC`, foi consolidada no PR [arena-ufrn #28](https://github.com/pauloandrehxh/arena-ufrn/pull/28): o servidor passou a detectar o `index.html` automaticamente. Ao todo, 6 testes de integração cobrem o comportamento.
 
 ---
 
@@ -71,7 +72,7 @@ O workflow existente foi ampliado, mantendo o nome do arquivo para preservar o h
 
 ### 2.3 Container
 
-O `Dockerfile` é multi-stage: `frontend-build` instala dependências e roda `pnpm build`; `backend-deps` compila `better-sqlite3` e gera o Prisma Client; `runner` copia `node_modules`, código do backend e o `dist` para `/app/public`, executa migrações e inicia em `PORT=10000`. Com `SERVE_STATIC=true`, o módulo `backend/src/static-app.js` monta um app externo que serve os estáticos e o fallback SPA antes de repassar `/api` e `/health` ao app da API. Sem isso, a rota `GET /` da API interceptava a raiz e o navegador recebia JSON em vez do React; o comportamento agora é protegido por 4 testes de integração. O frontend passou a buscar `/api/quadras` de forma relativa; no desenvolvimento, o Vite faz proxy para `http://localhost:3000`. Backend e frontend saem no mesmo container e domínio, sem CORS entre origens diferentes. O `.dockerignore` exclui `.git`, `.github`, `docs`, `node_modules`, `coverage`, `dist`, `.env`, `.db` e logs.
+O `Dockerfile` é multi-stage: `frontend-build` instala dependências e roda `pnpm build`; `backend-deps` compila `better-sqlite3` e gera o Prisma Client; `runner` copia `node_modules`, código do backend e o `dist` para `/app/public`, executa migrações e inicia em `PORT=10000`. O módulo `backend/src/static-app.js` monta um app externo que serve os estáticos e o fallback SPA antes de repassar `/api` e `/health` ao app da API. A função `temBuildDoFrontend` detecta a presença de `index.html` em `PUBLIC_DIR`, então o serving funciona mesmo sem `SERVE_STATIC`. Sem isso, a rota `GET /` da API interceptava a raiz e o navegador recebia JSON em vez do React; o comportamento é protegido por 6 testes de integração. O frontend passou a buscar `/api/quadras` de forma relativa; no desenvolvimento, o Vite faz proxy para `http://localhost:3000`. Backend e frontend saem no mesmo container e domínio, sem CORS entre origens diferentes. O `.dockerignore` exclui `.git`, `.github`, `docs`, `node_modules`, `coverage`, `dist`, `.env`, `.db` e logs.
 
 ---
 
@@ -90,13 +91,13 @@ Nas duas execuções, `Deploy na Render` e `Smoke test pós-deploy` ficaram `ski
 
 ## 4. Resultados e evidências
 
-Execução local em 23/11/2026, Node v22.12.0: 32 suítes e 608 testes aprovados após a correção do serving estático (31 suítes e 604 testes antes dela); cobertura global de 83,65% statements, 77,56% branches, 92,94% functions e 83,57% lines. `pnpm lint` e `pnpm build` do frontend aprovados.
+Execução local em 23/11/2026, Node v22.12.0: 32 suítes e 610 testes aprovados após a correção final do serving estático (31 suítes e 604 testes antes dela); cobertura global de 83,65% statements, 77,56% branches, 92,94% functions e 83,57% lines. `pnpm lint` e `pnpm build` do frontend aprovados.
 
 CI do PR técnico [#24](https://github.com/pauloandrehxh/arena-ufrn/pull/24): run [45290402011](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/45290402011), job aprovado em 1m43s; 291 testes unitários e 313 de integração; a mesma cobertura global; artifact `cobertura-backend` gerado; deploy e smoke `skipped` por ser um PR.
 
 **Deploy e smoke em produção: executados.** Após o merge do PR #24 na `main`, o run [45300024428](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/45300024428) executou `deploy` (4s) e `smoke` (3s), ambos aprovados. Resposta manual de `GET /health`: `{"status":"ok","service":"arena-ufrn","timestamp":"2026-11-24T00:49:27.673Z"}`.
 
-Após o merge da correção do serving (PR #26), o run [45301240903](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/45301240903) repetiu CI, deploy e smoke com sucesso, com 608 testes em 32 suítes. A branch `ci/t4-cicd-render` foi alinhada com a `main` caso o serviço da Render esteja vinculado a ela. Log completo: [docs/evidencias/t4-cicd.md](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/evidencias/t4-cicd.md).
+Após a correção final (PR #28), o run [45307236158](https://github.com/pauloandrehxh/arena-ufrn/actions/runs/45307236158) repetiu CI, deploy e smoke com sucesso, com 610 testes em 32 suítes. A verificação manual em produção confirmou: `GET /` entrega HTML com `<div id="root">`, `GET /health` retorna `{"status":"ok","service":"arena-ufrn","timestamp":"2026-11-24T01:46:46.612Z"}`, `GET /api/quadras` responde `[]` e o bundle JS retorna 200. Log completo: [docs/evidencias/t4-cicd.md](https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/evidencias/t4-cicd.md).
 
 ### Limitações conhecidas
 
