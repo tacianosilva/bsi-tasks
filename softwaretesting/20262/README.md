@@ -48,9 +48,10 @@ Neste diretório temos as orientações, links de enunciados e registros de entr
   * Link Repositório do Projeto:
 
 * `Isabellecavalcant` (Isabelle Cavalcanti da Silva — G1):
-  * Link Tarefa 1 (issue): https://github.com/tacianosilva/bsi-tasks/issues/458
-  * Link Tarefa 2 (issue):
-  * Link Tarefa 3 (issue):
+  * Link Tarefa 1 (issue): <https://github.com/tacianosilva/bsi-tasks/issues/458>
+  * Link Tarefa 2 (issue): <https://github.com/tacianosilva/bsi-tasks/issues/464>
+  * Link Tarefa 3 (issue): <https://github.com/tacianosilva/bsi-tasks/issues/500>
+  * Link Tarefa 4 (issue): <https://github.com/tacianosilva/bsi-tasks/issues/623>
   * Link Repositório do Projeto: <https://github.com/HelenaMariano2025/projetoPNLD>
 
 * `JaineSouz` (Jaine Souza da Luz — G1):
@@ -108,13 +109,13 @@ Jaine Souza da Luz (`@JaineSouz`).
 **Tecnologias:** PHP, MySQL, MySQLi, HTML, CSS, JavaScript, jQuery e Bootstrap.
 
   * Link Repositório: <https://github.com/HelenaMariano2025/projetoPNLD>
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
-  * Link Testes de Sistema (E2E):
-  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
+  * Link Documento de Visão: <https://github.com/HelenaMariano2025/projetoPNLD/blob/main/docs/001-documento-visao.md>
+  * Link Relatório do Estado Atual dos Testes: <https://github.com/HelenaMariano2025/projetoPNLD/blob/main/docs/relatorio-estado-atual-testes.md>
+  * Link Plano de Teste Geral (PTG): <https://github.com/HelenaMariano2025/projetoPNLD/blob/main/docs/plano-geral-de-testes.md>
+  * Link Plano de Teste das Iterações 1 e 2 (PTI): <https://github.com/HelenaMariano2025/projetoPNLD/blob/main/docs/plano-testes-iteracoes-1-e-2.md>
+  * Link Workflow de CI: <https://github.com/HelenaMariano2025/projetoPNLD/actions/workflows/ci.yml>
+  * Link Execução do CI: <https://github.com/HelenaMariano2025/projetoPNLD/actions/runs/37870594206>
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/dashboard?id=pnldkey>
 
 ### G2 — IA Voz
 

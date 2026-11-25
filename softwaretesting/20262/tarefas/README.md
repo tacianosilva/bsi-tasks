@@ -71,3 +71,8 @@ Cada discente deve criar sua pasta com seu username do GitHub (`softwaretesting/
   * Link `tarefa04.md`:
   * Link Tarefa 5 (issue):
   * Link `tarefa05.md`:
+
+* `Isabellecavalcant` (Isabelle Cavalcanti da Silva):
+  * Link Tarefa 4 (issue): https://github.com/tacianosilva/bsi-tasks/issues/623
+  * Link `README.md`: softwaretesting/20262/tarefas/Isabellecavalcant/README.md
+  * Link `tarefa04.md`: softwaretesting/20262/tarefas/Isabellecavalcant/tarefa04.md
