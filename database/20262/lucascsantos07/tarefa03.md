@@ -1,0 +1,336 @@
+1. **Identificação e Repositório:**
+   - **Nome completo:** Lucas da Costa Santos
+   - **Usuário no GitHub:** [lucascsantos07](https://github.com/lucascsantos07)
+   - **E-mail acadêmico:** lucas.costa.123@ufrn.edu.br
+   - **Repositório pessoal público:** https://github.com/lucascsantos07/dct2201-banco-de-dados.git
+
+2. **Respostas às Perguntas Discursivas dos Passos Práticos:**
+   - **Pergunta Discursiva 1:** DDL é a linguagem utilizada para definir e modificar a estrutura do banco de dados, como criar, alterar ou excluir tabelas. Já a DML é utilizada para manipular os dados armazenados nessas tabelas, permitindo inserir, atualizar e excluir registros. O comando DROP TABLE pertence à DDL e seu impacto é excluir completamente uma tabela, removendo sua estrutura e todos os dados armazenados nela.
+   - **Pergunta Discursiva 2:** O comando DROP TABLE autores foi recusado porque o usuário app_biblioteca possui apenas privilégios de manipulação de dados (DML), como inserir, consultar, atualizar e excluir registros, mas não possui permissões para alterar a estrutura do banco de dados (DDL). Por isso, o MariaDB retornou o erro 1142. Essa restrição protege a integridade do banco de dados, impedindo que uma invasão ou falha na aplicação web provoque a exclusão de tabelas e a perda de sua estrutura e dos dados armazenados.
+   - **Pergunta Discursiva 3:** Os usuários foram criados com o host '%' para permitir conexões de diferentes endereços IP, e não apenas da própria máquina, como acontece com 'localhost'. Isso é necessário porque os serviços executados em contêineres Docker se comunicam por meio de uma rede interna virtual, utilizando endereços IP próprios. Assim, o host '%' permite que esses serviços se conectem ao banco de dados sem restringir a conexão ao endereço local.
+   - **Pergunta Discursiva 4:** ficaram cadastrados 14 autores e 33 livros na base de dados. Caso fosse inserido um livro com autor_id igual a 999, o MariaDB recusaria a operação, pois esse autor não existe na tabela autores. Essa restrição é garantida pela chave estrangeira, que assegura a integridade referencial e impede que um livro seja associado a um autor inexistente.
+   - **Pergunta Discursiva 5:** A principal vantagem é evitar a repetição de informações. Se os dados dos autores ficassem na tabela de livros, o nome e o país de um mesmo autor seriam repetidos em todos os seus livros. Separando as tabelas, cada autor precisa ser cadastrado apenas uma vez, e seus livros são relacionados a ele pela chave estrangeira. Isso também facilita a alteração e a exclusão de informações, além de evitar dados diferentes para um mesmo autor.
+
+3. **Respostas Dissertativas Conceituais:**
+   - **Questão a:** Uma aplicação comercial não deve utilizar o usuário root porque ele possui acesso total ao banco de dados, podendo alterar ou excluir informações e até remover tabelas. O ideal é utilizar um usuário próprio, com apenas as permissões necessárias. Caso as credenciais desse usuário sejam vazadas, alguém poderá acessar o banco e consultar, alterar ou excluir dados, causando prejuízos e perda de informações.
+   - **Questão b:** DDL são comandos utilizados para criar, alterar ou excluir a estrutura do banco de dados. Já DML são comandos utilizados para inserir, consultar, atualizar e excluir os dados das tabelas. Separar esses privilégios em usuários diferentes é uma boa prática de segurança porque evita que um usuário que precisa apenas trabalhar com os dados consiga modificar ou excluir a estrutura do banco, reduzindo o risco de danos.
+   - **Questão c:** O arquivo .env.example deve ser enviado ao GitHub porque mostra quais variáveis precisam ser configuradas, mas sem conter senhas reais. Já o .env não deve ser enviado porque armazena informações privadas, como senhas e credenciais de acesso. Se essas informações forem publicadas em um repositório público, outras pessoas poderão utilizá-las para acessar o banco de dados, roubar ou alterar informações e até causar danos ao sistema.
+   - **Questão d:** Não. O uso do .env e do .gitignore reduz os riscos, mas não elimina todos eles. Isso porque o arquivo .env continua armazenado em texto puro no servidor e se alguém conseguir acessar esse arquivo, poderá visualizar as senhas e utilizar as credenciais para acessar o banco de dados. Por isso, também é importante restringir o acesso ao arquivo, proteger o servidor e utilizar outras medidas de segurança para evitar o vazamento dessas informações.
+   - **Questão e:** Um contêiner é um ambiente isolado que reúne uma aplicação e tudo o que ela precisa para funcionar, como arquivos, configurações e dependências. O Docker permite criar e executar esses ambientes de forma rápida e padronizada, sem precisar instalar o SGBD diretamente no computador. Entre as principais vantagens estão a facilidade de instalação e configuração, a redução de conflitos com outros programas, a possibilidade de utilizar a mesma versão do banco de dados em diferentes computadores e a facilidade de remover ou recriar o ambiente quando necessário. Em atividades didáticas, isso facilita a preparação dos laboratórios e permite que todos os alunos trabalhem em ambientes semelhantes, independentemente das configurações de seus computadores.
+
+4. **Desafios Práticos** 
+   ### Bloco A: Docker e Infraestrutura de Ambiente
+**Desafio 1**: A variável `MARIADB_PORT` no arquivo `.env` foi alterada de `3306` para `3307`. Em seguida, o serviço MariaDB foi reiniciado para aplicar a alteração. No Docker Compose, a porta externa `3307` foi direcionada para a porta interna `3306` do container. Como o CloudBeaver também está sendo executado em um container na mesma rede Docker, sua conexão foi mantida com o Host `mariadb` e a porta `3306`. Dessa forma, o acesso externo ao banco passou a utilizar a porta `3307`, enquanto a comunicação interna entre os containers continuou utilizando a porta `3306`.
+
+
+**Desafio 2**: Foram criadas duas pastas distintas, cada uma contendo seu próprio arquivo `docker-compose.yaml` e um arquivo `.env` para armazenar as configurações do ambiente. Cada projeto possui dois contêineres: um **MariaDB**, responsável pelo banco de dados, e um **CloudBeaver**, utilizado para acessar e administrar o banco.
+
+A estrutura ficou organizada da seguinte forma:
+
+```text
+tarefa-03/
+├── ambiente-1/
+│   ├── docker-compose.yaml
+│   └── .env
+│
+└── ambiente-2/
+    ├── docker-compose.yaml
+    └── .env
+```
+
+## Configurações para evitar conflitos
+
+Para permitir que os dois ambientes funcionassem simultaneamente, foram realizadas algumas configurações:
+
+- **Nomes dos contêineres:** o primeiro ambiente manteve os nomes `lab-mariadb` e `lab-cloudbeaver`. No segundo, foram utilizados `lab2-mariadb` e `lab2-cloudbeaver`, evitando duplicidade de nomes.
+- **Portas:** foram definidas portas externas diferentes para cada ambiente. O primeiro utiliza as portas `3307` (MariaDB) e `8978` (CloudBeaver), enquanto o segundo utiliza `3308` (MariaDB) e `8979` (CloudBeaver). As portas internas dos contêineres foram mantidas em `3306` para o MariaDB e `8978` para o CloudBeaver.
+- **Volumes:** cada ambiente possui seu próprio volume para armazenar os dados do MariaDB. Dessa forma, as informações de um banco não interferem nas do outro.
+- **Arquivos `.env`:** cada pasta possui seu próprio arquivo de configuração, permitindo definir senhas e portas de maneira independente.
+
+## Inicialização dos ambientes
+
+Após configurar os arquivos, os ambientes foram iniciados separadamente, utilizando os seguintes comandos no terminal:
+
+**Primeiro ambiente:**
+
+```powershell
+cd ambiente-1
+docker compose up -d
+```
+
+**Segundo ambiente:**
+
+```powershell
+cd ..\ambiente-2
+docker compose up -d
+```
+
+## Verificação e teste de independência
+
+Para verificar se os quatro contêineres estavam funcionando ao mesmo tempo, foi utilizado o comando:
+
+```powershell
+docker ps
+```
+
+O resultado confirmou que os dois contêineres do primeiro ambiente e os dois do segundo estavam ativos simultaneamente.
+
+Também foi necessário utilizar endereços diferentes no navegador para acessar os dois CloudBeaver sem conflito entre as sessões:
+
+- Primeiro ambiente: [http://localhost:8978](http://localhost:8978)
+- Segundo ambiente: [http://127.0.0.1:8979](http://127.0.0.1:8979)
+
+Por fim, foi realizado um teste de independência entre os bancos de dados, verificando que as tabelas criadas em um ambiente não apareciam no outro. Isso confirmou que os dados estavam separados e que os dois ambientes funcionavam de maneira independente.
+
+
+Desafio 3: Para verificar o comportamento da variável `MARIADB_ROOT_PASSWORD`, foi utilizado o segundo ambiente (`ambiente-2`). Inicialmente, o valor dessa variável foi alterado no arquivo `.env`, definindo uma nova senha para o usuário `root`. Em seguida, foi executado o comando `docker compose up -d` para aplicar a configuração.
+
+Após a inicialização, foram realizados dois testes de autenticação no MariaDB, utilizando o seguinte comando:
+
+```powershell
+docker exec -it lab2-mariadb mariadb -u root -p
+```
+
+No primeiro teste, foi informada a senha antiga, e a autenticação ocorreu normalmente, permitindo o acesso ao terminal do MariaDB:
+
+```text
+Welcome to the MariaDB monitor.
+Your MariaDB connection id is 9
+Server version: 11.8.9-MariaDB-ubu2404
+```
+
+No segundo teste, foi informada a nova senha definida no arquivo `.env`. Entretanto, a autenticação foi recusada, retornando o seguinte erro:
+
+```text
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+```
+
+Os resultados demonstraram que, mesmo após a alteração da variável no arquivo `.env` e a execução do Docker Compose, a senha antiga continuou válida, enquanto a nova não foi reconhecida.
+
+Isso ocorre porque a variável `MARIADB_ROOT_PASSWORD` é utilizada durante a primeira inicialização do banco de dados, quando o usuário `root` é criado e sua senha é definida. Como os dados são armazenados em um volume persistente, nas inicializações seguintes o MariaDB identifica que o banco já foi configurado e não executa novamente o processo de criação dos usuários. Portanto, modificar o arquivo `.env` não altera automaticamente as credenciais já armazenadas no banco.
+
+Existem dois caminhos para aplicar uma nova senha de root:
+
+a) **Alterar a senha diretamente no MariaDB:** acessar o banco utilizando a senha antiga e executar o comando `ALTER USER 'root'@'localhost' IDENTIFIED BY 'NovaSenha2026';`. Essa alternativa preserva os dados existentes, sendo necessário também manter o arquivo `.env` atualizado com a nova senha.
+
+b) **Remover o volume e inicializar o banco novamente:** executar `docker compose down -v` para remover os contêineres e o volume associado ao ambiente. Em seguida, executar `docker compose up -d` para inicializar o banco novamente, utilizando a senha atualmente definida no `.env`. Essa alternativa apaga os dados armazenados no volume.
+
+Dessa forma, foi possível observar que a persistência dos volumes mantém não apenas os dados do banco, mas também as configurações de autenticação realizadas durante sua inicialização.
+
+
+**Desafio 4**: Para verificar o comportamento da validação estrita do Docker Compose, foi utilizada a configuração do primeiro ambiente (`ambiente-1`). Inicialmente, a linha `MARIADB_ROOT_PASSWORD` foi comentada no arquivo `.env`, simulando a ausência de uma variável obrigatória.
+
+Em seguida, foi executado o comando:
+
+```powershell
+docker compose up -d
+```
+
+O Docker Compose interrompeu a execução e apresentou a seguinte mensagem de erro:
+
+```text
+error while interpolating services.mariadb.environment.MARIADB_ROOT_PASSWORD:
+required variable MARIADB_ROOT_PASSWORD is missing a value:
+defina MARIADB_ROOT_PASSWORD no arquivo .env
+```
+
+O resultado demonstra que o modificador `:?` exige que a variável esteja definida e possua um valor. Quando essa condição não é atendida, o Compose interrompe o processamento da configuração e apresenta uma mensagem de erro, impedindo a inicialização dos serviços com parâmetros incompletos.
+
+Em ambientes profissionais, esse mecanismo é importante para garantir maior segurança e confiabilidade na configuração das aplicações. Ele evita que contêineres sejam iniciados sem informações essenciais, como senhas e credenciais de acesso, reduzindo problemas de configuração e facilitando a identificação de erros durante a implantação.
+
+Portanto, a validação estrita permite identificar a ausência de parâmetros obrigatórios antecipadamente, antes que os serviços sejam iniciados com configurações inadequadas.
+
+
+**Desafio 5**: Para verificar a resolução das variáveis de ambiente definidas no arquivo `.env`, foi executado o seguinte comando no terminal, dentro da pasta `ambiente-1`:
+
+```powershell
+docker compose config
+```
+
+O comando apresentou a configuração final dos serviços, substituindo as referências às variáveis de ambiente pelos valores correspondentes. Entre as configurações identificadas, destacam-se:
+
+- **`MARIADB_DATABASE`:** resolvida para `labdb`, indicando o nome do banco de dados que será utilizado.
+- **`MARIADB_ROOT_PASSWORD`:** identificada na configuração e resolvida com o valor definido no arquivo .env, que foi ocultado na apresentação do resultado por segurança.
+- **`MARIADB_PORT`:** utilizada para definir a porta externa `3307`, por meio do mapeamento para a porta interna `3306` do MariaDB.
+
+Dessa forma, foi possível observar que o comando `docker compose config` permite visualizar como as variáveis são interpretadas e aplicadas à configuração dos serviços antes de sua execução, facilitando a identificação de valores ausentes ou incorretos.
+
+
+### Bloco B: Modelagem e Consultas SQL Básicas
+
+Desafio 6: Criação da tabela de empréstimos
+
+```sql
+CREATE TABLE emprestimos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    livro_id INT,
+    data_emprestimo DATE,
+    devolvido BOOLEAN,
+    CONSTRAINT fk_emprestimos_livros
+        FOREIGN KEY (livro_id)
+        REFERENCES livros(id)
+);
+```
+
+Desafio 7: Carga da tabela empréstimos
+
+```sql
+INSERT INTO emprestimos (livro_id, data_emprestimo, devolvido)
+VALUES
+    (1, '2026-10-20', FALSE),
+    (2, '2026-10-22', FALSE),
+    (3, '2026-10-25', TRUE);
+```
+
+Desafio 8: Consulta de pendências
+
+```sql
+SELECT
+    l.titulo,
+    e.data_emprestimo,
+    a.nome AS autor
+FROM emprestimos e
+INNER JOIN livros l ON e.livro_id = l.id
+INNER JOIN autores a ON l.autor_id = a.id
+WHERE e.devolvido = FALSE;
+```
+
+Desafio 9: Filtragem de grupos com HAVING
+
+```sql
+SELECT
+    a.nome AS autor,
+    COUNT(*) AS total_livros
+FROM autores a
+INNER JOIN livros l ON a.id = l.autor_id
+GROUP BY a.id, a.nome
+HAVING COUNT(*) > 1;
+```
+
+Desafio 10: Atualização proporcional (UPDATE)
+
+```sql
+UPDATE livros
+SET preco = preco * 1.10
+WHERE id = 1;
+```
+
+**Resultado:** o preço do livro `Dom Casmurro` foi reajustado de R$ 39,90 para R$ 43,89, correspondendo a um acréscimo de 10%.
+
+Desafio 11: Remoção condicional (DELETE)
+
+**Cadastro do autor:**
+
+```sql
+INSERT INTO autores (nome, pais, ano_nascimento)
+VALUES ('Raphael Montes', 'Brasil', 1990);
+```
+
+**Consulta do autor cadastrado:**
+
+```sql
+SELECT * FROM autores
+WHERE nome = 'Raphael Montes';
+```
+
+**Remoção do autor (ID 15):**
+
+```sql
+DELETE FROM autores
+WHERE id = 15;
+```
+
+**Verificação da exclusão:**
+
+```sql
+SELECT * FROM autores
+WHERE id = 15;
+```
+
+**Explicação:** A exclusão foi aceita porque nenhum livro estava associado ao autor Raphael Montes. Como a chave estrangeira `livros.autor_id` referencia `autores.id`, a remoção não viola a restrição de integridade referencial, pois não existem registros na tabela `livros` que dependam desse autor.
+
+### Bloco C: Administração e Privilégios Avançados
+
+**Desafio 12**: Criação de usuário restrito para relatórios
+
+**Criação do usuário:**
+
+```sql
+CREATE USER 'relatorios'@'%' IDENTIFIED BY 'Relatorios2026!';
+```
+
+**Concessão do privilégio de consulta:**
+
+```sql
+GRANT SELECT ON biblioteca.livros
+TO 'relatorios'@'%';
+```
+
+**Verificação dos privilégios:**
+
+```sql
+SHOW GRANTS FOR 'relatorios'@'%';
+```
+
+O usuário `relatorios` recebeu exclusivamente o privilégio `SELECT` sobre a tabela `livros` do banco `biblioteca`.
+
+**Desafio 13**: Teste de restrição de visibilidade
+
+**Comando executado:**
+
+```sql
+SELECT * FROM biblioteca.autores;
+```
+
+**Mensagem de erro retornada pelo MariaDB:**
+
+```text
+SQL Error [1142] [42000]: SELECT command denied to user 'relatorios'@'172.20.0.3' for table `biblioteca`.`autores`
+```
+
+**Explicação:** O SGBD bloqueou a consulta porque o usuário `relatorios` possui privilégio `SELECT` exclusivamente sobre a tabela `livros`. Como não recebeu permissão de consulta sobre `autores`, o acesso foi negado. Isso demonstra o funcionamento do princípio do menor privilégio, limitando o acesso do usuário apenas aos recursos necessários.
+
+
+Desafio 14: Concessão e revogação dinâmica de privilégios
+
+**Concessão do privilégio INSERT (conectado como root):**
+
+```sql
+GRANT INSERT ON biblioteca.livros
+TO 'relatorios'@'%';
+```
+
+**Inserção de teste (conectado como relatorios):**
+
+```sql
+INSERT INTO biblioteca.livros
+    (titulo, ano_publicacao, preco, autor_id)
+VALUES
+    ('Sonho de uma Noite de Verão', 1595, 39.90, 11);
+```
+
+A inserção foi realizada com sucesso, demonstrando que o usuário recebeu o privilégio `INSERT`.
+
+**Revogação do privilégio (conectado como root):**
+
+```sql
+REVOKE INSERT ON biblioteca.livros
+FROM 'relatorios'@'%';
+```
+
+**Nova tentativa de inserção (conectado como relatorios):**
+
+```sql
+INSERT INTO biblioteca.livros
+    (titulo, ano_publicacao, preco, autor_id)
+VALUES
+    ('Sonho de uma Noite de Verão', 1595, 39.90, 11);
+```
+
+**Mensagem de erro retornada:**
+
+```text
+SQL Error [1142] [42000]: (conn=19) INSERT command denied to user 'relatorios'@'172.20.0.3' for table `biblioteca`.`livros`
+```
+
+**Explicação:** Após a revogação do privilégio `INSERT`, o usuário `relatorios` perdeu a autorização para adicionar registros à tabela `livros`. A nova tentativa foi bloqueada pelo SGBD, demonstrando que os privilégios podem ser concedidos e revogados dinamicamente, conforme as necessidades de acesso.
