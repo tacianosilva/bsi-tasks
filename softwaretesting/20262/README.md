@@ -145,16 +145,21 @@ monopólio de horários por um único curso ou aluno.
 
 **Equipe:** Luís Felipe Linhares Pereira (`@Luisfelipelinhares`) e Paulo André Alves de Moura (`@pauloandrehxh`).
 
-**Tecnologias:** React (JavaScript), Tailwind CSS, Node.js (Express), SQLite, Prisma ORM, Jest, React Testing Library e Cypress.
+**Tecnologias:** React (JavaScript), Tailwind CSS, Node.js (Express), PostgreSQL 16, Prisma ORM, Jest, Supertest, Selenium WebDriver, Docker e GitHub Actions.
 
   * Link Repositório: <https://github.com/pauloandrehxh/arena-ufrn>
-  * Link Documento de Visão:
-  * Link Relatório do Estado Atual dos Testes:
-  * Link Plano de Teste Geral (PTG):
-  * Link Plano de Teste das Iterações 1 e 2 (PTI):
-  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade):
-  * Link Testes de Sistema (E2E):
-  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/>
+  * Link Documento de Visão: <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/visao.md>
+  * Link Relatório do Estado Atual dos Testes: <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/estado_testes.md>
+  * Link Plano de Teste Geral (PTG): <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/plano_teste.md>
+  * Link Plano de Teste das Iterações 1 e 2 (PTI): <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/iteracoes/iteracao01.md> | <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/iteracoes/iteracao02.md>
+  * Link Relatório P3 (Testes de Sistema, IA, Usabilidade e Acessibilidade): <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/Relatorios-P3/relatorio-testes-sistema-ia.md>
+  * Link Testes de Sistema (E2E): <https://github.com/pauloandrehxh/arena-ufrn/blob/main/frontend/e2e/home.e2e.test.js>
+  * Link SonarQube LABENS: <https://labens.dct.ufrn.br/sonarqube/dashboard?id=arena-ufrn>
+  * Link Relatório P5 (DevOps, CI e CD): <https://github.com/pauloandrehxh/arena-ufrn/blob/main/docs/relatorio-ci-cd.md>
+  * Link Pipeline CI/CD (GitHub Actions): <https://github.com/pauloandrehxh/arena-ufrn/actions>
+  * Link Aplicação Publicada (Render): <https://arena-ufrn-dbsz.onrender.com>
+  * Link Endpoint `/health`: <https://arena-ufrn-dbsz.onrender.com/health>
+  * Link Issues P5: <https://github.com/tacianosilva/bsi-tasks/issues/627> | <https://github.com/pauloandrehxh/arena-ufrn/issues/31>
 
 ### G4 — SpendSmart
 
